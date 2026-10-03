@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T02:15:39+09:00"
+  at: "2026-10-04T02:20:54+09:00"
 sources:
   - id: "implementation-request"
     resource: "../../raw/conversations/2026-10-03-005.md"
@@ -109,7 +109,7 @@ PRE와 화면/계산 개발은 미결인 종목/장비·호스팅 선택 전 가
 | ID | 작업 | 선행 조건 | 완료 기준 | 상태 |
 |---|---|---|---|---|
 | HAR-01 | 단위/통합 projects·fixture/독립 기대값·공통 명령 | BASE-01/현재16개 | 기존검사 보존, unit에 DB 불필요, 날짜/시간대 결정적, 로컬/CI 같은 명령 | done |
-| HAR-02 | 세트 입력·오류·복원·프로필 전환 DOM 통합 | HAR-01 | blur/click·반복 클릭·실패 재시도·전환 중 저장 상태 확인, 사용자 라벨 기반 | planned |
+| HAR-02 | 세트 입력·오류·복원·프로필 전환 DOM 통합 | HAR-01 | blur/click·반복 클릭·실패 재시도·전환 중 저장 상태 확인, 사용자 라벨 기반 | in_progress |
 | HAR-03 | 버전 고정 browser runner·빌드 preview·핵심 E2E | HAR-01; 입력 계약은 HAR-02 연결 | E2E-01~04, Chromium PWA/WebKit UI 경계·context 격리, 동일 환경3회 안정 제안 | planned |
 | HAR-04 | 저장 실패·큰 백업·migration·V1/V2 업데이트 | HAR-03, LOG-05/06 | 최초 실패 증거·기존 데이터 보존·RISK-BACKUP-01 재현/정책·E2E-05·실기기 절차 | in_progress |
 | HAR-05 | CI 검사 분리·실패 trace/console/실행 메타데이터 | HAR-01/03 | 실패해도 증거 보존·artifact 접근/보존·첫 실패 유지·외부 CI 실제 실행 결과 | planned |
@@ -150,6 +150,8 @@ PRE와 화면/계산 개발은 미결인 종목/장비·호스팅 선택 전 가
 | KM-01/02 vault·이력 | 모든 의미 변경 | OKF 구조 검사·raw/CONV/CHG/PRD snapshot 유지 |
 
 ## 실행 기록
+
+HAR-02: DOM 입력/transaction 실패·재시도/결측수정3과업을 추가했다. unit6/integration24/ui3·lint/build/format 통과. backup/Auth 전환/실browser 과업은 남아 in_progress. [원본](../../raw/research/2026-10-04-dom-harness-verification.json).
 
 2026-10-04 CONV-0008: UI-01/HAR-01 완료, SYNC-01~05 in_progress. private RPC/RLS/allowlist·CAS/idempotency·manual snapshot/recovery/schema2 및 공개 가입 차단 적용. unit6/integration24/원격SQL16·HTTP401·format/lint/build 통과. 실제 Auth E2E와 자동 병합/대용량/삭제·DOM/E2E/외부 CI는 남아 있어 SYNC 전체를 done으로 바꾸지 않았다. HAR-04 schema1→2·HAR-06 원격 계약 일부 in_progress. [증거](../../raw/research/2026-10-04-mantine-supabase-verification.json).
 

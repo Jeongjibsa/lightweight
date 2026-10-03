@@ -1,0 +1,40 @@
+{
+  "captured_at": "2026-10-04T02:20:54+09:00",
+  "task": "HAR-02 initial DOM increment",
+  "baseline_commit": "9cccb4f",
+  "planning_commit": "897f44d",
+  "runtime": "Node24.14.1 / npm11.11.0",
+  "test_dependencies": {
+    "@testing-library/dom": "10.4.2",
+    "@testing-library/react": "16.3.3",
+    "@testing-library/user-event": "14.6.7",
+    "jsdom": "27.4.0"
+  },
+  "checks": {
+    "unit": 6,
+    "integration": 24,
+    "ui": 3,
+    "lint": "passed",
+    "build": "passed",
+    "format": "passed"
+  },
+  "ui_scenarios": [
+    "0kg/reps input immediately completed with blur; single row preserved after unmount/re-entry",
+    "outbox failure injection rolls back payload/outbox; UI error, no completed state; retry succeeds",
+    "missing load rejected; correction to0 completes same row"
+  ],
+  "environment": "jsdom + actual WorkoutView/Mantine/Dexie/fake-indexeddb; no browser layout/iOS or actual quota test",
+  "limits": [
+    "HAR-02 partial: profile/Auth switching and backup UI not covered",
+    "Playwright browser runner/CI trace and external CI still not_run",
+    "jsdom30 requires newer Node24.15; used27.4.0 supported on currentNode24.14.1",
+    "UI fork disables Node experimental webstorage; browser storage emulation belongs to jsdom"
+  ],
+  "code_sha256": {
+    "app/vitest.config.ts": "59f01b62765ef65917a0d3836e2d58cea6292d972f9c09bbe86c280e6d19199a",
+    "app/tests/ui/setup.ts": "e0d687fc863ac021cdadbd79002ef0934308194452a24bd659f012786cdcbe43",
+    "app/tests/ui/workout.ui.test.tsx": "50f2e77e561971ef37bc3cffa2a5ca31031f6d6642d14ba137f495e9cb83f85a",
+    "app/package.json": "58ec30a7ee8bb3ef0536937c13f8c912ab600b49bd451af888f8962d011268cc",
+    "app/package-lock.json": "ce5d83f85877c3cedafc2c8149352ff27c462d66ba2b7efa60ab1d8fd6649d9a"
+  }
+}

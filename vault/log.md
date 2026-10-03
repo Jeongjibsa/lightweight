@@ -2,6 +2,8 @@
 
 ## 2026-10-04
 
+- **Harness Implementation**: 계획/지침 `897f44d` 이후 HAR-02 DOM project·실제 WorkoutView/Dexie 과업3개 추가. unit6/integration24/ui3·33개/5파일·lint/build/format 통과. [원본](raw/research/2026-10-04-dom-harness-verification.json)/SRC-038 추가, HAR-02 in_progress. 실제 Auth/backup UI/브라우저 runner·CI/iPhone은 미통과.
+
 - **Commit / Planning**: [CONV-0009](wiki/conversations/2026-10-04-009.md)에 따라 현재 앱/PRD0.4.0 baseline을 `9cccb4f`로 local commit. 이후 [git-commit 운영](wiki/operations/commit-workflow.md)/AGENTS 지속 지침 추가. 볼륨/그래프·과거 오늘/권장량 요구를 FR-14/15·REP-04~06/SCI-03B로 [MVP](wiki/product/volume-history-mvp.md)에 반영. PRD0.5.0·계획/백로그0.4.0, [CHG-0009](history/changes/CHG-0009.md)·[전체 snapshot](history/versions/prd-v0.5.0.md) 보존. SRC-037은 같은 ACSM 원문의 추가 읽기, 새 독립 연구 아님. 현재는 계획 증분이며 기능 구현은 이어서 진행.
 
 - **Implementation / Approval**: [CONV-0008](wiki/conversations/2026-10-04-008.md)의 Mantine UI·Spoqa 글꼴·Supabase 연결을 app0.2.0/schema2에 반영. Auth/계정 DB·수동 snapshot/CAS/idempotency/recovery·서버 private3테이블/권한 적용. 공개 가입 차단은 명시 승인 후 Dashboard 저장·Auth API 확인. [현재 스택](wiki/product/technology-stack.md) · [연결/계정 준비](wiki/product/supabase-integration.md).

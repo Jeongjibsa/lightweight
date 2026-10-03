@@ -10,3 +10,4 @@
 - [빈 브라우저 저장소 복원 검증](2026-10-03-browser-restore-verification.json) — CHG-0006 저장 이후의 추가 검사, 가짜 데이터만 사용.
 - [2026-10-04 하네스 감사](2026-10-04-harness-audit.json) — 코드 SHA256·실제 재검사·공식 자료·미시험 후보.
 - [Mantine/Supabase 실제 검증](2026-10-04-mantine-supabase-verification.json) — 버전/계약/HTTP/SQL/브라우저 범위·코드 해시.
+- [HAR-02 DOM 검증](2026-10-04-dom-harness-verification.json) — input/실패/재시도3과업과 실제 환경.

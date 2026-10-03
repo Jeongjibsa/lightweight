@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T02:02:14+09:00"
+  at: "2026-10-04T02:20:54+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
@@ -29,6 +29,9 @@ sources:
   - id: "cloud"
     resource: "../product/supabase-integration.md"
     title: "원격 계약"
+  - id: "dom-check"
+    resource: "../../raw/research/2026-10-04-dom-harness-verification.json"
+    title: "DOM 검사"
 version: "0.2.0"
 approval_status: "current-audit-and-proposal"
 change_id: "CHG-0008"
@@ -95,10 +98,16 @@ ruby scripts/validate_vault.rb
 
 CUA에서는 가짜 설정/reload/update·320/375/1440px 관찰·Spoqa 로딩·입력16px·모달 trap/ShiftTab/Escape/opener 복귀·console0을 확인했다. 실제 Safari/iPhone·설치·키보드·잠금·200% 확대·모든 화면·실저장 quota·클라우드 Auth 전체 흐름을 통과시킨 것은 아니다. 과거 Chromium offline/빈DB/업데이트와 전체 폭 검증 이력은 [진행 보고](../product/implementation-progress.md)에 범위를 보존한다.
 
+## 2026-10-04 HAR-02 DOM 증분
+
+`app/tests/ui/setup.ts`·`workout.ui.test.tsx`와 Vitest `ui`/jsdom project·`test:ui`를 추가했다. 실제 WorkoutView+Mantine+Dexie를 사용하고 사용자 라벨/동작과 저장 결과를 검사한다. 0kg/반복 입력 직후 완료/blur·재진입, transaction 실패와 UI 오류/기존 payload/outbox·재시도, 중량 결측→0 수정의3개 과업 통과. 기존unit6/integration24와 합계33개/5파일, lint/build/format 통과. [실행 원본](../../raw/research/2026-10-04-dom-harness-verification.json).
+
+HAR-02는 in_progress다. DOM 과업 기반을 만들었지만 backup/Auth 전환·실제 layout/서비스워커/quota·Playwright E2E/CI trace는 남았다. jsdom은 실제 iPhone/브라우저가 아니다. 기존 ‘DOM 도구 없음’ 표기는 이 증분 이전 상태이며 현재 tooling은 [SRC-038](../sources/SRC-038-dom-harness.md)을 따른다.
+
 ## 다음 자동 회귀
 
 - HAR-01 done: projects·기존 검사 분리·unit/integration/check 명령·결정적 cloud 날짜.
-- HAR-02 planned: 입력 직후 완료·반복 클릭·저장 오류/복원·계정 전환의 DOM 과업. React Testing Library/DOM 환경은 아직 없다.
+- HAR-02 in_progress: 입력 직후 완료·반복 클릭·저장 오류/복원·계정 전환의 DOM 과업. DOM 환경/입력·실패 과업3개는 추가했고 backup/계정 과업은 남았다.
 - HAR-03 planned: 고정 Playwright Test runner·빌드 preview·새 context·Chromium PWA/WebKit UI 경계. 지금 CUA 관찰은 spec이 아니다.
 - HAR-04 in_progress: schema1→2 저장소 계약 추가. 실제 브라우저 migration/update·quota·대용량 백업 정책은 남았다.
 - HAR-05 planned: CI UI 회귀·실패 trace/console/실행ID 보존·외부 CI 실제 결과. 공통 check만 연결했다.

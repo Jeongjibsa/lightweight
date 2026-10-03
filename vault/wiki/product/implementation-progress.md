@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T02:02:14+09:00"
+  at: "2026-10-04T02:20:54+09:00"
 sources:
   - id: "responsive-local-request"
     resource: "../../raw/conversations/2026-10-03-006.md"
@@ -38,11 +38,18 @@ sources:
   - id: "cloud-contract"
     resource: "supabase-integration.md"
     title: "실제 계약"
+  - id: "dom-check"
+    resource: "../../raw/research/2026-10-04-dom-harness-verification.json"
+    title: "DOM 검사"
 version: "0.2.0"
 change_id: "CHG-0008"
 ---
 
 # 로컬 PWA 구현 결과와 다음 작업
+
+## 최신 HAR-02 증분 — 2026-10-04
+
+DOM 통합 project/라벨 기반 입력·오류·재시도 과업3개를 추가했고 unit6/integration24/ui3·합계33개/5파일과 lint/build/format 통과. HAR-02 in_progress, 실제 browser/E2E/계정 준비는 남았다. [실행 원본](../../raw/research/2026-10-04-dom-harness-verification.json). 계획/commit 지침은897f44d로 보존했다.
 
 ## 현재 증분 — 2026-10-04
 

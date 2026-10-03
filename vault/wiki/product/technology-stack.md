@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T02:02:14+09:00"
+  at: "2026-10-04T02:20:54+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-008.md"
@@ -60,3 +60,7 @@ Mantine의 동적 스타일 적용에 CSP `style-src 'self' 'unsafe-inline'`을 
 React·Mantine·Supabase·저장/검증 의존성 청크를 나눴다. 앱 진입 JS는84.22KB/25.30KB gzip, Mantine CSS는233.86KB/34.17KB gzip, 전체 PWA precache는23개/1623.05KiB다. 청크 분리가 전체 다운로드량 감소를 보장하지 않는다. 호스트에는 `app/dist`만 제공한다. vault·서버 스크립트·DB 비밀번호·개인 JSON 백업은 배포하지 않는다.
 
 [Supabase 연결/운영](supabase-integration.md) · [현재 하네스](../operations/testing-harness.md) · [공식 자료/범위](../sources/SRC-036-mantine-supabase.md)
+
+## HAR-02 이후 검사 도구
+
+@testing-library/react16.3.3·dom10.4.2·user-event14.6.7, jsdom27.4.0을 devDependencies에 추가했다. `test:ui`와 Vitest ui project로 실제 입력/오류 과업을 DOM에서 검사한다. 위 DOM 미설치 표기는 당시 이력이며 Playwright Test runner는 여전히 미구현이다. [근거/환경](../sources/SRC-038-dom-harness.md).
