@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T02:02:14+09:00"
+  at: "2026-10-04T02:15:39+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-03-002.md"
@@ -41,6 +41,9 @@ sources:
   - id: "ui-cloud-request"
     resource: "../../raw/conversations/2026-10-04-008.md"
     title: "요구/가입 차단 승인"
+  - id: "volume-request"
+    resource: "../../raw/conversations/2026-10-04-009.md"
+    title: "요구"
 ---
 
 # 미결 사항과 다음 대화
@@ -72,3 +75,5 @@ CONV-0007의 현황/하네스 문서화는 추가 결정 없이 진행했다. [�
 CONV-0008: Mantine UI·Spoqa Han Sans Neo·실제 스택 명시를 요구로 추가했고 [현재 스택](technology-stack.md)/[계정 준비](supabase-integration.md)를 작성했다. 실제 계정 비밀번호를 대화에 요청하지 않는다.
 
 답변 후 갱신: [PRD](prd.md), 관련 기능, [결정](../decisions/decision-register.md), [변경](../../history/changes/index.md). 질문 ID를 이어서 부여한다.
+
+CONV-0009: 볼륨/그래프·오늘 운동/권장량 요구를 추가했다. [계산/후보 초기 정책](volume-history-mvp.md). 불편감/effort·운동 경험·실제 머신/ROM 식별 입력은 권장량 조정 전 구체화한다. 28/84일·한 손 기준 등 상세는 구현 정책이며 최적성 승인으로 간주하지 않는다. local commit 지속 요청은 [운영](../operations/commit-workflow.md)에 기록했다.

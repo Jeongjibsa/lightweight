@@ -30,3 +30,12 @@
 - `app`에서 `npm run lint`, `npm run test`, `npm run build`를 수행한다. 데이터 보존·권한·계산 변경에는 의미 있는 계약 검사를 추가하며 낮은 영향의 외형 수정에 구현을 복제하는 검사를 늘리지 않는다.
 - 로컬 프로필 분리를 인증/RLS로, outbox 기록을 클라우드 전송으로, Chromium 폭 변경 시험을 실제 iPhone 통과로 표시하지 않는다. 검토 전 운동·영양 주장을 운영 콘텐츠로 제공하지 않는다.
 - 개인 기록·백업·토큰은 vault/공개 코드/앱 번들에 넣지 않는다. 실제 배포·외부 설정·메시지 전송·커밋/푸시는 사용자가 요청한 범위에서 진행한다.
+
+## 작업 단위별 commit
+
+- CONV-0009에서 사용자는 현재 변경의 commit과 앞으로 작업 단위별 commit을 지속 요청했다. 이후 구현·수정·문서 작업은 의미 있는 단위를 완료하고 검증한 뒤 별도 재승인 없이 local commit한다.
+- commit에는 [git-commit SKILL.md](/Users/jisung/.codex/skills/git-commit/SKILL.md)를 사용한다. 실제 diff와 untracked 내용을 읽고 Conventional Commits 1.0.0을 따른다. description은 한국어, 기술 용어·product/code identifier는 영어 원문 표기를 유지한다.
+- status/index를 먼저 확인하고 해당 단위의 파일/hunk만 staging한다. 사용자 staging과 다른 작업은 보존하며 `git add .`/`git add -A`로 전체를 섞지 않는다. 기능·관련 검사·문서는 함께 묶을 수 있고 독립된 계획/검사 기반/기능 목적은 분리한다.
+- 변경에 맞는 lint/test/build·vault validation과 staged diff 검토를 마친 후 commit한다. Markdown의 의도된 두 공백 줄바꿈은 보존하되 다른 whitespace 오류는 해결한다. 검증 실패·미지원 검사를 성공으로 기록하지 않는다.
+- 서버 key/비밀번호·개인 기록/JSON backup·브라우저 token/임시 산출물을 staging하지 않는다. hook을 정상 실행하고 실패를 `--no-verify`로 우회하지 않는다.
+- commit 성공 뒤 hash/message와 남은 status를 확인해 기록한다. 이 지속 요청은 local commit에 대한 승인이다. push·amend/rebase/reset·force push·공개 배포는 명시 요청 범위에서 수행한다.

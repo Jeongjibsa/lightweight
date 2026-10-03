@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T02:02:14+09:00"
+  at: "2026-10-04T02:15:39+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
@@ -29,6 +29,9 @@ sources:
   - id: "cloud"
     resource: "supabase-integration.md"
     title: "현재 연결"
+  - id: "volume-mvp"
+    resource: "volume-history-mvp.md"
+    title: "추가 범위"
 version: "0.2.0"
 approval_status: "proposal"
 change_id: "CHG-0008"
@@ -60,6 +63,10 @@ change_id: "CHG-0008"
 | 후속 | 식단/영양·선택 AI 설명 | NUT-01~04, AI-01 | 운동 우선 원칙 유지; 음식DB/권한·결측/커버리지·검토 공식/재현 계산 |
 
 계정 등록 전에도 HAR-02/03/05와 로컬 입력/계산·SCI 전문 검토는 진행할 수 있다. 개인 계정 비밀번호를 대화로 수집하지 않는다. [계정 준비 절차](supabase-integration.md)를 문서화했다. Q-15 로그인/복구/메일, Q-08/16/17 운영비/도메인/접근, Q-12 지원 iOS/실기기, Q-01 경험/장비/시간, Q-06 검토 역할은 필요한 단계에 정한다.
+
+## CONV-0009 이후 실제 다음 묶음
+
+HAR-02 DOM 과업을 먼저 추가하고 REP-04 볼륨 계산→REP-05 그래프/표→REP-06 본인 루틴/과거 수행량 후보를 진행한다. [세부 계약](volume-history-mvp.md). 실제 계정·자동 browser E2E·iPhone/근거 공개 관문은 유지한다. 권장 운동량 조정은 SCI-03B 후속이며 새로운 자동 증량을 먼저 켜지 않는다. 각 검증된 단위는 [commit 지침](../operations/commit-workflow.md)에 따라 local commit한다.
 
 ## 루프를 적용할 다음 과업
 

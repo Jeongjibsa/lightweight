@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-03T23:24:52+09:00"
+  at: "2026-10-04T02:15:39+09:00"
 sources:
   - id: "acsm"
     resource: "../sources/SRC-003-acsm-2026.md"
@@ -35,6 +35,12 @@ sources:
   - id: "local-progress"
     resource: "implementation-progress.md"
     title: "실행 결과와 남은 작업"
+  - id: "volume-request"
+    resource: "../../raw/conversations/2026-10-04-009.md"
+    title: "새 요구"
+  - id: "volume-mvp"
+    resource: "volume-history-mvp.md"
+    title: "단계/계산"
 ---
 
 # 루틴 추천과 조정 규칙
@@ -87,3 +93,7 @@ POL-R07 제안: 같은 운동/장비/범위에서 연속 두 번 본세트 목�
 특정 iPhone 모델에 한정하지 않는 반응형과 각 사용자별 목표·주당 횟수·분할·시간·장비·단위·시간대 설정을 요구사항으로 추가했다. 본인의 조건은 하나의 시험 표본이다. Supabase 프로젝트가 없으므로 로컬부터 구현한다는 사용자 선택을 반영했다. [로컬 계약](implementation-contracts.md) · [실행 결과](implementation-progress.md).
 
 로컬 프로필/기록·루틴 스냅샷·백업·사실 집계·PWA는 구현했으며 계정/RLS·서버 전송·실제 iOS·검토된 시각/설명·추천/티어·완전한 개인화·배포는 미완료다. 기존 실사용/지인 제공 관문은 유지한다. 로컬 프로필을 인증 계정으로, 개념도를 자극 범위로, 분류별 행 수를 근육 성장량으로 표시하지 않는다.
+
+## CONV-0009 볼륨·추이·오늘 안내
+
+[새 MVP 계약](volume-history-mvp.md)에 FR-14/15와 REP-04~06/SCI-03B를 연결했다. 관찰 계산/그래프와 과거 수행량 참고부터 제공하고 자동 증량/권장 세트는 충분성/노력/불편감·전문 검토 이후다. CONV-0006의 프로젝트 없음 표기는 당시 이력이며 현재 Supabase 연결 상태는 [진행 보고](implementation-progress.md)를 따른다.

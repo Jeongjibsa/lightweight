@@ -36,3 +36,4 @@
 - [반응형·로컬 저장·PWA 공식 근거](SRC-034-responsive-local.md) — W3C/Dexie/PWA와 실제 시험 구별.
 - [SRC-035 검증 하네스 구성과 도구별 한계](SRC-035-testing-harness.md) — 공식 v4 projects·메모리 DB·browser/trace·DOM 검사의 표적 확인.
 - [SRC-036 Mantine·Spoqa·Supabase](SRC-036-mantine-supabase.md) — 공식 읽은 범위·연결 구현 한계.
+- [SRC-037 ACSM 볼륨/개별화 추가 읽기](SRC-037-volume-history.md) — SRC-003과 같은 자료, 독립 연구 중복 아님.

@@ -8,7 +8,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T02:02:14+09:00"
+  at: "2026-10-04T02:15:39+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-03-001.md"
@@ -37,6 +37,9 @@ sources:
   - id: "ui-cloud-request"
     resource: "../../raw/conversations/2026-10-04-008.md"
     title: "요구/승인"
+  - id: "volume-request"
+    resource: "../../raw/conversations/2026-10-04-009.md"
+    title: "요구"
 ---
 
 # 결정과 제안 기록
@@ -81,6 +84,10 @@ sources:
 | DEC-033 | Mantine UI·Spoqa Han Sans Neo·현재 스택/라이브러리 문서 | 사용자 요구 확인/적용 | CONV-0008, UI-01/FR-12 |
 | DEC-034 | registered password Auth·계정 DB·허용 목록·manual snapshot/CAS/recovery | 초기 구현 정책 | 연결 증분으로 선택; 사용자 최종 로그인/동기화 선택 아님 |
 | DEC-035 | Supabase 공개 가입 차단 | 사용자 명시 승인/적용 | CONV-0008 후속 답변, Dashboard 저장·Auth API 확인 |
+
+| DEC-036 | 현재/향후 작업 단위 git-commit skill local commit | 사용자 지속 요청 | CONV-0009; push/이력 재작성은 확대하지 않음 |
+| DEC-037 | 운동별/일별 볼륨·그래프·과거 기록 기반 오늘/권장량 | 사용자 기능 요구 | FR-14/15, REP-04~06/SCI-03B |
+| DEC-038 | 기록량 비교 경계와 오늘 루틴 참고→검토된 조정 단계 | 초기 구현 정책 | 성장/회복 점수·자동 증량 없음; 상세 사용자 승인 아님 |
 
 요구 확정은 기능 의도를 직접 표현했다는 뜻이며 상세 설계 승인이 아니다. 변경 시 기존 결론을 조용히 교체하지 않고 새 결정·대체 관계·이유를 기록한다.
 

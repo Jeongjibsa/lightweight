@@ -20,3 +20,4 @@
 - [운동 MVP까지 남은 작업](remaining-work.md) — 현재 완료 범위와 다음 증분·의존성·관문.
 - [현재 기술 스택과 라이브러리](technology-stack.md) — Mantine/Spoqa/정확한 설치 버전·역할.
 - [Supabase 연결과 계정 준비](supabase-integration.md) — Auth/RPC/RLS·허용 목록·manual snapshot·실제 검증/남은 설정.
+- [볼륨·추이·오늘 후보 MVP](volume-history-mvp.md) — 관찰/비교·과거 참고→검토된 조정.

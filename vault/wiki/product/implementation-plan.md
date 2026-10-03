@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T02:02:14+09:00"
+  at: "2026-10-04T02:15:39+09:00"
 sources:
   - id: "implementation-request"
     resource: "../../raw/conversations/2026-10-03-005.md"
@@ -50,9 +50,12 @@ sources:
   - id: "cloud"
     resource: "supabase-integration.md"
     title: "현재 연결"
-version: "0.3.0"
+  - id: "volume-mvp"
+    resource: "volume-history-mvp.md"
+    title: "추가 계약"
+version: "0.4.0"
 approval_status: "proposal"
-change_id: "CHG-0008"
+change_id: "CHG-0009"
 ---
 
 # 운동 PWA 구현 작업계획
@@ -200,6 +203,10 @@ PWA 업데이트는 진행 기록을 저장하고 안전한 시점에 적용한�
 ## CONV-0008 연결 증분과 다음 실행
 
 UI-01/HAR-01 완료. 실제 스택은 [기술 문서](technology-stack.md), 원격 데이터 계약은 [연결 문서](supabase-integration.md). 수동 전체 snapshot은 현재 구현자가 선택한 작은 증분이다. 원래 SYNC-03/04의 모든 레코드/충돌 요구가 완료된 것으로 간주하지 않는다. 다음은 승인 계정 준비→실제 Auth/복원과 자동 DOM/E2E/실패 증거→저장/대용량/충돌 고도화→입력/개인화/검토 콘텐츠·실기기다. 공개 가입 차단만 명시 승인으로 기록했고 비밀번호 로그인/수동 정책을 사용자 최종 선택으로 확대하지 않는다.
+
+## CONV-0009 추가 MVP 실행
+
+지속 local commit 지침을 추가했다. 다음은 HAR-02 DOM 기반/입력 저장 과업→REP-04 계산→REP-05 그래프/표→REP-06 오늘 기록 참고 후보다. 각 단위를 관련 검사/문서와 commit한다. 실제 Auth 계정 준비가 없어도 이 로컬 경로는 진행한다. 권장 세트/증량은 SCI-03B의 충분성/effort/불편감·전문 검토 후 연결한다. 기존 초기 공수에 새 기능이 모두 포함됐다고 가정하지 않고 첫 증분 뒤 재평가한다. [새 MVP](volume-history-mvp.md).
 
 ## 관리와 다음 의사결정
 

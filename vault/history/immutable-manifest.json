@@ -35,7 +35,10 @@
     "raw/conversations/2026-10-04-008.md": "5cc6ec8ba63703000eaefa4c522d9395565c0304e840dfb7b13ff7d7c257ac4c",
     "raw/research/2026-10-04-mantine-supabase-verification.json": "da19cdb330a91ffe4338482cfcbcdb3490d890975cab87dcd38ff077a34e507d",
     "history/changes/CHG-0008.md": "b2daa0bbc344eddbbbbbc35ddd8272199d542da5deb70e2437f0f3d6125d159c",
-    "history/versions/prd-v0.4.0.md": "f11e153063198f0610a20ed1f47cc2c1fc56cea4ad42cf2259f90c674b5ea28a"
+    "history/versions/prd-v0.4.0.md": "f11e153063198f0610a20ed1f47cc2c1fc56cea4ad42cf2259f90c674b5ea28a",
+    "raw/conversations/2026-10-04-009.md": "49b3835b61e58e95147237af105388fc053fc5a86f1e7cdf2c688a40770c6cba",
+    "history/changes/CHG-0009.md": "c3dc7e3caf3a2a65e8b90aaf4914d96bdaf0df9b237751bb4fbce77078351829",
+    "history/versions/prd-v0.5.0.md": "e11de4e322d5d82b352183a4d16d3d25b4331f721d087da8af981d8e8d02b238"
   },
-  "updated_at": "2026-10-04T02:02:14+09:00"
+  "updated_at": "2026-10-04T02:15:39+09:00"
 }

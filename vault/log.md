@@ -2,6 +2,8 @@
 
 ## 2026-10-04
 
+- **Commit / Planning**: [CONV-0009](wiki/conversations/2026-10-04-009.md)에 따라 현재 앱/PRD0.4.0 baseline을 `9cccb4f`로 local commit. 이후 [git-commit 운영](wiki/operations/commit-workflow.md)/AGENTS 지속 지침 추가. 볼륨/그래프·과거 오늘/권장량 요구를 FR-14/15·REP-04~06/SCI-03B로 [MVP](wiki/product/volume-history-mvp.md)에 반영. PRD0.5.0·계획/백로그0.4.0, [CHG-0009](history/changes/CHG-0009.md)·[전체 snapshot](history/versions/prd-v0.5.0.md) 보존. SRC-037은 같은 ACSM 원문의 추가 읽기, 새 독립 연구 아님. 현재는 계획 증분이며 기능 구현은 이어서 진행.
+
 - **Implementation / Approval**: [CONV-0008](wiki/conversations/2026-10-04-008.md)의 Mantine UI·Spoqa 글꼴·Supabase 연결을 app0.2.0/schema2에 반영. Auth/계정 DB·수동 snapshot/CAS/idempotency/recovery·서버 private3테이블/권한 적용. 공개 가입 차단은 명시 승인 후 Dashboard 저장·Auth API 확인. [현재 스택](wiki/product/technology-stack.md) · [연결/계정 준비](wiki/product/supabase-integration.md).
 - **Verification / Loop**: format/lint/unit6/integration24/strict build, 원격 rollback SQL16·publishable-only RPC401·TLS·Advisor 빈 배열 확인. CUA 가짜 설정·폭/글꼴/모달 관찰 및 초점 유실 재현→수정→재검증. [실행 원본](raw/research/2026-10-04-mantine-supabase-verification.json). SQL claim과 실제 Auth E2E, 폭 시험과 iPhone 통과를 구분. 외부 CI/공개 앱 배포/실계정 등록·메일/커밋/푸시 미수행.
 - **Knowledge / History**: PRD0.4.0·계획/백로그0.3.0·HAR-01 done·SYNC/HAR-04/06 일부 in_progress. [CHG-0008](history/changes/CHG-0008.md)·[PRD 전체](history/versions/prd-v0.4.0.md)·SRC-036와 새 원본 보존, 기존 불변 해시 유지. [남은 작업](wiki/product/remaining-work.md)과 [하네스](wiki/operations/testing-harness.md) 갱신.
