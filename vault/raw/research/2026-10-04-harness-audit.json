@@ -1,0 +1,133 @@
+{
+  "captured_at": "2026-10-04T00:33:00+09:00",
+  "topic": "현재 하네스 감사와 남은 작업 정리",
+  "method": "로컬 코드/config/CI/기존 증거 직접 확인, 기존 검사 재실행, 공식 기술 문서 표적 확인",
+  "versions": {
+    "app": "0.1.0",
+    "prd": "0.3.1",
+    "indexeddb_schema": 1,
+    "node": "24.14.1",
+    "npm": "11.11.0",
+    "vitest": "4.1.11",
+    "fake_indexeddb": "6.2.5"
+  },
+  "git": {
+    "head": "1976b53d5343144deaa997c8b1403318f7c9eae4",
+    "dirty": true,
+    "limitation": "기존 로컬 app/docs가 미커밋 상태이므로 HEAD만으로 검사한 코드 상태를 재현할 수 없다. 아래 파일 SHA256은 감사 시점의 구현을 식별한다."
+  },
+  "audited_files": {
+    "app/package.json": "28137e14b330a5852dd648ff55ea015d4b8caa42fb884f41b795471c519dad70",
+    "app/package-lock.json": "4a0bf7991028f20563707dc326da579abefc51c5b37b6a0c33612d613e7facd9",
+    "app/src/domain/models.ts": "e1d3702368bdb7f2297e974712eb367b9e6779189fd19c423260874b76cf43bc",
+    "app/src/data/local/store.ts": "1ab01f6b05f3d69a5e7c251d501c58926f3e81d4e0a052daf1d2623c75ba00cb",
+    "app/src/data/local/store.test.ts": "1746f09def6d6cd1b0b314c7b959c04e94e1694be352431a815f1403095f269d",
+    "app/src/components/workout.tsx": "0667d24ae809a251ccc0184758f23b3d638068a7418a32328cf9566811a57f35",
+    "app/src/components/settings.tsx": "62bb810b457a52ecb2f572c4179e4d7c4c85b32de58e69914a056cc864be4bf3",
+    "app/vite.config.ts": "8ac28daa9f885476e33ddc226a9afc0ff85823d36b750a88ea6dc88a1dcb2630",
+    ".github/workflows/check.yml": "034949197aaeb5e6eb64936a3f6192ee739ebe0aa10a62c1af9a1fa01d1930c1",
+    "scripts/validate_vault.rb": "7275a4b1998cb6a3354eee52563c3d2cb92d238f17a63b3f29bc938a6f6d06b7"
+  },
+  "checks": {
+    "started_at": "2026-10-04T00:19:42+09:00",
+    "lint": {
+      "status": "passed",
+      "command": "npm run lint",
+      "cwd": "app"
+    },
+    "tests": {
+      "status": "passed",
+      "files": 1,
+      "passed": 16,
+      "duration_ms": 246,
+      "command": "npm run test",
+      "cwd": "app"
+    },
+    "build": {
+      "status": "passed",
+      "strict_types": true,
+      "precache_entries": 14,
+      "command": "npm run build",
+      "cwd": "app"
+    },
+    "vault_before_edit": {
+      "status": "passed",
+      "markdown_files": 99,
+      "links_checked": 961,
+      "sources": 34,
+      "immutable_files": 26
+    },
+    "vault_after_edit": {
+      "status": "see separate latest validation report",
+      "resource": "../../history/validation-latest.json"
+    }
+  },
+  "current_structure": {
+    "unit_and_integration": "16 tests in one store.test.ts, beforeEach unique fake DB + owners A/B, afterEach mock restore/delete",
+    "e2e": "No project Playwright Test dependency/config/spec/CI execution. Prior ad hoc CLI Chromium observations preserved separately.",
+    "coverage": "not configured or measured",
+    "remote_ci": "configured, execution not confirmed",
+    "react_dom_integration": "not implemented"
+  },
+  "review_risks": [
+    {
+      "id": "RISK-BACKUP-01",
+      "status": "code asymmetry observed; large payload reproduction not run",
+      "observation": "Import UTF-8 byte cap 10*1024*1024, export schema validation without byte cap."
+    },
+    {
+      "id": "INPUT-BLUR-CLICK",
+      "status": "not reproduced; verification candidate",
+      "observation": "Draft saves on blur; completion separately calls store. Need UI ordering/in-flight save assertions."
+    }
+  ],
+  "official_sources": [
+    {
+      "id": "vitest-v4",
+      "url": "https://v4.vitest.dev/guide/projects",
+      "title": "Vitest v4 Test Projects",
+      "review_scope": "projects·include·name·extends·실행 선택 본문 확인. v4 구성 기준을 사용한다. 최신 사이트의 v5 기본 상속 설정을 현재 v4에 적용하지 않는다."
+    },
+    {
+      "id": "fake-indexeddb",
+      "url": "https://github.com/dumbmatter/fakeIndexedDB",
+      "title": "fake-indexeddb 공식 README",
+      "review_scope": "메모리 구현·디스크 미보존·auto import 및 Node 사용 범위를 확인."
+    },
+    {
+      "id": "playwright-server",
+      "url": "https://playwright.dev/docs/test-webserver",
+      "title": "Playwright Web server",
+      "review_scope": "webServer의 실행·준비 확인·기존 서버 재사용 설정 설명 확인."
+    },
+    {
+      "id": "playwright-projects",
+      "url": "https://playwright.dev/docs/test-projects",
+      "title": "Playwright Projects",
+      "review_scope": "브라우저/모바일 viewport·의존 프로젝트·별도 설정 설명 확인."
+    },
+    {
+      "id": "playwright-traces",
+      "url": "https://playwright.dev/docs/trace-viewer",
+      "title": "Playwright Trace viewer",
+      "review_scope": "retain-on-failure·on-first-retry·DOM/행동/console 관찰 범위 확인."
+    },
+    {
+      "id": "playwright-sw",
+      "url": "https://playwright.dev/docs/service-workers",
+      "title": "Playwright Service Workers",
+      "review_scope": "도구의 SW 지원/관측은 Chromium 중심이라는 주의 및 캐시 역할 확인. Safari 자체의 SW 미지원이라는 뜻으로 해석하지 않는다."
+    },
+    {
+      "id": "react-testing-library",
+      "url": "https://testing-library.com/docs/react-testing-library/intro/",
+      "title": "React Testing Library",
+      "review_scope": "사용자에게 보이는 DOM·라벨/역할 기반 검사 원칙과 별도 runner 필요 확인."
+    }
+  ],
+  "limitations": [
+    "No new browser or actual iPhone run this turn. Prior 2026-10-03 browser results are dated separately.",
+    "No harness implementation, dependencies installation, Supabase project creation, public deploy, commit or push this turn.",
+    "Test success is not scientific or security authorization review. Only fake fixtures were used."
+  ]
+}

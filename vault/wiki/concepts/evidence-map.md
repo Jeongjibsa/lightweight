@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-03T20:17:12+09:00"
+  at: "2026-10-03T23:24:52+09:00"
 sources:
   - id: "SRC-003"
     resource: "../sources/SRC-003-acsm-2026.md"
@@ -80,6 +80,27 @@ sources:
   - id: "SRC-027"
     resource: "../sources/SRC-027-supabase-backups-plans.md"
     title: "Supabase — 백업과 무료 플랜 운영 조건"
+  - id: "SRC-028"
+    resource: "../sources/SRC-028-cloudflare-pages.md"
+    title: "Cloudflare Pages — Git 연동과 정적 PWA 배포"
+  - id: "SRC-029"
+    resource: "../sources/SRC-029-cloudflare-access-headers.md"
+    title: "Cloudflare — 미리보기 접근 제한과 브라우저 보안 헤더"
+  - id: "SRC-030"
+    resource: "../sources/SRC-030-supabase-invite-mail.md"
+    title: "Supabase — 가입 제한과 인증 메일 배포 조건"
+  - id: "SRC-031"
+    resource: "../sources/SRC-031-supabase-api-deployment-security.md"
+    title: "Supabase — Data API·함수·파일 접근 권한"
+  - id: "SRC-032"
+    resource: "../sources/SRC-032-web-xss-env.md"
+    title: "OWASP·Vite — XSS 예방과 프런트 환경 변수 노출"
+  - id: "verification-tools"
+    resource: "../sources/SRC-033-development-verification.md"
+    title: "검증 도구 공식 범위"
+  - id: "responsive-local"
+    resource: "../sources/SRC-034-responsive-local.md"
+    title: "구현 기술 근거"
 ---
 
 # 주장과 근거의 연결 지도
@@ -134,6 +155,34 @@ PWA 우선 추천은 위 사실과 현재 사용 규모를 연결한 **기획 �
 | TEC-006 | 무료 플랜 내보내기 권고·비활성 중단 조건 | 무료 지속 가용성·독립 백업을 가정하지 않음 | [운영 조건](../sources/SRC-027-supabase-backups-plans.md) |
 
 **기기 우선 저장 + Supabase 동기화 권고는 기획 추론**이며 사용자 승인·자동 동기화 완성·기록 무손실 보장을 뜻하지 않는다. [상세 저장 구조](../product/technology-data-storage.md).
+
+## 배포·보안의 조건과 해석
+
+공식 문서 확인일 2026-10-03. 보안 동작의 시험 결과가 아닌 배포 설계 근거다.
+
+| ID | 확인한 기능/조건 | 적용 판단 | 출처 |
+|---|---|---|---|
+| SEC-001 | Git 기반 정적 앱 배포·도메인 연결 | Pages 호스트 후보, 제공자는 미확정 | [Pages](../sources/SRC-028-cloudflare-pages.md) |
+| SEC-002 | preview 기본 공개·Access 보호 범위·정적 헤더 | preview/운영 도메인별 검사 필요 | [Access/헤더](../sources/SRC-029-cloudflare-access-headers.md) |
+| SEC-003 | 가입 제한·기본 SMTP 수신/템플릿 조건 | 초대 계정과 메일 설정 검토 | [가입/메일](../sources/SRC-030-supabase-invite-mail.md) |
+| SEC-004 | API grants/RLS·함수 인증·private 파일 | 직접 요청과 우회 경로 시험 | [API 접근](../sources/SRC-031-supabase-api-deployment-security.md) |
+| SEC-005 | 안전한 출력·VITE_ 번들 노출 | XSS 검증·서버 비밀의 프런트 제외 | [웹 보안](../sources/SRC-032-web-xss-env.md) |
+
+공개 PWA와 초대 계정 방식은 현재 규모에 대한 기획 판단이다. 설정을 적용한 앱의 보안 인증이나 무위험 보장이 아니다. [상세](../product/deployment-security.md).
+
+## 구현 검증 도구와 판단
+
+| ID | 공식 기능/확인 범위 | 제품 적용 판단 | 출처 |
+|---|---|---|---|
+| DEV-001 | Zod 런타임 스키마·Vitest Vite 기반 테스트 | 입력 형식과 계산/단위 계약을 각각 검증 | [검증 도구](../sources/SRC-033-development-verification.md) |
+| DEV-002 | Playwright 브라우저 E2E·모바일 에뮬레이션 | 핵심 흐름 자동 검증 + 실제 iPhone 별도 과업 | [공식 범위](../sources/SRC-033-development-verification.md) |
+
+계획의 16~29 작업일은 근거 연구의 결론이 아닌 개발 공수 가설이다. 사용자 기기/목표/운동 일정은 CONV-0005 보고이고 동작/효과 시험 결과가 아니다. [실행 계획](../product/implementation-plan.md).
+
+## 반응형·로컬 구현 근거
+
+- DEV-003: 320 CSS px를 포함한 반응형 재배치 기준은 [SRC-034](../sources/SRC-034-responsive-local.md)의 W3C 설명을 참고한 설계 판단이다. 시험 폭 통과가 전체 접근성 인증은 아니다.
+- DEV-004: Dexie 트랜잭션과 PWA 업데이트 공식 기능을 적용했고 실제 코드 결과는 [실행 보고](../product/implementation-progress.md)에 별도로 남겼다. 프로필 분리가 서버 인증을 보장하거나 개념도가 근육 자극을 증명하지 않는다.
 
 ## Related
 

@@ -1,0 +1,84 @@
+{
+  "captured_at": "2026-10-03T20:46:10+09:00",
+  "topic": "PWA 배포·공개 URL·개인 데이터 접근 보안",
+  "method": "Supabase 스킬 적용, Cloudflare/Supabase/OWASP/Vite 일차 문서 표적 확인",
+  "changelog_scan": {
+    "requested": "https://supabase.com/changelog.md",
+    "result": "web 도구가 text/markdown을 지원하지 않아 HTML changelog로 확인",
+    "used": "https://supabase.com/changelog",
+    "followed_changes": [
+      "2026-06-03 무료 메일 템플릿 제한",
+      "2026 Data API 자동 노출 변경"
+    ]
+  },
+  "sources": [
+    {
+      "id": "SRC-028",
+      "title": "Cloudflare Pages — Git 연동과 정적 PWA 배포",
+      "urls": [
+        "https://developers.cloudflare.com/pages/configuration/git-integration/",
+        "https://developers.cloudflare.com/pages/framework-guides/deploy-a-vite3-project/",
+        "https://developers.cloudflare.com/pages/configuration/custom-domains/",
+        "https://developers.cloudflare.com/pages/configuration/rollbacks/"
+      ],
+      "note": "wiki/sources/SRC-028-cloudflare-pages.md",
+      "review_scope": "공식 Git·Vite 빌드·도메인·이전 운영 배포 복귀 안내 본문 확인; 계정·DNS·빌드 시험 미수행",
+      "observation": "Pages는 Git 연결 배포·브랜치 미리보기와 Vite 빌드·도메인 연결을 안내한다. 성공한 이전 운영 배포로 복귀할 수 있다."
+    },
+    {
+      "id": "SRC-029",
+      "title": "Cloudflare — 미리보기 접근 제한과 브라우저 보안 헤더",
+      "urls": [
+        "https://developers.cloudflare.com/pages/configuration/preview-deployments/",
+        "https://developers.cloudflare.com/pages/platform/known-issues/",
+        "https://developers.cloudflare.com/pages/configuration/headers/"
+      ],
+      "note": "wiki/sources/SRC-029-cloudflare-access-headers.md",
+      "review_scope": "preview 공개 기본값·Access 범위·도메인별 설정·정적 헤더 안내 확인; iOS 로그인 시험 미수행",
+      "observation": "Pages preview는 기본 공개다. preview용 Access 설정은 운영 도메인까지 보호하지 않는다. 운영 주소에는 별도 정책이 필요하다. 정적 응답의 보안 헤더는 _headers로 지정할 수 있다."
+    },
+    {
+      "id": "SRC-030",
+      "title": "Supabase — 가입 제한과 인증 메일 배포 조건",
+      "urls": [
+        "https://supabase.com/docs/guides/auth/general-configuration",
+        "https://supabase.com/docs/guides/auth/auth-smtp",
+        "https://supabase.com/docs/guides/auth/rate-limits",
+        "https://supabase.com/changelog/46599-changes-to-email-template-customisation-on-free-tier"
+      ],
+      "note": "wiki/sources/SRC-030-supabase-invite-mail.md",
+      "review_scope": "가입/익명 로그인·기본 SMTP 수신 제한·메일 rate limit·2026-06-03 변경 확인; 메일 시험 미수행",
+      "observation": "일반 가입을 끄면 기존 사용자만 로그인한다. 기본 SMTP는 프로젝트 팀 주소만 대상으로 한다. 새 무료 프로젝트의 기본 메일 템플릿 변경은 제한되며 자체 SMTP 사용 등 조건을 확인해야 한다."
+    },
+    {
+      "id": "SRC-031",
+      "title": "Supabase — Data API·함수·파일 접근 권한",
+      "urls": [
+        "https://supabase.com/docs/guides/api/securing-your-api",
+        "https://supabase.com/docs/guides/functions/auth",
+        "https://supabase.com/docs/guides/storage/buckets/fundamentals",
+        "https://supabase.com/docs/guides/auth/sessions",
+        "https://supabase.com/changelog/45329-breaking-change-tables-not-exposed-to-data-and-graphql-api-automatically"
+      ],
+      "note": "wiki/sources/SRC-031-supabase-api-deployment-security.md",
+      "review_scope": "grants/RLS 차이·API 노출 변경·함수 인증·private bucket·세션/JWT 본문 확인; 실제 DB/함수 시험 미수행",
+      "observation": "Data API 노출은 스키마·grants·RLS를 함께 확인한다. 새 테이블 자동 노출의 기본값 변경이 안내되었다. 사용자 호출 함수에도 인증과 소유자 검사가 필요하다. private 파일 접근은 정책 대상이다."
+    },
+    {
+      "id": "SRC-032",
+      "title": "OWASP·Vite — XSS 예방과 프런트 환경 변수 노출",
+      "urls": [
+        "https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html",
+        "https://vite.dev/guide/env-and-mode"
+      ],
+      "note": "wiki/sources/SRC-032-web-xss-env.md",
+      "review_scope": "OWASP 출력 처리·HTML 정제와 Vite VITE_ 번들 노출 본문 확인; 악성 입력/번들 시험 미수행",
+      "observation": "OWASP는 출력 맥락에 맞는 처리·HTML 정제를 안내한다. Vite의 VITE_ 변수는 클라이언트 번들에 노출된다."
+    }
+  ],
+  "limits": [
+    "의견과 설계 수준 검토이며 실제 보안 감사·DB advisors·요청 시험 결과가 아니다.",
+    "앱 구현·외부 배포·계정·DNS·DB 설정 변경은 수행하지 않았다.",
+    "현재 프로젝트의 활성 DB가 없으므로 릴리스 변경 적용 여부를 런타임에서 검사하지 않았다."
+  ]
+}

@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-03T20:17:12+09:00"
+  at: "2026-10-03T23:24:52+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-03-002.md"
@@ -38,14 +38,35 @@ sources:
   - id: "technology"
     resource: "technology-data-storage.md"
     title: "언어·저장 제안"
-version: "0.2.0"
+  - id: "stack-agreement"
+    resource: "../../raw/conversations/2026-10-03-004.md"
+    title: "스택 동의와 배포·보안 의견 요청"
+  - id: "deployment"
+    resource: "deployment-security.md"
+    title: "배포·보안 추천"
+  - id: "implementation-request"
+    resource: "../../raw/conversations/2026-10-03-005.md"
+    title: "계획 요청과 운동 우선 선택"
+  - id: "implementation-plan"
+    resource: "implementation-plan.md"
+    title: "단계별 작업계획"
+  - id: "responsive-local-request"
+    resource: "../../raw/conversations/2026-10-03-006.md"
+    title: "반응형·사용자별 설정·로컬 구현 요청"
+  - id: "local-contract"
+    resource: "implementation-contracts.md"
+    title: "로컬 구현 계약"
+  - id: "local-progress"
+    resource: "implementation-progress.md"
+    title: "실행 결과와 남은 작업"
+version: "0.2.2"
 approval_status: "proposal"
-change_id: "CHG-0003"
+change_id: "CHG-0005"
 ---
 
 # iOS 개인 앱의 설치·배포와 구현 방향
 
-> 2026-10-03 갱신. **PWA 진행은 CONV-0003에서 사용자 선택으로 확정**했다. 이전 비교는 선택 근거로 보존한다. 언어·라이브러리·클라우드 저장은 별도 제안이다. 앱은 아직 구현하지 않았다.
+> 2026-10-03 갱신. **PWA 진행은 CONV-0003에서 사용자 선택으로 확정**했다. 이전 비교는 선택 근거로 보존한다. TypeScript·React/Vite·Dexie·Supabase 방향은 CONV-0004에서 동의했다. 배포·보안 설정은 별도 제안이다. 앱은 아직 구현하지 않았다.
 
 ## 판단과 이유
 
@@ -79,7 +100,7 @@ Safari에서 사이트를 열고 공유 → 홈 화면에 추가 → 웹 앱으�
 
 웹 저장소는 기본 보존이 보장되지 않으므로 외부 백업과 복원 기능을 첫 버전에 넣는다. 지속 저장 요청도 성공 여부를 확인하며 백업을 대체하지 않는다. [WebKit 정책](../sources/SRC-020-webkit-storage.md). 기기 변경·사이트 데이터 삭제 상황에서 복원 과업을 검증한다. 휴식 타이머는 화면 복귀 시 종료 시각으로 다시 계산하는 안을 검증하며 화면 잠금 중 소리/알림을 보장한다고 약속하지 않는다.
 
-이전의 로그인 없는 로컬 프로필은 화면/입력 시험 경로로 남긴다. 이번 데이터 저장 논의에서는 **실제 기록을 쌓는 버전부터 기기 저장과 계정 DB 동기화를 함께 두는 안**을 우선 추천한다. TypeScript·React/Vite·Dexie·Supabase의 역할은 [언어·저장 제안](technology-data-storage.md)에서 확인한다. 클라우드와 로그인 방식은 사용자 선택 전이다. 외부 AI를 호출할 경우 서비스 API 키를 앱에 넣지 않고 서버가 호출하며, 최소한의 데이터만 사용한다.
+이전의 로그인 없는 로컬 프로필은 화면/입력 시험 경로로 남긴다. 이번 데이터 저장 논의에서는 **실제 기록을 쌓는 버전부터 기기 저장과 계정 DB 동기화를 함께 두는 안**을 우선 추천한다. TypeScript·React/Vite·Dexie·Supabase의 역할은 [언어·저장 제안](technology-data-storage.md)에서 확인한다. Supabase 방향에는 동의했고 로그인 방식은 미정이다. [배포·보안](deployment-security.md). 외부 AI를 호출할 경우 서비스 API 키를 앱에 넣지 않고 서버가 호출하며, 최소한의 데이터만 사용한다.
 
 지인에게 제공할 때 각자의 기기 기록을 독립 유지하는 경로와 계정 기반 동기화 경로를 구분한다. 서버에 개인 기록을 올리면 인증·사용자별 접근 제한이 필요하다. 링크 공유만으로 초대자 전용 접근이 구현되지는 않으므로 공개 운동 정보와 개인 기록의 접근 범위를 정한다. 실제 건강 기록은 기획 vault에 넣지 않는다.
 
@@ -98,6 +119,12 @@ Safari에서 사이트를 열고 공유 → 홈 화면에 추가 → 웹 앱으�
 
 ## 미결 사항과 추적
 
-PWA는 채택했다. 언어/라이브러리·클라우드·계정/초대·현재 iPhone/iOS 버전·건강 앱/Watch·동기화/백업·운영비는 미정이다. [Q-03/Q-09/Q-11~12](open-questions.md) · [결정 기록](../decisions/decision-register.md).
+PWA와 기본 스택은 방향을 채택했다. 보고된 iPhone 16 Pro Max·iOS 27.0.1은 반응형 대상 중 하나의 파일럿 기기다. 실제 설치/기록/복원/업데이트는 REL-02에서 검증한다. 호스트/도메인·계정/초대/SMTP·사이트 전체 접근 제한·지원 OS 하한·건강 앱/Watch·동기화/백업·운영비는 미정이다. [구현 계획](implementation-plan.md). [Q-03/Q-09/Q-11~12](open-questions.md) · [결정 기록](../decisions/decision-register.md).
 
 [CONV-0002](../conversations/2026-10-03-002.md) · [CHG-0002](../../history/changes/CHG-0002.md) · [CONV-0003](../conversations/2026-10-03-003.md) · [CHG-0003](../../history/changes/CHG-0003.md) · [PRD](prd.md)
+
+## CONV-0006 이후 현재 구현 경계
+
+특정 iPhone 모델에 한정하지 않는 반응형과 각 사용자별 목표·주당 횟수·분할·시간·장비·단위·시간대 설정을 요구사항으로 추가했다. 본인의 조건은 하나의 시험 표본이다. Supabase 프로젝트가 없으므로 로컬부터 구현한다는 사용자 선택을 반영했다. [로컬 계약](implementation-contracts.md) · [실행 결과](implementation-progress.md).
+
+로컬 프로필/기록·루틴 스냅샷·백업·사실 집계·PWA는 구현했으며 계정/RLS·서버 전송·실제 iOS·검토된 시각/설명·추천/티어·완전한 개인화·배포는 미완료다. 기존 실사용/지인 제공 관문은 유지한다. 로컬 프로필을 인증 계정으로, 개념도를 자극 범위로, 분류별 행 수를 근육 성장량으로 표시하지 않는다.

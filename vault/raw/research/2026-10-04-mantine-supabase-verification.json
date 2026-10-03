@@ -1,0 +1,131 @@
+{
+  "captured_at": "2026-10-04T02:02:14+09:00",
+  "topic": "Mantine·글꼴·Supabase 연결 증분의 실제 검증",
+  "app_version": "0.2.0",
+  "prd_version": "0.4.0",
+  "local_schema": 2,
+  "runtime": {
+    "primary_node": "24.14.1",
+    "npm": "11.11.0",
+    "database": "Postgres 17.11",
+    "browser": "Codex in-app Chromium; actual iPhone/Safari not tested"
+  },
+  "dependencies": {
+    "@mantine/core": "9.6.3",
+    "@mantine/hooks": "9.6.3",
+    "@supabase/supabase-js": "2.117.2",
+    "dexie": "4.4.6",
+    "dexie-react-hooks": "4.4.0",
+    "lucide-react": "1.51.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.1",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.1.1",
+    "fake-indexeddb": "6.2.5",
+    "oxlint": "1.86.0",
+    "pg": "8.23.1",
+    "prettier": "3.9.9",
+    "supabase": "2.119.0",
+    "typescript": "6.0.3",
+    "vite": "8.3.2",
+    "vite-plugin-pwa": "1.3.0",
+    "vitest": "4.1.11"
+  },
+  "sources": [
+    {
+      "id": "SRC-036",
+      "urls": [
+        "https://mantine.dev/guides/vite/",
+        "https://mantine.dev/theming/mantine-provider/",
+        "https://mantine.dev/core/modal/",
+        "https://github.com/spoqa/spoqa-han-sans",
+        "https://github.com/spoqa/spoqa-han-sans/blob/main/LICENSE",
+        "https://supabase.com/changelog.md",
+        "https://supabase.com/docs/guides/getting-started/api-keys",
+        "https://supabase.com/docs/reference/javascript/initializing",
+        "https://supabase.com/docs/reference/javascript/auth-signinwithpassword",
+        "https://supabase.com/docs/guides/database/connecting-to-postgres",
+        "https://supabase.com/docs/guides/platform/ssl-enforcement",
+        "https://supabase.com/docs/guides/database/functions",
+        "https://supabase.com/docs/guides/database/extensions/pg_jsonschema",
+        "https://supabase.com/docs/guides/database/database-linter?lint=0028_anon_security_definer_function_executable",
+        "https://supabase.com/docs/guides/database/database-linter?lint=0029_authenticated_security_definer_function_executable"
+      ],
+      "review_scope": "공식 관련 본문 표적 확인"
+    }
+  ],
+  "observed_checks": {
+    "format": "passed",
+    "lint": "passed",
+    "typecheck_build": "passed",
+    "unit": "2 files / 6 passed",
+    "integration": "2 files / 24 passed",
+    "pwa_precache": "23 entries / 1623.05 KiB, includes 3 WOFF2 fonts",
+    "migration": {
+      "version": "20261003162808",
+      "name": "training_cloud",
+      "remote_applied": true,
+      "local_filename_matches_remote": true
+    },
+    "remote_sql": "16 checks passed; temporary fake users and grants rolled back; SQL role/JWT claims, not real Auth login",
+    "unauthenticated_http_rpc": "read/write both HTTP401 / error42501 using only publishable key",
+    "auth_api": {
+      "status": 200,
+      "email_enabled": true,
+      "signup_disabled": true
+    },
+    "public_signup_change": "Dashboard saved after explicit user approval; screenshot saved outside vault",
+    "advisors": {
+      "security": [],
+      "performance": []
+    },
+    "remaining_test_rows": "auth.users / members / workspaces / operations all 0 after rollback",
+    "tls": "Session pooler; rejectUnauthorized true; official CA and hostname checked",
+    "browser": {
+      "origin": "http://127.0.0.1:4174",
+      "synthetic_settings": "saved and preserved after reload/update",
+      "widths": [
+        320,
+        375,
+        1440
+      ],
+      "no_horizontal_overflow": "settings at tested widths; routine/modal at observed widths",
+      "font": "Spoqa Han Sans Neo loaded, input16px",
+      "modal": "initial focus inside, ShiftTab contained, Escape closes, opener focus restored after fix",
+      "console": "no errors/warnings observed"
+    },
+    "external_ci": "configured / not run",
+    "real_auth_cloud_e2e": "not_run; no registered human account",
+    "real_iphone": "not_run",
+    "public_deployment": "not performed"
+  },
+  "code_sha256": {
+    "app/package.json": "6127788e855fc74090ebfc5d8024c0af8de2b79b73a2ab36335a919803c63dc2",
+    "app/package-lock.json": "fb7da2696db9a8c24a5ce0ab79dcca44afb17430cfd87c02da02eff0dc3b34b8",
+    "app/vitest.config.ts": "7d10e5cdff51e3efd27c7634a09ad77ecab15aba86e5468c7ed172c6b18c29a6",
+    "app/src/theme.ts": "ad0ab101a7f3b84d76cbea2e1a16f49608940707c9f70f107b4b01b7b71c717c",
+    "app/src/auth/providers.tsx": "73bdb94c48273b985dba7b06b5780d65fae0b610376f9cbd980ac2f3ef60abfe",
+    "app/src/auth/cloud-panel.tsx": "61fc8bae4b193cd64ad7805a7014010592e3627aa52d80d72008d93fbe20d30b",
+    "app/src/components/shared.tsx": "d149b4351ad84dc25aa0ce63e7764faef538441726a0e018188519e75c7567ee",
+    "app/src/data/local/store.ts": "7662dfff7b631038d820b2e1b3dd3fb9e4a16a24b6edfb683cc273bcd6d1fb27",
+    "app/src/data/local/cloud.test.ts": "516f9131c725903fb9f7c36c07ab7b8f87853bb9171d2e89d4fee1f748b9d082",
+    "app/src/data/cloud/contracts.ts": "7cf740f551bbb776a1c32dfbb579fca5c85007f45d4c872323dbb468cf30139b",
+    "app/src/data/cloud/sync.ts": "bb7ea586686a0f82b1b22b78b18cfcf849ea3e01680109380cc4f030699ce4af",
+    "app/scripts/verify-cloud.mjs": "5aa3da70aba6658b1d25bb4b382dc1ddf7bd98094c9e4c933a7d6726ab806e19",
+    "app/scripts/db-client.mjs": "a7216c3ad142e886fb28d49cbd5bb0c971b1992605bfae7c6a6ee6dd69aa6098",
+    "supabase/migrations/20261003162808_training_cloud.sql": "5c462f55da5b73a8dd4170f427d8f34a0a541c6845f213bea523fa601179e3b4",
+    "supabase/schema/backup-v1.json": "360af90fe6f83d5eec6c07f0f746bfd23d711fe36597e41096a562314c8c15b2"
+  },
+  "limits": [
+    "No private records, backups, keys, tokens, DB passwords or personal account IDs collected.",
+    "fake-indexeddb and SQL claims checks do not establish real iOS storage/Auth behavior.",
+    "Remote sync is manual whole-workspace snapshot with revision conflict rejection, not automatic per-record merge.",
+    "Current font/modal observations do not repeat the historical full 5-screen responsive/offline matrix.",
+    "Build/Advisor success is not exercise evidence review or whole-service security certification."
+  ]
+}

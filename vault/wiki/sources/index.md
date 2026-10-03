@@ -27,3 +27,12 @@
 - [Supabase — PostgreSQL과 계정 인증](SRC-025-supabase-database-auth.md) — 공식 기능·운영 조건, 실제 구현/검증은 별도.
 - [Supabase — 사용자별 권한과 서버 비밀키](SRC-026-supabase-rls-keys.md) — 공식 기능·운영 조건, 실제 구현/검증은 별도.
 - [Supabase — 백업과 무료 플랜 운영 조건](SRC-027-supabase-backups-plans.md) — 공식 기능·운영 조건, 실제 구현/검증은 별도.
+- [Cloudflare Pages — Git 연동과 정적 PWA 배포](SRC-028-cloudflare-pages.md) — 공식 배포·보안·운영 조건, 구현/검증은 별도.
+- [Cloudflare — 미리보기 접근 제한과 브라우저 보안 헤더](SRC-029-cloudflare-access-headers.md) — 공식 배포·보안·운영 조건, 구현/검증은 별도.
+- [Supabase — 가입 제한과 인증 메일 배포 조건](SRC-030-supabase-invite-mail.md) — 공식 배포·보안·운영 조건, 구현/검증은 별도.
+- [Supabase — Data API·함수·파일 접근 권한](SRC-031-supabase-api-deployment-security.md) — 공식 배포·보안·운영 조건, 구현/검증은 별도.
+- [OWASP·Vite — XSS 예방과 프런트 환경 변수 노출](SRC-032-web-xss-env.md) — 공식 배포·보안·운영 조건, 구현/검증은 별도.
+- [Vitest·Playwright·Zod](SRC-033-development-verification.md) — 구현/입력 검증 후보와 실제 iPhone 검증의 구분.
+- [반응형·로컬 저장·PWA 공식 근거](SRC-034-responsive-local.md) — W3C/Dexie/PWA와 실제 시험 구별.
+- [SRC-035 검증 하네스 구성과 도구별 한계](SRC-035-testing-harness.md) — 공식 v4 projects·메모리 DB·browser/trace·DOM 검사의 표적 확인.
+- [SRC-036 Mantine·Spoqa·Supabase](SRC-036-mantine-supabase.md) — 공식 읽은 범위·연결 구현 한계.

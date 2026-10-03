@@ -4,13 +4,24 @@ okf_version: "0.2"
 
 # 웨이트 트레이닝 앱 — 기획과 지식 베이스
 
-옵시디언에서 이 `vault` 폴더를 열고 시작한다. 현재 기획은 **0.2.1 브레인스토밍 초안**이다.
+옵시디언에서 이 `vault` 폴더를 열고 시작한다. 현재 기획은 **0.4.0 브레인스토밍 초안**이다.
 
 ## 먼저 읽기
 
+- [현재 기술 스택](wiki/product/technology-stack.md) — Mantine/Spoqa/정확한 라이브러리 버전.
+- [Supabase 연결/계정 준비](wiki/product/supabase-integration.md) — 현재 구현과 실제 계정 검증 절차.
+
 - [앱 기획서](wiki/product/prd.md) — 목적·요구·흐름·MVP·확장.
 - [iOS 설치·배포](wiki/product/platform-distribution.md) — PWA 채택과 설치 검토.
-- [언어·개인 데이터 저장 의견](wiki/product/technology-data-storage.md) — 기기 저장과 계정 동기화 추천.
+- [언어·개인 데이터 저장](wiki/product/technology-data-storage.md) — 기본 스택 합의와 동기화 상세 제안.
+- [배포·보안 의견](wiki/product/deployment-security.md) — 호스팅·초대 계정·API/preview 접근 검증.
+- [구현 작업계획](wiki/product/implementation-plan.md) — 단계·완료/제공 조건·공수 가정.
+- [구현 백로그](wiki/product/implementation-backlog.md) — 작업 ID·의존성·상태·요구 추적.
+- [남은 작업 우선순위](wiki/product/remaining-work.md) — 하네스부터 운동 MVP/식단까지.
+- [현재 하네스와 확장](wiki/operations/testing-harness.md) — 자동 검사·실제 browser·CI의 경계.
+- [개선 루프](wiki/operations/loop-engineering.md) — 실패 재현·작은 수정·회귀와 이력.
+- [현재 구현과 다음 작업](wiki/product/implementation-progress.md) — 로컬 증분·검사·미완료 범위.
+- [반응형·설정·보존 계약](wiki/product/implementation-contracts.md) — 프런트/기기 데이터 기준.
 - [미결 사항](wiki/product/open-questions.md) — 다음 대화 질문·가정.
 - [결정과 제안](wiki/decisions/decision-register.md) — 명시 요구와 제안 상태.
 - [변경 이력](log.md) — 날짜별 작업.
@@ -18,7 +29,7 @@ okf_version: "0.2"
 ## 제품과 근거
 
 - [제품 상세](wiki/product/index.md) — 운동·티어·추천·기록·리포트·영양·데이터·검증.
-- [출처 27개](wiki/sources/index.md) — 공식 규격·기관·운동/영양 연구·iOS 기술 안내.
+- [출처 36개](wiki/sources/index.md) — 공식 규격·기관·운동/영양 연구·iOS 기술 안내.
 - [주장-근거 지도](wiki/concepts/evidence-map.md) — 적용·상충·공백.
 - [보존 원본](raw/index.md) — 사용자 발언·수집 당시 기록.
 
@@ -32,4 +43,4 @@ okf_version: "0.2"
 - [양식](templates/index.md) — 출처·변경 작성.
 - [시각 자료](assets/index.md) — 추후 콘텐츠.
 
-확인일 **2026-10-03**, 초기 표적 탐색이다. 일부 연구는 초록만 확인했고 제품 공개 전 전문 검토가 남았다. 앱과 자동 문서 감지 서비스는 이번에 구현하지 않았다.
+과학 자료는 **2026-10-03 초기 표적 탐색**, 하네스 기술/코드 확인은 **2026-10-04**다. 일부 연구는 초록만 확인했고 공개 전 전문 검토가 남았다. app0.2.0의 UI/글꼴·Auth/계정 DB·수동 snapshot·서버 권한 연결 증분과 unit6/integration24·원격SQL16·비로그인HTTP를 검증했다. 실제 Auth 전체 흐름·자동 UI/E2E·실기기/외부 CI/배포·콘텐츠 전문 검토·자동 문서 감지는 남았다.

@@ -8,7 +8,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-03T20:17:12+09:00"
+  at: "2026-10-04T02:02:14+09:00"
 sources:
   - id: "platform"
     resource: "platform-distribution.md"
@@ -19,11 +19,40 @@ sources:
   - id: "technology"
     resource: "technology-data-storage.md"
     title: "계정·동기화 계약"
+  - id: "stack-agreement"
+    resource: "../../raw/conversations/2026-10-03-004.md"
+    title: "스택 동의와 배포·보안 의견 요청"
+  - id: "deployment"
+    resource: "deployment-security.md"
+    title: "배포·보안 추천"
+  - id: "implementation-request"
+    resource: "../../raw/conversations/2026-10-03-005.md"
+    title: "계획 요청과 운동 우선 선택"
+  - id: "implementation-plan"
+    resource: "implementation-plan.md"
+    title: "단계별 작업계획"
+  - id: "responsive-local-request"
+    resource: "../../raw/conversations/2026-10-03-006.md"
+    title: "반응형·사용자별 설정·로컬 구현 요청"
+  - id: "local-contract"
+    resource: "implementation-contracts.md"
+    title: "로컬 구현 계약"
+  - id: "local-progress"
+    resource: "implementation-progress.md"
+    title: "실행 결과와 남은 작업"
+  - id: "current-cloud"
+    resource: "supabase-integration.md"
+    title: "현재 연결 증분"
 ---
 
 # 데이터 모델 초안
 
-PWA 진행은 확정했다. TypeScript·React/Vite·IndexedDB/Dexie·Supabase는 [기술 추천안](technology-data-storage.md)이며 채택 전이다. 아래는 [기획서](prd.md)의 논리 모델이다.
+## 현재 구현 상태 — 2026-10-04
+
+현재 서버는 사용자별 private members/workspaces/operations의 전체 JSON snapshot 증분이다. [연결 계약](supabase-integration.md)에 CAS/idempotency·교체/recovery를 적었다. 아래 정규화 entity 모델은 후속 설계이며 모두 서버 테이블로 구현된 것은 아니다. local DB schema2는 cloud 상태만 추가하고 기존 개인 기록을 보존했다.
+
+
+PWA 진행은 확정했다. TypeScript·React/Vite·IndexedDB/Dexie·Supabase 기본 스택은 사용자 동의로 채택했다. [기술 상세](technology-data-storage.md)는 제안과 미결을 함께 관리한다. 아래는 [기획서](prd.md)의 논리 모델이다.
 
 | 엔터티 | 핵심 데이터/관계 |
 |---|---|
@@ -49,7 +78,7 @@ PWA 진행은 확정했다. TypeScript·React/Vite·IndexedDB/Dexie·Supabase는
 
 ## 개인 사용과 백업 설계 제안
 
-본인 한 기기부터 시작한다. Profile에 로컬 소유자 ID를 두고 루틴·세션·리포트의 소유 관계를 명확히 한다. 서버 동기화를 도입하면 인증된 사용자 ID와 연결하며 다른 지인의 기록이 섞이지 않도록 한다. 로그인 없는 프로필은 입력 시험의 제안이다. 이번에는 실제 기록 누적부터 계정 DB를 함께 두는 안을 우선 추천한다. 클라우드 채택은 미정이다.
+본인 한 기기부터 시작한다. Profile에 로컬 소유자 ID를 두고 루틴·세션·리포트의 소유 관계를 명확히 한다. 서버 동기화를 도입하면 인증된 사용자 ID와 연결하며 다른 지인의 기록이 섞이지 않도록 한다. 로그인 없는 프로필은 입력 시험의 제안이다. 이번에는 실제 기록 누적부터 계정 DB를 함께 두는 안을 우선 추천한다. Supabase 방향은 합의했으며 상세 설정은 미정이다.
 
 Backup은 형식 버전·내보낸 시각·단위·시간대·운동/규칙 버전과 기록의 안정 ID를 포함하는 JSON을 제안한다. 가져오기는 형식 확인·중복 ID 처리·전체 복원/병합 선택을 설계하고 새 저장소에서 복원을 검증한다. CSV는 사람이 읽는 보조 형식이며 전체 복원 형식을 대체하지 않는다.
 
@@ -57,12 +86,24 @@ Backup은 형식 버전·내보낸 시각·단위·시간대·운동/규칙 버�
 
 ## 계정·동기화 계약 제안
 
-개인 기록의 user_id를 인증 계정과 연결하고, 관계된 루틴/세션/세트의 소유자가 일치하도록 한다. Supabase 채택 시 RLS를 읽기·생성·수정·삭제에 적용하고 user_id 변경으로 권한이 이전되지 않게 한다. 실제 운영자의 전체 DB 접근과 사용자 간 권한 분리를 구분한다.
+개인 기록의 user_id를 인증 계정과 연결하고, 관계된 루틴/세션/세트의 소유자가 일치하도록 한다. Supabase의 필요한 grants와 RLS를 읽기·생성·수정·삭제에 적용하고 user_id 변경으로 권한이 이전되지 않게 한다. 실제 운영자의 전체 DB 접근과 사용자 간 권한 분리를 구분한다.
 
 기기 저장과 outbox 등록은 한 트랜잭션이다. 서버는 operation_id로 재전송을 중복 처리하고 base_revision 충돌 시 두 편집을 보존한다. 응답 확인 전 미전송분은 기기에만 존재한다. 서버 커서로 변경·삭제 표시를 내려받고 동기화/백업 복원 시 중복과 삭제 재등장을 검증한다. 로컬 캐시와 큐는 계정별로 분리한다.
 
 추천/리포트에는 입력 기록 ID/revision·대상 기간·계산/근거 버전과 데이터 기준(로컬 대기 포함/서버 동기화분)을 남긴다. 추세와 계산은 원기록으로 재현 가능해야 한다. [기술 저장 제안](technology-data-storage.md).
 
+배포 노출 스키마·grants·RLS와 views/RPC를 함께 검증한다. 개인 파일·JSON 백업은 공통 운동 그림과 접근 정책을 분리한다. [배포·보안](deployment-security.md).
+
+## 파일럿과 구현 과업
+
+사용자가 보고한 골격근량 증대·주3~4회·무분할~3분할은 프로필/루틴 조건으로 반영한다. 실제 골격근량/체중/운동 기록은 vault가 아닌 계정별 앱 DB에서 관리한다. iPhone 16 Pro Max·iOS 27.0.1은 검증 환경이며 실제 동작 확인 전이다. [계획/데이터 계약](implementation-plan.md)·[PRE/LOG/SYNC/REP 작업](implementation-backlog.md).
+
 ## Related
 
 [기록](training-log.md) · [리포트](reports.md) · [영양](nutrition.md)
+
+## CONV-0006 이후 현재 구현 경계
+
+특정 iPhone 모델에 한정하지 않는 반응형과 각 사용자별 목표·주당 횟수·분할·시간·장비·단위·시간대 설정을 요구사항으로 추가했다. 본인의 조건은 하나의 시험 표본이다. Supabase 프로젝트가 없으므로 로컬부터 구현한다는 사용자 선택을 반영했다. [로컬 계약](implementation-contracts.md) · [실행 결과](implementation-progress.md).
+
+로컬 프로필/기록·루틴 스냅샷·백업·사실 집계·PWA는 구현했으며 계정/RLS·서버 전송·실제 iOS·검토된 시각/설명·추천/티어·완전한 개인화·배포는 미완료다. 기존 실사용/지인 제공 관문은 유지한다. 로컬 프로필을 인증 계정으로, 개념도를 자극 범위로, 분류별 행 수를 근육 성장량으로 표시하지 않는다.

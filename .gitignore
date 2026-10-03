@@ -3,3 +3,17 @@
 
 # Obsidian local workspace state
 vault/.obsidian/workspace*.json
+
+# App dependencies, build output, and private data
+**/node_modules/
+app/dist/
+**/.env
+**/.env.*
+!**/.env.example
+*.tsbuildinfo
+output/playwright/
+.playwright-cli/
+app/coverage/
+app/.vitest/
+private-data/
+supabase/.temp/

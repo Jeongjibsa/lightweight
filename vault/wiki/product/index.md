@@ -12,3 +12,11 @@
 - [제품 검증과 출시 조건](validation-plan.md) — 사용성·근거·계산·예외 흐름의 검증 계획.
 - [iOS 개인 앱의 설치·배포와 구현 방향](platform-distribution.md) — 본인·지인 사용에 맞춘 PWA/네이티브 비교와 백업 제안.
 - [PWA 개발 언어와 개인화 데이터 저장 구조](technology-data-storage.md) — TypeScript·React/Vite·기기 저장·계정 동기화·독립 백업 추천.
+- [PWA 배포와 개인 기록 접근 보안](deployment-security.md) — Pages·Supabase·초대 계정·직접 API 접근·preview·서버 비밀과 검증 제안.
+- [운동 PWA 구현 작업계획](implementation-plan.md) — 단계·공수 가정·데이터/콘텐츠 경계·제공 관문.
+- [구현 백로그와 완료 기준](implementation-backlog.md) — 작업 ID·의존성·요구 추적·상태·검증 증거.
+- [반응형·프로필·로컬 기록 계약](implementation-contracts.md) — 현재 스키마/설정/보존/복원 기준.
+- [로컬 구현 결과와 다음 작업](implementation-progress.md) — 실제 검사·현재 상태·미완료 범위.
+- [운동 MVP까지 남은 작업](remaining-work.md) — 현재 완료 범위와 다음 증분·의존성·관문.
+- [현재 기술 스택과 라이브러리](technology-stack.md) — Mantine/Spoqa/정확한 설치 버전·역할.
+- [Supabase 연결과 계정 준비](supabase-integration.md) — Auth/RPC/RLS·허용 목록·manual snapshot·실제 검증/남은 설정.

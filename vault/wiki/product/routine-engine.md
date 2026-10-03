@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-03T16:59:22+09:00"
+  at: "2026-10-03T23:24:52+09:00"
 sources:
   - id: "acsm"
     resource: "../sources/SRC-003-acsm-2026.md"
@@ -20,11 +20,30 @@ sources:
   - id: "rir"
     resource: "../sources/SRC-005-rir.md"
     title: "RIR"
+  - id: "implementation-request"
+    resource: "../../raw/conversations/2026-10-03-005.md"
+    title: "계획 요청과 운동 우선 선택"
+  - id: "implementation-plan"
+    resource: "implementation-plan.md"
+    title: "단계별 작업계획"
+  - id: "responsive-local-request"
+    resource: "../../raw/conversations/2026-10-03-006.md"
+    title: "반응형·사용자별 설정·로컬 구현 요청"
+  - id: "local-contract"
+    resource: "implementation-contracts.md"
+    title: "로컬 구현 계약"
+  - id: "local-progress"
+    resource: "implementation-progress.md"
+    title: "실행 결과와 남은 작업"
 ---
 
 # 루틴 추천과 조정 규칙
 
 FR-03. [기획서](prd.md). 입력: 목표·경험·일정·시간·장비·선호/제외·최근 기록·불편감. 출력: 일정·운동/대체·본세트/반복·노력·휴식·이유·규칙/근거 버전.
+
+## 본인 파일럿 조건
+
+CONV-0005에서 골격근량 증대·주3~4회·무분할~3분할을 보고했다. [SCI-03 구현 과업](implementation-backlog.md)은 3↔4회/분할 변경·시간/장비·부분 수행 조건을 검증한다. 경험·주요 종목·장비·회당 시간은 미결이며 아래 초보 시작값을 본인의 확정 처방으로 사용하지 않는다. 주어진 횟수/분할에서 최적인 루틴이 이미 증명되었다고 표현하지 않는다.
 
 ## 추천 흐름
 
@@ -62,3 +81,9 @@ POL-R07 제안: 같은 운동/장비/범위에서 연속 두 번 본세트 목�
 ## Related
 
 [티어](tier-system.md) · [기록](training-log.md) · [리포트](reports.md)
+
+## CONV-0006 이후 현재 구현 경계
+
+특정 iPhone 모델에 한정하지 않는 반응형과 각 사용자별 목표·주당 횟수·분할·시간·장비·단위·시간대 설정을 요구사항으로 추가했다. 본인의 조건은 하나의 시험 표본이다. Supabase 프로젝트가 없으므로 로컬부터 구현한다는 사용자 선택을 반영했다. [로컬 계약](implementation-contracts.md) · [실행 결과](implementation-progress.md).
+
+로컬 프로필/기록·루틴 스냅샷·백업·사실 집계·PWA는 구현했으며 계정/RLS·서버 전송·실제 iOS·검토된 시각/설명·추천/티어·완전한 개인화·배포는 미완료다. 기존 실사용/지인 제공 관문은 유지한다. 로컬 프로필을 인증 계정으로, 개념도를 자극 범위로, 분류별 행 수를 근육 성장량으로 표시하지 않는다.

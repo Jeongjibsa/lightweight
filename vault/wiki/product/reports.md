@@ -9,11 +9,20 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-03T16:59:22+09:00"
+  at: "2026-10-03T23:24:52+09:00"
 sources:
   - id: "volume"
     resource: "../sources/SRC-004-volume-frequency.md"
     title: "세트 집계 모델"
+  - id: "responsive-local-request"
+    resource: "../../raw/conversations/2026-10-03-006.md"
+    title: "반응형·사용자별 설정·로컬 구현 요청"
+  - id: "local-contract"
+    resource: "implementation-contracts.md"
+    title: "로컬 구현 계약"
+  - id: "local-progress"
+    resource: "implementation-progress.md"
+    title: "실행 결과와 남은 작업"
 ---
 
 # 개인화 리포트와 계산 계약
@@ -54,3 +63,9 @@ FR-07·FR-09. [기획서](prd.md). 관찰 사실/기간 → 비교 조건·불�
 ## Related
 
 [영양](nutrition.md) · [추천](routine-engine.md) · [검증](validation-plan.md)
+
+## CONV-0006 이후 현재 구현 경계
+
+특정 iPhone 모델에 한정하지 않는 반응형과 각 사용자별 목표·주당 횟수·분할·시간·장비·단위·시간대 설정을 요구사항으로 추가했다. 본인의 조건은 하나의 시험 표본이다. Supabase 프로젝트가 없으므로 로컬부터 구현한다는 사용자 선택을 반영했다. [로컬 계약](implementation-contracts.md) · [실행 결과](implementation-progress.md).
+
+로컬 프로필/기록·루틴 스냅샷·백업·사실 집계·PWA는 구현했으며 계정/RLS·서버 전송·실제 iOS·검토된 시각/설명·추천/티어·완전한 개인화·배포는 미완료다. 기존 실사용/지인 제공 관문은 유지한다. 로컬 프로필을 인증 계정으로, 개념도를 자극 범위로, 분류별 행 수를 근육 성장량으로 표시하지 않는다.

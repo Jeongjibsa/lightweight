@@ -14,7 +14,28 @@
     "raw/conversations/2026-10-03-003.md": "bfc41db060712863c9ab7b2706f4d0ba8fd54da37b2a49278ffaf1eb2a728393",
     "raw/research/2026-10-03-pwa-stack-research.json": "b31b114c84e919404407c4e993e849b0aac34efd1ea03d47b8a48620d9ae0ffd",
     "history/changes/CHG-0003.md": "6a625626771a8ffaf9d5147c28cd84516b6f6a0060a6a5e5eba9415725fafb90",
-    "history/versions/prd-v0.2.1.md": "27668bd93e2b31e1fd92963fc24a0fe925749a565e9427683fbeb5d90d9bc920"
+    "history/versions/prd-v0.2.1.md": "27668bd93e2b31e1fd92963fc24a0fe925749a565e9427683fbeb5d90d9bc920",
+    "raw/conversations/2026-10-03-004.md": "44db010feea3f8c32a636f519c5b6640966b4bf11d422830777fbb0075a5a108",
+    "raw/research/2026-10-03-deployment-security-research.json": "22d0ea692237e730d9238e1424b1656697e3cc08a2392dacbc5f170c6a7cb0ce",
+    "history/changes/CHG-0004.md": "153d24723d7b63996dcebc207d9ab9823fa16280b6271b83568341ab34d5d908",
+    "history/versions/prd-v0.2.2.md": "499a9688630b533f073527c11a76bb2f1f37f7e0fb628f56312698f3c0437d11",
+    "raw/conversations/2026-10-03-005.md": "e33c7c80d40bfe27c650e00e4ef4e85abaead75a1230d059087ef5c67d10955e",
+    "raw/research/2026-10-03-implementation-planning-research.json": "960422d450df9a448f4c18b30db1ab161ea1a5bfdb1d63c7ac3073504a85e558",
+    "history/changes/CHG-0005.md": "b1e46546a6a1d89b533672e63606bbc1237ae400ce4146ebd030d0af30ee8768",
+    "history/versions/prd-v0.2.3.md": "bc06d77647095a269ef2e35ef2a3cf82ffb7f8567fbf1e333ed1fe2b890101ef",
+    "raw/conversations/2026-10-03-006.md": "729956ef2e397d2bb669a0bb7609773e537a140b061c2cd065a18983520531f7",
+    "raw/research/2026-10-03-responsive-local-research.json": "f2edb5431020b73aacc2a0a8f4547cfdf627c7ffcdb412ed3c7be4c772adbb7a",
+    "history/changes/CHG-0006.md": "77bf38575e9afdd32a34a8c3670355d98fe1ce50bf40a9664f24b5cf4d78b249",
+    "history/versions/prd-v0.3.0.md": "c3aede0d1dc1cd01d30c6abf1e1e13db81b8b5cf4736938fef686d81775a6238",
+    "raw/research/2026-10-03-browser-restore-verification.json": "54f60bc7e1d6baefad818ea521df3f50cd7a7a6495e5a0415679d90e42f6abca",
+    "raw/conversations/2026-10-04-007.md": "556f43e898f1d964503d06dc49900752d180c2c2766a6c052a153faccca5c4a5",
+    "raw/research/2026-10-04-harness-audit.json": "3a5ed922e9b8ed84fc23d71361de4a83c099909cd38f7a7acdf905913682ba66",
+    "history/changes/CHG-0007.md": "0360efd01689552c0494664f3f61f68b8feeea09f505b39cfb6b5960beb20a06",
+    "history/versions/prd-v0.3.1.md": "7ba486dfd179c92fd3d32002aa3f55a8a04fb91f0f58a702f95b0ac29e2af352",
+    "raw/conversations/2026-10-04-008.md": "5cc6ec8ba63703000eaefa4c522d9395565c0304e840dfb7b13ff7d7c257ac4c",
+    "raw/research/2026-10-04-mantine-supabase-verification.json": "da19cdb330a91ffe4338482cfcbcdb3490d890975cab87dcd38ff077a34e507d",
+    "history/changes/CHG-0008.md": "b2daa0bbc344eddbbbbbc35ddd8272199d542da5deb70e2437f0f3d6125d159c",
+    "history/versions/prd-v0.4.0.md": "f11e153063198f0610a20ed1f47cc2c1fc56cea4ad42cf2259f90c674b5ea28a"
   },
-  "updated_at": "2026-10-03T20:17:12+09:00"
+  "updated_at": "2026-10-04T02:02:14+09:00"
 }

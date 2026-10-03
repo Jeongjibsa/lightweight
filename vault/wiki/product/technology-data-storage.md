@@ -10,7 +10,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-03T20:17:12+09:00"
+  at: "2026-10-04T02:02:14+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-03-003.md"
@@ -36,14 +36,43 @@ sources:
   - id: "SRC-027"
     resource: "../sources/SRC-027-supabase-backups-plans.md"
     title: "Supabase — 백업과 무료 플랜 운영 조건"
-version: "0.1.0"
+  - id: "stack-agreement"
+    resource: "../../raw/conversations/2026-10-03-004.md"
+    title: "스택 동의와 배포·보안 의견 요청"
+  - id: "deployment"
+    resource: "deployment-security.md"
+    title: "배포·보안 추천"
+  - id: "implementation-request"
+    resource: "../../raw/conversations/2026-10-03-005.md"
+    title: "계획 요청과 운동 우선 선택"
+  - id: "implementation-plan"
+    resource: "implementation-plan.md"
+    title: "단계별 작업계획"
+  - id: "responsive-local-request"
+    resource: "../../raw/conversations/2026-10-03-006.md"
+    title: "반응형·사용자별 설정·로컬 구현 요청"
+  - id: "local-contract"
+    resource: "implementation-contracts.md"
+    title: "로컬 구현 계약"
+  - id: "local-progress"
+    resource: "implementation-progress.md"
+    title: "실행 결과와 남은 작업"
+  - id: "current-cloud"
+    resource: "supabase-integration.md"
+    title: "현재 연결 증분"
+version: "0.1.1"
 approval_status: "proposal"
-change_id: "CHG-0003"
+change_id: "CHG-0004"
 ---
 
 # PWA 개발 언어와 개인화 데이터 저장 구조
 
-> 2026-10-03. **PWA 진행은 사용자 선택 확정**이다. **TypeScript·React/Vite·Dexie·Supabase와 계정 동기화는 추천안**이며 아직 채택되지 않았다. 구현·프로젝트 생성·외부 데이터 업로드는 수행하지 않았다.
+## 현재 구현 상태 — 2026-10-04
+
+현재 구현은 app0.2.0이며 [정확한 스택](technology-stack.md)에 Mantine/Spoqa/설치 버전을 명시했다. Supabase 프로젝트와 Auth/DB·manual snapshot을 연결했고 [실제 계약/한계](supabase-integration.md)를 별도 관리한다. 아래 원래 추천은 배경 설계로 유지한다.
+
+
+> 2026-10-03 갱신. **PWA와 TypeScript·React/Vite·Dexie·Supabase 기본 스택 방향은 사용자 동의로 채택**했다. 동기화 계약·로그인/초대·비용·배포 설정은 상세 제안이다. 구현·프로젝트 생성·외부 데이터 업로드는 수행하지 않았다.
 
 ## 언어와 구성 추천
 
@@ -71,7 +100,7 @@ React 공식은 프레임워크 시작을 기본 권장한다. 이 앱에서는 
 | 클라우드 중심 | 로그인으로 다른 기기에서 기록 조회 | 오프라인 입력은 별도 저장 구조가 필요 | 단독 기본안으로는 운동 중 조건 부족 |
 | **기기 우선 저장 + 계정 DB 동기화 + 파일 백업** | 빠른 입력·오프라인·동기화 완료 기록의 기기 변경 복구 | 전송·중복·충돌·계정·백업 구현 필요 | **실제 기록을 쌓는 첫 사용 버전 추천** |
 
-이전 대화의 로그인 없는 한 기기 제안은 빠른 시험 경로로 남긴다. 개인화 기록이 누적되고 기기 변경에 대응하려면 **첫 실사용부터 계정 DB를 함께 두는 방향**을 이번에 더 우선 추천한다. 사용자가 클라우드 저장·유료 서비스를 선택한 것으로 해석하지 않는다.
+이전 대화의 로그인 없는 한 기기 제안은 빠른 시험 경로로 남긴다. 개인화 기록이 누적되고 기기 변경에 대응하려면 **첫 실사용부터 계정 DB를 함께 두는 방향**을 이번에 더 우선 추천한다. CONV-0004에서 Supabase를 포함한 기본 스택 방향에 동의했다. 구체적 로그인·동기화·서비스 플랜과 비용 지출은 아직 미정이다.
 
 ## 저장과 동기화 흐름
 
@@ -116,11 +145,11 @@ flowchart LR
 
 ## 계정과 지인 기록 분리
 
-본인 계정부터 만들고 지인에게 각자 계정을 제공하는 안이다. 이메일 인증 코드 로그인을 후보로 둔다. 코드 템플릿·메일 전달·Safari와 홈 화면 앱의 로그인 동작은 실제 기기에서 확인한다. [인증 문서](../sources/SRC-025-supabase-database-auth.md).
+본인 계정부터 만들고 지인에게 각자 계정을 제공하는 안이다. 이메일 인증 코드 로그인을 후보로 둔다. 코드 템플릿·메일 전달·Safari와 홈 화면 앱의 로그인 동작은 실제 기기에서 확인한다. 기본 SMTP는 운영팀 주소만 대상으로 하고 새 무료 프로젝트의 기본 템플릿 변경도 제한되므로 지인 배포에는 별도 SMTP 등 조건을 검토한다. [메일 배포 조건](../sources/SRC-030-supabase-invite-mail.md). [인증 문서](../sources/SRC-025-supabase-database-auth.md).
 
 개인 테이블마다 user_id를 보존한다. 서버의 RLS 정책으로 로그인 사용자와 소유자가 같은 행만 읽기·생성·수정·삭제하게 한다. 자식 세트와 부모 세션의 소유 관계도 제약으로 검증한다. 화면에서 사용자별 필터를 거는 것만으로 끝내지 않는다. [RLS와 키](../sources/SRC-026-supabase-rls-keys.md).
 
-로컬 DB/큐도 사용자별로 분리한다. 계정 전환 시 이전 기록·전송 대기를 새 계정으로 보내지 않도록 한다. 로그아웃 중 전송 대기가 있으면 상태를 알리고 처리 방식을 선택하게 하는 흐름을 설계한다. 사이트 링크 전달은 설치 경로이며 계정 생성·초대 권한 정책은 별도다. 초대 사용자만 받는 설정과 복구 수단은 아직 미정이다.
+로컬 DB/큐도 사용자별로 분리한다. 계정 전환 시 이전 기록·전송 대기를 새 계정으로 보내지 않도록 한다. 로그아웃 중 전송 대기가 있으면 상태를 알리고 처리 방식을 선택하게 하는 흐름을 설계한다. 사이트 링크 전달은 설치 경로이며 계정 생성·초대 권한 정책은 별도다. 본인·초대 지인만 사용하도록 가입/익명 로그인을 막는 안을 이번에 추천한다. 실제 설정과 복구 수단은 아직 미정이다. [배포·보안](deployment-security.md).
 
 브라우저에는 publishable key와 사용자 세션을 사용한다. Supabase secret/service_role key, DB 접속 비밀, AI 서비스 키는 서버에만 둔다. AI 함수에서도 사용자 인증과 소유자 범위를 확인한다. 프런트의 .env에 넣은 값이 비밀로 보호된다고 가정하지 않는다. 이 설계는 사용자 간 접근 분리이며 운영자도 볼 수 없는 암호화 저장을 보장하는 안은 아니다.
 
@@ -132,8 +161,18 @@ flowchart LR
 
 식단 사진 등 파일을 나중에 저장하면 파일 저장소를 추가한다. DB 백업에 실제 이미지 파일이 들어간다고 가정하지 않고 파일 백업도 별도로 검토한다.
 
+## 구현 순서
+
+[계획 M0~M8](implementation-plan.md)·[작업 ID](implementation-backlog.md)에 데이터 보존→계정 동기화→리포트→검토 추천/티어→실기기 제공 순서를 제안한다. 운동 우선·식단 다음은 사용자 선택으로 확정했다. 작업계획 이후 CONV-0006에서 로컬 구현에 착수했다.
+
 ## 채택과 구현 전에 남은 선택
 
-TypeScript/React/Vite와 Supabase 채택, 클라우드에 기록을 저장할 의사, 로그인·초대 방식, 운영비, 여러 기기 동시 사용, 백업 보관/복원 방식은 미정이다. **이번 확정은 PWA 진행까지**다.
+TypeScript·React/Vite·Dexie·Supabase 방향은 사용자 동의로 채택했다. Cloudflare Pages·도메인·사이트 전체 Access·로그인/초대/SMTP·운영비·여러 기기 동시 사용·백업 보관/복원은 미정이다. [배포와 보안 의견](deployment-security.md).
 
-[미결 Q-09/Q-13~15](open-questions.md) · [데이터 모델](data-model.md) · [검증 계획](validation-plan.md) · [CONV-0003](../conversations/2026-10-03-003.md) · [CHG-0003](../../history/changes/CHG-0003.md)
+[합의와 미결 Q-09/Q-13~17](open-questions.md) · [데이터 모델](data-model.md) · [검증 계획](validation-plan.md) · [스택 제안 CONV-0003](../conversations/2026-10-03-003.md) · [동의와 배포 의견 CONV-0004](../conversations/2026-10-03-004.md) · [CHG-0004](../../history/changes/CHG-0004.md)
+
+## CONV-0006 이후 현재 구현 경계
+
+특정 iPhone 모델에 한정하지 않는 반응형과 각 사용자별 목표·주당 횟수·분할·시간·장비·단위·시간대 설정을 요구사항으로 추가했다. 본인의 조건은 하나의 시험 표본이다. Supabase 프로젝트가 없으므로 로컬부터 구현한다는 사용자 선택을 반영했다. [로컬 계약](implementation-contracts.md) · [실행 결과](implementation-progress.md).
+
+로컬 프로필/기록·루틴 스냅샷·백업·사실 집계·PWA는 구현했으며 계정/RLS·서버 전송·실제 iOS·검토된 시각/설명·추천/티어·완전한 개인화·배포는 미완료다. 기존 실사용/지인 제공 관문은 유지한다. 로컬 프로필을 인증 계정으로, 개념도를 자극 범위로, 분류별 행 수를 근육 성장량으로 표시하지 않는다.

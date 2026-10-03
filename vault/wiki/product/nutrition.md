@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-03T16:59:22+09:00"
+  at: "2026-10-03T22:02:09+09:00"
 sources:
   - id: "protein"
     resource: "../sources/SRC-009-protein.md"
@@ -26,11 +26,17 @@ sources:
   - id: "food"
     resource: "../sources/SRC-013-food-db.md"
     title: "음식"
+  - id: "implementation-request"
+    resource: "../../raw/conversations/2026-10-03-005.md"
+    title: "계획 요청과 운동 우선 선택"
+  - id: "implementation-plan"
+    resource: "implementation-plan.md"
+    title: "단계별 작업계획"
 ---
 
 # 식단 기록과 영양 리포트
 
-FR-08·FR-09, P1 제안. 첫 출시 포함 여부는 미결. [기획서](prd.md).
+FR-08·FR-09. CONV-0005에서 **운동 먼저 완성, 식단은 다음 출시**를 선택했다. 요구는 유지하며 [구현 계획 M8](implementation-plan.md)·[NUT-01~04](implementation-backlog.md)에서 추적한다. [기획서](prd.md).
 
 ## 입력과 데이터
 
