@@ -1,0 +1,10 @@
+{
+  "created_at": "2026-10-03T16:59:22+09:00",
+  "algorithm": "sha256",
+  "files": {
+    "raw/research/2026-10-03-initial-research.json": "6a6b0821754d16d73936cfb209f48a3c465670795828c52745f09df1701c77fd",
+    "raw/conversations/2026-10-03-001.md": "b9a98798edb0931fd345b20f23ac9f53b027dbf4a782dae3d9b8d8470c74442c",
+    "history/versions/prd-v0.1.0.md": "68973a0cbeca0f1e9bddc901936d5c28372319d03281ea13ede536f0baed3c81",
+    "history/changes/CHG-0001.md": "059c1199af95874c905418b62ebf2cdfe8ac5856392005456c579ad8ec8991be"
+  }
+}
