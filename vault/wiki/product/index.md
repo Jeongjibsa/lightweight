@@ -10,3 +10,5 @@
 - [조건별 운동 티어 정책](tier-system.md) — 과학적 근거와 개인 적합도를 분리한 티어.
 - [루틴과 간편 운동 기록](training-log.md) — 세트 입력·단위·오프라인·예외 경험.
 - [제품 검증과 출시 조건](validation-plan.md) — 사용성·근거·계산·예외 흐름의 검증 계획.
+- [iOS 개인 앱의 설치·배포와 구현 방향](platform-distribution.md) — 본인·지인 사용에 맞춘 PWA/네이티브 비교와 백업 제안.
+- [PWA 개발 언어와 개인화 데이터 저장 구조](technology-data-storage.md) — TypeScript·React/Vite·기기 저장·계정 동기화·독립 백업 추천.

@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-03T17:03:18+09:00"
+  at: "2026-10-03T20:17:12+09:00"
 sources:
   - id: "SRC-003"
     resource: "../sources/SRC-003-acsm-2026.md"
@@ -44,6 +44,42 @@ sources:
   - id: "SRC-010"
     resource: "../sources/SRC-010-protein-2026.md"
     title: "SRC-010"
+  - id: "SRC-016"
+    resource: "../sources/SRC-016-iphone-web-app.md"
+    title: "Apple — iPhone 홈 화면 웹앱"
+  - id: "SRC-017"
+    resource: "../sources/SRC-017-apple-developer-account.md"
+    title: "Apple — 개인 테스트 계정과 개발자 등록 비용"
+  - id: "SRC-018"
+    resource: "../sources/SRC-018-testflight.md"
+    title: "Apple — TestFlight 베타 배포"
+  - id: "SRC-019"
+    resource: "../sources/SRC-019-ad-hoc-devices.md"
+    title: "Apple — Ad Hoc 등록 기기 배포"
+  - id: "SRC-020"
+    resource: "../sources/SRC-020-webkit-storage.md"
+    title: "WebKit — 웹 저장소와 보존 정책"
+  - id: "SRC-021"
+    resource: "../sources/SRC-021-healthkit.md"
+    title: "Apple — HealthKit 연동 범위"
+  - id: "SRC-022"
+    resource: "../sources/SRC-022-typescript.md"
+    title: "TypeScript — 데이터 타입과 개발 오류 확인"
+  - id: "SRC-023"
+    resource: "../sources/SRC-023-react-vite-pwa.md"
+    title: "React·Vite·Vite PWA — 화면과 PWA 빌드"
+  - id: "SRC-024"
+    resource: "../sources/SRC-024-dexie.md"
+    title: "Dexie — IndexedDB 로컬 데이터 관리"
+  - id: "SRC-025"
+    resource: "../sources/SRC-025-supabase-database-auth.md"
+    title: "Supabase — PostgreSQL과 계정 인증"
+  - id: "SRC-026"
+    resource: "../sources/SRC-026-supabase-rls-keys.md"
+    title: "Supabase — 사용자별 권한과 서버 비밀키"
+  - id: "SRC-027"
+    resource: "../sources/SRC-027-supabase-backups-plans.md"
+    title: "Supabase — 백업과 무료 플랜 운영 조건"
 ---
 
 # 주장과 근거의 연결 지도
@@ -68,6 +104,36 @@ CONFLICT-001: [Varovic](../sources/SRC-006-regional-length.md)의 지역별 크�
 CONFLICT-002: [Li 2026](../sources/SRC-010-protein-2026.md)의 보충제 비교/추가량은 총단백질 필요량과 다른 질문. 순위와 불확실성 검토 전 앱 목표나 보편 우위로 전환하지 않는다.
 
 GAP-001: 전 부위 티어는 비교 근거/검토가 부족하다. LLM 확신으로 채우지 않고 평가 보류한다.
+
+## 플랫폼·운영 주장
+
+운동/영양 효과 주장과 구분한 공식 정책·기술 기록이다. 확인일 2026-10-03, 실제 구현과 실기기 시험 전이다.
+
+| ID | 공식 안내에서 확인한 사실 | 기획 판단·한계 | 출처 |
+|---|---|---|---|
+| PLT-001 | iPhone Safari에서 홈 화면 웹앱 추가 가능 | 설치 경로 후보, 오프라인 기능은 별도 구현 | [Apple](../sources/SRC-016-iphone-web-app.md) |
+| PLT-002 | 무료 개인 프로비저닝은 7일 만료; 유료 프로그램 연 99 USD | 무료 개인 서명은 일상 사용 관리 부담 | [계정·등록](../sources/SRC-017-apple-developer-account.md) |
+| PLT-003 | TestFlight 빌드 최대 90일·외부 첫 빌드 검토 | 네이티브 지인 베타 후보, 갱신 필요 | [TestFlight](../sources/SRC-018-testflight.md) |
+| PLT-004 | Ad Hoc 등록 기기 직접 설치·제품군별 연 100대 | 기기·서명 관리가 필요한 후보 | [기기 등록](../sources/SRC-019-ad-hoc-devices.md) |
+| PLT-005 | 웹 저장소 기본 모드는 보존 비보장 | 첫 버전 외부 백업·복원 제안, OS별 실험 필요 | [WebKit](../sources/SRC-020-webkit-storage.md) |
+| PLT-006 | HealthKit은 iPhone/Watch 건강·피트니스 프레임워크 | 연동 필수이면 네이티브 검토, 상세 API 미검토 | [HealthKit](../sources/SRC-021-healthkit.md) |
+
+PWA 우선 추천은 위 사실과 현재 사용 규모를 연결한 **기획 추론**이다. [상세 판단](../product/platform-distribution.md).
+
+## 언어·저장 기능과 추천의 구분
+
+2026-10-03 공식 문서 확인. 소프트웨어 기능 설명이며 실기기·실제 DB 시험 결과가 아니다.
+
+| ID | 확인한 기능/조건 | 기획 판단·한계 | 출처 |
+|---|---|---|---|
+| TEC-001 | TypeScript의 타입 검사 | 앱 코드 추천, 외부 값과 계산은 별도 검증 | [TypeScript](../sources/SRC-022-typescript.md) |
+| TEC-002 | Vite React/TS 템플릿·PWA 플러그인의 manifest/서비스 워커 | 프레임워크 기본 권고와 Vite 채택 판단 분리 | [화면·PWA](../sources/SRC-023-react-vite-pwa.md) |
+| TEC-003 | Dexie는 IndexedDB 라이브러리 | 로컬 기록 후보, Supabase 동기화는 별도 구현 | [Dexie](../sources/SRC-024-dexie.md) |
+| TEC-004 | PostgreSQL·계정 인증·이메일 코드 지원 | 계정 저장 후보, 기기 복구 흐름은 구현 필요 | [DB/Auth](../sources/SRC-025-supabase-database-auth.md) |
+| TEC-005 | RLS 소유자 정책·서버 키의 우회 권한 | 사용자 분리·비밀키 서버 보관을 시험 | [권한·키](../sources/SRC-026-supabase-rls-keys.md) |
+| TEC-006 | 무료 플랜 내보내기 권고·비활성 중단 조건 | 무료 지속 가용성·독립 백업을 가정하지 않음 | [운영 조건](../sources/SRC-027-supabase-backups-plans.md) |
+
+**기기 우선 저장 + Supabase 동기화 권고는 기획 추론**이며 사용자 승인·자동 동기화 완성·기록 무손실 보장을 뜻하지 않는다. [상세 저장 구조](../product/technology-data-storage.md).
 
 ## Related
 

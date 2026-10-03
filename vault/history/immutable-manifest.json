@@ -5,6 +5,16 @@
     "raw/research/2026-10-03-initial-research.json": "6a6b0821754d16d73936cfb209f48a3c465670795828c52745f09df1701c77fd",
     "raw/conversations/2026-10-03-001.md": "b9a98798edb0931fd345b20f23ac9f53b027dbf4a782dae3d9b8d8470c74442c",
     "history/versions/prd-v0.1.0.md": "68973a0cbeca0f1e9bddc901936d5c28372319d03281ea13ede536f0baed3c81",
-    "history/changes/CHG-0001.md": "059c1199af95874c905418b62ebf2cdfe8ac5856392005456c579ad8ec8991be"
-  }
+    "history/changes/CHG-0001.md": "059c1199af95874c905418b62ebf2cdfe8ac5856392005456c579ad8ec8991be",
+    "raw/conversations/2026-10-03-002.md": "322cb83c32291ed0858f9a680a216be6ffc6a7a491e42443c85632ac51150373",
+    "raw/research/2026-10-03-ios-distribution-research.json": "a849d75f8f397b4676e34b399c9790276396d370d37214e19900fb493d62a668",
+    "history/changes/CHG-0002.md": "b7c7ced96f25e5e28d046ff8656bb1a8352726fa42e2cc96e92d8f195dbd2716",
+    "history/versions/prd-v0.2.0.md": "6922eb462e36fcf627cac6f015adb65d453782bd2603e7f68b27fad261fddf1e",
+    "raw/research/2026-10-03-ios-distribution-correction.json": "610440596444887ac7f681144e22c0301bca0b3659c1202ebd7dc6c784d7db60",
+    "raw/conversations/2026-10-03-003.md": "bfc41db060712863c9ab7b2706f4d0ba8fd54da37b2a49278ffaf1eb2a728393",
+    "raw/research/2026-10-03-pwa-stack-research.json": "b31b114c84e919404407c4e993e849b0aac34efd1ea03d47b8a48620d9ae0ffd",
+    "history/changes/CHG-0003.md": "6a625626771a8ffaf9d5147c28cd84516b6f6a0060a6a5e5eba9415725fafb90",
+    "history/versions/prd-v0.2.1.md": "27668bd93e2b31e1fd92963fc24a0fe925749a565e9427683fbeb5d90d9bc920"
+  },
+  "updated_at": "2026-10-03T20:17:12+09:00"
 }

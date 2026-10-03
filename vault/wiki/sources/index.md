@@ -15,3 +15,15 @@
 - [식약처 — K-FIND 식품영양성분 DB](SRC-013-food-db.md) — 국내 식품 성분 조회/다운로드와 공공데이터 안내.
 - [Maeo 외 — 삼두 팔 위치 비교](SRC-014-overhead-triceps.md) — 21명·12주 양팔 케이블 비교, 오버헤드 조건의 MRI 근육 부피 증가가 컸음.
 - [Plotkin 외 — 스쿼트와 힙 스러스트](SRC-015-squat-hip-thrust.md) — 비훈련 대학생 9주, 둔근 성장 비슷, 대퇴 성장/운동별 근력 결과 다름.
+- [Apple — iPhone 홈 화면 웹앱](SRC-016-iphone-web-app.md) — 공식 기술·배포 안내, 확인 범위는 출처 노트 참조.
+- [Apple — 개인 테스트 계정과 개발자 등록 비용](SRC-017-apple-developer-account.md) — 공식 기술·배포 안내, 확인 범위는 출처 노트 참조.
+- [Apple — TestFlight 베타 배포](SRC-018-testflight.md) — 공식 기술·배포 안내, 확인 범위는 출처 노트 참조.
+- [Apple — Ad Hoc 등록 기기 배포](SRC-019-ad-hoc-devices.md) — 공식 기술·배포 안내, 확인 범위는 출처 노트 참조.
+- [WebKit — 웹 저장소와 보존 정책](SRC-020-webkit-storage.md) — 공식 기술·배포 안내, 확인 범위는 출처 노트 참조.
+- [Apple — HealthKit 연동 범위](SRC-021-healthkit.md) — 공식 기술·배포 안내, 확인 범위는 출처 노트 참조.
+- [TypeScript — 데이터 타입과 개발 오류 확인](SRC-022-typescript.md) — 공식 기능·운영 조건, 실제 구현/검증은 별도.
+- [React·Vite·Vite PWA — 화면과 PWA 빌드](SRC-023-react-vite-pwa.md) — 공식 기능·운영 조건, 실제 구현/검증은 별도.
+- [Dexie — IndexedDB 로컬 데이터 관리](SRC-024-dexie.md) — 공식 기능·운영 조건, 실제 구현/검증은 별도.
+- [Supabase — PostgreSQL과 계정 인증](SRC-025-supabase-database-auth.md) — 공식 기능·운영 조건, 실제 구현/검증은 별도.
+- [Supabase — 사용자별 권한과 서버 비밀키](SRC-026-supabase-rls-keys.md) — 공식 기능·운영 조건, 실제 구현/검증은 별도.
+- [Supabase — 백업과 무료 플랜 운영 조건](SRC-027-supabase-backups-plans.md) — 공식 기능·운영 조건, 실제 구현/검증은 별도.

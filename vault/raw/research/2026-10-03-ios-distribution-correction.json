@@ -1,0 +1,11 @@
+{
+  "captured_at": "2026-10-03T18:28:39+09:00",
+  "corrects": "raw/research/2026-10-03-ios-distribution-research.json",
+  "source_id": "SRC-020",
+  "field": "review_scope: referenced publication date",
+  "before": "2023-08-24",
+  "after": "2023-08-10",
+  "evidence": "https://webkit.org/blog/14403/updates-to-storage-policy/",
+  "reason": "추가 본문 확인에서 발행일 Aug 10, 2023 확인. 기존 수집 원본은 수정하지 않고 정정 기록을 연결한다.",
+  "effect": "날짜 메타데이터 정정, 저장소 정책 해석과 PRD의 의견은 변경 없음."
+}

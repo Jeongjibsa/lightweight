@@ -9,48 +9,43 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-03T20:17:12+09:00"
+  at: "2026-10-03T18:27:13+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-03-001.md"
     title: "최초 요구"
   - id: "emg"
-    resource: "../sources/SRC-008-emg.md"
+    resource: "../../wiki/sources/SRC-008-emg.md"
     title: "EMG"
   - id: "acsm"
-    resource: "../sources/SRC-003-acsm-2026.md"
+    resource: "../../wiki/sources/SRC-003-acsm-2026.md"
     title: "ACSM"
   - id: "volume"
-    resource: "../sources/SRC-004-volume-frequency.md"
+    resource: "../../wiki/sources/SRC-004-volume-frequency.md"
     title: "운동량"
   - id: "kdri"
-    resource: "../sources/SRC-011-kdri-2025.md"
+    resource: "../../wiki/sources/SRC-011-kdri-2025.md"
     title: "KDRI"
   - id: "platform-request"
     resource: "../../raw/conversations/2026-10-03-002.md"
     title: "iOS와 개인 사용 요구"
   - id: "platform"
-    resource: "platform-distribution.md"
+    resource: "../../wiki/product/platform-distribution.md"
     title: "설치·배포 검토"
-  - id: "pwa-choice"
-    resource: "../../raw/conversations/2026-10-03-003.md"
-    title: "PWA 선택과 언어·저장 질문"
-  - id: "technology"
-    resource: "technology-data-storage.md"
-    title: "언어·개인 데이터 저장 제안"
-version: "0.2.1"
+version: "0.2.0"
 approval_status: "proposal"
-change_id: "CHG-0003"
-aliases:
-  - "앱 기획서"
-  - "PRD"
+change_id: "CHG-0002"
+
+document_role: "historical-snapshot"
+snapshot_of: "../../wiki/product/prd.md"
+immutable: true
 ---
 
 # 근거 기반 웨이트 트레이닝 앱 기획서
 
-> **버전 0.2.1 · 2026-10-03 · 브레인스토밍 초안**  
+> **버전 0.2.0 · 2026-10-03 · 브레인스토밍 초안**  
 > 앱 이름은 미정. `lightweight`는 임시 프로젝트 식별자다.  
-> 사용자 범위·iOS 우선·PWA 진행과 명시 기능은 **요구사항/선택**, 언어·저장 구조·출시 순서·수치 목표는 **기획 제안**으로 구분한다.
+> 사용자 범위·iOS 우선과 명시 기능은 **요구사항**, PWA·출시 순서·수치 목표는 **기획 제안**으로 구분한다.
 
 ## 1. 제품의 목적
 
@@ -70,15 +65,15 @@ aliases:
 | 기록은 쌓이지만 개선 방향을 모르겠다 | 변화 요약·다음 행동 1~3개 | 이해도·제안 실행률 |
 | 운동과 식단을 따로 관리한다 | 운동·섭취·체중 추세 연결 | 식단 수요·입력 지속성 |
 
-**사용자 범위 확정:** 첫 사용자는 본인 1명이다. 추후 확장도 주변 지인에게 직접 제공하는 범위를 현재 가정한다. 모바일 사용을 우선하며 iPhone/iOS가 대상이다. [CONV-0002](../conversations/2026-10-03-002.md).
+**사용자 범위 확정:** 첫 사용자는 본인 1명이다. 추후 확장도 주변 지인에게 직접 제공하는 범위를 현재 가정한다. 모바일 사용을 우선하며 iPhone/iOS가 대상이다. [CONV-0002](../../wiki/conversations/2026-10-03-002.md).
 
 **개인 조건 제안·미결:** 건강한 성인·초보~중급·근비대 우선은 기존 기획 가설이다. 본인의 운동 경험·목표·루틴·장비는 아직 확인하지 않았다. 타깃 인구를 확정했다는 의미로 해석하지 않는다.
 
 ### 2.1 모바일 설치와 제공 방식
 
-**PWA 진행 확정:** 사용자가 PWA로 진행할 의사를 명시했다. iPhone 홈 화면 설치와 링크 제공을 기준으로 기획을 발전시킨다. [CONV-0003](../conversations/2026-10-03-003.md) · [플랫폼 검토](platform-distribution.md). 건강 앱·Watch 요구가 달라지면 구현 범위를 다시 검토한다.
+**PWA 우선 제안:** iPhone 홈 화면에 추가하고 지인에게 링크로 제공하는 경로를 추천한다. 현재 핵심 기능의 웹 구현 적합성과 작은 운영 범위를 고려한 기획 판단이며 사용자 채택은 미확정이다. 건강 앱·Apple Watch 연동이 필수이면 네이티브 앱부터 재평가한다. [플랫폼·설치·배포 검토](../../wiki/product/platform-distribution.md).
 
-첫 구현은 한 손 입력·오프라인 기록·백업/복원·설명 가능한 리포트에 집중하는 제안이다. **언어는 TypeScript, 화면은 React+Vite, 저장은 IndexedDB/Dexie와 Supabase PostgreSQL/Auth의 계정 동기화 구조를 추천한다.** 언어·클라우드·로그인 방식·지원 OS·운영비는 아직 미확정이다. [언어와 개인 데이터 저장](technology-data-storage.md).
+첫 구현은 운동 중 한 손 입력·오프라인 기록·백업/복원·설명 가능한 리포트에 집중하는 제안이다. iOS 지원은 확정된 방향이지만 PWA/네이티브·지원 OS 버전·동기화 방식·스택은 아직 결정하지 않았다.
 
 **추천 범위 제안:** 재활·질환 치료·임신/수유·미성년자용 자동 처방은 별도 검토가 필요하다. 범위 밖 사용자의 직접 기록·일반 정보 열람은 별도로 설계한다.
 
@@ -88,18 +83,18 @@ P0는 첫 출시, P1은 다음 출시 **제안**이다. 사용자 핵심 요구�
 
 | ID | 사용자 요구 | 단계 제안 | 상세 |
 |---|---|---|---|
-| FR-01 | 부위별 운동 리스트·검색·필터 | P0 | [운동 정보](exercise-library.md) |
-| FR-02 | 자극범위·대상 근육·시각적 설명 | P0 | [운동 정보](exercise-library.md) |
-| FR-03 | 최신 연구 근거 기반 루틴 추천 | P0 | [추천](routine-engine.md) |
-| FR-04 | 부위별 운동 티어 | P0, 검토 완료 범위부터 | [티어](tier-system.md) |
-| FR-05 | 개인 루틴 작성·복사·편집·저장 | P0 | [기록](training-log.md) |
-| FR-06 | 수행 운동·중량·횟수·세트의 간편 기록 | P0 | [기록](training-log.md) |
-| FR-07 | 수행 기록 기반 개인화 리포트 | P0 | [리포트](reports.md) |
-| FR-08 | 식단·식사량·섭취일 기록 | P1 | [영양](nutrition.md) |
-| FR-09 | 부족 가능 영양소·추천 열량·식단 리포트 | P1 | [영양](nutrition.md) |
-| FR-10 | 모바일에서 쉽게 사용, iPhone/iOS 우선·PWA 진행 | P0 | [설치·배포](platform-distribution.md) |
-| KM-01 | 루트 vault·Markdown·OKF·옵시디언 호환 | 이번 산출물 | [관리](../operations/knowledge-workflow.md) |
-| KM-02 | 대화에 따른 기획 수정과 이력·근거 축적 | 지속 관리 | [변경](../../history/changes/index.md) |
+| FR-01 | 부위별 운동 리스트·검색·필터 | P0 | [운동 정보](../../wiki/product/exercise-library.md) |
+| FR-02 | 자극범위·대상 근육·시각적 설명 | P0 | [운동 정보](../../wiki/product/exercise-library.md) |
+| FR-03 | 최신 연구 근거 기반 루틴 추천 | P0 | [추천](../../wiki/product/routine-engine.md) |
+| FR-04 | 부위별 운동 티어 | P0, 검토 완료 범위부터 | [티어](../../wiki/product/tier-system.md) |
+| FR-05 | 개인 루틴 작성·복사·편집·저장 | P0 | [기록](../../wiki/product/training-log.md) |
+| FR-06 | 수행 운동·중량·횟수·세트의 간편 기록 | P0 | [기록](../../wiki/product/training-log.md) |
+| FR-07 | 수행 기록 기반 개인화 리포트 | P0 | [리포트](../../wiki/product/reports.md) |
+| FR-08 | 식단·식사량·섭취일 기록 | P1 | [영양](../../wiki/product/nutrition.md) |
+| FR-09 | 부족 가능 영양소·추천 열량·식단 리포트 | P1 | [영양](../../wiki/product/nutrition.md) |
+| FR-10 | 모바일에서 쉽게 사용, iPhone/iOS 우선 | P0 | [설치·배포](../../wiki/product/platform-distribution.md) |
+| KM-01 | 루트 vault·Markdown·OKF·옵시디언 호환 | 이번 산출물 | [관리](../../wiki/operations/knowledge-workflow.md) |
+| KM-02 | 대화에 따른 기획 수정과 이력·근거 축적 | 지속 관리 | [변경](../changes/index.md) |
 
 ## 4. 사용자 흐름과 정보 구조
 
@@ -179,19 +174,17 @@ flowchart LR
 | 2. 식단 | 한국 음식·열량/단백질·성분 커버리지별 리포트 | DB 권한·성분 품질·영양 검토 |
 | 3. 고도화 | 개인 반응 조정·사진 보조·건강 앱/웨어러블 연동 | 충분한 데이터·실제 수요 |
 
-PWA의 기술 스택·저장 방식·본인 기기·검토/호스팅/AI 비용을 확인한 뒤 일정화한다. 초기 제외 제안: 커뮤니티, 경쟁 순위, PT 중개, 의학적 재활, 카메라 자세 교정.
+PWA/네이티브 선택·본인 기기·검토/호스팅/AI 비용을 확인한 뒤 일정화한다. 초기 제외 제안: 커뮤니티, 경쟁 순위, PT 중개, 의학적 재활, 카메라 자세 교정.
 
-현재는 본인·지인 사용을 위한 도구로 기획한다. 구독·가격·공개 서비스 성장은 초기 검증의 우선순위에서 내리는 제안이다. 향후 상용화는 별도 논의하고, 지금은 호스팅·AI·계정 DB·메일 등 운영 부담을 비교한다.
+현재는 본인·지인 사용을 위한 도구로 기획한다. 구독·가격·공개 서비스 성장은 초기 검증의 우선순위에서 내리는 제안이다. 향후 상용화는 별도 논의하고, 지금은 호스팅·AI·네이티브 배포 시 개발자 등록비 등 운영 부담을 비교한다.
 
 ## 10. 데이터·AI·운영 요구
 
-[데이터 모델](data-model.md): 프로필, 운동/변형, 루틴/버전, 세션/세트, 연구/주장, 추천/계산 버전, 리포트, 음식/식사.
+[데이터 모델](../../wiki/product/data-model.md): 프로필, 운동/변형, 루틴/버전, 세션/세트, 연구/주장, 추천/계산 버전, 리포트, 음식/식사.
 
-- PWA의 캐시·로컬 DB를 별도 구현하여 오프라인 기록·재시도 중복 방지를 실제 iPhone에서 검증한다. 로컬 저장 실패 시 완료 성공으로 표시하지 않는다.
+- 기록은 오프라인에서 즉시 저장하고 재시도로 세트가 중복되지 않는다. PWA 채택 시 캐시·로컬 DB를 별도 구현하여 실제 iPhone에서 검증한다.
 - 내보내기와 새 저장소에 복원하는 기능을 첫 버전에 포함하는 제안이다. 웹 저장소만으로 영구 보존을 보장하지 않는다.
-- 화면/입력 시험은 로컬 프로필로 시작할 수 있다. 실제 기록 누적 버전은 기기 우선 저장과 계정 DB 동기화를 함께 두는 안을 이번에 우선 추천한다. 사용자 채택은 미정이다.
-- 동기화는 전송 대기·서버 확인·중복 방지·편집 충돌 처리를 별도 구현한다. 기기 저장됨과 클라우드 반영 완료를 구분하고 미전송분은 서버 복구가 불가능함을 표시한다.
-- 서버·지인 제공 시 사용자별 소유자와 접근 권한을 검증한다. Supabase 채택 시 Auth와 RLS를 구성하고 서버 비밀키를 브라우저에 넣지 않는다.
+- 본인 단일 기기는 로그인 없는 로컬 프로필을 제안한다. 동기화/서버 저장·지인 제공 시 사용자별 기록과 접근 권한을 분리한다.
 - 운동 메타데이터·계산 규칙 변경이 과거 기록의 의미를 바꾸지 않도록 버전을 보존한다.
 - 추천/리포트는 사용 기간·포함 기록·규칙/근거 버전을 남긴다.
 - 개인 정보는 목적에 맞게 최소 수집하고 내보내기·삭제를 지원한다.
@@ -213,21 +206,20 @@ PWA의 기술 스택·저장 방식·본인 기기·검토/호스팅/AI 비용�
 | 기록 보존 | 강제 종료·오프라인 복귀·버전 업데이트 후 보존, 중복 완료 0건, 백업 복원 성공 |
 | 계산 정확성 | 단위·세트·누락 집계가 명시 계산 계약과 일치 |
 
-첫 검증은 본인의 iPhone에서 설치·실제 운동 기록·백업 복원과 4주 사용 관찰을 제안한다. 편의성이 안정되면 소수 지인 과업으로 확장한다. 본인 한 명의 결과를 전체 사용자 효용으로 일반화하지 않는다. [검증 계획](validation-plan.md)을 따른다.
+첫 검증은 본인의 iPhone에서 설치·실제 운동 기록·백업 복원과 4주 사용 관찰을 제안한다. 편의성이 안정되면 소수 지인 과업으로 확장한다. 본인 한 명의 결과를 전체 사용자 효용으로 일반화하지 않는다. [검증 계획](../../wiki/product/validation-plan.md)을 따른다.
 
 ## 12. 미결 사항
 
-본인 경험·목표, 언어/라이브러리·클라우드 저장 선택·계정/초대·동기화/백업·운영 예산, 건강 앱/Watch 요구와 식단 첫 출시 포함 여부는 [미결 사항](open-questions.md)에서 관리한다. [결정 기록](../decisions/decision-register.md)에는 사용자 요구와 제안의 상태를 구분한다.
+본인 경험·근비대/근력 우선순위, PWA/네이티브, 건강 앱·Watch 필요성, 식단 첫 출시 포함 여부, 검토/운영 예산, 백업·동기화 방식은 [미결 사항](../../wiki/product/open-questions.md)에서 관리한다. [결정 기록](../../wiki/decisions/decision-register.md)에는 사용자 요구와 제안의 상태를 구분한다.
 
 ## 13. 근거와 이력
 
-이번 조사는 **2026-10-03 초기 표적 탐색**이며 체계적 문헌고찰이나 전체 최신 문헌 포괄을 뜻하지 않는다. 일부 논문은 초록·서지 수준으로 확인했다. iOS 배포 비교는 같은 날 Apple/WebKit 공식 안내를 확인한 별도 기술 조사다. [주장-근거 지도](../concepts/evidence-map.md)와 출처 노트에서 범위를 확인한다.
+이번 조사는 **2026-10-03 초기 표적 탐색**이며 체계적 문헌고찰이나 전체 최신 문헌 포괄을 뜻하지 않는다. 일부 논문은 초록·서지 수준으로 확인했다. iOS 배포 비교는 같은 날 Apple/WebKit 공식 안내를 확인한 별도 기술 조사다. [주장-근거 지도](../../wiki/concepts/evidence-map.md)와 출처 노트에서 범위를 확인한다.
 
-- [원 요청](../../raw/conversations/2026-10-03-001.md) · [CHG-0001](../../history/changes/CHG-0001.md).
-- [iOS·개인 사용 원문](../../raw/conversations/2026-10-03-002.md) · [CHG-0002](../../history/changes/CHG-0002.md).
-- [PWA 선택·저장 질문](../../raw/conversations/2026-10-03-003.md) · [CHG-0003](../../history/changes/CHG-0003.md) · [버전 보관](../../history/versions/index.md).
+- [원 요청](../../raw/conversations/2026-10-03-001.md) · [CHG-0001](../changes/CHG-0001.md).
+- [iOS·개인 사용 원문](../../raw/conversations/2026-10-03-002.md) · [CHG-0002](../changes/CHG-0002.md) · [버전 보관](index.md).
 
-[^emg]: [Vigotsky 외 2022](../sources/SRC-008-emg.md), [연구 안내](https://pubmed.ncbi.nlm.nih.gov/35006527/).
-[^acsm]: [ACSM 2026](../sources/SRC-003-acsm-2026.md), [학회 공식 설명](https://acsm.org/resistance-training-guidelines-update-2026/).
-[^volume]: [Pelland 외](../sources/SRC-004-volume-frequency.md), [출판사 초록](https://link.springer.com/article/10.1007/s40279-025-02344-w).
-[^kdri]: [2025 KDRI](../sources/SRC-011-kdri-2025.md), [공식 배포](https://kns.or.kr/fileroom/fileroom_view.asp?BoardID=Kdr&idx=167).
+[^emg]: [Vigotsky 외 2022](../../wiki/sources/SRC-008-emg.md), [연구 안내](https://pubmed.ncbi.nlm.nih.gov/35006527/).
+[^acsm]: [ACSM 2026](../../wiki/sources/SRC-003-acsm-2026.md), [학회 공식 설명](https://acsm.org/resistance-training-guidelines-update-2026/).
+[^volume]: [Pelland 외](../../wiki/sources/SRC-004-volume-frequency.md), [출판사 초록](https://link.springer.com/article/10.1007/s40279-025-02344-w).
+[^kdri]: [2025 KDRI](../../wiki/sources/SRC-011-kdri-2025.md), [공식 배포](https://kns.or.kr/fileroom/fileroom_view.asp?BoardID=Kdr&idx=167).
