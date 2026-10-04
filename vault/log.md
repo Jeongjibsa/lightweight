@@ -2,6 +2,8 @@
 
 ## 2026-10-04
 
+- **Records / Loop**: 이전 빈 값·새 세션 재사용·미완료 종목 교체·종료 명시 수정/CAS·원본/시각 보존 구현.72개/20browser/새6회·lint/build/types/format/artifact24 통과, fixture/selector 첫 실패 보존. [계약](wiki/operations/record-reuse.md)·[실행](raw/research/2026-10-04-record-reuse-verification.json)·[CHG0018](history/changes/CHG-0018.md)·PRD0.8.3 전체 보관. 다른 대화 CONV0016/CHG0017 유지. Wrangler Pages 제한 인증 성공·project 생성은 이메일 인증(API8000077)으로 거부/대기·미배포. 이전114immutable·실Auth/iPhone/SCI/전체 LOG03/04 관문 유지.
+
 - **Cloudflare / CONV-0016**: 공식 prompt 재fetch·동일 SHA256, skills16 갱신/파일 확인·기존 MCP5 URL/enabled 확인. `codex mcp login cloudflare` exit0/성공·현재 main 계정 읽기HTTP200·public docs 검색 성공. 사용자 cf 생략·Wrangler 유지 선택. 특화 MCP3/CLI 인증·HTTPS 배포/실제 앱 Auth는 별도. [실행](raw/research/2026-10-04-cloudflare-setup-recheck.json)·[대화](wiki/conversations/2026-10-04-016.md)·[CHG-0017](history/changes/CHG-0017.md)·[PRD0.8.2 전체](history/versions/prd-v0.8.2.md). 기존 불변 자료/앱 수정·개인 graph 보존, 개발 환경과 문서 증분.
 
 - **Backup / Loop**: gzip output10MiB/expanded64MiB·native CRC/한도/UTF8/schema·명시 atomic restore·공통 recovery writer 구현.66개/browser18/새2×3회6회·artifact24 통과,24,000세트 새context 복구/손상5table보존. 첫 fixture.tables2실패 증거 보존. [계약](wiki/operations/compressed-backup.md)·[원본](raw/research/2026-10-04-compressed-backup-verification.json)·[CHG0016](history/changes/CHG-0016.md)·PRD0.8.1 snapshot/SRC046. 이전107immutable 유지. 실제iPhone/quota/Auth·64MiB분할 및 Cloudflare OAuth/배포 pending.67ec882 CI3job success 확인.

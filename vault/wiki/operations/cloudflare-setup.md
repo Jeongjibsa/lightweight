@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T20:22:34+09:00"
+  at: "2026-10-04T20:32:03+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -23,6 +23,9 @@ sources:
   - id: "check"
     resource: "../../raw/research/2026-10-04-cloudflare-setup.json"
     title: "확인 결과"
+  - id: "scope-check"
+    resource: "../../raw/research/2026-10-04-pages-scoped-auth.json"
+    title: "Pages 확인"
 ---
 
 # Cloudflare 연결과 정적 PWA 배포
@@ -31,7 +34,7 @@ sources:
 
 CONV-0016에서 공식 prompt 전체를 다시 확인했고 기존 수집본과 SHA256이 같았다. 공식 installer로 ~/.agents/skills의 스킬16개를 갱신하고 각 SKILL.md를 확인했다. Codex config의 공식 MCP5개는 정확한 URL/enabled 상태를 확인해 기존 등록을 유지했다. installer는 PromptScript global 미지원도 출력했으므로 다른 모든 agent의 성공을 주장하지 않는다.
 
-`codex mcp login cloudflare`가 exit0/성공을 반환했고 현재 main MCP의 계정 읽기는 HTTP200이었다. public cloudflare-docs 검색도 성공했다. **main MCP OAuth는 성공 확인**, bindings/builds/observability3개의 별도 OAuth와 Wrangler 인증은 미검증이다. 이전 broad OAuth 자동 검토 거부·만료 이력은 [첫 기록](../../raw/research/2026-10-04-cloudflare-setup.json)에 보존하고 이번 [재확인](../../raw/research/2026-10-04-cloudflare-setup-recheck.json)을 구분한다. 브라우저 승인 동작은 직접 관찰·자동화하지 않았다.
+`codex mcp login cloudflare`가 exit0/성공을 반환했고 현재 main MCP의 계정 읽기는 HTTP200이었다. public cloudflare-docs 검색도 성공했다. **main MCP OAuth는 성공 확인**, bindings/builds/observability3개의 별도 OAuth와 Wrangler 인증은 당시 미검증이었다. 이전 broad OAuth 자동 검토 거부·만료 이력은 [첫 기록](../../raw/research/2026-10-04-cloudflare-setup.json)에 보존하고 이번 [재확인](../../raw/research/2026-10-04-cloudflare-setup-recheck.json)을 구분한다. 브라우저 승인 동작은 직접 관찰·자동화하지 않았다.
 
 특화 MCP는 공식 지침에 따라 첫 사용 시 OAuth를 진행한다. 등록된 전체 MCP와 갱신한 스킬을 반영하려면 agent를 재시작한다. 진행 중 작업을 임의 reset하지 않는다.
 
@@ -53,3 +56,7 @@ Direct Upload 프로젝트는 Git 연동으로 전환할 수 없으므로 향후
 고정 origin은 IndexedDB/설치의 기준이므로 이후 임의로 바꾸지 않는다. 이전 Pages deployment로 화면을 되돌려도 DB schema/기기 기록이 되돌아간다고 주장하지 않는다. 본인/지인 전송은 허용 목록과 RLS를 그대로 유지한다. custom domain·site-wide Access·메일 제공자는 미정이며 이번 연결만으로 설정했다고 표시하지 않는다.
 
 [공식 근거](../sources/SRC-045-cloudflare-agent-setup.md) · [현재 결과](../../raw/research/2026-10-04-cloudflare-setup.json) · [배포/보안](../product/deployment-security.md) · [남은 작업](../product/remaining-work.md)
+
+## Pages 제한 인증의 현재 결과
+
+Wrangler 로그인/계정 확인에 성공했다. 실제 scope는 user:read/account:read/pages:write/offline_access 네 개다. 계정 전체 관리 권한을 CLI에 추가하지 않았다. Pages project 목록은 빈 배열이었고 생성 요청은 이메일 인증 필요(API8000077)로 거부됐다. 이메일 인증 후 한 번 다시 진행한다. 원격 URL/배포/Auth site_url은 아직 없다. 첫 생성에서 CLI4.147.0이 Workers로 자동 위임해 entrypoint 오류가 나, 설치된 코드의 create force 의미를 확인하고 직접 Pages 생성만 선택했다. 삭제/덮어쓰기/권한 검토 우회가 아니다. [불변 확인](../../raw/research/2026-10-04-pages-scoped-auth.json).

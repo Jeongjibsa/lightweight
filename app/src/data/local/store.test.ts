@@ -340,3 +340,174 @@ it("백업 입력의 정확한 10MiB UTF-8 경계를 지키며 거부해도 원�
   expect(() => store.parseBackup(multibyte)).toThrow("10MiB");
   expect(await store.backup(owner)).toEqual(before);
 });
+
+describe("이전 기록 재사용·대체·종료 수정", () => {
+  async function history() {
+    const s = await plannedSession();
+    for (const [index, set] of s.sets.entries())
+      await store.updateSet(
+        owner,
+        s.id,
+        set.id,
+        { load: 20 + index * 5, reps: 10 - index, rir: 2 },
+        true,
+      );
+    return store.endSession(owner, s.id);
+  }
+  it("완료된 과거를 새 ID/현재 설정의 계획으로 복사하고 동시 재시작은 하나만 만든다", async () => {
+    const prior = await history();
+    const before = await database.sessions.get(prior.id);
+    const profile = (await database.profiles.get(owner))!;
+    await store.saveProfile(owner, {
+      ...profile,
+      unit: "lb",
+      timeZone: "America/Los_Angeles",
+    });
+    const count = await database.outbox.count();
+    const [a, b] = await Promise.all([
+      store.repeatSession(owner, prior.id),
+      store.repeatSession(owner, prior.id),
+    ]);
+    expect(a.id).toBe(b.id);
+    expect(a.id).not.toBe(prior.id);
+    expect(a).toMatchObject({
+      status: "active",
+      endedAt: null,
+      timeZone: "America/Los_Angeles",
+      localDate: "2026-10-03",
+    });
+    expect(
+      a.sets.every(
+        (s) => s.completedAt === null && s.rir === null && s.unit === "lb",
+      ),
+    ).toBe(true);
+    expect(a.sets[0]!.load).toBeCloseTo(44.092452, 5);
+    expect(a.sets.map((s) => s.id)).not.toEqual(prior.sets.map((s) => s.id));
+    expect(await database.sessions.get(prior.id)).toEqual(before);
+    expect(await database.outbox.count()).toBe(count + 1);
+    await expect(store.repeatSession(other, prior.id)).rejects.toThrow(
+      "현재 프로필",
+    );
+  });
+  it("같은 조건의 이전 값을 빈 입력에만 채우고 완료·RIR·현재 입력과 세트 순서를 보존한다", async () => {
+    const prior = await history();
+    const active = await plannedSession();
+    await store.updateSet(
+      owner,
+      active.id,
+      active.sets[0]!.id,
+      { load: 0, reps: 5 },
+      true,
+    );
+    await store.updateSet(owner, active.id, active.sets[1]!.id, {
+      load: 30,
+      rir: 1,
+    });
+    const first = (await database.sessions.get(active.id))!.sets[0];
+    const next = await store.reusePreviousValues(
+      owner,
+      active.id,
+      active.sets[0]!.exercise.id,
+    );
+    expect(next.sets[0]).toEqual(first);
+    expect(next.sets[1]).toMatchObject({
+      load: 30,
+      reps: 9,
+      rir: 1,
+      completedAt: null,
+    });
+    expect(next.sets[2]).toMatchObject({
+      load: 30,
+      reps: 8,
+      rir: null,
+      completedAt: null,
+    });
+    expect(await database.sessions.get(prior.id)).toEqual(prior);
+    await expect(
+      store.reusePreviousValues(other, active.id, active.sets[0]!.exercise.id),
+    ).rejects.toThrow();
+    await store.tombstone(owner, "session", prior.id);
+    const before = await database.sessions.get(active.id);
+    const count = await database.outbox.count();
+    await expect(
+      store.reusePreviousValues(owner, active.id, active.sets[0]!.exercise.id),
+    ).rejects.toThrow("이전 수행 기록");
+    expect(await database.sessions.get(active.id)).toEqual(before);
+    expect(await database.outbox.count()).toBe(count);
+  });
+  it("종목 교체는 미완료 입력만 비우고 완료한 기존 운동·ID·당시 루틴을 보존한다", async () => {
+    const active = await plannedSession();
+    const marked = await store.updateSet(
+      owner,
+      active.id,
+      active.sets[0]!.id,
+      { load: 20, reps: 10 },
+      true,
+    );
+    const next = await store.replaceExercise(
+      owner,
+      active.id,
+      active.sets[0]!.exercise.id,
+      catalog[8]!,
+    );
+    expect(next.sets[0]).toEqual(marked.sets[0]);
+    expect(next.routineSnapshot).toEqual(active.routineSnapshot);
+    expect(
+      next.sets
+        .slice(1)
+        .every(
+          (s) =>
+            s.exercise.id === catalog[8]!.id &&
+            s.load === null &&
+            s.reps === null &&
+            s.completedAt === null,
+        ),
+    ).toBe(true);
+    expect(next.sets.map((s) => s.id)).toEqual(active.sets.map((s) => s.id));
+    await expect(
+      store.replaceExercise(other, active.id, catalog[8]!.id, catalog[0]!),
+    ).rejects.toThrow();
+  });
+  it("종료 수정은 시각·완료·원본 snapshot을 보존하고 오래된 수정/유효하지 않은 입력을 rollback한다", async () => {
+    const prior = await history();
+    const set = prior.sets[0]!;
+    const patch = {
+      load: 40,
+      reps: 6,
+      seconds: null,
+      rir: 1,
+      kind: set.kind,
+      side: set.side,
+    };
+    const corrected = await store.correctSet(
+      owner,
+      prior.id,
+      set.id,
+      prior.revision,
+      patch,
+    );
+    expect(corrected.sets[0]).toMatchObject({
+      ...patch,
+      completedAt: set.completedAt,
+      id: set.id,
+    });
+    expect(corrected.endedAt).toBe(prior.endedAt);
+    expect(corrected.startedAt).toBe(prior.startedAt);
+    expect(corrected.routineSnapshot).toEqual(prior.routineSnapshot);
+    const count = await database.outbox.count();
+    await expect(
+      store.correctSet(owner, prior.id, set.id, prior.revision, patch),
+    ).rejects.toThrow("다른 곳");
+    await expect(
+      store.correctSet(owner, prior.id, set.id, corrected.revision, {
+        ...patch,
+        reps: null,
+      }),
+    ).rejects.toThrow();
+    await expect(
+      store.correctSet(other, prior.id, set.id, corrected.revision, patch),
+    ).rejects.toThrow();
+    expect(await database.sessions.get(prior.id)).toEqual(corrected);
+    expect(await database.outbox.count()).toBe(count);
+  });
+});

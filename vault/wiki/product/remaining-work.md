@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T20:22:34+09:00"
+  at: "2026-10-04T20:32:03+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -86,12 +86,30 @@ sources:
   - id: "gzip-check"
     resource: "../../raw/research/2026-10-04-compressed-backup-verification.json"
     title: "실행"
+  - id: "record-reuse"
+    resource: "../operations/record-reuse.md"
+    title: "재사용 계약"
+  - id: "record-check"
+    resource: "../../raw/research/2026-10-04-record-reuse-verification.json"
+    title: "실행"
+  - id: "pages-scope"
+    resource: "../../raw/research/2026-10-04-pages-scoped-auth.json"
+    title: "Pages 연결 확인"
 version: "0.3.3"
 approval_status: "proposal"
 change_id: "CHG-0017"
 ---
 
 # 현재 구현에서 운동 MVP까지 남은 작업
+
+## 기록 편의와 Pages 연결 후속 — 2026-10-04
+
+이전 값의 빈 입력 채우기·종료 운동 다시 시작·미완료 종목 교체·종료 세트 명시 수정/CAS를 구현했다. 원본/완료 시각·ID/snapshot 보존, 현재 단위/시간대/설정, 수정 후 즉시 리포트 재계산을 확인했다.72개·browser20·새6회·lint/build/types/format/artifact24 통과. 최초 browser2개와 DOM selector 실패 증거를 보존했다. [계약](../operations/record-reuse.md)·[실행](../../raw/research/2026-10-04-record-reuse-verification.json).
+
+별도 대화의 CONV0016/CHG0017 문서는 유지했다. Wrangler OAuth의 실제 권한은 Pages write/account+user read/offline_access이며 intended account와 일치했다. 신규 프로젝트 생성은 CLI의 자동 Workers 전환 실패 후 직접 Pages 생성으로 바꿨으나, API8000077 이메일 인증 관문으로 거부됐다. 리소스/HTTPS는 미생성·미배포, 사용자 이메일 인증 답변 pending이다. [현재 확인](../../raw/research/2026-10-04-pages-scoped-auth.json). MCP 인증과 배포 CLI 인증을 구별한다.
+
+LOG03/04의 정렬/메모/삭제 복구·장비 식별, 실Auth/동기화·SCI·실제 iPhone·운영 제공 관문은 남는다. 다음은 계정 준비 전 진행 가능한 리포트 관찰/충분성 및 공개 콘텐츠 gate다. 기존 운동 우선·식단/3D 후순위와 app0.2.0/schema2는 유지한다.
+
 
 ## CONV-0016 Cloudflare 설정 확인 후 — 2026-10-04
 

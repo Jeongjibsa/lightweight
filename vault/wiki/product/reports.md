@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T02:15:39+09:00"
+  at: "2026-10-04T20:32:03+09:00"
 sources:
   - id: "volume"
     resource: "../sources/SRC-004-volume-frequency.md"
@@ -29,6 +29,12 @@ sources:
   - id: "volume-mvp"
     resource: "volume-history-mvp.md"
     title: "단계/계산"
+  - id: "record-reuse"
+    resource: "../operations/record-reuse.md"
+    title: "재사용 계약"
+  - id: "record-check"
+    resource: "../../raw/research/2026-10-04-record-reuse-verification.json"
+    title: "실행"
 ---
 
 # 개인화 리포트와 계산 계약
@@ -79,3 +85,7 @@ FR-07·FR-09. [기획서](prd.md). 관찰 사실/기간 → 비교 조건·불�
 ## CONV-0009 볼륨·추이·오늘 안내
 
 [새 MVP 계약](volume-history-mvp.md)에 FR-14/15와 REP-04~06/SCI-03B를 연결했다. 관찰 계산/그래프와 과거 수행량 참고부터 제공하고 자동 증량/권장 세트는 충분성/노력/불편감·전문 검토 이후다. CONV-0006의 프로젝트 없음 표기는 당시 이력이며 현재 Supabase 연결 상태는 [진행 보고](implementation-progress.md)를 따른다.
+
+## 종료 수정과 현재 재계산
+
+실제 browser에서20kg×8 기록을40kg×6으로 명시 수정한 뒤 같은 조건 볼륨240kg·회로 바뀌는 것을 확인했다. 완료/시각은 그대로이며 준비 세트 변경은 본세트 집계에서 제외된다. 현재 리포트는 liveQuery의 최신 기록을 계산하므로 오래된 저장 report를 노출하지 않는다. 저장 report/충분성/정책 version·검토 매핑은 후속이다. [재사용/수정 계약](../operations/record-reuse.md).

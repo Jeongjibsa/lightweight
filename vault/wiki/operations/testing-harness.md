@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T17:15:45+09:00"
+  at: "2026-10-04T20:32:03+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
@@ -68,6 +68,9 @@ sources:
   - id: "gzip"
     resource: "compressed-backup.md"
     title: "압축 복구 계약"
+  - id: "reuse"
+    resource: "record-reuse.md"
+    title: "재사용 계약"
 version: "0.5.1"
 approval_status: "current-audit-and-proposal"
 change_id: "CHG-0014"
@@ -238,3 +241,7 @@ HAR-02는 in_progress다. DOM 과업 기반을 만들었지만 backup/Auth 전�
 ## 압축 백업 후속
 
 [새 gzip 복구 계약](compressed-backup.md)에서66개·browser18·새2×3회6회를 확인했다. 기존16과업에 새24,000세트 gzip 독립context 복구/CRC거부 두 엔진을 추가했다. 기존큰JSON검사는 유지한다. 첫 fixture.tables 오참조 실패와 이후 success는 각 runID로 보존한다. 실제 Auth/iPhone·physical quota는 별도다.
+
+## 재사용/종료 수정 회귀
+
+[새 기록 계약](record-reuse.md)에서72개·browser20·새6회를 확인했다. 실제 UI→다운로드/원본 비교→볼륨 재계산→repeat/reuse/replace/reload를 두 엔진에 고정했다. source/owner/동시 시작/stale revision/잘못된 완료 입력은 integration으로 검사한다. 최초 fixture/selector 실패를 고유 ID와 로그 hash로 보존한다. 실제 계정/iPhone은 별도다.

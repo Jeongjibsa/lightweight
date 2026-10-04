@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T13:35:43+09:00"
+  at: "2026-10-04T20:32:03+09:00"
 sources:
   - id: "responsive-local-request"
     resource: "../../raw/conversations/2026-10-03-006.md"
@@ -23,6 +23,12 @@ sources:
   - id: "design-request"
     resource: "../../raw/conversations/2026-10-04-010.md"
     title: "전체 Mantine/Geist/하단 UX 요구"
+  - id: "record-reuse"
+    resource: "../operations/record-reuse.md"
+    title: "재사용 계약"
+  - id: "record-check"
+    resource: "../../raw/research/2026-10-04-record-reuse-verification.json"
+    title: "실행"
 ---
 
 # 루틴과 간편 운동 기록
@@ -67,3 +73,7 @@ kg/lb 전환에도 원 입력과 정규화 값 보존. 유효한 0과 결측 구
 ## CONV-0010 UI/UX 변경
 
 오늘 시작/재개·루틴 행 바로 시작·운동 행 한 번 추가·새 루틴 연속 선택·세트 기본 입력과 상세 Accordion·운동 add/end dock. 데이터 영향 확인은 보존하고 이전 값/설정 snapshot·outbox 계약을 유지한다. [디자인 규칙](design-system.md) · [감사](design-audit.md).
+
+## 현재 재사용·수정 증분
+
+[재사용 계약](../operations/record-reuse.md)을 적용했다. 이전 값을 명시 불러오고 종료 운동을 오늘 계획으로 복사하며, 세션 안의 미완료 종목만 교체할 수 있다. 종료 기록은 명시 수정/CAS로 완료·시각을 보존하고 리포트를 다시 계산한다. 기존 계획 정렬/메모·삭제 복구·세밀한 장비 조건과 실제iPhone은 후속이다.

@@ -115,7 +115,11 @@
     "raw/conversations/2026-10-04-016.md": "af0dc45aaa1332d906248837966c46d7ef1d3609457f900b333f91e5bee135f0",
     "raw/research/2026-10-04-cloudflare-setup-recheck.json": "7598de7bd462e35a7bab51eb0a83c7f5b4ace4b109b5b20c7474637f8435fc4c",
     "history/changes/CHG-0017.md": "4e7834a2aa158ce87ce798d813c6e01c8d29494f7a65a51c544c0284dc820a70",
-    "history/versions/prd-v0.8.2.md": "9b81c7ba9959f1b3226962a60ecdcdafcb10987cd00843626511d050fb02534d"
+    "history/versions/prd-v0.8.2.md": "9b81c7ba9959f1b3226962a60ecdcdafcb10987cd00843626511d050fb02534d",
+    "raw/research/2026-10-04-record-reuse-verification.json": "24e4e96ed854cda5b00a61c23e6eb81f03aabd82048e5f5f65d88d8c5052cd0d",
+    "raw/research/2026-10-04-pages-scoped-auth.json": "4a1bad9f3acd0bd45ea85cf2d90202ae3b1fb4a376287df66cae8c5ed7e68d7d",
+    "history/versions/prd-v0.8.3.md": "c11e308a38ad72e86df9fddcbed3af891c67c97b6387e8accbd982262c22ab2d",
+    "history/changes/CHG-0018.md": "a8ffeded9d13a81f875a16fcbda590c9ac8baeabfd5ac3944f3a696de68ce35d"
   },
   "updated_at": "2026-10-04T20:28:29+09:00"
 }

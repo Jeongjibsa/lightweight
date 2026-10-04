@@ -131,3 +131,82 @@ it("중량 결측은 완료하지 않으며 오류를 0kg로 수정한 뒤 단�
   );
   expect((await db.sessions.get(session.id))!.sets).toHaveLength(1);
 });
+
+it("종료 기록의 명시 수정은 완료/시각을 유지하며 실제 입력과 DB를 갱신한다", async () => {
+  await store.updateSet(
+    owner,
+    session.id,
+    session.sets[0]!.id,
+    { load: 20, reps: 10 },
+    true,
+  );
+  const ended = await store.endSession(owner, session.id);
+  const user = userEvent.setup();
+  render(<Harness />);
+  await user.click(
+    await screen.findByRole("button", {
+      name: "바벨 스쿼트 1세트 기록 수정",
+      exact: true,
+    }),
+  );
+  const load = screen.getByLabelText("수정할 중량 · kg");
+  await user.clear(load);
+  await user.type(load, "40");
+  const reps = screen.getByLabelText("수정할 횟수");
+  await user.clear(reps);
+  await user.type(reps, "6");
+  await user.click(screen.getByRole("combobox", { name: "수정할 세트 종류" }));
+  await user.click(screen.getByRole("option", { name: "준비 세트" }));
+  await user.type(screen.getByLabelText("수정할 RIR · 선택"), "2");
+  await user.click(
+    screen.getByRole("button", { name: "수정 기록 저장", exact: true }),
+  );
+  await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
+  expect((await db.sessions.get(session.id))!.sets[0]).toMatchObject({
+    load: 40,
+    reps: 6,
+    kind: "warmup",
+    rir: 2,
+    completedAt: ended.sets[0]!.completedAt,
+  });
+  expect((await db.sessions.get(session.id))!.endedAt).toBe(ended.endedAt);
+  expect((screen.getByLabelText(loadLabel) as HTMLInputElement).value).toBe(
+    "40",
+  );
+  expect((screen.getByLabelText(repsLabel) as HTMLInputElement).value).toBe(
+    "6",
+  );
+  await user.click(screen.getByRole("button", { name: "준비 세트 · 상세" }));
+  expect(
+    (screen.getByLabelText("바벨 스쿼트 1세트 RIR") as HTMLInputElement).value,
+  ).toBe("2");
+});
+it("이전 값 불러오기는 화면과 기기 입력을 채우고 오늘 완료로 집계하지 않는다", async () => {
+  await store.updateSet(
+    owner,
+    session.id,
+    session.sets[0]!.id,
+    { load: 25, reps: 8 },
+    true,
+  );
+  const source = await store.endSession(owner, session.id);
+  session = await store.startSession(owner, source.routineSnapshot!.id);
+  const user = userEvent.setup();
+  render(<Harness />);
+  await user.click(
+    await screen.findByRole("button", {
+      name: "이전 값 불러오기",
+      exact: true,
+    }),
+  );
+  await waitFor(() =>
+    expect((screen.getByLabelText(loadLabel) as HTMLInputElement).value).toBe(
+      "25",
+    ),
+  );
+  expect((screen.getByLabelText(repsLabel) as HTMLInputElement).value).toBe(
+    "8",
+  );
+  expect((await db.sessions.get(session.id))!.sets[0]!.completedAt).toBeNull();
+  expect(await db.sessions.get(source.id)).toEqual(source);
+});

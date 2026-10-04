@@ -694,6 +694,8 @@ export default function App() {
             session={session}
             run={run}
             onBack={() => setSessionId(null)}
+            onRepeat={setSessionId}
+            history={workspace.sessions}
           />
         ) : screen === "today" ? (
           <TodayView

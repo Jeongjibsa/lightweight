@@ -15,7 +15,15 @@ import {
   Title,
 } from "@mantine/core";
 import { useEffect, useState } from "react";
-import { Check, Plus, Timer, Flag, ArrowLeft } from "lucide-react";
+import {
+  Check,
+  Plus,
+  Timer,
+  Flag,
+  ArrowLeft,
+  Pencil,
+  RotateCcw,
+} from "lucide-react";
 import { loadModes, type Session, type TrainingSet } from "../domain/models";
 import { useTraining } from "../context/training";
 import { ExercisePicker } from "./exercises";
@@ -26,11 +34,13 @@ function SetRow({
   index,
   session,
   run,
+  onEdit,
 }: {
   set: TrainingSet;
   index: number;
   session: Session;
   run: Run;
+  onEdit?: () => void;
 }) {
   const { store } = useTraining();
   const [load, setLoad] = useState(set.load === null ? "" : String(set.load));
@@ -42,6 +52,21 @@ function SetRow({
   const [kind, setKind] = useState(set.kind);
   const [side, setSide] = useState(set.side);
   const [busy, setBusy] = useState(false);
+  useEffect(
+    () => setLoad(set.load === null ? "" : String(set.load)),
+    [set.load],
+  );
+  useEffect(
+    () => setReps(set.reps === null ? "" : String(set.reps)),
+    [set.reps],
+  );
+  useEffect(
+    () => setSeconds(set.seconds === null ? "" : String(set.seconds)),
+    [set.seconds],
+  );
+  useEffect(() => setKind(set.kind), [set.kind]);
+  useEffect(() => setSide(set.side), [set.side]);
+  useEffect(() => setRir(set.rir === null ? "" : String(set.rir)), [set.rir]);
   const completed = !!set.completedAt;
   const readOnly = session.status !== "active";
   const timed = set.exercise.loadMode === "timed";
@@ -220,7 +245,148 @@ function SetRow({
           </Accordion.Panel>
         </Accordion.Item>
       </Accordion>
+      {onEdit && (
+        <Button
+          size="xs"
+          variant="subtle"
+          leftSection={<Pencil size={14} />}
+          onClick={onEdit}
+          mt="xs"
+          aria-label={`${prefix} 기록 수정`}
+        >
+          기록 수정
+        </Button>
+      )}
     </Box>
+  );
+}
+
+function SetCorrection({
+  set,
+  session,
+  revision,
+  run,
+  onClose,
+}: {
+  set: TrainingSet;
+  session: Session;
+  revision: number;
+  run: Run;
+  onClose: () => void;
+}) {
+  const { store } = useTraining();
+  const [load, setLoad] = useState(set.load === null ? "" : String(set.load));
+  const [reps, setReps] = useState(set.reps === null ? "" : String(set.reps));
+  const [seconds, setSeconds] = useState(
+    set.seconds === null ? "" : String(set.seconds),
+  );
+  const [rir, setRir] = useState(set.rir === null ? "" : String(set.rir));
+  const [kind, setKind] = useState(set.kind);
+  const [side, setSide] = useState(set.side);
+  const [busy, setBusy] = useState(false);
+  const number = (text: string) => (text === "" ? null : Number(text));
+  return (
+    <Modal
+      title="세트 기록 수정"
+      onClose={() => {
+        if (!busy) onClose();
+      }}
+    >
+      <Stack gap="md">
+        <Text size="sm">
+          {set.exercise.name} · {set.completedAt ? "완료 세트" : "미완료 세트"}.
+          수행 시각과 완료 여부는 유지합니다.
+        </Text>
+        {set.exercise.loadMode === "timed" ? (
+          <TextInput
+            label="수정할 시간 · 초"
+            type="number"
+            disabled={busy}
+            value={seconds}
+            onChange={(e) => setSeconds(e.target.value)}
+          />
+        ) : (
+          <SimpleGrid cols={2}>
+            <TextInput
+              label={`수정할 중량 · ${set.unit}`}
+              type="number"
+              disabled={busy}
+              inputMode="decimal"
+              value={load}
+              onChange={(e) => setLoad(e.target.value)}
+            />
+            <TextInput
+              label="수정할 횟수"
+              type="number"
+              disabled={busy}
+              inputMode="numeric"
+              value={reps}
+              onChange={(e) => setReps(e.target.value)}
+            />
+          </SimpleGrid>
+        )}
+        <SimpleGrid cols={{ base: 1, xs: 3 }}>
+          <Select
+            label="수정할 세트 종류"
+            disabled={busy}
+            value={kind}
+            onChange={(v) => v && setKind(v as TrainingSet["kind"])}
+            data={[
+              { value: "working", label: "본세트" },
+              { value: "warmup", label: "준비 세트" },
+            ]}
+          />
+          <Select
+            label="수정할 좌우"
+            disabled={busy}
+            value={side}
+            onChange={(v) => v && setSide(v as TrainingSet["side"])}
+            data={[
+              { value: "both", label: "양쪽 / 해당 없음" },
+              { value: "left", label: "왼쪽" },
+              { value: "right", label: "오른쪽" },
+            ]}
+          />
+          <TextInput
+            label="수정할 RIR · 선택"
+            type="number"
+            disabled={busy}
+            value={rir}
+            onChange={(e) => setRir(e.target.value)}
+          />
+        </SimpleGrid>
+        <Button
+          loading={busy}
+          onClick={async () => {
+            setBusy(true);
+            if (
+              await run(
+                () =>
+                  store.correctSet(
+                    session.ownerId,
+                    session.id,
+                    set.id,
+                    revision,
+                    {
+                      load: number(load),
+                      reps: number(reps),
+                      seconds: number(seconds),
+                      rir: number(rir),
+                      kind,
+                      side,
+                    },
+                  ),
+                "수정한 기록을 저장했습니다.",
+              )
+            )
+              onClose();
+            setBusy(false);
+          }}
+        >
+          수정 기록 저장
+        </Button>
+      </Stack>
+    </Modal>
   );
 }
 
@@ -259,15 +425,26 @@ export function WorkoutView({
   session,
   run,
   onBack,
+  onRepeat,
+  history,
 }: {
   session: Session;
   run: Run;
   onBack: () => void;
+  onRepeat?: (id: string) => void;
+  history?: Session[];
 }) {
   const { store } = useTraining();
   const [picker, setPicker] = useState(false);
   const [ending, setEnding] = useState(false);
   const [cancel, setCancel] = useState(false);
+  const [replacement, setReplacement] = useState<
+    TrainingSet["exercise"] | null
+  >(null);
+  const [correction, setCorrection] = useState<{
+    set: TrainingSet;
+    revision: number;
+  } | null>(null);
   const exercises = [
     ...new Map(
       session.sets.map((set) => [set.exercise.id, set.exercise]),
@@ -343,6 +520,11 @@ export function WorkoutView({
                 index={index}
                 session={session}
                 run={run}
+                onEdit={
+                  active
+                    ? undefined
+                    : () => setCorrection({ set, revision: session.revision })
+                }
               />
             ))}
           {active && (
@@ -361,6 +543,48 @@ export function WorkoutView({
               세트 추가
             </Button>
           )}
+          {active &&
+            session.sets.some(
+              (s) => s.exercise.id === exercise.id && !s.completedAt,
+            ) && (
+              <Group mt="sm">
+                {(!history ||
+                  history.some(
+                    (s) =>
+                      s.ownerId === session.ownerId &&
+                      !s.deletedAt &&
+                      s.endedAt &&
+                      s.sets.some(
+                        (t) => t.exercise.id === exercise.id && t.completedAt,
+                      ),
+                  )) && (
+                  <Button
+                    variant="subtle"
+                    size="xs"
+                    onClick={() =>
+                      void run(
+                        () =>
+                          store.reusePreviousValues(
+                            session.ownerId,
+                            session.id,
+                            exercise.id,
+                          ),
+                        "비어 있는 입력에 이전 수행 값을 불러왔습니다.",
+                      )
+                    }
+                  >
+                    이전 값 불러오기
+                  </Button>
+                )}
+                <Button
+                  variant="subtle"
+                  size="xs"
+                  onClick={() => setReplacement(exercise)}
+                >
+                  다른 운동으로 교체
+                </Button>
+              </Group>
+            )}
         </Paper>
       ))}
       {active && (
@@ -393,10 +617,62 @@ export function WorkoutView({
         </>
       )}
       {!active && (
-        <Text size="xs" c="dimmed">
-          당시 설정과 수행한 세트를 보존한 기록입니다. 리포트에는 완료한
-          본세트만 집계합니다.
-        </Text>
+        <Stack gap="sm">
+          <Button
+            leftSection={<RotateCcw size={17} />}
+            onClick={() =>
+              void run(async () => {
+                const next = await store.repeatSession(
+                  session.ownerId,
+                  session.id,
+                );
+                if (onRepeat) onRepeat(next.id);
+                else onBack();
+              })
+            }
+          >
+            이 운동 다시 시작
+          </Button>
+          <Text size="xs" c="dimmed">
+            당시 설정과 수행한 세트를 보존한 기록입니다. 리포트에는 완료한
+            본세트만 집계합니다. 다시 시작하면 수행한 세트의 입력값을 계획으로
+            가져오며 오늘의 완료로 집계하지 않습니다.
+          </Text>
+        </Stack>
+      )}
+      {replacement && (
+        <Modal title="다른 운동으로 교체" onClose={() => setReplacement(null)}>
+          <Stack gap="sm">
+            <Text size="sm">
+              완료 세트는 보존하고 미완료 세트만 바꿉니다. 새 운동의 입력값은
+              비웁니다.
+            </Text>
+            <ExercisePicker
+              onPick={async (exercise) => {
+                if (
+                  await run(() =>
+                    store.replaceExercise(
+                      session.ownerId,
+                      session.id,
+                      replacement.id,
+                      exercise,
+                    ),
+                  )
+                )
+                  setReplacement(null);
+              }}
+            />
+          </Stack>
+        </Modal>
+      )}
+      {correction && (
+        <SetCorrection
+          set={correction.set}
+          revision={correction.revision}
+          session={session}
+          run={run}
+          onClose={() => setCorrection(null)}
+        />
       )}
       {picker && (
         <Modal title="운동 추가" onClose={() => setPicker(false)}>

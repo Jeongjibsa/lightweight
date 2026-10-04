@@ -17,3 +17,4 @@
 - [CHG-0015 Cloudflare 연결 준비](CHG-0015.md)
 - [CHG0016 압축 백업](CHG-0016.md)
 - [CHG-0017 Cloudflare 인증 현황](CHG-0017.md) — PRD0.8.1→0.8.2·cf 생략 사용자 선택.
+- [CHG0018 재사용/수정](CHG-0018.md)

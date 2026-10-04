@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T20:22:34+09:00"
+  at: "2026-10-04T20:32:03+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -83,6 +83,9 @@ sources:
   - id: "cf-setup"
     resource: "../operations/cloudflare-setup.md"
     title: "연결 운영"
+  - id: "pages-scope"
+    resource: "../../raw/research/2026-10-04-pages-scoped-auth.json"
+    title: "Pages 연결 확인"
 ---
 
 # 미결 사항과 다음 대화
@@ -140,3 +143,7 @@ FR-17은 사용자 명시 3D 애니메이션 요구이며 지금은 검토만/�
 ## CONV-0016 현재 인증과 선택
 
 `codex mcp login cloudflare`의 성공과 현재 main 계정 읽기 HTTP200을 확인해 main MCP의 pending을 갱신했다. 사용자가 beta cf 생략·기존 Wrangler 유지를 명시했다. 특화 MCP3개와 Wrangler 인증·Q-16 고정 origin/실제 배포·Q-15 앱 Auth는 각각 확인이 남았다. [실행](../../raw/research/2026-10-04-cloudflare-setup-recheck.json) · [운영](../operations/cloudflare-setup.md).
+
+## 현재 외부 관문
+
+Wrangler Pages 제한 인증은 성공했다. Cloudflare Pages project 생성은 API8000077 이메일 인증 필요로 거부됐으며 사용자 인증 완료 답변을 기다린다. 실제 앱 Auth 등록/비밀번호는 사용자가 준비하며 대화로 수집하지 않는다. 콘텐츠 전문/전문가·자산 권한과 실제 iPhone 관문을 자동 검사 완료로 대체하지 않는다.

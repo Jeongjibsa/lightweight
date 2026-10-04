@@ -118,3 +118,7 @@ Wrangler4.147.0과 `wrangler.jsonc`를 사용합니다. `npm run pages:check`는
 ## 큰 백업 복구
 
 JSON10MiB 이하를 기존 형식으로 내보내고 초과 기록은 자동 .json.gz로 보관합니다. 파일10MiB/해제 JSON64MiB 한도·gzip손상/UTF8/schema를 확인한 뒤 기존 명시 atomic restore를 사용합니다.24,000세트 실제 압축 다운로드→새context 복구를 두 엔진/3회씩 확인했습니다. gzip은 암호화가 아니며 실제iPhone·physicalquota/eviction/실Auth·64MiB초과 분할은 남았습니다. [압축 계약](../vault/wiki/operations/compressed-backup.md).
+
+## 기록 재사용과 수정
+
+이전 빈 값 불러오기·종료 운동 재시작·미완료 종목 교체·종료 세트 명시 수정/CAS를 지원합니다. 과거 원본/시각을 보존하고 리포트를 다시 계산합니다.72개·browser20·새6회 통과. [계약](../vault/wiki/operations/record-reuse.md). Pages 제한 Wrangler 로그인은 성공했으나 project 생성이 이메일 인증 필요로 거부되어 아직 배포하지 않았습니다.

@@ -1,0 +1,82 @@
+{
+  "type": "Verification Record",
+  "title": "Previous values, repeat, replacement, ended correction",
+  "generated": {
+    "by": "codex/gpt-6",
+    "at": "2026-10-04T20:32:03+09:00"
+  },
+  "immutable": true,
+  "checks": {
+    "unit": 23,
+    "integration": 30,
+    "ui": 19,
+    "total": 72,
+    "files": 14,
+    "lint": "passed",
+    "build": "passed",
+    "e2e_typecheck": "passed",
+    "format": "passed",
+    "pages_artifact": "24 files passed"
+  },
+  "browser": [
+    {
+      "run_id": "20261004T112308632Z-263ae872",
+      "stats": {
+        "startTime": "2026-10-04T11:23:08.939Z",
+        "duration": 118576.511,
+        "expected": 18,
+        "skipped": 0,
+        "unexpected": 2,
+        "flaky": 0
+      }
+    },
+    {
+      "run_id": "20261004T112546915Z-19d19d7b",
+      "stats": {
+        "startTime": "2026-10-04T11:25:47.242Z",
+        "duration": 64839.238,
+        "expected": 20,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    {
+      "run_id": "20261004T112719876Z-260961f0",
+      "stats": {
+        "startTime": "2026-10-04T11:27:20.183Z",
+        "duration": 20464.459,
+        "expected": 6,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    }
+  ],
+  "first_failures": [
+    "New browser fixture referenced dumbbell row absent from actual catalog: two engines failed with retained screenshot/trace/environment; replaced fixture with existing cable row. Product correction and volume succeeded before matcher.",
+    "New UI detail assertion used textbox instead of actual combobox, then ambiguous label also matched listbox. Fixed to inspected combobox role; logs retained, no product failure hidden."
+  ],
+  "contracts": [
+    "Reuse same exercise/name/group/equipment/load mode/side/kind, latest own ended nondeleted completed rows; fill empty only; normalize kg/lb, do not copy effort/completion",
+    "Repeat performed rows with new IDs/current settings/unit/timezone, no completion/RIR; source untouched; concurrent starts one active/outbox",
+    "Replace unfinished rows only, clear incompatible input values; completed rows and old routine snapshot preserved",
+    "Ended correction requires expected session revision; preserve identity/clock/snapshots/completion; invalid/stale/foreign writes rollback with queue",
+    "Actual browser edited20kg*8 to40kg*6; report240kg·reps; repeat/reuse/replace/reload and downloaded past record unchanged"
+  ],
+  "observed_screenshot": "390px WebKit ended correction screenshot inspected; no clipping of numeric row/edit action; scroll-based controls, real iPhone not tested",
+  "limits": [
+    "No actual iPhone or real account Auth/RLS",
+    "No evidence-based replacement recommendation or auto progression",
+    "LOG03/04 full ordering/memos/undeletion and equipment identity remain",
+    "App0.2.0/schema2; cloud API/schema unchanged"
+  ],
+  "log_sha256": {
+    "lightweight-reuse-check4.log": "6878bc554b93c8cb8e42357d6d76d3ae9bd24e08a05e157e957e34413fd96b16",
+    "lightweight-reuse-check5.log": "b3f476472961296c8bcf9462e836e5ed30e3a1b0d0e937ed5ec69d251d1bb993",
+    "lightweight-reuse-check6.log": "4a0cef0801c22941db6020ddaba8e9afde1ff9e82bb4ba97a50e97391bf6ee81",
+    "lightweight-reuse-e2e-first.log": "af4b1b50f795af74ccb318c8a11a6b83a2713f3fba5431a6dbc4c90768d71475",
+    "lightweight-reuse-e2e-fixed.log": "466a5f952b149c3735bde3decdbcab8e737145c1a5e082b43793a4785a1900f9",
+    "lightweight-reuse-e2e-repeat.log": "110909deb819b0e4fd4b6a339d37a9c515f691046c6694f33f6af25a8b1c815f"
+  }
+}

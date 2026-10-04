@@ -24,7 +24,9 @@ import {
   type Routine,
   type Session,
   type TrainingSet,
+  toKilograms,
 } from "../../domain/models";
+import { conditionKey } from "../../domain/volume";
 
 export class TrainingDatabase extends Dexie {
   profiles!: Table<Profile, string>;
@@ -46,6 +48,14 @@ export class TrainingDatabase extends Dexie {
 export const db = new TrainingDatabase();
 const now = () => new Date().toISOString();
 const uuid = () => crypto.randomUUID();
+function convertLoad(load: number, from: Profile["unit"], to: Profile["unit"]) {
+  if (from === to) return load;
+  return (
+    Math.round(
+      (toKilograms(load, from) / (to === "kg" ? 1 : 0.45359237)) * 1e6,
+    ) / 1e6
+  );
+}
 function requireOwner(value: { ownerId: string } | undefined, ownerId: string) {
   if (!value || value.ownerId !== ownerId)
     throw new Error("현재 프로필의 기록을 찾을 수 없습니다.");
@@ -235,7 +245,7 @@ export class TrainingStore {
   async changeSession(
     ownerId: string,
     sessionId: string,
-    change: (session: Session) => Session,
+    change: (session: Session) => Session | Promise<Session>,
   ) {
     return this.database.transaction(
       "rw",
@@ -245,7 +255,7 @@ export class TrainingStore {
         const prior = await this.database.sessions.get(sessionId);
         requireOwner(prior, ownerId);
         if (prior!.deletedAt) throw new Error("삭제한 운동 기록입니다.");
-        const changed = change(structuredClone(prior!));
+        const changed = await change(structuredClone(prior!));
         const session = sessionSchema.parse({
           ...changed,
           id: prior!.id,
@@ -258,6 +268,185 @@ export class TrainingStore {
         return session;
       },
     );
+  }
+  async reusePreviousValues(
+    ownerId: string,
+    sessionId: string,
+    exerciseId: string,
+  ) {
+    return this.changeSession(ownerId, sessionId, async (session) => {
+      if (session.status !== "active")
+        throw new Error("진행 중인 운동에서만 이전 값을 불러올 수 있습니다.");
+      const targets = session.sets.filter(
+        (s) => s.exercise.id === exerciseId && !s.completedAt,
+      );
+      const past = (
+        await this.database.sessions.where("ownerId").equals(ownerId).toArray()
+      )
+        .filter(
+          (s) =>
+            s.id !== sessionId &&
+            !s.deletedAt &&
+            s.endedAt &&
+            s.status !== "active",
+        )
+        .sort((a, b) => b.startedAt.localeCompare(a.startedAt));
+      const source = past.find((s) =>
+        s.sets.some(
+          (p) =>
+            p.completedAt &&
+            targets.some(
+              (t) => t.kind === p.kind && conditionKey(t) === conditionKey(p),
+            ),
+        ),
+      );
+      if (!source)
+        throw new Error("같은 운동 조건의 이전 수행 기록이 없습니다.");
+      const used = new Map<string, number>();
+      for (const target of session.sets.filter(
+        (s) => s.exercise.id === exerciseId,
+      )) {
+        const key = `${conditionKey(target)}-${target.kind}`;
+        const candidates = source.sets.filter(
+          (p) =>
+            p.completedAt &&
+            p.kind === target.kind &&
+            conditionKey(p) === conditionKey(target),
+        );
+        const index = used.get(key) ?? 0;
+        used.set(key, index + 1);
+        if (target.completedAt) continue;
+        const prior = candidates[index];
+        if (!prior) continue;
+        // Fill empty values only. Neither old effort nor completion is today's work.
+        if (target.load === null && prior.load !== null)
+          target.load = convertLoad(prior.load, prior.unit, target.unit);
+        target.reps ??= prior.reps;
+        target.seconds ??= prior.seconds;
+      }
+      return session;
+    });
+  }
+  async repeatSession(ownerId: string, sourceId: string) {
+    return this.database.transaction(
+      "rw",
+      this.database.profiles,
+      this.database.sessions,
+      this.database.outbox,
+      async () => {
+        const profile = await this.database.profiles.get(ownerId);
+        requireOwner(profile, ownerId);
+        const source = await this.database.sessions.get(sourceId);
+        requireOwner(source, ownerId);
+        if (
+          source!.deletedAt ||
+          !source!.endedAt ||
+          source!.status === "active"
+        )
+          throw new Error("종료한 운동 기록에서만 다시 시작할 수 있습니다.");
+        const active = await this.database.sessions
+          .where("ownerId")
+          .equals(ownerId)
+          .filter((s) => !s.deletedAt && s.status === "active")
+          .first();
+        if (active) return active;
+        const performed = source!.sets.filter((s) => s.completedAt);
+        if (!performed.length)
+          throw new Error("다시 사용할 완료 세트가 없습니다.");
+        const at = now();
+        const orders = new Map<string, number>();
+        const session = sessionSchema.parse({
+          ...source!,
+          id: uuid(),
+          revision: 1,
+          updatedAt: at,
+          deletedAt: null,
+          startedAt: at,
+          endedAt: null,
+          status: "active",
+          localDate: dateInZone(new Date(at), profile!.timeZone),
+          timeZone: profile!.timeZone,
+          preferencesSnapshot: profile!.preferences,
+          sets: performed.map((s) => {
+            const order = orders.get(s.exercise.id) ?? 0;
+            orders.set(s.exercise.id, order + 1);
+            return {
+              ...s,
+              id: uuid(),
+              order,
+              unit: profile!.unit,
+              load:
+                s.load === null
+                  ? null
+                  : convertLoad(s.load, s.unit, profile!.unit),
+              completedAt: null,
+              rir: null,
+            };
+          }),
+        });
+        await this.database.sessions.add(session);
+        await this.enqueue(ownerId, "session", session.id, session);
+        return session;
+      },
+    );
+  }
+  async replaceExercise(
+    ownerId: string,
+    sessionId: string,
+    exerciseId: string,
+    exercise: Exercise,
+  ) {
+    return this.changeSession(ownerId, sessionId, (session) => {
+      if (session.status !== "active")
+        throw new Error("진행 중인 운동에서만 종목을 교체할 수 있습니다.");
+      if (exerciseId === exercise.id)
+        throw new Error("다른 운동을 선택해주세요.");
+      const targets = session.sets.filter(
+        (s) => s.exercise.id === exerciseId && !s.completedAt,
+      );
+      if (!targets.length) throw new Error("교체할 미완료 세트가 없습니다.");
+      let order =
+        Math.max(
+          -1,
+          ...session.sets
+            .filter((s) => s.exercise.id === exercise.id)
+            .map((s) => s.order),
+        ) + 1;
+      for (const set of targets)
+        Object.assign(set, {
+          exercise,
+          order: order++,
+          load: null,
+          reps: null,
+          seconds: null,
+          rir: null,
+          side: "both",
+        });
+      return session;
+    });
+  }
+  async correctSet(
+    ownerId: string,
+    sessionId: string,
+    setId: string,
+    expectedRevision: number,
+    patch: Pick<
+      TrainingSet,
+      "load" | "reps" | "seconds" | "kind" | "side" | "rir"
+    >,
+  ) {
+    return this.changeSession(ownerId, sessionId, (session) => {
+      if (!session.endedAt || session.status === "active")
+        throw new Error("종료한 기록의 수정만 지원합니다.");
+      if (session.revision !== expectedRevision)
+        throw new Error(
+          "기록이 다른 곳에서 바뀌었습니다. 다시 열어 수정해주세요.",
+        );
+      const set = session.sets.find((s) => s.id === setId);
+      if (!set) throw new Error("세트를 찾을 수 없습니다.");
+      Object.assign(set, patch);
+      return session;
+    });
   }
   async addExercise(ownerId: string, sessionId: string, exercise: Exercise) {
     const profile = await this.database.profiles.get(ownerId);

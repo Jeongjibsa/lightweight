@@ -4,7 +4,7 @@ okf_version: "0.2"
 
 # 웨이트 트레이닝 앱 — 기획과 지식 베이스
 
-옵시디언에서 이 `vault` 폴더를 열고 시작한다. 현재 기획은 **0.8.2 브레인스토밍 초안**이다.
+옵시디언에서 이 `vault` 폴더를 열고 시작한다. 현재 기획은 **0.8.3 브레인스토밍 초안**이다.
 
 ## 먼저 읽기
 
@@ -62,3 +62,5 @@ okf_version: "0.2"
 - [Cloudflare 공식 연결/배포 운영](wiki/operations/cloudflare-setup.md) — skills16/MCP5 확인·main MCP OAuth 성공/계정 읽기HTTP200·cf 생략 선택; 특화 MCP/CLI 인증·HTTPS 배포 별도.
 
 - [압축 백업 독립 복구](wiki/operations/compressed-backup.md) —66개/18browser/새6회·10MiB초과24,000세트 복구.
+
+- [최신 기록 재사용/수정](wiki/operations/record-reuse.md) —72개/20browser/새6회·과거/시각/CAS 보존. Pages 제한 인증 성공, project 이메일 인증 대기.

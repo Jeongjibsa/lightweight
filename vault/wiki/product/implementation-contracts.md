@@ -10,7 +10,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T17:15:45+09:00"
+  at: "2026-10-04T20:32:03+09:00"
 sources:
   - id: "responsive-local-request"
     resource: "../../raw/conversations/2026-10-03-006.md"
@@ -38,6 +38,12 @@ sources:
     title: "압축 복구 계약"
   - id: "gzip-check"
     resource: "../../raw/research/2026-10-04-compressed-backup-verification.json"
+    title: "실행"
+  - id: "record-reuse"
+    resource: "../operations/record-reuse.md"
+    title: "재사용 계약"
+  - id: "record-check"
+    resource: "../../raw/research/2026-10-04-record-reuse-verification.json"
     title: "실행"
 version: "0.2.1"
 change_id: "CHG-0014"
@@ -116,3 +122,7 @@ CONV-0010에서 전 폭 하단 5개 메뉴로 변경했다. 큰 화면은 본문
 ## 압축 파일 복구 후속
 
 [압축 복구 계약](../operations/compressed-backup.md)을 따른다. 작은 JSON10MiB 한도·이전 v1 호환을 유지하고 큰 기록을 gzip파일10MiB/해제64MiB로 보관한다. schema/owner/중복을 모두 검사한 뒤 명시 atomic restore한다. cloud snapshot/DB schema와 데이터 업로드 권한을 확대하지 않는다.
+
+## 기록 재사용과 수정
+
+[기록 재사용 계약](../operations/record-reuse.md)에 따른다. 완료를 과거에서 복제하지 않으며 현재 단위로 환산한다. 종목 교체는 미완료 행의 값을 비우고 종료 수정은 captured revision과 맞을 때만 저장한다. 모든 오류는 DB/queue 원자 보존으로 검사한다.

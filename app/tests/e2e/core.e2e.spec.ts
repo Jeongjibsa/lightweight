@@ -221,3 +221,121 @@ test("E2E-06 부분:5화면×4폭 overflow/키보드 선택·Escape opener 복�
   await page.setViewportSize({ width: 390, height: 844 });
   await page.screenshot({ path: info.outputPath("settings-390.png") });
 });
+
+test("종료 기록 수정→볼륨 재계산→다시 시작·이전값·종목 교체에서 과거 기록을 보존한다", async ({
+  page,
+}, info) => {
+  await page.goto("/");
+  await configure(page);
+  await createRoutine(page, "가짜 재사용 루틴");
+  await startRoutine(page);
+  await completeSet(page, 1, "20", "8");
+  await endWorkout(page);
+  await page
+    .getByRole("button", { name: /가짜 재사용 루틴.*1\/1세트/ })
+    .click();
+  await page
+    .getByRole("button", { name: "바벨 스쿼트 1세트 기록 수정", exact: true })
+    .click();
+  const correction = page.getByRole("dialog", {
+    name: "세트 기록 수정",
+    exact: true,
+  });
+  await correction
+    .getByRole("spinbutton", { name: "수정할 중량 · kg", exact: true })
+    .fill("40");
+  await correction
+    .getByRole("spinbutton", { name: "수정할 횟수", exact: true })
+    .fill("6");
+  await correction
+    .getByRole("button", { name: "수정 기록 저장", exact: true })
+    .click();
+  await expect(correction).toBeHidden();
+  await info.attach("ended-correction.png", {
+    body: await page.screenshot(),
+    contentType: "image/png",
+  });
+  const before = (await downloadBackup(page)).data;
+  expect(before.sessions[0]!.sets[0]).toMatchObject({ load: 40, reps: 6 });
+  await navigate(page, "리포트");
+  await expect(
+    page.getByRole("cell", { name: "240 kg·회", exact: true }),
+  ).toBeVisible();
+  await navigate(page, "오늘");
+  await page
+    .getByRole("button", { name: /가짜 재사용 루틴.*1\/1세트/ })
+    .click();
+  await page
+    .getByRole("button", { name: "이 운동 다시 시작", exact: true })
+    .click();
+  await expect(
+    page.getByRole("button", { name: "운동 마치기", exact: true }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("spinbutton", {
+      name: "바벨 스쿼트 1세트 중량",
+      exact: true,
+    }),
+  ).toHaveValue("40");
+  await expect(
+    page.getByRole("spinbutton", {
+      name: "바벨 스쿼트 1세트 횟수",
+      exact: true,
+    }),
+  ).toHaveValue("6");
+  await expect(
+    page.getByRole("button", { name: "바벨 스쿼트 1세트 완료", exact: true }),
+  ).toHaveAttribute("aria-pressed", "false");
+  const during = (await downloadBackup(page)).data;
+  expect(during.sessions.find((s) => s.id === before.sessions[0]!.id)).toEqual(
+    before.sessions[0],
+  );
+  const active = during.sessions.find((s) => s.status === "active")!;
+  expect(active.id).not.toBe(before.sessions[0]!.id);
+  expect(active.sets[0]!.rir).toBeNull();
+  await navigate(page, "오늘");
+  await page
+    .getByRole("button", { name: "진행 중인 운동 이어하기", exact: true })
+    .click();
+  const load = page.getByRole("spinbutton", {
+    name: "바벨 스쿼트 1세트 중량",
+    exact: true,
+  });
+  await load.fill("");
+  await page.getByRole("heading", { name: "바벨 스쿼트", exact: true }).click();
+  await page
+    .getByRole("button", { name: "이전 값 불러오기", exact: true })
+    .click();
+  await expect(load).toHaveValue("40");
+  await page
+    .getByRole("button", { name: "다른 운동으로 교체", exact: true })
+    .click();
+  const replacement = page.getByRole("dialog", {
+    name: "다른 운동으로 교체",
+    exact: true,
+  });
+  await replacement
+    .getByRole("button", { name: "케이블 로우 추가", exact: true })
+    .click();
+  await expect(replacement).toBeHidden();
+  await expect(
+    page.getByRole("spinbutton", {
+      name: "케이블 로우 1세트 중량",
+      exact: true,
+    }),
+  ).toHaveValue("");
+  const after = (await downloadBackup(page)).data;
+  expect(after.sessions.find((s) => s.id === before.sessions[0]!.id)).toEqual(
+    before.sessions[0],
+  );
+  expect(after.sessions.find((s) => s.id === active.id)!.sets[0]).toMatchObject(
+    {
+      exercise: { name: "케이블 로우" },
+      load: null,
+      reps: null,
+      completedAt: null,
+    },
+  );
+  await page.reload();
+  expect((await downloadBackup(page)).data.sessions).toEqual(after.sessions);
+});

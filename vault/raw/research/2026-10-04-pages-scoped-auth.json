@@ -1,0 +1,37 @@
+{
+  "type": "Verification Record",
+  "title": "Pages-scoped Wrangler auth and project creation gate",
+  "generated": {
+    "by": "codex/gpt-6",
+    "at": "2026-10-04T20:32:03+09:00"
+  },
+  "immutable": true,
+  "wrangler_version": "4.147.0",
+  "login": "Successfully logged in; authenticated whoami JSON exit0; intended account matched",
+  "verified_permissions": [
+    "user:read",
+    "offline_access",
+    "account:read",
+    "pages:write"
+  ],
+  "project_list": "success, empty",
+  "project_create": [
+    {
+      "result": "failed before resource creation: automatic new Pages-to-Workers delegation; missing Worker entrypoint/assets",
+      "action": "Read installed CLI args/handler and official Pages docs; force on create explicitly keeps direct Pages, no delete/overwrite flag",
+      "reference": "https://developers.cloudflare.com/workers/wrangler/commands/pages/"
+    },
+    {
+      "result": "Cloudflare API code8000077: user email must be verified",
+      "requested_action": "Ask human to complete email verification; no verification mail/link interaction automated"
+    }
+  ],
+  "deployment": "not deployed; origin/Auth URL unconfirmed",
+  "boundaries": [
+    "Scope-limited deployment credential separate from main MCP login recorded in CONV0016",
+    "No broader denied OAuth action automated",
+    "No account names/email/token/state/code/credential capture",
+    "No user option answer inferred from resume",
+    "Usage limit not encountered; no quota reset performed"
+  ]
+}
