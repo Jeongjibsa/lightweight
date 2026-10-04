@@ -143,4 +143,6 @@ content:compile이 source registry의 검토 선언·payload/file hash/ID/근거
 
 ## 운동 중 순서 변경
 
-종목2개 이상일 때 Mantine 순서 편집에서 위/아래로 바꾸고 저장합니다. 취소·기록/완료·루틴/시각 보존·CAS/outbox rollback·빈 저장소 복원을 확인했습니다. 성공 알림이 버튼을 가리는 문제를 실제 캡처와 hit target 회귀로 수정했습니다.83 Vitest+Node8·22browser·build/types/format/artifact25 통과, lint기존6경고가 남습니다. 새 단위 CI/Pages 배포는 기록 시점 별도입니다. [계약](../vault/wiki/operations/workout-order.md).
+종목2개 이상일 때 Mantine 순서 편집에서 위/아래로 바꾸고 저장합니다. 취소·기록/완료·루틴/시각 보존·CAS/outbox rollback·빈 저장소 복원을 확인했습니다. 성공 알림이 버튼을 가리는 문제를 실제 캡처와 hit target 회귀로 수정했습니다.83 Vitest+Node8·22browser·build/types/format/artifact25 통과, lint기존6경고가 남습니다. 해당 e912f0c의 GitHub3job과 운영/preview24file hash/헤더 일치 배포를 확인했습니다. [계약](../vault/wiki/operations/workout-order.md).
+
+[최신 배포](../vault/raw/research/2026-10-04-workout-order-release.json). 후속 PRD0.8.10 문서 commit은 배포 앱을 변경하지 않습니다.

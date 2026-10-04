@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T21:55:54+09:00"
+  at: "2026-10-04T22:03:27+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -134,16 +134,21 @@ sources:
   - id: "workout-order"
     resource: "../operations/workout-order.md"
     title: "기록 보존 계약"
-version: "0.3.5"
+  - id: "order-release"
+    resource: "../../raw/research/2026-10-04-workout-order-release.json"
+    title: "운동 순서 CI·실제 배포 일치"
+version: "0.3.6"
 approval_status: "proposal"
-change_id: "CHG-0024"
+change_id: "CHG-0025"
 ---
 
 # 남은 작업 한눈에 보기
 
-2026-10-04 / PRD0.8.9. 운동 기능 우선, 식단·3D는 후순위다. **운동 MVP 전체는 아직 완료하지 않았다.** 완료한 부분과 사용자/검토자가 필요한 관문을 구별한다.
+2026-10-04 / PRD0.8.10. **운동 MVP 전체는 진행 중**이며 식단·3D는 후순위다.
 
-운영: [앱 열기](https://lightweight-training.pages.dev) · [운영 DB 연결 없는 preview](https://preview.lightweight-training.pages.dev) · [세부 백로그](implementation-backlog.md).
+[운영 앱](https://lightweight-training.pages.dev) · [DB 연결 없는 preview](https://preview.lightweight-training.pages.dev) · [세부 백로그](implementation-backlog.md).
+
+운동 중 순서 변경까지 main e912f0c로 push/배포했다.83 Vitest·Node8·browser22·GitHub3job success, 실제 공개24파일 hash/헤더 일치를 확인했다. 등록1/허용1·실제 desktop Chrome 빈 프로필의 클라우드 저장/조회/같은 기기 적용도 확인했다.
 
 | 순서 | 남은 작업 | 현재 완료한 부분 | 완료에 필요한 것 | ID |
 |---|---|---|---|---|
@@ -157,12 +162,8 @@ change_id: "CHG-0024"
 | 8 | 본인 파일럿→지인 제공 | 앱/검사 기반 준비 | 실제4주 관찰/입력누락·오해 개선→회귀, 계정 독립/복원·G3/G4 관문 | PIL01/02 |
 | 후순위 | 식단/영양·3D·선택 AI 설명 | 요구/3D feasibility 문서 | 음식DB/license·기록/계산·검토 공식/결측, 3Dasset/rig/clip/권한/전문검토/실기기성능 | NUT01~04, VIS3D02/03, AI01 |
 
-공개 설명 gate를 준비했고 다음 독립 구현은 LOG03/04 남은 입력 편의다. 실제 콘텐츠/UI·추천 규칙은 검토 후 진행한다. 실제 과학 검토/사용자 기기/파일럿을 자동검사로 대신 완료하지 않는다. 최신 Auth는 등록1개/허용1개다. 지정 계정 SQL 허용 승인 후 실제 Chrome 빈 프로필의 전송/조회/명시 적용을 확인했다. 실제 운동/새 기기 검증과 구별한다. 비밀번호·개인 기록·credential은 대화/vault/공개 bundle에 보관하지 않는다.
+다음 독립 구현은 메모/삭제 복구와 장비 조건 등 기록 편의다. 실제 운동의 새 기기 복원·계정 A/B/만료·메일/권한 검증은 병행한다. 실제 iPhone 설치·실행·로그인 질문은 저장 당시 응답 대기이며 키보드/VoiceOver/잠금/offline/update/quota 검증은 별도다.
 
-최신 확인:83개 Vitest·Node계약8개(배포3/공개5)·browser22·vault 검증; 이전 운영96bbb74 GitHub3job success. lint exit0/기존 effect경고6개는 남는다. 최신25개 정적 파일 gate와 원격 공개24파일 비교를 구별한다. URL 설정만으로 login/복구/메일 통과를 주장하지 않는다. [진행](implementation-progress.md)·[하네스](../operations/testing-harness.md)·[배포 실행](../../raw/research/2026-10-04-pages-deployment.json).
+과학 승인 설명은0개다. 콘텐츠 공개 gate는 실제 전문/전문가·자산 권리 검토를 대신하지 않는다.4주 파일럿도 자동검사로 대체하지 않는다. lint exit0/기존 effect경고6개가 남는다. 개인 기록·비밀번호/token/ID는 공개 vault에 넣지 않는다.
 
-[공개 설명 계약](../operations/content-publication.md). 현재 관문은 구조/내용 동일성 검사이며 실제 전문/권리 검토를 증명하지 않는다. 새 공개 gate96bbb74 CI3job·운영/preview24file 일치 확인을 완료했다.
-
-[최신 배포·계정 관문](../../raw/research/2026-10-04-release-account-gate.json). 이 당시 pending은 CHG0023의 명시 승인으로 해소됐다. [실제 Auth 확인](../../raw/research/2026-10-04-auth-profile-roundtrip.json).
-
-[최신 순서/실화면 개선](../operations/workout-order.md). 다음 독립 단위는 메모/삭제 복구 등 기록 편의이며 실제 운동/다기기 Auth 검증도 남는다.
+[진행](implementation-progress.md) · [하네스](../operations/testing-harness.md) · [순서/가림 루프](../operations/workout-order.md) · [현재 배포 증거](../../raw/research/2026-10-04-workout-order-release.json) · [실제 Auth 범위](../../raw/research/2026-10-04-auth-profile-roundtrip.json).

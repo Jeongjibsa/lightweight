@@ -149,7 +149,10 @@
     "raw/design/2026-10-04-order-before-320.png": "d1164d7642df96c6709c29ab9c11352f050154ce5de5dc3d84cad899740f75fe",
     "raw/research/2026-10-04-workout-order-loop.json": "f29e9be41e74e2fa26246f99ccb748d00961f7d79fd82e9f9019c4f8d5ac9a26",
     "history/versions/prd-v0.8.9.md": "29dde7cc715dc0e588f8e388ad5f27e88f0aad777d520a694dbbddc2eb06c786",
-    "history/changes/CHG-0024.md": "2d5030e6c0b8c34d316c256b913fedaef890f892564e0d128a7a06e99cf500e6"
+    "history/changes/CHG-0024.md": "2d5030e6c0b8c34d316c256b913fedaef890f892564e0d128a7a06e99cf500e6",
+    "raw/research/2026-10-04-workout-order-release.json": "ca3889a2c97754bcdb7714a3d8dd0b8d114942be0aeb00a3d84b0d3d5d259c72",
+    "history/versions/prd-v0.8.10.md": "c42164268a2713b3548db4c43bd6248c4435f0c6ee9a217b03601b92c5887ec1",
+    "history/changes/CHG-0025.md": "f2c973f85e1a6d1a4e0645b161fc127be7999593a7e4257e821cac0e5f0831a1"
   },
-  "updated_at": "2026-10-04T21:55:54+09:00"
+  "updated_at": "2026-10-04T22:03:27+09:00"
 }

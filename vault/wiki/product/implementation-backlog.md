@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T21:55:54+09:00"
+  at: "2026-10-04T22:03:27+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -149,9 +149,12 @@ sources:
   - id: "workout-order"
     resource: "../operations/workout-order.md"
     title: "기록 보존 계약"
-version: "0.6.13"
+  - id: "order-release"
+    resource: "../../raw/research/2026-10-04-workout-order-release.json"
+    title: "운동 순서 CI·실제 배포 일치"
+version: "0.6.14"
 approval_status: "proposal"
-change_id: "CHG-0024"
+change_id: "CHG-0025"
 ---
 
 # 운동 PWA 구현 백로그와 완료 기준
@@ -303,3 +306,7 @@ HAR-02: DOM 입력/transaction 실패·재시도/결측수정3과업을 추가�
 ## 현재 운영/계정 준비
 
 96bbb74 main/GitHub3job·Pages/preview24file 일치 완료. Auth 등록1개/허용1개: exact account/SQL 방식 명시 승인 뒤 실제 Chrome 빈 프로필의 저장 ACK/revision1·조회/적용 완료. 실제 운동 기록·새 기기/A·B/만료/로그아웃·메일은 남는다. 실제 Auth/다기기·SCI/기기/파일럿 관문 상태를 유지한다.
+
+## 현재 검증 배포
+
+운동 순서 e912f0c main/GitHub3job success·운영/preview24file hash 일치 확인 완료.83 Vitest/Node8/browser22. 실제 Auth 빈 프로필 왕복은 확인했으나 운동/새 기기·A/B/만료·기기/SCI/운영/파일럿 관문은 유지한다.

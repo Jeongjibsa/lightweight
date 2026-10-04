@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T21:48:06+09:00"
+  at: "2026-10-04T22:03:27+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -107,6 +107,9 @@ sources:
   - id: "real-profile-roundtrip"
     resource: "../../raw/research/2026-10-04-auth-profile-roundtrip.json"
     title: "실제 빈 프로필 저장/조회/적용"
+  - id: "order-release"
+    resource: "../../raw/research/2026-10-04-workout-order-release.json"
+    title: "운동 순서 CI·실제 배포 일치"
 ---
 
 # 미결 사항과 다음 대화
@@ -180,3 +183,7 @@ Pages/preview·현재앱96bbb74 CI/배포/24file hash를 완료했다. Auth user
 ## 현재 권한/로그인 관문 — CHG0023
 
 지정 계정 SQL 허용 승인 후 등록1/허용1·실제 Chrome 로그인/빈 프로필 revision1 저장·조회·명시 적용을 확인했다. CHG0022의 승인 pending은 해소됐다. 실제 운동 기록·새 기기/계정 A·B/만료·로그아웃·메일/iPhone은 후속이다. 개인 ID/credential을 공개 문서에 넣지 않는다.
+
+## 실제 기기 확인 대기 — CHG0025
+
+e912f0c CI/운영·preview24file 일치를 완료했다. 물리 iPhone 홈 화면 설치·실행·로그인 확인을 요청했으며 저장 시점 응답 대기다. WebKit 통과를 실제iPhone 통과로 표시하지 않는다. 기록/과학/메일·운영/파일럿·P2 관문은 유지한다.

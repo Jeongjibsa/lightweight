@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T21:55:54+09:00"
+  at: "2026-10-04T22:03:27+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -149,11 +149,21 @@ sources:
   - id: "workout-order"
     resource: "../operations/workout-order.md"
     title: "기록 보존 계약"
-version: "0.3.5"
-change_id: "CHG-0024"
+  - id: "order-release"
+    resource: "../../raw/research/2026-10-04-workout-order-release.json"
+    title: "운동 순서 CI·실제 배포 일치"
+version: "0.3.6"
+change_id: "CHG-0025"
 ---
 
 # 로컬 PWA 구현 결과와 다음 작업
+
+## 현재 운영 배포 — 2026-10-04
+
+운동 순서/알림 가림 수정 e912f0c를 main에 commit/push하고 GitHub37203886001의3job success를 확인했다. [운영 앱](https://lightweight-training.pages.dev)·[DB 연결 없는 preview](https://preview.lightweight-training.pages.dev)에 배포했으며 각 공개24file hash/보안 헤더가 검증한 빌드와 일치한다. 83개 Vitest/Node8/Chromium12·WebKit10=22개, artifact25를 확인했다. [불변 배포](../../raw/research/2026-10-04-workout-order-release.json). 이 후속 문서 단위는 앱 bundle을 바꾸지 않는다.
+
+등록1/허용1·실제 Chrome 빈 프로필 저장/조회/같은 기기 적용은 확인했다. 실제 운동/새 기기/A·B/만료/메일·iPhone·과학 검토/자산·운영 복구·파일럿은 남는다. 물리 iPhone 설치·실행·로그인 질문은 저장 당시 응답 대기다. LOG 메모/삭제 복구/장비 조건·리포트/검토 콘텐츠·P2는 이어갈 작업이며 전체 MVP 완료로 표시하지 않는다.
+
 
 ## 운동 중 순서 변경 — 2026-10-04
 

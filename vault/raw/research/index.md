@@ -34,3 +34,4 @@
 - [최종 배포·계정 권한 관문](2026-10-04-release-account-gate.json)
 - [실제 Auth 빈 프로필 저장·조회·적용](2026-10-04-auth-profile-roundtrip.json)
 - [종목 순서 보존·실화면 가림 루프](2026-10-04-workout-order-loop.json)
+- [운동 순서 실제 CI/운영 배포](2026-10-04-workout-order-release.json)
