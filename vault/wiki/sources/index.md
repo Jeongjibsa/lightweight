@@ -38,3 +38,4 @@
 - [SRC-036 Mantine·Spoqa·Supabase](SRC-036-mantine-supabase.md) — 공식 읽은 범위·연결 구현 한계.
 - [SRC-037 ACSM 볼륨/개별화 추가 읽기](SRC-037-volume-history.md) — SRC-003과 같은 자료, 독립 연구 중복 아님.
 - [SRC-038 DOM 검사 환경](SRC-038-dom-harness.md) — Testing Library/user-event·Vitest v4·jsdom.
+- [SRC-039 Mantine/Geist 디자인](SRC-039-mantine-geist-design.md) — 공식 문서·설치 metadata·native 검증 경계.

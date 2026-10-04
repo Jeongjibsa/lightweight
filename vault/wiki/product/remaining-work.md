@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T10:18:25+09:00"
+  at: "2026-10-04T13:35:43+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
@@ -38,12 +38,20 @@ sources:
   - id: "settings-loop"
     resource: "../../raw/research/2026-10-04-settings-restore-loop.json"
     title: "복원 입력 회귀/수정"
+  - id: "design-request"
+    resource: "../../raw/conversations/2026-10-04-010.md"
+    title: "전체 Mantine/Geist/하단 UX 요구"
 version: "0.2.0"
 approval_status: "proposal"
 change_id: "CHG-0008"
 ---
 
 # 현재 구현에서 운동 MVP까지 남은 작업
+
+## CONV-0010 전체 UI 반영
+
+UI-02 전체 Mantine·Geist/blue-dark·전 폭 하단 메뉴·빠른 접근 증분은 완료했다. 최신55개(19/25/11), lint/build/format·실제 iframe25조합 통과. [디자인 감사](design-audit.md). 다음 우선순위는 **HAR-03/05 실제 browser 회귀/CI**, **RESP-01/REL-02 iPhone/Safari 키보드·가로/확대·safe area·설치/오프라인 업데이트**, 실제 계정 준비 후 Auth/다기기·검토된 콘텐츠와 권장량 정책이다. 수동 하네스/모양 개선만으로 이 관문을 완료하지 않는다.
+
 
 2026-10-04 / app0.2.0. 반응형·사용자 설정·로컬 기록/백업·Mantine/글꼴·Supabase 연결 증분을 구현했다. **운동 MVP 전체와 실제 실사용 관문은 아직 완료하지 않았다.** 실제 상태는 [진행 보고](implementation-progress.md), 작업 계약은 [백로그](implementation-backlog.md)를 따른다.
 

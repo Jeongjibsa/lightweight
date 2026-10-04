@@ -9,3 +9,4 @@
 - [CHG-0007](CHG-0007.md) — 하네스/반복 개선·남은 작업·PRD0.3.1.
 - [CHG-0008](CHG-0008.md) — Mantine/Spoqa·Supabase 연결·공개 가입 차단·PRD0.4.0.
 - [CHG-0009](CHG-0009.md) — 볼륨/추이/과거 안내·지속 commit, PRD0.5.0.
+- [CHG-0010](CHG-0010.md) — 전체 Mantine/Geist·blue-dark/하단/빠른 접근·branch, PRD0.6.0.

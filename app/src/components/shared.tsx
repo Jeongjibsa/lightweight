@@ -1,4 +1,13 @@
-import { Modal as MantineModal } from "@mantine/core";
+import {
+  Modal as MantineModal,
+  Drawer,
+  Stack,
+  Text,
+  ThemeIcon,
+  Title,
+} from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
+import { Dumbbell } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
 export function Modal({
   title,
@@ -9,6 +18,7 @@ export function Modal({
   children: ReactNode;
   onClose: () => void;
 }) {
+  const mobile = useMediaQuery("(max-width: 48em)");
   const [returnTo] = useState(() =>
     document.activeElement instanceof HTMLElement
       ? document.activeElement
@@ -21,18 +31,30 @@ export function Modal({
     },
     [returnTo],
   );
-  return (
-    <MantineModal
-      opened
-      onClose={onClose}
-      title={title}
-      centered
-      size="lg"
-      returnFocus={false}
-      closeOnClickOutside={false}
-      closeButtonProps={{ "aria-label": "닫기" }}
-      removeScrollProps={{ allowPinchZoom: true }}
+  const props = {
+    opened: true,
+    onClose,
+    title,
+    returnFocus: false,
+    closeOnClickOutside: false,
+    closeButtonProps: { "aria-label": "닫기" },
+    removeScrollProps: { allowPinchZoom: true },
+  };
+  return mobile ? (
+    <Drawer
+      {...props}
+      position="bottom"
+      size="auto"
+      styles={{
+        content: { height: "auto", maxHeight: "90dvh" },
+        body: { maxHeight: "calc(90dvh - 80px)", overflowY: "auto" },
+      }}
+      padding="lg"
     >
+      {children}
+    </Drawer>
+  ) : (
+    <MantineModal {...props} centered size="lg" padding="lg">
       {children}
     </MantineModal>
   );
@@ -45,11 +67,15 @@ export function Empty({
   children: ReactNode;
 }) {
   return (
-    <div className="empty">
-      <span className="empty-mark">＋</span>
-      <h3>{title}</h3>
-      <p>{children}</p>
-    </div>
+    <Stack align="center" gap="sm" py="xl" ta="center">
+      <ThemeIcon variant="light" size={44} radius="lg">
+        <Dumbbell size={22} />
+      </ThemeIcon>
+      <Title order={3}>{title}</Title>
+      <Text c="dimmed" size="sm" maw={400}>
+        {children}
+      </Text>
+    </Stack>
   );
 }
 export type Run = (

@@ -1,5 +1,15 @@
 import { useState } from "react";
-import { Alert, Badge, Button, Checkbox } from "@mantine/core";
+import {
+  Alert,
+  Badge,
+  Button,
+  Checkbox,
+  Group,
+  Paper,
+  Stack,
+  Text,
+  Title,
+} from "@mantine/core";
 import { useLiveQuery } from "dexie-react-hooks";
 import { CloudDownload, CloudUpload, Download } from "lucide-react";
 import { useTraining } from "../context/training";
@@ -9,7 +19,6 @@ import { type DownloadPreview } from "../data/cloud/contracts";
 import { type Backup } from "../domain/models";
 import { errorMessage } from "../domain/errors";
 import { Modal, type Run } from "../components/shared";
-
 function download(backup: Backup) {
   const url = URL.createObjectURL(
     new Blob([JSON.stringify(backup, null, 2)], { type: "application/json" }),
@@ -61,21 +70,23 @@ export function CloudPanel({ busy, run }: { busy: boolean; run: Run }) {
     }
   }
   return (
-    <section className="card cloud-panel">
-      <div className="section-heading">
-        <h2>클라우드 기록</h2>
+    <Paper>
+      <Group gap="sm" justify="space-between" mb="md">
+        <Title order={2} mb="sm">
+          클라우드 기록
+        </Title>
         <Badge variant="light">{queued}개 변경 대기</Badge>
-      </div>
-      <p className="muted">
+      </Group>
+      <Text size="sm" c="dimmed" my="sm">
         이 계정의 설정·루틴·운동 기록을 한 묶음으로 전송합니다. 다른 기기의
         버전과 충돌하면 기기 기록을 보존합니다.
-      </p>
-      <p className="hint">
+      </Text>
+      <Text size="xs" c="dimmed" my="sm">
         {state?.lastSyncedAt
           ? `최근 동기화: ${new Date(state.lastSyncedAt).toLocaleString("ko-KR")}`
           : "아직 동기화하지 않았습니다."}{" "}
         자동 전송은 사용하지 않습니다.
-      </p>
+      </Text>
       {state?.pending && (
         <Alert color="orange">
           전송 결과가 확인되지 않은 작업이 있습니다. ‘클라우드로 전송’으로 같은
@@ -87,7 +98,7 @@ export function CloudPanel({ busy, run }: { busy: boolean; run: Run }) {
           {error}
         </Alert>
       )}
-      <div className="account-actions">
+      <Group gap="sm">
         <Button
           leftSection={<CloudUpload size={18} />}
           disabled={
@@ -128,9 +139,11 @@ export function CloudPanel({ busy, run }: { busy: boolean; run: Run }) {
             최근 교체 전 기록 다운로드
           </Button>
         )}
-      </div>
+      </Group>
       {busy && (
-        <p className="hint">운동과 기기 저장을 마친 후 동기화할 수 있습니다.</p>
+        <Text size="xs" c="dimmed" my="sm">
+          운동과 기기 저장을 마친 후 동기화할 수 있습니다.
+        </Text>
       )}
       {preview && (
         <Modal
@@ -139,11 +152,11 @@ export function CloudPanel({ busy, run }: { busy: boolean; run: Run }) {
           }}
           title="클라우드 기록으로 교체"
         >
-          <div className="form-stack">
-            <p>
+          <Stack gap="md">
+            <Text size="sm" c="dimmed" my="sm">
               클라우드 버전 {preview.remote.revision}의 기록으로 이 계정의 기기
               기록을 교체합니다.
-            </p>
+            </Text>
             {preview.dirty && (
               <Alert color="orange">
                 아직 전송하지 않은 기기 변경이 있습니다. 먼저 JSON 백업을
@@ -165,10 +178,10 @@ export function CloudPanel({ busy, run }: { busy: boolean; run: Run }) {
               checked={confirmed}
               onChange={(e) => setConfirmed(e.currentTarget.checked)}
             />
-            <p className="hint">
+            <Text size="xs" c="dimmed" my="sm">
               최근 교체 직전 기록 한 묶음은 이 기기에 보관됩니다. 장기 보관은
               다운로드한 JSON을 사용해주세요.
-            </p>
+            </Text>
             <Button
               disabled={disabled || !confirmed}
               onClick={() =>
@@ -185,9 +198,9 @@ export function CloudPanel({ busy, run }: { busy: boolean; run: Run }) {
             >
               확인한 기록으로 교체
             </Button>
-          </div>
+          </Stack>
         </Modal>
       )}
-    </section>
+    </Paper>
   );
 }

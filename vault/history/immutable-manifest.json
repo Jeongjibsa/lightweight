@@ -42,7 +42,17 @@
     "raw/research/2026-10-04-dom-harness-verification.json": "38ea4bf99999902f26aba645234b220f1db4d829c6b93d3158a0097a561c7f09",
     "raw/research/2026-10-04-volume-history-verification.json": "32d29849f18358b2abe4ebe0e4008a277c016c8f96a47101aec4c5ebcf954159",
     "raw/research/2026-10-04-volume-history-final-verification.json": "4d22c5b3c78628ae0adf17e4616a24618129b3220e27a3f3dbc0bb3431442ca7",
-    "raw/research/2026-10-04-settings-restore-loop.json": "732fda8118ce37a35867f9ce40b5f1a0d30092fd1dc932c29583d7497af87509"
+    "raw/research/2026-10-04-settings-restore-loop.json": "732fda8118ce37a35867f9ce40b5f1a0d30092fd1dc932c29583d7497af87509",
+    "raw/conversations/2026-10-04-010.md": "59065e9ee1563549a1a54def27325489e857c49fd07faf17c80482eb20fbfc45",
+    "raw/design/2026-10-04-before-today-mobile.png": "2d1e8cd155c83fc412bf260a5074889b7e7960748c3197f4620373f985e47ec7",
+    "raw/design/2026-10-04-after-today-mobile.png": "a79bd88b88c1cae0f9236de55c31588276a4048d45113a950c3c44b54a496d35",
+    "raw/design/2026-10-04-after-today-desktop.png": "3e40052e077276b9f7847135e7b89b7dfca330bec9ef3bf003b8b44d29d29b0f",
+    "raw/design/2026-10-04-after-settings-320.png": "dbeba6214a126dfe239ff5a4676419b088282c686c02b517db0a2d4d2a651baf",
+    "raw/design/2026-10-04-after-workout-mobile.png": "8de0ce3e8a35b97eb179b11e0da1a6f3c11a606f8b6891b0b00e9ef89d35c05c",
+    "raw/design/2026-10-04-after-info-sheet-mobile.png": "ea4bdc8f8b51813b076e38c28aef6406ded58a9a1f0693bd7ddb1afa96792983",
+    "raw/research/2026-10-04-mantine-geist-design-verification.json": "d164ff70a1ea4b8e99a5c8627031efc362cc06a491a7b86de80bb5262c845333",
+    "history/changes/CHG-0010.md": "3eee0ee320085f3e6a8209aba9746cf3601603fad4294232f60048f933f791b8",
+    "history/versions/prd-v0.6.0.md": "ef8ea935d88a49e3d0b689c93dfbc8172fa3b862d1e272c13eba108e2a231b14"
   },
-  "updated_at": "2026-10-04T10:18:25+09:00"
+  "updated_at": "2026-10-04T13:35:43+09:00"
 }

@@ -1,0 +1,1153 @@
+{
+  "type": "Verification Record",
+  "title": "Mantine/Geist blue-dark UI verification",
+  "captured_at": "2026-10-04T13:35:43+09:00",
+  "generated": {
+    "by": "codex/gpt-6",
+    "at": "2026-10-04T13:35:43+09:00"
+  },
+  "branch": "codex/mantine-blue-dark",
+  "baseline_commit": "a9d088c",
+  "request": "CONV-0010",
+  "sources": [
+    {
+      "url": "https://mantine.dev/theming/theme-object/",
+      "scope": "theme tokens, component defaultProps/styles, reduced motion sections"
+    },
+    {
+      "url": "https://mantine.dev/core/nav-link/",
+      "scope": "default anchor and polymorphic button examples"
+    },
+    {
+      "url": "https://mantine.dev/core/drawer/",
+      "scope": "Drawer positions, size/styles and focus-related documentation; installed CSS inspected"
+    },
+    {
+      "url": "https://vercel.com/font",
+      "scope": "Geist family and open font introductory content"
+    },
+    {
+      "url": "https://fontsource.org/fonts/geist/use",
+      "scope": "installation/download/license introductory content; installed npm metadata/exports/CSS inspected"
+    }
+  ],
+  "official_doc_limit": "Apple HIG tab-bars URL returned a JS shell only; full HIG review/native compliance not established",
+  "automated": {
+    "unit": 19,
+    "integration": 25,
+    "ui": 11,
+    "total": 55,
+    "files": 12,
+    "test": "passed",
+    "lint": "passed, zero warnings after exporting dev harness component",
+    "build": "passed",
+    "format": "passed",
+    "app_entry_KB": 97.06,
+    "app_entry_gzip_KB": 30.48,
+    "precache_entries": 25,
+    "precache_KiB": 1218.0
+  },
+  "font": {
+    "package": "@fontsource-variable/geist",
+    "version": "5.3.0",
+    "bundled_subsets": [
+      "latin",
+      "latin-ext",
+      "cyrillic",
+      "cyrillic-ext",
+      "vietnamese"
+    ],
+    "woff2_total_KB_rounded": 76.41,
+    "hangul": "not listed in installed subset metadata; platform fallback",
+    "computed_body_family": "\"Geist Variable\", \"Apple SD Gothic Neo\", \"Noto Sans KR\", sans-serif"
+  },
+  "browser": {
+    "origin": "http://127.0.0.1:4176",
+    "test_data_only": true,
+    "flows": [
+      "library search and one-click add",
+      "40kg/10 reps -> complete -> end/save partial1/3 -> reports400kg·회",
+      "new routine opens picker immediately; consecutive2 exercises saved3sets each",
+      "fake profile goal/frequency/split save reflected on Today",
+      "bottom info sheet auto-height411.78px of844"
+    ],
+    "console_errors_or_warnings": 0,
+    "responsive": [
+      {
+        "requestedWidth": 320,
+        "screen": "today",
+        "layout": {
+          "clientWidth": 320,
+          "scrollWidth": 320
+        },
+        "nav": [
+          {
+            "current": "page",
+            "h": 60,
+            "name": "오늘",
+            "w": 56.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "운동 탐색",
+            "w": 56.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "나의 루틴",
+            "w": 56.8046875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "리포트",
+            "w": 56.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "설정",
+            "w": 56.796875
+          }
+        ]
+      },
+      {
+        "requestedWidth": 320,
+        "screen": "library",
+        "layout": {
+          "clientWidth": 320,
+          "scrollWidth": 320
+        },
+        "nav": [
+          {
+            "current": null,
+            "h": 60,
+            "name": "오늘",
+            "w": 56.796875
+          },
+          {
+            "current": "page",
+            "h": 60,
+            "name": "운동 탐색",
+            "w": 56.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "나의 루틴",
+            "w": 56.8046875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "리포트",
+            "w": 56.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "설정",
+            "w": 56.796875
+          }
+        ]
+      },
+      {
+        "requestedWidth": 320,
+        "screen": "routines",
+        "layout": {
+          "clientWidth": 320,
+          "scrollWidth": 320
+        },
+        "nav": [
+          {
+            "current": null,
+            "h": 60,
+            "name": "오늘",
+            "w": 56.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "운동 탐색",
+            "w": 56.796875
+          },
+          {
+            "current": "page",
+            "h": 60,
+            "name": "나의 루틴",
+            "w": 56.8046875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "리포트",
+            "w": 56.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "설정",
+            "w": 56.796875
+          }
+        ]
+      },
+      {
+        "requestedWidth": 320,
+        "screen": "reports",
+        "layout": {
+          "clientWidth": 320,
+          "scrollWidth": 320
+        },
+        "nav": [
+          {
+            "current": null,
+            "h": 60,
+            "name": "오늘",
+            "w": 56.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "운동 탐색",
+            "w": 56.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "나의 루틴",
+            "w": 56.8046875
+          },
+          {
+            "current": "page",
+            "h": 60,
+            "name": "리포트",
+            "w": 56.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "설정",
+            "w": 56.796875
+          }
+        ]
+      },
+      {
+        "requestedWidth": 320,
+        "screen": "settings",
+        "layout": {
+          "clientWidth": 320,
+          "scrollWidth": 320
+        },
+        "nav": [
+          {
+            "current": null,
+            "h": 60,
+            "name": "오늘",
+            "w": 56.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "운동 탐색",
+            "w": 56.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "나의 루틴",
+            "w": 56.8046875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "리포트",
+            "w": 56.796875
+          },
+          {
+            "current": "page",
+            "h": 60,
+            "name": "설정",
+            "w": 56.796875
+          }
+        ]
+      },
+      {
+        "requestedWidth": 375,
+        "screen": "today",
+        "layout": {
+          "clientWidth": 375,
+          "scrollWidth": 375
+        },
+        "nav": [
+          {
+            "current": "page",
+            "h": 60,
+            "name": "오늘",
+            "w": 67.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "운동 탐색",
+            "w": 67.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "나의 루틴",
+            "w": 67.8046875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "리포트",
+            "w": 67.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "설정",
+            "w": 67.8046875
+          }
+        ]
+      },
+      {
+        "requestedWidth": 375,
+        "screen": "library",
+        "layout": {
+          "clientWidth": 375,
+          "scrollWidth": 375
+        },
+        "nav": [
+          {
+            "current": null,
+            "h": 60,
+            "name": "오늘",
+            "w": 67.796875
+          },
+          {
+            "current": "page",
+            "h": 60,
+            "name": "운동 탐색",
+            "w": 67.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "나의 루틴",
+            "w": 67.8046875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "리포트",
+            "w": 67.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "설정",
+            "w": 67.8046875
+          }
+        ]
+      },
+      {
+        "requestedWidth": 375,
+        "screen": "routines",
+        "layout": {
+          "clientWidth": 375,
+          "scrollWidth": 375
+        },
+        "nav": [
+          {
+            "current": null,
+            "h": 60,
+            "name": "오늘",
+            "w": 67.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "운동 탐색",
+            "w": 67.796875
+          },
+          {
+            "current": "page",
+            "h": 60,
+            "name": "나의 루틴",
+            "w": 67.8046875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "리포트",
+            "w": 67.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "설정",
+            "w": 67.8046875
+          }
+        ]
+      },
+      {
+        "requestedWidth": 375,
+        "screen": "reports",
+        "layout": {
+          "clientWidth": 375,
+          "scrollWidth": 375
+        },
+        "nav": [
+          {
+            "current": null,
+            "h": 60,
+            "name": "오늘",
+            "w": 67.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "운동 탐색",
+            "w": 67.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "나의 루틴",
+            "w": 67.8046875
+          },
+          {
+            "current": "page",
+            "h": 60,
+            "name": "리포트",
+            "w": 67.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "설정",
+            "w": 67.8046875
+          }
+        ]
+      },
+      {
+        "requestedWidth": 375,
+        "screen": "settings",
+        "layout": {
+          "clientWidth": 375,
+          "scrollWidth": 375
+        },
+        "nav": [
+          {
+            "current": null,
+            "h": 60,
+            "name": "오늘",
+            "w": 67.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "운동 탐색",
+            "w": 67.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "나의 루틴",
+            "w": 67.8046875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "리포트",
+            "w": 67.796875
+          },
+          {
+            "current": "page",
+            "h": 60,
+            "name": "설정",
+            "w": 67.8046875
+          }
+        ]
+      },
+      {
+        "requestedWidth": 390,
+        "screen": "today",
+        "layout": {
+          "clientWidth": 390,
+          "scrollWidth": 390
+        },
+        "nav": [
+          {
+            "current": "page",
+            "h": 60,
+            "name": "오늘",
+            "w": 70.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "운동 탐색",
+            "w": 70.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "나의 루틴",
+            "w": 70.8046875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "리포트",
+            "w": 70.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "설정",
+            "w": 70.8046875
+          }
+        ]
+      },
+      {
+        "requestedWidth": 390,
+        "screen": "library",
+        "layout": {
+          "clientWidth": 390,
+          "scrollWidth": 390
+        },
+        "nav": [
+          {
+            "current": null,
+            "h": 60,
+            "name": "오늘",
+            "w": 70.796875
+          },
+          {
+            "current": "page",
+            "h": 60,
+            "name": "운동 탐색",
+            "w": 70.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "나의 루틴",
+            "w": 70.8046875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "리포트",
+            "w": 70.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "설정",
+            "w": 70.8046875
+          }
+        ]
+      },
+      {
+        "requestedWidth": 390,
+        "screen": "routines",
+        "layout": {
+          "clientWidth": 390,
+          "scrollWidth": 390
+        },
+        "nav": [
+          {
+            "current": null,
+            "h": 60,
+            "name": "오늘",
+            "w": 70.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "운동 탐색",
+            "w": 70.796875
+          },
+          {
+            "current": "page",
+            "h": 60,
+            "name": "나의 루틴",
+            "w": 70.8046875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "리포트",
+            "w": 70.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "설정",
+            "w": 70.8046875
+          }
+        ]
+      },
+      {
+        "requestedWidth": 390,
+        "screen": "reports",
+        "layout": {
+          "clientWidth": 390,
+          "scrollWidth": 390
+        },
+        "nav": [
+          {
+            "current": null,
+            "h": 60,
+            "name": "오늘",
+            "w": 70.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "운동 탐색",
+            "w": 70.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "나의 루틴",
+            "w": 70.8046875
+          },
+          {
+            "current": "page",
+            "h": 60,
+            "name": "리포트",
+            "w": 70.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "설정",
+            "w": 70.8046875
+          }
+        ]
+      },
+      {
+        "requestedWidth": 390,
+        "screen": "settings",
+        "layout": {
+          "clientWidth": 390,
+          "scrollWidth": 390
+        },
+        "nav": [
+          {
+            "current": null,
+            "h": 60,
+            "name": "오늘",
+            "w": 70.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "운동 탐색",
+            "w": 70.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "나의 루틴",
+            "w": 70.8046875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "리포트",
+            "w": 70.796875
+          },
+          {
+            "current": "page",
+            "h": 60,
+            "name": "설정",
+            "w": 70.8046875
+          }
+        ]
+      },
+      {
+        "requestedWidth": 768,
+        "screen": "today",
+        "layout": {
+          "clientWidth": 768,
+          "scrollWidth": 768
+        },
+        "nav": [
+          {
+            "current": "page",
+            "h": 60,
+            "name": "오늘",
+            "w": 126.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "운동 탐색",
+            "w": 126.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "나의 루틴",
+            "w": 126.8046875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "리포트",
+            "w": 126.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "설정",
+            "w": 126.8046875
+          }
+        ]
+      },
+      {
+        "requestedWidth": 768,
+        "screen": "library",
+        "layout": {
+          "clientWidth": 768,
+          "scrollWidth": 768
+        },
+        "nav": [
+          {
+            "current": null,
+            "h": 60,
+            "name": "오늘",
+            "w": 126.796875
+          },
+          {
+            "current": "page",
+            "h": 60,
+            "name": "운동 탐색",
+            "w": 126.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "나의 루틴",
+            "w": 126.8046875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "리포트",
+            "w": 126.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "설정",
+            "w": 126.8046875
+          }
+        ]
+      },
+      {
+        "requestedWidth": 768,
+        "screen": "routines",
+        "layout": {
+          "clientWidth": 768,
+          "scrollWidth": 768
+        },
+        "nav": [
+          {
+            "current": null,
+            "h": 60,
+            "name": "오늘",
+            "w": 126.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "운동 탐색",
+            "w": 126.796875
+          },
+          {
+            "current": "page",
+            "h": 60,
+            "name": "나의 루틴",
+            "w": 126.8046875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "리포트",
+            "w": 126.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "설정",
+            "w": 126.8046875
+          }
+        ]
+      },
+      {
+        "requestedWidth": 768,
+        "screen": "reports",
+        "layout": {
+          "clientWidth": 768,
+          "scrollWidth": 768
+        },
+        "nav": [
+          {
+            "current": null,
+            "h": 60,
+            "name": "오늘",
+            "w": 126.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "운동 탐색",
+            "w": 126.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "나의 루틴",
+            "w": 126.8046875
+          },
+          {
+            "current": "page",
+            "h": 60,
+            "name": "리포트",
+            "w": 126.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "설정",
+            "w": 126.8046875
+          }
+        ]
+      },
+      {
+        "requestedWidth": 768,
+        "screen": "settings",
+        "layout": {
+          "clientWidth": 768,
+          "scrollWidth": 768
+        },
+        "nav": [
+          {
+            "current": null,
+            "h": 60,
+            "name": "오늘",
+            "w": 126.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "운동 탐색",
+            "w": 126.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "나의 루틴",
+            "w": 126.8046875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "리포트",
+            "w": 126.796875
+          },
+          {
+            "current": "page",
+            "h": 60,
+            "name": "설정",
+            "w": 126.8046875
+          }
+        ]
+      },
+      {
+        "requestedWidth": 1440,
+        "screen": "today",
+        "layout": {
+          "clientWidth": 1440,
+          "scrollWidth": 1440
+        },
+        "nav": [
+          {
+            "current": "page",
+            "h": 60,
+            "name": "오늘",
+            "w": 126.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "운동 탐색",
+            "w": 126.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "나의 루틴",
+            "w": 126.8046875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "리포트",
+            "w": 126.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "설정",
+            "w": 126.8046875
+          }
+        ]
+      },
+      {
+        "requestedWidth": 1440,
+        "screen": "library",
+        "layout": {
+          "clientWidth": 1440,
+          "scrollWidth": 1440
+        },
+        "nav": [
+          {
+            "current": null,
+            "h": 60,
+            "name": "오늘",
+            "w": 126.796875
+          },
+          {
+            "current": "page",
+            "h": 60,
+            "name": "운동 탐색",
+            "w": 126.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "나의 루틴",
+            "w": 126.8046875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "리포트",
+            "w": 126.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "설정",
+            "w": 126.8046875
+          }
+        ]
+      },
+      {
+        "requestedWidth": 1440,
+        "screen": "routines",
+        "layout": {
+          "clientWidth": 1440,
+          "scrollWidth": 1440
+        },
+        "nav": [
+          {
+            "current": null,
+            "h": 60,
+            "name": "오늘",
+            "w": 126.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "운동 탐색",
+            "w": 126.796875
+          },
+          {
+            "current": "page",
+            "h": 60,
+            "name": "나의 루틴",
+            "w": 126.8046875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "리포트",
+            "w": 126.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "설정",
+            "w": 126.8046875
+          }
+        ]
+      },
+      {
+        "requestedWidth": 1440,
+        "screen": "reports",
+        "layout": {
+          "clientWidth": 1440,
+          "scrollWidth": 1440
+        },
+        "nav": [
+          {
+            "current": null,
+            "h": 60,
+            "name": "오늘",
+            "w": 126.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "운동 탐색",
+            "w": 126.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "나의 루틴",
+            "w": 126.8046875
+          },
+          {
+            "current": "page",
+            "h": 60,
+            "name": "리포트",
+            "w": 126.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "설정",
+            "w": 126.8046875
+          }
+        ]
+      },
+      {
+        "requestedWidth": 1440,
+        "screen": "settings",
+        "layout": {
+          "clientWidth": 1440,
+          "scrollWidth": 1440
+        },
+        "nav": [
+          {
+            "current": null,
+            "h": 60,
+            "name": "오늘",
+            "w": 126.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "운동 탐색",
+            "w": 126.796875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "나의 루틴",
+            "w": 126.8046875
+          },
+          {
+            "current": null,
+            "h": 60,
+            "name": "리포트",
+            "w": 126.796875
+          },
+          {
+            "current": "page",
+            "h": 60,
+            "name": "설정",
+            "w": 126.8046875
+          }
+        ]
+      }
+    ],
+    "screenshot_resources": [
+      {
+        "resource": "raw/design/2026-10-04-before-today-mobile.png",
+        "context": "before / 390×844 / synthetic4174",
+        "sha256": "2d1e8cd155c83fc412bf260a5074889b7e7960748c3197f4620373f985e47ec7"
+      },
+      {
+        "resource": "raw/design/2026-10-04-after-today-mobile.png",
+        "context": "after / 390×844 / synthetic4176 / fake profile",
+        "sha256": "a79bd88b88c1cae0f9236de55c31588276a4048d45113a950c3c44b54a496d35"
+      },
+      {
+        "resource": "raw/design/2026-10-04-after-today-desktop.png",
+        "context": "after / real iframe1440×844 / synthetic4176",
+        "sha256": "3e40052e077276b9f7847135e7b89b7dfca330bec9ef3bf003b8b44d29d29b0f"
+      },
+      {
+        "resource": "raw/design/2026-10-04-after-settings-320.png",
+        "context": "after / real iframe320×844 / synthetic4176",
+        "sha256": "dbeba6214a126dfe239ff5a4676419b088282c686c02b517db0a2d4d2a651baf"
+      },
+      {
+        "resource": "raw/design/2026-10-04-after-workout-mobile.png",
+        "context": "after / 390×844 / fake40kg×10 completed1/3",
+        "sha256": "8de0ce3e8a35b97eb179b11e0da1a6f3c11a606f8b6891b0b00e9ef89d35c05c"
+      },
+      {
+        "resource": "raw/design/2026-10-04-after-info-sheet-mobile.png",
+        "context": "after / 390×844 / auto-height bottom sheet",
+        "sha256": "ea4bdc8f8b51813b076e38c28aef6406ded58a9a1f0693bd7ddb1afa96792983"
+      }
+    ]
+  },
+  "loops": [
+    {
+      "id": "LOOP-UI-01",
+      "problem": "NavLink without href was not a keyboard action; filter group labels shrank",
+      "fix": "component=button, accessible add label, max-content filter group",
+      "regression": "keyboard one-add and independent info/Escape focus test"
+    },
+    {
+      "id": "LOOP-UI-02",
+      "problem": "bottom confirmations took90dvh even when short",
+      "fix": "Drawer size auto plus content height auto/max90dvh; scroll body",
+      "regression": "manual411.78px info sheet; automatic modal focus tests"
+    },
+    {
+      "id": "LOOP-UI-03",
+      "problem": "completed numeric values were dim; stale rest display could exceed120sec",
+      "fix": "input foreground token; cap visible countdown120sec",
+      "regression": "existing set persistence tests and fake completed row screenshot"
+    },
+    {
+      "id": "LOOP-HARNESS-UI-01",
+      "problem": "viewport control applied inconsistently to different tabs; requested width was not proof of layout width",
+      "fix": "dev-only iframe harness; read child html clientWidth/scrollWidth and measured nav dimensions at every width/screen",
+      "regression": "25 measured combinations, overflow0, nav min56.79×60; actual browser tool state and CSS iframe distinct"
+    }
+  ],
+  "limits": [
+    "not actual iPhone/Safari, soft keyboard, safe-area values, landscape, 200% zoom or VoiceOver",
+    "manual CUA/iframe observation is not automated Playwright runner/CI trace",
+    "no new actual Auth/cloud calls or remote security changes",
+    "no new scientific exercise claims or anatomy validation",
+    "PWA fonts precached in build; this turn did not re-prove production offline/update/real-device installation"
+  ],
+  "code_sha256": {
+    "app/src/App.tsx": "01b8dd3836d1ceddb43091f57352bd5b888336550ae47461240c8b715ecc3571",
+    "app/src/theme.ts": "cc41f412b69de72f70512f19f3e53eae2d8f67b105737235d94e4c79f125a34c",
+    "app/src/index.css": "4f11ceb9dec8293df39daa1c8dbf2253b981870ee56204e84886ee1fa48548b6",
+    "app/src/components/settings.tsx": "896cb68600e8e4ebae50250c7a3e82ca801659f0016d42c40326889868943524",
+    "app/src/components/shared.tsx": "c533d0ea89451136b1f7415843798836db82322bdc5c908b1594e30aaad4d1cf",
+    "app/src/components/navigation.tsx": "3c72956b9f0b4ba3842380206b38f38518dd8a037e99751f95a7877f4dddd03f",
+    "app/tests/ui/navigation.ui.test.tsx": "014462fd50ef0b3ca15aa0f1f2b1a7d0bf409337d0c12f4b41c058c151da19ad",
+    "app/tests/harness/responsive.jsx": "6eebaccaac9f91f37b6d03e65443c0fd4c7d3aff07a88ba2006f9f553d747b7f"
+  }
+}

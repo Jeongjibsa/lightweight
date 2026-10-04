@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T10:18:25+09:00"
+  at: "2026-10-04T13:35:43+09:00"
 sources:
   - id: "implementation-request"
     resource: "../../raw/conversations/2026-10-03-005.md"
@@ -50,14 +50,20 @@ sources:
   - id: "settings-loop"
     resource: "../../raw/research/2026-10-04-settings-restore-loop.json"
     title: "복원 입력 회귀/수정"
-version: "0.4.0"
+  - id: "design-request"
+    resource: "../../raw/conversations/2026-10-04-010.md"
+    title: "전체 Mantine/Geist/하단 UX 요구"
+  - id: "design-verification"
+    resource: "../../raw/research/2026-10-04-mantine-geist-design-verification.json"
+    title: "UI 실행"
+version: "0.5.0"
 approval_status: "proposal"
-change_id: "CHG-0009"
+change_id: "CHG-0010"
 ---
 
 # 운동 PWA 구현 백로그와 완료 기준
 
-> 계획 v0.3.0. 반응형·사용자별 설정을 반영한 로컬 구현을 진행했다. **운동 먼저, 식단 다음**은 사용자 선택이고 상세 항목은 구현 제안이다. 상태: `ready`는 착수 후보, `planned`는 선행 조건/선택이 남음, `in_progress`·`blocked`·`done`은 실제 진행 후 기록한다. 로컬 증분의 완료/부분 진행은 아래와 [실행 결과](implementation-progress.md)에 기록한다. 원래 작업의 전체 기준이 남으면 in_progress를 유지한다.
+> 계획 v0.5.0. 반응형·사용자별 설정을 반영한 로컬 구현을 진행했다. **운동 먼저, 식단 다음**은 사용자 선택이고 상세 항목은 구현 제안이다. 상태: `ready`는 착수 후보, `planned`는 선행 조건/선택이 남음, `in_progress`·`blocked`·`done`은 실제 진행 후 기록한다. 로컬 증분의 완료/부분 진행은 아래와 [실행 결과](implementation-progress.md)에 기록한다. 원래 작업의 전체 기준이 남으면 in_progress를 유지한다.
 
 ## 기준과 책임
 
@@ -67,10 +73,11 @@ change_id: "CHG-0009"
 
 ## 운동 MVP
 
-UI-01: Mantine/Spoqa/스택 명시 **done**. FR-12에 연결하며 정확한 버전/적용 범위는 [스택](technology-stack.md). FR-13/SYNC의 연결 증분은 [Supabase 계약](supabase-integration.md).
+UI-01은 당시 부분 Mantine/Spoqa/스택 명시 증분으로 done이었다. CONV-0010에서 전체 UI/Geist로 supersede하여 UI-02로 추적한다. FR-12에 연결하며 정확한 버전/적용 범위는 [스택](technology-stack.md). FR-13/SYNC의 연결 증분은 [Supabase 계약](supabase-integration.md).
 
 | ID | 단계 | 작업과 산출물 | 선행 조건 | 완료 기준 | 상태 |
 |---|---|---|---|---|---|
+| UI-02 | M0~M2 | 전체 Mantine·Geist/blue-dark·하단5탭·클릭 단축·별도 branch | CONV-0010/FR-12·16 | 디자인 계약/감사·키보드/빠른 추가/연속 선택·55개/빌드·25폭/화면 조합 관찰; 실기기는 RESP-01 | done |
 | PREF-01 | M0~M2 | 프로필별 목표/횟수/분할·시간/장비/단위/시간대 입력·수정·보존 | FR-11, 로컬 계약 | 새 사용자 미설정, A/B 다른 설정·기록 분리, 변경 시 과거 스냅샷 보존 | done |
 | RESP-01 | M1~M6 | 기종 무관 화면 재배치·입력/초점·safe area | FR-10 | 주요 화면320~1440px, 가로/키보드/확대·실제 Safari 검증 | in_progress |
 | PRE-01 | M0 | 기록/단위·집계·소유 관계·동기화·삭제·복원 계약과 가짜 표본 | 현재 PRD/상세 | 계획8/완료6/준비2·0/결측·좌우·보조·재시도·충돌의 예상 결과 정의 | in_progress |
@@ -148,7 +155,8 @@ PRE와 화면/계산 개발은 미결인 종목/장비·호스팅 선택 전 가
 | FR-09 영양/열량 | NUT-03~04 | 다음 출시, 검토/성분 품질 |
 | FR-10 반응형 PWA | RESP-01, BASE-02, REL-01~02 | 여러 폭 + 실제 기기 G3 |
 | FR-11 사용자별 설정 | PREF-01, PRE-01, SCI-03 | 설정/기록 소유 분리·간편 변경·과거 조건 보존 |
-| FR-12 UI/글꼴/스택 | UI-01 | Mantine/공식 WOFF2·정확한 의존성 문서 |
+| FR-12 UI/글꼴/스택 | UI-01→UI-02 | 전체 Mantine/Geist·한글 fallback·정확한 의존성 문서 |
+| FR-16 native형 톤/하단/빠른 접근 | UI-02, RESP-01, REL-02 | blue-dark·전 폭 하단·빠른 시작/추가, 실기기 후속 |
 | FR-13 클라우드/가입 제한 | SYNC-01~05 | 연결 증분·실계정 검증 |
 | FR-14 볼륨/그래프 | REP-04/05 | 관찰 계산/조건·N/A·재계산/표 |
 | FR-15 오늘/권장량 | REP-06, SCI-03B | 기록 참고 후보와 검토된 조정 구분 |
@@ -156,6 +164,8 @@ PRE와 화면/계산 개발은 미결인 종목/장비·호스팅 선택 전 가
 | KM-01/02 vault·이력 | 모든 의미 변경 | OKF 구조 검사·raw/CONV/CHG/PRD snapshot 유지 |
 
 ## 실행 기록
+
+UI-02: 별도 `codex/mantine-blue-dark` branch, 전체 Mantine·Geist·전 폭 하단탭/빠른 과업을 구현했다. unit19/integration25/ui11·55개/12파일·lint 경고0/build/format, 5화면×5실제 iframe폭 overflow0. UI 증분은 done이며 RESP-01/PRE-02/REL-02의 실제 Safari/키보드/확대/설치는 남는다. [감사](design-audit.md) · [원본](../../raw/research/2026-10-04-mantine-geist-design-verification.json).
 
 LOOP-SETTINGS-RESTORE-01: 78e5cb1 이후 복원 입력 잔류를 실제 DOM/Store로 재현·수정. same-owner/revision 복원 재저장·unrelated session draft 보존2개 회귀. 전체52개/11파일·lint/build/format, 최종CUA update/리포트/폭 검사 통과. 실제browser 복원/계정 전환은 남아 HAR-02/LOG-06은 in_progress. [원본](../../raw/research/2026-10-04-settings-restore-loop.json).
 

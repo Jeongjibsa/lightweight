@@ -1,5 +1,16 @@
 import { useState, type FormEvent } from "react";
-import { Alert, Badge, Button, PasswordInput, TextInput } from "@mantine/core";
+import {
+  Alert,
+  Badge,
+  Button,
+  Group,
+  Paper,
+  PasswordInput,
+  Stack,
+  Text,
+  TextInput,
+  Title,
+} from "@mantine/core";
 import { LogIn, LogOut, ShieldCheck } from "lucide-react";
 import { supabase, configurationError } from "../data/cloud/client";
 import { useAuth } from "../context/auth";
@@ -44,9 +55,11 @@ export function AccountPanel({ busy }: { busy: boolean }) {
     }
   }
   return (
-    <section className="card account-panel">
-      <div className="section-heading">
-        <h2>계정 연결</h2>
+    <Paper>
+      <Group gap="sm" justify="space-between" mb="md">
+        <Title order={2} mb="sm">
+          계정 연결
+        </Title>
         <Badge variant="light">
           {session
             ? "로그인됨"
@@ -54,7 +67,7 @@ export function AccountPanel({ busy }: { busy: boolean }) {
               ? "Supabase 연결 준비됨"
               : "기기 저장"}
         </Badge>
-      </div>
+      </Group>
       {authError && <Alert color="red">{authError}</Alert>}
       {configurationError && <Alert color="orange">{configurationError}</Alert>}
       {error && (
@@ -63,16 +76,18 @@ export function AccountPanel({ busy }: { busy: boolean }) {
         </Alert>
       )}
       {!supabase ? (
-        <p className="muted">
+        <Text size="sm" c="dimmed" my="sm">
           프로젝트 설정 후 계정 로그인을 사용할 수 있습니다.
-        </p>
+        </Text>
       ) : session ? (
         <>
-          <p className="muted">{session.user.email ?? "연결된 계정"}</p>
-          <p className="hint">
+          <Text size="sm" c="dimmed" my="sm">
+            {session.user.email ?? "연결된 계정"}
+          </Text>
+          <Text size="xs" c="dimmed" my="sm">
             이 계정의 기기 저장소를 사용합니다. 로그인 전에 작성한 기기 프로필은
             별도로 보존됩니다.
-          </p>
+          </Text>
           <Button
             leftSection={<LogOut size={18} />}
             variant="default"
@@ -84,11 +99,11 @@ export function AccountPanel({ busy }: { busy: boolean }) {
           </Button>
         </>
       ) : (
-        <form onSubmit={login} className="form-stack">
-          <p className="muted">
+        <Stack onSubmit={login} component="form" gap="md">
+          <Text size="sm" c="dimmed" my="sm">
             등록된 계정으로 로그인하세요. 기기 프로필 기록은 로그인 계정으로
             자동 전송되지 않습니다.
-          </p>
+          </Text>
           <TextInput
             label="이메일"
             type="email"
@@ -113,17 +128,17 @@ export function AccountPanel({ busy }: { busy: boolean }) {
           >
             로그인
           </Button>
-        </form>
+        </Stack>
       )}
       {busy && (
-        <p className="hint">
+        <Text size="xs" c="dimmed" my="sm">
           진행 중인 운동과 저장을 마친 후 계정을 전환할 수 있습니다.
-        </p>
+        </Text>
       )}
-      <p className="hint">
+      <Text size="xs" c="dimmed" my="sm">
         <ShieldCheck size={15} /> 계정별 저장소를 분리하며, 클라우드 전송은
         설정에서 별도로 실행합니다.
-      </p>
-    </section>
+      </Text>
+    </Paper>
   );
 }

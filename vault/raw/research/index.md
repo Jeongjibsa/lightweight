@@ -14,3 +14,4 @@
 - [볼륨/추이/오늘 후보 구현 검사](2026-10-04-volume-history-verification.json) — 50개/10파일·수동 CUA·기간/방식/반응형.
 - [볼륨/후보 최종 검사](2026-10-04-volume-history-final-verification.json) — 보류 설명 검토 후50개·최종build.
 - [복원 설정 입력 회귀 루프](2026-10-04-settings-restore-loop.json) — 최초 실패→작은 수정→회귀2·전체52개/11파일.
+- [전체 Mantine/Geist 디자인 검증](2026-10-04-mantine-geist-design-verification.json) — 55개·실제 iframe25조합·가짜 캡처/루프·미검증 경계.

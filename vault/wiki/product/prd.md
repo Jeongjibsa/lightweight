@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T02:15:39+09:00"
+  at: "2026-10-04T13:35:43+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-03-001.md"
@@ -89,9 +89,15 @@ sources:
   - id: "volume-mvp"
     resource: "volume-history-mvp.md"
     title: "계산/단계"
-version: "0.5.0"
+  - id: "design-request"
+    resource: "../../raw/conversations/2026-10-04-010.md"
+    title: "전체 Mantine/Geist/하단 UX 요구"
+  - id: "design"
+    resource: "design-system.md"
+    title: "디자인 계약"
+version: "0.6.0"
 approval_status: "proposal"
-change_id: "CHG-0009"
+change_id: "CHG-0010"
 aliases:
   - "앱 기획서"
   - "PRD"
@@ -99,7 +105,7 @@ aliases:
 
 # 근거 기반 웨이트 트레이닝 앱 기획서
 
-> **버전 0.5.0 · 2026-10-04 · 브레인스토밍 초안**  
+> **버전 0.6.0 · 2026-10-04 · 브레인스토밍 초안**  
 > 앱 이름은 미정. `lightweight`는 임시 프로젝트 식별자다.  
 > 사용자 범위·iOS·PWA·기본 스택과 명시 기능은 **요구사항/합의**, 배포 제공자·상세 보안/동기화·출시 순서·수치 목표는 **기획 제안**으로 구분한다.
 
@@ -129,7 +135,7 @@ aliases:
 
 **PWA 진행 확정:** 사용자가 PWA로 진행할 의사를 명시했다. iPhone 홈 화면 설치와 링크 제공을 기준으로 기획을 발전시킨다. [CONV-0003](../conversations/2026-10-03-003.md) · [플랫폼 검토](platform-distribution.md). 건강 앱·Watch 요구가 달라지면 구현 범위를 다시 검토한다.
 
-첫 구현은 한 손 입력·오프라인 기록·백업/복원·설명 가능한 리포트에 집중하는 제안이다. **TypeScript·React+Vite·IndexedDB/Dexie·Supabase PostgreSQL/Auth 구성은 사용자 동의로 방향을 채택했다.** Mantine UI·Spoqa Han Sans Neo는 CONV-0008 요구로 채택/적용했다. 현재 정확한 패키지/역할은 [기술 스택](technology-stack.md)을 따른다. Supabase 프로젝트 연결과 등록 이메일/비밀번호·계정 DB·수동 snapshot 증분은 구현했으며 로그인 수단 최종 선택·지원 OS·동기화 고도화·운영비는 남았다. [언어와 개인 데이터 저장](technology-data-storage.md).
+첫 구현은 한 손 입력·오프라인 기록·백업/복원·설명 가능한 리포트에 집중하는 제안이다. **TypeScript·React+Vite·IndexedDB/Dexie·Supabase PostgreSQL/Auth 구성은 사용자 동의로 방향을 채택했다.** Mantine UI는 CONV-0008에서 채택했다. CONV-0010에서 전체 화면 Mantine 적용·Geist·블루/다크·iOS 같은 UX·전 폭 하단 메뉴·빠른 접근을 요구하여 별도 branch로 재설계했다. 글꼴은 Spoqa에서 Geist/한글 시스템 fallback으로 변경했다. 현재 정확한 패키지/역할은 [기술 스택](technology-stack.md)을 따른다. Supabase 프로젝트 연결과 등록 이메일/비밀번호·계정 DB·수동 snapshot 증분은 구현했으며 로그인 수단 최종 선택·지원 OS·동기화 고도화·운영비는 남았다. [언어와 개인 데이터 저장](technology-data-storage.md).
 
 ### 2.2 배포와 개인 기록 보호
 
@@ -156,10 +162,11 @@ Cloudflare Pages에 PWA 화면을, Supabase에 계정/DB와 서버 기능을 배
 | FR-09 | 부족 가능 영양소·추천 열량·식단 리포트 | P1 | [영양](nutrition.md) |
 | FR-10 | 모바일 우선 반응형 PWA, 휴대폰·태블릿·데스크톱 확장 | P0 | [설치·배포](platform-distribution.md) |
 | FR-11 | 사용자별 목표·운동 횟수·분할 등의 간편 입력/변경/보존 | P0 | [설정·로컬 계약](implementation-contracts.md) |
-| FR-12 | Mantine UI·Spoqa Han Sans Neo·현재 스택/라이브러리 명시 | P0, 적용한 증분 | [스택](technology-stack.md) |
+| FR-12 | 전체 Mantine UI·Geist·현재 스택/라이브러리 명시 | P0, 적용한 증분 | [스택](technology-stack.md) |
 | FR-13 | 생성한 Supabase 연결·공개 가입 차단 | P0, 연결 증분/실계정 검증 잔여 | [클라우드](supabase-integration.md) |
 | FR-14 | 운동별·일별 세트/반복/중량 볼륨과 그래프 추이 | P0, 관찰 지표부터 | [볼륨 MVP](volume-history-mvp.md) |
 | FR-15 | 과거 데이터 기반 오늘의 운동/권장 볼륨 안내 | P0, 기록 참고→검토된 조정 단계 | [후보/조정](volume-history-mvp.md) |
+| FR-16 | 블루/다크·iOS 같은 UX·전 폭 하단 메뉴·클릭 수 감소/접근성·별도 branch 구현 | P0, UI 증분/실기기 잔여 | [디자인](design-system.md) · [감사](design-audit.md) |
 | QA-01 | 현재 검증 하네스 문서화·단위/통합 검사·실패 재현/회귀의 반복 개선 | 지속 품질 요구; 상세 구현안 제안 | [하네스](../operations/testing-harness.md) · [루프](../operations/loop-engineering.md) |
 | KM-01 | 루트 vault·Markdown·OKF·옵시디언 호환 | 이번 산출물 | [관리](../operations/knowledge-workflow.md) |
 | KM-02 | 대화에 따른 기획 수정과 이력·근거 축적 | 지속 관리 | [변경](../../history/changes/index.md) |
@@ -180,9 +187,9 @@ flowchart LR
   J[식단·체중 기록] --> H
 ```
 
-내비게이션 제안: **오늘 / 운동 찾기 / 루틴 / 리포트 / 내 설정**. 식단 출시 시 ‘오늘’에 식사 기록 진입점을 추가하고 리포트에 영양 탭을 둔다.
+내비게이션은 **오늘 / 운동 탐색 / 나의 루틴 / 리포트 / 설정**의 전 폭 하단 다섯 탭으로 구현한다(CONV-0010). 식단 출시 시 ‘오늘’에 식사 기록 진입점을 추가하고 리포트에 영양 탭을 둔다.
 
-화면은 기종 이름 대신 폭과 입력 환경에 대응한다. 휴대폰은 하단 메뉴, 큰 화면은 사이드 메뉴와 다중 열을 사용한다. 사용자별 목표·주당 횟수 범위·분할·시간·장비·단위·시간대를 설정하고 변경할 수 있다. 주당 횟수와 분할은 독립이다. 새 사용자의 목표·횟수·분할을 본인 조건으로 강제하지 않는다. 시작 당시 설정/루틴은 과거 기록에 보존한다. [구현 계약](implementation-contracts.md).
+화면은 기종 이름 대신 폭과 입력 환경에 대응한다. 모든 폭에서 하단 메뉴를 유지하고 큰 화면은 본문 최대1080px·다중 열을 사용한다. 오늘 시작/재개·루틴 바로 시작, 운동 행 한 번 추가, 새 루틴 연속 선택과 운동 하단 dock으로 반복 조작을 줄인다. 모바일 확인/상세는 내용 높이 bottom sheet, 큰 화면은 Modal이다. Mantine theme과 Geist/한글 fallback·블루/다크로 통일한다. 구체 tokens/target/초점 기준은 [디자인 규칙](design-system.md)을 따르며 실제 iOS native 전환/실기기 검증 완료를 의미하지 않는다. 사용자별 목표·주당 횟수 범위·분할·시간·장비·단위·시간대를 설정하고 변경할 수 있다. 주당 횟수와 분할은 독립이다. 새 사용자의 목표·횟수·분할을 본인 조건으로 강제하지 않는다. 시작 당시 설정/루틴은 과거 기록에 보존한다. [구현 계약](implementation-contracts.md).
 
 첫 사용에는 전체 프로필을 강제하기 전에 운동 탐색과 직접 기록을 허용한다. 추천 시 목표·경험·가능 횟수·시간·장비·제약을 단계적으로 받는다. 체중과 영양 계산 정보는 해당 기능에서 받는다.
 

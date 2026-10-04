@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-03T23:24:52+09:00"
+  at: "2026-10-04T13:35:43+09:00"
 sources:
   - id: "responsive-local-request"
     resource: "../../raw/conversations/2026-10-03-006.md"
@@ -20,6 +20,9 @@ sources:
   - id: "local-progress"
     resource: "implementation-progress.md"
     title: "실행 결과와 남은 작업"
+  - id: "design-request"
+    resource: "../../raw/conversations/2026-10-04-010.md"
+    title: "전체 Mantine/Geist/하단 UX 요구"
 ---
 
 # 루틴과 간편 운동 기록
@@ -60,3 +63,7 @@ kg/lb 전환에도 원 입력과 정규화 값 보존. 유효한 0과 결측 구
 특정 iPhone 모델에 한정하지 않는 반응형과 각 사용자별 목표·주당 횟수·분할·시간·장비·단위·시간대 설정을 요구사항으로 추가했다. 본인의 조건은 하나의 시험 표본이다. Supabase 프로젝트가 없으므로 로컬부터 구현한다는 사용자 선택을 반영했다. [로컬 계약](implementation-contracts.md) · [실행 결과](implementation-progress.md).
 
 로컬 프로필/기록·루틴 스냅샷·백업·사실 집계·PWA는 구현했으며 계정/RLS·서버 전송·실제 iOS·검토된 시각/설명·추천/티어·완전한 개인화·배포는 미완료다. 기존 실사용/지인 제공 관문은 유지한다. 로컬 프로필을 인증 계정으로, 개념도를 자극 범위로, 분류별 행 수를 근육 성장량으로 표시하지 않는다.
+
+## CONV-0010 UI/UX 변경
+
+오늘 시작/재개·루틴 행 바로 시작·운동 행 한 번 추가·새 루틴 연속 선택·세트 기본 입력과 상세 Accordion·운동 add/end dock. 데이터 영향 확인은 보존하고 이전 값/설정 snapshot·outbox 계약을 유지한다. [디자인 규칙](design-system.md) · [감사](design-audit.md).

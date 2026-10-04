@@ -8,7 +8,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T02:02:14+09:00"
+  at: "2026-10-04T13:35:43+09:00"
 sources:
   - id: "platform"
     resource: "platform-distribution.md"
@@ -46,6 +46,9 @@ sources:
   - id: "current-cloud"
     resource: "supabase-integration.md"
     title: "현재 연결 증분"
+  - id: "design-request"
+    resource: "../../raw/conversations/2026-10-04-010.md"
+    title: "전체 Mantine/Geist/하단 UX 요구"
 ---
 
 # 제품 검증과 출시 조건
@@ -142,3 +145,7 @@ QA-01을 [HAR-01~06](implementation-backlog.md)과 [우선6개 시나리오](../
 특정 iPhone 모델에 한정하지 않는 반응형과 각 사용자별 목표·주당 횟수·분할·시간·장비·단위·시간대 설정을 요구사항으로 추가했다. 본인의 조건은 하나의 시험 표본이다. Supabase 프로젝트가 없으므로 로컬부터 구현한다는 사용자 선택을 반영했다. [로컬 계약](implementation-contracts.md) · [실행 결과](implementation-progress.md).
 
 로컬 프로필/기록·루틴 스냅샷·백업·사실 집계·PWA는 구현했으며 계정/RLS·서버 전송·실제 iOS·검토된 시각/설명·추천/티어·완전한 개인화·배포는 미완료다. 기존 실사용/지인 제공 관문은 유지한다. 로컬 프로필을 인증 계정으로, 개념도를 자극 범위로, 분류별 행 수를 근육 성장량으로 표시하지 않는다.
+
+## CONV-0010 UI/UX 변경
+
+추가 UI 과업: keyboard 하단 현재 위치/한 번 추가·정보 분리·Escape 복귀/연속 루틴 저장. 실제 iframe25조합 width/scroll/nav target을 확인했다. iPhone/Safari soft keyboard·가로/200% 확대·safe area·VoiceOver·production offline/update는 실제 기기 과업으로 남는다. [디자인 규칙](design-system.md) · [감사](design-audit.md).

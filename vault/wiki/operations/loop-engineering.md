@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T10:18:25+09:00"
+  at: "2026-10-04T13:35:43+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
@@ -29,6 +29,9 @@ sources:
   - id: "settings-loop"
     resource: "../../raw/research/2026-10-04-settings-restore-loop.json"
     title: "복원 입력 회귀/수정"
+  - id: "design-verification"
+    resource: "../../raw/research/2026-10-04-mantine-geist-design-verification.json"
+    title: "디자인 루프 증거"
 version: "0.2.0"
 approval_status: "proposal"
 change_id: "CHG-0008"
@@ -131,3 +134,14 @@ ProfileForm을 실제 profile payload key로 다시 생성하도록 수정했다
 현재 `npm run test` 등을 사람이 실행하고 CI가 push/PR에 검사한다. 이 문서 작성으로 예약 작업·자동 배포·자율 코딩 서비스가 추가되지는 않았다. 이후 구현은 [HAR 백로그](../product/implementation-backlog.md)와 [우선순위](../product/remaining-work.md)에 따라 작은 증분으로 진행한다.
 
 [현재 하네스](testing-harness.md) · [도구 근거](../sources/SRC-035-testing-harness.md) · [지식 관리](knowledge-workflow.md)
+
+## CONV-0010 디자인/하네스 루프
+
+[감사](../product/design-audit.md) · [불변 실행](../../raw/research/2026-10-04-mantine-geist-design-verification.json). 기존 화면 관찰→토큰/컴포넌트 교체→같은 과업/가짜 자료→실패 수정→의미 있는 회귀→캡처/이력 순서로 진행했다.
+
+- LOOP-UI-01: href 없는 NavLink가 키보드 선택 불가, flex filter 글자 잘림. 실제 button/명시 action label·max-content filter로 수정하고 Enter add1회/정보 분리/Escape focus를 자동 회귀로 남겼다.
+- LOOP-UI-02: 내용이 짧아도 bottom Drawer90dvh. height auto/max90dvh·body scroll로 수정하고411.78/844px를 브라우저에서 재측정했다. 실제 iOS 키보드/VoiceOver는 후속이다.
+- LOOP-UI-03: 완료 값 dim·stale timer120초 초과. 공통 input foreground·표시120초 cap. 기존 입력/복원 보존 검사는 유지했다.
+- LOOP-HARNESS-UI-01: 도구에320 요청했어도 다른 tab의 실제 viewport390인 상태를 확인했다. 실패를 제품 overflow와 구별하고 dev iframe fixture를 추가했다. 다섯 실제폭×다섯화면 child width/scroll/target25조합으로 다시 검사했다. 요청값/초기 screenshot 파일명을 성공 증거로 재사용하지 않았다.
+
+새3개 DOM 과업·기존52개 총55개 통과. 낮은 영향의 스타일을 복제하는 검사 대신 키보드/클릭 수/저장 결과를 고정했다. 검사 환경 export warning은 dev component export로 해결하고 lint 경고0을 재확인했다. 원본/캡처는 fake-only·해시 보존, PRD0.6.0/CHG0010에 제품 변경과 실제 검증 한계를 남겼다. 다음 루프는 HAR-03 결정적 browser/CI 증거와 실제 iPhone 입력/설치 과업이다.

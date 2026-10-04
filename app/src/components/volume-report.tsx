@@ -1,4 +1,16 @@
-import { NativeSelect, SegmentedControl } from "@mantine/core";
+import {
+  Badge,
+  Box,
+  Group,
+  NativeSelect,
+  Paper,
+  SegmentedControl,
+  SimpleGrid,
+  Table,
+  Text,
+  Title,
+} from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 import { useMemo, useState } from "react";
 import { dateInZone, type Profile, type Session } from "../domain/models";
 import {
@@ -6,7 +18,6 @@ import {
   trendSegments,
   volumeConditions,
   volumeDays,
-  volumeVersion,
   type VolumeDay,
   type VolumeMetric,
   type VolumePeriod,
@@ -18,7 +29,6 @@ import {
   formatMetric,
   metricLabels,
 } from "./volume-format";
-
 function TrendGraph({
   days,
   metric,
@@ -26,6 +36,9 @@ function TrendGraph({
   days: VolumeDay[];
   metric: VolumeMetric;
 }) {
+  const compact = useMediaQuery("(max-width: 48em)");
+  const plotWidth = compact ? 320 : 640;
+  const plotEnd = plotWidth - 24;
   const segments = trendSegments(days, metric);
   const points = segments.flat();
   if (!points.length)
@@ -35,19 +48,19 @@ function TrendGraph({
       </Empty>
     );
   const maximum = Math.max(1, ...points.map((p) => p.value));
-  const x = (ratio: number) => 64 + ratio * 552;
+  const x = (ratio: number) => 64 + ratio * (plotEnd - 64);
   const y = (value: number) => 174 - (value / maximum) * 132;
   const description = `${metricLabels[metric].label} 추이. ${points.length}개 날짜의 값. 수치는 아래 표에서 확인할 수 있습니다.`;
   return (
-    <figure className="volume-figure">
+    <Box component="figure" m={0}>
       <svg
-        viewBox="0 0 640 220"
+        viewBox={`0 0 ${plotWidth} 220`}
         role="img"
         aria-label={description}
         className="volume-chart"
       >
-        <line x1="64" y1="174" x2="616" y2="174" className="chart-axis" />
-        <line x1="64" y1="42" x2="616" y2="42" className="chart-grid" />
+        <line x1="64" y1="174" x2={plotEnd} y2="174" className="chart-axis" />
+        <line x1="64" y1="42" x2={plotEnd} y2="42" className="chart-grid" />
         <text x="56" y="46" textAnchor="end">
           {formatMetric(maximum)}
         </text>
@@ -58,7 +71,7 @@ function TrendGraph({
           {days[0]!.date}
         </text>
         {days.length > 1 && (
-          <text x="616" y="205" textAnchor="end">
+          <text x={plotEnd} y="205" textAnchor="end">
             {days.at(-1)!.date}
           </text>
         )}
@@ -88,11 +101,11 @@ function TrendGraph({
           </g>
         ))}
       </svg>
-      <figcaption>
+      <Text component="figcaption" size="sm" c="dimmed" my="sm">
         단위: {metricLabels[metric].unit} · 날짜 사이의 실제 간격을 표시합니다.
         기록 없는 날은 생략하고 N/A에서 선을 끊습니다.
-      </figcaption>
-    </figure>
+      </Text>
+    </Box>
   );
 }
 export function VolumeReport({
@@ -129,15 +142,19 @@ export function VolumeReport({
       ? null
       : changePercent(days[0]![metric], days.at(-1)![metric]);
   return (
-    <section className="card volume-report" aria-labelledby="volume-heading">
-      <div className="section-heading">
-        <div>
-          <p className="eyebrow">YOUR RECORD, OVER TIME</p>
-          <h2 id="volume-heading">볼륨과 기록 추이</h2>
-        </div>
-        <span className="badge">{days.length}일 기록</span>
-      </div>
-      <div className="volume-controls">
+    <Paper component="section" aria-labelledby="volume-heading">
+      <Group gap="sm" justify="space-between" mb="md">
+        <Box>
+          <Text my="sm" size="xs" lts={1} fw={600} c="blue.4">
+            YOUR RECORD, OVER TIME
+          </Text>
+          <Title id="volume-heading" order={2} mb="sm">
+            볼륨과 기록 추이
+          </Title>
+        </Box>
+        <Badge>{days.length}일 기록</Badge>
+      </Group>
+      <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="lg">
         <NativeSelect
           label="비교할 기록"
           value={condition?.key ?? "daily"}
@@ -147,10 +164,16 @@ export function VolumeReport({
             ...conditionChoices(conditions),
           ]}
         />
-        <div>
-          <span className="control-label" id="volume-period-label">
+        <Box>
+          <Text
+            id="volume-period-label"
+            component="div"
+            size="sm"
+            mb={6}
+            c="inherit"
+          >
             조회 기간
-          </span>
+          </Text>
           <SegmentedControl
             aria-labelledby="volume-period-label"
             value={period}
@@ -162,12 +185,18 @@ export function VolumeReport({
             ]}
             fullWidth
           />
-        </div>
-      </div>
-      <div className="metric-control">
-        <span className="control-label" id="volume-metric-label">
+        </Box>
+      </SimpleGrid>
+      <Box mt="md">
+        <Text
+          id="volume-metric-label"
+          component="div"
+          size="sm"
+          mb={6}
+          c="inherit"
+        >
           그래프 지표
-        </span>
+        </Text>
         <SegmentedControl
           aria-labelledby="volume-metric-label"
           value={metric}
@@ -175,13 +204,19 @@ export function VolumeReport({
           data={(
             Object.entries(metricLabels) as [
               VolumeMetric,
-              { label: string; unit: string },
+              {
+                label: string;
+                unit: string;
+              },
             ][]
-          ).map(([value, { label }]) => ({ value, label }))}
+          ).map(([value, { label }]) => ({
+            value,
+            label: value === "volume" ? "볼륨" : label,
+          }))}
           fullWidth
         />
-      </div>
-      <p className="hint">
+      </Box>
+      <Text size="xs" c="dimmed" my="sm">
         {condition
           ? condition.exercise.loadMode === "per_hand"
             ? "한 손에 입력한 중량 기준입니다. 두 배로 환산하지 않습니다."
@@ -194,65 +229,65 @@ export function VolumeReport({
                 : "같은 운동·장비·중량 방식·좌우의 기록입니다."
           : "일별 중량 볼륨은 ‘총 중량’ 방식만 합산합니다. 덤벨 한 손·머신·맨몸·보조·시간 방식은 중량 합계에서 제외합니다."}{" "}
         kg/lb는 kg로 환산합니다.
-      </p>
+      </Text>
       {days.length ? (
         <>
           <TrendGraph days={days} metric={metric} />
-          <p className="hint">
+          <Text size="xs" c="dimmed" my="sm">
             첫 기록 → 최근 기록 변화율:{" "}
             {change === null
               ? "비교 보류 (두 날짜의 값과 0이 아닌 기준값 필요)"
               : `${formatMetric(change)}%`}{" "}
             · 선택한 기간의 두 기록을 비교하며 운동 효과를 평가하지 않습니다.
-          </p>
-          <div
-            className="volume-table-wrap"
+          </Text>
+          <Box
             role="region"
             aria-label="날짜별 수치 표"
             tabIndex={0}
+            style={{ overflowX: "auto" }}
           >
-            <table className="volume-table">
-              <caption>
+            <Table miw={620}>
+              <Table.Caption>
                 날짜별 완료 본세트 기록 ·{" "}
                 {condition ? conditionLabel(condition) : "일별 전체"}
-              </caption>
-              <thead>
-                <tr>
-                  <th scope="col">기록일</th>
-                  <th scope="col">본세트</th>
-                  <th scope="col">반복</th>
-                  <th scope="col">시간</th>
-                  <th scope="col">볼륨</th>
-                  <th scope="col">볼륨 포함 행</th>
-                </tr>
-              </thead>
-              <tbody>
+              </Table.Caption>
+              <Table.Thead>
+                <Table.Tr>
+                  <Table.Th scope="col">기록일</Table.Th>
+                  <Table.Th scope="col">본세트</Table.Th>
+                  <Table.Th scope="col">반복</Table.Th>
+                  <Table.Th scope="col">시간</Table.Th>
+                  <Table.Th scope="col">볼륨</Table.Th>
+                  <Table.Th scope="col">볼륨 포함 행</Table.Th>
+                </Table.Tr>
+              </Table.Thead>
+              <Table.Tbody>
                 {days.map((day) => (
-                  <tr key={day.date}>
-                    <th scope="row">{day.date}</th>
-                    <td>{day.workingRows}개</td>
-                    <td>{formatMetric(day.reps, "회")}</td>
-                    <td>{formatMetric(day.seconds, "초")}</td>
-                    <td>{formatMetric(day.volume, "kg·회")}</td>
-                    <td>
+                  <Table.Tr key={day.date}>
+                    <Table.Th scope="row">{day.date}</Table.Th>
+                    <Table.Td>{day.workingRows}개</Table.Td>
+                    <Table.Td>{formatMetric(day.reps, "회")}</Table.Td>
+                    <Table.Td>{formatMetric(day.seconds, "초")}</Table.Td>
+                    <Table.Td>{formatMetric(day.volume, "kg·회")}</Table.Td>
+                    <Table.Td>
                       {day.volumeRows}/{day.workingRows}
-                    </td>
-                  </tr>
+                    </Table.Td>
+                  </Table.Tr>
                 ))}
-              </tbody>
-            </table>
-          </div>
+              </Table.Tbody>
+            </Table>
+          </Box>
         </>
       ) : (
         <Empty title="선택한 기간에 완료한 본세트가 없어요">
           운동을 기록하거나 조회 기간을 넓혀보세요.
         </Empty>
       )}
-      <p className="hint">
+      <Text size="xs" c="dimmed" my="sm">
         입력 행을 세며 좌우 별도 행은 각각 포함합니다. 동일 이름·장비라도 실제
         머신과 가동범위가 같은지 확인하세요. 준비·미완료·취소·삭제·미래 기록은
-        제외합니다. 계산 {volumeVersion}.
-      </p>
-    </section>
+        제외합니다.
+      </Text>
+    </Paper>
   );
 }

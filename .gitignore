@@ -17,3 +17,6 @@ app/coverage/
 app/.vitest/
 private-data/
 supabase/.temp/
+
+# Local UI audit screenshots (synthetic test data only)
+output/design-audit/

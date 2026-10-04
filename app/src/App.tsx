@@ -1,21 +1,37 @@
-import { UnstyledButton } from "@mantine/core";
+import {
+  ActionIcon,
+  Alert,
+  Anchor,
+  Avatar,
+  Badge,
+  Box,
+  Button,
+  Container,
+  Divider,
+  Group,
+  Loader,
+  NavLink,
+  Paper,
+  Progress,
+  SimpleGrid,
+  Stack,
+  Text,
+  ThemeIcon,
+  Title,
+} from "@mantine/core";
 import { errorMessage } from "./domain/errors";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
 import { useRegisterSW } from "virtual:pwa-register/react";
 import {
-  Activity,
-  BookOpen,
-  CalendarDays,
-  ChartNoAxesCombined,
-  Settings2,
   Dumbbell,
-  ArrowUpRight,
   Play,
   ChevronRight,
   Check,
-  X,
   RefreshCw,
+  Plus,
+  Settings2,
+  ArrowUpRight,
 } from "lucide-react";
 import { useTraining } from "./context/training";
 import { AccountPanel } from "./auth/account-panel";
@@ -36,16 +52,9 @@ import { SettingsView } from "./components/settings";
 import { WorkoutView } from "./components/workout";
 import { VolumeReport } from "./components/volume-report";
 import { HistorySuggestion } from "./components/history-suggestion";
+import { BottomNavigation } from "./components/navigation";
+import { screens, type Screen } from "./components/screens";
 import { Empty, type Run } from "./components/shared";
-
-const screens = [
-  { id: "today", label: "오늘", icon: Activity },
-  { id: "library", label: "운동 탐색", icon: BookOpen },
-  { id: "routines", label: "나의 루틴", icon: CalendarDays },
-  { id: "reports", label: "리포트", icon: ChartNoAxesCombined },
-  { id: "settings", label: "설정", icon: Settings2 },
-] as const;
-type Screen = (typeof screens)[number]["id"];
 const storageKey = "lightweight.active-profile.v1";
 function currentScreen(): Screen {
   const id = location.hash.slice(1);
@@ -65,27 +74,82 @@ function weekDates(timeZone: string, now: Date) {
 function PreferenceSummary({ profile }: { profile: Profile }) {
   const p = profile.preferences;
   return (
-    <div className="chips summary-chips">
+    <Group gap={6}>
       {p ? (
         <>
-          <span className="chip">
+          <Badge color="gray">
             {p.goal === "custom" ? p.customGoal : goals[p.goal]}
-          </span>
-          <span className="chip">
+          </Badge>
+          <Badge color="gray">
             주{" "}
             {p.weeklyMin === p.weeklyMax
               ? p.weeklyMin
               : `${p.weeklyMin}–${p.weeklyMax}`}
             회
-          </span>
-          <span className="chip">
+          </Badge>
+          <Badge color="gray">
             {p.split === "custom" ? p.customSplit : splits[p.split]}
-          </span>
+          </Badge>
         </>
       ) : (
-        <span className="chip">훈련 설정을 입력해주세요</span>
+        <Text c="dimmed" size="sm">
+          훈련 설정을 입력해주세요
+        </Text>
       )}
-    </div>
+    </Group>
+  );
+}
+function SessionRow({
+  session,
+  inspect,
+}: {
+  session: Session;
+  inspect: (s: Session) => void;
+}) {
+  return (
+    <NavLink
+      component="button"
+      type="button"
+      onClick={() => inspect(session)}
+      label={session.name}
+      description={`${session.localDate} · ${session.sets.filter((s) => s.completedAt).length}/${session.sets.length}세트 · ${session.status === "active" ? "진행 중" : session.status === "partial" ? "일부 완료" : "완료"}`}
+      leftSection={
+        <ThemeIcon variant="light" size={40} radius="lg">
+          <Dumbbell size={20} />
+        </ThemeIcon>
+      }
+      rightSection={<ChevronRight size={18} />}
+    />
+  );
+}
+function Stat({
+  label,
+  value,
+  unit,
+}: {
+  label: string;
+  value: number;
+  unit: string;
+}) {
+  return (
+    <Paper p={{ base: "sm", sm: "lg" }}>
+      <Text size="xs" c="dimmed">
+        {label}
+      </Text>
+      <Group gap={4} align="baseline" mt={8}>
+        <Text
+          fz={28}
+          fw={650}
+          lh={1.2}
+          style={{ fontVariantNumeric: "tabular-nums" }}
+        >
+          {value}
+        </Text>
+        <Text c="dimmed" size="xs">
+          {unit}
+        </Text>
+      </Group>
+    </Paper>
   );
 }
 function TodayView({
@@ -102,102 +166,149 @@ function TodayView({
   routines: Routine[];
   sessions: Session[];
   start: (id?: string) => Promise<void>;
-  navigate: (screen: Screen) => void;
-  inspect: (session: Session) => void;
+  navigate: (s: Screen) => void;
+  inspect: (s: Session) => void;
 }) {
-  const active = sessions.find((session) => session.status === "active");
+  const active = sessions.find((s) => s.status === "active");
   const dates = weekDates(profile.timeZone, now);
   const weekly = sessions.filter(
-    (session) =>
-      session.localDate >= dates[0]! && session.localDate <= dates[6]!,
+    (s) => s.localDate >= dates[0]! && s.localDate <= dates[6]!,
   );
   const stats = summarize(weekly);
   const today = dateInZone(now, profile.timeZone);
-  const recent = sessions
-    .filter((session) => session.status !== "active")
-    .slice(0, 4);
   return (
-    <>
-      <section className="hero">
-        <div className="hero-copy">
-          <p className="eyebrow">ONE SESSION AT A TIME</p>
-          <h2>
-            꾸준히 쌓이는 기록,
-            <br />
-            나의 훈련이 되다.
-          </h2>
-          <p>
-            오늘의 운동을 가볍게 시작하고
-            <br className="mobile-break" /> 변화의 과정을 남겨보세요.
-          </p>
+    <Stack gap="lg">
+      <Paper
+        p={{ base: "lg", sm: "xl" }}
+        bg="dark.6"
+        style={{ borderColor: "var(--mantine-color-blue-8)" }}
+      >
+        <Stack gap="md">
+          <Group justify="space-between">
+            <Badge color="blue">
+              {active ? "WORKOUT IN PROGRESS" : "READY WHEN YOU ARE"}
+            </Badge>
+            <Dumbbell size={24} color="var(--mantine-color-blue-4)" />
+          </Group>
+          <Box>
+            <Title order={2} fz={{ base: 24, sm: 30 }}>
+              {active ? active.name : "오늘의 운동, 시작해볼까요?"}
+            </Title>
+            <Text c="dark.1" size="sm" mt={6}>
+              {active
+                ? `${active.sets.filter((s) => s.completedAt).length}개 세트 완료 · 기록은 기기에 보관되어 있어요.`
+                : "루틴을 불러오거나 자유롭게 기록하세요."}
+            </Text>
+          </Box>
           <PreferenceSummary profile={profile} />
-          <UnstyledButton
-            className="button dark"
+          <Button
+            fullWidth
+            size="lg"
+            h={52}
+            leftSection={<Play size={19} />}
+            rightSection={<ChevronRight size={18} />}
             onClick={() => (active ? inspect(active) : void start())}
           >
-            <Play size={17} />
             {active ? "진행 중인 운동 이어하기" : "자유 운동 시작"}
-            <ArrowUpRight size={18} />
-          </UnstyledButton>
-        </div>
-        <div className="hero-art" aria-hidden="true">
-          <div className="barbell">
-            <i />
-            <i />
-            <b />
-            <i />
-            <i />
-          </div>
-          <span className="art-caption">
-            YOUR PACE.
-            <br />
-            YOUR PROGRESS.
-          </span>
-        </div>
-      </section>
+          </Button>
+        </Stack>
+      </Paper>
+      <Box>
+        <Group justify="space-between" mb="sm">
+          <Title order={2}>바로 시작하는 루틴</Title>
+          <ActionIcon
+            aria-label="루틴 관리"
+            onClick={() => navigate("routines")}
+          >
+            <ArrowUpRight size={20} />
+          </ActionIcon>
+        </Group>
+        {routines.length ? (
+          <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="sm">
+            {routines.slice(0, 4).map((r) => (
+              <Paper key={r.id} p={4}>
+                <NavLink
+                  component="button"
+                  type="button"
+                  onClick={() => void start(r.id)}
+                  label={r.name}
+                  description={`${r.exercises.length}개 운동 · ${r.exercises.reduce((n, e) => n + e.sets, 0)}세트 계획`}
+                  rightSection={
+                    <Play size={18} color="var(--mantine-color-blue-4)" />
+                  }
+                />
+              </Paper>
+            ))}
+          </SimpleGrid>
+        ) : (
+          <Button
+            variant="light"
+            fullWidth
+            leftSection={<Plus size={18} />}
+            onClick={() => navigate("routines")}
+          >
+            나의 첫 루틴 만들기
+          </Button>
+        )}
+      </Box>
       {!profile.preferences && (
-        <UnstyledButton
-          className="setup-banner"
-          onClick={() => navigate("settings")}
-        >
-          <Settings2 size={22} />
-          <span>
-            <strong>먼저 나의 훈련 방향을 정해볼까요?</strong>
-            <small>목표, 운동 횟수, 분할을 언제든 바꿀 수 있어요.</small>
-          </span>
-          <ChevronRight size={20} />
-        </UnstyledButton>
+        <Alert icon={<Settings2 size={20} />} title="나에게 맞는 훈련 방향">
+          <Text size="sm" c="dark.1" mb="sm">
+            목표·횟수·분할을 설정하고 기록을 시작하세요.
+          </Text>
+          <Button variant="light" onClick={() => navigate("settings")}>
+            훈련 설정 입력
+          </Button>
+        </Alert>
       )}
-      <div className="stats-grid">
-        <section className="card stat">
-          <span>이번 주 운동</span>
-          <strong>
-            {stats.sessionCount}
-            <small>회</small>
-          </strong>
-          <p>
+      <Box>
+        <Group justify="space-between" mb="sm">
+          <Title order={2}>이번 주</Title>
+          <Text c="dimmed" size="xs">
             {profile.preferences
               ? `목표 ${profile.preferences.weeklyMin}–${profile.preferences.weeklyMax}회`
-              : "나의 목표를 설정해보세요"}
-          </p>
-        </section>
-        <section className="card stat">
-          <span>완료한 본세트 기록</span>
-          <strong>
-            {stats.workingRows}
-            <small>개</small>
-          </strong>
-          <p>준비 세트와 미완료 세트 제외</p>
-        </section>
-        <section className="card stat">
-          <span>운동한 날</span>
-          <strong>
-            {stats.days}
-            <small>일</small>
-          </strong>
-          <p>이번 주 월요일부터 일요일</p>
-        </section>
-      </div>
+              : "월요일 – 일요일"}
+          </Text>
+        </Group>
+        <SimpleGrid cols={3} spacing="sm">
+          <Stat label="운동 기록" value={stats.sessionCount} unit="회" />
+          <Stat label="완료 본세트" value={stats.workingRows} unit="개" />
+          <Stat label="운동한 날" value={stats.days} unit="일" />
+        </SimpleGrid>
+      </Box>
+      <Paper>
+        <SimpleGrid cols={7} spacing={4}>
+          {dates.map((date, i) => {
+            const done = weekly.some(
+              (s) =>
+                s.localDate === date &&
+                s.sets.some((set) => set.kind === "working" && set.completedAt),
+            );
+            return (
+              <Stack key={date} align="center" gap={8}>
+                <Text c={date === today ? "blue.4" : "dimmed"} size="xs">
+                  {["월", "화", "수", "목", "금", "토", "일"][i]}
+                </Text>
+                <ThemeIcon
+                  size={34}
+                  radius="xl"
+                  variant={done ? "filled" : "light"}
+                  color={date === today || done ? "blue" : "gray"}
+                  aria-label={`${date}${done ? " 운동 기록 있음" : ""}`}
+                >
+                  {done ? (
+                    <Check size={17} />
+                  ) : (
+                    <Text size="sm" c="inherit">
+                      {Number(date.slice(-2))}
+                    </Text>
+                  )}
+                </ThemeIcon>
+              </Stack>
+            );
+          })}
+        </SimpleGrid>
+      </Paper>
       <HistorySuggestion
         profile={profile}
         routines={routines}
@@ -205,118 +316,34 @@ function TodayView({
         now={now}
         start={start}
       />
-      <div className="today-grid">
-        <section className="card">
-          <div className="section-heading">
-            <h2>이번 주의 흐름</h2>
-            <span className="badge">
-              {dates[0]!.slice(5).replace("-", ".")} –{" "}
-              {dates[6]!.slice(5).replace("-", ".")}
-            </span>
-          </div>
-          <div className="week-grid">
-            {dates.map((date, i) => {
-              const done = weekly.some(
-                (session) =>
-                  session.localDate === date &&
-                  session.sets.some(
-                    (set) => set.kind === "working" && set.completedAt,
-                  ),
-              );
-              return (
-                <div
-                  className={`day ${date === today ? "today" : ""} ${done ? "done" : ""}`}
-                  key={date}
-                >
-                  <span>{["월", "화", "수", "목", "금", "토", "일"][i]}</span>
-                  <strong>
-                    {done ? <Check size={18} /> : Number(date.slice(-2))}
-                  </strong>
-                </div>
-              );
-            })}
-          </div>
-          <div className="section-heading sub-heading">
-            <h3>최근 운동</h3>
-            <UnstyledButton
-              className="text-button"
-              onClick={() => navigate("reports")}
-            >
-              모두 보기 <ChevronRight size={15} />
-            </UnstyledButton>
-          </div>
-          {recent.length ? (
-            <div className="history-list">
-              {recent.map((session) => (
-                <UnstyledButton
-                  className="history-item"
-                  key={session.id}
-                  onClick={() => inspect(session)}
-                >
-                  <span className="history-icon">
-                    <Dumbbell size={20} />
-                  </span>
-                  <span>
-                    <strong>{session.name}</strong>
-                    <small>
-                      {session.localDate} ·{" "}
-                      {session.sets.filter((set) => set.completedAt).length}개
-                      세트 완료
-                    </small>
-                  </span>
-                  <ChevronRight size={18} />
-                </UnstyledButton>
-              ))}
-            </div>
-          ) : (
-            <Empty title="첫 기록을 기다리고 있어요">
-              운동을 마치면 이곳에 기록이 쌓입니다.
-            </Empty>
-          )}
-        </section>
-        <section className="card">
-          <div className="section-heading">
-            <h2>바로 시작하는 루틴</h2>
-            <UnstyledButton
-              className="icon-button"
-              aria-label="루틴 관리"
-              onClick={() => navigate("routines")}
-            >
-              <ArrowUpRight size={20} />
-            </UnstyledButton>
-          </div>
-          {routines.slice(0, 3).map((routine) => (
-            <UnstyledButton
-              className="routine-shortcut"
-              key={routine.id}
-              onClick={() => void start(routine.id)}
-            >
-              <span>
-                <strong>{routine.name}</strong>
-                <small>
-                  {routine.exercises.length}개 운동 ·{" "}
-                  {routine.exercises.reduce((n, entry) => n + entry.sets, 0)}
-                  세트 계획
-                </small>
-              </span>
-              <Play size={17} />
-            </UnstyledButton>
-          ))}
-          {!routines.length && (
-            <Empty title="나만의 루틴을 만들어보세요">
-              운동 순서와 계획 세트를 저장해두면 다음 운동을 쉽게 시작할 수
-              있어요.
-            </Empty>
-          )}
-          <UnstyledButton
-            className="button secondary full"
-            onClick={() => navigate("routines")}
+      <Paper>
+        <Group justify="space-between" mb="md">
+          <Title order={2}>최근 운동</Title>
+          <Button
+            variant="subtle"
+            size="compact-md"
+            rightSection={<ChevronRight size={15} />}
+            onClick={() => navigate("reports")}
           >
-            나의 루틴 관리
-          </UnstyledButton>
-        </section>
-      </div>
-    </>
+            모두 보기
+          </Button>
+        </Group>
+        {sessions.filter((s) => s.status !== "active").length ? (
+          <Stack gap={4}>
+            {sessions
+              .filter((s) => s.status !== "active")
+              .slice(0, 4)
+              .map((s) => (
+                <SessionRow key={s.id} session={s} inspect={inspect} />
+              ))}
+          </Stack>
+        ) : (
+          <Empty title="첫 기록을 기다리고 있어요">
+            운동을 마치면 이곳에 기록이 쌓입니다.
+          </Empty>
+        )}
+      </Paper>
+    </Stack>
   );
 }
 function ReportsView({
@@ -328,119 +355,66 @@ function ReportsView({
   now: Date;
   profile: Profile;
   sessions: Session[];
-  inspect: (session: Session) => void;
+  inspect: (s: Session) => void;
 }) {
   const dates = weekDates(profile.timeZone, now);
-  const weekly = sessions.filter(
-    (session) =>
-      session.localDate >= dates[0]! && session.localDate <= dates[6]!,
+  const stats = summarize(
+    sessions.filter(
+      (s) => s.localDate >= dates[0]! && s.localDate <= dates[6]!,
+    ),
   );
-  const stats = summarize(weekly);
   const maximum = Math.max(1, ...Object.values(stats.byGroup));
   return (
-    <>
-      <section className="card">
-        <div className="section-heading">
-          <div>
-            <p className="eyebrow">WEEKLY RECORD</p>
-            <h2>기록으로 돌아보는 이번 주</h2>
-          </div>
-          <span className="badge">{dates[0]}부터</span>
-        </div>
-        <PreferenceSummary profile={profile} />
-        <div className="report-numbers">
-          <div>
-            <strong>{stats.sessionCount}</strong>
-            <span>운동 기록</span>
-          </div>
-          <div>
-            <strong>{stats.workingRows}</strong>
-            <span>완료 본세트 기록</span>
-          </div>
-          <div>
-            <strong>{stats.plannedRows}</strong>
-            <span>계획 본세트 기록</span>
-          </div>
-        </div>
-        <p className="muted">
-          {!stats.workingRows
-            ? "완료한 본세트가 생기면 기록을 요약해드릴게요."
-            : profile.preferences &&
-                stats.sessionCount >= profile.preferences.weeklyMin
-              ? "이번 주 설정한 최소 운동 횟수에 도달했어요."
-              : "완료한 기록을 차근차근 쌓고 있어요."}
-        </p>
-      </section>
-      <div className="report-grid">
-        <section className="card">
-          <h2>운동 분류별 기록</h2>
-          <div className="group-bars">
-            {groups.map((group) => (
-              <div className="group-bar" key={group}>
-                <span>{group}</span>
-                <progress
-                  aria-label={`${group} 완료 본세트 기록`}
-                  max={maximum}
-                  value={stats.byGroup[group]}
-                />
-                <strong>{stats.byGroup[group]}</strong>
-              </div>
-            ))}
-          </div>
-          <p className="hint">
-            운동에 지정한 분류별 완료 본세트 입력 행 수입니다. 좌우를 따로
-            입력한 행은 각각 셉니다. 근육별 자극량이나 운동 효과를 평가하는
-            수치는 아닙니다.
-          </p>
-        </section>
-        <section className="card subtle">
-          <p className="eyebrow">EVIDENCE FIRST</p>
-          <h2>기록량을 읽는 기준</h2>
-          <p className="muted">
-            볼륨은 완료한 세트의 중량과 반복으로 계산한 기록량입니다. 같은
-            조건의 추이를 참고하세요. 개인별 권장 운동량은 노력·불편감 등 추가
-            자료와 근거 검토를 연결한 뒤 제공할 예정입니다.
-          </p>
-        </section>
-      </div>
+    <Stack gap="lg">
+      <SimpleGrid cols={3} spacing="sm">
+        <Stat label="이번 주 운동" value={stats.sessionCount} unit="회" />
+        <Stat label="완료 본세트" value={stats.workingRows} unit="개" />
+        <Stat label="계획 본세트" value={stats.plannedRows} unit="개" />
+      </SimpleGrid>
       <VolumeReport profile={profile} sessions={sessions} now={now} />
-      <section className="card">
-        <h2>전체 운동 기록</h2>
+      <Paper>
+        <Stack gap="md">
+          <Title order={2}>운동 분류별 기록</Title>
+          {groups.map((group) => (
+            <Group key={group} wrap="nowrap">
+              <Text w={40} size="sm">
+                {group}
+              </Text>
+              <Progress
+                flex={1}
+                value={(stats.byGroup[group] / maximum) * 100}
+                aria-label={`${group} 완료 본세트 기록`}
+                size={8}
+                radius="xl"
+              />
+              <Text w={24} ta="right" size="sm">
+                {stats.byGroup[group]}
+              </Text>
+            </Group>
+          ))}
+          <Text size="xs" c="dimmed">
+            완료한 본세트 입력 행 수입니다. 좌우 별도 입력은 각각 셉니다. 근육별
+            자극량이나 운동 효과를 평가하는 수치는 아닙니다.
+          </Text>
+        </Stack>
+      </Paper>
+      <Paper>
+        <Title order={2} mb="md">
+          전체 운동 기록
+        </Title>
         {sessions.length ? (
-          <div className="history-list">
-            {sessions.map((session) => (
-              <UnstyledButton
-                className="history-item"
-                key={session.id}
-                onClick={() => inspect(session)}
-              >
-                <span className="history-icon">
-                  <Dumbbell size={20} />
-                </span>
-                <span>
-                  <strong>{session.name}</strong>
-                  <small>
-                    {session.localDate} ·{" "}
-                    {session.status === "active"
-                      ? "진행 중"
-                      : session.status === "partial"
-                        ? "일부 완료"
-                        : "완료"}{" "}
-                    · {session.sets.filter((set) => set.completedAt).length}/
-                    {session.sets.length}세트 기록
-                  </small>
-                </span>
-                <ChevronRight size={18} />
-              </UnstyledButton>
+          <Stack gap={4}>
+            {sessions.map((s) => (
+              <SessionRow key={s.id} session={s} inspect={inspect} />
             ))}
-          </div>
+          </Stack>
         ) : (
           <Empty title="아직 기록이 없어요">
             오늘 화면에서 자유 운동을 시작해보세요.
           </Empty>
         )}
-      </section>
-    </>
+      </Paper>
+    </Stack>
   );
 }
 function UpdateNotice({ active }: { active: boolean }) {
@@ -450,28 +424,26 @@ function UpdateNotice({ active }: { active: boolean }) {
   } = useRegisterSW();
   if (!needRefresh) return null;
   return (
-    <div className="update-notice" role="status">
-      <RefreshCw size={18} />
-      <span>
+    <Alert
+      icon={<RefreshCw size={18} />}
+      title="새 버전이 준비됐어요"
+      withCloseButton
+      onClose={() => setNeedRefresh(false)}
+      closeButtonLabel="업데이트 안내 닫기"
+    >
+      <Text size="sm" c="dark.1" mb="sm">
         {active
-          ? "새 버전이 준비됐어요. 진행 중인 운동을 마친 후 적용할 수 있습니다."
-          : "새 버전이 준비됐어요."}
-      </span>
-      <UnstyledButton
-        className="button secondary"
+          ? "진행 중인 운동을 마친 후 적용할 수 있습니다."
+          : "저장한 기록을 유지하며 앱을 업데이트합니다."}
+      </Text>
+      <Button
+        variant="light"
         disabled={active}
         onClick={() => void updateServiceWorker(true)}
       >
         업데이트
-      </UnstyledButton>
-      <UnstyledButton
-        className="icon-button"
-        aria-label="업데이트 안내 닫기"
-        onClick={() => setNeedRefresh(false)}
-      >
-        <X size={18} />
-      </UnstyledButton>
-    </div>
+      </Button>
+    </Alert>
   );
 }
 export default function App() {
@@ -496,6 +468,11 @@ export default function App() {
   }, []);
   const [screen, setScreen] = useState<Screen>(currentScreen);
   const [sessionId, setSessionId] = useState<string | null>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  useEffect(() => {
+    headingRef.current?.focus({ preventScroll: true });
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [screen, sessionId]);
   const [notice, setNotice] = useState<{
     message: string;
     error: boolean;
@@ -591,207 +568,186 @@ export default function App() {
   }
   if (bootError)
     return (
-      <main className="boot-screen">
-        <Dumbbell size={32} />
-        <h1>기기 저장소를 열지 못했습니다</h1>
-        <p role="alert">{bootError}</p>
-        <p>
-          브라우저의 저장소 허용 설정을 확인해주세요. 기존 기록을 삭제하지 않고
-          다시 시도할 수 있습니다.
-        </p>
-        <UnstyledButton
-          className="button primary"
-          onClick={() => location.reload()}
-        >
-          다시 시도
-        </UnstyledButton>
-      </main>
+      <Container size="sm" py={80}>
+        <Stack align="center">
+          <Dumbbell size={32} />
+          <Title order={1}>기기 저장소를 열지 못했습니다</Title>
+          <Alert color="red" role="alert">
+            {bootError}
+          </Alert>
+          <Text c="dimmed">
+            브라우저의 저장소 허용 설정을 확인해주세요. 기존 기록을 삭제하지
+            않고 다시 시도할 수 있습니다.
+          </Text>
+          <Button onClick={() => location.reload()}>다시 시도</Button>
+        </Stack>
+      </Container>
     );
   if (readyOwner !== ownerId || !workspace?.profile)
     return (
-      <main className="boot-screen" role="status">
-        <Dumbbell size={32} />
-        <p>내 훈련 기록을 불러오는 중…</p>
-      </main>
+      <Stack
+        component="main"
+        align="center"
+        justify="center"
+        mih="100dvh"
+        role="status"
+      >
+        <Loader />
+        <Text>내 훈련 기록을 불러오는 중…</Text>
+      </Stack>
     );
   const { profile, routines, sessions } = workspace;
   const session = sessions.find((record) => record.id === sessionId);
   const title = screens.find((item) => item.id === screen)!.label;
   return (
-    <div className="app-shell">
-      <a className="skip-link" href="#main-content">
+    <Box mih="100dvh" bg="dark.9">
+      <Button component="a" href="#main-content" className="skip-link">
         본문으로 건너뛰기
-      </a>
-      <aside className="sidebar">
-        <a className="brand" href="#today" onClick={() => navigate("today")}>
-          <span className="brand-icon">
-            <Dumbbell size={23} />
-          </span>
-          <span>
-            lightweight<small>나의 훈련, 나의 페이스</small>
-          </span>
-        </a>
-        <nav aria-label="주 메뉴">
-          {screens.map(({ id, label, icon: Icon }) => (
-            <a
-              key={id}
-              className={`nav-link ${screen === id ? "active" : ""}`}
-              href={`#${id}`}
-              aria-current={screen === id ? "page" : undefined}
-              onClick={() => navigate(id)}
+      </Button>
+      <Box
+        component="header"
+        pt="max(16px, env(safe-area-inset-top))"
+        pb="md"
+        style={{ borderBottom: "1px solid var(--mantine-color-dark-5)" }}
+      >
+        <Container size={1080}>
+          <Group justify="space-between" wrap="nowrap">
+            <Anchor
+              href="#today"
+              onClick={() => navigate("today")}
+              c="dark.0"
+              underline="never"
             >
-              <Icon size={21} />
-              <span>{label}</span>
-              {screen === id && <span className="nav-dot" />}
-            </a>
-          ))}
-        </nav>
-        <div className="sidebar-foot">
-          <span className="avatar">{profile.name.slice(0, 1)}</span>
-          <span>
-            <strong>{profile.name}</strong>
-            <small>{accountId ? "로그인 계정" : "기기 프로필"}</small>
-          </span>
-        </div>
-      </aside>
-      <div className="main-shell">
-        <header className="topbar">
-          <a
-            className="mobile-brand"
-            href="#today"
-            onClick={() => navigate("today")}
-          >
-            <Dumbbell size={22} />
-            lightweight
-          </a>
-          <span className="desktop-greeting">
-            작은 기록이 만드는 꾸준한 변화
-          </span>
-          <span className="storage-status" role="status">
-            <span className={`status-dot ${pending ? "saving" : ""}`} />
-            {pending
-              ? "기기에 저장 중…"
-              : online
-                ? "이 기기에 저장"
-                : "오프라인 · 기기 저장"}
-          </span>
-        </header>
-        <main id="main-content" className="content" tabIndex={-1}>
-          <header className="page-heading">
-            <div>
-              <p className="eyebrow">
-                {new Intl.DateTimeFormat("ko", {
-                  timeZone: profile.timeZone,
-                  month: "long",
-                  day: "numeric",
-                  weekday: "long",
-                }).format(now)}
-              </p>
-              <h1>
-                {session
-                  ? "운동 기록"
-                  : screen === "today"
-                    ? "오늘도, 나의 페이스로"
-                    : title}
-              </h1>
-            </div>
-            <span className="profile-tag">{profile.name}</span>
-          </header>
-          {session ? (
-            <WorkoutView
-              key={session.id}
-              session={session}
-              run={run}
-              onBack={() => setSessionId(null)}
-            />
-          ) : screen === "today" ? (
-            <TodayView
-              now={now}
-              profile={profile}
-              routines={routines}
-              sessions={sessions}
-              start={start}
-              navigate={navigate}
-              inspect={inspect}
-            />
-          ) : screen === "library" ? (
-            <LibraryView onAdd={addExercise} />
-          ) : screen === "routines" ? (
-            <RoutinesView
-              profile={profile}
-              routines={routines}
-              run={run}
-              start={start}
-            />
-          ) : screen === "reports" ? (
-            <ReportsView
-              now={now}
-              profile={profile}
-              sessions={sessions}
-              inspect={inspect}
-            />
-          ) : (
-            <>
-              <AccountPanel
-                busy={
-                  pending > 0 ||
-                  sessions.some((record) => record.status === "active")
-                }
-              />
-              <CloudPanel
-                busy={
-                  pending > 0 ||
-                  sessions.some((record) => record.status === "active")
-                }
-                run={run}
-              />
-              <SettingsView
-                key={`${profile.ownerId}-${profile.revision}`}
-                profile={profile}
-                profiles={profiles}
-                run={run}
-                switchProfile={switchProfile}
-                createProfile={createProfile}
-              />
-            </>
+              <Group gap={9} wrap="nowrap">
+                <ThemeIcon radius="lg" size={34}>
+                  <Dumbbell size={20} />
+                </ThemeIcon>
+                <Text fw={650} fz={21} lts={-0.7}>
+                  lightweight
+                </Text>
+              </Group>
+            </Anchor>
+            <Group gap={8} wrap="nowrap">
+              <Badge color={pending ? "blue" : "gray"} size="sm" role="status">
+                {pending ? "저장 중…" : online ? "기기 저장" : "오프라인"}
+              </Badge>
+              <Avatar
+                component="button"
+                type="button"
+                size={44}
+                radius="xl"
+                color="blue"
+                variant="light"
+                aria-label={`${profile.name} 설정`}
+                onClick={() => navigate("settings")}
+                style={{ cursor: "pointer", border: 0 }}
+              >
+                {profile.name.slice(0, 1)}
+              </Avatar>
+            </Group>
+          </Group>
+        </Container>
+      </Box>
+      <Container
+        size={1080}
+        component="main"
+        id="main-content"
+        className="app-content"
+        tabIndex={-1}
+        pt={{ base: "lg", sm: "xl" }}
+      >
+        <Group justify="space-between" mb="lg">
+          <Box>
+            <Text c="dimmed" size="xs" mb={6}>
+              {new Intl.DateTimeFormat("ko", {
+                timeZone: profile.timeZone,
+                month: "long",
+                day: "numeric",
+                weekday: "long",
+              }).format(now)}
+            </Text>
+            <Title order={1} ref={headingRef} tabIndex={-1}>
+              {session ? "운동 기록" : screen === "today" ? "오늘" : title}
+            </Title>
+          </Box>
+          {screen === "today" && !session && (
+            <Text c="dark.1" size="sm">
+              {profile.name}
+            </Text>
           )}
-          <footer className="page-footer">
-            LIGHTWEIGHT <span>오늘의 기록을, 내일의 나에게.</span>
-          </footer>
-        </main>
-      </div>
-      <nav className="mobile-nav" aria-label="모바일 주 메뉴">
-        {screens.map(({ id, label, icon: Icon }) => (
-          <a
-            key={id}
-            href={`#${id}`}
-            className={screen === id ? "active" : ""}
-            aria-current={screen === id ? "page" : undefined}
-            onClick={() => navigate(id)}
+        </Group>
+        {session ? (
+          <WorkoutView
+            key={session.id}
+            session={session}
+            run={run}
+            onBack={() => setSessionId(null)}
+          />
+        ) : screen === "today" ? (
+          <TodayView
+            now={now}
+            profile={profile}
+            routines={routines}
+            sessions={sessions}
+            start={start}
+            navigate={navigate}
+            inspect={inspect}
+          />
+        ) : screen === "library" ? (
+          <LibraryView onAdd={addExercise} />
+        ) : screen === "routines" ? (
+          <RoutinesView
+            profile={profile}
+            routines={routines}
+            run={run}
+            start={start}
+          />
+        ) : screen === "reports" ? (
+          <ReportsView
+            now={now}
+            profile={profile}
+            sessions={sessions}
+            inspect={inspect}
+          />
+        ) : (
+          <Stack gap="lg">
+            <SettingsView
+              key={`${profile.ownerId}-${profile.revision}`}
+              profile={profile}
+              profiles={profiles}
+              run={run}
+              switchProfile={switchProfile}
+              createProfile={createProfile}
+            />
+            <AccountPanel
+              busy={pending > 0 || sessions.some((s) => s.status === "active")}
+            />
+            <CloudPanel
+              busy={pending > 0 || sessions.some((s) => s.status === "active")}
+              run={run}
+            />
+          </Stack>
+        )}
+        <Divider mt="xl" mb="md" />
+        <Text size="xs" c="dimmed" ta="center">
+          LIGHTWEIGHT · 오늘의 기록을, 내일의 나에게.
+        </Text>
+      </Container>
+      <BottomNavigation screen={screen} navigate={navigate} />
+      <Stack className="notice-stack" gap="sm">
+        {notice && (
+          <Alert
+            color={notice.error ? "red" : "blue"}
+            role={notice.error ? "alert" : "status"}
+            withCloseButton
+            closeButtonLabel="알림 닫기"
+            onClose={() => setNotice(null)}
           >
-            <Icon size={21} />
-            <span>{label}</span>
-          </a>
-        ))}
-      </nav>
-      {notice && (
-        <div
-          className={`toast ${notice.error ? "error" : ""}`}
-          role={notice.error ? "alert" : "status"}
-        >
-          <span>{notice.message}</span>
-          <UnstyledButton
-            className="icon-button"
-            aria-label="알림 닫기"
-            onClick={() => setNotice(null)}
-          >
-            <X size={17} />
-          </UnstyledButton>
-        </div>
-      )}
-      <UpdateNotice
-        active={sessions.some((record) => record.status === "active")}
-      />
-    </div>
+            {notice.message}
+          </Alert>
+        )}
+        <UpdateNotice active={sessions.some((s) => s.status === "active")} />
+      </Stack>
+    </Box>
   );
 }

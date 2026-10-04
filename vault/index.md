@@ -4,14 +4,16 @@ okf_version: "0.2"
 
 # 웨이트 트레이닝 앱 — 기획과 지식 베이스
 
-옵시디언에서 이 `vault` 폴더를 열고 시작한다. 현재 기획은 **0.5.0 브레인스토밍 초안**이다.
+옵시디언에서 이 `vault` 폴더를 열고 시작한다. 현재 기획은 **0.6.0 브레인스토밍 초안**이다.
 
 ## 먼저 읽기
+
+- [디자인 시스템](wiki/product/design-system.md) · [전체 화면 감사](wiki/product/design-audit.md) — blue-dark/iOS형·전 폭 하단 메뉴·빠른 접근.
 
 - [볼륨·추이·오늘 후보 MVP](wiki/product/volume-history-mvp.md) — 추가 요구와 단계/계산 경계.
 - [작업 단위 commit](wiki/operations/commit-workflow.md) — 지속 요청과 local commit 운영.
 
-- [현재 기술 스택](wiki/product/technology-stack.md) — Mantine/Spoqa/정확한 라이브러리 버전.
+- [현재 기술 스택](wiki/product/technology-stack.md) — 전체 Mantine/Geist/정확한 라이브러리 버전.
 - [Supabase 연결/계정 준비](wiki/product/supabase-integration.md) — 현재 구현과 실제 계정 검증 절차.
 
 - [앱 기획서](wiki/product/prd.md) — 목적·요구·흐름·MVP·확장.
@@ -32,7 +34,7 @@ okf_version: "0.2"
 ## 제품과 근거
 
 - [제품 상세](wiki/product/index.md) — 운동·티어·추천·기록·리포트·영양·데이터·검증.
-- [출처 노트 38개](wiki/sources/index.md) — 공식 규격·기관·운동/영양 연구·iOS 기술 안내.
+- [출처 노트 39개](wiki/sources/index.md) — 공식 규격·기관·운동/영양 연구·iOS 기술 안내.
 - [주장-근거 지도](wiki/concepts/evidence-map.md) — 적용·상충·공백.
 - [보존 원본](raw/index.md) — 사용자 발언·수집 당시 기록.
 
@@ -46,4 +48,4 @@ okf_version: "0.2"
 - [양식](templates/index.md) — 출처·변경 작성.
 - [시각 자료](assets/index.md) — 추후 콘텐츠.
 
-과학 자료는 **2026-10-03 초기 표적 탐색**, 하네스 기술/코드 확인은 **2026-10-04**다. 일부 연구는 초록만 확인했고 공개 전 전문 검토가 남았다. app0.2.0의 UI/글꼴·Auth/계정 DB·수동 snapshot·서버 권한 연결 증분과 unit6/integration24·원격SQL16·비로그인HTTP를 검증했다. 실제 Auth 전체 흐름·자동 UI/E2E·실기기/외부 CI/배포·콘텐츠 전문 검토·자동 문서 감지는 남았다.
+과학 자료는 **2026-10-03 초기 표적 탐색**, 하네스 기술/코드 확인은 **2026-10-04**다. 일부 연구는 초록만 확인했고 공개 전 전문 검토가 남았다. app0.2.0/schema2에 전체 Mantine/Geist blue-dark·하단 UI를 적용했다. 최신unit19/integration25/ui11·55개와 수동25폭/화면 조합을 검증했다. 기존 Auth/계정 DB·manual snapshot·SQL16·비로그인HTTP 이력을 보존한다. 실제 Auth·자동 browser E2E/외부 CI·iPhone/배포·콘텐츠 전문 검토·자동 문서 감지는 남았다.

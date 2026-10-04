@@ -52,7 +52,7 @@ export function WorkspaceProvider({ children }: { children: ReactNode }) {
   const { session, loading } = useAuth();
   if (loading)
     return (
-      <Stack className="boot-screen" align="center">
+      <Stack align="center" justify="center" mih="100dvh">
         <Loader />
         <Text>로그인 상태를 확인하는 중…</Text>
       </Stack>

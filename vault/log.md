@@ -2,6 +2,10 @@
 
 ## 2026-10-04
 
+- **Design / Implementation**: [CONV-0010](wiki/conversations/2026-10-04-010.md)의 전체 Mantine·Geist·블루/다크·iOS형·전 폭 하단/클릭 단축을 `codex/mantine-blue-dark` branch에서 구현. [디자인 규칙](wiki/product/design-system.md)/[감사](wiki/product/design-audit.md)·기술/계획/백로그 갱신, PRD0.6.0·UI-02 done. schema/권한/계산 유지.
+- **Verification / Loop**: unit19/integration25/ui11·55개/12파일, lint 경고0/build/format, fake4176 입력→저장→400kg·회·연속 선택/설정·5화면×5실제 iframe폭 overflow0. NavLink 키보드/필터 shrink·sheet 높이/숫자 대비/하네스 폭 판정 루프 수정. [불변 실행](raw/research/2026-10-04-mantine-geist-design-verification.json)·[캡처](raw/design/index.md)·SRC039 보존. iPhone/VoiceOver/실Auth/browser runner·CI/production offline-update는 미통과.
+- **History**: [CHG-0010](history/changes/CHG-0010.md)·[PRD0.6.0 전체](history/versions/prd-v0.6.0.md) 추가, 이전 원본/해시 보존. 지속 지침에 따라 git-commit local commit 진행; 원격 push/배포 범위는 확대하지 않음.
+
 - **Regression Fix**: 볼륨78e5cb1 commit 후 LOOP-SETTINGS-RESTORE-01 재현·수정. 복원된DB/이전입력 불일치를 same-owner/revision 회귀로 고정, unrelated 기록 갱신의 초안 보존. unit19/integration25/ui8·52개/11파일·lint/build/format·최종CUA report/update/폭/console0. [불변 증거](raw/research/2026-10-04-settings-restore-loop.json)/[루프 설명](wiki/operations/loop-engineering.md). 실제browser 파일복원은 수정 뒤 미반복, 실제Auth/CI/iPhone 관문 유지.
 
 - **Volume Implementation**: REP-04/05/06 계산·SVG/표·필터·루틴 후보 구현. unit19/integration25/ui6·50개/10파일·lint/build/format·가짜CUA/320·375·1440px 통과. [원본](raw/research/2026-10-04-volume-history-verification.json). SCI-03B/실Auth/runner·CI/iPhone은 후속. 복원 설정 입력 잔류는 발견돼 별도 회귀 수정 예정. 이전 구현9cccb4f·계획897f44d·DOMead48d7 local commit.

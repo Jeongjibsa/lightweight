@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T10:18:25+09:00"
+  at: "2026-10-04T13:35:43+09:00"
 sources:
   - id: "responsive-local-request"
     resource: "../../raw/conversations/2026-10-03-006.md"
@@ -50,13 +50,25 @@ sources:
   - id: "settings-loop"
     resource: "../../raw/research/2026-10-04-settings-restore-loop.json"
     title: "복원 입력 회귀/수정"
+  - id: "design-request"
+    resource: "../../raw/conversations/2026-10-04-010.md"
+    title: "전체 Mantine/Geist/하단 UX 요구"
+  - id: "design-verification"
+    resource: "../../raw/research/2026-10-04-mantine-geist-design-verification.json"
+    title: "현재 UI 검사"
 version: "0.2.0"
 change_id: "CHG-0008"
 ---
 
 # 로컬 PWA 구현 결과와 다음 작업
 
-## 최신 복원 입력 회귀 수정 — 2026-10-04
+## 최신 전체 UI 증분 — 2026-10-04
+
+PRD0.6.0 / app0.2.0 / schema2 / branch `codex/mantine-blue-dark`. 전체 Mantine·Geist/한글 fallback·blue-dark·전 폭 하단탭·내용 높이 bottom sheet·빠른 시작/종목 추가/연속 루틴 선택·sticky 운동 dock을 적용했다. 기존 partial 적용 범위는 이전 이력으로 유지한다. [디자인](design-system.md) · [감사](design-audit.md).
+
+unit19/integration25/ui11·55개/12파일, lint 경고0/build/format. fake4176에서40kg×10 완료/종료→400kg·회 report와 연속루틴/설정 저장, 다섯 화면×320/375/390/768/1440px overflow0·nav 최소56.79×60. [불변 관찰](../../raw/research/2026-10-04-mantine-geist-design-verification.json). 이번에 production offline/update·실제 iPhone·Auth E2E/CI를 통과했다고 기록하지 않는다. 아래 이전 검증/숫자는 당시 이력이다.
+
+## 이전 복원 입력 회귀 수정 — 2026-10-04
 
 볼륨 기능78e5cb1 local commit 후 LOOP-SETTINGS-RESTORE-01을 닫았다. 실제SettingsView/Store의 파일복원 직후 이전 입력 잔류를 재현하고 profile payload가 바뀌면 form을 갱신했다. same-owner/revision 복원→재저장 보존, unrelated 기록 갱신의 미저장 초안 보존2과업. unit19/integration25/ui8·52개/11파일·lint/build/format 통과. 최종PWA update/리포트와320/375/1440px도 확인했다. [원본](../../raw/research/2026-10-04-settings-restore-loop.json). [루프 설명](../operations/loop-engineering.md). 실제 browser 파일복원은 수정 후 반복하지 않았고 Auth/iPhone/runner·CI 관문은 남았다.
 
@@ -104,7 +116,7 @@ app **0.2.0** / PRD **0.4.0** / IndexedDB **schema2**. Mantine UI·Spoqa Han San
 
 ## 이번 구현
 
-- 반응형 5개 화면: 오늘·운동 탐색·루틴·리포트·설정. 작은 화면 하단 메뉴와 큰 화면 사이드 메뉴.
+- 반응형 5개 화면: 오늘·운동 탐색·루틴·리포트·설정. 당시 작은 화면 하단 메뉴/큰 화면 사이드 메뉴였으며 CONV-0010에서 전 폭 하단으로 변경했다.
 - 목표·주당 최소/최대 횟수·분할·시간·장비·단위·시간대의 프로필별 입력/설정/전환. 새 사용자의 목표/횟수/분할 미설정.
 - 12개 기록용 초안 종목의 검색/분류·사용자 추가 종목, 루틴 작성/복사/정렬/편집/삭제, 세션 시작 시 계획/설정 스냅샷.
 - 중량/횟수/시간·준비/본세트·좌우·선택 RIR·완료/완료 취소·세트 추가·부분 종료·진행 세션 재개·휴식 타이머.

@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T02:15:39+09:00"
+  at: "2026-10-04T13:35:43+09:00"
 sources:
   - id: "implementation-request"
     resource: "../../raw/conversations/2026-10-03-005.md"
@@ -53,14 +53,17 @@ sources:
   - id: "volume-mvp"
     resource: "volume-history-mvp.md"
     title: "추가 계약"
-version: "0.4.0"
+  - id: "design-request"
+    resource: "../../raw/conversations/2026-10-04-010.md"
+    title: "전체 Mantine/Geist/하단 UX 요구"
+version: "0.5.0"
 approval_status: "proposal"
-change_id: "CHG-0009"
+change_id: "CHG-0010"
 ---
 
 # 운동 PWA 구현 작업계획
 
-> PRD 0.3.1 기준, 계획 v0.3.0. **운동 기능을 먼저 완성하고 식단을 다음 단계에 둔다**는 사용자 선택을 반영했다. 기본 스택은 합의했다. 아래 작업 순서·상세 설계·도구·공수는 구현안이다. CONV-0006에서 반응형·사용자별 설정을 반영한 순차 구현과 로컬 우선을 요청했다. 첫 로컬 증분을 구현/시험했고 상태는 [실행 결과](implementation-progress.md)에서 확인한다. 원격/검토 콘텐츠/실기기/배포 단계는 미완료다.
+> PRD 0.6.0 기준, 계획 v0.5.0. **운동 기능을 먼저 완성하고 식단을 다음 단계에 둔다**는 사용자 선택을 반영했다. 기본 스택은 합의했다. 아래 작업 순서·상세 설계·도구·공수는 구현안이다. CONV-0006에서 반응형·사용자별 설정을 반영한 순차 구현과 로컬 우선을 요청했다. 첫 로컬 증분을 구현/시험했고 상태는 [실행 결과](implementation-progress.md)에서 확인한다. 원격/검토 콘텐츠/실기기/배포 단계는 미완료다.
 
 ## 목표와 완료 범위
 
@@ -207,6 +210,10 @@ UI-01/HAR-01 완료. 실제 스택은 [기술 문서](technology-stack.md), 원�
 ## CONV-0009 추가 MVP 실행
 
 지속 local commit 지침을 추가했다. 다음은 HAR-02 DOM 기반/입력 저장 과업→REP-04 계산→REP-05 그래프/표→REP-06 오늘 기록 참고 후보다. 각 단위를 관련 검사/문서와 commit한다. 실제 Auth 계정 준비가 없어도 이 로컬 경로는 진행한다. 권장 세트/증량은 SCI-03B의 충분성/effort/불편감·전문 검토 후 연결한다. 기존 초기 공수에 새 기능이 모두 포함됐다고 가정하지 않고 첫 증분 뒤 재평가한다. [새 MVP](volume-history-mvp.md).
+
+## CONV-0010 전체 UI 증분
+
+UI-02를 별도 branch에서 완료했다. 전체 Mantine·Geist·blue-dark/iOS형·전 폭 하단 메뉴·빠른 시작/선택/운동 dock. [규칙](design-system.md)/[감사](design-audit.md). 55개 자동 검사·25폭/화면 가짜 browser 관찰. 다음은 HAR-03/05의 browser runner/CI·RESP-01/REL-02의 실제 Safari/키보드/설치·Auth와 검토 콘텐츠다. UI 변경은 schema/권한/계산을 바꾸지 않는다.
 
 ## 관리와 다음 의사결정
 

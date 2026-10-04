@@ -1,4 +1,20 @@
-import { UnstyledButton, NativeSelect, TextInput } from "@mantine/core";
+import {
+  ActionIcon,
+  Badge,
+  Box,
+  Button,
+  Group,
+  NativeSelect,
+  NavLink,
+  Paper,
+  ScrollArea,
+  SimpleGrid,
+  Stack,
+  Text,
+  TextInput,
+  ThemeIcon,
+  Title,
+} from "@mantine/core";
 import { useState, type FormEvent } from "react";
 import {
   Plus,
@@ -8,6 +24,8 @@ import {
   Trash2,
   Play,
   Copy,
+  Info,
+  Dumbbell,
 } from "lucide-react";
 import { catalog } from "../content/catalog";
 import {
@@ -20,11 +38,14 @@ import {
 } from "../domain/models";
 import { useTraining } from "../context/training";
 import { Empty, Modal, type Run } from "./shared";
-
 export function ExercisePicker({
   onPick,
+  onInspect,
+  disabled = false,
 }: {
   onPick: (exercise: Exercise) => void;
+  onInspect?: (exercise: Exercise) => void;
+  disabled?: boolean;
 }) {
   const [query, setQuery] = useState("");
   const [group, setGroup] = useState<string>("전체");
@@ -35,59 +56,78 @@ export function ExercisePicker({
       `${item.name} ${item.equipment}`.includes(query.trim()),
   );
   return (
-    <>
-      <label className="search">
-        <Search size={18} />
-        <TextInput
-          placeholder="운동 이름 또는 장비 검색"
-          aria-label="운동 검색"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-      </label>
-      <div className="chips filter-chips">
-        {["전체", ...groups].map((item) => (
-          <UnstyledButton
-            className={`chip ${item === group ? "selected" : ""}`}
-            key={item}
-            onClick={() => setGroup(item)}
-            aria-pressed={item === group}
-          >
-            {item}
-          </UnstyledButton>
-        ))}
-      </div>
-      <div className="picker-list">
+    <Stack gap="md">
+      <TextInput
+        placeholder="운동 이름 또는 장비 검색"
+        aria-label="운동 검색"
+        leftSection={<Search size={18} />}
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+      />
+      <ScrollArea type="auto" offsetScrollbars>
+        <Group gap={6} wrap="nowrap" w="max-content">
+          {["전체", ...groups].map((item) => (
+            <Button
+              key={item}
+              variant={item === group ? "filled" : "default"}
+              radius="xl"
+              size="compact-md"
+              px="md"
+              aria-pressed={item === group}
+              onClick={() => setGroup(item)}
+            >
+              {item}
+            </Button>
+          ))}
+        </Group>
+      </ScrollArea>
+      <Stack gap={4}>
         {filtered.map((exercise) => (
-          <UnstyledButton
-            className="picker-item"
-            key={exercise.id}
-            onClick={() => onPick(exercise)}
-          >
-            <span>
-              <strong>{exercise.name}</strong>
-              <small>
-                {exercise.group} · {exercise.equipment} ·{" "}
-                {loadModes[exercise.loadMode]}
-              </small>
-            </span>
-            <Plus size={18} />
-          </UnstyledButton>
+          <Group key={exercise.id} wrap="nowrap" gap={4}>
+            <NavLink
+              component="button"
+              type="button"
+              disabled={disabled}
+              flex={1}
+              onClick={() => onPick(exercise)}
+              aria-label={`${exercise.name} 추가`}
+              label={exercise.name}
+              description={`${exercise.group} · ${exercise.equipment} · ${loadModes[exercise.loadMode]}`}
+              leftSection={
+                <ThemeIcon variant="light" color="gray" radius="lg" size={38}>
+                  <Dumbbell size={19} />
+                </ThemeIcon>
+              }
+              rightSection={
+                <Plus size={20} color="var(--mantine-color-blue-4)" />
+              }
+            />
+            {onInspect && (
+              <ActionIcon
+                aria-label={`${exercise.name} 정보`}
+                onClick={() => onInspect(exercise)}
+              >
+                <Info size={19} />
+              </ActionIcon>
+            )}
+          </Group>
         ))}
-      </div>
+      </Stack>
       {!filtered.length && (
-        <p className="muted">
+        <Text size="sm" c="dimmed">
           검색 결과가 없습니다. 직접 운동을 추가할 수 있어요.
-        </p>
+        </Text>
       )}
-      <UnstyledButton
-        className="button secondary full"
+      <Button
+        variant="default"
+        fullWidth
+        disabled={disabled}
         onClick={() => setCustom(!custom)}
       >
         {custom ? "직접 입력 닫기" : "목록에 없는 운동 직접 입력"}
-      </UnstyledButton>
-      {custom && <CustomExercise onPick={onPick} />}
-    </>
+      </Button>
+      {custom && !disabled && <CustomExercise onPick={onPick} />}
+    </Stack>
   );
 }
 function CustomExercise({ onPick }: { onPick: (exercise: Exercise) => void }) {
@@ -113,18 +153,16 @@ function CustomExercise({ onPick }: { onPick: (exercise: Exercise) => void }) {
     onPick(result.data);
   }
   return (
-    <form className="form-stack inset" onSubmit={submit}>
-      <label>
-        운동 이름
-        <TextInput
-          required
-          maxLength={80}
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-      </label>
-      <div className="two-columns">
-        <label>
+    <Stack onSubmit={submit} component="form" gap="md">
+      <TextInput
+        required
+        maxLength={80}
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        label="운동 이름"
+      />
+      <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="lg">
+        <Box component="label" fz="sm" fw={500} display="block">
           기록 분류
           <NativeSelect
             value={group}
@@ -134,8 +172,8 @@ function CustomExercise({ onPick }: { onPick: (exercise: Exercise) => void }) {
               <option key={item}>{item}</option>
             ))}
           </NativeSelect>
-        </label>
-        <label>
+        </Box>
+        <Box component="label" fz="sm" fw={500} display="block">
           중량 표기
           <NativeSelect
             value={mode}
@@ -147,17 +185,17 @@ function CustomExercise({ onPick }: { onPick: (exercise: Exercise) => void }) {
               </option>
             ))}
           </NativeSelect>
-        </label>
-      </div>
-      <UnstyledButton className="button primary" type="submit">
+        </Box>
+      </SimpleGrid>
+      <Button type="submit" variant="filled">
         이 운동 추가
-      </UnstyledButton>
+      </Button>
       {error && (
-        <p role="alert" className="error-text">
+        <Text role="alert" size="sm" c="red.4" my="sm">
           {error}
-        </p>
+        </Text>
       )}
-    </form>
+    </Stack>
   );
 }
 export function LibraryView({
@@ -166,97 +204,75 @@ export function LibraryView({
   onAdd: (exercise: Exercise) => Promise<void>;
 }) {
   const [detail, setDetail] = useState<Exercise | null>(null);
+  const [adding, setAdding] = useState(false);
+  async function add(exercise: Exercise) {
+    if (adding) return;
+    setAdding(true);
+    try {
+      await onAdd(exercise);
+      setDetail(null);
+    } finally {
+      setAdding(false);
+    }
+  }
   return (
-    <div className="library-grid">
-      <section className="card">
-        <div className="section-heading">
-          <div>
-            <p className="eyebrow">EXERCISE LIBRARY</p>
-            <h2>오늘의 운동 찾기</h2>
-          </div>
-          <span className="badge">기록용 초안</span>
-        </div>
-        <ExercisePicker onPick={setDetail} />
-      </section>
-      <div className="stack">
-        <section className="card anatomy-card">
-          <p className="eyebrow">EXPLORE BY AREA</p>
-          <h2>부위별로 탐색하세요</h2>
-          <svg
-            viewBox="0 0 200 260"
-            role="img"
-            aria-label="가슴, 등, 어깨, 팔, 하체, 코어를 탐색하는 전신 개념도"
-          >
-            <circle cx="100" cy="30" r="21" className="body-base" />
-            <path
-              d="M72 58 Q100 48 128 58 L142 126 L130 138 L121 98 L119 147 L136 233 Q126 247 115 235 L100 168 L85 235 Q74 247 64 233 L81 147 L79 98 L70 138 L58 126Z"
-              className="body-base"
-            />
-            <path
-              d="M79 66 Q100 59 121 66 L119 92 Q100 102 81 92Z"
-              className="body-highlight"
-            />
-            <path
-              d="M84 104 L116 104 L115 141 L85 141Z"
-              className="body-highlight secondary-region"
-            />
-            <path
-              d="M83 154 L95 156 L80 225 L72 225Z M105 156 L117 154 L128 225 L120 225Z"
-              className="body-highlight secondary-region"
-            />
-          </svg>
-          <p className="hint">
-            탐색을 돕는 개념도입니다. 실제 근육 자극의 크기나 범위를 나타내지
-            않습니다.
-          </p>
-        </section>
-        <section className="card subtle">
-          <h3>근거를 확인하는 운동 가이드</h3>
-          <p className="muted">
-            현재 12개 종목은 입력과 기록을 위한 목록입니다. 논문 기반 설명·자극
-            범위·티어는 검토를 마친 콘텐츠부터 제공할 예정입니다.
-          </p>
-        </section>
-      </div>
+    <Stack gap="lg">
+      <Paper>
+        <Group justify="space-between" mb="md">
+          <Title order={2}>오늘의 운동 찾기</Title>
+          <Badge color="gray">기록용 초안</Badge>
+        </Group>
+        <Text c="dimmed" size="sm" mb="md">
+          운동 이름을 눌러 바로 추가하세요.
+        </Text>
+        <ExercisePicker
+          onPick={(exercise) => void add(exercise)}
+          onInspect={setDetail}
+          disabled={adding}
+        />
+      </Paper>
+      <Text size="xs" c="dimmed">
+        현재 12개 종목은 입력과 기록을 위한 목록입니다. 논문 기반 설명·자극
+        범위·티어는 검토를 마친 콘텐츠부터 제공할 예정입니다.
+      </Text>
       {detail && (
         <Modal title={detail.name} onClose={() => setDetail(null)}>
-          <span className="badge">
-            {detail.review === "user_added" ? "직접 입력" : "콘텐츠 검토 전"}
-          </span>
-          <dl className="details">
-            <div>
-              <dt>기록 분류</dt>
-              <dd>{detail.group}</dd>
-            </div>
-            <div>
-              <dt>장비</dt>
-              <dd>{detail.equipment}</dd>
-            </div>
-            <div>
-              <dt>입력 기준</dt>
-              <dd>{loadModes[detail.loadMode]}</dd>
-            </div>
-          </dl>
-          <p className="muted">
-            같은 중량 표기와 장비 조건을 유지하면 지난 기록을 비교하기 편합니다.
-            수행 방법과 근거 평가는 아직 준비 중입니다.
-          </p>
-          <UnstyledButton
-            className="button primary full"
-            onClick={async () => {
-              await onAdd(detail);
-              setDetail(null);
-            }}
-          >
-            <Plus size={18} />
-            현재 운동에 추가
-          </UnstyledButton>
+          <Stack gap="md">
+            <Badge w="fit-content">
+              {detail.review === "user_added" ? "직접 입력" : "콘텐츠 검토 전"}
+            </Badge>
+            {[
+              ["기록 분류", detail.group],
+              ["장비", detail.equipment],
+              ["입력 기준", loadModes[detail.loadMode]],
+            ].map(([label, value]) => (
+              <Group key={label} justify="space-between">
+                <Text c="dimmed" size="sm">
+                  {label}
+                </Text>
+                <Text fw={500} size="sm">
+                  {value}
+                </Text>
+              </Group>
+            ))}
+            <Text c="dimmed" size="sm">
+              같은 중량 표기와 장비 조건을 유지하면 지난 기록을 비교하기
+              편합니다. 수행 방법과 근거 평가는 아직 준비 중입니다.
+            </Text>
+            <Button
+              fullWidth
+              loading={adding}
+              leftSection={<Plus size={18} />}
+              onClick={() => void add(detail)}
+            >
+              현재 운동에 추가
+            </Button>
+          </Stack>
         </Modal>
       )}
-    </div>
+    </Stack>
   );
 }
-
 function RoutineEditor({
   routine,
   ownerId,
@@ -273,7 +289,7 @@ function RoutineEditor({
   const [entries, setEntries] = useState<Routine["exercises"]>(
     routine?.exercises ?? [],
   );
-  const [picker, setPicker] = useState(false);
+  const [picker, setPicker] = useState(!routine);
   const [saving, setSaving] = useState(false);
   function move(index: number, offset: number) {
     setEntries((prior) => {
@@ -286,8 +302,7 @@ function RoutineEditor({
   }
   return (
     <Modal title={routine ? "루틴 편집" : "나의 루틴 만들기"} onClose={onClose}>
-      <form
-        className="form-stack"
+      <Stack
         onSubmit={async (event) => {
           event.preventDefault();
           setSaving(true);
@@ -303,114 +318,121 @@ function RoutineEditor({
           setSaving(false);
           if (ok) onClose();
         }}
+        component="form"
+        gap="md"
       >
-        <label>
-          루틴 이름
-          <TextInput
-            required
-            maxLength={80}
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="예: 전신 A"
-          />
-        </label>
-        <div className="stack small-gap">
+        <TextInput
+          required
+          maxLength={80}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="예: 전신 A"
+          label="루틴 이름"
+        />
+        <Stack gap="md">
           {entries.map((entry, index) => (
-            <div
-              className="routine-entry"
+            <Paper
               key={`${entry.exercise.id}-${index}`}
+              p="md"
+              bg="dark.8"
+              mb="sm"
             >
-              <div>
-                <strong>
+              <Box>
+                <Text component="span" c="inherit" fw={650}>
                   {index + 1}. {entry.exercise.name}
-                </strong>
-                <small>
+                </Text>
+                <Text component="span" size="xs" c="dimmed">
                   {entry.exercise.group} · {loadModes[entry.exercise.loadMode]}
-                </small>
-              </div>
-              <label className="set-count">
-                계획 세트
-                <TextInput
-                  aria-label={`${entry.exercise.name} 계획 세트`}
-                  type="number"
-                  min={1}
-                  max={12}
-                  required
-                  value={entry.sets}
-                  onChange={(e) =>
-                    setEntries((prior) =>
-                      prior.map((item, i) =>
-                        i === index
-                          ? { ...item, sets: Number(e.target.value) }
-                          : item,
-                      ),
-                    )
-                  }
-                />
-              </label>
-              <div className="entry-actions">
-                <UnstyledButton
+                </Text>
+              </Box>
+              <TextInput
+                aria-label={`${entry.exercise.name} 계획 세트`}
+                type="number"
+                min={1}
+                max={12}
+                required
+                value={entry.sets}
+                onChange={(e) =>
+                  setEntries((prior) =>
+                    prior.map((item, i) =>
+                      i === index
+                        ? { ...item, sets: Number(e.target.value) }
+                        : item,
+                    ),
+                  )
+                }
+                label="계획 세트"
+              />
+              <Group gap="sm">
+                <Button
                   type="button"
-                  className="icon-button"
                   aria-label={`${entry.exercise.name} 위로`}
                   disabled={index === 0}
                   onClick={() => move(index, -1)}
+                  variant="subtle"
+                  p={0}
+                  w={44}
                 >
                   <ArrowUp size={16} />
-                </UnstyledButton>
-                <UnstyledButton
+                </Button>
+                <Button
                   type="button"
-                  className="icon-button"
                   aria-label={`${entry.exercise.name} 아래로`}
                   disabled={index === entries.length - 1}
                   onClick={() => move(index, 1)}
+                  variant="subtle"
+                  p={0}
+                  w={44}
                 >
                   <ArrowDown size={16} />
-                </UnstyledButton>
-                <UnstyledButton
+                </Button>
+                <Button
                   type="button"
-                  className="icon-button"
                   aria-label={`${entry.exercise.name} 제거`}
                   onClick={() =>
                     setEntries((prior) => prior.filter((_, i) => i !== index))
                   }
+                  variant="subtle"
+                  p={0}
+                  w={44}
                 >
                   <Trash2 size={16} />
-                </UnstyledButton>
-              </div>
-            </div>
+                </Button>
+              </Group>
+            </Paper>
           ))}
-        </div>
-        <UnstyledButton
+        </Stack>
+        <Button
           type="button"
-          className="button secondary"
           disabled={entries.length >= 30}
           onClick={() => setPicker(!picker)}
+          variant="default"
         >
           <Plus size={18} />
           {picker ? "운동 선택 닫기" : "운동 추가"}
-        </UnstyledButton>
-        <p className="hint">
+        </Button>
+        <Text size="xs" c="dimmed" my="sm">
           세트 수는 직접 조정하는 계획값입니다. 과학적 루틴 추천은 근거 검토 후
           제공됩니다.
-        </p>
-        <UnstyledButton
-          className="button primary"
+        </Text>
+        <Button
           disabled={saving || !entries.length}
           type="submit"
+          variant="filled"
         >
           {saving ? "저장 중…" : "루틴 저장"}
-        </UnstyledButton>
-      </form>
+        </Button>
+      </Stack>
       {picker && (
-        <div className="inset">
+        <Box mt="lg">
           <ExercisePicker
+            disabled={entries.length >= 30}
             onPick={(exercise) => {
               setEntries((prior) => [...prior, { exercise, sets: 3 }]);
-              setPicker(false);
+              setPicker(entries.length + 1 < 30);
             }}
           />
-        </div>
+        </Box>
       )}
     </Modal>
   );
@@ -431,57 +453,57 @@ export function RoutinesView({
   const [deleting, setDeleting] = useState<Routine | null>(null);
   return (
     <>
-      <div className="section-heading">
-        <p className="muted">
+      <Group gap="sm" justify="space-between" mb="md">
+        <Text size="sm" c="dimmed" my="sm">
           순서와 계획 세트를 저장하고, 운동할 때 바로 불러오세요.
-        </p>
-        <UnstyledButton
-          className="button primary"
-          onClick={() => setEditor("new")}
-        >
+        </Text>
+        <Button onClick={() => setEditor("new")} variant="filled">
           <Plus size={18} />
           루틴 만들기
-        </UnstyledButton>
-      </div>
+        </Button>
+      </Group>
       {!routines.length ? (
-        <section className="card">
+        <Paper>
           <Empty title="아직 저장된 루틴이 없어요">
             자주 하는 운동을 하나의 루틴으로 묶어보세요.
           </Empty>
-        </section>
+        </Paper>
       ) : (
-        <div className="routine-grid">
+        <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="lg">
           {routines.map((routine) => (
-            <section className="card routine-card" key={routine.id}>
-              <span className="badge">
+            <Paper key={routine.id}>
+              <Badge>
                 {routine.exercises.length}개 운동 ·{" "}
                 {routine.exercises.reduce((n, item) => n + item.sets, 0)}세트
                 계획
-              </span>
-              <h2>{routine.name}</h2>
-              <ol className="routine-preview">
+              </Badge>
+              <Title order={2} mt="md" mb="md">
+                {routine.name}
+              </Title>
+              <Stack component="ol" gap="sm" pl="md" mb="lg">
                 {routine.exercises.map((item, index) => (
-                  <li key={index}>
-                    <span>{item.exercise.name}</span>
-                    <small>{item.sets}세트</small>
-                  </li>
+                  <Box key={index} component="li" fz="sm">
+                    <Text component="span" c="inherit">
+                      {item.exercise.name}
+                    </Text>
+                    <Text component="span" size="xs" c="dimmed" ml="sm">
+                      {item.sets}세트
+                    </Text>
+                  </Box>
                 ))}
-              </ol>
-              <UnstyledButton
-                className="button primary full"
+              </Stack>
+              <Button
                 onClick={() => void start(routine.id)}
+                variant="filled"
+                fullWidth
               >
                 <Play size={16} />이 루틴으로 시작
-              </UnstyledButton>
-              <div className="button-row">
-                <UnstyledButton
-                  className="text-button"
-                  onClick={() => setEditor(routine)}
-                >
+              </Button>
+              <Group gap="sm" mt="sm">
+                <Button onClick={() => setEditor(routine)} variant="subtle">
                   편집
-                </UnstyledButton>
-                <UnstyledButton
-                  className="text-button"
+                </Button>
+                <Button
                   onClick={() =>
                     void run(
                       () =>
@@ -492,20 +514,22 @@ export function RoutinesView({
                       "루틴을 복사했습니다.",
                     )
                   }
+                  variant="subtle"
                 >
                   <Copy size={14} />
                   복사
-                </UnstyledButton>
-                <UnstyledButton
-                  className="text-button danger"
+                </Button>
+                <Button
                   onClick={() => setDeleting(routine)}
+                  variant="subtle"
+                  color="red"
                 >
                   삭제
-                </UnstyledButton>
-              </div>
-            </section>
+                </Button>
+              </Group>
+            </Paper>
           ))}
-        </div>
+        </SimpleGrid>
       )}
       {editor && (
         <RoutineEditor
@@ -517,19 +541,15 @@ export function RoutinesView({
       )}
       {deleting && (
         <Modal title="루틴 삭제" onClose={() => setDeleting(null)}>
-          <p>
+          <Text size="sm" c="dimmed" my="sm">
             ‘{deleting.name}’을 루틴 목록에서 삭제합니다. 이 루틴으로 수행한
             운동 기록은 보존됩니다.
-          </p>
-          <div className="button-row">
-            <UnstyledButton
-              className="button secondary"
-              onClick={() => setDeleting(null)}
-            >
+          </Text>
+          <Group gap="sm">
+            <Button onClick={() => setDeleting(null)} variant="default">
               취소
-            </UnstyledButton>
-            <UnstyledButton
-              className="button danger-button"
+            </Button>
+            <Button
               onClick={async () => {
                 if (
                   await run(
@@ -540,10 +560,12 @@ export function RoutinesView({
                 )
                   setDeleting(null);
               }}
+              variant="filled"
+              color="red"
             >
               루틴 삭제
-            </UnstyledButton>
-          </div>
+            </Button>
+          </Group>
         </Modal>
       )}
     </>

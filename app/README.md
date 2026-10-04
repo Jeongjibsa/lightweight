@@ -1,6 +1,6 @@
 # Lightweight 운동 기록 PWA
 
-app0.2.0의 반응형 운동 기록 앱입니다. Mantine UI와 Spoqa Han Sans Neo를 사용합니다. 휴대폰에서는 하단 메뉴, 태블릿·데스크톱에서는 사이드 메뉴를 사용합니다. 목표·주당 횟수·분할·장비·시간·단위·시간대는 사용자별로 설정합니다. 개인 파일럿 조건을 모든 사용자 기본값으로 고정하지 않습니다.
+app0.2.0의 반응형 운동 기록 앱입니다. 전체 주요 UI에 Mantine UI·Geist Variable/한글 시스템 fallback·blue-dark theme을 사용합니다. 모든 폭에서 하단 다섯 메뉴를 유지하고 본문/카드를 반응형으로 재배치합니다. 목표·주당 횟수·분할·장비·시간·단위·시간대는 사용자별로 설정합니다. 개인 파일럿 조건을 모든 사용자 기본값으로 고정하지 않습니다.
 
 Node 24 환경에서 프로젝트 루트 기준:
 
@@ -58,7 +58,7 @@ npm run cloud:allow-user -- <AUTH_USER_UUID>
 
 ## 콘텐츠와 남은 범위
 
-12개 기본 종목은 기록용 분류 초안입니다. 탐색 그림은 개념도이며 해부학적 자극 범위 자료가 아닙니다. 근거 검토가 완료된 운동 설명·시각 자료·조건별 티어·추천 루틴, 검토된 권장량 조정·개인화 행동 리포트, 식단은 후속 단계입니다. 현재 같은 운동 조건의 관찰 추이와 본인 루틴/과거 기록 참고 후보를 제공합니다. 자동 증량/회복 판정은 제공하지 않습니다. 검토 전 과학적 순위나 숫자를 표시하지 않습니다.
+12개 기본 종목은 기록용 분류 초안입니다. 검토 전 탐색 개념 그림은 제거했습니다. 해부학적 자극 범위 자료는 검토 후 제공합니다. 근거 검토가 완료된 운동 설명·시각 자료·조건별 티어·추천 루틴, 검토된 권장량 조정·개인화 행동 리포트, 식단은 후속 단계입니다. 현재 같은 운동 조건의 관찰 추이와 본인 루틴/과거 기록 참고 후보를 제공합니다. 자동 증량/회복 판정은 제공하지 않습니다. 검토 전 과학적 순위나 숫자를 표시하지 않습니다.
 
 ## 검증
 
@@ -70,6 +70,12 @@ npm run check
 npm run format:check
 ```
 
-Vitest v4 projects의 unit19/integration25/ui8(52개/11파일)는 소유자·보존·롤백·백업·계산과 pending/ACK/충돌/교체/schema migration 계약을 검사합니다. 서버 환경이 있는 로컬에서 `npm run cloud:probe`와 `npm run cloud:verify`로 Auth 상태/비로그인 HTTP/TLS 및16개 SQL 계약을 별도 검사합니다. SQL 표본의 임시 자료/권한은 rollback하며 실제 Auth 토큰/브라우저 전체 흐름과 구별합니다.
+Vitest v4 projects의 unit19/integration25/ui11(55개/12파일)는 소유자·보존·롤백·백업·계산과 pending/ACK/충돌/교체/schema migration 계약을 검사합니다. 서버 환경이 있는 로컬에서 `npm run cloud:probe`와 `npm run cloud:verify`로 Auth 상태/비로그인 HTTP/TLS 및16개 SQL 계약을 별도 검사합니다. SQL 표본의 임시 자료/권한은 rollback하며 실제 Auth 토큰/브라우저 전체 흐름과 구별합니다.
 
 [현재 하네스](../vault/wiki/operations/testing-harness.md)와 [진행 보고](../vault/wiki/product/implementation-progress.md)에 실제 범위를 기록했습니다. DOM은 Testing Library/user-event/jsdom으로 추가했습니다. Playwright Test runner·CI 브라우저 회귀는 아직 없습니다. Chromium 폭 시험은 실제 iPhone/Safari 설치·키보드·잠금·저장소 정책을 대신하지 않습니다. GitHub 검사 워크플로는 공통 check를 사용하도록 설정했으며 외부 실행 결과는 아직 없습니다. [정확한 기술 스택](../vault/wiki/product/technology-stack.md) · [남은 작업](../vault/wiki/product/remaining-work.md).
+
+## 디자인과 반응형 수동 검사
+
+[디자인 시스템](../vault/wiki/product/design-system.md)과 [감사/캡처](../vault/wiki/product/design-audit.md)에 전체 Mantine·Geist/blue-dark·iOS형 하단 sheet/빠른 입력·데이터 보존 규칙을 기록했습니다. Geist의 한글은 시스템 글꼴로 fallback합니다. 변경 branch는 `codex/mantine-blue-dark`입니다.
+
+개발 서버에서 `/tests/harness/responsive.html`을 열면 실제 iframe320/375/390/768/1440px와 다섯 화면을 선택할 수 있습니다. 같은 origin/IndexedDB를 사용하고 자료를 자동 초기화하지 않으므로 가짜 전용 프로필/origin에서만 검사하세요. production entry/public asset이 아니며 실제 iPhone·자동 browser runner/CI를 대신하지 않습니다.

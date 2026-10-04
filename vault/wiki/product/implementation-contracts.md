@@ -10,7 +10,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T02:02:14+09:00"
+  at: "2026-10-04T13:35:43+09:00"
 sources:
   - id: "responsive-local-request"
     resource: "../../raw/conversations/2026-10-03-006.md"
@@ -21,6 +21,9 @@ sources:
   - id: "cloud"
     resource: "supabase-integration.md"
     title: "원격/계정 계약"
+  - id: "design-request"
+    resource: "../../raw/conversations/2026-10-04-010.md"
+    title: "전체 Mantine/Geist/하단 UX 요구"
 version: "0.2.0"
 change_id: "CHG-0008"
 ---
@@ -31,7 +34,7 @@ PRD 0.4.0 / app 0.2.0 / IndexedDB schema2. [사용자 요청](../../raw/conversa
 
 ## 화면과 사용자 설정
 
-휴대폰은 하단 5개 메뉴, 큰 화면은 사이드 메뉴와 카드 열 재배치를 사용한다. 기종 이름으로 분기하지 않는다. 폭 320/390/440/768/1024/1440 CSS px, 가로 방향·실제 키보드·확대·safe area를 검증 범위로 둔다. 구현된 focus 표시·입력 라벨·모달·감소된 움직임 설정과 실제 접근성 시험 결과를 구별한다. [공식 참고](../sources/SRC-034-responsive-local.md).
+CONV-0010에서 전 폭 하단 5개 메뉴로 변경했다. 큰 화면은 본문 폭/카드 열을 재배치하고 좌측 메뉴를 사용하지 않는다. 전체 Mantine·Geist/시스템 한글·blue-dark·빠른 접근/모바일 bottom sheet 기준은 [디자인 계약](design-system.md)을 따른다. 기종 이름으로 분기하지 않는다. 폭 320/390/440/768/1024/1440 CSS px, 가로 방향·실제 키보드·확대·safe area를 검증 범위로 둔다. 구현된 focus 표시·입력 라벨·모달·감소된 움직임 설정과 실제 접근성 시험 결과를 구별한다. [공식 참고](../sources/SRC-034-responsive-local.md).
 
 새 프로필은 목표/횟수/분할을 미설정으로 시작한다. 사용자 조건은 다음 필드에 저장한다.
 

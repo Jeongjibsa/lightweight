@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T02:15:39+09:00"
+  at: "2026-10-04T13:35:43+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-03-002.md"
@@ -44,6 +44,9 @@ sources:
   - id: "volume-request"
     resource: "../../raw/conversations/2026-10-04-009.md"
     title: "요구"
+  - id: "design-request"
+    resource: "../../raw/conversations/2026-10-04-010.md"
+    title: "전체 Mantine/Geist/하단 UX 요구"
 ---
 
 # 미결 사항과 다음 대화
@@ -77,3 +80,7 @@ CONV-0008: Mantine UI·Spoqa Han Sans Neo·실제 스택 명시를 요구로 추
 답변 후 갱신: [PRD](prd.md), 관련 기능, [결정](../decisions/decision-register.md), [변경](../../history/changes/index.md). 질문 ID를 이어서 부여한다.
 
 CONV-0009: 볼륨/그래프·오늘 운동/권장량 요구를 추가했다. [계산/후보 초기 정책](volume-history-mvp.md). 불편감/effort·운동 경험·실제 머신/ROM 식별 입력은 권장량 조정 전 구체화한다. 28/84일·한 손 기준 등 상세는 구현 정책이며 최적성 승인으로 간주하지 않는다. local commit 지속 요청은 [운영](../operations/commit-workflow.md)에 기록했다.
+
+## CONV-0010 UI/UX 변경
+
+현재 글꼴·톤·하단 메뉴는 사용자 명시 변경으로 Geist/blue-dark/전 폭 하단이며 이전 Spoqa 선택을 supersede했다. 색상/radius·iOS형 세부 조작성 만족은 파일럿에서 확인한다. Q-12의 실제 기기/지원 OS 검증, 키보드/VoiceOver·가로/확대는 미해결이다. 다른 사용자 기본 목표/횟수/분할은 여전히 강제하지 않는다. [디자인 규칙](design-system.md) · [감사](design-audit.md).
