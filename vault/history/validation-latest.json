@@ -1,11 +1,11 @@
 {
-  "checked_at": "2026-10-04T21:48:06+09:00",
+  "checked_at": "2026-10-04T21:56:38+09:00",
   "scope": "Project structure, YAML, local paths, source metadata, initial capture, version availability, immutable file SHA256. Not scientific review or official OKF certification.",
   "status": "passed",
-  "markdown_files": 191,
-  "links_checked": 3258,
+  "markdown_files": 194,
+  "links_checked": 3391,
   "source_notes": 47,
-  "immutable_files": 142,
+  "immutable_files": 148,
   "errors": [
 
   ],

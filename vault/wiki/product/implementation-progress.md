@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T21:48:06+09:00"
+  at: "2026-10-04T21:55:54+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -143,11 +143,24 @@ sources:
   - id: "real-profile-roundtrip"
     resource: "../../raw/research/2026-10-04-auth-profile-roundtrip.json"
     title: "실제 빈 프로필 저장/조회/적용"
-version: "0.3.4"
-change_id: "CHG-0023"
+  - id: "workout-order-check"
+    resource: "../../raw/research/2026-10-04-workout-order-loop.json"
+    title: "종목 순서/가림 개선 확인"
+  - id: "workout-order"
+    resource: "../operations/workout-order.md"
+    title: "기록 보존 계약"
+version: "0.3.5"
+change_id: "CHG-0024"
 ---
 
 # 로컬 PWA 구현 결과와 다음 작업
+
+## 운동 중 순서 변경 — 2026-10-04
+
+Mantine 순서 편집→명시 저장/취소와 active/소유자/permutation/revision 검사를 추가했다. 각 세트 입력/완료·ID·과거 계획/시각은 보존하고 session/outbox를 atomic 확정한다. 알림의 버튼 가림을 실제 캡처에서 발견→hit target 실패 재현→성공 안내 층 수정→회귀 통과했다. [계약](../operations/workout-order.md)·[실행](../../raw/research/2026-10-04-workout-order-loop.json).
+
+Vitest83개(27/33/23)·Node8·Chromium12/WebKit10/22개·build/types/format/artifact25 통과(lint exit0/기존경고6). 새 단위의 CI/Pages 배포는 저장 당시 별도다. schema2/backup1·과학 정책은 그대로며 LOG03/04는 메모/삭제 복구/장비 식별/입력 UX 후속으로 in_progress다. 실제 Chrome 빈 프로필 Auth와 가짜 운동의 로컬 browser 복원을 구분한다.
+
 
 ## 최신 운영 상태 — 2026-10-04
 

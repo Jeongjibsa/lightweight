@@ -2,6 +2,8 @@
 
 ## 2026-10-04
 
+- **Records / Visual loop**: Mantine 종목 순서 초안·취소/명시 저장·active/owner/permutation/revision/atomic 보존 구현.83개(새3integration/2UI)·Node8·22browser/build/types/format/artifact25 통과(lint기존6경고). 실제320/390캡처에서 백업 알림의 이동 버튼 가림 발견→hit target 첫 실패→success layer 수정→22재확인. [실행](raw/research/2026-10-04-workout-order-loop.json)·[CHG0024](history/changes/CHG-0024.md)·PRD0.8.9 전체 보존, 이전142불변 유지. 신규 단위 CI/Pages 저장 당시 별도·LOG03/04 메모/복구/장비·실Auth/iPhone/SCI/파일럿/P2 미완료.
+
 - **Auth / CONV0019**: 지정 계정/SQL 명시 승인 후 enabled=true·등록1/허용1 확인. 사용자가 직접 Chrome 로그인, 빈 기본 프로필(운동/루틴0) 저장 ACK/서버revision1→조회/명시 같은 기기 적용·대기0/복구 수단 확인. [실행](raw/research/2026-10-04-auth-profile-roundtrip.json)·[CHG0023](history/changes/CHG-0023.md)·PRD0.8.8 전체 보존, 이전138불변 유지. 개인 credential/ID/기록payload 미보관. 실제 운동/새 기기/A·B/만료/로그아웃/메일·iPhone/SCI/파일럿 관문 유지.
 
 - **Release / CONV0018**:96bbb74 main CI37201900937 3job success·운영/DB없는preview 갱신·25file gate/공개24file hash/헤더 확인. 사용자 직접 생성 뒤 Auth1개 확인; 회원 권한 SQL은 자동 검토가 대상/방식 명시 승인 부재로 거부/미적용(허용0), 정확한 승인 질문 pending. [확인](raw/research/2026-10-04-release-account-gate.json)·[CHG0022](history/changes/CHG-0022.md)·PRD0.8.7 전체 보존, 이전134immutable 유지. 개인식별자/비밀번호 미보관·우회 없음. 실Auth/SCI/iPhone/운영/파일럿/P2 미완료.

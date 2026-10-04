@@ -70,6 +70,139 @@ test("E2E-01 빈 프로필→설정/루틴→결측 거부/0kg 즉시 완료→r
   ).toBeVisible();
 });
 
+test("운동 순서 변경의 취소/저장→reload/빈 저장소 복원에서 완료 세트와 루틴을 보존한다", async ({
+  page,
+  browser,
+  diagnostics,
+}, info) => {
+  await page.goto("/");
+  await configure(page);
+  await createRoutine(page, "가짜 순서 루틴");
+  await startRoutine(page);
+  await completeSet(page, 1, "40", "6");
+  await page.getByRole("button", { name: "운동 추가", exact: true }).click();
+  await page
+    .getByRole("dialog", { name: "운동 추가", exact: true })
+    .getByRole("button", { name: "케이블 로우 추가", exact: true })
+    .click();
+  await expect(page.getByRole("dialog")).toBeHidden();
+  const original = (await downloadBackup(page)).data;
+  await navigate(page, "오늘");
+  await page
+    .getByRole("button", { name: "진행 중인 운동 이어하기", exact: true })
+    .click();
+  await page
+    .getByRole("button", { name: "운동 순서 변경", exact: true })
+    .click();
+  let dialog = page.getByRole("dialog", {
+    name: "운동 순서 변경",
+    exact: true,
+  });
+  await dialog
+    .getByRole("button", { name: "케이블 로우 위로", exact: true })
+    .click();
+  await expect(dialog.getByRole("listitem")).toHaveText([
+    "1. 케이블 로우",
+    "2. 바벨 스쿼트",
+  ]);
+  for (const width of [320, 390]) {
+    await page.setViewportSize({ width, height: 844 });
+    expect(
+      await page.evaluate(() => document.documentElement.scrollWidth),
+    ).toBe(width);
+    expect(
+      await dialog
+        .getByRole("button", { name: "바벨 스쿼트 위로", exact: true })
+        .evaluate((el) => {
+          const r = el.getBoundingClientRect();
+          const hit = document.elementFromPoint(
+            r.x + r.width / 2,
+            r.y + r.height / 2,
+          );
+          return hit === el || (hit !== null && el.contains(hit));
+        }),
+    ).toBe(true);
+    await info.attach(`order-dialog-${width}.png`, {
+      body: await page.screenshot(),
+      contentType: "image/png",
+    });
+  }
+  await dialog.getByRole("button", { name: "취소", exact: true }).click();
+  expect((await downloadBackup(page)).data.sessions).toEqual(original.sessions);
+  await navigate(page, "오늘");
+  await page
+    .getByRole("button", { name: "진행 중인 운동 이어하기", exact: true })
+    .click();
+  await page
+    .getByRole("button", { name: "운동 순서 변경", exact: true })
+    .click();
+  dialog = page.getByRole("dialog", { name: "운동 순서 변경", exact: true });
+  await dialog
+    .getByRole("button", { name: "케이블 로우 위로", exact: true })
+    .click();
+  await dialog.getByRole("button", { name: "순서 저장", exact: true }).click();
+  await expect(dialog).toBeHidden();
+  await expect(page.getByRole("heading", { level: 3 })).toHaveText([
+    "케이블 로우",
+    "바벨 스쿼트",
+  ]);
+  const changed = await downloadBackup(page);
+  expect(changed.data.routines).toEqual(original.routines);
+  const prior = original.sessions[0]!;
+  const ordered = changed.data.sessions[0]!;
+  expect(ordered.sets.at(-1)).toEqual(prior.sets[0]);
+  expect(ordered.sets.slice(0, 3)).toEqual(prior.sets.slice(1));
+  expect({
+    ...ordered,
+    sets: prior.sets,
+    revision: prior.revision,
+    updatedAt: prior.updatedAt,
+  }).toEqual(prior);
+  await page.reload();
+  expect((await downloadBackup(page)).data.sessions).toEqual(
+    changed.data.sessions,
+  );
+  const context = await browser.newContext({
+    baseURL: origin,
+    viewport: { width: 390, height: 844 },
+    locale: "ko-KR",
+    timezoneId: "Asia/Seoul",
+    serviceWorkers: "block",
+  });
+  try {
+    const restored = await context.newPage();
+    diagnostics(restored);
+    await restored.goto("/#settings");
+    await restored
+      .getByLabel("백업 파일 선택", { exact: true })
+      .setInputFiles(changed.path);
+    await restored
+      .getByRole("dialog", { name: "백업을 복원할까요?", exact: true })
+      .getByRole("button", { name: "현재 프로필에 복원", exact: true })
+      .click();
+    await expect(restored.getByRole("dialog")).toBeHidden();
+    expect(normalizeBackup((await downloadBackup(restored)).data)).toEqual(
+      normalizeBackup(changed.data),
+    );
+    await navigate(restored, "오늘");
+    await restored
+      .getByRole("button", { name: "진행 중인 운동 이어하기", exact: true })
+      .click();
+    await expect(restored.getByRole("heading", { level: 3 })).toHaveText([
+      "케이블 로우",
+      "바벨 스쿼트",
+    ]);
+    await expect(
+      restored.getByRole("button", {
+        name: "바벨 스쿼트 1세트 완료 취소",
+        exact: true,
+      }),
+    ).toHaveAttribute("aria-pressed", "true");
+  } finally {
+    await context.close();
+  }
+});
+
 test("E2E-03 다운로드 백업→잘못된 파일 거부→빈 context 복원→IDs/삭제/기록 보존", async ({
   page,
   browser,

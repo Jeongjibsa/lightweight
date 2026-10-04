@@ -71,3 +71,4 @@
 - [routines](2026-10-04-pages-routines.png)
 - [reports](2026-10-04-pages-reports.png)
 - [settings](2026-10-04-pages-settings.png)
+- [종목 순서 수정 전320](2026-10-04-order-before-320.png) · [수정 후320](2026-10-04-order-after-320.png) · [수정 후390](2026-10-04-order-after-390.png) — 가짜 기록/실제 browser·알림 가림 확인.

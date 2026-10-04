@@ -54,3 +54,5 @@
 - CHG-0022에서 Auth 계정1개를 확인했지만 허용 목록 권한 SQL은 자동 검토가 대상/방식의 명시 승인 부재로 거부했다. 정확한 계정 UUID와 SQL 등록 방식의 사용자 승인을 받은 뒤에만 재시도한다. 등록 의사/계정 수1을 권한 승인으로 추정하거나 다른 CLI/connector로 우회하지 않는다. UUID/email/password는 public vault에 보관하지 않는다.
 
 - CHG-0023에서 지정 계정 SQL 등록의 사용자 명시 승인을 받고 해당 계정만 활성화했다. 등록1/허용1·실제 Chrome 빈 프로필 전송/조회/같은 기기 적용은 확인했다. 이 결과를 실제 운동 기록/새 기기/A·B/만료/로그아웃/메일/iPhone 통과로 확대하지 않는다. 다른 계정의 접근 확장은 이 승인에 포함되지 않는다.
+
+- CHG-0024의 종목 순서는 session.sets 배열에 보존하며 각 set의 order/입력/완료·루틴 계획/시각은 바꾸지 않는다. active·owner·전체 ID permutation·expected revision을 검사하고 session/outbox를 atomic 저장한다. 순서가 보존되는 백업/수정/보고서 회귀와 실제 hit target 검사(성공 알림 가림)를 유지한다.

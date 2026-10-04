@@ -51,9 +51,12 @@ body {
   right: max(16px, env(safe-area-inset-right));
   left: max(16px, env(safe-area-inset-left));
   bottom: calc(var(--app-bottom) + 16px);
-  z-index: 210;
+  z-index: 190;
   max-width: 620px;
   margin-inline: auto;
+}
+.notice-stack:has([role="alert"]) {
+  z-index: 210;
 }
 .volume-chart {
   width: 100%;

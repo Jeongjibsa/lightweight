@@ -448,6 +448,32 @@ export class TrainingStore {
       return session;
     });
   }
+  async reorderExercises(
+    ownerId: string,
+    sessionId: string,
+    exerciseIds: string[],
+    expectedRevision: number,
+  ) {
+    return this.changeSession(ownerId, sessionId, (session) => {
+      if (session.status !== "active")
+        throw new Error("진행 중인 운동에서만 순서를 바꿀 수 있습니다.");
+      if (session.revision !== expectedRevision)
+        throw new Error("기록이 바뀌었습니다. 순서 변경을 다시 열어주세요.");
+      const current = new Set(session.sets.map((set) => set.exercise.id));
+      if (
+        exerciseIds.length !== current.size ||
+        new Set(exerciseIds).size !== current.size ||
+        exerciseIds.some((id) => !current.has(id))
+      )
+        throw new Error("현재 운동 목록과 순서가 일치하지 않습니다.");
+      // Array order is the display order. Keep every set and its original
+      // per-exercise order/value/completion; the routine snapshot is untouched.
+      session.sets = exerciseIds.flatMap((id) =>
+        session.sets.filter((set) => set.exercise.id === id),
+      );
+      return session;
+    });
+  }
   async addExercise(ownerId: string, sessionId: string, exercise: Exercise) {
     const profile = await this.database.profiles.get(ownerId);
     requireOwner(profile, ownerId);

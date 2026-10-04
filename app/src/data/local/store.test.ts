@@ -39,6 +39,133 @@ async function plannedSession() {
   return store.startSession(owner, routine.id);
 }
 
+describe("운동 중 종목 순서와 보존", () => {
+  async function orderedSession() {
+    const routine = await store.saveRoutine(owner, {
+      name: "가짜 순서 검사",
+      exercises: [
+        { exercise: catalog[0]!, sets: 2 },
+        { exercise: catalog[8]!, sets: 1 },
+        { exercise: catalog[5]!, sets: 1 },
+      ],
+    });
+    let session = await store.startSession(owner, routine.id);
+    session = await store.updateSet(
+      owner,
+      session.id,
+      session.sets[0]!.id,
+      { load: 0, reps: 10, rir: 0 },
+      true,
+    );
+    session = await store.updateSet(owner, session.id, session.sets[1]!.id, {
+      load: 20,
+      reps: 8,
+      kind: "warmup",
+    });
+    return { routine, session };
+  }
+  it("종목 전체 순서를 저장해도 세트/완료/루틴·시각을 보존하고 백업에서 복원한다", async () => {
+    const { routine, session } = await orderedSession();
+    const ids = [catalog[8]!.id, catalog[5]!.id, catalog[0]!.id];
+    const beforeCount = await database.outbox.count();
+    const next = await store.reorderExercises(
+      owner,
+      session.id,
+      ids,
+      session.revision,
+    );
+    expect([...new Set(next.sets.map((s) => s.exercise.id))]).toEqual(ids);
+    expect(next.sets).toEqual(
+      ids.flatMap((id) => session.sets.filter((s) => s.exercise.id === id)),
+    );
+    expect({
+      ...next,
+      sets: session.sets,
+      revision: session.revision,
+      updatedAt: session.updatedAt,
+    }).toEqual(session);
+    expect(summarize([next])).toEqual(summarize([session]));
+    expect(await database.routines.get(routine.id)).toEqual(routine);
+    expect(await database.outbox.count()).toBe(beforeCount + 1);
+    expect(
+      (
+        await database.outbox.where("entityId").equals(session.id).toArray()
+      ).find((item) => item.revision === next.revision)?.payload,
+    ).toEqual(next);
+    const backup = await store.backup(owner);
+    const fresh = new TrainingDatabase(`order-restore-${crypto.randomUUID()}`);
+    try {
+      const restored = new TrainingStore(fresh);
+      await restored.ensureProfile(other);
+      await restored.restore(other, backup);
+      expect((await restored.workspace(other)).sessions[0]!.sets).toEqual(
+        next.sets,
+      );
+    } finally {
+      await fresh.delete();
+    }
+  });
+  it("누락/중복/추가 ID·다른 소유자·변경된 revision·종료/삭제 기록을 거부한다", async () => {
+    const { session } = await orderedSession();
+    const ids = [...new Set(session.sets.map((s) => s.exercise.id))];
+    const outbox = await database.outbox.toArray();
+    for (const invalid of [
+      ids.slice(1),
+      [ids[0]!, ids[0]!, ids[2]!],
+      [...ids, "unknown"],
+      ["unknown", ...ids.slice(1)],
+    ]) {
+      await expect(
+        store.reorderExercises(owner, session.id, invalid, session.revision),
+      ).rejects.toThrow("운동 목록");
+    }
+    await expect(
+      store.reorderExercises(other, session.id, ids, session.revision),
+    ).rejects.toThrow("현재 프로필");
+    await expect(
+      store.reorderExercises(owner, session.id, ids, session.revision - 1),
+    ).rejects.toThrow("기록이 바뀌었습니다");
+    expect(await database.sessions.get(session.id)).toEqual(session);
+    expect(await database.outbox.toArray()).toEqual(outbox);
+    const ended = await store.endSession(owner, session.id);
+    await expect(
+      store.reorderExercises(owner, ended.id, ids, ended.revision),
+    ).rejects.toThrow("진행 중");
+    await store.tombstone(owner, "session", ended.id);
+    const deleted = (await database.sessions.get(ended.id))!;
+    await expect(
+      store.reorderExercises(owner, deleted.id, ids, deleted.revision),
+    ).rejects.toThrow("삭제한");
+  });
+  it("outbox 실패 시 순서도 rollback하고 같은 revision의 동시 변경 중 하나만 저장한다", async () => {
+    const { session } = await orderedSession();
+    const ids = [...new Set(session.sets.map((s) => s.exercise.id))].reverse();
+    const before = await database.outbox.toArray();
+    vi.spyOn(database.outbox, "add").mockRejectedValueOnce(
+      new Error("synthetic ordering failure"),
+    );
+    await expect(
+      store.reorderExercises(owner, session.id, ids, session.revision),
+    ).rejects.toThrow("synthetic ordering failure");
+    expect(await database.sessions.get(session.id)).toEqual(session);
+    expect(await database.outbox.toArray()).toEqual(before);
+    const changes = await Promise.allSettled([
+      store.reorderExercises(owner, session.id, ids, session.revision),
+      store.reorderExercises(
+        owner,
+        session.id,
+        ids.slice().reverse(),
+        session.revision,
+      ),
+    ]);
+    expect(changes.filter((c) => c.status === "fulfilled")).toHaveLength(1);
+    expect(changes.filter((c) => c.status === "rejected")).toHaveLength(1);
+    expect((await database.sessions.get(session.id))!.revision).toBe(
+      session.revision + 1,
+    );
+    expect(await database.outbox.count()).toBe(before.length + 1);
+  });
+});
 describe("사용자 설정과 소유 경계", () => {
   it("새 사용자에게 개인 목표를 강제하지 않고 프로필을 중복 생성하지 않는다", async () => {
     expect((await store.ensureProfile(owner)).preferences).toBeNull();

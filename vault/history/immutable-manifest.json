@@ -143,7 +143,13 @@
     "raw/conversations/2026-10-04-019.md": "e44df3caac24c6cbdc0bea8eaa8a0555b5068d47a0c78a3da82c103d3b13962c",
     "raw/research/2026-10-04-auth-profile-roundtrip.json": "ef88059b401b86ef1247ea06e0fb9568fcdf2359d2094e66f14c818b36d82652",
     "history/versions/prd-v0.8.8.md": "b19a065e4a11e63b36491978593876e6535b26f19471492162ca4cba8b78833a",
-    "history/changes/CHG-0023.md": "26f48cb1953d192003ea6cae5c7b2210f00506287a812e55defbed107f8d6137"
+    "history/changes/CHG-0023.md": "26f48cb1953d192003ea6cae5c7b2210f00506287a812e55defbed107f8d6137",
+    "raw/design/2026-10-04-order-after-320.png": "7d1c2121ccef960ea9dacb73c68c07b0ba2ce5c8e2ef56c0eaac6adb020d0389",
+    "raw/design/2026-10-04-order-after-390.png": "ff68a7b45c1466672cf474fa313f0fee9a086bfcc87d6caed604360834bca3e3",
+    "raw/design/2026-10-04-order-before-320.png": "d1164d7642df96c6709c29ab9c11352f050154ce5de5dc3d84cad899740f75fe",
+    "raw/research/2026-10-04-workout-order-loop.json": "f29e9be41e74e2fa26246f99ccb748d00961f7d79fd82e9f9019c4f8d5ac9a26",
+    "history/versions/prd-v0.8.9.md": "29dde7cc715dc0e588f8e388ad5f27e88f0aad777d520a694dbbddc2eb06c786",
+    "history/changes/CHG-0024.md": "2d5030e6c0b8c34d316c256b913fedaef890f892564e0d128a7a06e99cf500e6"
   },
-  "updated_at": "2026-10-04T21:48:06+09:00"
+  "updated_at": "2026-10-04T21:55:54+09:00"
 }

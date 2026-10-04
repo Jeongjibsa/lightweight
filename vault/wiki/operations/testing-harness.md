@@ -1,7 +1,7 @@
 ---
 type: "Testing Harness"
 title: "현재 테스트 하네스와 확장 설계"
-description: "Vitest64개·browser16과업·실제 보존 검사·확인한 CI 증거와 실기기/Auth 경계."
+description: "Vitest83개·browser22과업·배포 계약8개·실제 보존/가림 검사와 실기기/Auth 경계."
 tags:
   - "operations"
   - "testing"
@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T21:17:12+09:00"
+  at: "2026-10-04T21:55:54+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
@@ -80,12 +80,23 @@ sources:
   - id: "contract"
     resource: "content-publication.md"
     title: "공개 관문"
+  - id: "order"
+    resource: "workout-order.md"
+    title: "계약"
+  - id: "order-check"
+    resource: "../../raw/research/2026-10-04-workout-order-loop.json"
+    title: "실행"
 version: "0.5.1"
 approval_status: "current-audit-and-proposal"
 change_id: "CHG-0014"
 ---
 
 # 현재 테스트 하네스와 확장 설계
+
+## 최신 순서/가림 루프
+
+[계약](workout-order.md)·[불변 실행](../../raw/research/2026-10-04-workout-order-loop.json). Vitest83개(27unit/33integration/23UI)·Node8·Chromium12/WebKit10=22개. DOM/기록 검사를 통과해도 실제 알림이 버튼을 가렸다. PNG 직접 관찰→hit target 실패 고정→성공 안내의 층 수정→22개 재검사로 시각 문제를 회귀에 연결했다. 실제iPhone/운동 Auth·과학 검토 경계는 유지한다.
+
 
 현재: unit21/integration26/ui17의64개/14파일, Chromium9/WebKit7의16과업과 신규7개×3회21회 통과. HAR05는187c47c의 GitHub3job/실패artifact 수신으로 done. HAR04는 실제iPhone/physical quota·초과 백업/기기복구가 남아 in_progress. [보존 하네스/최신 구조](storage-recovery-harness.md) · [최신 실행](../../raw/research/2026-10-04-storage-recovery-verification.json). 이전 single preview는 두 production build를 전환하는 loopback test server로 확장했다. 새코드의CI는 아직 실행하지 않았다.
 

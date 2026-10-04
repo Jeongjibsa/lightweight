@@ -23,6 +23,9 @@ import {
   ArrowLeft,
   Pencil,
   RotateCcw,
+  ArrowUp,
+  ArrowDown,
+  ListOrdered,
 } from "lucide-react";
 import { loadModes, type Session, type TrainingSet } from "../domain/models";
 import { useTraining } from "../context/training";
@@ -421,6 +424,103 @@ function RestClock({ session }: { session: Session }) {
     </Paper>
   );
 }
+function ExerciseOrder({
+  session,
+  run,
+  onClose,
+}: {
+  session: Session;
+  run: Run;
+  onClose: () => void;
+}) {
+  const { store } = useTraining();
+  const [revision] = useState(session.revision);
+  const [exercises, setExercises] = useState(() => [
+    ...new Map(
+      session.sets.map((set) => [set.exercise.id, set.exercise]),
+    ).values(),
+  ]);
+  const [saving, setSaving] = useState(false);
+  function move(index: number, offset: number) {
+    setExercises((prior) => {
+      const target = index + offset;
+      if (target < 0 || target >= prior.length) return prior;
+      const next = [...prior];
+      [next[index], next[target]] = [next[target]!, next[index]!];
+      return next;
+    });
+  }
+  return (
+    <Modal title="운동 순서 변경" onClose={onClose}>
+      <Stack gap="md">
+        <Text size="sm" c="dimmed">
+          현재 운동의 순서를 바꿉니다. 입력값과 완료 세트는 보존되고, 저장된
+          루틴의 순서는 그대로 유지됩니다.
+        </Text>
+        <Stack component="ol" aria-label="변경할 운동 순서" pl={0} gap="sm">
+          {exercises.map((exercise, index) => (
+            <Paper
+              component="li"
+              key={exercise.id}
+              p="sm"
+              bg="dark.8"
+              style={{ listStyle: "none" }}
+            >
+              <Group wrap="nowrap" gap="sm">
+                <Text flex={1} miw={0} size="sm" fw={600}>
+                  {index + 1}. {exercise.name}
+                </Text>
+                <ActionIcon
+                  variant="subtle"
+                  size={44}
+                  aria-label={`${exercise.name} 위로`}
+                  disabled={saving || index === 0}
+                  onClick={() => move(index, -1)}
+                >
+                  <ArrowUp size={19} />
+                </ActionIcon>
+                <ActionIcon
+                  variant="subtle"
+                  size={44}
+                  aria-label={`${exercise.name} 아래로`}
+                  disabled={saving || index === exercises.length - 1}
+                  onClick={() => move(index, 1)}
+                >
+                  <ArrowDown size={19} />
+                </ActionIcon>
+              </Group>
+            </Paper>
+          ))}
+        </Stack>
+        <Group grow>
+          <Button variant="default" disabled={saving} onClick={onClose}>
+            취소
+          </Button>
+          <Button
+            loading={saving}
+            onClick={async () => {
+              setSaving(true);
+              const ok = await run(
+                () =>
+                  store.reorderExercises(
+                    session.ownerId,
+                    session.id,
+                    exercises.map((exercise) => exercise.id),
+                    revision,
+                  ),
+                "운동 순서를 저장했습니다.",
+              );
+              setSaving(false);
+              if (ok) onClose();
+            }}
+          >
+            순서 저장
+          </Button>
+        </Group>
+      </Stack>
+    </Modal>
+  );
+}
 export function WorkoutView({
   session,
   run,
@@ -438,6 +538,7 @@ export function WorkoutView({
   const [picker, setPicker] = useState(false);
   const [ending, setEnding] = useState(false);
   const [cancel, setCancel] = useState(false);
+  const [ordering, setOrdering] = useState(false);
   const [replacement, setReplacement] = useState<
     TrainingSet["exercise"] | null
   >(null);
@@ -496,6 +597,16 @@ export function WorkoutView({
           />
         </Stack>
       </Paper>
+      {active && exercises.length > 1 && (
+        <Button
+          variant="subtle"
+          leftSection={<ListOrdered size={18} />}
+          w="fit-content"
+          onClick={() => setOrdering(true)}
+        >
+          운동 순서 변경
+        </Button>
+      )}
       <RestClock session={session} />
       {exercises.map((exercise) => (
         <Paper key={exercise.id} p={{ base: "md", sm: "lg" }}>
@@ -664,6 +775,13 @@ export function WorkoutView({
             />
           </Stack>
         </Modal>
+      )}
+      {ordering && (
+        <ExerciseOrder
+          session={session}
+          run={run}
+          onClose={() => setOrdering(false)}
+        />
       )}
       {correction && (
         <SetCorrection

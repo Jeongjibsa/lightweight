@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T16:22:01+09:00"
+  at: "2026-10-04T21:55:54+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
@@ -50,12 +50,23 @@ sources:
   - id: "ci-receipt"
     resource: "../../raw/research/2026-10-04-github-ci-37184261544.json"
     title: "GitHub CI 증거"
+  - id: "order"
+    resource: "workout-order.md"
+    title: "계약"
+  - id: "order-check"
+    resource: "../../raw/research/2026-10-04-workout-order-loop.json"
+    title: "실행"
 version: "0.3.2"
 approval_status: "proposal"
 change_id: "CHG-0014"
 ---
 
 # 실패를 재현하고 회귀를 남기는 개선 루프
+
+## 최신 순서/가림 루프
+
+[계약](workout-order.md)·[불변 실행](../../raw/research/2026-10-04-workout-order-loop.json). Vitest83개(27unit/33integration/23UI)·Node8·Chromium12/WebKit10=22개. DOM/기록 검사를 통과해도 실제 알림이 버튼을 가렸다. PNG 직접 관찰→hit target 실패 고정→성공 안내의 층 수정→22개 재검사로 시각 문제를 회귀에 연결했다. 실제iPhone/운동 Auth·과학 검토 경계는 유지한다.
+
 
 사용자는 루프 엔지니어링으로 완성도를 높일 방법을 찾고자 했다. 이 프로젝트에서는 **문제 선택 → 기대 결과 정의 → 재현 → 작은 수정 → 같은 조건 재검증 → 회귀 검사/지식 갱신**을 반복하는 작업 방식으로 구체화한다. 아래는 운영 제안이며, 상시 자율 에이전트나 자동 배포·자동 수정을 구축한 상태는 아니다.
 

@@ -140,3 +140,7 @@ content:compile이 source registry의 검토 선언·payload/file hash/ID/근거
 96bbb74의 GitHub3job과 운영/preview 공개24file hash/헤더 일치를 확인했습니다. 계정은 등록1개/허용1개입니다. 사용자가 지정 계정/SQL 방식을 명시 승인한 뒤 활성화했습니다. 실제 Chrome login·빈 프로필 전송 ACK/revision1·조회/같은 기기 명시 적용·대기0/복구 수단을 확인했습니다. 실제 운동 기록/새 기기/A·B/만료/로그아웃·메일/iPhone은 별도입니다. PRD0.8.8 계정 문서 commit은 앱 bundle을 바꾸지 않습니다. [확인](../vault/raw/research/2026-10-04-release-account-gate.json).
 
 [실제 Auth 확인과 한계](../vault/raw/research/2026-10-04-auth-profile-roundtrip.json).
+
+## 운동 중 순서 변경
+
+종목2개 이상일 때 Mantine 순서 편집에서 위/아래로 바꾸고 저장합니다. 취소·기록/완료·루틴/시각 보존·CAS/outbox rollback·빈 저장소 복원을 확인했습니다. 성공 알림이 버튼을 가리는 문제를 실제 캡처와 hit target 회귀로 수정했습니다.83 Vitest+Node8·22browser·build/types/format/artifact25 통과, lint기존6경고가 남습니다. 새 단위 CI/Pages 배포는 기록 시점 별도입니다. [계약](../vault/wiki/operations/workout-order.md).

@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T21:48:06+09:00"
+  at: "2026-10-04T21:55:54+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -143,9 +143,15 @@ sources:
   - id: "real-profile-roundtrip"
     resource: "../../raw/research/2026-10-04-auth-profile-roundtrip.json"
     title: "실제 빈 프로필 저장/조회/적용"
-version: "0.6.12"
+  - id: "workout-order-check"
+    resource: "../../raw/research/2026-10-04-workout-order-loop.json"
+    title: "종목 순서/가림 개선 확인"
+  - id: "workout-order"
+    resource: "../operations/workout-order.md"
+    title: "기록 보존 계약"
+version: "0.6.13"
 approval_status: "proposal"
-change_id: "CHG-0023"
+change_id: "CHG-0024"
 ---
 
 # 운동 PWA 구현 백로그와 완료 기준
@@ -175,8 +181,8 @@ UI-01은 당시 부분 Mantine/Spoqa/스택 명시 증분으로 done이었다. C
 | BASE-02 | M1 | 공통 화면·PWA manifest/서비스 워커·업데이트 안내 | BASE-01, PRE-02 | 작은 화면/키보드 조작, 준비 후 오프라인 앱 실행, 업데이트 제어 시안 | in_progress |
 | LOG-01 | M2 | 부위·장비/이름 필터·운동/변형·사용자 추가 운동 | BASE-02, PRE-03 | 선택 ID/변형 유지; 미등록 부위/사용자 운동의 검토 상태 표시 | in_progress |
 | LOG-02 | M2 | 운동 상세·2D 근육 지도·수행 그림/대체 텍스트 | LOG-01 | 주/보조 역할을 색 외에도 설명; 자극% 미표시·콘텐츠/권한 상태 구분 | in_progress |
-| LOG-03 | M2 | 루틴 작성·복사·정렬·편집·이전 세션 재사용 | LOG-01, PRE-01 | 직접 재시작/미완료 종목 교체 구현·원본 snapshot 보존; 정렬/메모 등 후속 | in_progress |
-| LOG-04 | M2 | 오늘 세션·이전 값·중량/횟수·완료/수정/취소 | BASE-02, PRE-01; 전체 연결은 LOG-03 | 이전 빈 값/종료 명시 수정·CAS/시각 보존 구현·72개/20browser; 남은 입력 UX/장비 식별 후속 | in_progress |
+| LOG-03 | M2 | 루틴 작성·복사·정렬·편집·이전 세션 재사용 | LOG-01, PRE-01 | 직접 재시작/미완료 종목 교체 구현·원본 snapshot 보존; 루틴/오늘 종목 순서 구현·83개/22browser; 메모 등 후속 | in_progress |
+| LOG-04 | M2 | 오늘 세션·이전 값·중량/횟수·완료/수정/취소 | BASE-02, PRE-01; 전체 연결은 LOG-03 | 이전 빈 값/종료 명시 수정·CAS/시각 보존 구현·72개/20browser; 오늘 종목 순서/CAS 보존 구현·83개/22browser; 남은 입력 UX/장비 식별 후속 | in_progress |
 | LOG-05 | M2 | Dexie 트랜잭션/outbox·재개·휴식 타이머 | LOG-04 | 저장 실패 시 성공 금지, 중복 탭 0중복, 재시작/잠금 후 상태 복귀 | in_progress |
 | LOG-06 | M2 | JSON 내보내기·가져오기/복원·삭제 흐름 | LOG-05 | 가짜 데이터 빈 저장소 복원 동일, 형식/계정/중복/삭제 정책; 미전송 포함 표시 | in_progress |
 | SYNC-01 | M3 | SQL migrations·제약·필요 grants/RLS·형식/범위 계약 | PRE-01, LOG-05 | 부모/자식 소유 일치·타인 user_id 대입/변경 차단, DB 초기 구성 재현 | in_progress |

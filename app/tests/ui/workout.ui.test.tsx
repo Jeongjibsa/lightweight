@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { MantineProvider } from "@mantine/core";
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { useLiveQuery } from "dexie-react-hooks";
 import { afterEach, beforeEach, expect, it, vi } from "vitest";
@@ -209,4 +209,96 @@ it("이전 값 불러오기는 화면과 기기 입력을 채우고 오늘 완�
   );
   expect((await db.sessions.get(session.id))!.sets[0]!.completedAt).toBeNull();
   expect(await db.sessions.get(source.id)).toEqual(source);
+});
+
+it("운동 순서의 취소/저장/재진입은 완료 세트와 입력값을 보존한다", async () => {
+  session = await store.addExercise(owner, session.id, catalog[5]!);
+  session = await store.updateSet(
+    owner,
+    session.id,
+    session.sets[0]!.id,
+    { load: 40, reps: 6 },
+    true,
+  );
+  const user = userEvent.setup();
+  const view = render(<Harness />);
+  await user.click(
+    await screen.findByRole("button", { name: "운동 순서 변경", exact: true }),
+  );
+  let dialog = screen.getByRole("dialog", {
+    name: "운동 순서 변경",
+    exact: true,
+  });
+  await user.click(
+    within(dialog).getByRole("button", {
+      name: `${catalog[5]!.name} 위로`,
+      exact: true,
+    }),
+  );
+  await user.click(
+    within(dialog).getByRole("button", { name: "취소", exact: true }),
+  );
+  expect(await db.sessions.get(session.id)).toEqual(session);
+  await user.click(
+    screen.getByRole("button", { name: "운동 순서 변경", exact: true }),
+  );
+  dialog = screen.getByRole("dialog", { name: "운동 순서 변경", exact: true });
+  await user.click(
+    within(dialog).getByRole("button", {
+      name: `${catalog[5]!.name} 위로`,
+      exact: true,
+    }),
+  );
+  await user.click(
+    within(dialog).getByRole("button", { name: "순서 저장", exact: true }),
+  );
+  await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
+  const saved = (await db.sessions.get(session.id))!;
+  expect(saved.sets.at(-1)).toEqual(session.sets[0]);
+  expect(
+    screen.getAllByRole("heading", { level: 3 }).map((el) => el.textContent),
+  ).toEqual([catalog[5]!.name, "바벨 스쿼트"]);
+  view.unmount();
+  render(<Harness />);
+  expect(
+    ((await screen.findByLabelText(loadLabel)) as HTMLInputElement).value,
+  ).toBe("40");
+  expect(
+    screen
+      .getByRole("button", { name: "바벨 스쿼트 1세트 완료 취소" })
+      .getAttribute("aria-pressed"),
+  ).toBe("true");
+});
+
+it("순서 변경 중 다른 입력이 저장되면 초안을 덮어쓰지 않고 새 입력/순서를 보존한다", async () => {
+  session = await store.addExercise(owner, session.id, catalog[5]!);
+  const user = userEvent.setup();
+  render(<Harness />);
+  await user.click(
+    await screen.findByRole("button", { name: "운동 순서 변경", exact: true }),
+  );
+  const dialog = screen.getByRole("dialog", {
+    name: "운동 순서 변경",
+    exact: true,
+  });
+  await user.click(
+    within(dialog).getByRole("button", {
+      name: `${catalog[5]!.name} 위로`,
+      exact: true,
+    }),
+  );
+  const changed = await store.updateSet(
+    owner,
+    session.id,
+    session.sets[0]!.id,
+    { load: 30, reps: 8 },
+  );
+  const before = await db.outbox.toArray();
+  await user.click(
+    within(dialog).getByRole("button", { name: "순서 저장", exact: true }),
+  );
+  await screen.findByRole("alert");
+  expect(screen.queryByRole("dialog")).not.toBeNull();
+  expect(await db.sessions.get(session.id)).toEqual(changed);
+  expect(await db.outbox.toArray()).toEqual(before);
 });
