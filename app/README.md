@@ -27,6 +27,8 @@ npm run preview -- --port 4173
 - IndexedDB/Dexie 저장과 변경 대기 항목의 원자적 트랜잭션, 재개, 시각 기준 휴식 타이머
 - 프로필 전체 JSON 내보내기, 크기·버전·소유자·중복·충돌 확인 후 원자적 교체 복원
 - 완료 본세트 입력 행 수·운동 횟수·기록일·운동 분류별 주간 요약
+- 운동/일별 기록 볼륨·세트/반복/시간·28/84/전체 추이 그래프와 수치 표, 같은 종목 조건·kg/lb·0/N/A/coverage
+- 과거 종료 기록/현재 설정·장비에 맞는 본인 루틴 후보, 현재 계획과 과거 실제/partial 구분·보류 이유·명시 선택
 - 등록 이메일/비밀번호 로그인·계정 UUID별 기기 DB와 화면 전환, 진행 운동/저장 중 계정 전환 차단
 - 수동 전체 기록 전송·응답 유실 재시도·서버 버전 충돌 거부·불러오기 미리보기/명시 교체·최근 교체 전 JSON 복구
 
@@ -56,17 +58,18 @@ npm run cloud:allow-user -- <AUTH_USER_UUID>
 
 ## 콘텐츠와 남은 범위
 
-12개 기본 종목은 기록용 분류 초안입니다. 탐색 그림은 개념도이며 해부학적 자극 범위 자료가 아닙니다. 근거 검토가 완료된 운동 설명·시각 자료·조건별 티어·추천 루틴, 동일 조건 추세·개인화 행동 리포트, 식단은 후속 단계입니다. 검토 전 과학적 순위나 숫자를 표시하지 않습니다.
+12개 기본 종목은 기록용 분류 초안입니다. 탐색 그림은 개념도이며 해부학적 자극 범위 자료가 아닙니다. 근거 검토가 완료된 운동 설명·시각 자료·조건별 티어·추천 루틴, 검토된 권장량 조정·개인화 행동 리포트, 식단은 후속 단계입니다. 현재 같은 운동 조건의 관찰 추이와 본인 루틴/과거 기록 참고 후보를 제공합니다. 자동 증량/회복 판정은 제공하지 않습니다. 검토 전 과학적 순위나 숫자를 표시하지 않습니다.
 
 ## 검증
 
 ```sh
 npm run test:unit
 npm run test:integration
+npm run test:ui
 npm run check
 npm run format:check
 ```
 
-Vitest v4 projects의 unit6/integration24는 소유자·보존·롤백·백업·계산과 pending/ACK/충돌/교체/schema migration 계약을 검사합니다. 서버 환경이 있는 로컬에서 `npm run cloud:probe`와 `npm run cloud:verify`로 Auth 상태/비로그인 HTTP/TLS 및16개 SQL 계약을 별도 검사합니다. SQL 표본의 임시 자료/권한은 rollback하며 실제 Auth 토큰/브라우저 전체 흐름과 구별합니다.
+Vitest v4 projects의 unit19/integration25/ui6(50개/10파일)는 소유자·보존·롤백·백업·계산과 pending/ACK/충돌/교체/schema migration 계약을 검사합니다. 서버 환경이 있는 로컬에서 `npm run cloud:probe`와 `npm run cloud:verify`로 Auth 상태/비로그인 HTTP/TLS 및16개 SQL 계약을 별도 검사합니다. SQL 표본의 임시 자료/권한은 rollback하며 실제 Auth 토큰/브라우저 전체 흐름과 구별합니다.
 
-[현재 하네스](../vault/wiki/operations/testing-harness.md)와 [진행 보고](../vault/wiki/product/implementation-progress.md)에 실제 범위를 기록했습니다. DOM/Playwright Test runner·CI 브라우저 회귀는 아직 없습니다. Chromium 폭 시험은 실제 iPhone/Safari 설치·키보드·잠금·저장소 정책을 대신하지 않습니다. GitHub 검사 워크플로는 공통 check를 사용하도록 설정했으며 외부 실행 결과는 아직 없습니다. [정확한 기술 스택](../vault/wiki/product/technology-stack.md) · [남은 작업](../vault/wiki/product/remaining-work.md).
+[현재 하네스](../vault/wiki/operations/testing-harness.md)와 [진행 보고](../vault/wiki/product/implementation-progress.md)에 실제 범위를 기록했습니다. DOM은 Testing Library/user-event/jsdom으로 추가했습니다. Playwright Test runner·CI 브라우저 회귀는 아직 없습니다. Chromium 폭 시험은 실제 iPhone/Safari 설치·키보드·잠금·저장소 정책을 대신하지 않습니다. GitHub 검사 워크플로는 공통 check를 사용하도록 설정했으며 외부 실행 결과는 아직 없습니다. [정확한 기술 스택](../vault/wiki/product/technology-stack.md) · [남은 작업](../vault/wiki/product/remaining-work.md).

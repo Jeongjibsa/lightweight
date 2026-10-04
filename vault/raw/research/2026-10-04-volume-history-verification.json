@@ -1,0 +1,95 @@
+{
+  "captured_at": "2026-10-04T10:09:23+09:00",
+  "task": "REP-04/05/06 volume-history MVP increment",
+  "app_version": "0.2.0",
+  "prd_version": "0.5.0",
+  "db_schema": 2,
+  "rules": [
+    "record-volume-v1",
+    "routine-history-v1"
+  ],
+  "runtime": "Node24.14.1 / npm11.11.0",
+  "checks": {
+    "unit": 19,
+    "integration": 25,
+    "ui": 6,
+    "files": 10,
+    "lint": "passed; zero warnings",
+    "build": "passed",
+    "format": "passed",
+    "precache_entries": 23,
+    "precache_KiB": 1644.27
+  },
+  "browser": {
+    "origin": "127.0.0.1:4174; agent synthetic profile, original4173 untouched",
+    "flows": [
+      "synthetic backup restore",
+      "period28/84",
+      "timed N/A and90s",
+      "one-hand150kg-reps",
+      "squat1200/1500/1920",
+      "candidateB planned3/actual2 partial",
+      "explicit start creates3draftrows",
+      "active candidate held",
+      "reload recalculates persisted reports"
+    ],
+    "responsive": [
+      {
+        "pageWidth": 320,
+        "points": 3,
+        "tableScroll": 467,
+        "tableWidth": 262,
+        "width": 320
+      },
+      {
+        "pageWidth": 375,
+        "points": 3,
+        "tableScroll": 467,
+        "tableWidth": 297,
+        "width": 375
+      },
+      {
+        "pageWidth": 1440,
+        "points": 3,
+        "tableScroll": 1080,
+        "tableWidth": 1080,
+        "width": 1440
+      }
+    ],
+    "console_error_warning_count": 0,
+    "expected_observation": {
+      "daily_total": [
+        1200,
+        null,
+        1500,
+        1920
+      ],
+      "one_hand_each": 150,
+      "timed_seconds": 90,
+      "candidate": "least recently recorded own B, plan3 vs partialactual2; selected explicitly, active held"
+    }
+  },
+  "limits": [
+    "manual CUA is not browser E2E runner/CI or actual iPhone/Safari",
+    "ResizeObserver is a no-layout stub only in jsdom; initial missing observer was a test environment failure",
+    "scientific optimal/recovery/automatic load increase not provided; SCI-03B planned",
+    "same settings compares goal/custom goal/frequency/split/time/equipment; routine snapshot must match current preferences",
+    "browser checked before final label disambiguation enhancement; calculations/behavior unchanged; final format/check passed",
+    "settings form retained previous fields immediately after restore: reproduced in browser; separate regression/fix follows",
+    "no new remote DB/Auth mutations, public deployment or push"
+  ],
+  "code_sha256": {
+    "app/src/domain/volume.ts": "29e4b50cbdc8997671af54fd0f6c27c707ec06c169cf83681111be6d3516f44a",
+    "app/src/domain/history.ts": "188da7dc1f4168811164701a23725a85231418ffc1002cadb229c84ce2fa51f7",
+    "app/src/components/volume-report.tsx": "82dbca037e3bb19dd177ddc1e42e47637e5ac4e7d546f9f238c088d22534cc44",
+    "app/src/components/volume-format.ts": "76ea624d40690c82840a99f9cb39660f6c27b58f4d32b57c6565b50761e0bb94",
+    "app/src/components/history-suggestion.tsx": "7d991da53d6b05b30ad6980e64b09892362ecb0e27a0b4b305351b57e6842418",
+    "app/src/App.tsx": "d5ec5c714f7221c790bf8f8b3cf6c06f349d343ce1116710fee2bb0fc9f0778e",
+    "app/src/index.css": "df0d7a77bc943bcf010f610f1c9ec59c44b3036c6dbe7fd4fce487aad2e83495",
+    "app/src/data/local/volume.test.ts": "b8108220237fabd092dbf313b010d500fbbd15634ba44c9725bdd5e8f2233858",
+    "app/tests/unit/volume.unit.test.ts": "4feb39daf1b3ac7fd24b325b478bc753b6da640aa5b2da8fd7f58bdbcb95b218",
+    "app/tests/unit/history.unit.test.ts": "eea76be93b2a8a8436d268bbbeef2c1a66b1b42dbced75dda2825434804fbb7d",
+    "app/tests/ui/volume.ui.test.tsx": "9312fef97e3750c75b4a8b9f8a4bfaca5fd1f1773562a40b87a72fbdd9ccec10",
+    "app/tests/ui/history.ui.test.tsx": "13fc86d0ccb749a902b330969fea860b54d157f0dd8a0e71955ddb939f5f2b2d"
+  }
+}

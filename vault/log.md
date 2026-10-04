@@ -2,6 +2,8 @@
 
 ## 2026-10-04
 
+- **Volume Implementation**: REP-04/05/06 계산·SVG/표·필터·루틴 후보 구현. unit19/integration25/ui6·50개/10파일·lint/build/format·가짜CUA/320·375·1440px 통과. [원본](raw/research/2026-10-04-volume-history-verification.json). SCI-03B/실Auth/runner·CI/iPhone은 후속. 복원 설정 입력 잔류는 발견돼 별도 회귀 수정 예정. 이전 구현9cccb4f·계획897f44d·DOMead48d7 local commit.
+
 - **Harness Implementation**: 계획/지침 `897f44d` 이후 HAR-02 DOM project·실제 WorkoutView/Dexie 과업3개 추가. unit6/integration24/ui3·33개/5파일·lint/build/format 통과. [원본](raw/research/2026-10-04-dom-harness-verification.json)/SRC-038 추가, HAR-02 in_progress. 실제 Auth/backup UI/브라우저 runner·CI/iPhone은 미통과.
 
 - **Commit / Planning**: [CONV-0009](wiki/conversations/2026-10-04-009.md)에 따라 현재 앱/PRD0.4.0 baseline을 `9cccb4f`로 local commit. 이후 [git-commit 운영](wiki/operations/commit-workflow.md)/AGENTS 지속 지침 추가. 볼륨/그래프·과거 오늘/권장량 요구를 FR-14/15·REP-04~06/SCI-03B로 [MVP](wiki/product/volume-history-mvp.md)에 반영. PRD0.5.0·계획/백로그0.4.0, [CHG-0009](history/changes/CHG-0009.md)·[전체 snapshot](history/versions/prd-v0.5.0.md) 보존. SRC-037은 같은 ACSM 원문의 추가 읽기, 새 독립 연구 아님. 현재는 계획 증분이며 기능 구현은 이어서 진행.

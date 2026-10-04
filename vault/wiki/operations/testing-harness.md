@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T02:20:54+09:00"
+  at: "2026-10-04T10:11:39+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
@@ -32,6 +32,12 @@ sources:
   - id: "dom-check"
     resource: "../../raw/research/2026-10-04-dom-harness-verification.json"
     title: "DOM 검사"
+  - id: "volume-check"
+    resource: "../../raw/research/2026-10-04-volume-history-verification.json"
+    title: "볼륨/후보 구현 검사"
+  - id: "volume-final"
+    resource: "../../raw/research/2026-10-04-volume-history-final-verification.json"
+    title: "최종 설명/코드 검사"
 version: "0.2.0"
 approval_status: "current-audit-and-proposal"
 change_id: "CHG-0008"
@@ -39,14 +45,15 @@ change_id: "CHG-0008"
 
 # 현재 테스트 하네스와 확장 설계
 
-2026-10-04 / app0.2.0 / IndexedDB schema2 / PRD0.4.0. 하네스는 **실행 환경·가짜 데이터·준비/정리·과업·독립 기대값·실패 증거를 같은 조건으로 반복하는 장치**다. HAR-01을 구현했고 단위/저장소 통합은 자동 실행한다. 원격 SQL 계약 검사는 별도 수동 명령, 실제 브라우저 관찰은 아직 CI E2E가 아니다.
+2026-10-04 / app0.2.0 / IndexedDB schema2 / PRD0.5.0. 하네스는 **실행 환경·가짜 데이터·준비/정리·과업·독립 기대값·실패 증거를 같은 조건으로 반복하는 장치**다. HAR-01을 구현했고 단위/저장소 통합은 자동 실행한다. 원격 SQL 계약 검사는 별도 수동 명령, 실제 브라우저 관찰은 아직 CI E2E가 아니다.
 
 ```mermaid
 flowchart TD
   A[로컬 check 또는 CI] --> B[oxlint]
   A --> C[Vitest v4 projects]
-  C --> U[unit / Node / 6개]
-  C --> I[integration / fake IndexedDB / 24개]
+  C --> U[unit / Node / 19개]
+  C --> I[integration / fake IndexedDB / 25개]
+  C --> J[ui / jsdom + Testing Library / 6개]
   I --> D[실제 Dexie Store·transaction·cloud 계약]
   A --> E[strict TypeScript + Vite PWA build]
   A --> V[vault YAML·링크·불변 해시]
@@ -54,16 +61,17 @@ flowchart TD
   P --> R[fixture·임시 grants rollback]
   H[별도 cloud probe] --> T[Auth flags / 비로그인 HTTP / TLS]
   X[CUA 개발 브라우저] --> Y[실제 UI·폰트·초점·반응형 관찰]
-  Y -. HAR02/03/05 미구현 .-> A
+  Y -. HAR03/05 runner/CI 미구현 .-> A
 ```
 
 ## 실제 파일과 격리
 
 | 층 | 현재 위치 | 범위 |
 |---|---|---|
-| unit | `app/tests/unit/models.unit.test.ts`, `cloud.unit.test.ts` | DB setup 없이 설정/날짜/단위·공개 URL/키·계정 DB 이름·원격 owner/revision 검증, 합계6개 |
-| integration | `app/src/data/local/store.test.ts`, `cloud.test.ts` | 기존 저장소14개+클라우드10개, fake-indexeddb와 실제 Dexie/Store/Zod, 합계24개 |
-| 실행 설정 | `app/vitest.config.ts` | Node의 unit/integration projects·경로 include 고정, PWA Vite config와 분리 |
+| unit | `app/tests/unit/models.unit.test.ts`, `cloud.unit.test.ts`, `volume.unit.test.ts`, `history.unit.test.ts` | DB setup 없이 설정/날짜/단위·공개 URL/키·계정 DB 이름·원격 owner/revision 검증과 볼륨/날짜/후보 정책, 합계19개 |
+| integration | `app/src/data/local/store.test.ts`, `cloud.test.ts`, `volume.test.ts` | 기존 저장소14개+클라우드10개, fake-indexeddb와 실제 Dexie/Store/Zod, 볼륨 Store 편집/재개/복원1개, 합계25개 |
+| ui | `app/tests/ui/*.ui.test.tsx`, `setup.ts` | 실제 WorkoutView/VolumeReport/HistorySuggestion·Mantine, 라벨/사용자 동작·오류/필터/명시 선택, 합계6개; fake DB/ResizeObserver no-layout stub |
+| 실행 설정 | `app/vitest.config.ts` | Node unit/integration + jsdom ui projects·경로 include 고정, PWA Vite config와 분리 |
 | DB fixture | 위 integration 파일의 beforeEach/afterEach | 검사마다 UUID DB·A/B 가짜 자료, mock/DB 삭제; cloud 날짜는 Date만 고정 후 복원 |
 | 원격 계약 | `app/scripts/verify-cloud.mjs` | 실제 DB transaction의16개 계약, 가짜 사용자/임시 grant/row를 finally rollback |
 | HTTP/TLS probe | `app/scripts/supabase-probe.mjs`, `db-client.mjs` | Auth flags·publishable-only RPC401·Session pooler CA/hostname 확인 |
@@ -87,6 +95,7 @@ flowchart TD
 ```sh
 npm --prefix app run test:unit
 npm --prefix app run test:integration
+npm --prefix app run test:ui
 npm --prefix app run check
 npm --prefix app run format:check
 ruby scripts/validate_vault.rb
@@ -97,6 +106,10 @@ ruby scripts/validate_vault.rb
 2026-10-04 01:49 KST 기준 format/lint/30개/strict build 통과, unit6/integration24 분리 명령도 통과. PWA precache23개/1623.05KiB. 원격 SQL16 통과·잔여0·Advisor 빈 배열. [이번 실행 수집](../../raw/research/2026-10-04-mantine-supabase-verification.json). 외부 CI 실행은 미확인, coverage 백분율은 측정하지 않았다.
 
 CUA에서는 가짜 설정/reload/update·320/375/1440px 관찰·Spoqa 로딩·입력16px·모달 trap/ShiftTab/Escape/opener 복귀·console0을 확인했다. 실제 Safari/iPhone·설치·키보드·잠금·200% 확대·모든 화면·실저장 quota·클라우드 Auth 전체 흐름을 통과시킨 것은 아니다. 과거 Chromium offline/빈DB/업데이트와 전체 폭 검증 이력은 [진행 보고](../product/implementation-progress.md)에 범위를 보존한다.
+
+## 2026-10-04 볼륨/후보 증분
+
+unit19/integration25/ui6·50개/10파일, lint 경고0/build/format 통과. owner·조건/단위·N/A·날짜 간격·0 변화율/미래, 설정/장비/이력/partial/오늘/active 보류를 독립 기대값으로 확인한다. 실제Store의 편집/완료취소/재개/삭제/복원 재계산, 실제화면의 기간/조건/지표·표·명시 시작을 연결한다. jsdom 초기 ResizeObserver 누락을 환경 실패로 분류해 관찰 stub을 추가했다. 실제 layout은 별도CUA로 확인했다. [원본](../../raw/research/2026-10-04-volume-history-verification.json). 아래33개 표기는 앞선 초기 증분 이력이다.
 
 ## 2026-10-04 HAR-02 DOM 증분
 
@@ -128,3 +141,5 @@ HAR-02는 in_progress다. DOM 과업 기반을 만들었지만 backup/Auth 전�
 백업 비교는 owner remap·복원 시각/revision 변화만 계약에 따라 제외하고, 실제 세트 값·ID·삭제 상태는 비교한다. 수평 넘침 한 가지로 E2E-06 전체를 통과시키지 않는다. 기기/엔진 미지원 검사는 `not_run`으로 남긴다.
 
 [남은 작업](../product/remaining-work.md) · [루프 운영](loop-engineering.md) · [검증 계획](../product/validation-plan.md) · [검사 기록 양식](../../templates/verification-record.md)
+
+최종 설명 검토: 이력 검토를 건너뛴 active/오늘/설정 보류에는 제외0개 대신 미검토를 표시한다. 최종50개/10파일·l int/build/format 통과, precache23개/1644.45KiB. [마지막 실행](../../raw/research/2026-10-04-volume-history-final-verification.json).

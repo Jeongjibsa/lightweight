@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T02:20:54+09:00"
+  at: "2026-10-04T10:09:23+09:00"
 sources:
   - id: "implementation-request"
     resource: "../../raw/conversations/2026-10-03-005.md"
@@ -44,6 +44,9 @@ sources:
   - id: "volume-mvp"
     resource: "volume-history-mvp.md"
     title: "추가 MVP"
+  - id: "volume-check"
+    resource: "../../raw/research/2026-10-04-volume-history-verification.json"
+    title: "볼륨/후보 구현 검사"
 version: "0.4.0"
 approval_status: "proposal"
 change_id: "CHG-0009"
@@ -86,9 +89,9 @@ UI-01: Mantine/Spoqa/스택 명시 **done**. FR-12에 연결하며 정확한 버
 | REP-01 | M4 | 세션/주간·계획 대비·직접/간접·동일 조건 추세 계산 | LOG-05, PRE-01 | 고정 표본 합계/단위 일치, 분모0 N/A, 직접/간접 중복 없음 | in_progress |
 | REP-02 | M4 | 리포트 화면·충분성·기간/입력revision·오래된 결과 | REP-01, SYNC-03 | 기록 수정 후 재계산, 조건 다른 추세 보류, 로컬 미전송 포함/서버 기준 구분 | in_progress |
 | REP-03 | M4 | 관찰/한계/다음 행동 템플릿 | REP-02, SCI-01의 해당 주장/정책 검토 | 숫자/근거 생성 없음, 데이터 부족 요약 가능, 자동 루틴/중량 변경 없음 | planned |
-| REP-04 | M4 | 운동/일별 볼륨·조건/단위/coverage 계산 | LOG-05, HAR-01 | 소유자/준비·삭제·0/N/A/kg/lb/한손·머신/시간 독립 계약 검사 | ready |
-| REP-05 | M4 | 기간/운동/지표 그래프·표·재계산 | REP-04, HAR-02 | 날짜 간격·결측 보류·유효1점·narrow UI/기간/조건 선택·reload | planned |
-| REP-06 | M4 | 오늘 사용자 루틴/과거 수행량 참고 후보 | REP-04, PREF-01, LOG-03 | 최근 종료/같은 설정·장비·자료 부족/오늘/진행 보류, 명시 선택·과거량 표시 | planned |
+| REP-04 | M4 | 운동/일별 볼륨·조건/단위/coverage 계산 | LOG-05, HAR-01 | 소유자/준비·삭제·0/N/A/kg/lb/한손·머신/시간 독립 계약 검사 | done |
+| REP-05 | M4 | 기간/운동/지표 그래프·표·재계산 | REP-04, HAR-02 | 날짜 간격·결측 보류·유효1점·narrow UI/기간/조건 선택·reload | done |
+| REP-06 | M4 | 오늘 사용자 루틴/과거 수행량 참고 후보 | REP-04, PREF-01, LOG-03 | 최근 종료/같은 설정·장비·자료 부족/오늘/진행 보류, 명시 선택·과거량 표시 | done |
 | SCI-03B | M5 | 과거 수행 기반 권장 운동량 조정 | REP-06, SCI-01~03; 경험/effort/불편감 | 검토된 정책·충분성/보류·이유·사용자 채택, 자동 증량/최적량 단정 없음 | planned |
 | SCI-01 | M0~M5 | 논문/해부학·정정/철회·대상/측정/비교·제안 수치 검토 등록 | PRE-03 | 공개 주장별 출처/읽은 범위/제약/검토자/일자·전문 공백 기록; 미검토 정책 제공 차단 | planned |
 | SCI-02 | M5 | 공개 콘텐츠/규칙 등록부와 앱 JSON 빌드 | SCI-01, LOG-02 | 검토·권한 확인한 파일만 출력, 링크/ID/버전/검토 상태 검사, vault 원문 번들 제외 | planned |
@@ -150,6 +153,8 @@ PRE와 화면/계산 개발은 미결인 종목/장비·호스팅 선택 전 가
 | KM-01/02 vault·이력 | 모든 의미 변경 | OKF 구조 검사·raw/CONV/CHG/PRD snapshot 유지 |
 
 ## 실행 기록
+
+REP-04/05/06 done: 계산/그래프·표/오늘 참고 후보와 독립unit13·Store 재계산1·DOM3을 추가. 합계50개/10파일, lint/build/format·가짜 CUA/리포트320/375/1440px 통과. SCI-03B planned; 실제 Auth/자동 E2E/실기기는 별도. [검사 원본](../../raw/research/2026-10-04-volume-history-verification.json). 복원 설정 입력 잔류가 발견돼 다음 HAR-02/LOG-06 수정으로 추적한다.
 
 HAR-02: DOM 입력/transaction 실패·재시도/결측수정3과업을 추가했다. unit6/integration24/ui3·lint/build/format 통과. backup/Auth 전환/실browser 과업은 남아 in_progress. [원본](../../raw/research/2026-10-04-dom-harness-verification.json).
 

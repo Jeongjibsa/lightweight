@@ -16,3 +16,9 @@ Object.defineProperty(window, "matchMedia", {
   }),
 });
 afterEach(cleanup);
+// jsdom has no layout engine. Observe semantics without pretending to test size.
+globalThis.ResizeObserver = class {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+};

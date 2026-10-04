@@ -34,6 +34,8 @@ import {
 import { LibraryView, RoutinesView } from "./components/exercises";
 import { SettingsView } from "./components/settings";
 import { WorkoutView } from "./components/workout";
+import { VolumeReport } from "./components/volume-report";
+import { HistorySuggestion } from "./components/history-suggestion";
 import { Empty, type Run } from "./components/shared";
 
 const screens = [
@@ -196,6 +198,13 @@ function TodayView({
           <p>이번 주 월요일부터 일요일</p>
         </section>
       </div>
+      <HistorySuggestion
+        profile={profile}
+        routines={routines}
+        sessions={sessions}
+        now={now}
+        start={start}
+      />
       <div className="today-grid">
         <section className="card">
           <div className="section-heading">
@@ -386,14 +395,15 @@ function ReportsView({
         </section>
         <section className="card subtle">
           <p className="eyebrow">EVIDENCE FIRST</p>
-          <h2>추천은 근거와 함께</h2>
+          <h2>기록량을 읽는 기준</h2>
           <p className="muted">
-            지금은 수행한 기록을 사실대로 요약합니다. 근거 검토, 비교 가능한
-            종목 조건, 충분한 기록을 확보한 뒤 루틴 추천과 개인화 분석을 연결할
-            예정입니다.
+            볼륨은 완료한 세트의 중량과 반복으로 계산한 기록량입니다. 같은
+            조건의 추이를 참고하세요. 개인별 권장 운동량은 노력·불편감 등 추가
+            자료와 근거 검토를 연결한 뒤 제공할 예정입니다.
           </p>
         </section>
       </div>
+      <VolumeReport profile={profile} sessions={sessions} now={now} />
       <section className="card">
         <h2>전체 운동 기록</h2>
         {sessions.length ? (

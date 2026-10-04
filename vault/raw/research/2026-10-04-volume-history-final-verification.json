@@ -1,0 +1,23 @@
+{
+  "captured_at": "2026-10-04T10:11:39+09:00",
+  "previous": "2026-10-04-volume-history-verification.json",
+  "late_review": "do not show changedRecords0 if early active/today/settings/equipment gate skipped history scan",
+  "checks": {
+    "unit": 19,
+    "integration": 25,
+    "ui": 6,
+    "files": 10,
+    "lint": "passed; zero warnings",
+    "build": "passed",
+    "format": "passed",
+    "precache_entries": 23,
+    "precache_KiB": 1644.45
+  },
+  "code_sha256": {
+    "app/src/components/history-suggestion.tsx": "5f66cae3f70aa84ebb19de1ad0e6ad8152dfe33d7d2a71c623ad4e8f08ee06b0"
+  },
+  "limits": [
+    "earlier browser observations preserved unchanged; no actual Auth/iPhone/CI claim",
+    "settings-restore stale form is next isolated fix"
+  ]
+}

@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T02:20:54+09:00"
+  at: "2026-10-04T10:11:39+09:00"
 sources:
   - id: "responsive-local-request"
     resource: "../../raw/conversations/2026-10-03-006.md"
@@ -41,17 +41,33 @@ sources:
   - id: "dom-check"
     resource: "../../raw/research/2026-10-04-dom-harness-verification.json"
     title: "DOM 검사"
+  - id: "volume-check"
+    resource: "../../raw/research/2026-10-04-volume-history-verification.json"
+    title: "볼륨/후보 구현 검사"
+  - id: "volume-final"
+    resource: "../../raw/research/2026-10-04-volume-history-final-verification.json"
+    title: "최종 설명/코드 검사"
 version: "0.2.0"
 change_id: "CHG-0008"
 ---
 
 # 로컬 PWA 구현 결과와 다음 작업
 
-## 최신 HAR-02 증분 — 2026-10-04
+## 최신 볼륨/오늘 후보 증분 — 2026-10-04
+
+PRD0.5.0의 REP-04/05/06을 구현/검증했다. 일별/같은 운동 조건·28/84/전체·본세트/반복/시간/중량 기록량, 실제 날짜 간격 SVG·N/A 선 끊기·유효1점·숫자 표/coverage·변화율 보류, kg/lb·한 손/머신/좌우 구분과 owner/준비/삭제/미래 제외. 현재 live session에서 계산해 편집/완료 취소·DB 재개·삭제·백업 복원 후 재계산한다. schema/RPC 변경 없음.
+
+오늘 후보는 최근28일 종료 본세트와 같은 설정·장비에 맞는 본인 루틴의 최근 수행 순서를 참고한다. 현재 계획과 과거 실제/partial을 구분하고 자료 부족/오늘 수행/active는 보류한다. 명시 선택만 시작하며 자동 증량/회복/최적량 판단은 없다. SCI-03B/검토된 새 운동 추천은 후속이다.
+
+unit19/integration25/ui6, 합계50개/10파일·lint 경고0/strict build/format 통과. precache23개/1644.45KiB. 수치·기간·조건/0/N/A·설정/장비/owner/오늘 보류, Store 재계산과 DOM 필터/명시 선택을 검사했다. 수동 CUA의 가짜4174에서 복원→28/84→시간/한 손/스쿼트→후보B 계획3/실제partial2→선택/active보류→reload 확인, 320/375/1440px 리포트 page overflow0·표 내부 가로 스크롤, console0. 마지막 label 분류/중복 구분은 이후 코드 검사로 확인했다. [원본](../../raw/research/2026-10-04-volume-history-verification.json).
+
+기존 누적 구현9cccb4f, 계획/지침897f44d, HAR-02 초기ead48d7을 local commit했다. 실제 Auth·browser runner/CI·iPhone/HTTPS/근거 공개 관문은 남았다. browser 복원 중 이전 설정 입력값 잔류를 발견했으며 별도 재현/회귀 수정이 다음 순서다.
+
+## 이전 HAR-02 증분 — 2026-10-04
 
 DOM 통합 project/라벨 기반 입력·오류·재시도 과업3개를 추가했고 unit6/integration24/ui3·합계33개/5파일과 lint/build/format 통과. HAR-02 in_progress, 실제 browser/E2E/계정 준비는 남았다. [실행 원본](../../raw/research/2026-10-04-dom-harness-verification.json). 계획/commit 지침은897f44d로 보존했다.
 
-## 현재 증분 — 2026-10-04
+## 이전 Mantine/Supabase 증분 — 2026-10-04
 
 app **0.2.0** / PRD **0.4.0** / IndexedDB **schema2**. Mantine UI·Spoqa Han Sans Neo와 Supabase Auth/DB 연결 증분을 구현했다. 상세 버전은 [기술 스택](technology-stack.md), 연결/권한/전송 계약과 계정 준비는 [Supabase 문서](supabase-integration.md)를 따른다.
 
@@ -140,3 +156,5 @@ app **0.2.0** / PRD **0.4.0** / IndexedDB **schema2**. Mantine UI·Spoqa Han San
 ## Related
 
 [구현 계약](implementation-contracts.md) · [작업계획](implementation-plan.md) · [백로그](implementation-backlog.md) · [문서 검증](../../history/validation-latest.json) · [CHG-0006](../../history/changes/CHG-0006.md)
+
+최종 설명 검토: 이력 검토를 건너뛴 active/오늘/설정 보류에는 제외0개 대신 미검토를 표시한다. 최종50개/10파일·l int/build/format 통과, precache23개/1644.45KiB. [마지막 실행](../../raw/research/2026-10-04-volume-history-final-verification.json).
