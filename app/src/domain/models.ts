@@ -157,6 +157,11 @@ export const routineSchema = z.object({
   preferencesSnapshot: preferencesSchema.nullable(),
 });
 export type Routine = z.infer<typeof routineSchema>;
+export const comparisonSchema = z.object({
+  equipmentLabel: z.string().trim().max(80),
+  rangeOfMotion: z.string().trim().max(80),
+});
+export type Comparison = z.infer<typeof comparisonSchema>;
 export const setSchema = z
   .object({
     id,
@@ -169,6 +174,7 @@ export const setSchema = z
     kind: z.enum(["working", "warmup"]),
     side: z.enum(["both", "left", "right"]),
     rir: z.number().min(0).max(10).nullable(),
+    comparison: comparisonSchema.optional(),
     completedAt: stamp.nullable(),
   })
   .superRefine((value, ctx) => {
@@ -200,6 +206,7 @@ export const sessionSchema = z
   .object({
     ...metadata,
     name: z.string().max(80),
+    note: z.string().trim().max(1000).optional(),
     localDate: z.iso.date(),
     timeZone: profileSchema.shape.timeZone,
     startedAt: stamp,

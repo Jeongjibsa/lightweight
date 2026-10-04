@@ -43,3 +43,4 @@
 - [Git 연결/Google 검토](2026-10-04-git-oauth-review.json) · [운동/휴식/UI loop](2026-10-04-catalog-rest-timer-loop.json)
 - [OAuth 공개 설정의 누락 필드 정정](2026-10-04-oauth-public-settings-correction.json)
 - [0f6381d Git 자동 배포/운영·CI 검증](2026-10-04-catalog-rest-git-release.json)
+- [메모/조건/서버 승인 전 루프](2026-10-05-record-details-loop.json)

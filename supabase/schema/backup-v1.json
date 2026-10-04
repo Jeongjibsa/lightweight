@@ -115,6 +115,32 @@
             }
           ]
         },
+        "restTimer": {
+          "type": "object",
+          "properties": {
+            "seconds": {
+              "type": "integer",
+              "minimum": 15,
+              "maximum": 1800
+            },
+            "favorites": {
+              "minItems": 3,
+              "maxItems": 4,
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "minimum": 15,
+                "maximum": 1800
+              },
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "seconds",
+            "favorites"
+          ],
+          "additionalProperties": false
+        },
         "unit": {
           "type": "string",
           "enum": [
@@ -221,6 +247,20 @@
                         "하체",
                         "코어"
                       ]
+                    },
+                    "subgroup": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 40
+                    },
+                    "aliases": {
+                      "maxItems": 8,
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 80
+                      }
                     },
                     "equipment": {
                       "type": "string",
@@ -411,6 +451,10 @@
             "type": "string",
             "maxLength": 80
           },
+          "note": {
+            "type": "string",
+            "maxLength": 1000
+          },
           "localDate": {
             "type": "string",
             "format": "date",
@@ -518,6 +562,20 @@
                                 "하체",
                                 "코어"
                               ]
+                            },
+                            "subgroup": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 40
+                            },
+                            "aliases": {
+                              "maxItems": 8,
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "minLength": 1,
+                                "maxLength": 80
+                              }
                             },
                             "equipment": {
                               "type": "string",
@@ -792,6 +850,20 @@
                         "코어"
                       ]
                     },
+                    "subgroup": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 40
+                    },
+                    "aliases": {
+                      "maxItems": 8,
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 80
+                      }
+                    },
                     "equipment": {
                       "type": "string",
                       "maxLength": 80
@@ -899,6 +971,24 @@
                       "type": "null"
                     }
                   ]
+                },
+                "comparison": {
+                  "type": "object",
+                  "properties": {
+                    "equipmentLabel": {
+                      "type": "string",
+                      "maxLength": 80
+                    },
+                    "rangeOfMotion": {
+                      "type": "string",
+                      "maxLength": 80
+                    }
+                  },
+                  "required": [
+                    "equipmentLabel",
+                    "rangeOfMotion"
+                  ],
+                  "additionalProperties": false
                 },
                 "completedAt": {
                   "anyOf": [

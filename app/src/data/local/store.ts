@@ -10,6 +10,7 @@ import {
 } from "../cloud/contracts";
 import {
   backupSchema,
+  comparisonSchema,
   dateInZone,
   preferencesSchema,
   restPreferencesSchema,
@@ -17,6 +18,7 @@ import {
   routineSchema,
   sessionSchema,
   type Backup,
+  type Comparison,
   type Entity,
   type Exercise,
   type OutboxItem,
@@ -416,6 +418,7 @@ export class TrainingStore {
         const orders = new Map<string, number>();
         const session = sessionSchema.parse({
           ...source!,
+          note: undefined,
           id: uuid(),
           revision: 1,
           updatedAt: at,
@@ -480,6 +483,7 @@ export class TrainingStore {
           seconds: null,
           rir: null,
           side: "both",
+          comparison: undefined,
         });
       return session;
     });
@@ -506,6 +510,52 @@ export class TrainingStore {
       Object.assign(set, patch);
       return session;
     });
+  }
+  async saveSessionNote(
+    ownerId: string,
+    sessionId: string,
+    expectedRevision: number,
+    note: string,
+  ) {
+    return this.changeSession(ownerId, sessionId, (session) => {
+      this.requireEditableDetails(session, expectedRevision);
+      session.note = note.trim() || undefined;
+      return session;
+    });
+  }
+  async saveSetConditions(
+    ownerId: string,
+    sessionId: string,
+    expectedRevision: number,
+    setIds: string[],
+    input: Comparison,
+  ) {
+    const comparison = comparisonSchema.parse(input);
+    return this.changeSession(ownerId, sessionId, (session) => {
+      this.requireEditableDetails(session, expectedRevision);
+      if (
+        !setIds.length ||
+        new Set(setIds).size !== setIds.length ||
+        setIds.some((id) => !session.sets.some((set) => set.id === id))
+      )
+        throw new Error("비교 조건을 적용할 세트를 다시 선택해주세요.");
+      for (const set of session.sets) {
+        if (setIds.includes(set.id))
+          set.comparison =
+            comparison.equipmentLabel || comparison.rangeOfMotion
+              ? structuredClone(comparison)
+              : undefined;
+      }
+      return session;
+    });
+  }
+  private requireEditableDetails(session: Session, expectedRevision: number) {
+    if (session.status === "cancelled")
+      throw new Error("취소한 운동의 메모와 조건은 수정할 수 없습니다.");
+    if (session.revision !== expectedRevision)
+      throw new Error(
+        "기록이 다른 곳에서 바뀌었습니다. 다시 열어 수정해주세요.",
+      );
   }
   async reorderExercises(
     ownerId: string,
@@ -586,6 +636,9 @@ export class TrainingStore {
         load: last?.load ?? null,
         reps: last?.reps ?? null,
         seconds: last?.seconds ?? null,
+        comparison: last?.comparison
+          ? structuredClone(last.comparison)
+          : undefined,
       });
       return session;
     });

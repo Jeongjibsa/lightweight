@@ -19,7 +19,12 @@ export function formatMetric(value: number | null, unit = "") {
     : `${numberFormatter.format(value)}${unit ? ` ${unit}` : ""}`;
 }
 export function conditionLabel(condition: ExerciseCondition) {
-  return `${condition.exercise.name} · ${condition.exercise.group} · ${condition.exercise.equipment || "장비 미지정"} · ${loadModes[condition.exercise.loadMode]} · ${{ both: "양측", left: "왼쪽", right: "오른쪽" }[condition.side]}`;
+  const details = condition.comparison;
+  const suffix =
+    details?.equipmentLabel || details?.rangeOfMotion
+      ? ` · ${details.equipmentLabel || "장비 이름 미입력"} · ${details.rangeOfMotion || "가동범위 미입력"}`
+      : " · 비교 조건 미입력";
+  return `${condition.exercise.name} · ${condition.exercise.group} · ${condition.exercise.equipment || "장비 미지정"} · ${loadModes[condition.exercise.loadMode]} · ${{ both: "양측", left: "왼쪽", right: "오른쪽" }[condition.side]}${suffix}`;
 }
 export function conditionChoices(conditions: ExerciseCondition[]) {
   const counts = new Map<string, number>();

@@ -62,3 +62,7 @@
 - CHG0027 루틴 복구는 owner/deleted/expected revision을 확인하고 same ID/계획/설정·과거 운동 snapshot을 보존한다. routine/outbox atomic·실패 rollback/중복 한 번 저장·native Accordion full-height 대기 후 캡처를 유지한다. 운동 기록 복구·자동 클라우드 동기화로 확대하지 않는다.
 
 - CHG0029 종료 기록 삭제/복구는 complete/partial·endedAt에 한정한다. owner/deleted/expected revision·세트/시각/snapshot·atomic outbox/rollback/중복과 집계1→0→1을 유지한다. active/기존 취소 기록은 복구 대상으로 제공하지 않으며 실제 Auth/다기기/기기 검증과 구분한다.
+
+## 한도 후 재개
+
+- CONV0023에서 사용자가 한도로 중단될 경우 초기화 후 재개를 예약하도록 요청했다. 현재 예약/승인 상태는 `vault/wiki/operations/usage-resumption.md`와 최신 진행 문서를 읽는다. 실제 사용량 초기화 시간을 도구로 확인하고 기존 예약을 먼저 조회하여 중복을 피한다. 완료/인간 승인 대기는 한도 중단으로 간주하지 않으며 예약·시간 경과로 승인 거부를 우회하지 않는다.

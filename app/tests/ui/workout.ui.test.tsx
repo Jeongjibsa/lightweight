@@ -302,3 +302,85 @@ it("순서 변경 중 다른 입력이 저장되면 초안을 덮어쓰지 않�
   expect(await db.sessions.get(session.id)).toEqual(changed);
   expect(await db.outbox.toArray()).toEqual(before);
 });
+
+it("메모 편집의 취소/오류/재시도는 초안을 유지하고 완료 시각을 보존한다", async () => {
+  const user = userEvent.setup();
+  render(<Harness />);
+  await user.click(
+    await screen.findByRole("button", { name: "운동 메모 추가", exact: true }),
+  );
+  await user.type(screen.getByLabelText("오늘 운동 메모"), "가짜 컨디션 메모");
+  const before = await db.sessions.get(session.id);
+  vi.spyOn(db.outbox, "add").mockRejectedValueOnce(
+    new Error("synthetic storage failure"),
+  );
+  await user.click(
+    screen.getByRole("button", { name: "메모 저장", exact: true }),
+  );
+  await screen.findByRole("alert");
+  expect(await db.sessions.get(session.id)).toEqual(before);
+  expect(
+    (screen.getByLabelText("오늘 운동 메모") as HTMLTextAreaElement).value,
+  ).toBe("가짜 컨디션 메모");
+  await user.click(
+    screen.getByRole("button", { name: "메모 저장", exact: true }),
+  );
+  await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
+  expect((await db.sessions.get(session.id))!.note).toBe("가짜 컨디션 메모");
+  await user.click(
+    screen.getByRole("button", { name: "운동 메모 수정", exact: true }),
+  );
+  await user.clear(screen.getByLabelText("오늘 운동 메모"));
+  await user.click(
+    within(screen.getByRole("dialog")).getByRole("button", {
+      name: "취소",
+      exact: true,
+    }),
+  );
+  expect((await db.sessions.get(session.id))!.note).toBe("가짜 컨디션 메모");
+});
+it("비교 조건 전체/개별 적용·CAS 충돌에서 완료/입력 보존과 대상 선택을 검증한다", async () => {
+  session = await store.addSet(owner, session.id, session.sets[0]!.exercise);
+  const user = userEvent.setup();
+  render(<Harness />);
+  await user.click(
+    await screen.findByRole("button", {
+      name: "바벨 스쿼트 비교 조건",
+      exact: true,
+    }),
+  );
+  await user.type(screen.getByLabelText("장비 이름 · 선택"), "머신 A");
+  await user.type(screen.getByLabelText("가동범위 · 선택"), "전체");
+  await user.click(
+    screen.getByRole("button", { name: "조건 저장", exact: true }),
+  );
+  await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
+  expect(
+    (await db.sessions.get(session.id))!.sets.every(
+      (s) => s.comparison?.equipmentLabel === "머신 A",
+    ),
+  ).toBe(true);
+  await user.click(
+    screen.getByRole("button", { name: "바벨 스쿼트 비교 조건", exact: true }),
+  );
+  await user.click(
+    screen.getByRole("combobox", { name: "적용할 세트", exact: true }),
+  );
+  await user.click(screen.getByRole("option", { name: "2세트", exact: true }));
+  await user.clear(screen.getByLabelText("장비 이름 · 선택"));
+  await user.type(screen.getByLabelText("장비 이름 · 선택"), "머신 B");
+  const current = (await db.sessions.get(session.id))!;
+  await store.saveSessionNote(owner, current.id, current.revision, "다른 편집");
+  await user.click(
+    screen.getByRole("button", { name: "조건 저장", exact: true }),
+  );
+  await screen.findByRole("alert");
+  expect(
+    (await db.sessions.get(session.id))!.sets.every(
+      (s) => s.comparison?.equipmentLabel === "머신 A",
+    ),
+  ).toBe(true);
+  expect(
+    (screen.getByLabelText("장비 이름 · 선택") as HTMLInputElement).value,
+  ).toBe("머신 B");
+});

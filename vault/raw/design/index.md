@@ -75,3 +75,7 @@
 - [루틴 복구 목록320](2026-10-04-routine-recovery-list-320.png) · [목록390](2026-10-04-routine-recovery-list-390.png) · [확인320](2026-10-04-routine-recovery-dialog-320.png) · [확인390](2026-10-04-routine-recovery-dialog-390.png) — 가짜 자료/실제 browser.
 - [종료 기록 삭제320](2026-10-04-ended-record-delete-320.png) · [삭제390](2026-10-04-ended-record-delete-390.png) · [목록320](2026-10-04-ended-record-list-320.png) · [목록390](2026-10-04-ended-record-list-390.png) · [복구320](2026-10-04-ended-record-recover-320.png) · [복구390](2026-10-04-ended-record-recover-390.png) — 가짜 자료.
 - [CONV0022 WebKit 캡처9개](../research/2026-10-04-catalog-rest-timer-loop.json)
+- [기록 note-editor-320.png](2026-10-05-record-note-editor-320.png) — synthetic WebKit screenshot; 실제 iPhone 아님.
+- [기록 condition-editor-320.png](2026-10-05-record-condition-editor-320.png) — synthetic WebKit screenshot; 실제 iPhone 아님.
+- [기록 condition-report-320.png](2026-10-05-record-condition-report-320.png) — synthetic WebKit screenshot; 실제 iPhone 아님.
+- [기록 condition-report-390.png](2026-10-05-record-condition-report-390.png) — synthetic WebKit screenshot; 실제 iPhone 아님.

@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T23:46:05+09:00"
+  at: "2026-10-05T01:38:13+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
@@ -104,6 +104,9 @@ sources:
   - id: "request22-loop"
     resource: "../../raw/research/2026-10-04-catalog-rest-timer-loop.json"
     title: "실행/캡처"
+  - id: "details-loop"
+    resource: "../../raw/research/2026-10-05-record-details-loop.json"
+    title: "실행"
 version: "0.5.1"
 approval_status: "current-audit-and-proposal"
 change_id: "CHG-0014"
@@ -316,3 +319,7 @@ content:compile을 일반 build에 연결하고 Node5계약을 추가했다(배�
 ## CONV0022 현재 증분
 
 31unit/40integration/27UI=98개/19파일·Node8·전체Chromium16/WebKit14=30, 문구만 수정 후 마지막6과업·build/types/format/artifact25를 확인했다(lint기존6경고). unit은 deadline/pause와 설정 bounds·기존 schema/카탈로그, integration은 atomic profile/outbox/owner/backup, UI는 타이머 재진입·중복/실패/재시도, browser는 필터·휴식 clock/reload/설정 backup·H1 focus/outline·320/390px이다. 실제 캡처에서2문구 잘림을 발견해 짧은 표시와 원래 accessible 이름을 제공했다. [증거](../../raw/research/2026-10-04-catalog-rest-timer-loop.json)·[계약](catalog-rest-timer.md). 실제 Auth/Google/물리 iPhone/과학 검토는 별도다.
+
+## 메모/조건 로컬 루프
+
+106개/Node10·전체32browser·신규6반복. note sibling key·jsdom FontFaceSet·outbox UUID 순서 fixture·Chromium 좁은 Drawer dropdown 문제를 최초 실패 그대로 보존하고 수정했다. schema drift2계약을 추가해 앞으로 client/SQL 불일치를 탐지한다. 서버 변경은 승인 검토 거부 후 보류했다. [계약](record-details.md)·[불변 실행](../../raw/research/2026-10-05-record-details-loop.json).

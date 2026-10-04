@@ -1,0 +1,75 @@
+{
+  "type": "Implementation Verification",
+  "title": "Record notes/conditions and cloud schema preflight",
+  "generated": {
+    "by": "codex/gpt-6",
+    "at": "2026-10-05T01:38:13+09:00"
+  },
+  "immutable": true,
+  "code_fingerprint": "9faeeed97143ce7b0682c03413908727d1d808010ae30c9c4ee13a244cd7e31e",
+  "checks": {
+    "vitest": 106,
+    "unit": 34,
+    "integration": 43,
+    "ui": 29,
+    "node_contracts": 10,
+    "full_browser": 32,
+    "chromium": 17,
+    "webkit": 15,
+    "focused_repeat": 6,
+    "lint": "exit0;six pre-existing effect warnings",
+    "build_types_format": "passed",
+    "artifact_static_files": 25,
+    "reviewed_guides": 0
+  },
+  "browser_runs": {
+    "initial_environment": "20261004T162236415Z-b2f44b3b",
+    "first_product": "20261004T162340571Z-e84c6cd1",
+    "focused": "20261004T162944325Z-ac704b7f",
+    "final": "20261004T163122070Z-80426f20",
+    "retries": 0
+  },
+  "loop": [
+    {
+      "kind": "environment",
+      "issue": "Local server EPERM; allowed isolated server execution afterward."
+    },
+    {
+      "kind": "product_and_fixture",
+      "issue": "Note editor sibling key collided with timer; prefixed key. Mantine autosize FontFaceSet absent in jsdom; provided EventTarget only, no layout claim."
+    },
+    {
+      "kind": "fixture",
+      "issue": "UUID-keyed outbox iteration was wrongly assumed chronological; select payload by revision."
+    },
+    {
+      "kind": "product",
+      "issue": "Chromium320 drawer Select portal closed/was unstable; withinPortal=false, bounded dropdown; 6 independent repeats and full32 passed."
+    }
+  ],
+  "remote_before": {
+    "legacy": true,
+    "rest_favorites": false,
+    "record_details": false,
+    "supports_rest": false,
+    "supports_subgroup": false,
+    "supports_comparison": false,
+    "rls_tables_enabled": true,
+    "scope": "Read-only validator calls with synthetic JSON, no actual user records read/written"
+  },
+  "migration": {
+    "file": "supabase/migrations/20261004162726_training_optional_record_fields.sql",
+    "cli": "2.119.0",
+    "applied": false,
+    "reason": "Automatic approval review rejected persistent production validator DDL; explicit human approval pending",
+    "scope": "Optional fields only; original cross-field/owner checks and grants preserved"
+  },
+  "deployment": "not pushed/not deployed for this unit; awaiting server-change approval",
+  "automation": {
+    "id": "automation",
+    "once_at": "2026-10-05T03:00:00+09:00",
+    "guard": "Only resume after a usage-limit interruption with unfinished authorized work; no bypass of pending SQL approval"
+  },
+  "limits": "No physical iPhone, real new-field Auth RPC/cloud upload, multi-version device or scientific review validation claimed.",
+  "privacy": "Synthetic records/screenshots only; no secrets or real account identifiers."
+}

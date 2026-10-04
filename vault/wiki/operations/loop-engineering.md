@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T22:43:11+09:00"
+  at: "2026-10-05T01:38:13+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
@@ -67,6 +67,9 @@ sources:
     title: "계약"
   - id: "ended-check"
     resource: "../../raw/research/2026-10-04-ended-record-recovery-loop.json"
+    title: "실행"
+  - id: "details-loop"
+    resource: "../../raw/research/2026-10-05-record-details-loop.json"
     title: "실행"
 version: "0.3.2"
 approval_status: "proposal"
@@ -224,3 +227,7 @@ CUA 가짜4177의 invalid JSON 오류→동일 경로 정상 파일→미리보�
 ## HAR04 보존 루프
 
 [검사 계약](storage-recovery-harness.md)의 첫 Blob roundtrip/실제SW 운동종료 가림은 제품 결함으로 분류해 compact/대칭byte검사·main 안내 흐름으로 수정했다. 랜덤 배열 순서/blur전fault/UI matcher는 test fixture 결함이며 정확한경계/기대값을 고쳤다. 강제click·자동retry없이16개/새21회·64개/실패probe를 통과했다. [첫실패와실행](../../raw/research/2026-10-04-storage-recovery-verification.json). [GitHubCI](../../raw/research/2026-10-04-github-ci-37184261544.json)는187c47c 기준3job/9과업·실패증거 수신, 새HAR04local결과와 구별한다.
+
+## 메모/조건 로컬 루프
+
+106개/Node10·전체32browser·신규6반복. note sibling key·jsdom FontFaceSet·outbox UUID 순서 fixture·Chromium 좁은 Drawer dropdown 문제를 최초 실패 그대로 보존하고 수정했다. schema drift2계약을 추가해 앞으로 client/SQL 불일치를 탐지한다. 서버 변경은 승인 검토 거부 후 보류했다. [계약](record-details.md)·[불변 실행](../../raw/research/2026-10-05-record-details-loop.json).

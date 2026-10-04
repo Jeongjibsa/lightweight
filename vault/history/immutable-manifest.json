@@ -199,7 +199,15 @@
     "raw/research/2026-10-04-oauth-public-settings-correction.json": "d97da0968a4b7f6dd239d2a0125ed82c6b2e73a2d8c01b9219ec1a8bc9711447",
     "raw/research/2026-10-04-catalog-rest-git-release.json": "b48a4a35379c7661979a3a286e9c6aed7b7ef12086565eb0127845391ed4933f",
     "history/versions/prd-v0.9.1.md": "4902222f20ad23647b74f8928af7fefb1513e0e65b73ec512e1979892343a4b5",
-    "history/changes/CHG-0033.md": "a77ecad1a2e4ea4d25199b755d8e7d59c05996774408c2deca0db35cd9fede36"
+    "history/changes/CHG-0033.md": "a77ecad1a2e4ea4d25199b755d8e7d59c05996774408c2deca0db35cd9fede36",
+    "raw/conversations/2026-10-05-023.md": "d70159867abfe36a02d03656271cc6365ee6f8c574b880b4aab26de184084db7",
+    "raw/research/2026-10-05-record-details-loop.json": "d640b3658d3de98314994a96f9c59ec0638b820c06b2cde2194d22b2d71eecd1",
+    "raw/design/2026-10-05-record-note-editor-320.png": "ea3cabfbae882dd38e31cab17fbf7dc896a151213cc67db09b58c080628dcb68",
+    "raw/design/2026-10-05-record-condition-editor-320.png": "691d20c1b2602bafb3f1246d20cc565c80d6c92a323815b9ee5c45819a7afa49",
+    "raw/design/2026-10-05-record-condition-report-320.png": "7d049ef60cb483b8d5ae9ca661e0e66d724fd0e53128132dd852962d763ab86f",
+    "raw/design/2026-10-05-record-condition-report-390.png": "6a3cca614968471f0b6582cbd3442682f93c1fa0bc149c6827e850d6a92d24ac",
+    "history/changes/CHG-0034.md": "d11e56132dad5a75cfb4711a13ea2a088a71c87dc56d4cf8ff47e988521e9ef7",
+    "history/versions/prd-v0.9.2.md": "bd504500a2755198f739ef25170405a70cf06a134065757ee10819ca461940e4"
   },
-  "updated_at": "2026-10-04T23:58:53+09:00"
+  "updated_at": "2026-10-05T01:38:13+09:00"
 }

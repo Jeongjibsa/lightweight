@@ -5,7 +5,7 @@ import {
   type TrainingSet,
 } from "./models";
 
-export const volumeVersion = "record-volume-v1";
+export const volumeVersion = "record-volume-v2";
 export type VolumeMetric = "workingRows" | "reps" | "seconds" | "volume";
 export type VolumePeriod = "28" | "84" | "all";
 export interface VolumeTotals {
@@ -22,9 +22,14 @@ export interface ExerciseCondition {
   key: string;
   exercise: Exercise;
   side: TrainingSet["side"];
+  comparison?: TrainingSet["comparison"];
 }
-export function conditionKey(set: Pick<TrainingSet, "exercise" | "side">) {
+export function conditionKey(
+  set: Pick<TrainingSet, "exercise" | "side" | "comparison">,
+) {
   const e = set.exercise;
+  const equipment = set.comparison?.equipmentLabel.trim() ?? "";
+  const rom = set.comparison?.rangeOfMotion.trim() ?? "";
   return JSON.stringify([
     e.id,
     e.name,
@@ -32,6 +37,8 @@ export function conditionKey(set: Pick<TrainingSet, "exercise" | "side">) {
     e.equipment,
     e.loadMode,
     set.side,
+    // Keep legacy keys stable when no user-supplied condition is present.
+    ...(equipment || rom ? [equipment, rom] : []),
   ]);
 }
 export function shiftDate(date: string, days: number) {
@@ -84,7 +91,12 @@ export function volumeConditions(
     if (!isRecorded(session, ownerId) || session.localDate > today) continue;
     for (const set of completedWorking(session.sets)) {
       const key = conditionKey(set);
-      conditions.set(key, { key, exercise: set.exercise, side: set.side });
+      conditions.set(key, {
+        key,
+        exercise: set.exercise,
+        side: set.side,
+        comparison: set.comparison,
+      });
     }
   }
   return [...conditions.values()].sort((a, b) => a.key.localeCompare(b.key));

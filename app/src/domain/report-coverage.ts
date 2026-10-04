@@ -1,7 +1,7 @@
 import { dateInZone, type Profile, type Session } from "./models";
 import { completedWorking, conditionKey, shiftDate } from "./volume";
 
-export const coverageVersion = "record-coverage-v1";
+export const coverageVersion = "record-coverage-v2";
 
 // Describes recorded data only; these counts are not a training prescription.
 export function reportCoverage(

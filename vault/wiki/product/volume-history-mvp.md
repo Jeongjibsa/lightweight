@@ -10,7 +10,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T10:09:23+09:00"
+  at: "2026-10-05T01:38:13+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-009.md"
@@ -21,6 +21,12 @@ sources:
   - id: "volume-check"
     resource: "../../raw/research/2026-10-04-volume-history-verification.json"
     title: "볼륨/후보 구현 검사"
+  - id: "request23"
+    resource: "../../raw/conversations/2026-10-05-023.md"
+    title: "다음 구현/한도 요청"
+  - id: "details-loop"
+    resource: "../../raw/research/2026-10-05-record-details-loop.json"
+    title: "로컬 검사/서버 보류"
 version: "0.1.0"
 change_id: "CHG-0009"
 approval_status: "requested-feature; detailed-policy-provisional"
@@ -73,3 +79,5 @@ FR-14/15, CONV-0009. [원문](../../raw/conversations/2026-10-04-009.md). **관�
 | SCI-03B | 권장 운동량 고도화 | 충분성/불편감/effort/경험 입력·전문 검토·명시 정책/근거 버전·변경 선택 |
 
 REP-04/05/06은 **implemented and verified**다. 계산/그래프·표/후보 unit19·integration25·ui6/합계50과 수동 CUA 리포트/후보·320/375/1440px 검증을 완료했다. 권장 운동량 조정 SCI-03B는 planned다. 실제 구현 상태는 [진행 보고](implementation-progress.md)와 [백로그](implementation-backlog.md)에서 갱신한다. HAR-02 DOM 기반을 추가한 후 계산/화면과 관련 검사를 함께 구현했다. 루틴/과거 기록은 목표·직접 목표·주당 범위·분할·직접 분할·시간·장비까지 현재 설정과 같아야 하며 장비 순서 차이는 무시한다. 옵션은 분류를 포함하고 동일 라벨의 다른 종목 ID는 기록 순번으로 구분한다. 실제 Auth 전체 흐름/실기기 관문은 유지한다.
+
+2026-10-05: [메모/비교 조건](../operations/record-details.md) 로컬 증분에서 사용자가 기록한 장비 이름/ROM을 set에 보존하고 v2 key·추이/이전값을 분리한다. 미입력 key는 이전과 같다. 과학 검토/실제 머신 동일성/다버전·운영 cloud는 별도다.

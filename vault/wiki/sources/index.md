@@ -47,3 +47,4 @@
 - [SRC046 Compression Streams](SRC-046-compression-streams.md)
 - [SRC047 Auth 운영 반환 URL](SRC-047-auth-production-origin.md)
 - [SRC048 Pages Git/build](SRC-048-pages-git-integration.md) · [SRC049 Google OAuth](SRC-049-google-oauth.md)
+- [SRC050 Supabase JSON Schema](SRC-050-cloud-json-schema.md)

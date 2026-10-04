@@ -1,5 +1,10 @@
 # Vault Update Log
 
+## 2026-10-05
+
+- **CONV0023 / Records**: note/비교 조건·전체/개별/owner/CAS/atomic/backup·재시작/추가/교체·v2 추이/이전값 분리,106개/Node10/32browser/신규6반복/build/types/format/artifact25·4PNG 직접 확인. [계약](wiki/operations/record-details.md)·[루프](raw/research/2026-10-05-record-details-loop.json). 서버 strict schema의 새 선택 필드 거부를 확인; 준비 migration은 자동 승인 거부로 미적용/인간 승인 대기, push/배포 보류.
+- **Resumption / History**: 초기화 뒤03:00 KST 일회 조건부 heartbeat 생성; 실제 한도 미도달/완료·승인 대기는 새 작업 금지. [예약](wiki/operations/usage-resumption.md). PRD0.9.2/CHG0034/전체 snapshot·SRC050·이전198불변 보존. 과학/실기기/다기기/운영/P2 관문 유지.
+
 ## 2026-10-04
 
 - **Git release**:0f6381d main push·GitHub37210829022 3job success·Pages github:push/build/deploy success·production24공개file hash/보안 헤더 일치. [receipt](raw/research/2026-10-04-catalog-rest-git-release.json)·[CHG0033](history/changes/CHG-0033.md)·PRD0.9.1 전체 보존/이전195불변 유지. 앱 변경 없는 후속 문서 commit·Google는 검토만·실운동/iPhone/Auth/SCI/운영/파일럿/P2 유지.

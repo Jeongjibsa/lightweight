@@ -32,6 +32,7 @@ import { useTraining } from "../context/training";
 import { ExercisePicker } from "./exercises";
 import { Modal, type Run } from "./shared";
 import { RestTimer } from "./rest-timer";
+import { ExerciseConditionEditor, SessionNoteEditor } from "./record-details";
 
 function SetRow({
   set,
@@ -184,6 +185,15 @@ function SetRow({
             </Text>
           </Accordion.Control>
           <Accordion.Panel>
+            <Text
+              size="xs"
+              c="dimmed"
+              mb="sm"
+              style={{ overflowWrap: "anywhere" }}
+            >
+              장비: {set.comparison?.equipmentLabel || "미입력"} · 가동범위:{" "}
+              {set.comparison?.rangeOfMotion || "미입력"}
+            </Text>
             <SimpleGrid cols={{ base: 1, xs: 3 }} spacing="sm">
               <Select
                 label="세트 종류"
@@ -509,6 +519,8 @@ export function WorkoutView({
   const [ending, setEnding] = useState(false);
   const [cancel, setCancel] = useState(false);
   const [ordering, setOrdering] = useState(false);
+  const [noteEditor, setNoteEditor] = useState(false);
+  const [conditionEditor, setConditionEditor] = useState<string | null>(null);
   const [deleting, setDeleting] = useState<Session | null>(null);
   const [deleteBusy, setDeleteBusy] = useState(false);
   const [replacement, setReplacement] = useState<
@@ -567,6 +579,25 @@ export function WorkoutView({
             radius="xl"
             aria-label="세트 기록 완료 비율"
           />
+          {session.note && (
+            <Text
+              size="sm"
+              style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}
+            >
+              {session.note}
+            </Text>
+          )}
+          {session.status !== "cancelled" && (
+            <Button
+              variant="subtle"
+              size="sm"
+              w="fit-content"
+              leftSection={<Pencil size={15} />}
+              onClick={() => setNoteEditor(true)}
+            >
+              {session.note ? "운동 메모 수정" : "운동 메모 추가"}
+            </Button>
+          )}
         </Stack>
       </Paper>
       {active && exercises.length > 1 && (
@@ -594,6 +625,17 @@ export function WorkoutView({
               {exercise.review === "user_added" ? "직접 입력" : "기록용 초안"}
             </Badge>
           </Group>
+          {session.status !== "cancelled" && (
+            <Button
+              variant="subtle"
+              size="sm"
+              mb="sm"
+              aria-label={`${exercise.name} 비교 조건`}
+              onClick={() => setConditionEditor(exercise.id)}
+            >
+              장비·가동범위 기록
+            </Button>
+          )}
           {session.sets
             .filter((set) => set.exercise.id === exercise.id)
             .map((set, index) => (
@@ -734,6 +776,22 @@ export function WorkoutView({
               </Button>
             )}
         </Stack>
+      )}
+      {noteEditor && (
+        <SessionNoteEditor
+          key={`note-${session.id}`}
+          session={session}
+          run={run}
+          onClose={() => setNoteEditor(false)}
+        />
+      )}
+      {conditionEditor && (
+        <ExerciseConditionEditor
+          session={session}
+          exerciseId={conditionEditor}
+          run={run}
+          onClose={() => setConditionEditor(null)}
+        />
       )}
       {deleting && (
         <Modal

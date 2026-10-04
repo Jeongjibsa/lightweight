@@ -16,6 +16,10 @@ Object.defineProperty(window, "matchMedia", {
   }),
 });
 afterEach(cleanup);
+// jsdom has no font-loading pipeline. Supply only the FontFaceSet event surface
+// used by Mantine Textarea; actual autosizing is checked in browser tests.
+if (!document.fonts)
+  Object.defineProperty(document, "fonts", { value: new EventTarget() });
 if (typeof Blob.prototype.arrayBuffer !== "function") {
   Object.defineProperty(Blob.prototype, "arrayBuffer", {
     value: function (this: Blob): Promise<ArrayBuffer> {
