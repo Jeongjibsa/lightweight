@@ -31,3 +31,4 @@
 - [실제 Pages 배포](2026-10-04-pages-deployment.json)
 - [공개 관문 검사](2026-10-04-content-publication-gate.json)
 - [공개 관문 최종 보강](2026-10-04-content-publication-final.json)
+- [최종 배포·계정 권한 관문](2026-10-04-release-account-gate.json)

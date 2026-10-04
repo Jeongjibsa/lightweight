@@ -21,3 +21,4 @@
 - [CHG0019 기록 점검](CHG-0019.md)
 - [CHG0020 첫 HTTPS 배포](CHG-0020.md)
 - [CHG0021 공개 설명 gate](CHG-0021.md)
+- [CHG0022 운영/권한 확인](CHG-0022.md)

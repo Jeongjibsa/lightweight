@@ -2,6 +2,8 @@
 
 ## 2026-10-04
 
+- **Release / CONV0018**:96bbb74 main CI37201900937 3job success·운영/DB없는preview 갱신·25file gate/공개24file hash/헤더 확인. 사용자 직접 생성 뒤 Auth1개 확인; 회원 권한 SQL은 자동 검토가 대상/방식 명시 승인 부재로 거부/미적용(허용0), 정확한 승인 질문 pending. [확인](raw/research/2026-10-04-release-account-gate.json)·[CHG0022](history/changes/CHG-0022.md)·PRD0.8.7 전체 보존, 이전134immutable 유지. 개인식별자/비밀번호 미보관·우회 없음. 실Auth/SCI/iPhone/운영/파일럿/P2 미완료.
+
 - **SCI02 / Gate**: source registry→선택 공개 JSON·일반 build gate, draft 제외·human 선언/receipt/hash·ID/full_review/한계·권리/file hash/외부 symlink 검사. 승인 설명0개/실과학·권리 검토 증명 아님.78 Vitest+Node8(새 공개5)·build/types/format/artifact25 통과(lint 기존6경고). [계약](wiki/operations/content-publication.md)·[CHG0021](history/changes/CHG-0021.md)·PRD0.8.6 전체 보존, 이전130immutable 유지. SCI02/전문/UI·추천 규칙·실Auth/iPhone·P2 미완료.1e1fd9d CI37200956750 success, 새 gate CI/배포 저장 당시 별도.
 
 - **Deploy / CONV0017**: “이메일 인증 완료” 뒤 Pages 생성·검증3bc6022 main merge/push·HTTPS 운영/DB없는preview 배포.23공개파일 hash/헤더·5화면 캡처/직접 확인, Auth Site URL/정확한 root1개 저장·signupOFF/비로그인 RPC401 재검사.78 Vitest/배포3계약·build/format/types 통과(lint exit0/기존effect경고6). [실행](raw/research/2026-10-04-pages-deployment.json)·[CHG0020](history/changes/CHG-0020.md)·CONV17/SRC47/PRD0.8.5 전체 보존, 이전121immutable 유지. 계정0개/사용자 직접 등록·실Auth/iPhone/SCI/운영/P2 관문 유지.

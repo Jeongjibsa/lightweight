@@ -134,3 +134,7 @@ JSON10MiB 이하를 기존 형식으로 내보내고 초과 기록은 자동 .js
 ## 공개 설명 빌드 관문
 
 content:compile이 source registry의 검토 선언·payload/file hash/ID/근거·권리 조건을 확인하고 선택 JSON만 공개합니다. build/check/CI에 포함되며 승인 설명은0개입니다. 실제 과학/라이선스 검토를 증명하지 않고 UI/추천 정책은 후속입니다.78 Vitest+Node8계약·artifact25 통과. [계약](../vault/wiki/operations/content-publication.md).
+
+## 최신 확인
+
+96bbb74의 GitHub3job과 운영/preview 공개24file hash/헤더 일치를 확인했습니다. 계정은 등록1개/허용0개입니다. 허용 목록 SQL은 자동 검토가 정확한 대상/방식 승인을 요구해 거부했으며 미적용입니다. 승인 후 실제 login/전송·복원 검증을 이어갑니다. PRD0.8.7 문서 commit은 앱 bundle을 바꾸지 않습니다. [확인](../vault/raw/research/2026-10-04-release-account-gate.json).

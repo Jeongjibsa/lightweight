@@ -10,7 +10,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T21:04:19+09:00"
+  at: "2026-10-04T21:31:00+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-008.md"
@@ -30,12 +30,25 @@ sources:
   - id: "redirect"
     resource: "../sources/SRC-047-auth-production-origin.md"
     title: "Auth 반환 주소"
+  - id: "account-progress"
+    resource: "../../raw/conversations/2026-10-04-018.md"
+    title: "직접 등록 의사"
+  - id: "final-release"
+    resource: "../../raw/research/2026-10-04-release-account-gate.json"
+    title: "최종 배포/권한 관문"
 version: "0.1.0"
 change_id: "CHG-0008"
 approval_status: "implemented-increment; policy-details-provisional"
 ---
 
 # Supabase 연결·계정·기록 전송 계약
+
+## 최신 운영 상태 — 2026-10-04
+
+운영/DB 연결 없는 preview에 검증한96bbb74를 배포했다. GitHub37201900937의3job success·78 Vitest/Node8·Chromium11/WebKit9, 실제 공개24파일 hash/헤더 일치를 확인했다. 과학 승인 설명은0개다. 후속 문서 commit은 앱 bundle을 바꾸지 않는다. [확인](../../raw/research/2026-10-04-release-account-gate.json).
+
+본인이 직접 생성한 뒤 실제 Auth 계정1개를 확인했다. 허용 목록 등록은 자동 승인 검토가 exact account/SQL 방식의 명시 승인을 요구해 거부했고 적용되지 않았다(allowed_accounts=0). 대상 계정/SQL 승인 질문이 pending이며 우회하지 않는다. 실제 로그인·기록 전송/새 기기 복원·다기기/권한 시험은 다음 관문이다. 비밀번호·UUID/이메일/credential은 vault에 저장하지 않는다.
+
 
 ## 첫 HTTPS 배포 — 2026-10-04 현재
 

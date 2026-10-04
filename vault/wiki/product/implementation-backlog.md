@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T21:17:12+09:00"
+  at: "2026-10-04T21:31:00+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -131,9 +131,15 @@ sources:
   - id: "publication-check"
     resource: "../../raw/research/2026-10-04-content-publication-gate.json"
     title: "검사"
-version: "0.6.10"
+  - id: "account-progress"
+    resource: "../../raw/conversations/2026-10-04-018.md"
+    title: "직접 등록 의사"
+  - id: "final-release"
+    resource: "../../raw/research/2026-10-04-release-account-gate.json"
+    title: "최종 배포/권한 관문"
+version: "0.6.11"
 approval_status: "proposal"
-change_id: "CHG-0021"
+change_id: "CHG-0022"
 ---
 
 # 운동 PWA 구현 백로그와 완료 기준
@@ -281,3 +287,7 @@ HAR-02: DOM 입력/transaction 실패·재시도/결측수정3과업을 추가�
 기록 양식: 작업 ID / 상태 / 산출물 경로·버전 / 실행일·기기 / 검증과 결과 / 남은 문제 / 관련 변경 기록. 실패 시 해당 항목을 다시 열고 선행 조건을 변경하면 이유를 적는다.
 
 [구현 계획](implementation-plan.md) · [PRD](prd.md) · [검증](validation-plan.md) · [CONV-0005](../conversations/2026-10-03-005.md) · [CHG-0005](../../history/changes/CHG-0005.md)
+
+## 현재 운영/계정 준비
+
+96bbb74 main/GitHub3job·Pages/preview24file 일치 완료. Auth 등록1개/허용0개: exact account/SQL 방식 명시 승인이 필요해 등록은 미적용/pending이다. 실제 Auth/다기기·SCI/기기/파일럿 관문 상태를 유지한다.

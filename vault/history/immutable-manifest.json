@@ -135,7 +135,11 @@
     "raw/research/2026-10-04-content-publication-gate.json": "54bdcdee99b015ef5d262f48ed14bb905f8d74310f647809718fbc7eb90c6a1d",
     "history/versions/prd-v0.8.6.md": "d73790b01e47d9a0999797bc05d2a17dca7cfb44462686c7bb1b61d5b6d39521",
     "history/changes/CHG-0021.md": "e675421c302ac416a1592b3a7204c7b2b95c98d3c827e4e5bb517735a4c54efb",
-    "raw/research/2026-10-04-content-publication-final.json": "a64a653a44f2e6d617ef24436b1a3af87cd20be8b3df7dd9be83b1172ee8d024"
+    "raw/research/2026-10-04-content-publication-final.json": "a64a653a44f2e6d617ef24436b1a3af87cd20be8b3df7dd9be83b1172ee8d024",
+    "raw/conversations/2026-10-04-018.md": "2e6192b56a4bc79cf5500f9dc5417f84c2a2dd055374278068d7a59ae187dcfe",
+    "raw/research/2026-10-04-release-account-gate.json": "2ce05524c6e75a97fa3c8fe5b9495bbd6cc3df26599e347e8c5e8a054991d770",
+    "history/versions/prd-v0.8.7.md": "47784bfb1c3cf86a967924f63dcba138b39e3810e74860dd9bc5e765932ba290",
+    "history/changes/CHG-0022.md": "7c08965074a7f400bad005634ac83a7c7478e4b451018037643fd91843db7a0d"
   },
   "updated_at": "2026-10-04T20:28:29+09:00"
 }

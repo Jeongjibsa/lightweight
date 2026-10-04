@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T21:04:19+09:00"
+  at: "2026-10-04T21:31:00+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -95,6 +95,12 @@ sources:
   - id: "redirect"
     resource: "../sources/SRC-047-auth-production-origin.md"
     title: "Auth 반환 주소"
+  - id: "account-progress"
+    resource: "../../raw/conversations/2026-10-04-018.md"
+    title: "직접 등록 의사"
+  - id: "final-release"
+    resource: "../../raw/research/2026-10-04-release-account-gate.json"
+    title: "최종 배포/권한 관문"
 ---
 
 # 미결 사항과 다음 대화
@@ -160,3 +166,7 @@ Wrangler Pages 제한 인증은 성공했다. Cloudflare Pages project 생성은
 ## 현재 외부 관문 — CHG0020
 
 이메일 인증/Pages 생성/HTTPS·Auth URL 저장을 완료했다. 본인 계정0개로 실제 login/허용 목록/다기기 검증은 계정 등록을 기다린다. password 입력은 사용자가 직접 수행하고 대화로 수집하지 않는다. 과학 전문/전문가·자산/실제iPhone·파일럿 관문은 유지한다.
+
+## 최신 계정/운영 관문 — CHG0022
+
+Pages/preview·현재앱96bbb74 CI/배포/24file hash를 완료했다. Auth user1개/허용0개. 자동 승인 검토가 exact account/SQL 방식 승인 부재로 권한 등록을 거부했으며, 해당 명시 승인 질문이 pending이다. 실제 login/전송·복원은 다음이다. 개인 ID/비밀번호를 vault에 저장하지 않는다.
