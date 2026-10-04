@@ -1,0 +1,67 @@
+{
+  "type": "Verification Record",
+  "title": "Cloudflare setup and HAR04 external CI",
+  "generated": {
+    "by": "codex/gpt-6",
+    "at": "2026-10-04T16:59:17+09:00"
+  },
+  "immutable": true,
+  "official_prompt": {
+    "url": "https://developers.cloudflare.com/agent-setup/prompt.md",
+    "sha256": "f479284bc523204c4c42a380479b8cb43b2f4879c2906ef8fb30b3c4fb7efd36",
+    "read_scope": "Fetched full prompt. Executed Codex and Other agents mandatory sections; skipped optional cf CLI."
+  },
+  "skills": {
+    "command": "npx -y skills add cloudflare/skills --skill '*' --yes --global",
+    "installed": 16,
+    "confirmed_path": "~/.agents/skills/cloudflare/SKILL.md",
+    "limitation": "Installer reports unsupported global PromptScript target; Codex-compatible ~/.agents/skills files confirmed. No assertion that every other agent target succeeded."
+  },
+  "mcp": {
+    "registered": [
+      "cloudflare",
+      "cloudflare-docs",
+      "cloudflare-bindings",
+      "cloudflare-builds",
+      "cloudflare-observability"
+    ],
+    "config": "~/.codex/config.toml",
+    "auth": "Account read succeeded with existing plugin session. Newly registered official MCP OAuth pending explicit scope choice; broad Continue rejected by automatic approval review. No bypass or tokens recorded."
+  },
+  "wrangler": {
+    "version": "4.147.0",
+    "node_requirement": ">=22.0.0",
+    "auth": "not authorized yet"
+  },
+  "ci": {
+    "head_sha": "a2b3f9f944665ecb32f8e74f664de7d63b8bd1dc",
+    "url": "https://github.com/Jeongjibsa/lightweight/actions/runs/37186807029",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "name": "check",
+        "conclusion": "success",
+        "url": "https://github.com/Jeongjibsa/lightweight/actions/runs/37186807029/job/111390351470"
+      },
+      {
+        "name": "browser (webkit-mobile, webkit)",
+        "conclusion": "success",
+        "url": "https://github.com/Jeongjibsa/lightweight/actions/runs/37186807029/job/111390351520"
+      },
+      {
+        "name": "browser (chromium-mobile, chromium)",
+        "conclusion": "success",
+        "url": "https://github.com/Jeongjibsa/lightweight/actions/runs/37186807029/job/111390351552"
+      }
+    ]
+  },
+  "checks": {
+    "app_tests": 64,
+    "lint": "passed",
+    "build": "passed",
+    "e2e_typecheck": "passed",
+    "artifact": "24 static files passed; SDK string false positive corrected"
+  },
+  "deployment": "not deployed; fixed project name lightweight-training is implementation choice pending remote creation",
+  "usage": "No usage limit encountered; no reset executed or unsupported quota reset promised"
+}

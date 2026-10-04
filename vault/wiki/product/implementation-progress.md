@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T16:22:01+09:00"
+  at: "2026-10-04T16:59:17+09:00"
 sources:
   - id: "responsive-local-request"
     resource: "../../raw/conversations/2026-10-03-006.md"
@@ -86,11 +86,24 @@ sources:
   - id: "ci-receipt"
     resource: "../../raw/research/2026-10-04-github-ci-37184261544.json"
     title: "GitHub CI 증거"
+  - id: "cf-request"
+    resource: "../../raw/conversations/2026-10-04-015.md"
+    title: "Cloudflare 요청"
+  - id: "cf-setup"
+    resource: "../operations/cloudflare-setup.md"
+    title: "연결 운영"
 version: "0.3.2"
 change_id: "CHG-0014"
 ---
 
 # 로컬 PWA 구현 결과와 다음 작업
+
+## CONV-0015 Cloudflare 연결과 순차 진행 — 2026-10-04
+
+Cloudflare 공식 설정과 남은 구현의 commit/push를 사용자가 요청했다. 호스팅 제공자는 Cloudflare 방향으로 정했으며 Pages Direct Upload·lightweight-training 고정 project/main은 구현 선택이다. 공식 skills16/MCP5 등록과 Wrangler4.147.0/artifact gate를 준비했다. **새 OAuth 권한 승인·원격 배포는 pending**이며 기존 plugin account 조회 성공과 구별한다. 자동 검토의 broad OAuth Continue 거부를 우회하지 않고 full/Pages 제한 권한 선택을 요청했다. [운영](../operations/cloudflare-setup.md).
+
+a2b3f9f push 뒤 새 [GitHub CI3job](../../raw/research/2026-10-04-cloudflare-setup.json)이 모두 성공했다. 기존64개·lint/build/E2E typecheck와 실제 dist24파일 검사를 확인했다. main 반영·후속 배포는 현재 요청 범위에서 진행한다. 운동 MVP 전체는 미완료이며 실제 Auth/다기기·iPhone·SCI·콘텐츠/3D/식단의 관문은 유지한다. usage limit은 발생하지 않았고 실제 제공되는 기능 외 quota reset을 실행하지 않았다.
+
 
 ## HAR04 / 외부 CI 현재 증분 — 2026-10-04
 

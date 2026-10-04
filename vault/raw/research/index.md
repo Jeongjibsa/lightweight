@@ -21,3 +21,6 @@
 - [E2E 하네스 실행](2026-10-04-e2e-harness-verification.json) — 첫 실패/27반복/최종9·실패artifact probe·새CI미확인.
 - [GitHub CI 수신](2026-10-04-github-ci-37184261544.json) · [HAR04 보존 실행](2026-10-04-storage-recovery-verification.json) — 이전187c47c/새local결과 구분.
 - [HAR04 최종 check](2026-10-04-storage-recovery-final-check.json) — 64개와 final build 크기1278.10KiB; 이전1278.09 표기만 append 정정.
+- [Cloudflare setup/새 CI](2026-10-04-cloudflare-setup.json)
+
+- [새 snapshot 생성 오류 수정 기록](2026-10-04-cloudflare-snapshot-construction.json)

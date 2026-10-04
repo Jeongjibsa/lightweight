@@ -43,3 +43,4 @@
 - [SRC-041 Mantine 컴포넌트](SRC-041-mantine-components.md) · [SRC-042 Web3D](SRC-042-web-anatomy-3d.md) — 공식 자료·읽은 범위/한계.
 - [SRC-043 Playwright runner·CI](SRC-043-playwright-runner-ci.md) — 공식문서·실제SW엔진경계/읽은범위.
 - [SRC-044 storage/PWA](SRC-044-storage-pwa-recovery.md) — quota/파일한도·실제SW와 합성오류 경계.
+- [SRC-045 Cloudflare 공식 설정](SRC-045-cloudflare-agent-setup.md)

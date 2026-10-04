@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T16:22:01+09:00"
+  at: "2026-10-04T16:59:17+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-03-002.md"
@@ -74,6 +74,12 @@ sources:
   - id: "ci-receipt"
     resource: "../../raw/research/2026-10-04-github-ci-37184261544.json"
     title: "GitHub CI 증거"
+  - id: "cf-request"
+    resource: "../../raw/conversations/2026-10-04-015.md"
+    title: "Cloudflare 요청"
+  - id: "cf-setup"
+    resource: "../operations/cloudflare-setup.md"
+    title: "연결 운영"
 ---
 
 # 미결 사항과 다음 대화
@@ -95,7 +101,7 @@ sources:
 | Q-13 | TypeScript·React/Vite·Dexie를 사용할까? | 기본 스택 방향 합의 | 동의 확인 CONV-0004 |
 | Q-14 | Supabase 계정 DB를 사용할까? | 프로젝트 제공/연결 완료 증분 | CONV-0008 Auth/DB/RPC 적용; 실계정 검증/배포 남음 |
 | Q-15 | 로그인·초대·여러 기기 동시 사용 범위는? | 공개 가입 차단 승인/적용, 익명OFF, 등록계정 password 초기 구현 | 본인 계정 등록/허용 목록·실제 login/복원·최종 로그인/복구/SMTP·다기기 해결 남음 |
-| Q-16 | 호스팅과 고정 운영 도메인은? | Cloudflare Pages + Supabase, 고정 HTTPS 주소 | 제공자·도메인 미확정 |
+| Q-16 | 호스팅과 고정 운영 도메인은? | Cloudflare + Supabase, 고정 HTTPS 주소 | CONV0015 Cloudflare 요청; Pages project 이름은 구현 선택/원격 생성·OAuth pending |
 | Q-17 | 사이트 화면도 초대자만 열게 할까? | 기본 로그인/DB 권한 제한, preview Access; 운영 Access는 추가 선택 | 미확정 |
 
 기본 스택과 운동 우선 순서는 합의했고 개인 조건은 하나의 시험 표본이다. 반응형과 각 사용자 설정은 CONV-0006 요구로 확정했다. 로컬부터 진행한 뒤 CONV-0008에서 Supabase를 연결했다. 공개 가입 차단은 명시 승인/적용했다. 로그인/수동 snapshot 상세는 초기 구현 정책이다. [실행 결과](implementation-progress.md). [구현 계획](implementation-plan.md)은 가짜 데이터로 착수한다. 종목/장비/시간/경험은 Q-01, 로그인은 Q-15, 배포는 Q-08/16/17을 필요한 단계 전에 정하고 실제 기기 동작은 REL-02에서 검증한다. 상세 설계는 제안이다. [언어·개인 데이터 저장 의견](technology-data-storage.md)을 먼저 검토한다. PWA 선택 이후 건강 앱·Watch는 별도 범위 질문으로 남긴다. 미응답을 승인으로 간주하지 않는다.
@@ -123,3 +129,7 @@ FR-17은 사용자 명시 3D 애니메이션 요구이며 지금은 검토만/�
 ## CONV0014 현재 후속
 
 187c47c push/GitHub CI3job·artifact 수신 완료(HAR05 done). HAR04 local64개·browser16/새21회·실패probe 완료, quota합성/native rollback·큰파일/schema/update 보존. 실제iPhone/physical quota·10MiB초과 독립복구·실Auth/SCI/REL은 남았다. 새HAR04 CI는 미실행. [현재검증](../../raw/research/2026-10-04-storage-recovery-verification.json) · [다음순서](remaining-work.md).
+
+## CONV-0015 권한·실행 경계
+
+Cloudflare 공식 MCP는 broad read/write OAuth를 요구해 자동 검토가 Continue를 거부했다. full 승인 또는 Pages 배포 제한 권한 질문이 pending이다. 실제 고정 URL/배포·Auth/iPhone·SCI·운영 gate와 후순위 자산/식단 선택은 유지한다. 사용량 제한은 발생하지 않았으며 quota reset 가능 여부는 실제 서비스 기능으로 확인한다.

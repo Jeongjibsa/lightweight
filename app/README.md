@@ -110,3 +110,7 @@ JSON 파일은 모든 필드를 유지하는 compact 출력이며 import/export 
 E2E server는 production 설정을 공유하는 test-only config로 dist-e2e/v1·v2를 만들고, HTML meta 차이로 실제 SW precache revision을 바꿉니다. 현재 runID header로 /__e2e/build를 전환하고 매 과업 v1로 초기화합니다. /__e2e/blank는 앱 실행 전 native DB 준비용입니다. 두 endpoint와 marker는 운영 app/dist에 없습니다. 저장 실패는 test-only native outbox.add에 QuotaExceededError를 1회 주입하며 실제 디스크를 채우지 않습니다. 입력 blur draft가 끝난 뒤 complete transaction만 실패시켜 전체 DB rollback과 한 번의 재시도를 비교합니다.
 
 업데이트 안내는 main 상단의 Mantine Alert이며 운동 중에는 적용을 막고 종료 버튼을 가리지 않습니다. [자세한 하네스/한계](../vault/wiki/operations/storage-recovery-harness.md) · [첫 실패/현재 실행](../vault/raw/research/2026-10-04-storage-recovery-verification.json).
+
+## Cloudflare 배포 준비
+
+Wrangler4.147.0과 `wrangler.jsonc`를 사용합니다. `npm run pages:check`는 실제 dist의 PWA/보안 헤더·private 경로·비밀키/privileged JWT·E2E marker를 검사합니다. `npm run pages:deploy`는 build/검사 후 Pages에 dist만 전송하므로 OAuth/대상 계정·project 확인과 사용자 배포 승인 범위가 먼저 필요합니다. 공식 skills16/MCP5 등록을 인증 성공으로 표시하지 않습니다. 현재 broad OAuth 승인과 실제 HTTPS 배포는 pending입니다. [연결 운영](../vault/wiki/operations/cloudflare-setup.md).

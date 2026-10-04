@@ -42,3 +42,9 @@
 - 변경에 맞는 lint/test/build·vault validation과 staged diff 검토를 마친 후 commit한다. Markdown의 의도된 두 공백 줄바꿈은 보존하되 다른 whitespace 오류는 해결한다. 검증 실패·미지원 검사를 성공으로 기록하지 않는다.
 - 서버 key/비밀번호·개인 기록/JSON backup·브라우저 token/임시 산출물을 staging하지 않는다. hook을 정상 실행하고 실패를 `--no-verify`로 우회하지 않는다.
 - commit 성공 뒤 hash/message와 남은 status를 확인해 기록한다. 이 지속 요청은 local commit에 대한 승인이다. push·amend/rebase/reset·force push·공개 배포는 명시 요청 범위에서 수행한다.
+
+## Cloudflare 연결/배포
+
+- CONV-0015는 공식 agent-setup prompt 수행과 남은 구현의 commit/push를 요청했다. 설치/MCP 등록과 OAuth 성공·실제 배포를 구별한다. 현재 절차/권한 선택은 `vault/wiki/operations/cloudflare-setup.md`를 읽는다. 자동 검토의 broad OAuth 거부를 다른 CLI/connector로 우회하지 않는다.
+- Cloudflare 작업에는 관련 skill과 최신 공식 문서·설치된 Wrangler help/schema를 확인한다. Wrangler4.147.0·Pages config/actual-dist gate를 사용하며 root/vault/.env/개인 기록을 전송하지 않는다. 운영/preview DB 연결을 분리하고 HTTPS 헤더/인증/실기기 관문을 유지한다.
+- 사용량 제한은 실제 지원되는 기능으로 확인한다. Git reset·개인 데이터 삭제·quota 우회를 사용량 reset으로 실행하지 않는다.

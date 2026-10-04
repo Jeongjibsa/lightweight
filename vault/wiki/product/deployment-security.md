@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T02:02:14+09:00"
+  at: "2026-10-04T16:59:17+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-03-004.md"
@@ -50,14 +50,24 @@ sources:
   - id: "current-cloud"
     resource: "supabase-integration.md"
     title: "현재 연결 증분"
-version: "0.1.1"
+  - id: "cf-request"
+    resource: "../../raw/conversations/2026-10-04-015.md"
+    title: "Cloudflare 요청"
+  - id: "cf-setup"
+    resource: "../operations/cloudflare-setup.md"
+    title: "연결 운영"
+version: "0.1.2"
 approval_status: "proposal"
 change_id: "CHG-0005"
 ---
 
 # PWA 배포와 개인 기록 접근 보안
 
-## 현재 구현 상태 — 2026-10-04
+## CONV-0015 연결 준비 — 2026-10-04
+
+사용자가 Cloudflare 공식 설정을 요청했다. skills16/MCP5 등록·Wrangler4.147.0/app/dist artifact gate를 준비했으며 OAuth 권한 선택과 실제 공개 배포는 pending이다. 기존 제안과 달리 제공자 방향은 Cloudflare로 좁혔다. [운영/실제 경계](../operations/cloudflare-setup.md).
+
+## 이전 구현 상태 — 2026-10-04
 
 Supabase 프로젝트에 비공개 기록/허용 목록·RPC/RLS/명시 grants/owner 검사를 적용했다. 공개 가입 OFF는 CONV-0008 사용자 승인 후 적용했다. 원격 SQL16·비로그인 HTTP401·Advisor 빈 배열 확인. 실제 Auth E2E/HTTPS 앱 배포/preview 프로젝트 분리/운영 헤더는 남았다. [현재 계약](supabase-integration.md). 아래 호스팅/운영 상세는 기존 제안이다.
 

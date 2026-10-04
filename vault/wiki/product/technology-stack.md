@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T16:22:01+09:00"
+  at: "2026-10-04T16:59:17+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-008.md"
@@ -59,6 +59,12 @@ sources:
   - id: "ci-receipt"
     resource: "../../raw/research/2026-10-04-github-ci-37184261544.json"
     title: "GitHub CI 증거"
+  - id: "cf-request"
+    resource: "../../raw/conversations/2026-10-04-015.md"
+    title: "Cloudflare 요청"
+  - id: "cf-setup"
+    resource: "../operations/cloudflare-setup.md"
+    title: "연결 운영"
 version: "0.2.3"
 change_id: "CHG-0014"
 ---
@@ -117,3 +123,7 @@ NativeSelect native popup을 제거하고 Mantine Select/Combobox로 통일했�
 새 dependency 없음. app0.2.0/schema2 유지. E2E 두build/staticserver·blank nativeDBfixture·quota 합성 주입·실제SW update를 확장했다. production precache25/1278.10KiB, 64개/14파일·browser16/새21회·실패probe. 백업은 compact JSON/파일10MiB 양방향 검사다. [자세한 계약](../operations/storage-recovery-harness.md). 위 HAR03의9/27회 단락은 이전 생성 당시 이력이다.
 
 [최종 check/빌드 정밀값](../../raw/research/2026-10-04-storage-recovery-final-check.json): 앞선 원본의1278.09는 안내 이동 전 build값이며 final1278.10으로 append 정정했다. 검사 숫자는 유지한다.
+
+## CONV-0015 배포 도구
+
+Wrangler4.147.0을 devDependency로 pin했다(Node >=22; 현재 프로젝트 Node24 기준). Cloudflare official skills16/MCP5는 사용자 개발 환경에만 등록하며 앱 runtime/bundle에 넣지 않는다. Pages config와 actual-dist 검사는 연결 준비이고 원격 인증/배포는 별도다. [연결 운영](../operations/cloudflare-setup.md).

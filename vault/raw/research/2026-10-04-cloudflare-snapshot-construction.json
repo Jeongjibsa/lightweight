@@ -1,0 +1,12 @@
+{
+  "type": "Verification Record",
+  "title": "New snapshot draft construction correction before first commit",
+  "generated": {
+    "by": "codex/gpt-6",
+    "at": "2026-10-04T17:00:04+09:00"
+  },
+  "immutable": true,
+  "failure": "New uncommitted PRD0.8.0 snapshot contained an orphan alias list item after copy/rebase and old visible version caption. Initial structural validator failed. Repaired only newly constructed snapshot before first commit/freeze. No prior102 immutable originals/snapshots changed.",
+  "draft_sha256": "11ad23742c837efb5156e90542e5a9e13f61692794dfa28652b0672605a0b572",
+  "final_sha256": "6b6f9cce7641dd69e83d14ea8ca9af9fc682b8d0e7d998db353c86ff67725677"
+}
