@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T22:22:46+09:00"
+  at: "2026-10-04T22:32:51+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -161,9 +161,12 @@ sources:
   - id: "routine-recovery"
     resource: "../operations/routine-recovery.md"
     title: "복구 계약"
-version: "0.6.16"
+  - id: "recovery-release"
+    resource: "../../raw/research/2026-10-04-routine-recovery-release.json"
+    title: "루틴 복구 CI·운영/preview 일치"
+version: "0.6.17"
 approval_status: "proposal"
-change_id: "CHG-0027"
+change_id: "CHG-0028"
 ---
 
 # 운동 PWA 구현 백로그와 완료 기준
@@ -333,3 +336,9 @@ REL02는 부분 진행이다. 실제 운동/모바일 클라우드 왕복·새 �
 Vitest86(27/35/24)·Node8·전체 browser22 및 최종 목록 검사2·build/types/format/artifact25 통과(lint 기존6경고). 320/390px 펼친 목록/모달 PNG를 직접 확인했다. 최초 애니메이션 중간 캡처는 실제 panel 완료를 확인해 재캡처한 하네스 보정이다. 새 source CI/운영 배포는 저장 당시 별도다.
 
 루틴 복구는 완료했으나 LOG03~06 전체·운동 기록 삭제/복구·메모·머신/ROM 비교·다기기/리포트/SCI/나머지 실기기·운영/파일럿/P2는 남는다. iPhone 홈 화면/로그인은 CONV0020 사용자 보고로 확인했으며 복구 과업의 실기기 통과로 표시하지 않는다.
+
+## 현재 운영 배포 — 루틴 복구 86cc158
+
+main push·GitHub37205447895 세 검사 success 뒤 [운영 앱](https://lightweight-training.pages.dev)과 [DB 없는 preview](https://preview.lightweight-training.pages.dev)에 배포했다. 각 공개24file hash/보안 헤더가 검증한 빌드와 일치한다.86 Vitest/Node8/전체browser22·최종목록2/build/types/format/artifact25·vault 검사 통과. [불변 배포](../../raw/research/2026-10-04-routine-recovery-release.json). 앞선 새 source CI/배포 대기는 당시 이력이며 현재 완료했다.
+
+iPhone 홈 화면 설치/실행/로그인은 CONV0020의 사용자 보고로 확인했다. 실제 운동/새 저장소 클라우드 복원·A/B/만료/메일·나머지 기기 G3·SCI/운영/파일럿/P2는 남는다. 다음 로컬 단위는 종료 운동 기록 삭제/복구다. 이 후속 문서 commit은 앱 bundle을 바꾸지 않는다.

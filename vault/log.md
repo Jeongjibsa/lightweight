@@ -2,6 +2,8 @@
 
 ## 2026-10-04
 
+- **Release**: 86cc158 main push·GitHub37205447895 세 검사 success·운영/DB없는preview 배포·각24file hash/헤더 일치.86개/Node8/전체22browser/최종목록2. [실행](raw/research/2026-10-04-routine-recovery-release.json)·[CHG0028](history/changes/CHG-0028.md)·PRD0.8.13 전체 보존/이전162불변 유지. iPhone 초기 과업 사용자 보고·나머지 G3/Auth/SCI/운영/파일럿/P2 유지. 다음 종료 기록 삭제/복구는 별도 구현.
+
 - **Records / Recovery**: Mantine 삭제 루틴 목록/명시 복구·owner/deleted/revision/atomic·취소/실패/재시도/중복/과거 snapshot 보존 구현.86개(새2integration/1UI)·Node8·22browser·최종목록2/build/types/format/artifact25 통과(lint기존6경고). 실제 panel 완료 확인 후320/390 목록/확인 PNG 직접 관찰. [실행](raw/research/2026-10-04-routine-recovery-loop.json)·[CHG0027](history/changes/CHG-0027.md)·PRD0.8.12 전체 보존, 이전155불변 유지. 새 source CI/배포 별도·메모/운동 삭제복구/장비/SYNC/REP/SCI/기기/운영/파일럿/P2 유지.
 
 - **Human / iPhone**: CONV0020 “홈 화면 실행·로그인 완료” 새 원본 보존. 설치/실행/로그인은 사용자 보고 확인·직접 기기 관찰/OS 재측정 아님. REL02 부분 진행·나머지 G3/운동/클라우드/접근성/보존 관문 유지. [범위](raw/research/2026-10-04-iphone-install-user-report.json)·[CHG0026](history/changes/CHG-0026.md)·PRD0.8.11 전체 보존, 이전151불변 유지. 앱 e912f0c bundle 변경 없음.

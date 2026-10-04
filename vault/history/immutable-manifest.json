@@ -163,7 +163,10 @@
     "raw/design/2026-10-04-routine-recovery-list-390.png": "7ec1efd73e1c17a82122473719f2f6c587c0ae46487ec0d8b9489a8f5966ea6c",
     "raw/research/2026-10-04-routine-recovery-loop.json": "361cb445a086c2d5822fdf098d80891db402f826a47568c44de05b9035f8b3fd",
     "history/versions/prd-v0.8.12.md": "66733363ab99512fef99eec4f8aa138741a1f6dad0d7c13e6fc04a0c8f793826",
-    "history/changes/CHG-0027.md": "4863d9b2efd3a129eb3ccc7c8d370a35fd2a76d65fea7ff78ead925f410e6e16"
+    "history/changes/CHG-0027.md": "4863d9b2efd3a129eb3ccc7c8d370a35fd2a76d65fea7ff78ead925f410e6e16",
+    "raw/research/2026-10-04-routine-recovery-release.json": "4aa894c994522e28ec23d74c9e07f96aa7ea92b0a948ce37a4400243afa45182",
+    "history/versions/prd-v0.8.13.md": "c4be977a50c956e83c702cd1f64eee0403fc3520f5c33f58c54767efdc0bbd3e",
+    "history/changes/CHG-0028.md": "201dc1c1a08398b463b256256fefcda14c867636c1685a87412485e7bab18bd8"
   },
-  "updated_at": "2026-10-04T22:22:46+09:00"
+  "updated_at": "2026-10-04T22:32:51+09:00"
 }

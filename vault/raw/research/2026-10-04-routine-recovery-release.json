@@ -1,0 +1,270 @@
+{
+  "type": "Deployment Verification",
+  "title": "Routine recovery source CI and production/preview verified release",
+  "generated": {
+    "by": "codex/gpt-6",
+    "at": "2026-10-04T22:32:51+09:00"
+  },
+  "immutable": true,
+  "app_commit": "86cc158ad25dfc848a75e4fb24a3fb56f530dd15",
+  "pushed_to": "main",
+  "github_ci": {
+    "run_id": 37205447895,
+    "jobs": [
+      {
+        "conclusion": "success",
+        "name": "browser (chromium-mobile, chromium)",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "check",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "browser (webkit-mobile, webkit)",
+        "status": "completed"
+      }
+    ],
+    "url": "https://github.com/Jeongjibsa/lightweight/actions/runs/37205447895"
+  },
+  "deployments": {
+    "production": "https://ba32eb96.lightweight-training.pages.dev",
+    "production_origin": "https://lightweight-training.pages.dev",
+    "preview": "https://37fa8c98.lightweight-training.pages.dev",
+    "preview_origin": "https://preview.lightweight-training.pages.dev",
+    "preview_database_client_configuration": "Supabase URL and publishable key empty"
+  },
+  "production": {
+    "checkedAt": "2026-10-04T13:27:43.445Z",
+    "origin": "https://lightweight-training.pages.dev",
+    "files": 24,
+    "indexSha256": "b21a243dc5b055325613e5c0655fc194a2f26e02532068dc884c84c59d6e3df3",
+    "headers": {
+      "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://xmdbivohdjczpbjcujvu.supabase.co; worker-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
+      "x-content-type-options": "nosniff",
+      "x-frame-options": "DENY",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "permissions-policy": "camera=(), microphone=(), geolocation=()"
+    },
+    "assets": [
+      {
+        "path": "apple-touch-icon.png",
+        "sha256": "1594d1e02221edf244f40e7928ff9a981ea9d26b807ac1c0248857b847142f79"
+      },
+      {
+        "path": "assets/geist-cyrillic-ext-wght-normal-DjL33-gN.woff2",
+        "sha256": "2317fa4bb293c9c0b110e18315d529235c47a0ddd3338cea3d8c7955e927899e"
+      },
+      {
+        "path": "assets/geist-cyrillic-wght-normal-BEAKL7Jp.woff2",
+        "sha256": "6894439694946a589d157ece003086960a6a4013d74a813dab7602efdb3d8c09"
+      },
+      {
+        "path": "assets/geist-latin-ext-wght-normal-DC-KSUi6.woff2",
+        "sha256": "824f485b5d26e2f2da3c2b236132ece1bc8e4e43373452950bb0e40548b4313f"
+      },
+      {
+        "path": "assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "sha256": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1"
+      },
+      {
+        "path": "assets/geist-vietnamese-wght-normal-6IgcOCM7.woff2",
+        "sha256": "8fa40e5d248247735eb97a0bd593b8852440430600d6ba01364c31fe0abc1fe1"
+      },
+      {
+        "path": "assets/index-DxbySrTZ.css",
+        "sha256": "e49c9d7ba11d95419bebbca9cdb91a3e42de3dbffa8543e1581b6edf0fcc8ff1"
+      },
+      {
+        "path": "assets/index-fJ53HDwc.js",
+        "sha256": "b8754dfdb96a5192272530b9c8a9b90004106e68a42aa4c9eea4278b4b19e659"
+      },
+      {
+        "path": "assets/mantine-B1k8zaqb.css",
+        "sha256": "23f64fb1d7b81e89f10821d66dbe05884bc952de99b13c5a7960c23b67336ca8"
+      },
+      {
+        "path": "assets/mantine-B5YRZSj8.js",
+        "sha256": "6d7cc43c91515b65cee521693ef19664d68c2b9b60a2f1972e602a9b8c997f6e"
+      },
+      {
+        "path": "assets/react-DjX0U0Iu.js",
+        "sha256": "49f492b7a8b9e47e35b7a9aa36d96824c35439694a092fa912347d6fa34d5366"
+      },
+      {
+        "path": "assets/rolldown-runtime-CbXtAM7H.js",
+        "sha256": "bbf7c5086ae414dc3f33777e3eebf16ea8631325b8bb4690d25091c03567f31a"
+      },
+      {
+        "path": "assets/storage-validation-afGlzHCl.js",
+        "sha256": "51c21c512e4a2304e2223ebaee58fadf8d981c7cfead004d25bd336cc487d1f7"
+      },
+      {
+        "path": "assets/supabase-Be5gk2Ve.js",
+        "sha256": "2d4a3548ea7ae4da922d3b0c40619f658fc2157c6b33fc684d151a55a3398548"
+      },
+      {
+        "path": "assets/workbox-window.prod.es5-Bd17z0YL.js",
+        "sha256": "17bcc17d60dc78f927834b880c39649b03af46fd1f5cdbb8c42c5ae2b515dce9"
+      },
+      {
+        "path": "content/exercise-guides.json",
+        "sha256": "fb9b786e85ce30eb3990a70eeb4c21533057c590506849dfe0faaa851da5efae"
+      },
+      {
+        "path": "fonts/geist/LICENSE",
+        "sha256": "71609cbb5c78b5870d712eab73a31d76622635c6ed034ab5cee3b9ecbda8685f"
+      },
+      {
+        "path": "icon-192.png",
+        "sha256": "054139c0741db6e8d4c3add6cf71e2ce79557ddf7c5aad11019b8c73ea783c46"
+      },
+      {
+        "path": "icon-512.png",
+        "sha256": "f96dc0da0063445e34adae874750ff673a488f9077e12cb13e4a60d08d15609f"
+      },
+      {
+        "path": "icon.svg",
+        "sha256": "8541109036aef92c47eb992ae39a6ed6086877aa47b8ee6c1ae35ebdeb379329"
+      },
+      {
+        "path": "manifest.webmanifest",
+        "sha256": "ebeb087861a8cd32fdd8544ee4266ff45e7810d0254868db3ac1eff6b29d13ab"
+      },
+      {
+        "path": "sw.js",
+        "sha256": "47a437185e868e1333b9f849852be923769186e5cae2fc79d46b42d3db87928e"
+      },
+      {
+        "path": "workbox-2fbc6a65.js",
+        "sha256": "39c2e6ae44c3f29666f6a328b6523bf13a053a1d95c74af8ddea82b1045b0b6e"
+      }
+    ],
+    "limits": "Read-only file/header verification; no real Auth or device test"
+  },
+  "preview": {
+    "checkedAt": "2026-10-04T13:28:28.391Z",
+    "origin": "https://preview.lightweight-training.pages.dev",
+    "files": 24,
+    "indexSha256": "2566c9dbba3808fb76598428b30f3a416f436181409553937da998da4e0d71f9",
+    "headers": {
+      "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://xmdbivohdjczpbjcujvu.supabase.co; worker-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
+      "x-content-type-options": "nosniff",
+      "x-frame-options": "DENY",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "permissions-policy": "camera=(), microphone=(), geolocation=()"
+    },
+    "assets": [
+      {
+        "path": "apple-touch-icon.png",
+        "sha256": "1594d1e02221edf244f40e7928ff9a981ea9d26b807ac1c0248857b847142f79"
+      },
+      {
+        "path": "assets/geist-cyrillic-ext-wght-normal-DjL33-gN.woff2",
+        "sha256": "2317fa4bb293c9c0b110e18315d529235c47a0ddd3338cea3d8c7955e927899e"
+      },
+      {
+        "path": "assets/geist-cyrillic-wght-normal-BEAKL7Jp.woff2",
+        "sha256": "6894439694946a589d157ece003086960a6a4013d74a813dab7602efdb3d8c09"
+      },
+      {
+        "path": "assets/geist-latin-ext-wght-normal-DC-KSUi6.woff2",
+        "sha256": "824f485b5d26e2f2da3c2b236132ece1bc8e4e43373452950bb0e40548b4313f"
+      },
+      {
+        "path": "assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "sha256": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1"
+      },
+      {
+        "path": "assets/geist-vietnamese-wght-normal-6IgcOCM7.woff2",
+        "sha256": "8fa40e5d248247735eb97a0bd593b8852440430600d6ba01364c31fe0abc1fe1"
+      },
+      {
+        "path": "assets/index-CMf5GRLo.js",
+        "sha256": "97c102163667ea15c482895277c2bb49aabce092b104f1ff3592faf7c33f6675"
+      },
+      {
+        "path": "assets/index-DxbySrTZ.css",
+        "sha256": "e49c9d7ba11d95419bebbca9cdb91a3e42de3dbffa8543e1581b6edf0fcc8ff1"
+      },
+      {
+        "path": "assets/mantine-B1k8zaqb.css",
+        "sha256": "23f64fb1d7b81e89f10821d66dbe05884bc952de99b13c5a7960c23b67336ca8"
+      },
+      {
+        "path": "assets/mantine-B5YRZSj8.js",
+        "sha256": "6d7cc43c91515b65cee521693ef19664d68c2b9b60a2f1972e602a9b8c997f6e"
+      },
+      {
+        "path": "assets/react-DjX0U0Iu.js",
+        "sha256": "49f492b7a8b9e47e35b7a9aa36d96824c35439694a092fa912347d6fa34d5366"
+      },
+      {
+        "path": "assets/rolldown-runtime-CbXtAM7H.js",
+        "sha256": "bbf7c5086ae414dc3f33777e3eebf16ea8631325b8bb4690d25091c03567f31a"
+      },
+      {
+        "path": "assets/storage-validation-afGlzHCl.js",
+        "sha256": "51c21c512e4a2304e2223ebaee58fadf8d981c7cfead004d25bd336cc487d1f7"
+      },
+      {
+        "path": "assets/supabase-Be5gk2Ve.js",
+        "sha256": "2d4a3548ea7ae4da922d3b0c40619f658fc2157c6b33fc684d151a55a3398548"
+      },
+      {
+        "path": "assets/workbox-window.prod.es5-Bd17z0YL.js",
+        "sha256": "17bcc17d60dc78f927834b880c39649b03af46fd1f5cdbb8c42c5ae2b515dce9"
+      },
+      {
+        "path": "content/exercise-guides.json",
+        "sha256": "fb9b786e85ce30eb3990a70eeb4c21533057c590506849dfe0faaa851da5efae"
+      },
+      {
+        "path": "fonts/geist/LICENSE",
+        "sha256": "71609cbb5c78b5870d712eab73a31d76622635c6ed034ab5cee3b9ecbda8685f"
+      },
+      {
+        "path": "icon-192.png",
+        "sha256": "054139c0741db6e8d4c3add6cf71e2ce79557ddf7c5aad11019b8c73ea783c46"
+      },
+      {
+        "path": "icon-512.png",
+        "sha256": "f96dc0da0063445e34adae874750ff673a488f9077e12cb13e4a60d08d15609f"
+      },
+      {
+        "path": "icon.svg",
+        "sha256": "8541109036aef92c47eb992ae39a6ed6086877aa47b8ee6c1ae35ebdeb379329"
+      },
+      {
+        "path": "manifest.webmanifest",
+        "sha256": "ebeb087861a8cd32fdd8544ee4266ff45e7810d0254868db3ac1eff6b29d13ab"
+      },
+      {
+        "path": "sw.js",
+        "sha256": "8f7e82faf0442993aaa44d56af74bab201f5339ea3f56bd5a926b5c7dbd86153"
+      },
+      {
+        "path": "workbox-2fbc6a65.js",
+        "sha256": "39c2e6ae44c3f29666f6a328b6523bf13a053a1d95c74af8ddea82b1045b0b6e"
+      }
+    ],
+    "limits": "Read-only file/header verification; no real Auth or device test"
+  },
+  "checks": {
+    "vitest": 86,
+    "node_contracts": 8,
+    "browser_full": 22,
+    "browser_focused_final": 2,
+    "artifact_static_files": 25,
+    "each_origin_verified_files": 24
+  },
+  "physical_device_reference": "2026-10-04-iphone-install-user-report.json: user reported install/home-screen launch/login complete; no inference of recovery or remaining G3 tests",
+  "following_docs_change_bundle": false,
+  "limits": [
+    "Actual workout/new-device/cloud sync and A/B/expiry/mail/device preservation/SCI/ops/pilot remain.",
+    "Ended-workout deletion/recovery is the next local implementation, not included in deployed86cc158.",
+    "No private account identifiers or records included."
+  ]
+}
