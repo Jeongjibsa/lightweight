@@ -145,7 +145,7 @@ export function VolumeReport({
     <Paper component="section" aria-labelledby="volume-heading">
       <Group gap="sm" justify="space-between" mb="md">
         <Box>
-          <Text my="sm" size="xs" lts={1} fw={600} c="blue.4">
+          <Text my="sm" size="xs" lts={1} fw={600} c="yellow.4">
             YOUR RECORD, OVER TIME
           </Text>
           <Title id="volume-heading" order={2} mb="sm">

@@ -2,6 +2,9 @@
 
 ## 2026-10-04
 
+- **Design / Tone**: [CONV-0011](wiki/conversations/2026-10-04-011.md)의 Monokai/Mantine 참고 요청으로 차콜·노란 강조를 적용. 배경/표면/입력/선택/그래프·PWA theme/아이콘, filled 버튼/ThemeIcon 전경 대비 조정. 같은 `codex/mantine-blue-dark` branch, 기능/데이터/권한 변경 없음. [현재 디자인](wiki/product/design-system.md).
+- **Verification / History**: 기존55개/12파일·lint/build/format 통과, fake 화면320/390/1440px overflow0·색/console0. ThemeIcon 흰 전경을 발견→명시 variant/autoContrast→검정 재확인. [새 불변 실행](raw/research/2026-10-04-charcoal-theme-verification.json)·[캡처](raw/design/index.md)·SRC040, [CHG-0011](history/changes/CHG-0011.md)·[PRD0.6.1 전체](history/versions/prd-v0.6.1.md). 이전 원본/해시 보존. local commit 지속 지침 적용; push/배포는 범위 밖.
+
 - **Design / Implementation**: [CONV-0010](wiki/conversations/2026-10-04-010.md)의 전체 Mantine·Geist·블루/다크·iOS형·전 폭 하단/클릭 단축을 `codex/mantine-blue-dark` branch에서 구현. [디자인 규칙](wiki/product/design-system.md)/[감사](wiki/product/design-audit.md)·기술/계획/백로그 갱신, PRD0.6.0·UI-02 done. schema/권한/계산 유지.
 - **Verification / Loop**: unit19/integration25/ui11·55개/12파일, lint 경고0/build/format, fake4176 입력→저장→400kg·회·연속 선택/설정·5화면×5실제 iframe폭 overflow0. NavLink 키보드/필터 shrink·sheet 높이/숫자 대비/하네스 폭 판정 루프 수정. [불변 실행](raw/research/2026-10-04-mantine-geist-design-verification.json)·[캡처](raw/design/index.md)·SRC039 보존. iPhone/VoiceOver/실Auth/browser runner·CI/production offline-update는 미통과.
 - **History**: [CHG-0010](history/changes/CHG-0010.md)·[PRD0.6.0 전체](history/versions/prd-v0.6.0.md) 추가, 이전 원본/해시 보존. 지속 지침에 따라 git-commit local commit 진행; 원격 push/배포 범위는 확대하지 않음.

@@ -52,7 +52,15 @@
     "raw/design/2026-10-04-after-info-sheet-mobile.png": "ea4bdc8f8b51813b076e38c28aef6406ded58a9a1f0693bd7ddb1afa96792983",
     "raw/research/2026-10-04-mantine-geist-design-verification.json": "d164ff70a1ea4b8e99a5c8627031efc362cc06a491a7b86de80bb5262c845333",
     "history/changes/CHG-0010.md": "3eee0ee320085f3e6a8209aba9746cf3601603fad4294232f60048f933f791b8",
-    "history/versions/prd-v0.6.0.md": "ef8ea935d88a49e3d0b689c93dfbc8172fa3b862d1e272c13eba108e2a231b14"
+    "history/versions/prd-v0.6.0.md": "ef8ea935d88a49e3d0b689c93dfbc8172fa3b862d1e272c13eba108e2a231b14",
+    "raw/conversations/2026-10-04-011.md": "82bdbfaf9f23e0393114f940cffeeaa76e32b93993bc0750a80153dca3f73966",
+    "raw/design/2026-10-04-charcoal-today-mobile.png": "6ff23b34620eae173ec67ae8560d97f181e9bf4f324fbcafb0346afbeb76e97e",
+    "raw/design/2026-10-04-charcoal-reports-mobile.png": "876d41a288b017486189c189dfafcb22fff22f16fb3fb6e5e87e0dcadaebe472",
+    "raw/design/2026-10-04-charcoal-settings-320.png": "fb0cff427c29337053745c5e02ace5d9dc3016bf722f7a766f64aec839a7f19c",
+    "raw/design/2026-10-04-charcoal-today-desktop.png": "d44d6a4c592d62bae41a48da6ec78fece7e9c4cae0e414b73b4822ae89b68d3f",
+    "raw/research/2026-10-04-charcoal-theme-verification.json": "581c552b988c4aea91054885a0df66d64ac0d547eb0089e442b61d332cddad76",
+    "history/changes/CHG-0011.md": "c7cd3852d71771c53e86bccae3c90b2c0686df35136a80b215dc34b437288542",
+    "history/versions/prd-v0.6.1.md": "9fc3fbdcbd27dcddaa18efa0740b9245898309859d349c2584ee01396f8a554c"
   },
-  "updated_at": "2026-10-04T13:35:43+09:00"
+  "updated_at": "2026-10-04T14:16:08+09:00"
 }

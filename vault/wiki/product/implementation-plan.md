@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T13:35:43+09:00"
+  at: "2026-10-04T14:16:08+09:00"
 sources:
   - id: "implementation-request"
     resource: "../../raw/conversations/2026-10-03-005.md"
@@ -56,14 +56,20 @@ sources:
   - id: "design-request"
     resource: "../../raw/conversations/2026-10-04-010.md"
     title: "전체 Mantine/Geist/하단 UX 요구"
-version: "0.5.0"
+  - id: "tone-request"
+    resource: "../../raw/conversations/2026-10-04-011.md"
+    title: "Monokai/Mantine 톤 변경 요구"
+  - id: "tone-verification"
+    resource: "../../raw/research/2026-10-04-charcoal-theme-verification.json"
+    title: "차콜 증분 실행"
+version: "0.5.1"
 approval_status: "proposal"
-change_id: "CHG-0010"
+change_id: "CHG-0011"
 ---
 
 # 운동 PWA 구현 작업계획
 
-> PRD 0.6.0 기준, 계획 v0.5.0. **운동 기능을 먼저 완성하고 식단을 다음 단계에 둔다**는 사용자 선택을 반영했다. 기본 스택은 합의했다. 아래 작업 순서·상세 설계·도구·공수는 구현안이다. CONV-0006에서 반응형·사용자별 설정을 반영한 순차 구현과 로컬 우선을 요청했다. 첫 로컬 증분을 구현/시험했고 상태는 [실행 결과](implementation-progress.md)에서 확인한다. 원격/검토 콘텐츠/실기기/배포 단계는 미완료다.
+> PRD 0.6.1 기준, 계획 v0.5.1. **운동 기능을 먼저 완성하고 식단을 다음 단계에 둔다**는 사용자 선택을 반영했다. 기본 스택은 합의했다. 아래 작업 순서·상세 설계·도구·공수는 구현안이다. CONV-0006에서 반응형·사용자별 설정을 반영한 순차 구현과 로컬 우선을 요청했다. 첫 로컬 증분을 구현/시험했고 상태는 [실행 결과](implementation-progress.md)에서 확인한다. 원격/검토 콘텐츠/실기기/배포 단계는 미완료다.
 
 ## 목표와 완료 범위
 
@@ -214,6 +220,10 @@ UI-01/HAR-01 완료. 실제 스택은 [기술 문서](technology-stack.md), 원�
 ## CONV-0010 전체 UI 증분
 
 UI-02를 별도 branch에서 완료했다. 전체 Mantine·Geist·blue-dark/iOS형·전 폭 하단 메뉴·빠른 시작/선택/운동 dock. [규칙](design-system.md)/[감사](design-audit.md). 55개 자동 검사·25폭/화면 가짜 browser 관찰. 다음은 HAR-03/05의 browser runner/CI·RESP-01/REL-02의 실제 Safari/키보드/설치·Auth와 검토 콘텐츠다. UI 변경은 schema/권한/계산을 바꾸지 않는다.
+
+## CONV-0011 색상 방향 수정
+
+UI-02의 색상 기준을 차콜/노란 강조로 수정했고 동일 branch에서 반영했다. [최신 디자인](design-system.md) · [차콜 실행](../../raw/research/2026-10-04-charcoal-theme-verification.json). 새 기능 단계·의존성은 늘리지 않는다.
 
 ## 관리와 다음 의사결정
 

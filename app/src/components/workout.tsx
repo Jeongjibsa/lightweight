@@ -80,7 +80,7 @@ function SetRow({
           pb={12}
           ta="center"
           fw={600}
-          c={completed ? "blue.4" : "dimmed"}
+          c={completed ? "yellow.4" : "dimmed"}
         >
           {index + 1}
         </Text>
@@ -250,7 +250,7 @@ function RestClock({ session }: { session: Session }) {
   return (
     <Paper py="sm" px="md" bg="dark.6">
       <Group gap="sm" wrap="nowrap">
-        <Timer size={19} color="var(--mantine-color-blue-4)" />
+        <Timer size={19} color="var(--mantine-color-yellow-4)" />
         <Text fw={650} fz={20} style={{ fontVariantNumeric: "tabular-nums" }}>
           {Math.floor(seconds / 60)}:{String(seconds % 60).padStart(2, "0")}
         </Text>

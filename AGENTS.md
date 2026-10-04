@@ -26,7 +26,7 @@
 
 - CONV-0006에서 사용자는 반응형·사용자별 설정을 반영한 순차 구현과 Supabase 프로젝트 없이 로컬부터 진행하도록 요청했다. 앱의 현재 상태와 다음 작업은 `vault/wiki/product/implementation-progress.md`와 백로그를 확인한다.
 - CONV-0008에서 Mantine UI·Spoqa Han Sans Neo와 Supabase 연결을 요청했고 공개 가입 차단을 명시 승인했다. app0.2.0/schema2의 Auth·계정 DB·수동 snapshot/RPC/권한 증분을 구현했다. 정확한 스택과 실제 검사/계정 준비 경계는 `technology-stack.md`와 `supabase-integration.md`를 확인한다. 실제 Auth 전체 흐름·자동 UI E2E·실기기 검증은 아직 남았다.
-- CONV-0010에서 전체 Mantine UI·Geist/한글 시스템 fallback·blue-dark/iOS형·전 폭 하단 메뉴·빠른 접근으로 변경했다. 현재 디자인은 `vault/wiki/product/design-system.md`와 `design-audit.md`를 따른다. 해당 UI는 `codex/mantine-blue-dark` branch에서 구현했다. 컴포넌트 시각 스타일은 Mantine theme/props/styles API에 모으고 structural safe-area/위치·데이터 SVG CSS만 공통 CSS에 둔다. 과거 Spoqa/큰 화면 sidebar 요구는 현재 UI 기준으로 사용하지 않는다.
+- CONV-0010에서 전체 Mantine UI·Geist/한글 시스템 fallback·blue-dark/iOS형·전 폭 하단 메뉴·빠른 접근으로 변경했다. CONV-0011에서 색상 방향은 Monokai/Mantine 참고 차콜·노란 강조로 변경했으며 이전 blue-dark 토큰을 현재 기준으로 사용하지 않는다. 현재 디자인은 `vault/wiki/product/design-system.md`와 `design-audit.md`를 따른다. 해당 UI는 `codex/mantine-blue-dark` branch에서 구현했다. 컴포넌트 시각 스타일은 Mantine theme/props/styles API에 모으고 structural safe-area/위치·데이터 SVG CSS만 공통 CSS에 둔다. 과거 Spoqa/큰 화면 sidebar 요구는 현재 UI 기준으로 사용하지 않는다.
 - 본인의 기기·목표·일정·분할은 하나의 파일럿 표본이다. 앱 전역 기본값이나 지원 기기 제한으로 고정하지 않는다.
 - `app`에서 `npm run lint`, `npm run test`, `npm run build`를 수행한다. 데이터 보존·권한·계산 변경에는 의미 있는 계약 검사를 추가하며 낮은 영향의 외형 수정에 구현을 복제하는 검사를 늘리지 않는다.
 - 로컬 프로필 분리를 인증/RLS로, outbox 기록을 클라우드 전송으로, Chromium 폭 변경 시험을 실제 iPhone 통과로 표시하지 않는다. 검토 전 운동·영양 주장을 운영 콘텐츠로 제공하지 않는다.

@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T13:35:43+09:00"
+  at: "2026-10-04T14:16:08+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
@@ -41,21 +41,27 @@ sources:
   - id: "design-request"
     resource: "../../raw/conversations/2026-10-04-010.md"
     title: "전체 Mantine/Geist/하단 UX 요구"
-version: "0.2.0"
+  - id: "tone-request"
+    resource: "../../raw/conversations/2026-10-04-011.md"
+    title: "Monokai/Mantine 톤 변경 요구"
+  - id: "tone-verification"
+    resource: "../../raw/research/2026-10-04-charcoal-theme-verification.json"
+    title: "차콜 증분 실행"
+version: "0.2.1"
 approval_status: "proposal"
-change_id: "CHG-0008"
+change_id: "CHG-0011"
 ---
 
 # 현재 구현에서 운동 MVP까지 남은 작업
 
-## CONV-0010 전체 UI 반영
+## CONV-0010→0011 전체 UI 반영
 
-UI-02 전체 Mantine·Geist/blue-dark·전 폭 하단 메뉴·빠른 접근 증분은 완료했다. 최신55개(19/25/11), lint/build/format·실제 iframe25조합 통과. [디자인 감사](design-audit.md). 다음 우선순위는 **HAR-03/05 실제 browser 회귀/CI**, **RESP-01/REL-02 iPhone/Safari 키보드·가로/확대·safe area·설치/오프라인 업데이트**, 실제 계정 준비 후 Auth/다기기·검토된 콘텐츠와 권장량 정책이다. 수동 하네스/모양 개선만으로 이 관문을 완료하지 않는다.
+UI-02 전체 Mantine·Geist/차콜·노란 강조·전 폭 하단 메뉴·빠른 접근 증분은 완료했다. 최신55개(19/25/11), lint/build/format 통과. CONV-0010에서 iframe25조합, CONV-0011 색상 수정에서 오늘/리포트390px·설정320px·오늘1440px overflow0를 확인했다. [디자인 감사](design-audit.md). 다음 우선순위는 **HAR-03/05 실제 browser 회귀/CI**, **RESP-01/REL-02 iPhone/Safari 키보드·가로/확대·safe area·설치/오프라인 업데이트**, 실제 계정 준비 후 Auth/다기기·검토된 콘텐츠와 권장량 정책이다. 수동 하네스/모양 개선만으로 이 관문을 완료하지 않는다.
 
 
 2026-10-04 / app0.2.0. 반응형·사용자 설정·로컬 기록/백업·Mantine/글꼴·Supabase 연결 증분을 구현했다. **운동 MVP 전체와 실제 실사용 관문은 아직 완료하지 않았다.** 실제 상태는 [진행 보고](implementation-progress.md), 작업 계약은 [백로그](implementation-backlog.md)를 따른다.
 
-## 완료한 증분
+## 이전 로컬/연결 증분 — 당시 상태
 
 5개 반응형 화면·사용자별 목표/횟수/분할/단위/시간대, 초안12종목·직접 종목·루틴/세트/재개/기초 집계·JSON 복원·PWA 업데이트. Mantine provider/입력/모달/버튼·Spoqa WOFF2/OFL/캐시. 등록 계정 Auth·계정 UUID별 DB·수동 클라우드 snapshot/retry/ACK/CAS/교체 전 recovery. 서버 private3테이블·RLS/execute ACL/owner/허용 목록·공개 가입 차단. unit6/integration24·원격 SQL16·비로그인 HTTP401·lint/build/format 통과.
 

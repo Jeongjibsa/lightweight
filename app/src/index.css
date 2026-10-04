@@ -73,11 +73,11 @@ body {
 }
 .chart-line {
   fill: none;
-  stroke: var(--mantine-color-blue-4);
+  stroke: var(--mantine-color-yellow-4);
   stroke-width: 3;
 }
 .chart-dot {
-  fill: var(--mantine-color-blue-4);
+  fill: var(--mantine-color-yellow-4);
   stroke: var(--mantine-color-dark-7);
   stroke-width: 2;
 }

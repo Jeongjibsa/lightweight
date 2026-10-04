@@ -10,3 +10,12 @@
 - [after-info-sheet-mobile.png](2026-10-04-after-info-sheet-mobile.png) — after / 390×844 / auto-height bottom sheet.
 
 [관찰 기록](../research/2026-10-04-mantine-geist-design-verification.json) · [감사](../../wiki/product/design-audit.md).
+
+## CONV-0011 현재 차콜 톤
+
+이전 CONV-0010 캡처는 위에 보존했다. 아래는 같은 fake4176 데이터의 최종 차콜/노란색 화면이며 [실행 원본](../research/2026-10-04-charcoal-theme-verification.json)을 따른다.
+
+- [charcoal-today-mobile.png](2026-10-04-charcoal-today-mobile.png) — Today / 390×844.
+- [charcoal-reports-mobile.png](2026-10-04-charcoal-reports-mobile.png) — Reports / 390×844.
+- [charcoal-settings-320.png](2026-10-04-charcoal-settings-320.png) — Settings / 320×844.
+- [charcoal-today-desktop.png](2026-10-04-charcoal-today-desktop.png) — Today / 1440×900.

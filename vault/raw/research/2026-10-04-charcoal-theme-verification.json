@@ -1,0 +1,198 @@
+{
+  "type": "Verification Record",
+  "title": "Charcoal and yellow theme verification",
+  "captured_at": "2026-10-04T14:16:08+09:00",
+  "generated": {
+    "by": "codex/gpt-6",
+    "at": "2026-10-04T14:16:08+09:00"
+  },
+  "branch": "codex/mantine-blue-dark",
+  "baseline_commit": "02bc1fd",
+  "request": "CONV-0011",
+  "sources": [
+    {
+      "url": "https://ui.mantine.dev/",
+      "scope": "landing introduction; actual dark-mode screenshot and read-only computed body/button tokens",
+      "observed": {
+        "body": "#242424",
+        "dark7": "#242424",
+        "dark8": "#1f1f1f",
+        "dark9": "#141414",
+        "browse_button_bg": "#ffd43b",
+        "browse_button_fg": "#242424"
+      }
+    },
+    {
+      "url": "https://monokai.pro/",
+      "scope": "official introduction, carefully selected shades and dark/light/filter options; no exact source palette or licensed assets copied"
+    }
+  ],
+  "implementation": {
+    "background": "#1f1f1f",
+    "paper": "#242424",
+    "raised": "#2e2e2e",
+    "input": "#1a1a1a",
+    "primaryColor": "yellow",
+    "primaryShade": 4,
+    "primary": "#ffd43b",
+    "text": "#f1f1f1",
+    "autoContrast": true,
+    "ThemeIcon_default_variant": "filled",
+    "pwa_theme_color": "#1f1f1f",
+    "app_icons": "neutral background with yellow Lucide Dumbbell; SVG and 192/512/180px PNGs"
+  },
+  "automated": {
+    "unit": 19,
+    "integration": 25,
+    "ui": 11,
+    "total": 55,
+    "files": 12,
+    "test": "passed",
+    "lint": "passed",
+    "build": "passed",
+    "format": "passed",
+    "app_entry_KB": 97.06,
+    "app_entry_gzip_KB": 30.42,
+    "mantine_css_KB": 233.86,
+    "mantine_css_gzip_KB": 34.17,
+    "precache_entries": 25,
+    "precache_KiB": 1217.59
+  },
+  "browser": {
+    "origin": "http://127.0.0.1:4176",
+    "test_data_only": true,
+    "method": "CUA read-only DOM/computed styles and screenshots; viewport width measured before judging layout",
+    "observations": [
+      {
+        "app": "rgba(0, 0, 0, 0)",
+        "body": "rgb(36, 36, 36)",
+        "buttons": [
+          {
+            "bg": "rgb(255, 212, 59)",
+            "fg": "rgb(0, 0, 0)",
+            "label": "자유 운동 시작"
+          }
+        ],
+        "screen": "today",
+        "scrollWidth": 390,
+        "width": 390,
+        "yellow4": "#ffd43b"
+      },
+      {
+        "graph": [
+          {
+            "colors": [],
+            "label": "기록 볼륨 추이. 1개 날짜의 값. 수치는 아래 표에서 확인할 수 있습니다."
+          }
+        ],
+        "screen": "reports",
+        "scrollWidth": 390,
+        "width": 390
+      },
+      {
+        "input": [
+          {
+            "bg": "rgb(26, 26, 26)",
+            "border": "rgb(66, 66, 66)",
+            "fg": "rgb(241, 241, 241)"
+          }
+        ],
+        "screen": "settings",
+        "scrollWidth": 320,
+        "width": 320
+      },
+      {
+        "screen": "today",
+        "scrollWidth": 1440,
+        "width": 1440
+      },
+      {
+        "background": "rgb(31, 31, 31)",
+        "brandIcon": [
+          {
+            "color": "rgb(255, 255, 255)"
+          }
+        ],
+        "screen": "today-final",
+        "scrollWidth": 390,
+        "width": 390
+      },
+      {
+        "graphPoints": [
+          {
+            "fill": "rgb(255, 212, 59)",
+            "stroke": "rgb(36, 36, 36)"
+          }
+        ],
+        "screen": "reports-final"
+      },
+      {
+        "screen": "brand-final",
+        "bg": "rgb(255, 212, 59)",
+        "fg": "rgb(0, 0, 0)",
+        "observedVia": "DOM computed style after filled ThemeIcon default"
+      }
+    ],
+    "flows": [
+      "Today -> Reports -> Settings -> Today; navigation only, existing fake records",
+      "390px Today/Reports,320px Settings,1440px Today clientWidth equals scrollWidth",
+      "filled main button yellow/black; input neutral; graph point yellow; final brand ThemeIcon black"
+    ],
+    "console_errors_or_warnings": 0,
+    "filled_button_contrast": {
+      "fg": "#000000",
+      "bg": "#ffd43b",
+      "ratio": 14.73,
+      "scope": "one observed default primary button; computed sRGB ratio, not whole-app accessibility certification"
+    },
+    "screenshot_resources": [
+      {
+        "resource": "raw/design/2026-10-04-charcoal-today-mobile.png",
+        "context": "Today / 390×844 / fake profile, final palette",
+        "sha256": "6ff23b34620eae173ec67ae8560d97f181e9bf4f324fbcafb0346afbeb76e97e"
+      },
+      {
+        "resource": "raw/design/2026-10-04-charcoal-reports-mobile.png",
+        "context": "Reports / 390×844 / fake profile, final palette",
+        "sha256": "876d41a288b017486189c189dfafcb22fff22f16fb3fb6e5e87e0dcadaebe472"
+      },
+      {
+        "resource": "raw/design/2026-10-04-charcoal-settings-320.png",
+        "context": "Settings / 320×844 / fake profile, final palette",
+        "sha256": "fb0cff427c29337053745c5e02ace5d9dc3016bf722f7a766f64aec839a7f19c"
+      },
+      {
+        "resource": "raw/design/2026-10-04-charcoal-today-desktop.png",
+        "context": "Today / 1440×900 / fake profile, final palette",
+        "sha256": "d44d6a4c592d62bae41a48da6ec78fece7e9c4cae0e414b73b4822ae89b68d3f"
+      }
+    ],
+    "temporary_viewport_override": "reset at completion"
+  },
+  "loops": [
+    {
+      "id": "LOOP-THEME-CONTRAST-01",
+      "problem": "filled ThemeIcon without explicit color/variant kept default white foreground despite theme autoContrast",
+      "evidence": "installed Mantine9.6.3 ThemeIcon varsResolver only writes --ti-color when color or variant is set; intermediate DOM white on yellow",
+      "fix": "ThemeIcon defaultProps.variant=filled and autoContrast=true",
+      "recheck": "final brand SVG computed black on #ffd43b; repeated final screenshots;55 tests/build pass"
+    }
+  ],
+  "limits": [
+    "source site colors observed at retrieval time; app palette adapted, not exact Monokai/theme clone",
+    "palette-only increment; this turn did not repeat every original workout/restore/Auth/offline workflow",
+    "manual Chromium/CUA widths are not real iPhone/Safari/soft keyboard/VoiceOver/whole-app contrast checks",
+    "no new tests mirroring reversible color tokens; existing55 contracts reused",
+    "no DB/schema/Auth permission change, network sync, personal data entry or new scientific claims"
+  ],
+  "code_sha256": {
+    "app/src/theme.ts": "7d49bdeaa9f3aa5324e87d5da70a04f4903446b008ad25192cd8867a3de7dbae",
+    "app/src/App.tsx": "4806f8afdb6f7323dbd54d5663e2a3a5d21f0532fc7a93e676b36e8059257eee",
+    "app/src/index.css": "86759b66f83e282afe62561f48126c9f174104aaed6eb4ea0ad5477d6a6874b6",
+    "app/src/components/navigation.tsx": "680e46928b772cb3c89b82ab914646bf2da72f9359adea330fce7254ffd88ff2",
+    "app/src/components/volume-report.tsx": "243b8b317e832a45c8ce70c1a6ff6daa08605e6e51ab673a38eb32641fe8e66f",
+    "app/index.html": "ea92ef1f4d59db071cf35f2b57044443a27f60240906912a82ca7f82907da7d3",
+    "app/vite.config.ts": "b24eac69ce21b782402e5ff97556d985140e41292d210e6e9f4f0f787206b618",
+    "app/public/icon.svg": "8541109036aef92c47eb992ae39a6ed6086877aa47b8ee6c1ae35ebdeb379329"
+  }
+}

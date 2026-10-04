@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T13:35:43+09:00"
+  at: "2026-10-04T14:16:08+09:00"
 sources:
   - id: "responsive-local-request"
     resource: "../../raw/conversations/2026-10-03-006.md"
@@ -56,13 +56,25 @@ sources:
   - id: "design-verification"
     resource: "../../raw/research/2026-10-04-mantine-geist-design-verification.json"
     title: "현재 UI 검사"
-version: "0.2.0"
-change_id: "CHG-0008"
+  - id: "tone-request"
+    resource: "../../raw/conversations/2026-10-04-011.md"
+    title: "Monokai/Mantine 톤 변경 요구"
+  - id: "tone-verification"
+    resource: "../../raw/research/2026-10-04-charcoal-theme-verification.json"
+    title: "차콜 증분 실행"
+version: "0.2.1"
+change_id: "CHG-0011"
 ---
 
 # 로컬 PWA 구현 결과와 다음 작업
 
-## 최신 전체 UI 증분 — 2026-10-04
+## 최신 색상 증분 — 2026-10-04
+
+PRD0.6.1 / CONV-0011. 같은 `codex/mantine-blue-dark` branch에서 Mantine UI 다크/Monokai 참고 차콜·노란 강조색을 적용했다. 카드/입력/선택/그래프·PWA theme-color/아이콘까지 조정했다. 주요 filled 버튼·ThemeIcon의 전경은 검은색이다. 데이터/schema/권한/계산은 변경하지 않았다.
+
+기존55개(19 unit/25 integration/11 UI)·lint/build/format 통과. 가짜4176의 오늘·리포트390px/설정320px/오늘1440px 가로 넘침0, computed colors·console0 확인. 실제 iPhone/전체 대비/Auth/오프라인 업데이트는 이번 재검증 범위 밖이다. [실행](../../raw/research/2026-10-04-charcoal-theme-verification.json) · [현재 디자인](design-system.md). 아래 파란 화면/25조합은 이전 증분 이력이다.
+
+## 이전 전체 UI 증분 — 2026-10-04
 
 PRD0.6.0 / app0.2.0 / schema2 / branch `codex/mantine-blue-dark`. 전체 Mantine·Geist/한글 fallback·blue-dark·전 폭 하단탭·내용 높이 bottom sheet·빠른 시작/종목 추가/연속 루틴 선택·sticky 운동 dock을 적용했다. 기존 partial 적용 범위는 이전 이력으로 유지한다. [디자인](design-system.md) · [감사](design-audit.md).
 

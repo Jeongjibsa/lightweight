@@ -10,3 +10,4 @@
 - [CHG-0008](CHG-0008.md) — Mantine/Spoqa·Supabase 연결·공개 가입 차단·PRD0.4.0.
 - [CHG-0009](CHG-0009.md) — 볼륨/추이/과거 안내·지속 commit, PRD0.5.0.
 - [CHG-0010](CHG-0010.md) — 전체 Mantine/Geist·blue-dark/하단/빠른 접근·branch, PRD0.6.0.
+- [CHG-0011](CHG-0011.md) — PRD0.6.1, 차콜·노란 강조와 실제 톤 검증.

@@ -18,7 +18,7 @@
 - [반응형·프로필·로컬 기록 계약](implementation-contracts.md) — 현재 스키마/설정/보존/복원 기준.
 - [로컬 구현 결과와 다음 작업](implementation-progress.md) — 실제 검사·현재 상태·미완료 범위.
 - [운동 MVP까지 남은 작업](remaining-work.md) — 현재 완료 범위와 다음 증분·의존성·관문.
-- [현재 기술 스택과 라이브러리](technology-stack.md) — Mantine/Spoqa/정확한 설치 버전·역할.
+- [현재 기술 스택과 라이브러리](technology-stack.md) — Mantine/Geist·차콜/정확한 설치 버전·역할.
 - [Supabase 연결과 계정 준비](supabase-integration.md) — Auth/RPC/RLS·허용 목록·manual snapshot·실제 검증/남은 설정.
 - [볼륨·추이·오늘 후보 MVP](volume-history-mvp.md) — 관찰/비교·과거 참고→검토된 조정.
-- [디자인 시스템](design-system.md) · [전체 화면 감사](design-audit.md) — Mantine·Geist/blue-dark·전 폭 하단/빠른 기록.
+- [디자인 시스템](design-system.md) · [전체 화면 감사](design-audit.md) — Mantine·Geist/차콜·노란 강조·전 폭 하단/빠른 기록.

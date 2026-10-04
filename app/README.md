@@ -1,6 +1,6 @@
 # Lightweight 운동 기록 PWA
 
-app0.2.0의 반응형 운동 기록 앱입니다. 전체 주요 UI에 Mantine UI·Geist Variable/한글 시스템 fallback·blue-dark theme을 사용합니다. 모든 폭에서 하단 다섯 메뉴를 유지하고 본문/카드를 반응형으로 재배치합니다. 목표·주당 횟수·분할·장비·시간·단위·시간대는 사용자별로 설정합니다. 개인 파일럿 조건을 모든 사용자 기본값으로 고정하지 않습니다.
+app0.2.0의 반응형 운동 기록 앱입니다. 전체 주요 UI에 Mantine UI·Geist Variable/한글 시스템 fallback·charcoal/yellow theme을 사용합니다. 모든 폭에서 하단 다섯 메뉴를 유지하고 본문/카드를 반응형으로 재배치합니다. 목표·주당 횟수·분할·장비·시간·단위·시간대는 사용자별로 설정합니다. 개인 파일럿 조건을 모든 사용자 기본값으로 고정하지 않습니다.
 
 Node 24 환경에서 프로젝트 루트 기준:
 
@@ -76,6 +76,8 @@ Vitest v4 projects의 unit19/integration25/ui11(55개/12파일)는 소유자·�
 
 ## 디자인과 반응형 수동 검사
 
-[디자인 시스템](../vault/wiki/product/design-system.md)과 [감사/캡처](../vault/wiki/product/design-audit.md)에 전체 Mantine·Geist/blue-dark·iOS형 하단 sheet/빠른 입력·데이터 보존 규칙을 기록했습니다. Geist의 한글은 시스템 글꼴로 fallback합니다. 변경 branch는 `codex/mantine-blue-dark`입니다.
+[디자인 시스템](../vault/wiki/product/design-system.md)과 [감사/캡처](../vault/wiki/product/design-audit.md)에 전체 Mantine·Geist/charcoal-yellow·iOS형 하단 sheet/빠른 입력·데이터 보존 규칙을 기록했습니다. Geist의 한글은 시스템 글꼴로 fallback합니다. 변경 branch는 `codex/mantine-blue-dark`입니다.
 
 개발 서버에서 `/tests/harness/responsive.html`을 열면 실제 iframe320/375/390/768/1440px와 다섯 화면을 선택할 수 있습니다. 같은 origin/IndexedDB를 사용하고 자료를 자동 초기화하지 않으므로 가짜 전용 프로필/origin에서만 검사하세요. production entry/public asset이 아니며 실제 iPhone·자동 browser runner/CI를 대신하지 않습니다.
+
+CONV-0011에서 Mantine UI 다크/Monokai를 참고해 차콜 배경·노란 강조색으로 바꿨습니다. primary filled 버튼/ThemeIcon은 어두운 전경색이고 PWA theme-color/아이콘도 같은 톤입니다. [최신 실행](../vault/raw/research/2026-10-04-charcoal-theme-verification.json)은 색상/선택 화면 폭 검사이며 실제 iPhone 시험을 뜻하지 않습니다.

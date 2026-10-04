@@ -181,14 +181,14 @@ function TodayView({
       <Paper
         p={{ base: "lg", sm: "xl" }}
         bg="dark.6"
-        style={{ borderColor: "var(--mantine-color-blue-8)" }}
+        style={{ borderColor: "var(--mantine-color-dark-4)" }}
       >
         <Stack gap="md">
           <Group justify="space-between">
-            <Badge color="blue">
+            <Badge color="yellow">
               {active ? "WORKOUT IN PROGRESS" : "READY WHEN YOU ARE"}
             </Badge>
-            <Dumbbell size={24} color="var(--mantine-color-blue-4)" />
+            <Dumbbell size={24} color="var(--mantine-color-yellow-4)" />
           </Group>
           <Box>
             <Title order={2} fz={{ base: 24, sm: 30 }}>
@@ -234,7 +234,7 @@ function TodayView({
                   label={r.name}
                   description={`${r.exercises.length}개 운동 · ${r.exercises.reduce((n, e) => n + e.sets, 0)}세트 계획`}
                   rightSection={
-                    <Play size={18} color="var(--mantine-color-blue-4)" />
+                    <Play size={18} color="var(--mantine-color-yellow-4)" />
                   }
                 />
               </Paper>
@@ -286,14 +286,14 @@ function TodayView({
             );
             return (
               <Stack key={date} align="center" gap={8}>
-                <Text c={date === today ? "blue.4" : "dimmed"} size="xs">
+                <Text c={date === today ? "yellow.4" : "dimmed"} size="xs">
                   {["월", "화", "수", "목", "금", "토", "일"][i]}
                 </Text>
                 <ThemeIcon
                   size={34}
                   radius="xl"
                   variant={done ? "filled" : "light"}
-                  color={date === today || done ? "blue" : "gray"}
+                  color={date === today || done ? "yellow" : "gray"}
                   aria-label={`${date}${done ? " 운동 기록 있음" : ""}`}
                 >
                   {done ? (
@@ -628,7 +628,11 @@ export default function App() {
               </Group>
             </Anchor>
             <Group gap={8} wrap="nowrap">
-              <Badge color={pending ? "blue" : "gray"} size="sm" role="status">
+              <Badge
+                color={pending ? "yellow" : "gray"}
+                size="sm"
+                role="status"
+              >
                 {pending ? "저장 중…" : online ? "기기 저장" : "오프라인"}
               </Badge>
               <Avatar
@@ -636,7 +640,7 @@ export default function App() {
                 type="button"
                 size={44}
                 radius="xl"
-                color="blue"
+                color="yellow"
                 variant="light"
                 aria-label={`${profile.name} 설정`}
                 onClick={() => navigate("settings")}
@@ -737,7 +741,7 @@ export default function App() {
       <Stack className="notice-stack" gap="sm">
         {notice && (
           <Alert
-            color={notice.error ? "red" : "blue"}
+            color={notice.error ? "red" : "yellow"}
             role={notice.error ? "alert" : "status"}
             withCloseButton
             closeButtonLabel="알림 닫기"

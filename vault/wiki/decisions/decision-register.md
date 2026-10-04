@@ -8,7 +8,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T13:35:43+09:00"
+  at: "2026-10-04T14:16:08+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-03-001.md"
@@ -43,6 +43,9 @@ sources:
   - id: "design-request"
     resource: "../../raw/conversations/2026-10-04-010.md"
     title: "전체 Mantine/Geist/하단 UX 요구"
+  - id: "tone-request"
+    resource: "../conversations/2026-10-04-011.md"
+    title: "대화/변경"
 ---
 
 # 결정과 제안 기록
@@ -95,6 +98,8 @@ sources:
 | DEC-039 | 전체 Mantine·Geist·블루/다크·iOS 같은 UX·전 폭 하단 메뉴·클릭 감소/접근성 | 사용자 명시 요구 | CONV-0010, FR-12·16; Spoqa/사이드 메뉴 supersede |
 | DEC-040 | 별도 branch에서 UI 구현 | 사용자 명시 요구 | codex/mantine-blue-dark; local commit 지속 지침 |
 | DEC-041 | token/44px·16px/48em sheet·한글 fallback/수동 iframe harness | 구현 선택 | native 전환·실기기/전체 접근성 인증·최종 디자인 승인 아님 |
+| DEC-042 | 블루/다크를 Monokai 또는 Mantine UI 같은 톤으로 변경 | 사용자 명시 요구 CONV-0011 | DEC-039의 색상 방향 대체; Geist/하단 UX 이어감 |
+| DEC-043 | 배경#1f1f1f·카드#242424·노란#ffd43b·filled 어두운 전경 | 구현 선택 | Mantine 다크 관찰 참고; 정확한 Monokai 복제·구체 토큰 사용자 승인 아님 |
 
 요구 확정은 기능 의도를 직접 표현했다는 뜻이며 상세 설계 승인이 아니다. 변경 시 기존 결론을 조용히 교체하지 않고 새 결정·대체 관계·이유를 기록한다.
 

@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T13:35:43+09:00"
+  at: "2026-10-04T14:16:08+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-010.md"
@@ -20,15 +20,33 @@ sources:
   - id: "technical"
     resource: "../sources/SRC-039-mantine-geist-design.md"
     title: "공식"
-version: "0.1.0"
-change_id: "CHG-0010"
+  - id: "tone-request"
+    resource: "../../raw/conversations/2026-10-04-011.md"
+    title: "Monokai/Mantine 톤 변경 요구"
+  - id: "tone-verification"
+    resource: "../../raw/research/2026-10-04-charcoal-theme-verification.json"
+    title: "차콜 증분 실행"
+version: "0.1.1"
+change_id: "CHG-0011"
 ---
 
 # 전체 화면 디자인 감사와 개선 결과
 
 2026-10-04, Product Design audit·Geist·React best-practices 기준을 기존 app 코드/브라우저에 적용했다. 대상은 이미 존재하는 다섯 화면·운동 기록·확인/폼·Auth/클라우드 표시다. native 앱 전체를 새로 만들거나 인증/과학 내용을 검증한 감사가 아니다. [원문](../../raw/conversations/2026-10-04-010.md) · [디자인 규칙](design-system.md) · [관찰/환경 원본](../../raw/research/2026-10-04-mantine-geist-design-verification.json).
 
-## 출발점과 수정
+## 최신 톤 증분 — CONV-0011
+
+사용자 요청으로 기존 블루/다크를 차콜·노란 강조색으로 대체했다. [Mantine UI 실제 다크 관찰](../sources/SRC-040-charcoal-tone.md)을 참고해 배경 `#1f1f1f`, 카드 `#242424`, 입력 `#1a1a1a`, primaryyellow4 `#ffd43b`. 주요 filled 버튼/브랜드 아이콘은 검은 글자/기호, 해당 버튼의 계산 대비 14.73:1이다. 전체 접근성 통과를 의미하지 않는다.
+
+ThemeIcon의 기본 흰 전경 잔류를 DOM에서 발견→설치 구현의 varsResolver 분기 확인→default filled variant/autoContrast 명시→검은 전경 재확인했다. 새로운 스타일 snapshot 검사를 늘리지 않고 기존55개/12파일·lint/build/format으로 동작 계약을 재검증했다. 앱 진입97.06KB/30.42KB gzip, precache25개/1217.59KiB. fake4176 오늘/리포트390px·설정320px·오늘1440px overflow0, console error/warn0. 이번은 read-only 화면 탐색이며 운동 저장/복원/Auth 전체를 다시 통과했다고 표시하지 않는다.
+
+![현재 차콜 오늘390px](../../raw/design/2026-10-04-charcoal-today-mobile.png)
+
+[리포트390px](../../raw/design/2026-10-04-charcoal-reports-mobile.png) · [설정320px](../../raw/design/2026-10-04-charcoal-settings-320.png) · [오늘1440px](../../raw/design/2026-10-04-charcoal-today-desktop.png) · [불변 실행](../../raw/research/2026-10-04-charcoal-theme-verification.json).
+
+아래는 CONV-0010의 이전 재설계 감사/파란 화면 이력이다. 원본 캡처는 덮어쓰지 않으며 현재 팔레트는 위 차콜 증거와 [디자인 시스템](design-system.md)을 따른다.
+
+## 이전 출발점과 수정
 
 기존 Mantine은 provider/theme·입력/모달 일부에 적용되어 있었다. custom CSS 1830줄과 UnstyledButton·큰 소개 영역·큰 화면 좌측 메뉴가 대부분 외관을 결정했다. 사용자는 화면 완성도와 접근성을 개선하도록 요청했다.
 

@@ -17,7 +17,7 @@ export function BottomNavigation({
               component="a"
               href={`#${id}`}
               variant="subtle"
-              c={screen === id ? "blue.4" : "dark.1"}
+              c={screen === id ? "yellow.4" : "dark.1"}
               aria-current={screen === id ? "page" : undefined}
               aria-label={label}
               h={60}

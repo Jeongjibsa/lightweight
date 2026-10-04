@@ -99,7 +99,7 @@ export function ExercisePicker({
                 </ThemeIcon>
               }
               rightSection={
-                <Plus size={20} color="var(--mantine-color-blue-4)" />
+                <Plus size={20} color="var(--mantine-color-yellow-4)" />
               }
             />
             {onInspect && (

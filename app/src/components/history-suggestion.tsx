@@ -52,7 +52,7 @@ export function HistorySuggestion({
     <Paper component="section" aria-labelledby="candidate-heading">
       <Group gap="sm" justify="space-between" mb="md">
         <Box>
-          <Text my="sm" size="xs" lts={1} fw={600} c="blue.4">
+          <Text my="sm" size="xs" lts={1} fw={600} c="yellow.4">
             BASED ON YOUR HISTORY
           </Text>
           <Title id="candidate-heading" order={2} mb="sm">

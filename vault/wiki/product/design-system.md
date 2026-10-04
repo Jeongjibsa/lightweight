@@ -1,6 +1,6 @@
 ---
 type: "Design Specification"
-title: "Mantine·Geist 블루/다크 디자인 시스템"
+title: "Mantine·Geist 차콜 디자인 시스템"
 description: "전체 화면 토큰·타이포그래피·하단 메뉴·빠른 접근·데이터 보존 계약."
 tags:
   - "design"
@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T13:35:43+09:00"
+  at: "2026-10-04T14:16:08+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-010.md"
@@ -20,17 +20,26 @@ sources:
   - id: "verification"
     resource: "../../raw/research/2026-10-04-mantine-geist-design-verification.json"
     title: "실행"
-version: "0.1.0"
-change_id: "CHG-0010"
+  - id: "tone-request"
+    resource: "../../raw/conversations/2026-10-04-011.md"
+    title: "Monokai/Mantine 톤 변경 요구"
+  - id: "tone-verification"
+    resource: "../../raw/research/2026-10-04-charcoal-theme-verification.json"
+    title: "차콜 증분 실행"
+  - id: "tone-reference"
+    resource: "../sources/SRC-040-charcoal-tone.md"
+    title: "공식 디자인 참고"
+version: "0.1.1"
+change_id: "CHG-0011"
 ---
 
-# Mantine·Geist 블루/다크 디자인 시스템
+# Mantine·Geist 차콜 디자인 시스템
 
-CONV-0010 / FR-12·16 / PRD0.6.0 / branch `codex/mantine-blue-dark`. [요구](../../raw/conversations/2026-10-04-010.md) · [감사/실행](design-audit.md) · [정확한 스택](technology-stack.md).
+CONV-0010→0011 / FR-12·16 / PRD0.6.1 / branch `codex/mantine-blue-dark`. [요구](../../raw/conversations/2026-10-04-010.md) · [감사/실행](design-audit.md) · [정확한 스택](technology-stack.md).
 
 ## 톤과 공통 규칙
 
-Mantine9.6.3의 `theme`·`defaultProps`·`styles` API와 layout props로 카드/버튼/입력/목록/표/내비게이션/알림/Auth·클라우드 화면을 구성한다. `forceColorScheme=dark`, 배경dark9 `#080f1b`, surfacedark7 `#111a2b`, primaryblue7 `#1b61d3`, 강조blue4 `#6aa4ff`, 본문dark0 `#eef2fa`, 보조dark1/2. radius16/24px, 작은 장식보다 입력과 실행을 먼저 배치한다. 실제 palette는 `app/src/theme.ts` 단일 기준이며 위 값은 구현 선택이다.
+Mantine9.6.3의 `theme`·`defaultProps`·`styles` API와 layout props로 카드/버튼/입력/목록/표/내비게이션/알림/Auth·클라우드 화면을 구성한다. `forceColorScheme=dark`, 배경dark9 `#1f1f1f`, surfacedark7 `#242424`, elevateddark6 `#2e2e2e`, inputdark8 `#1a1a1a`, primaryyellow4 `#ffd43b`, 본문dark0 `#f1f1f1`, 보조dark1/2. radius16/24px, 작은 장식보다 입력과 실행을 먼저 배치한다. 실제 palette는 `app/src/theme.ts` 단일 기준이며 위 값은 구현 선택이다. CONV-0011에 따라 [Mantine UI 다크 화면/Monokai 참고](../sources/SRC-040-charcoal-tone.md)로 블루 톤을 대체했다. `primaryColor=yellow`/`primaryShade=4`, `autoContrast=true`; filled ThemeIcon도 variant를 명시해 어두운 전경색을 적용한다. PWA theme-color와 홈 화면 아이콘도 같은 차콜/노란 방향이다.
 
 글꼴은 `@fontsource-variable/geist5.3.0`, 제목650·일반 본문400/500·동작600. 숫자 tabular-nums. 영어/숫자는 Geist Variable, 한글은 `Apple SD Gothic Neo`, `Noto Sans KR`, sans-serif 순의 시스템 fallback이며 Noto 폰트를 별도 다운로드하지 않는다. 글꼴 assets는 같은 origin에서 번들/캐시하고 OFL license를 보존한다.
 
@@ -51,6 +60,8 @@ Mantine9.6.3의 `theme`·`defaultProps`·`styles` API와 layout props로 카드/
 schema2/owner/계정 DB·트랜잭션/outbox·세트 완료·백업/복원·RPC/RLS·볼륨/후보 계산은 유지한다. ProfileForm의 payload key와 미저장 초안/복원 계약을 보존한다. 리뷰 전 운동 주장은 공개하지 않으며 검토되지 않은 개념 그림을 자극 지도처럼 표시하지 않는다.
 
 ## 확인과 잔여
+
+CONV-0011의 색상 증분도 자동55개·lint/build/format 통과. 오늘/리포트390px·설정320px·오늘1440px document overflow0, 주요 filled 버튼 검은 글자/노란 배경·입력·그래프 point 실제 색을 확인했다. [차콜 증거](../../raw/research/2026-10-04-charcoal-theme-verification.json) · [오늘 화면](../../raw/design/2026-10-04-charcoal-today-mobile.png). 아래25조합/기록 과업은 CONV-0010 당시 검사이며 이번에 전체를 재실행하지 않았다.
 
 자동55개(19 unit/25 integration/11 ui), lint 경고0/build/format. 개발 browser 가짜 과업과 다섯 화면×320/375/390/768/1440px에서 document overflow0, 하단 target 최소56.79×60px. [불변 증거](../../raw/research/2026-10-04-mantine-geist-design-verification.json).
 
