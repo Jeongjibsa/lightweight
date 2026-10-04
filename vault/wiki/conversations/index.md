@@ -15,3 +15,4 @@
 - [CONV-0013](2026-10-04-013.md) — main 반영 후 HAR03/05 다음증분.
 - [CONV-0014](2026-10-04-014.md) — push·CI확인 후 HAR04 보존.
 - [CONV-0015 Cloudflare/남은 구현](2026-10-04-015.md)
+- [CONV-0016 Cloudflare 설정/OAuth](2026-10-04-016.md) — main MCP 성공 확인·cf 생략 선택.

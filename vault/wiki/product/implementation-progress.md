@@ -9,8 +9,11 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T17:15:45+09:00"
+  at: "2026-10-04T20:22:34+09:00"
 sources:
+  - id: "cf-recheck"
+    resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
+    title: "Cloudflare 공식 설정과 OAuth 재확인"
   - id: "responsive-local-request"
     resource: "../../raw/conversations/2026-10-03-006.md"
     title: "반응형·사용자별 설정·로컬 구현 요청"
@@ -98,11 +101,15 @@ sources:
   - id: "gzip-check"
     resource: "../../raw/research/2026-10-04-compressed-backup-verification.json"
     title: "실행"
-version: "0.3.2"
-change_id: "CHG-0014"
+version: "0.3.3"
+change_id: "CHG-0017"
 ---
 
 # 로컬 PWA 구현 결과와 다음 작업
+
+## CONV-0016 Cloudflare 개발 환경 설정 — 2026-10-04
+
+공식 installer로 스킬16개를 갱신하고 기존 MCP5개 URL/enabled를 확인했다. Codex main MCP OAuth login은 exit0/성공, 현재 main 계정 읽기는 HTTP200·public docs 검색은 성공했다. 사용자가 cf 생략·기존 Wrangler 유지를 선택했다. 특화 MCP3/Wrangler 인증·원격 배포는 미검증이며 앱 Auth/iPhone·SCI 관문은 유지한다. [실행](../../raw/research/2026-10-04-cloudflare-setup-recheck.json) · [운영](../operations/cloudflare-setup.md). 이번 환경/문서 작업은 앱 코드나 검사 결과를 변경하지 않았다. 아래는 이전 증분 시점의 상태다.
 
 ## 압축 백업 후속 증분 — 2026-10-04
 

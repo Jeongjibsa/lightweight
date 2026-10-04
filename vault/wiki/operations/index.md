@@ -11,5 +11,5 @@
 - [프로필/백업 루프](loop-engineering.md) — HAR02 로컬부분/4DOM 회귀·실제 Auth/SW와 구분.
 - [browser runner/실패증거](testing-harness.md) — 독립preview/context·9과업·고유실행ID/코드해시·CI7일보관설정.
 - [저장 보존 하네스](storage-recovery-harness.md) — 실제SW/파일/nativeDB·합성quota·한도/한계.
-- [Cloudflare 연결/배포 운영](cloudflare-setup.md)
+- [Cloudflare 연결/배포 운영](cloudflare-setup.md) — CONV-0016 main MCP OAuth 성공·특화 MCP/CLI와 배포 별도.
 - [압축 백업 계약](compressed-backup.md)

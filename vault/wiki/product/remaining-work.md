@@ -9,8 +9,11 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T17:15:45+09:00"
+  at: "2026-10-04T20:22:34+09:00"
 sources:
+  - id: "cf-recheck"
+    resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
+    title: "Cloudflare 공식 설정과 OAuth 재확인"
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
     title: "CONV-0007 원문"
@@ -83,12 +86,16 @@ sources:
   - id: "gzip-check"
     resource: "../../raw/research/2026-10-04-compressed-backup-verification.json"
     title: "실행"
-version: "0.3.2"
+version: "0.3.3"
 approval_status: "proposal"
-change_id: "CHG-0014"
+change_id: "CHG-0017"
 ---
 
 # 현재 구현에서 운동 MVP까지 남은 작업
+
+## CONV-0016 Cloudflare 설정 확인 후 — 2026-10-04
+
+공식 스킬16개 갱신·MCP5개 등록 확인·main MCP OAuth login 성공과 계정 읽기 HTTP200·public docs 검색을 완료했다. 사용자가 cf 생략·기존 Wrangler 유지를 선택했다. REL-01에는 Wrangler/특화 MCP의 별도 인증 확인·원격 project/고정 origin·HTTPS/운영/앱 Auth 검증이 남아 in_progress를 유지한다. [실행](../../raw/research/2026-10-04-cloudflare-setup-recheck.json). 아래 OAuth pending은 이전 증분 당시 상태다. 기존 미완료 기능/실기기·과학 관문은 유지한다.
 
 ## 압축 백업 후속 증분 — 2026-10-04
 

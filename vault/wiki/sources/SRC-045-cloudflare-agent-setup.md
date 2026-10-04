@@ -9,8 +9,11 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T16:59:17+09:00"
+  at: "2026-10-04T20:22:34+09:00"
 sources:
+  - id: "cf-recheck"
+    resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
+    title: "Cloudflare 공식 설정과 OAuth 재확인"
   - id: "prompt"
     resource: "https://developers.cloudflare.com/agent-setup/prompt.md"
     title: "공식 설정"
@@ -21,8 +24,8 @@ sources:
     resource: "https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/"
     title: "Pages CI"
 source_id: "SRC-045"
-review_scope: "Full setup prompt and relevant Direct Upload/CI sections; local Wrangler CLI help; no remote deployment"
-retrieved_at: "2026-10-04T16:59:17+09:00"
+review_scope: "Full setup prompt reread, docs search chunks, local install/config/OAuth and account read; prior Direct Upload/CI partial review; no remote deployment"
+retrieved_at: "2026-10-04T20:22:34+09:00"
 ---
 
 # Cloudflare — Codex 공식 설정과 Pages 배포
@@ -36,3 +39,9 @@ Pages 문서는 사전 빌드 산출물의 Direct Upload와 CI에서 Account/Clo
 [공식 설정](https://developers.cloudflare.com/agent-setup/prompt.md) · [Direct Upload](https://developers.cloudflare.com/pages/get-started/direct-upload/) · [CI](https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/)
 
 계정 email·OAuth URL/state/code/token은 기록하지 않는다. 공식 설명은 원격 실행/실기기 성공을 보장하지 않는다.
+
+## CONV-0016 재확인 — 2026-10-04
+
+공식 prompt 전체를 다시 fetch했고 이전 SHA256과 같았다. Other agents/Codex 절차를 적용해 skills16개를 갱신하고 기존 MCP5개의 공식 URL/enabled를 확인했다. Codex CLI login 성공·현재 main MCP 계정 읽기 HTTP200·public docs MCP 검색을 확인했다. 사용자가 선택적 cf 생략을 답했다. 특화 MCP3개와 Wrangler 인증/배포는 미검증이다. [새 실행 기록](../../raw/research/2026-10-04-cloudflare-setup-recheck.json). 이전 자동 검토 거부·만료 기록은 당시 이력으로 보존한다.
+
+이번 읽기 범위는 같은 공식 prompt 전체와 docs 검색 반환 chunk, 설치/config/CLI·읽기 API 확인이다. Direct Upload/CI 문서 전체를 새로 검토한 것으로 표시하지 않는다. 새로운 독립 기술 출처를 추가한 것으로 집계하지 않는다.

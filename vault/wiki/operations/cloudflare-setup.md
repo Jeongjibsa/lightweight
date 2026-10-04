@@ -9,8 +9,11 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T16:59:17+09:00"
+  at: "2026-10-04T20:22:34+09:00"
 sources:
+  - id: "cf-recheck"
+    resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
+    title: "Cloudflare 공식 설정과 OAuth 재확인"
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-015.md"
     title: "사용자 요청"
@@ -26,9 +29,13 @@ sources:
 
 ## 현재 상태
 
-공식 스킬16개를 ~/.agents/skills에 설치했고 Codex config에 공식 MCP5개를 등록했다. cloudflare-docs는 인증이 필요 없다. 나머지는 각각 OAuth가 필요하며 **등록을 인증 완료로 표시하지 않는다**. 계정 조회1회는 기존 plugin session으로 성공했지만 새 MCP의 broad OAuth 승인은 자동 검토가 거부했다. 사용자 권한 선택이 pending이다. 새 도구를 agent에 반영하려면 재시작이 필요할 수 있으며 진행 중 작업을 임의 reset하지 않는다.
+CONV-0016에서 공식 prompt 전체를 다시 확인했고 기존 수집본과 SHA256이 같았다. 공식 installer로 ~/.agents/skills의 스킬16개를 갱신하고 각 SKILL.md를 확인했다. Codex config의 공식 MCP5개는 정확한 URL/enabled 상태를 확인해 기존 등록을 유지했다. installer는 PromptScript global 미지원도 출력했으므로 다른 모든 agent의 성공을 주장하지 않는다.
 
-Wrangler4.147.0을 app 개발 의존성으로 pin했다. 별도 cf beta/global CLI는 설치하지 않았다. 로그는 임시 디렉터리로 지정하고 OAuth credential은 repo/vault에 기록하지 않는다. 권한 거부를 기존 connector나 다른 CLI 경로로 우회하지 않는다.
+`codex mcp login cloudflare`가 exit0/성공을 반환했고 현재 main MCP의 계정 읽기는 HTTP200이었다. public cloudflare-docs 검색도 성공했다. **main MCP OAuth는 성공 확인**, bindings/builds/observability3개의 별도 OAuth와 Wrangler 인증은 미검증이다. 이전 broad OAuth 자동 검토 거부·만료 이력은 [첫 기록](../../raw/research/2026-10-04-cloudflare-setup.json)에 보존하고 이번 [재확인](../../raw/research/2026-10-04-cloudflare-setup-recheck.json)을 구분한다. 브라우저 승인 동작은 직접 관찰·자동화하지 않았다.
+
+특화 MCP는 공식 지침에 따라 첫 사용 시 OAuth를 진행한다. 등록된 전체 MCP와 갱신한 스킬을 반영하려면 agent를 재시작한다. 진행 중 작업을 임의 reset하지 않는다.
+
+Wrangler4.147.0을 app 개발 의존성으로 pin했다. CONV-0016에서 사용자가 기존 Wrangler 유지·cf 생략을 선택해 별도 cf beta/global CLI는 설치하지 않았다. 로그는 임시 디렉터리로 지정하고 OAuth credential은 repo/vault에 기록하지 않는다. 권한 거부를 기존 connector나 다른 CLI 경로로 우회하지 않는다.
 
 ## 배포 경계와 순서
 

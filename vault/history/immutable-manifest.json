@@ -111,7 +111,11 @@
     "raw/research/2026-10-04-cloudflare-snapshot-construction.json": "9c07caef8eda2f097317cd07054fed67dd97f61fdc7d0cc9bc383df07bce088d",
     "raw/research/2026-10-04-compressed-backup-verification.json": "f883118ea1999cc2919a507bbbe0c1024cb2d6a11958b7799c3e71eea348b116",
     "history/versions/prd-v0.8.1.md": "2fba1ef4ead91ddfc8692f1707c4e80b1fa414679badee262ec6d3f29c011faf",
-    "history/changes/CHG-0016.md": "4c2cba323af57318ea9c5ad3b94950b2d94003c7a78662bea4aab246f1d061f3"
+    "history/changes/CHG-0016.md": "4c2cba323af57318ea9c5ad3b94950b2d94003c7a78662bea4aab246f1d061f3",
+    "raw/conversations/2026-10-04-016.md": "af0dc45aaa1332d906248837966c46d7ef1d3609457f900b333f91e5bee135f0",
+    "raw/research/2026-10-04-cloudflare-setup-recheck.json": "7598de7bd462e35a7bab51eb0a83c7f5b4ace4b109b5b20c7474637f8435fc4c",
+    "history/changes/CHG-0017.md": "4e7834a2aa158ce87ce798d813c6e01c8d29494f7a65a51c544c0284dc820a70",
+    "history/versions/prd-v0.8.2.md": "9b81c7ba9959f1b3226962a60ecdcdafcb10987cd00843626511d050fb02534d"
   },
-  "updated_at": "2026-10-04T16:26:11+09:00"
+  "updated_at": "2026-10-04T20:28:29+09:00"
 }

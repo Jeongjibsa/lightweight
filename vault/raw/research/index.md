@@ -25,3 +25,4 @@
 
 - [새 snapshot 생성 오류 수정 기록](2026-10-04-cloudflare-snapshot-construction.json)
 - [압축 백업 확인](2026-10-04-compressed-backup-verification.json)
+- [Cloudflare 설정 재확인/OAuth](2026-10-04-cloudflare-setup-recheck.json) — skills16/MCP5·main login 성공/계정 읽기HTTP200·범위 구분.

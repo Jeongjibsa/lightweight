@@ -16,3 +16,4 @@
 - [PRD0.7.2 전체](prd-v0.7.2.md) — 계약/현황PATCH.
 - [PRD0.8.0 전체](prd-v0.8.0.md)
 - [PRD0.8.1](prd-v0.8.1.md)
+- [PRD0.8.2](prd-v0.8.2.md) — main MCP OAuth 성공/개발 환경 재확인 PATCH.

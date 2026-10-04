@@ -113,7 +113,7 @@ E2E server는 production 설정을 공유하는 test-only config로 dist-e2e/v1�
 
 ## Cloudflare 배포 준비
 
-Wrangler4.147.0과 `wrangler.jsonc`를 사용합니다. `npm run pages:check`는 실제 dist의 PWA/보안 헤더·private 경로·비밀키/privileged JWT·E2E marker를 검사합니다. `npm run pages:deploy`는 build/검사 후 Pages에 dist만 전송하므로 OAuth/대상 계정·project 확인과 사용자 배포 승인 범위가 먼저 필요합니다. 공식 skills16/MCP5 등록을 인증 성공으로 표시하지 않습니다. 현재 broad OAuth 승인과 실제 HTTPS 배포는 pending입니다. [연결 운영](../vault/wiki/operations/cloudflare-setup.md).
+Wrangler4.147.0과 `wrangler.jsonc`를 사용합니다. `npm run pages:check`는 실제 dist의 PWA/보안 헤더·private 경로·비밀키/privileged JWT·E2E marker를 검사합니다. `npm run pages:deploy`는 build/검사 후 Pages에 dist만 전송하므로 Wrangler 인증/대상 계정·project 확인과 사용자 배포 승인 범위가 먼저 필요합니다. CONV-0016에서 공식 skills16/MCP5를 재확인했고 Codex main MCP OAuth login 성공·현재 계정 읽기 HTTP200을 확인했습니다. 사용자가 cf 생략·기존 Wrangler 유지를 선택했습니다. 특화 MCP3개·Wrangler 인증과 실제 HTTPS 배포는 각각 확인이 남았습니다. [연결 운영](../vault/wiki/operations/cloudflare-setup.md).
 
 ## 큰 백업 복구
 

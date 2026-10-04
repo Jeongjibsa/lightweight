@@ -1,0 +1,66 @@
+{
+  "type": "Verification Record",
+  "title": "Cloudflare official Codex setup recheck and OAuth success",
+  "generated": {
+    "by": "codex/gpt-6",
+    "at": "2026-10-04T20:22:34+09:00"
+  },
+  "immutable": true,
+  "official_prompt": {
+    "url": "https://developers.cloudflare.com/agent-setup/prompt.md",
+    "sha256": "f479284bc523204c4c42a380479b8cb43b2f4879c2906ef8fb30b3c4fb7efd36",
+    "read_scope": "Fetched full prompt with curl and followed Other agents / Codex instructions. Hash matches the prior capture.",
+    "retrieval_limitations": "web.open rejected text/markdown; sandbox curl DNS failed; approved network access succeeded."
+  },
+  "skills": {
+    "command": "npx -y skills add cloudflare/skills --skill '*' --yes --global",
+    "exit_code": 0,
+    "installed": 16,
+    "verified_skill_files": 16,
+    "path": "~/.agents/skills",
+    "names": [
+      "agents-sdk", "basin", "cloudflare", "cloudflare-email-service",
+      "cloudflare-one", "cloudflare-one-migrations", "durable-objects", "k2",
+      "nextjs-on-cloudflare", "sandbox-migrate-to-next", "sandbox-next",
+      "sandbox-stable", "turnstile-spin", "web-perf", "workers-best-practices", "wrangler"
+    ],
+    "limitation": "Installer reports unsupported global PromptScript target. Codex-compatible files were individually verified; success for every other agent target is not asserted."
+  },
+  "mcp": {
+    "config": "~/.codex/config.toml",
+    "registration_action": "Reused the five existing enabled entries after verifying their exact official URLs; no duplicate registration or unrelated configuration edits.",
+    "servers": {
+      "cloudflare": "https://mcp.cloudflare.com/mcp",
+      "cloudflare-docs": "https://docs.mcp.cloudflare.com/mcp",
+      "cloudflare-bindings": "https://bindings.mcp.cloudflare.com/mcp",
+      "cloudflare-builds": "https://builds.mcp.cloudflare.com/mcp",
+      "cloudflare-observability": "https://observability.mcp.cloudflare.com/mcp"
+    },
+    "codex_version": "0.160.0",
+    "login": {
+      "command": "codex mcp login cloudflare",
+      "exit_code": 0,
+      "result": "Successfully logged in to MCP server cloudflare.",
+      "boundary": "CLI success confirmed. Browser approval interaction itself was not directly inspected or automated."
+    },
+    "account_read": {
+      "tool": "cloudflare.execute",
+      "method": "GET",
+      "path": "/accounts",
+      "per_page": 1,
+      "success": true,
+      "status": 200,
+      "returned_accounts": 1,
+      "boundary": "Current loaded MCP session read succeeded; this does not verify every grant or total account count. Account names, IDs, email, OAuth URL/state/code and tokens are omitted."
+    },
+    "docs_search": "Public cloudflare-docs search returned official documentation results.",
+    "specialized_servers": "Bindings/builds/observability registered; their separate OAuth and resource calls were not tested. Official prompt describes authentication on first use.",
+    "restart": "Restart agent to refresh all registered MCP servers and updated skills."
+  },
+  "optional_cli": {
+    "user_choice": "기존 Wrangler 유지, cf 설치 생략",
+    "cf_installed": false,
+    "wrangler": "Existing project dependency 4.147.0 retained; Wrangler authentication was not tested."
+  },
+  "scope": "Development environment setup and documentation only. No resource mutation, deployment, application code change, or push in this task."
+}

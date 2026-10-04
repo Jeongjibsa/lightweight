@@ -9,8 +9,11 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T16:59:17+09:00"
+  at: "2026-10-04T20:22:34+09:00"
 sources:
+  - id: "cf-recheck"
+    resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
+    title: "Cloudflare 공식 설정과 OAuth 재확인"
   - id: "request"
     resource: "../../raw/conversations/2026-10-03-004.md"
     title: "스택 동의와 보안 우려"
@@ -56,12 +59,16 @@ sources:
   - id: "cf-setup"
     resource: "../operations/cloudflare-setup.md"
     title: "연결 운영"
-version: "0.1.2"
+version: "0.1.3"
 approval_status: "proposal"
-change_id: "CHG-0005"
+change_id: "CHG-0017"
 ---
 
 # PWA 배포와 개인 기록 접근 보안
+
+## CONV-0016 현재 개발 환경 연결 — 2026-10-04
+
+공식 스킬16개 갱신/MCP5개 등록 확인과 `codex mcp login cloudflare` 성공을 완료했다. 현재 main MCP 계정 읽기 HTTP200·public docs 검색을 확인했다. 사용자는 cf 생략·기존 Wrangler 유지를 선택했다. 특화 MCP3개·Wrangler 인증은 미검증이며 원격 project/고정 origin·HTTPS/앱 Auth 관문은 남았다. [이번 실행](../../raw/research/2026-10-04-cloudflare-setup-recheck.json). 아래 CONV-0015는 당시 연결 준비 이력이다.
 
 ## CONV-0015 연결 준비 — 2026-10-04
 
