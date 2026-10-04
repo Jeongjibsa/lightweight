@@ -21,3 +21,6 @@ supabase/.temp/
 # Local UI audit screenshots (synthetic test data only)
 output/design-audit/
 output/ui-review-0012/
+
+# Isolated E2E production build
+app/dist-e2e/

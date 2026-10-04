@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T14:54:43+09:00"
+  at: "2026-10-04T15:44:32+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-03-001.md"
@@ -113,9 +113,15 @@ sources:
   - id: "3d-feasibility"
     resource: "anatomy-3d-feasibility.md"
     title: "후순위 기술/자산 검토"
-version: "0.7.0"
+  - id: "e2e-request"
+    resource: "../../raw/conversations/2026-10-04-013.md"
+    title: "다음 순차 구현 요청"
+  - id: "e2e-run"
+    resource: "../../raw/research/2026-10-04-e2e-harness-verification.json"
+    title: "9과업·27반복·최초 실패 증거"
+version: "0.7.1"
 approval_status: "proposal"
-change_id: "CHG-0012"
+change_id: "CHG-0013"
 aliases:
   - "앱 기획서"
   - "PRD"
@@ -123,7 +129,7 @@ aliases:
 
 # 근거 기반 웨이트 트레이닝 앱 기획서
 
-> **버전 0.7.0 · 2026-10-04 · 브레인스토밍 초안**  
+> **버전 0.7.1 · 2026-10-04 · 브레인스토밍 초안**  
 > 앱 이름은 미정. `lightweight`는 임시 프로젝트 식별자다.  
 > 사용자 범위·iOS·PWA·기본 스택과 명시 기능은 **요구사항/합의**, 배포 제공자·상세 보안/동기화·출시 순서·수치 목표는 **기획 제안**으로 구분한다.
 
@@ -322,9 +328,11 @@ MVP는 과거 수행량과 현재 본인 루틴의 오늘 후보부터 제공한
 
 ### 11.1 검증 하네스와 반복 개선
 
-CONV-0007에서 남은 작업과 현재 하네스 설명/문서화, 루프 엔지니어링을 통한 완성도 개선을 요청했다. 현재 자동 검사는 Vitest v4 unit19/integration25/ui11의55개/12파일·공통 check(lint/test/strict build)·vault 구조 검사다. 별도 수동 원격 SQL16과 비로그인 HTTP401/TLS를 확인했다. SQL role/JWT 표본은 실제 Auth 전체 흐름이 아니다. Chromium UI/오프라인/백업/업데이트 관찰은 수행했으나 저장소의 E2E/CI 회귀로 고정하지 않았다. [현재 구조](../operations/testing-harness.md).
+CONV-0007의 하네스/루프 요구와 CONV-0013의 다음 작업 요청에 따라 현재 자동 검사는 Vitest unit19/integration25/ui15의59개/13파일, 공통 check(lint/test/strict build/E2E typecheck)·format·vault 구조 검사다. Playwright1.63.0의 Chromium5/WebKit4, 합계9과업을 추가해27회 반복 통과했고 하네스 종료 수정 후9회 재확인했다. 실제 UI의 설정/즉시 완료/재개·다운로드/빈context복원·로컬A/B·Chromium실제SW오프라인·다섯화면×네폭/정보창초점을 검사한다. [현재 구조](../operations/testing-harness.md)·[실행](../../raw/research/2026-10-04-e2e-harness-verification.json).
 
-실패 표본과 독립 기대값→작은 수정→같은 조건 재검증→회귀/이력을 남기는 루프를 제안한다. 단위/통합 분리·DOM/실제 browser 흐름·실패 주입/업데이트·CI 증거를 HAR-01~06으로 추적한다. [남은 작업](remaining-work.md)과 [운영 절차](../operations/loop-engineering.md)의 상세 기준은 제안이며, 자동 검사 성공이 실기기/근거 검토를 대신하지 않는다. HAR-01을 구현했고 HAR-04 migration/HAR-06 원격 계약 일부를 추가했다. 자동 DOM의 주요 과업은 추가했으며 실제 browser E2E·CI 실패 증거·실제 기기 검증은 아직 남았다. 모달 초점 문제를 재현→수정→브라우저 재검증한 사례를 루프 문서에 기록했다.
+HAR03은 로컬 runner 기준 완료다. HAR05의 브라우저별 CI와 첫 실패 화면·trace/console/메타데이터/코드해시·7일보관 설정, 의도적 실패probe는 로컬 확인했다. 새 GitHub 실행/업로드는 미확인이라 in_progress다. 실제 Auth 토큰/클라우드·iPhone/Safari/VoiceOver/200%·quota/대용량/버전업데이트·운영HTTPS/근거 전문 검토는 남았다. 별도 SQL16/비로그인HTTP 이력은 실제 Auth 전체흐름이 아니다. [남은 작업](remaining-work.md).
+
+독립 기대값→첫 실패 증거→작은 수정→같은 조건 재검증→회귀/이력을 유지한다. 최초 ISO 형식 실패는 test 결함, 정상 종료exit143은 하네스 결함으로 분류했다. 자동 retries0·고유 실행ID로 최초 실패를 보존한다. 세 번 반복·artifact7일은 구현 운영안이며 사용자 처방/운동 효과/출시 안정성 검증으로 표현하지 않는다. PRD0.7.1은 검사 상태 정정 PATCH이며 FR/MVP·3D/식단 후순위는 유지한다. [루프](../operations/loop-engineering.md).
 
 ## 12. 미결 사항
 

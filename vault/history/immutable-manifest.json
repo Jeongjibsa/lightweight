@@ -89,7 +89,13 @@
     "history/versions/prd-v0.7.0.md": "0d58d5cd4f6d9a34190d02532e09bb76856ace0bc34bb030b81d26d8e2b68dd7",
     "raw/design/2026-10-04-har02-invalid-file.png": "40d2ede88e4bc6dd4cb581d1f60b32d4321880ebad575745327a76030d4da2a4",
     "raw/design/2026-10-04-har02-same-file-retry.png": "bd2341d812a419dec5b4a4671bc8ecff922acfb6f992a4a48f40fcd220c464c9",
-    "raw/research/2026-10-04-profile-backup-dom-loop.json": "a1b2674d043509e70390bacfe327a4b193e260fb757bf1d2bf69ebe0bf9ca5a7"
+    "raw/research/2026-10-04-profile-backup-dom-loop.json": "a1b2674d043509e70390bacfe327a4b193e260fb757bf1d2bf69ebe0bf9ca5a7",
+    "raw/conversations/2026-10-04-013.md": "41e74a9b5ace0dad532a7a3d50e7215eea9eb960ff62d930b1a8151aaf559feb",
+    "raw/design/2026-10-04-e2e-webkit-settings.png": "1be4052588747c73a28a1fb71df0b6e38762e3abd3b67ce27cf7a7891ffb8783",
+    "raw/design/2026-10-04-e2e-chromium-offline.png": "1d7548b4f096c8359d39453ab11159e315c00c3b52d88d51587999f08919aaa0",
+    "raw/research/2026-10-04-e2e-harness-verification.json": "1ac9d426d5e7dee33cf85536f37e176e772d749e997675adc3e7260640c1ef0e",
+    "history/changes/CHG-0013.md": "b215144fec1850bd833c44ba3b8edaa0cd6b8742a9acfea56318ea5eeeb39134",
+    "history/versions/prd-v0.7.1.md": "6c924ffd832c99653713a387ed38164c1959ec8daccf76e0887bb22f5fa440b8"
   },
-  "updated_at": "2026-10-04T14:54:43+09:00"
+  "updated_at": "2026-10-04T15:44:32+09:00"
 }

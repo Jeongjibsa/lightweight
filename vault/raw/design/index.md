@@ -53,3 +53,10 @@
 - [같은 경로 재선택·복원 버튼](2026-10-04-har02-same-file-retry.png)
 
 실제390×844 캡처를 저장 후 직접 확인했다. 미리보기에서 취소했으며 별도 DOM에서 실제 복원/DB 보존을 확인했다. [실행](../research/2026-10-04-profile-backup-dom-loop.json).
+
+## E2E 실제 가짜 화면
+
+- [WebKit 설정390px](2026-10-04-e2e-webkit-settings.png) — 새미설정프로필·키보드focus; 실제iPhone아님.
+- [Chromium 오프라인 리포트390px](2026-10-04-e2e-chromium-offline.png) — 실제SW제어/네트워크차단·2세트저장 직후.
+
+저장한 정확한viewport를 직접 확인했다. 전체페이지/실제사용자자료아님. [실행](../research/2026-10-04-e2e-harness-verification.json).

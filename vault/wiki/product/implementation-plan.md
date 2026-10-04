@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T15:11:42+09:00"
+  at: "2026-10-04T15:44:32+09:00"
 sources:
   - id: "implementation-request"
     resource: "../../raw/conversations/2026-10-03-005.md"
@@ -71,9 +71,15 @@ sources:
   - id: "profile-backup-loop"
     resource: "../../raw/research/2026-10-04-profile-backup-dom-loop.json"
     title: "HAR-02 최초 실패·실제 수정·59개 검사"
-version: "0.6.1"
+  - id: "e2e-request"
+    resource: "../../raw/conversations/2026-10-04-013.md"
+    title: "다음 순차 구현 요청"
+  - id: "e2e-run"
+    resource: "../../raw/research/2026-10-04-e2e-harness-verification.json"
+    title: "9과업·27반복·최초 실패 증거"
+version: "0.6.2"
 approval_status: "proposal"
-change_id: "CHG-0012"
+change_id: "CHG-0013"
 ---
 
 # 운동 PWA 구현 작업계획
@@ -247,3 +253,7 @@ UI-02의 색상 기준을 차콜/노란 강조로 수정했고 동일 branch에�
 UI-03의 실제 페이지 재감사/수정→VIS-3D-01 검토/후순위 계획→HAR-02 백업 재시도·프로필 DOM 보강→HAR-03/05 자동 browser/CI 기반을 이어간다. FR-17은 P2로 운동 MVP 안정화 이후 asset/검토/실기기 관문을 통과해 착수하며 현재 구현하지 않는다. [재감사](component-review.md)·[3D](anatomy-3d-feasibility.md).
 
 HAR-02 후속: 파일 재선택/프로필 A→B→A·pending 저장·workspace owner 경합을 실제 App/Store DOM으로 보강하고59개 검사·lint/build/format:check를 통과했다. 로컬 부분은 완료, 실제 Auth/자동 browser는 미완료다. 다음 HAR-03/05를 진행한다. [실행](../../raw/research/2026-10-04-profile-backup-dom-loop.json). 요구/PRD0.7.0·schema는 유지한다.
+
+## HAR03/05 증분
+
+CONV0013에서 다음 구현을 요청했다. 고정runner·9과업/27반복·최종9/실패probe 완료, CI설정/7일보관 완료·외부실행은미확인이다. HAR03 done/HAR05 in_progress. 다음은 계정 없이 진행가능한 HAR04 저장 실패/큰백업/브라우저업데이트, 이후 준비된 실제Auth 관문이다. 기능범위/app/schema 유지, PRD0.7.1현황정정. [검증](../../raw/research/2026-10-04-e2e-harness-verification.json).

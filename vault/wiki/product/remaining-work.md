@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T15:11:42+09:00"
+  at: "2026-10-04T15:44:32+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
@@ -56,12 +56,26 @@ sources:
   - id: "profile-backup-loop"
     resource: "../../raw/research/2026-10-04-profile-backup-dom-loop.json"
     title: "HAR-02 최초 실패·실제 수정·59개 검사"
-version: "0.3.0"
+  - id: "e2e-request"
+    resource: "../../raw/conversations/2026-10-04-013.md"
+    title: "다음 순차 구현 요청"
+  - id: "e2e-run"
+    resource: "../../raw/research/2026-10-04-e2e-harness-verification.json"
+    title: "9과업·27반복·최초 실패 증거"
+version: "0.3.1"
 approval_status: "proposal"
-change_id: "CHG-0012"
+change_id: "CHG-0013"
 ---
 
 # 현재 구현에서 운동 MVP까지 남은 작업
+
+## HAR-03/05 현재 증분 — 2026-10-04
+
+`codex/e2e-harness`에서 @playwright/test1.63.0 runner·독립 production build/preview·빈 context·실제 UI 입력/파일 다운로드/복원·Chromium SW 오프라인을 추가했다. **Chromium5/WebKit4의9과업을 세 번씩27회 통과**했고, 종료 처리 수정 후9회 재확인했다. Vitest59개/13파일·lint 경고0/build/E2E typecheck/format도 통과했다. [불변 실행](../../raw/research/2026-10-04-e2e-harness-verification.json).
+
+HAR-03은 로컬 runner 기준 done이다. HAR-05는 engine별 CI·실패 trace/화면/console/환경·고유 실행ID/코드 해시·7일보관 설정과 로컬 실패 probe를 완료했으나 **새 GitHub workflow 실행은 미확인이라 in_progress**다. 의도적 실패1개와 runner exit1을 부모 probe가 검증한 뒤 exit0으로 끝내며 정상9과업에는 probe를 넣지 않는다. E2E06은 다섯 화면×네 실제 폭/정보창 키보드·Escape focus 부분만 확인했다.
+
+개인 기록·Auth·Supabase 외부 요청 없이 별도4188/빈 브라우저 context에서 가짜 자료만 생성했다. desktop WebKit은 실제 Safari/iPhone이 아니며 PWA는 Chromium에서만 검사한다. 실제 Auth/과학 콘텐츠/기기·HTTPS 관문과 HAR04 업데이트/quota/큰 백업은 남았다. PRD0.7.1은 현황 정정 PATCH, app0.2.0/schema2·기능 요구는 유지한다. 아래 문단은 이전 증분 이력이다.
 
 ## HAR-02 후속 — 로컬 프로필/파일 재시도 완료
 
@@ -93,9 +107,9 @@ UI-02 전체 Mantine·Geist/차콜·노란 강조·전 폭 하단 메뉴·빠른
 
 | 순서 | 남은 작업 | 작업 ID | 완료 조건/현재 제한 |
 |---|---|---|---|
-| 1 | browser E2E·CI 실패 증거·남은 Auth DOM | HAR-02/03/05 | 로컬 파일/프로필 DOM은 완료. 실제 browser 입력/파일·offline·새DB복원·초점/계정 경계를 새context/trace로 고정; 외부 CI 결과 |
-| 2 | 본인 계정 등록/허용 목록·실제 Auth/복원 | SYNC-02/05 | 사용자가 비밀번호/계정 등록, 승인 UUID 허용 후 login→전송→다른 저장소 불러오기; A/B/만료/권한회수/오프라인 확인. 서버 연결정보 부족은 해결됨 |
-| 3 | 실제 migration/update·저장 실패·대용량 | HAR-04, LOG-05/06 | schema1→2 계약은 통과. 브라우저 quota·진행 운동 update·큰백업 정책/경계·새기기/서버복구는 미완료 |
+| 1 | 새 CI 외부 실행·남은 Auth DOM | HAR-02/05 | HAR03 로컬9과업·27반복 완료. CI설정/실패probe 완료; GitHub 실행과 artifact 업로드는 미확인 |
+| 2 | 실제 migration/update·저장 실패·대용량 | HAR-04, LOG-05/06 | schema1→2 계약은 통과. 브라우저 quota·진행 운동 update·큰백업 정책/경계·새기기/서버복구는 미완료 |
+| 3 | 본인 계정 등록/허용 목록·실제 Auth/복원 | SYNC-02/05 | 사용자가 비밀번호/계정 등록, 승인 UUID 허용 후 login→전송→다른 저장소 불러오기; A/B/만료/권한회수/오프라인 확인. 서버 연결정보 부족은 해결됨 |
 | 4 | 전송/편집 충돌 흐름 고도화 | SYNC-03/04/05 | manual snapshot CAS/retry는 구현. 두 변경 명시 해결·삭제 재등장·pending 취소/복구·증가한 기록 크기 정책, 필요 시 자동 레코드 sync |
 | 5 | 실제 운동 입력 편의 | LOG-03~06, RESP-01 | 이전 세션 재사용·종목 대체·종료 기록 편집·부하/장비 조건·삭제 흐름과 회귀 |
 | 6 | 설명 가능한 개인화 | REP-01~03 | 직접/간접·단측/단위·같은 조건 추세·N/A·수정 재계산·입력/규칙/근거 버전·다음 행동 |
@@ -104,7 +118,7 @@ UI-02 전체 Mantine·Geist/차콜·노란 강조·전 폭 하단 메뉴·빠른
 | 9 | 본인 관찰→지인 제공 | PIL-01/02 | 실제 불편/누락/해석 문제→수정→회귀, G3/G4 만족 후 계정 독립/복원 과업 |
 | 후속 | 식단/영양·선택 AI 설명 | NUT-01~04, AI-01 | 운동 우선 원칙 유지; 음식DB/권한·결측/커버리지·검토 공식/재현 계산 |
 
-계정 등록 전에도 HAR-02/03/05와 로컬 입력/계산·SCI 전문 검토는 진행할 수 있다. 개인 계정 비밀번호를 대화로 수집하지 않는다. [계정 준비 절차](supabase-integration.md)를 문서화했다. Q-15 로그인/복구/메일, Q-08/16/17 운영비/도메인/접근, Q-12 지원 iOS/실기기, Q-01 경험/장비/시간, Q-06 검토 역할은 필요한 단계에 정한다.
+HAR03 로컬 회귀를 마쳤다. 다음은 계정 등록 없이 가능한 HAR04 저장 실패·큰 백업·브라우저 업데이트다. 실제 Auth는 계정 준비 후 진행한다. 로컬 입력/계산·SCI 전문 검토도 독립 진행할 수 있다. 개인 계정 비밀번호를 대화로 수집하지 않는다. [계정 준비 절차](supabase-integration.md)를 문서화했다. Q-15 로그인/복구/메일, Q-08/16/17 운영비/도메인/접근, Q-12 지원 iOS/실기기, Q-01 경험/장비/시간, Q-06 검토 역할은 필요한 단계에 정한다.
 
 ## CONV-0009 이후 실제 다음 묶음
 

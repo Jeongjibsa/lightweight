@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T15:11:42+09:00"
+  at: "2026-10-04T15:44:32+09:00"
 sources:
   - id: "responsive-local-request"
     resource: "../../raw/conversations/2026-10-03-006.md"
@@ -71,11 +71,25 @@ sources:
   - id: "profile-backup-loop"
     resource: "../../raw/research/2026-10-04-profile-backup-dom-loop.json"
     title: "HAR-02 최초 실패·실제 수정·59개 검사"
-version: "0.3.0"
-change_id: "CHG-0012"
+  - id: "e2e-request"
+    resource: "../../raw/conversations/2026-10-04-013.md"
+    title: "다음 순차 구현 요청"
+  - id: "e2e-run"
+    resource: "../../raw/research/2026-10-04-e2e-harness-verification.json"
+    title: "9과업·27반복·최초 실패 증거"
+version: "0.3.1"
+change_id: "CHG-0013"
 ---
 
 # 로컬 PWA 구현 결과와 다음 작업
+
+## HAR-03/05 현재 증분 — 2026-10-04
+
+`codex/e2e-harness`에서 @playwright/test1.63.0 runner·독립 production build/preview·빈 context·실제 UI 입력/파일 다운로드/복원·Chromium SW 오프라인을 추가했다. **Chromium5/WebKit4의9과업을 세 번씩27회 통과**했고, 종료 처리 수정 후9회 재확인했다. Vitest59개/13파일·lint 경고0/build/E2E typecheck/format도 통과했다. [불변 실행](../../raw/research/2026-10-04-e2e-harness-verification.json).
+
+HAR-03은 로컬 runner 기준 done이다. HAR-05는 engine별 CI·실패 trace/화면/console/환경·고유 실행ID/코드 해시·7일보관 설정과 로컬 실패 probe를 완료했으나 **새 GitHub workflow 실행은 미확인이라 in_progress**다. 의도적 실패1개와 runner exit1을 부모 probe가 검증한 뒤 exit0으로 끝내며 정상9과업에는 probe를 넣지 않는다. E2E06은 다섯 화면×네 실제 폭/정보창 키보드·Escape focus 부분만 확인했다.
+
+개인 기록·Auth·Supabase 외부 요청 없이 별도4188/빈 브라우저 context에서 가짜 자료만 생성했다. desktop WebKit은 실제 Safari/iPhone이 아니며 PWA는 Chromium에서만 검사한다. 실제 Auth/과학 콘텐츠/기기·HTTPS 관문과 HAR04 업데이트/quota/큰 백업은 남았다. PRD0.7.1은 현황 정정 PATCH, app0.2.0/schema2·기능 요구는 유지한다. 아래 문단은 이전 증분 이력이다.
 
 ## HAR-02 후속 — 로컬 프로필/파일 재시도 완료
 

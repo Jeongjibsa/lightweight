@@ -1,0 +1,590 @@
+{
+  "type": "Verification Record",
+  "title": "HAR-03 browser runner and HAR-05 artifact loop",
+  "generated": {
+    "by": "codex/gpt-6",
+    "at": "2026-10-04T15:44:32+09:00"
+  },
+  "captured_at": "2026-10-04T15:44:32+09:00",
+  "immutable": true,
+  "request": "CONV-0013 continuation; existing HAR backlog and CONV-0007/0012",
+  "baseline_commit": "18620d846246165bd95bfe1f075b69f1f40fb641",
+  "branch": "codex/e2e-harness",
+  "app_version": "0.2.0",
+  "schema_version": 2,
+  "prd_version": "0.7.1",
+  "environment": {
+    "local": "macOS arm64, browser runner Node25.8.1",
+    "fast_check": "Node24.14.1/npm11.11.0; preserved check log",
+    "playwright": "1.63.0",
+    "chromium": "153.0.8010.12/revision1243",
+    "webkit": "26.6/revision2359",
+    "origin": "http://127.0.0.1:4188",
+    "viewport": "390x844/mobile+touch; actual width matrix320/390/768/1440",
+    "clock": "2026-10-04T03:00:00.000Z; timers not paused",
+    "data": "fresh independent browser contexts; UI-created synthetic records; no personal records or real Auth",
+    "supabase": "VITE URL/publishable key blank overrides in test build; 0 external HTTP(S) requests"
+  },
+  "automated": {
+    "unit": 19,
+    "integration": 25,
+    "ui": 15,
+    "vitest_total": 59,
+    "vitest_files": 13,
+    "browser_distinct": 9,
+    "browser_repeat_runs": 27,
+    "after_shutdown_fix": 9,
+    "lint": "passed/0 warnings",
+    "build": "passed",
+    "typecheck_e2e": "passed",
+    "format_check": "passed",
+    "precache_entries": 25,
+    "production_precache_KiB": 1277.55,
+    "e2e_precache_KiB": 1277.47
+  },
+  "runs": {
+    "first": {
+      "run_id": "20261004T062815055Z-3599b958",
+      "artifact_root": "output/playwright/e2e/20261004T062815055Z-3599b958",
+      "stats": {
+        "startTime": "2026-10-04T06:28:15.355Z",
+        "duration": 26510.408,
+        "expected": 7,
+        "skipped": 0,
+        "unexpected": 2,
+        "flaky": 0
+      },
+      "json_sha256": "978db61dafd66bf1f7e29584c2e9d4eb65546b6c1d0aa7e75f6f33ce8315c848",
+      "environment_sha256": null,
+      "code_fingerprint": null,
+      "tests": [
+        {
+          "title": "E2E-01 빈 프로필→설정/루틴→결측 거부/0kg 즉시 완료→reload/리포트",
+          "project": "chromium-mobile",
+          "status": "failed",
+          "retry": 0,
+          "duration_ms": 1685,
+          "errors": [
+            "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"2026-10-04T03:00:00Z\"\u001b[39m\nReceived: \u001b[31m\"2026-10-04T03:00:00\u001b[7m.000\u001b[27mZ\"\u001b[39m\n\n  64 |     side: \"both\",\n  65 |   });\n> 66 |   expect(data.sessions[0]!.sets[0]!.completedAt).toBe(fixedTime);\n     |                                                  ^\n  67 |   await navigate(page, \"리포트\");\n  68 |   await expect(\n  69 |     page.getByRole(\"heading\", { name: \"볼륨과 추이\", exact: true }),\n    at /Users/jisung/Projects/lightweight/app/tests/e2e/core.e2e.spec.ts:66:50"
+          ]
+        },
+        {
+          "title": "E2E-03 다운로드 백업→잘못된 파일 거부→빈 context 복원→IDs/삭제/기록 보존",
+          "project": "chromium-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 2156,
+          "errors": []
+        },
+        {
+          "title": "E2E-04 로컬 A→B 설정/루틴 분리→A 복귀/reload 원본 보존",
+          "project": "chromium-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 2008,
+          "errors": []
+        },
+        {
+          "title": "E2E-06 부분:5화면×4폭 overflow/키보드 선택·Escape opener 복귀",
+          "project": "chromium-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 1045,
+          "errors": []
+        },
+        {
+          "title": "E2E-01 빈 프로필→설정/루틴→결측 거부/0kg 즉시 완료→reload/리포트",
+          "project": "webkit-mobile",
+          "status": "failed",
+          "retry": 0,
+          "duration_ms": 2285,
+          "errors": [
+            "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m\"2026-10-04T03:00:00Z\"\u001b[39m\nReceived: \u001b[31m\"2026-10-04T03:00:00\u001b[7m.000\u001b[27mZ\"\u001b[39m\n\n  64 |     side: \"both\",\n  65 |   });\n> 66 |   expect(data.sessions[0]!.sets[0]!.completedAt).toBe(fixedTime);\n     |                                                  ^\n  67 |   await navigate(page, \"리포트\");\n  68 |   await expect(\n  69 |     page.getByRole(\"heading\", { name: \"볼륨과 추이\", exact: true }),\n    at /Users/jisung/Projects/lightweight/app/tests/e2e/core.e2e.spec.ts:66:50"
+          ]
+        },
+        {
+          "title": "E2E-03 다운로드 백업→잘못된 파일 거부→빈 context 복원→IDs/삭제/기록 보존",
+          "project": "webkit-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 2831,
+          "errors": []
+        },
+        {
+          "title": "E2E-04 로컬 A→B 설정/루틴 분리→A 복귀/reload 원본 보존",
+          "project": "webkit-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 2662,
+          "errors": []
+        },
+        {
+          "title": "E2E-06 부분:5화면×4폭 overflow/키보드 선택·Escape opener 복귀",
+          "project": "webkit-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 1692,
+          "errors": []
+        },
+        {
+          "title": "E2E-02 Chromium:실제 SW→오프라인 reload/2세트 저장→재연결/단일 기록",
+          "project": "chromium-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 1618,
+          "errors": []
+        }
+      ]
+    },
+    "repeat": {
+      "run_id": "20261004T063427391Z-6ae172d3",
+      "artifact_root": "output/playwright/e2e/20261004T063427391Z-6ae172d3",
+      "stats": {
+        "startTime": "2026-10-04T06:34:27.701Z",
+        "duration": 56439.936,
+        "expected": 27,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "json_sha256": "17e20ddd2361e372eaa030b167e5e51a69b813c98530dbb59b1fc7bbafdfa3a5",
+      "environment_sha256": "3c11476b29b03c16c841b77bf57a29083a569df0da83ab1578aa11a94cadfd87",
+      "code_fingerprint": "a2e6aba9529538e6c153c602ea38257fc687cdb5494e1e29a810d17f5107c833",
+      "tests": [
+        {
+          "title": "E2E-01 빈 프로필→설정/루틴→결측 거부/0kg 즉시 완료→reload/리포트",
+          "project": "chromium-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 1543,
+          "errors": []
+        },
+        {
+          "title": "E2E-03 다운로드 백업→잘못된 파일 거부→빈 context 복원→IDs/삭제/기록 보존",
+          "project": "chromium-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 2078,
+          "errors": []
+        },
+        {
+          "title": "E2E-04 로컬 A→B 설정/루틴 분리→A 복귀/reload 원본 보존",
+          "project": "chromium-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 1973,
+          "errors": []
+        },
+        {
+          "title": "E2E-06 부분:5화면×4폭 overflow/키보드 선택·Escape opener 복귀",
+          "project": "chromium-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 1063,
+          "errors": []
+        },
+        {
+          "title": "E2E-01 빈 프로필→설정/루틴→결측 거부/0kg 즉시 완료→reload/리포트",
+          "project": "chromium-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 1489,
+          "errors": []
+        },
+        {
+          "title": "E2E-03 다운로드 백업→잘못된 파일 거부→빈 context 복원→IDs/삭제/기록 보존",
+          "project": "chromium-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 2090,
+          "errors": []
+        },
+        {
+          "title": "E2E-04 로컬 A→B 설정/루틴 분리→A 복귀/reload 원본 보존",
+          "project": "chromium-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 1987,
+          "errors": []
+        },
+        {
+          "title": "E2E-06 부분:5화면×4폭 overflow/키보드 선택·Escape opener 복귀",
+          "project": "chromium-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 1028,
+          "errors": []
+        },
+        {
+          "title": "E2E-01 빈 프로필→설정/루틴→결측 거부/0kg 즉시 완료→reload/리포트",
+          "project": "chromium-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 1485,
+          "errors": []
+        },
+        {
+          "title": "E2E-03 다운로드 백업→잘못된 파일 거부→빈 context 복원→IDs/삭제/기록 보존",
+          "project": "chromium-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 2146,
+          "errors": []
+        },
+        {
+          "title": "E2E-04 로컬 A→B 설정/루틴 분리→A 복귀/reload 원본 보존",
+          "project": "chromium-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 1974,
+          "errors": []
+        },
+        {
+          "title": "E2E-06 부분:5화면×4폭 overflow/키보드 선택·Escape opener 복귀",
+          "project": "chromium-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 1045,
+          "errors": []
+        },
+        {
+          "title": "E2E-01 빈 프로필→설정/루틴→결측 거부/0kg 즉시 완료→reload/리포트",
+          "project": "webkit-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 2100,
+          "errors": []
+        },
+        {
+          "title": "E2E-03 다운로드 백업→잘못된 파일 거부→빈 context 복원→IDs/삭제/기록 보존",
+          "project": "webkit-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 2915,
+          "errors": []
+        },
+        {
+          "title": "E2E-04 로컬 A→B 설정/루틴 분리→A 복귀/reload 원본 보존",
+          "project": "webkit-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 2534,
+          "errors": []
+        },
+        {
+          "title": "E2E-06 부분:5화면×4폭 overflow/키보드 선택·Escape opener 복귀",
+          "project": "webkit-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 1666,
+          "errors": []
+        },
+        {
+          "title": "E2E-01 빈 프로필→설정/루틴→결측 거부/0kg 즉시 완료→reload/리포트",
+          "project": "webkit-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 1911,
+          "errors": []
+        },
+        {
+          "title": "E2E-03 다운로드 백업→잘못된 파일 거부→빈 context 복원→IDs/삭제/기록 보존",
+          "project": "webkit-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 2849,
+          "errors": []
+        },
+        {
+          "title": "E2E-04 로컬 A→B 설정/루틴 분리→A 복귀/reload 원본 보존",
+          "project": "webkit-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 2623,
+          "errors": []
+        },
+        {
+          "title": "E2E-06 부분:5화면×4폭 overflow/키보드 선택·Escape opener 복귀",
+          "project": "webkit-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 1610,
+          "errors": []
+        },
+        {
+          "title": "E2E-01 빈 프로필→설정/루틴→결측 거부/0kg 즉시 완료→reload/리포트",
+          "project": "webkit-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 1908,
+          "errors": []
+        },
+        {
+          "title": "E2E-03 다운로드 백업→잘못된 파일 거부→빈 context 복원→IDs/삭제/기록 보존",
+          "project": "webkit-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 2912,
+          "errors": []
+        },
+        {
+          "title": "E2E-04 로컬 A→B 설정/루틴 분리→A 복귀/reload 원본 보존",
+          "project": "webkit-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 2626,
+          "errors": []
+        },
+        {
+          "title": "E2E-06 부분:5화면×4폭 overflow/키보드 선택·Escape opener 복귀",
+          "project": "webkit-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 1610,
+          "errors": []
+        },
+        {
+          "title": "E2E-02 Chromium:실제 SW→오프라인 reload/2세트 저장→재연결/단일 기록",
+          "project": "chromium-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 1665,
+          "errors": []
+        },
+        {
+          "title": "E2E-02 Chromium:실제 SW→오프라인 reload/2세트 저장→재연결/단일 기록",
+          "project": "chromium-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 1633,
+          "errors": []
+        },
+        {
+          "title": "E2E-02 Chromium:실제 SW→오프라인 reload/2세트 저장→재연결/단일 기록",
+          "project": "chromium-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 1667,
+          "errors": []
+        }
+      ]
+    },
+    "final": {
+      "run_id": "20261004T063642812Z-e49acce9",
+      "artifact_root": "output/playwright/e2e/20261004T063642812Z-e49acce9",
+      "stats": {
+        "startTime": "2026-10-04T06:36:43.088Z",
+        "duration": 20174.211,
+        "expected": 9,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "json_sha256": "781efd8a5110c7234f588e3350d194d8cd14f1d72552bf437921de114cd30809",
+      "environment_sha256": "71e35382b022a6f8a41a633b37b2841d73472da46509a3787508c887e4393026",
+      "code_fingerprint": "440505dba02a32128587cab5dedca85a542793569d4c617f18345f1ec0d69664",
+      "tests": [
+        {
+          "title": "E2E-01 빈 프로필→설정/루틴→결측 거부/0kg 즉시 완료→reload/리포트",
+          "project": "chromium-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 1489,
+          "errors": []
+        },
+        {
+          "title": "E2E-03 다운로드 백업→잘못된 파일 거부→빈 context 복원→IDs/삭제/기록 보존",
+          "project": "chromium-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 2115,
+          "errors": []
+        },
+        {
+          "title": "E2E-04 로컬 A→B 설정/루틴 분리→A 복귀/reload 원본 보존",
+          "project": "chromium-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 2009,
+          "errors": []
+        },
+        {
+          "title": "E2E-06 부분:5화면×4폭 overflow/키보드 선택·Escape opener 복귀",
+          "project": "chromium-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 1029,
+          "errors": []
+        },
+        {
+          "title": "E2E-01 빈 프로필→설정/루틴→결측 거부/0kg 즉시 완료→reload/리포트",
+          "project": "webkit-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 2131,
+          "errors": []
+        },
+        {
+          "title": "E2E-03 다운로드 백업→잘못된 파일 거부→빈 context 복원→IDs/삭제/기록 보존",
+          "project": "webkit-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 2866,
+          "errors": []
+        },
+        {
+          "title": "E2E-04 로컬 A→B 설정/루틴 분리→A 복귀/reload 원본 보존",
+          "project": "webkit-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 2551,
+          "errors": []
+        },
+        {
+          "title": "E2E-06 부분:5화면×4폭 overflow/키보드 선택·Escape opener 복귀",
+          "project": "webkit-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 1661,
+          "errors": []
+        },
+        {
+          "title": "E2E-02 Chromium:실제 SW→오프라인 reload/2세트 저장→재연결/단일 기록",
+          "project": "chromium-mobile",
+          "status": "passed",
+          "retry": 0,
+          "duration_ms": 1625,
+          "errors": []
+        }
+      ]
+    },
+    "probe": {
+      "run_id": "probe-5e2c4b42-4cd9-4618-a0e1-38d8193aa4ce",
+      "artifact_root": "output/playwright/e2e/probe-5e2c4b42-4cd9-4618-a0e1-38d8193aa4ce",
+      "stats": {
+        "startTime": "2026-10-04T06:37:03.757Z",
+        "duration": 2641.5,
+        "expected": 0,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      },
+      "json_sha256": "365db1f6ea238a4446af936f18c1f6694f7731a48d5c128dee6ea76c4ebf10a6",
+      "environment_sha256": "05eba3b02c0442a452233078c558596a97dc58ae78bbf95e772e614b24726da6",
+      "code_fingerprint": "440505dba02a32128587cab5dedca85a542793569d4c617f18345f1ec0d69664",
+      "tests": [
+        {
+          "title": "HAR-05 intentional failure artifact probe",
+          "project": "chromium-mobile",
+          "status": "failed",
+          "retry": 0,
+          "duration_ms": 367,
+          "errors": [
+            "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: '의도적인 하네스 실패 표본', exact: true })\nExpected: visible\nTimeout: 200ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('heading', { name: '의도적인 하네스 실패 표본', exact: true }) with timeout 200ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: '의도적인 하네스 실패 표본', exact: true })\u001b[22m\n\n\n   8 |       exact: true,\n   9 |     }),\n> 10 |   ).toBeVisible({ timeout: 200 });\n     |     ^\n  11 | });\n  12 |\n    at /Users/jisung/Projects/lightweight/app/tests/e2e/evidence.probe.ts:10:5"
+          ]
+        }
+      ]
+    }
+  },
+  "loop": [
+    {
+      "issue": "fixture ISO expectation",
+      "first": "E2E01 fails both engines: expected Z/actual .000Z; other7 passed",
+      "classification": "test expectation defect, not product defect",
+      "fix": "canonical fixed time plus actual report heading; application runtime unchanged",
+      "proof": "27 repeated passes with retries0"
+    },
+    {
+      "issue": "test server shutdown",
+      "first": "27 passed but graceful Vite exit143 printed error",
+      "classification": "harness lifecycle defect",
+      "fix": "accept exit only during explicit shutdown; skip preview startup on interrupted build",
+      "proof": "9 final passes and artifact probe; no E2E Vite exit error in final logs"
+    },
+    {
+      "issue": "first-failure artifact probe",
+      "expected": "one deliberate assertion failure, native runner exit1, retry0; parent checks screenshot/trace/execution/console/report",
+      "actual": "probe script exit0 verifies exactly that failure and artifacts; normal suite never selects probe"
+    }
+  ],
+  "browser_console": {
+    "errors": 0,
+    "unhandled_exceptions": 0,
+    "warnings": "Playwright SW-blocked warnings expected in WebKit/new backup context; not suppressed",
+    "external_requests": 0
+  },
+  "ci": {
+    "file": ".github/workflows/check.yml",
+    "check": "Node24/npmci/lint/Vitest/build/E2E typecheck/format/vault",
+    "browser": "Ubuntu matrix Chromium5 and WebKit4, fail-fastfalse; official browser --with-deps install",
+    "probe": "Chromium dedicated deliberate-failure self-check",
+    "artifacts": "always upload output/playwright/e2e; unique engine/run/attempt; retention7days subject to repo policy",
+    "access": "public repository; synthetic-only artifacts, not a private backup destination",
+    "actual_new_workflow_execution": "not_run: this branch not pushed; local passing results are not GitHub results"
+  },
+  "scientific_or_product_claims": "none added; no runtime/schema/remote configuration changes",
+  "scope_limits": [
+    "desktop WebKit is not actual iOS/Safari",
+    "WebKit PWA not_run; Chromium real offline only",
+    "E2E06 keyboard info/Escape/focus and20page-width combinations only; no200%/landscape/VoiceOver",
+    "actual Auth/RLS tokens/cloud sync not_run",
+    "SW V1→V2 update/quota/large backup/migration browser tests remain HAR04",
+    "Linux CI/real iPhone/HTTPS/content full review remain gates"
+  ],
+  "captures": [
+    {
+      "resource": "raw/design/2026-10-04-e2e-webkit-settings.png",
+      "sha256": "1be4052588747c73a28a1fb71df0b6e38762e3abd3b67ce27cf7a7891ffb8783",
+      "source": "output/playwright/e2e/20261004T063642812Z-e49acce9/test-results/core.e2e-E2E-06-부분-5화면×4폭-overflow-키보드-선택·Escape-opener-복귀-webkit-mobile/settings-390.png",
+      "review": "Saved390x844 screenshot visually inspected; synthetic data only; top viewport not entire page"
+    },
+    {
+      "resource": "raw/design/2026-10-04-e2e-chromium-offline.png",
+      "sha256": "1d7548b4f096c8359d39453ab11159e315c00c3b52d88d51587999f08919aaa0",
+      "source": "output/playwright/e2e/20261004T063642812Z-e49acce9/test-results/pwa.e2e-E2E-02-Chromium-실제-SW→오프라인-reload-2세트-저장→재연결-단일-기록-chromium-mobile/offline-report-390.png",
+      "review": "Saved390x844 screenshot visually inspected; synthetic data only; top viewport not entire page"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://playwright.dev/docs/test-webserver",
+      "read_scope": "official targeted config/SW/CI/artifacts/metadata; independent local execution recorded separately"
+    },
+    {
+      "url": "https://playwright.dev/docs/test-configuration",
+      "read_scope": "official targeted config/SW/CI/artifacts/metadata; independent local execution recorded separately"
+    },
+    {
+      "url": "https://playwright.dev/docs/service-workers",
+      "read_scope": "official targeted config/SW/CI/artifacts/metadata; independent local execution recorded separately"
+    },
+    {
+      "url": "https://playwright.dev/docs/ci-intro",
+      "read_scope": "official targeted config/SW/CI/artifacts/metadata; independent local execution recorded separately"
+    },
+    {
+      "url": "https://docs.github.com/en/actions/tutorials/store-and-share-data",
+      "read_scope": "official targeted config/SW/CI/artifacts/metadata; independent local execution recorded separately"
+    },
+    {
+      "url": "https://registry.npmjs.org/@playwright/test/1.63.0",
+      "read_scope": "official targeted config/SW/CI/artifacts/metadata; independent local execution recorded separately"
+    }
+  ],
+  "code_sha256": {
+    ".github/workflows/check.yml": "a9b1bd6a9fc20e9dff4f81a0856f299b957547bbd32e474ce9de58fc09c6fa3f",
+    "app/package.json": "f03dc69fa474aba6cabeeb3870e7fc429237a70f79be4866ea915768293721b1",
+    "app/package-lock.json": "d621889d42f9d63e49183633d6fa5effa1aa247f30b2458bfa809d95262283dd",
+    "app/playwright.config.ts": "868419d0164655c4c081c273751a208261dcc8eea947e913dd3e371915ec2f95",
+    "app/tsconfig.e2e.json": "c5ba5f0da23d5822962d692bf5f1d2541be4425387c1e1b80f33669754821653",
+    "app/scripts/run-e2e.mjs": "f9191fe76d6e9b422d2c0b8372bc4ee2ed0e82132a87f031663245bd81f82eff",
+    "app/scripts/e2e-server.mjs": "96b3d757cb07347727370abd0870cb2d4531b6b5b210107a013f2915f10b46b3",
+    "app/scripts/probe-e2e-artifacts.mjs": "f1f5fec0135680c9b0dfb84736a1ddd84fc1117e70e49780de041afe905b7fa5",
+    "app/tests/e2e/environment.ts": "d36b3b22aadbbd7219c6e3532fa632ef9a2afb7482f8366ee54d77d1419f0c11",
+    "app/tests/e2e/fixture.ts": "aa890bc1b23ef5df04c57cf3a8634f170fdde2c600b314a77953f241aa1caa7a",
+    "app/tests/e2e/helpers.ts": "a43a597c4744c3d2a3f1e7798c5b8399415cfa33a0ea32201b0e9e08870804b7",
+    "app/tests/e2e/core.e2e.spec.ts": "204bf9e981330d0e29889b0f5c2e5df653ecac332a2024c5cb2dca05c6d096a4",
+    "app/tests/e2e/pwa.e2e.spec.ts": "88cd2aa2c53c9dab0f1922d18ac51f0dc59d5680ea4b59e8a1eeb74446ee3603",
+    "app/tests/e2e/evidence.probe.ts": "76e03ca2bbefc06ac884bef45110009a239d24a42f92ced7b966750d96ca2366"
+  }
+}

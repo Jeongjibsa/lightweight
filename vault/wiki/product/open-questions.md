@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T14:54:43+09:00"
+  at: "2026-10-04T15:44:32+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-03-002.md"
@@ -59,6 +59,12 @@ sources:
   - id: "component-check"
     resource: "../../raw/research/2026-10-04-component-review.json"
     title: "실제 페이지별 관찰"
+  - id: "e2e-request"
+    resource: "../../raw/conversations/2026-10-04-013.md"
+    title: "다음 순차 구현 요청"
+  - id: "e2e-run"
+    resource: "../../raw/research/2026-10-04-e2e-harness-verification.json"
+    title: "9과업·27반복·최초 실패 증거"
 ---
 
 # 미결 사항과 다음 대화
@@ -100,3 +106,7 @@ CONV-0009: 볼륨/그래프·오늘 운동/권장량 요구를 추가했다. [�
 ## CONV-0012 후순위 미결
 
 FR-17은 사용자 명시 3D 애니메이션 요구이며 지금은 검토만/후순위다. [검토](anatomy-3d-feasibility.md)의 asset 제작/구매·근육 분리/rig/clip·license·전문 검토자·실기기 성능·예산은 미정이다. UI-03 실제 페이지에서 개선을 확인했으나 사용자 최종 디자인 승인·실제 iPhone/접근성 관문은 별도다.
+
+## CONV0013 후속 상태
+
+새 제품입력 미결은 추가하지 않았다. HAR03 로컬9과업·27반복을 완료했다. 새GitHub CI실행·실제Auth/iPhone은 남았다. 다음 HAR04는 계정없이 진행가능하다. Q15계정/메일·Q12실기기·Q08/16/17운영·Q01/06과학조건/검토 관문을 유지한다. [현재우선순위](remaining-work.md).

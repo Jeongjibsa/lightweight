@@ -9,3 +9,4 @@
 - [작업 단위 local commit](commit-workflow.md) — git-commit skill 지속 지침·검증·hash 확인.
 - 2026-10-04 CONV-0010: [디자인 루프](loop-engineering.md)와 [반응형 하네스](testing-harness.md) — 실제 viewport 측정·키보드/빠른 선택 회귀·실기기 잔여.
 - [프로필/백업 루프](loop-engineering.md) — HAR02 로컬부분/4DOM 회귀·실제 Auth/SW와 구분.
+- [browser runner/실패증거](testing-harness.md) — 독립preview/context·9과업·고유실행ID/코드해시·CI7일보관설정.

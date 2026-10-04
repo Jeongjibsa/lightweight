@@ -12,3 +12,4 @@
 - [CHG-0010](CHG-0010.md) — 전체 Mantine/Geist·blue-dark/하단/빠른 접근·branch, PRD0.6.0.
 - [CHG-0011](CHG-0011.md) — PRD0.6.1, 차콜·노란 강조와 실제 톤 검증.
 - [CHG-0012](CHG-0012.md) — UI再감사·후순위3D/PRD0.7.0.
+- [CHG-0013](CHG-0013.md) — PRD0.7.1현황PATCH·HAR03/05 runner/증거.

@@ -10,15 +10,18 @@
     "preview": "vite preview",
     "test": "vitest run",
     "typecheck": "tsc -b",
-    "format": "prettier --write src tests scripts vite.config.ts vitest.config.ts index.html",
-    "format:check": "prettier --check src tests scripts vite.config.ts vitest.config.ts index.html",
+    "format": "prettier --write src tests scripts vite.config.ts vitest.config.ts playwright.config.ts index.html",
+    "format:check": "prettier --check src tests scripts vite.config.ts vitest.config.ts playwright.config.ts index.html",
     "test:unit": "vitest run --project unit",
     "test:integration": "vitest run --project integration",
     "test:ui": "vitest run --project ui",
-    "check": "npm run lint && npm run test && npm run build",
+    "check": "npm run lint && npm run test && npm run build && npm run typecheck:e2e",
     "cloud:probe": "node --env-file=.env scripts/supabase-probe.mjs",
     "cloud:verify": "node --env-file=.env scripts/verify-cloud.mjs",
-    "cloud:allow-user": "node --env-file=.env scripts/allow-cloud-user.mjs"
+    "cloud:allow-user": "node --env-file=.env scripts/allow-cloud-user.mjs",
+    "test:e2e": "node scripts/run-e2e.mjs",
+    "test:e2e:probe": "node scripts/probe-e2e-artifacts.mjs",
+    "typecheck:e2e": "tsc -p tsconfig.e2e.json"
   },
   "dependencies": {
     "@fontsource-variable/geist": "5.3.0",
@@ -33,6 +36,7 @@
     "zod": "4.6.5"
   },
   "devDependencies": {
+    "@playwright/test": "1.63.0",
     "@testing-library/dom": "10.4.2",
     "@testing-library/react": "16.3.3",
     "@testing-library/user-event": "14.6.7",

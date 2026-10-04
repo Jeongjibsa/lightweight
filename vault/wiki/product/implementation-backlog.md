@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T15:11:42+09:00"
+  at: "2026-10-04T15:44:32+09:00"
 sources:
   - id: "implementation-request"
     resource: "../../raw/conversations/2026-10-03-005.md"
@@ -71,9 +71,15 @@ sources:
   - id: "profile-backup-loop"
     resource: "../../raw/research/2026-10-04-profile-backup-dom-loop.json"
     title: "HAR-02 최초 실패·실제 수정·59개 검사"
-version: "0.6.1"
+  - id: "e2e-request"
+    resource: "../../raw/conversations/2026-10-04-013.md"
+    title: "다음 순차 구현 요청"
+  - id: "e2e-run"
+    resource: "../../raw/research/2026-10-04-e2e-harness-verification.json"
+    title: "9과업·27반복·최초 실패 증거"
+version: "0.6.2"
 approval_status: "proposal"
-change_id: "CHG-0012"
+change_id: "CHG-0013"
 ---
 
 # 운동 PWA 구현 백로그와 완료 기준
@@ -139,9 +145,9 @@ PRE와 화면/계산 개발은 미결인 종목/장비·호스팅 선택 전 가
 |---|---|---|---|---|
 | HAR-01 | 단위/통합 projects·fixture/독립 기대값·공통 명령 | BASE-01/현재16개 | 기존검사 보존, unit에 DB 불필요, 날짜/시간대 결정적, 로컬/CI 같은 명령 | done |
 | HAR-02 | 세트 입력·오류·복원·프로필 전환 DOM 통합 | HAR-01 | blur/click·반복 클릭·실패 재시도·전환 중 저장 상태 확인, 사용자 라벨 기반 | in_progress |
-| HAR-03 | 버전 고정 browser runner·빌드 preview·핵심 E2E | HAR-01; 입력 계약은 HAR-02 연결 | E2E-01~04, Chromium PWA/WebKit UI 경계·context 격리, 동일 환경3회 안정 제안 | planned |
+| HAR-03 | 버전 고정 browser runner·빌드 preview·핵심 E2E | HAR-01; 입력 계약은 HAR-02 연결 | E2E01~04·E2E06부분, Chromium5/WebKit4·독립context, 9과업×3회27통과·종료 수정 후9재확인 | done |
 | HAR-04 | 저장 실패·큰 백업·migration·V1/V2 업데이트 | HAR-03, LOG-05/06 | 최초 실패 증거·기존 데이터 보존·RISK-BACKUP-01 재현/정책·E2E-05·실기기 절차 | in_progress |
-| HAR-05 | CI 검사 분리·실패 trace/console/실행 메타데이터 | HAR-01/03 | 실패해도 증거 보존·artifact 접근/보존·첫 실패 유지·외부 CI 실제 실행 결과 | planned |
+| HAR-05 | CI 검사 분리·실패 trace/console/실행 메타데이터 | HAR-01/03 | 엔진별CI/7일보관·고유ID/해시·로컬실패probe 완료; 새 GitHub 실제 실행/업로드 결과는 미확인 | in_progress |
 | HAR-06 | 보존/권한/계산/근거의 scenario 추적·원격/콘텐츠 평가 | HAR-01; 원격은 SYNC, 콘텐츠는 SCI | 계약→검사/검토→증거 연결, 미지원 not_run, 잘못된 계산/주장/타인 접근 반례 | in_progress |
 
 ## 운동 MVP 다음
@@ -184,6 +190,14 @@ PRE와 화면/계산 개발은 미결인 종목/장비·호스팅 선택 전 가
 | KM-01/02 vault·이력 | 모든 의미 변경 | OKF 구조 검사·raw/CONV/CHG/PRD snapshot 유지 |
 
 ## 실행 기록
+
+## HAR-03/05 현재 증분 — 2026-10-04
+
+`codex/e2e-harness`에서 @playwright/test1.63.0 runner·독립 production build/preview·빈 context·실제 UI 입력/파일 다운로드/복원·Chromium SW 오프라인을 추가했다. **Chromium5/WebKit4의9과업을 세 번씩27회 통과**했고, 종료 처리 수정 후9회 재확인했다. Vitest59개/13파일·lint 경고0/build/E2E typecheck/format도 통과했다. [불변 실행](../../raw/research/2026-10-04-e2e-harness-verification.json).
+
+HAR-03은 로컬 runner 기준 done이다. HAR-05는 engine별 CI·실패 trace/화면/console/환경·고유 실행ID/코드 해시·7일보관 설정과 로컬 실패 probe를 완료했으나 **새 GitHub workflow 실행은 미확인이라 in_progress**다. 의도적 실패1개와 runner exit1을 부모 probe가 검증한 뒤 exit0으로 끝내며 정상9과업에는 probe를 넣지 않는다. E2E06은 다섯 화면×네 실제 폭/정보창 키보드·Escape focus 부분만 확인했다.
+
+개인 기록·Auth·Supabase 외부 요청 없이 별도4188/빈 브라우저 context에서 가짜 자료만 생성했다. desktop WebKit은 실제 Safari/iPhone이 아니며 PWA는 Chromium에서만 검사한다. 실제 Auth/과학 콘텐츠/기기·HTTPS 관문과 HAR04 업데이트/quota/큰 백업은 남았다. PRD0.7.1은 현황 정정 PATCH, app0.2.0/schema2·기능 요구는 유지한다. 아래 문단은 이전 증분 이력이다.
 
 ## HAR-02 후속 — 로컬 프로필/파일 재시도 완료
 

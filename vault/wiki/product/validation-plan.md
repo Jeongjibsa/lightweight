@@ -8,7 +8,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T13:35:43+09:00"
+  at: "2026-10-04T15:44:32+09:00"
 sources:
   - id: "platform"
     resource: "platform-distribution.md"
@@ -49,13 +49,19 @@ sources:
   - id: "design-request"
     resource: "../../raw/conversations/2026-10-04-010.md"
     title: "전체 Mantine/Geist/하단 UX 요구"
+  - id: "e2e-request"
+    resource: "../../raw/conversations/2026-10-04-013.md"
+    title: "다음 순차 구현 요청"
+  - id: "e2e-run"
+    resource: "../../raw/research/2026-10-04-e2e-harness-verification.json"
+    title: "9과업·27반복·최초 실패 증거"
 ---
 
 # 제품 검증과 출시 조건
 
 ## 현재 구현 상태 — 2026-10-04
 
-app0.2.0의 unit6/integration24·원격 SQL16·비로그인 HTTP401·format/lint/strict build와 별도 CUA UI 관찰을 수행했다. [이번 실제 범위](implementation-progress.md). SQL role/JWT는 실제 Auth E2E가 아니며 자동 DOM/browser runner·실제 iPhone·외부 CI·운영 배포/근거 전문 검토는 미완료다. 아래 출시 조건은 전체 통과를 의미하지 않는다.
+app0.2.0의 unit19/integration25/ui15·59개/13파일·lint/build/E2E타입/format, 자동browser9과업/27반복·최종9·실패probe를 확인했다. 기존 원격SQL16/비로그인HTTP401과 수동CUA 이력은 별도다. [이번 실제 범위](implementation-progress.md). SQL role/JWT는 실제 Auth E2E가 아니며 DOM/browser runner 로컬 검사는 완료했고 실제 iPhone·새 외부CI·운영배포/근거전문검토는 미완료다. 아래 출시 조건은 전체 통과를 의미하지 않는다.
 
 
 app0.1.0의 로컬 시안과 기본 자동 검사는 구현했다. 아래 실사용/출시 조건은 전체 미통과이며 실제 결과는 [실행 보고](implementation-progress.md)와 [현재 하네스](../operations/testing-harness.md)에서 범위를 구분한다. [기획서](prd.md).

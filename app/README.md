@@ -72,7 +72,26 @@ npm run format:check
 
 Vitest v4 projects의 unit19/integration25/ui15(59개/13파일)는 소유자·보존·롤백·백업·계산과 pending/ACK/충돌/교체/schema migration 계약을 검사합니다. 서버 환경이 있는 로컬에서 `npm run cloud:probe`와 `npm run cloud:verify`로 Auth 상태/비로그인 HTTP/TLS 및16개 SQL 계약을 별도 검사합니다. SQL 표본의 임시 자료/권한은 rollback하며 실제 Auth 토큰/브라우저 전체 흐름과 구별합니다.
 
-[현재 하네스](../vault/wiki/operations/testing-harness.md)와 [진행 보고](../vault/wiki/product/implementation-progress.md)에 실제 범위를 기록했습니다. DOM은 Testing Library/user-event/jsdom으로 추가했습니다. Playwright Test runner·CI 브라우저 회귀는 아직 없습니다. Chromium 폭 시험은 실제 iPhone/Safari 설치·키보드·잠금·저장소 정책을 대신하지 않습니다. GitHub 검사 워크플로는 공통 check를 사용하도록 설정했으며 외부 실행 결과는 아직 없습니다. [정확한 기술 스택](../vault/wiki/product/technology-stack.md) · [남은 작업](../vault/wiki/product/remaining-work.md).
+[현재 하네스](../vault/wiki/operations/testing-harness.md)와 [진행 보고](../vault/wiki/product/implementation-progress.md)에 실제 범위를 기록했습니다. DOM은 Testing Library/user-event/jsdom, 실제 브라우저는 Playwright Test 1.63.0으로 검사합니다. 새 GitHub 브라우저 workflow의 외부 실행은 미확인입니다. desktop WebKit/폭 시험은 실제 iPhone/Safari 설치·키보드·잠금·저장소 정책을 대신하지 않습니다. [정확한 기술 스택](../vault/wiki/product/technology-stack.md) · [남은 작업](../vault/wiki/product/remaining-work.md).
+
+## 자동 브라우저 검사와 실패 증거
+
+```sh
+npx playwright install chromium webkit
+npm run test:e2e
+npm run test:e2e -- --repeat-each=3
+npm run test:e2e:probe
+```
+
+Linux에서는 브라우저 설치 시 `--with-deps`를 추가합니다. `npm run check`는 기존 59개 검사와 E2E 타입 검사까지 실행합니다. 브라우저 검사는 별도 명령과 CI job으로 실행합니다.
+
+Chromium 5개/WebKit 4개, 합계 9개 과업으로 즉시 완료·재개·실제 파일 다운로드/빈 저장소 복원·로컬 프로필 분리·정보창 키보드/초점·5화면×4폭을 확인합니다. Chromium에서만 실제 서비스 워커를 준비하고 네트워크 차단→재시작→2세트 저장→재연결 후 보존을 검사합니다. WebKit에서는 서비스 워커를 차단합니다. 로컬 27회 반복과 종료 처리 수정 후 9회가 통과했습니다. 실제 Auth/RLS·iPhone·200% 확대·quota·V1/V2 업데이트는 후속입니다.
+
+검사는 빈 context에서 가짜 자료를 UI로 만듭니다. Supabase VITE URL/key를 빈 값으로 덮어쓴 `dist-e2e`를 전용 `127.0.0.1:4188`에서 빌드/실행하며 사용자 browser·preview·저장소를 재사용하지 않습니다. 포트가 사용 중이면 실패합니다. 필요한 경우 `LIGHTWEIGHT_E2E_PORT`로 별도 포트를 지정합니다.
+
+`output/playwright/e2e/{runID}/`에 JSON/HTML report·환경/코드 SHA256·per-test console/실행 metadata, 실패 화면/trace를 보존합니다. 새 실행은 고유 ID를 만들고 같은 ID 재사용은 거부합니다. 자동 retries는 0입니다. `npx playwright show-report <report>`/`show-trace <trace.zip>`로 증거를 열 수 있습니다. 로컬 출력은 Git에서 제외하며 용량 정리는 별도로 수행합니다.
+
+`test:e2e:probe`는 정상 9개에서 제외한 의도적 실패 하나를 실행합니다. 자식 runner의 exit 1·정확한 실패·retry 0·실제 증거 파일을 확인한 부모 도구가 exit 0으로 끝나며, 다른 실패나 증거 누락은 실패합니다. CI는 엔진별 job과 Chromium probe, 실패 후에도 artifact 업로드·7일 보관을 설정했습니다. public repository의 artifact에는 가짜 검사 출력만 포함하고 `.env`·실제 백업·토큰을 넣지 않습니다. 설정 완료와 실제 GitHub 실행 성공은 구별합니다.
 
 ## 디자인과 반응형 수동 검사
 

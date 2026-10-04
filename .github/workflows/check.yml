@@ -18,4 +18,42 @@ jobs:
         working-directory: app
       - run: npm run check
         working-directory: app
+      - run: npm run format:check
+        working-directory: app
       - run: ruby scripts/validate_vault.rb
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - project: chromium-mobile
+            engine: chromium
+          - project: webkit-mobile
+            engine: webkit
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+      - run: npm ci
+        working-directory: app
+      - run: npx playwright install --with-deps ${{ matrix.engine }}
+        working-directory: app
+      - run: npm run test:e2e -- --project=${{ matrix.project }}
+        working-directory: app
+      - name: Verify first-failure artifacts
+        if: matrix.engine == 'chromium'
+        run: npm run test:e2e:probe
+        working-directory: app
+      - name: Preserve browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-${{ matrix.project }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: output/playwright/e2e/
+          retention-days: 7
+          if-no-files-found: warn

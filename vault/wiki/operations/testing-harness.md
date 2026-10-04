@@ -1,7 +1,7 @@
 ---
 type: "Testing Harness"
 title: "현재 테스트 하네스와 확장 설계"
-description: "실제 코드·59개 검사·원격 SQL·CI·브라우저 관찰을 구분하고 자동 회귀 구조를 설계한다."
+description: "Vitest59개·browser9과업·실제 SW/파일·CI 증거와 실기기/Auth 경계를 기록한다."
 tags:
   - "operations"
   - "testing"
@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T15:11:42+09:00"
+  at: "2026-10-04T15:44:32+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
@@ -47,14 +47,23 @@ sources:
   - id: "profile-backup-loop"
     resource: "../../raw/research/2026-10-04-profile-backup-dom-loop.json"
     title: "HAR-02 최초 실패·실제 수정·59개 검사"
-version: "0.4.0"
+  - id: "e2e-request"
+    resource: "../../raw/conversations/2026-10-04-013.md"
+    title: "다음 순차 구현 요청"
+  - id: "e2e-run"
+    resource: "../../raw/research/2026-10-04-e2e-harness-verification.json"
+    title: "9과업·27반복·최초 실패 증거"
+  - id: "e2e-tools"
+    resource: "../sources/SRC-043-playwright-runner-ci.md"
+    title: "공식 도구/읽은 범위"
+version: "0.5.0"
 approval_status: "current-audit-and-proposal"
-change_id: "CHG-0012"
+change_id: "CHG-0013"
 ---
 
 # 현재 테스트 하네스와 확장 설계
 
-2026-10-04 / app0.2.0 / IndexedDB schema2 / PRD0.7.0. 하네스는 **실행 환경·가짜 데이터·준비/정리·과업·독립 기대값·실패 증거를 같은 조건으로 반복하는 장치**다. HAR-01을 구현했고 단위/저장소 통합은 자동 실행한다. 원격 SQL 계약 검사는 별도 수동 명령, 실제 브라우저 관찰은 아직 CI E2E가 아니다.
+2026-10-04 / app0.2.0 / IndexedDB schema2 / PRD0.7.1. 하네스는 **실행 환경·가짜 데이터·준비/정리·과업·독립 기대값·실패 증거를 같은 조건으로 반복하는 장치**다. HAR-01을 구현했고 단위/저장소 통합은 자동 실행한다. 원격 SQL 계약 검사는 별도 수동 명령이다. HAR03 runner의 로컬 실행을 완료했고 HAR05 CI설정/실패probe는 완료했으나 새 GitHub 실행은 미확인이다.
 
 ```mermaid
 flowchart TD
@@ -70,8 +79,43 @@ flowchart TD
   P --> R[fixture·임시 grants rollback]
   H[별도 cloud probe] --> T[Auth flags / 비로그인 HTTP / TLS]
   X[CUA 개발 브라우저] --> Y[실제 UI·폰트·초점·반응형 관찰]
-  Y -. HAR03/05 runner/CI 미구현 .-> A
+  F[독립 browser 명령 또는 CI matrix] --> Q[고유 실행ID · production preview · 빈 context]
+  Q --> K[Chromium 5과업 · 실제 SW offline]
+  Q --> W[WebKit 4과업 · UI와 IndexedDB]
+  K --> Z[JSON·HTML · console·환경 · 첫 실패 screenshot와 trace]
+  W --> Z
+  Z --> N[CI always upload 설정 · 외부 실행 미확인]
 ```
+
+## 자동 browser runner와 실패 증거
+
+[실행 증거](../../raw/research/2026-10-04-e2e-harness-verification.json) · [공식 도구 확인](../sources/SRC-043-playwright-runner-ci.md). @playwright/test1.63.0/브라우저 revision을 lockfile·설치 metadata로 고정한다. 한 번의 정상 실행은 Chromium5/WebKit4 합계9개다. 같은 조건에서 repeat-each3으로27개 통과, 서버 종료 수정 후9개와 실패 probe를 재확인했다. 자동 retries0을 유지해 첫 실패를 숨기지 않는다.
+
+```sh
+cd app
+npx playwright install chromium webkit
+npm run test:e2e
+npm run test:e2e -- --repeat-each=3
+npm run test:e2e:probe
+```
+
+Linux/CI는 `npx playwright install --with-deps chromium webkit`로 OS 의존성도 설치한다. 기존 Vitest/check는 브라우저 다운로드 없이 실행할 수 있으며 check는 E2E 타입 검사까지 한다. E2E는 별도 명령/CI job이다.
+
+| 요소 | 실제 파일·동작 |
+|---|---|
+| 고유 실행 | `app/scripts/run-e2e.mjs`: 날짜+UUID runID·전용 폴더; 같은ID 재사용은 거부; environment.json에 base commit/dirty/code fingerprint·src/tests/scripts/선택 config SHA256 |
+| 서버 | `app/scripts/e2e-server.mjs`: dist-e2e production build→127.0.0.1:4188 preview, strictPort/reuseExistingServer:false·명시 signal 종료; 사용자 preview/dist 재사용 없음 |
+| 환경 | VITE Supabase URL/key 빈 override; 외부 HTTP(S) 요청을 실패 처리. clock은 ISO 고정·timer는 실제 동작; 기본390×844/ko-KR/Asia-Seoul |
+| 격리 | Playwright test별 빈 context·UI seed/cleanup; 백업은 새context 실제 다운로드 파일로 복원. 실제 사용자 browser/profile에 접속하지 않음 |
+| 기대값 | 독립 0kg/10회·20kg/8회·중복ID/삭제tombstone·snapshot·A/B 분리; 백업 비교는 owner remap/프로필 복원 revision·updatedAt만 제외 |
+| 엔진 | Chromium UI/PWA; WebKit UI/IndexedDB는 SW block. WebKit offline 지원/실제 Safari/iPhone 통과로 표시하지 않음 |
+| 증거 | `output/playwright/e2e/{runID}/`: JSON/HTML report, per-test execution.json/console.json, 실패 screenshot·trace.zip, 관찰 screenshot·반응형 값 |
+| 실패 probe | 정상spec에서 제외한 evidence.probe.ts 하나를 의도적으로 실패→자식exit1/정확한assertion/retry0/실제files·metadata 검사→부모exit0. 다른 실패나 누락이면 부모도 실패 |
+| CI | 기존 check+format/vault job, 독립 Ubuntu engine matrix/fail-fastfalse·공식 브라우저/OS 설치, Chromium 실패probe, always upload·7일보관·엔진/run/attempt별 이름 |
+
+trace/report는 복사 없이 해당 로컬 폴더에서 `npx playwright show-trace <trace.zip>`/`show-report <report>`로 연다. 고유 runID 폴더는 자동 덮어쓰지 않으며 로컬 용량 정리는 검토 후 별도 수행한다. CI는 repo 정책의 보관 상한을 따르고 public repo artifact를 비공개로 가정하지 않는다. 업로드 대상은 가짜 검사 출력뿐이며 .env/실제 백업/토큰/개인 기록은 포함하지 않는다. 새 CI 실제 실행·업로드는 미확인이며 HAR05를 done으로 바꾸지 않는다.
+
+최초 실행의 ISO 기대값 차이(2실패/7통과)는 test 결함으로 분류했다. 이후27통과 중 정상 SIGTERM→exit143의 서버 정리 오류를 분리해 수정하고9과업/probe를 재확인했다. browser console error/unhandled0·외부요청0을 확인했다. SW 차단 경고와 Node NO_COLOR/FORCE_COLOR 환경 경고는 성공 결과에서 숨기지 않는다.
 
 ## 최신 UI 검증과 수동 반응형 하네스
 
@@ -81,7 +125,7 @@ flowchart TD
 
 이 fixture는 **수동 browser 검사**다. device emulator/Playwright Test runner/CI trace/실제 iPhone keyboard가 아니다. viewport 도구의 요청치만으로 통과하지 않고 실제 CSS viewport를 읽는다. [원본](../../raw/research/2026-10-04-mantine-geist-design-verification.json) · [디자인 감사](../product/design-audit.md). 아래30/33/50/52개는 이전 실행의 범위다.
 
-## HAR-02 후속 — 로컬 프로필/파일 재시도 완료
+## 이전 HAR-02 후속 — 로컬 프로필/파일 재시도 완료
 
 CONV-0012의 순차 작업으로 실제 App/SettingsView·Mantine·Dexie/liveQuery를 연결했다. 백업 읽기 실패 후 같은 파일 재선택, A→B→A 설정/루틴 보존, 저장 중 프로필 전환/생성 차단, B 초기화 완료/조회 지연 중 A 입력 비노출의4개 DOM 계약을 추가했다. 세 제품 실패를 먼저 재현하고 FileButton resetRef·pending guard·workspace owner 확인으로 수정했다. [최초 실패/검사 원본](../../raw/research/2026-10-04-profile-backup-dom-loop.json).
 
@@ -100,10 +144,11 @@ HAR-02의 **로컬 파일·프로필 DOM 부분**은 완료했으며 실제 Auth
 | DB fixture | 위 integration 파일의 beforeEach/afterEach | 검사마다 UUID DB·A/B 가짜 자료, mock/DB 삭제; cloud 날짜는 Date만 고정 후 복원 |
 | 원격 계약 | `app/scripts/verify-cloud.mjs` | 실제 DB transaction의16개 계약, 가짜 사용자/임시 grant/row를 finally rollback |
 | HTTP/TLS probe | `app/scripts/supabase-probe.mjs`, `db-client.mjs` | Auth flags·publishable-only RPC401·Session pooler CA/hostname 확인 |
-| CI | `.github/workflows/check.yml` | Node24/npm ci→공통 check→vault; 원격 자격 정보/DB mutation 명령은 CI에 추가하지 않음 |
-| 별도 UI 관찰 | CUA + build preview | 가짜 새4174 origin, font·설정·초점·overflow; runner/config/spec/CI trace 미구현 |
+| CI | `.github/workflows/check.yml` | 공통 check/format/vault와 독립2엔진 browser+probe/artifact 설정; 외부 실행 미확인·원격비밀/DB mutation 없음 |
+| 별도 UI 관찰 | CUA + build preview | 과거 수동font/초점/화면 관찰; 자동 E2E와 별도 |
+| 자동 browser | `app/playwright.config.ts`, `tests/e2e/`, `scripts/*e2e*.mjs` | 9과업·실제SW/파일/IndexedDB·고유증거, HAR03 로컬완료 |
 | 수동 반응형 fixture | `app/tests/harness/responsive.html`, `responsive.jsx` | 실제 iframe 폭/화면 선택, fake origin; runner 아님 |
-| 임시 산출물 | `output/playwright`, `output/design-audit`, `.playwright-cli` | 추적 제외 screenshot/가짜 자료; 안정된 CI 보존 정책 미구현 |
+| 임시 산출물 | `output/playwright`, `output/design-audit`, `.playwright-cli` | 추적 제외 가짜자료·고유ID첫실패; CI7일보관 설정/외부실행미확인 |
 | 지식 검사 | `scripts/validate_vault.rb` | 구조/상대 링크/출처/불변SHA256; 과학 검토·앱/권한 통과와 별개 |
 
 ## 계약 검사가 확인하는 것
@@ -150,23 +195,23 @@ HAR-02는 in_progress다. DOM 과업 기반을 만들었지만 backup/Auth 전�
 ## 다음 자동 회귀
 
 - HAR-01 done: projects·기존 검사 분리·unit/integration/check 명령·결정적 cloud 날짜.
-- HAR-02 in_progress: 입력·저장 오류/복원·로컬 프로필 전환 DOM 부분 완료. 같은 파일 재시도/A→B→A/pending/workspace 경합4개 추가. 실제 Auth 전환·browser는 남았다.
-- HAR-03 planned: 고정 Playwright Test runner·빌드 preview·새 context·Chromium PWA/WebKit UI 경계. 지금 CUA 관찰은 spec이 아니다.
+- HAR-02 in_progress: 입력·저장 오류/복원·로컬 프로필 전환 DOM 부분 완료. 같은 파일 재시도/A→B→A/pending/workspace 경합4개 추가. 로컬 browser는 HAR03에서 완료했으며 실제 Auth 전환은 남았다.
+- HAR-03 done: 고정 runner·production preview·새context·Chromium5/WebKit4·27반복/최종9통과. 실제 iPhone/Auth는 범위 밖.
 - HAR-04 in_progress: schema1→2 저장소 계약 추가. 실제 브라우저 migration/update·quota·대용량 백업 정책은 남았다.
-- HAR-05 planned: CI UI 회귀·실패 trace/console/실행ID 보존·외부 CI 실제 결과. 공통 check만 연결했다.
+- HAR-05 in_progress: engine CI·실패trace/console/실행ID/코드해시·7일보관·로컬실패probe 완료. 새 GitHub 실행/업로드 결과는 미확인.
 - HAR-06 in_progress: 원격 권한/충돌/보존의 SQL 계약 추가. 실제 Auth E2E·콘텐츠/추천 평가는 미완료.
 
-## 자동 회귀로 고정할 우선 시나리오
+## 우선 시나리오와 현재 실행 범위
 
 
-| ID 제안 | 준비·동작 | 독립 기대 결과 | 층/작업 |
+| ID | 준비·동작 | 독립 기대 결과 | 층/작업 |
 |---|---|---|---|
-| E2E-01 | 빈 프로필→설정→루틴→세트 입력→즉시 완료→reload | 빈 값 오류,0kg 허용; 완료1·단일 session/set, 입력 보존 | UI+Chromium/WebKit, HAR-02/03 |
-| E2E-02 | 온라인 SW/cache 준비→offline→reload→세트 추가/종료 | 네트워크 없이 앱 실행·추가 완료 보존, 복귀 후 중복0 | Chromium PWA, HAR-03/04 |
-| E2E-03 | JSON 다운로드→새 context 빈 DB→미리보기→복원 | 정규화한 설정·루틴ID·세션ID·세트·삭제 상태 일치 | browser 실제 다운로드/upload, HAR-03 |
-| E2E-04 | A 기록/설정→B 전환→B 변경→A 전환/reload | B에 A 비노출, A의 기존 내용 보존 | UI+Store, HAR-02/03 |
-| E2E-05 | V1에서 진행 세션→V2 waiting→종료 후 적용 | 진행 중 적용 차단, 종료 뒤 새 버전·기존 기록 보존 | Chromium SW, HAR-04 |
-| E2E-06 | 여러 폭/가로·키보드 탐색·200% 확대 과업 | 완료/오류/모달 조작 가능, 수평 넘침/초점 유실 없음 | browser+실기기, RESP-01/REL-02 |
+| E2E-01 | 빈 프로필→설정→루틴→세트 입력→즉시 완료→reload | 빈 값 오류,0kg 허용; 완료1·단일 session/set, 입력 보존 | 자동 Chromium/WebKit 완료, HAR-02/03 |
+| E2E-02 | 온라인 SW/cache 준비→offline→reload→세트 추가/종료 | 네트워크 없이 앱 실행·추가 완료 보존, 복귀 후 중복0 | 자동 Chromium PWA 완료, HAR-03/04 |
+| E2E-03 | JSON 다운로드→새 context 빈 DB→미리보기→복원 | 정규화한 설정·루틴ID·세션ID·세트·삭제 상태 일치 | 자동 Chromium/WebKit 실제파일 완료, HAR-03 |
+| E2E-04 | A 기록/설정→B 전환→B 변경→A 전환/reload | B에 A 비노출, A의 기존 내용 보존 | 자동 로컬A/B 완료·Auth별도, HAR-02/03 |
+| E2E-05 | V1에서 진행 세션→V2 waiting→종료 후 적용 | 진행 중 적용 차단, 종료 뒤 새 버전·기존 기록 보존 | 미구현 Chromium SW, HAR-04 |
+| E2E-06 | 여러 폭/가로·키보드 탐색·200% 확대 과업 | 완료/오류/모달 조작 가능, 수평 넘침/초점 유실 없음 | 5화면×4폭/정보창키보드만 자동; 나머지미시험, RESP-01/REL-02 |
 
 백업 비교는 owner remap·복원 시각/revision 변화만 계약에 따라 제외하고, 실제 세트 값·ID·삭제 상태는 비교한다. 수평 넘침 한 가지로 E2E-06 전체를 통과시키지 않는다. 기기/엔진 미지원 검사는 `not_run`으로 남긴다.
 

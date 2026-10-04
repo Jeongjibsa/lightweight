@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T15:11:42+09:00"
+  at: "2026-10-04T15:44:32+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
@@ -35,9 +35,15 @@ sources:
   - id: "profile-backup-loop"
     resource: "../../raw/research/2026-10-04-profile-backup-dom-loop.json"
     title: "HAR-02 최초 실패·실제 수정·59개 검사"
-version: "0.3.0"
+  - id: "e2e-request"
+    resource: "../../raw/conversations/2026-10-04-013.md"
+    title: "다음 순차 구현 요청"
+  - id: "e2e-run"
+    resource: "../../raw/research/2026-10-04-e2e-harness-verification.json"
+    title: "9과업·27반복·최초 실패 증거"
+version: "0.3.1"
 approval_status: "proposal"
-change_id: "CHG-0012"
+change_id: "CHG-0013"
 ---
 
 # 실패를 재현하고 회귀를 남기는 개선 루프
@@ -69,7 +75,7 @@ flowchart LR
 | 6. 검증 | 원래 실패가 먼저 해소되고 같은 위험의 반례도 통과하는지 확인 | targeted 결과 + lint/test/build + 관련 browser 검사 |
 | 7. 종료 | 검사나 실기기 절차를 고정하고 남은 제한을 명시 | 회귀 위치·결과·다음 작업·log/CHG |
 
-현재 가능한 빠른 루프는 Vitest/코드 검사와 개발 브라우저 관찰이다. HAR-01~05를 완료하면 브라우저 실패도 같은 명령과 CI에서 반복할 수 있다. UI에는 role/label과 저장 후 사용자 결과를 보고, 저장소에는 transaction/owner/revision/outbox를 본다. 한 레이어의 성공만으로 전체 흐름을 닫지 않는다.
+현재 가능한 빠른 루프는 Vitest/코드 검사와 개발 브라우저 관찰이다. HAR03/05의 명령·CI설정을 추가해 browser 실패를 반복할 수 있다. 새 외부 CI 결과는 남았다. UI에는 role/label과 저장 후 사용자 결과를 보고, 저장소에는 transaction/owner/revision/outbox를 본다. 한 레이어의 성공만으로 전체 흐름을 닫지 않는다.
 
 ## 가장 먼저 적용할 세 묶음
 
@@ -121,7 +127,7 @@ ProfileForm을 실제 profile payload key로 다시 생성하도록 수정했다
 
 | 지표 | 정의와 수집 방법 | 현재 |
 |---|---|---|
-| 핵심 과업 자동화 | 정의한 필수 scenario 중 CI 실행 가능한 수/전체 수 | 현재 브라우저 E2E0; 우선6개는 제안 목록 |
+| 핵심 과업 자동화 | 정의한 필수 scenario 중 CI 실행 가능한 수/전체 수 | 현재 browser9과업(Chromium5/WebKit4), 6ID중01~04완료·06부분·05미구현; CI실행은미확인 |
 | 재현 시간 | 실패 접수부터 고정 표본/명령으로 실패 확인까지 | 아직 측정 없음 |
 | 수정 검증 시간 | 수정 시작부터 원래 실패+영향 회귀 통과까지 | 아직 측정 없음 |
 | 회귀 재발 | 닫았던 문제의 같은 원인이 재발한 횟수 | 기록 체계 제안, 측정 없음 |
@@ -164,3 +170,11 @@ ProfileForm을 실제 profile payload key로 다시 생성하도록 수정했다
 CUA 가짜4177의 invalid JSON 오류→동일 경로 정상 파일→미리보기·취소와 캡처를 확인했다.390px 버튼 label 잘림을 발견해 Mantine SimpleGrid의 작은 화면 단일 열로 수정하고 정확한 저장 캡처에서 전체 label을 재확인했다. DOM의 실제 복원과 browser의 미리보기 관찰을 구분한다. [오류](../../raw/design/2026-10-04-har02-invalid-file.png) · [복원 미리보기](../../raw/design/2026-10-04-har02-same-file-retry.png).
 
 실제 Auth·RLS·서비스워커·레이아웃은 이 DOM 증분의 대체 hook/mock으로 검증되지 않는다. 실제 browser E2E/외부 CI·iPhone 과업은 HAR-03/05·REL-02에서 이어가며 HAR-02 전체는 in_progress다. 기능 요구는 그대로라 PRD0.7.0을 유지하고 실행 증거를 새 불변 원본으로 보존했다.
+
+## HAR-03/05 루프 — 제품 실패와 하네스 실패 구분
+
+[실행 원본](../../raw/research/2026-10-04-e2e-harness-verification.json). 최초9과업의2실패는 제품이 올바른 ISO .000Z를 내보내는데 test가 Z를 기대한 fixture 결함이었다. report의 실제 heading도 확인해 기대값을 수정했다. 제품 runtime은 수정하지 않았고 입력/파일/오프라인 등의 assertion은 유지했다. 재시도로 실패를 숨기지 않고 다른 runID에27회 성공을 기록했다.
+
+반복 실행 종료에서 Vite의 정상 SIGTERM/exit143이 오류로 출력돼 lifecycle 결함으로 분류했다. 명시 종료 중에만 exit를 허용하고 build 취소 후 preview 시작을 막았다. 새9과업 통과/오류 출력 없음·서버 해제를 확인했다. 이어 의도적 실패 probe로 자식exit1·정확한 실패assertion/retry0·trace/화면/console/metadata/HTML·JSON 존재를 검증했다. probe 성공은 제품 실패를 pass 처리한 것이 아니며 정상spec에는 포함하지 않는다.
+
+독립 9과업을 세 번 반복한27은 새27개 기능 계약이 아니다. same-environment 안정 관찰이며 Linux CI/iPhone/Auth/200%/quota/update 성공으로 일반화하지 않는다. WebKit SW 차단/Node color 경고는 환경 로그로 보존한다. CI설정과 로컬 증거 성공은 외부 GitHub 실행 성공과 구별한다.
