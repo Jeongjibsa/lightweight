@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T22:03:27+09:00"
+  at: "2026-10-04T22:16:02+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -152,9 +152,12 @@ sources:
   - id: "order-release"
     resource: "../../raw/research/2026-10-04-workout-order-release.json"
     title: "운동 순서 CI·실제 배포 일치"
-version: "0.6.14"
+  - id: "iphone-user-report"
+    resource: "../../raw/research/2026-10-04-iphone-install-user-report.json"
+    title: "실제 iPhone 설치·실행·로그인 사용자 확인"
+version: "0.6.15"
 approval_status: "proposal"
-change_id: "CHG-0025"
+change_id: "CHG-0026"
 ---
 
 # 운동 PWA 구현 백로그와 완료 기준
@@ -205,7 +208,7 @@ UI-01은 당시 부분 Mantine/Spoqa/스택 명시 증분으로 done이었다. C
 | SCI-03 | M5 | 프로필별 목표·횟수·분할 조건 루틴/대체·시간/장비 검사·채택 저장 | SCI-02, LOG-03, REP-01; Q-01/06 | 검토된 규칙만 사용, 3↔4회/분할 변경·누락·장비/시간 처리·입력/출력/근거 버전 재현 | planned |
 | SCI-04 | M5 | 한 부위 조건 티어·이유·근거 배지·갱신일 | SCI-02, REP-03 | 직접 비교 없는 경우 보류/동등 허용, 목표/장비별 일관성·단일 연구 자동S 금지 | planned |
 | REL-01 | M6 | Pages preview/운영·HTTPS origin·환경/인증 URL 분리 | BASE-02, SYNC-05; Q-08/16/17 | Pages/HTTPS/정확한 Auth 반환 URL·현재 앱 24file hash 확인 완료; 실제 운동/새 기기 Auth·Access/자동 배포·메일/복구 후속 | in_progress |
-| REL-02 | M6 | 실제 iPhone 16 Pro Max/iOS 27.0.1·API·콘텐츠/보안 통합 검증 | M2~M5, REL-01; 실제 기기 사용 가능 | 설치→추천/루틴→오프라인 기록→재연결→리포트→복원·업데이트 G3 통과; 사용자 보고 OS 현장 확인 | planned |
+| REL-02 | M6 | 실제 iPhone 16 Pro Max/iOS 27.0.1·API·콘텐츠/보안 통합 검증 | M2~M5, REL-01; 실제 기기 사용 가능 | 설치→추천/루틴→오프라인 기록→재연결→리포트→복원·업데이트 G3 통과; 사용자 보고 설치/홈 화면 실행/로그인 완료·전체 G3/OS 현장 확인은 별도 | in_progress |
 | REL-03 | M6 | 본인 제공·운영/백업/복구·비용/회수 안내 | REL-02; Q-08/15 | 실제 기록/토큰 없는 안내, 사용자별 삭제/내보내기·운영 복원시험·장애 대응 증거 | planned |
 | PIL-01 | M7 | 본인 사용 관찰·불편/기록 유실/리포트 해석 수정 | G3 | 4주 관찰 제안·실제 세션 대비 누락/실패/다음 행동 기록, 문제별 수정/재검증 | planned |
 | PIL-02 | M7 | 소수 지인 계정·설치/메일/기록/복원 과업 | G4, 본인 핵심 과업 안정 | 초대 계정 독립성·실기기 과업 확인; 지인 수/확대 여부는 사용자 선택 | planned |
@@ -310,3 +313,9 @@ HAR-02: DOM 입력/transaction 실패·재시도/결측수정3과업을 추가�
 ## 현재 검증 배포
 
 운동 순서 e912f0c main/GitHub3job success·운영/preview24file hash 일치 확인 완료.83 Vitest/Node8/browser22. 실제 Auth 빈 프로필 왕복은 확인했으나 운동/새 기기·A/B/만료·기기/SCI/운영/파일럿 관문은 유지한다.
+
+## 실제 iPhone 확인 — 사용자 보고, 2026-10-04
+
+사용자가 운영 앱의 iPhone 홈 화면 설치·실행·로그인에 “홈 화면 실행·로그인 완료”라고 응답했다. [CONV0020](../conversations/2026-10-04-020.md)·[확인 범위](../../raw/research/2026-10-04-iphone-install-user-report.json). 해당 세 과업은 사용자 보고로 확인했으며 에이전트의 직접 기기 관찰·OS 재측정은 아니다. 앞선 ‘응답 대기’ 문단은 당시 이력이다.
+
+REL02는 부분 진행이다. 실제 운동/모바일 클라우드 왕복·새 기기 복원·키보드/VoiceOver/확대/가로/잠금·오프라인/업데이트/physical quota/eviction 검사는 남는다. 설치·로그인 확인을 G3 전체 통과로 확대하지 않는다. 운영 앱은 e912f0c이며 진행 중인 루틴 복구는 아직 배포하지 않았다.

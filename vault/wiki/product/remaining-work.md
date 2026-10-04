@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T22:03:27+09:00"
+  at: "2026-10-04T22:16:02+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -137,14 +137,17 @@ sources:
   - id: "order-release"
     resource: "../../raw/research/2026-10-04-workout-order-release.json"
     title: "운동 순서 CI·실제 배포 일치"
-version: "0.3.6"
+  - id: "iphone-user-report"
+    resource: "../../raw/research/2026-10-04-iphone-install-user-report.json"
+    title: "실제 iPhone 설치·실행·로그인 사용자 확인"
+version: "0.3.7"
 approval_status: "proposal"
-change_id: "CHG-0025"
+change_id: "CHG-0026"
 ---
 
 # 남은 작업 한눈에 보기
 
-2026-10-04 / PRD0.8.10. **운동 MVP 전체는 진행 중**이며 식단·3D는 후순위다.
+2026-10-04 / PRD0.8.11. **운동 MVP 전체는 진행 중**이며 식단·3D는 후순위다.
 
 [운영 앱](https://lightweight-training.pages.dev) · [DB 연결 없는 preview](https://preview.lightweight-training.pages.dev) · [세부 백로그](implementation-backlog.md).
 
@@ -157,13 +160,15 @@ change_id: "CHG-0025"
 | 3 | 기록 편의 완성 | 이전값·재시작·미완료 종목 교체·종료 수정·운동 순서/CAS | 메모·삭제 복구·머신/ROM 비교 조건·운동 중 입력 UX | LOG03~06 |
 | 4 | 설명 가능한 개인화 완성 | 볼륨/추이·기록 참고 후보·주간 입력 점검/직접 수정 | 검토된 직접/간접 매핑·저장 report/입력·정책·근거 버전·근거 기반 다음 행동 | REP01~06, SCI03B |
 | 5 | 근거 운동 정보·시각·티어·추천 | 기록용12종목·초기 연구/3D 검토·공개 JSON gate(승인0개) | 등록부 실제 승인/규칙 연결·전문/전문가/권리 검토→설명/시각→조건 추천/티어, 승인 콘텐츠만 제공 | SCI01~04, PRE01, LOG02 |
-| 6 | 실제 iPhone/PWA·접근성/보존 | 반응형/Mantine·두 브라우저22과업·업데이트/백업/gzip 보존 | 홈 화면 설치·키보드/VoiceOver/확대/가로/잠금·실제offline/update·physical quota/eviction·64MiB초과 분할복구 | RESP01, REL02, HAR04 |
-| 7 | 운영·배포/복구 마무리 | Pages HTTPS·운영/preview DB 분리·23file hash/헤더·main push | 실Auth/메일/비밀번호복구·백업 drill·승인 credential 기반 CI자동배포·도메인/Access 선택 | REL01/03, Q08/16/17 |
+| 6 | 실제 iPhone/PWA·접근성/보존 | iPhone 홈 화면 설치/실행/로그인 사용자 보고 완료·반응형·browser22·백업 보존 | 키보드/VoiceOver/확대/가로/잠금·실제offline/update·physical quota/eviction·64MiB초과 분할복구 | RESP01, REL02, HAR04 |
+| 7 | 운영·배포/복구 마무리 | Pages HTTPS·운영/preview DB 분리·24file hash/헤더·main push | 실Auth/메일/비밀번호복구·백업 drill·승인 credential 기반 CI자동배포·도메인/Access 선택 | REL01/03, Q08/16/17 |
 | 8 | 본인 파일럿→지인 제공 | 앱/검사 기반 준비 | 실제4주 관찰/입력누락·오해 개선→회귀, 계정 독립/복원·G3/G4 관문 | PIL01/02 |
 | 후순위 | 식단/영양·3D·선택 AI 설명 | 요구/3D feasibility 문서 | 음식DB/license·기록/계산·검토 공식/결측, 3Dasset/rig/clip/권한/전문검토/실기기성능 | NUT01~04, VIS3D02/03, AI01 |
 
-다음 독립 구현은 메모/삭제 복구와 장비 조건 등 기록 편의다. 실제 운동의 새 기기 복원·계정 A/B/만료·메일/권한 검증은 병행한다. 실제 iPhone 설치·실행·로그인 질문은 저장 당시 응답 대기이며 키보드/VoiceOver/잠금/offline/update/quota 검증은 별도다.
+다음 독립 구현은 메모/삭제 복구와 장비 조건 등 기록 편의다. 실제 운동의 새 기기 복원·계정 A/B/만료·메일/권한 검증은 병행한다. 실제 iPhone 설치·실행·로그인은 사용자 보고로 완료했으며 키보드/VoiceOver/잠금/offline/update/quota 검증은 별도다.
 
 과학 승인 설명은0개다. 콘텐츠 공개 gate는 실제 전문/전문가·자산 권리 검토를 대신하지 않는다.4주 파일럿도 자동검사로 대체하지 않는다. lint exit0/기존 effect경고6개가 남는다. 개인 기록·비밀번호/token/ID는 공개 vault에 넣지 않는다.
 
 [진행](implementation-progress.md) · [하네스](../operations/testing-harness.md) · [순서/가림 루프](../operations/workout-order.md) · [현재 배포 증거](../../raw/research/2026-10-04-workout-order-release.json) · [실제 Auth 범위](../../raw/research/2026-10-04-auth-profile-roundtrip.json).
+
+[실제 기기 사용자 보고와 미검증 범위](../../raw/research/2026-10-04-iphone-install-user-report.json).

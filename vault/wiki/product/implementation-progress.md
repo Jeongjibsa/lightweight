@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T22:03:27+09:00"
+  at: "2026-10-04T22:16:02+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -152,11 +152,21 @@ sources:
   - id: "order-release"
     resource: "../../raw/research/2026-10-04-workout-order-release.json"
     title: "운동 순서 CI·실제 배포 일치"
-version: "0.3.6"
-change_id: "CHG-0025"
+  - id: "iphone-user-report"
+    resource: "../../raw/research/2026-10-04-iphone-install-user-report.json"
+    title: "실제 iPhone 설치·실행·로그인 사용자 확인"
+version: "0.3.7"
+change_id: "CHG-0026"
 ---
 
 # 로컬 PWA 구현 결과와 다음 작업
+
+## 실제 iPhone 확인 — 사용자 보고, 2026-10-04
+
+사용자가 운영 앱의 iPhone 홈 화면 설치·실행·로그인에 “홈 화면 실행·로그인 완료”라고 응답했다. [CONV0020](../conversations/2026-10-04-020.md)·[확인 범위](../../raw/research/2026-10-04-iphone-install-user-report.json). 해당 세 과업은 사용자 보고로 확인했으며 에이전트의 직접 기기 관찰·OS 재측정은 아니다. 앞선 ‘응답 대기’ 문단은 당시 이력이다.
+
+REL02는 부분 진행이다. 실제 운동/모바일 클라우드 왕복·새 기기 복원·키보드/VoiceOver/확대/가로/잠금·오프라인/업데이트/physical quota/eviction 검사는 남는다. 설치·로그인 확인을 G3 전체 통과로 확대하지 않는다. 운영 앱은 e912f0c이며 진행 중인 루틴 복구는 아직 배포하지 않았다.
+
 
 ## 현재 운영 배포 — 2026-10-04
 

@@ -152,7 +152,11 @@
     "history/changes/CHG-0024.md": "2d5030e6c0b8c34d316c256b913fedaef890f892564e0d128a7a06e99cf500e6",
     "raw/research/2026-10-04-workout-order-release.json": "ca3889a2c97754bcdb7714a3d8dd0b8d114942be0aeb00a3d84b0d3d5d259c72",
     "history/versions/prd-v0.8.10.md": "c42164268a2713b3548db4c43bd6248c4435f0c6ee9a217b03601b92c5887ec1",
-    "history/changes/CHG-0025.md": "f2c973f85e1a6d1a4e0645b161fc127be7999593a7e4257e821cac0e5f0831a1"
+    "history/changes/CHG-0025.md": "f2c973f85e1a6d1a4e0645b161fc127be7999593a7e4257e821cac0e5f0831a1",
+    "raw/conversations/2026-10-04-020.md": "f6a13c10a7e8889ffbb7b04a8f6f80e8679dab18d9640e2a724c7750dec44c14",
+    "raw/research/2026-10-04-iphone-install-user-report.json": "718aea63a42c66b28f7d0e5cd95c5b0f19665ee90cad701b7471eeb9a05d007e",
+    "history/versions/prd-v0.8.11.md": "d300c5acdf0cce984374d8c26fbc88671201e582b4ba30f21cb8c2b8cfc1c740",
+    "history/changes/CHG-0026.md": "bf9fc7e467003409248d014ba0aad25dbf456cc83d709984a7bbf0c962765d11"
   },
-  "updated_at": "2026-10-04T22:03:27+09:00"
+  "updated_at": "2026-10-04T22:16:02+09:00"
 }

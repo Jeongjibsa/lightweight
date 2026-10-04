@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-03T23:24:52+09:00"
+  at: "2026-10-04T22:16:02+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-03-002.md"
@@ -59,12 +59,22 @@ sources:
   - id: "local-progress"
     resource: "implementation-progress.md"
     title: "실행 결과와 남은 작업"
+  - id: "iphone-user-report"
+    resource: "../../raw/research/2026-10-04-iphone-install-user-report.json"
+    title: "실제 iPhone 설치·실행·로그인 사용자 확인"
 version: "0.2.2"
 approval_status: "proposal"
 change_id: "CHG-0005"
 ---
 
 # iOS 개인 앱의 설치·배포와 구현 방향
+
+## 실제 iPhone 확인 — 사용자 보고, 2026-10-04
+
+사용자가 운영 앱의 iPhone 홈 화면 설치·실행·로그인에 “홈 화면 실행·로그인 완료”라고 응답했다. [CONV0020](../conversations/2026-10-04-020.md)·[확인 범위](../../raw/research/2026-10-04-iphone-install-user-report.json). 해당 세 과업은 사용자 보고로 확인했으며 에이전트의 직접 기기 관찰·OS 재측정은 아니다. 앞선 ‘응답 대기’ 문단은 당시 이력이다.
+
+REL02는 부분 진행이다. 실제 운동/모바일 클라우드 왕복·새 기기 복원·키보드/VoiceOver/확대/가로/잠금·오프라인/업데이트/physical quota/eviction 검사는 남는다. 설치·로그인 확인을 G3 전체 통과로 확대하지 않는다. 운영 앱은 e912f0c이며 진행 중인 루틴 복구는 아직 배포하지 않았다.
+
 
 > 2026-10-03 갱신. **PWA 진행은 CONV-0003에서 사용자 선택으로 확정**했다. 이전 비교는 선택 근거로 보존한다. TypeScript·React/Vite·Dexie·Supabase 방향은 CONV-0004에서 동의했다. 배포·보안 설정은 별도 제안이다. 앱은 아직 구현하지 않았다.
 

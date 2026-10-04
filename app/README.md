@@ -146,3 +146,5 @@ content:compile이 source registry의 검토 선언·payload/file hash/ID/근거
 종목2개 이상일 때 Mantine 순서 편집에서 위/아래로 바꾸고 저장합니다. 취소·기록/완료·루틴/시각 보존·CAS/outbox rollback·빈 저장소 복원을 확인했습니다. 성공 알림이 버튼을 가리는 문제를 실제 캡처와 hit target 회귀로 수정했습니다.83 Vitest+Node8·22browser·build/types/format/artifact25 통과, lint기존6경고가 남습니다. 해당 e912f0c의 GitHub3job과 운영/preview24file hash/헤더 일치 배포를 확인했습니다. [계약](../vault/wiki/operations/workout-order.md).
 
 [최신 배포](../vault/raw/research/2026-10-04-workout-order-release.json). 후속 PRD0.8.10 문서 commit은 배포 앱을 변경하지 않습니다.
+
+iPhone 홈 화면 설치·실행·로그인은 사용자 보고로 확인했습니다(CONV0020). 나머지 실기기/클라우드 운동 기록/접근성/보존 검증과 전체 G3는 남습니다. [범위](../vault/raw/research/2026-10-04-iphone-install-user-report.json).

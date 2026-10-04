@@ -1,0 +1,25 @@
+{
+  "type": "User Verification Report",
+  "title": "Physical iPhone home-screen launch and login reported complete",
+  "generated": {
+    "by": "codex/gpt-6",
+    "at": "2026-10-04T22:16:02+09:00"
+  },
+  "immutable": true,
+  "source": "../conversations/2026-10-04-020.md",
+  "origin": "https://lightweight-training.pages.dev",
+  "statement": "홈 화면 실행·로그인 완료",
+  "verification_method": "Human self-report answering explicit physical iPhone home-screen install, launch and login prompt",
+  "agent_direct_device_observation": false,
+  "device_context": "Previously reported pilot device; exact OS/build not re-measured",
+  "confirmed_scope": [
+    "Home-screen installation/launch and login reported complete"
+  ],
+  "not_verified": [
+    "Actual workout records or cloud roundtrip from the phone",
+    "Keyboard, VoiceOver, zoom, landscape, locking",
+    "Offline save/reconnect, update preservation, physical quota/eviction",
+    "New-device restore, logout, token expiry or account isolation"
+  ],
+  "app_source_at_report": "e912f0c; no inference of pending routine recovery deployment"
+}
