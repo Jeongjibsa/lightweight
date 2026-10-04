@@ -5,6 +5,8 @@ import {
   Button,
   Group,
   Paper,
+  SimpleGrid,
+  Stack,
   Table,
   Text,
   Title,
@@ -75,32 +77,32 @@ export function HistorySuggestion({
             마지막 기록이 가장 오래된 루틴입니다. 검토에 사용한 종료 기록{" "}
             {result.historyCount}개.
           </Text>
-          <Group gap="sm" align="baseline" my="md">
-            <Text size="sm" c="dimmed" my="sm">
-              <Text component="span" c="inherit" fw={650} fz={24}>
+          <SimpleGrid cols={{ base: 1, xs: 2 }} spacing="md" my="lg">
+            <Stack gap={4}>
+              <Text fw={650} fz={24}>
                 {result.routine.exercises.reduce(
                   (sum, entry) => sum + entry.sets,
                   0,
                 )}
                 개
               </Text>
-              <Text component="span" c="inherit">
+              <Text size="sm" c="dimmed">
                 현재 계획 세트
               </Text>
-            </Text>
-            <Text size="sm" c="dimmed" my="sm">
-              <Text component="span" c="inherit" fw={650} fz={24}>
+            </Stack>
+            <Stack gap={4}>
+              <Text fw={650} fz={24}>
                 {result.previous
                   ? `${completedWorking(result.previous.sets).length}개`
                   : "기록 없음"}
               </Text>
-              <Text component="span" c="inherit">
+              <Text size="sm" c="dimmed">
                 {result.previous
                   ? `${result.previous.localDate} 실제 본세트 · ${result.previous.status === "partial" ? "일부 완료" : "완료"}`
                   : "이 루틴의 최근 실제 본세트"}
               </Text>
-            </Text>
-          </Group>
+            </Stack>
+          </SimpleGrid>
           <Button
             onClick={() => void start(result.routine.id)}
             variant="filled"
@@ -159,14 +161,7 @@ export function HistorySuggestion({
       <Text size="xs" c="dimmed" my="sm">
         과거 기록 참고용이며 권장량은 아닙니다.
       </Text>
-      <Accordion
-        variant="default"
-        styles={{
-          item: { border: 0 },
-          control: { padding: 0 },
-          content: { padding: 0 },
-        }}
-      >
+      <Accordion variant="default" order={3} mt="md">
         <Accordion.Item value="basis">
           <Accordion.Control>
             <Text size="sm" c="dimmed">

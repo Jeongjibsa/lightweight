@@ -35,3 +35,9 @@ if (typeof File.prototype.text !== "function") {
     },
   });
 }
+
+// jsdom cannot scroll options into a viewport; selection semantics remain real.
+Object.defineProperty(HTMLElement.prototype, "scrollIntoView", {
+  configurable: true,
+  value() {},
+});

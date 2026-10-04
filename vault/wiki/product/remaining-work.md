@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T14:16:08+09:00"
+  at: "2026-10-04T14:54:43+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
@@ -47,12 +47,22 @@ sources:
   - id: "tone-verification"
     resource: "../../raw/research/2026-10-04-charcoal-theme-verification.json"
     title: "차콜 증분 실행"
+  - id: "component-request"
+    resource: "../../raw/conversations/2026-10-04-012.md"
+    title: "컴포넌트 재점검/3D 요구"
+  - id: "component-check"
+    resource: "../../raw/research/2026-10-04-component-review.json"
+    title: "실제 페이지별 관찰"
 version: "0.2.1"
 approval_status: "proposal"
 change_id: "CHG-0011"
 ---
 
 # 현재 구현에서 운동 MVP까지 남은 작업
+
+## CONV-0012 현재 재점검
+
+[UI-03 재감사](component-review.md)에서 공식 Mantine 예시와 실제 페이지 캡처를 비교해 Select/Accordion·여백·표면/편집창을 수정했다.55개·lint/build/format·20폭/화면 overflow0. FR-17 [3D 검토](anatomy-3d-feasibility.md)는 기술/자산 관문 문서만 완료하고 VIS-3D-02/03은 P2후순위다. 다음 순차 작업은 HAR-02 백업 재선택/프로필 전환 DOM 보강, 이어 HAR-03/05 자동 browser/CI·SYNC 실계정·SCI 콘텐츠/REL 실기기 관문이다. 운동 MVP 전체 완료로 표시하지 않는다.
 
 ## CONV-0010→0011 전체 UI 반영
 

@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T14:16:08+09:00"
+  at: "2026-10-04T14:54:43+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-008.md"
@@ -38,6 +38,12 @@ sources:
   - id: "tone-verification"
     resource: "../../raw/research/2026-10-04-charcoal-theme-verification.json"
     title: "차콜 증분 실행"
+  - id: "component-request"
+    resource: "../../raw/conversations/2026-10-04-012.md"
+    title: "컴포넌트 재점검/3D 요구"
+  - id: "component-check"
+    resource: "../../raw/research/2026-10-04-component-review.json"
+    title: "실제 페이지별 관찰"
 version: "0.2.1"
 change_id: "CHG-0011"
 ---
@@ -81,3 +87,7 @@ Geist5개 normal variable WOFF2 subset 합계76.41KB, dist/assets 번들·PWA pr
 앱 진입97.06KB/30.42KB gzip, Mantine CSS233.86KB/34.17KB gzip, precache25개/1217.59KiB. 청크 분리는 전체 다운로드 감소 보장이 아니다. 호스트에는 app/dist만 제공하며 vault/서버 secrets/개인 backup은 포함하지 않는다.
 
 최신 unit19/integration25/ui11·55개/12파일, lint 경고0/build/format. DOM의 no-layout stubs/FileReader test 보완과 수동 CUA layout을 구별한다. owner/schema/스토어/계산/RPC 변경 없음. [최신 실행](../../raw/research/2026-10-04-charcoal-theme-verification.json) · [Supabase](supabase-integration.md) · [하네스](../operations/testing-harness.md).
+
+## CONV-0012 적용 범위
+
+NativeSelect native popup을 제거하고 Mantine Select/Combobox로 통일했다. Accordion default/heading·filled 입력·Paper/Drawer theme으로 여백/표면을 관리한다. [현재 재감사](component-review.md). 버전/새 runtime dependency 변경은 없다. model-viewer/Three.js/React Three Fiber는 후순위 비교 후보이고 현재 설치된 스택으로 표시하지 않는다. [3D 검토](anatomy-3d-feasibility.md).

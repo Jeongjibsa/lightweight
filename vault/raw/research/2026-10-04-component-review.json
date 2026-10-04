@@ -1,0 +1,362 @@
+{
+  "type": "Verification Record",
+  "title": "Mantine component review and correction",
+  "captured_at": "2026-10-04T14:54:43+09:00",
+  "generated": {
+    "by": "codex/gpt-6",
+    "at": "2026-10-04T14:54:43+09:00"
+  },
+  "request": "CONV-0012",
+  "branch": "codex/mantine-blue-dark",
+  "baseline_commit": "1fae5ad",
+  "app_version": "0.2.0",
+  "test_origin": "http://127.0.0.1:4177",
+  "test_data_only": true,
+  "data": "synthetic named profile,1 routine,2 completed sessions;20/30kg x10x3=600/900;temporary active workout for details,then fake backup restored",
+  "official_reference": {
+    "url": "https://ui.mantine.dev/component/faq-simple/",
+    "dark_mode": true,
+    "viewport": "390x844",
+    "captured_and_inspected": true,
+    "control_padding_px": 16,
+    "content_padding_px": 16,
+    "scope": "FAQ single expanded item; separated variant, not a rule that every app surface must have an outline"
+  },
+  "browser": {
+    "five_page_before_after_images_inspected": true,
+    "responsive": [
+      {
+        "page": "today",
+        "requestedWidth": 320,
+        "client": 320,
+        "scroll": 320,
+        "width": 320
+      },
+      {
+        "page": "library",
+        "requestedWidth": 320,
+        "client": 320,
+        "scroll": 320,
+        "width": 320
+      },
+      {
+        "page": "routines",
+        "requestedWidth": 320,
+        "client": 320,
+        "scroll": 320,
+        "width": 320
+      },
+      {
+        "page": "reports",
+        "requestedWidth": 320,
+        "client": 320,
+        "scroll": 320,
+        "width": 320
+      },
+      {
+        "page": "settings",
+        "requestedWidth": 320,
+        "client": 320,
+        "scroll": 320,
+        "width": 320
+      },
+      {
+        "page": "today",
+        "requestedWidth": 768,
+        "client": 768,
+        "scroll": 768,
+        "width": 768
+      },
+      {
+        "page": "library",
+        "requestedWidth": 768,
+        "client": 768,
+        "scroll": 768,
+        "width": 768
+      },
+      {
+        "page": "routines",
+        "requestedWidth": 768,
+        "client": 768,
+        "scroll": 768,
+        "width": 768
+      },
+      {
+        "page": "reports",
+        "requestedWidth": 768,
+        "client": 768,
+        "scroll": 768,
+        "width": 768
+      },
+      {
+        "page": "settings",
+        "requestedWidth": 768,
+        "client": 768,
+        "scroll": 768,
+        "width": 768
+      },
+      {
+        "page": "today",
+        "requestedWidth": 1440,
+        "client": 1440,
+        "scroll": 1440,
+        "width": 1440
+      },
+      {
+        "page": "library",
+        "requestedWidth": 1440,
+        "client": 1440,
+        "scroll": 1440,
+        "width": 1440
+      },
+      {
+        "page": "routines",
+        "requestedWidth": 1440,
+        "client": 1440,
+        "scroll": 1440,
+        "width": 1440
+      },
+      {
+        "page": "reports",
+        "requestedWidth": 1440,
+        "client": 1440,
+        "scroll": 1440,
+        "width": 1440
+      },
+      {
+        "page": "settings",
+        "requestedWidth": 1440,
+        "client": 1440,
+        "scroll": 1440,
+        "width": 1440
+      },
+      {
+        "page": "today",
+        "requestedWidth": 390,
+        "width": 390,
+        "client": 390,
+        "scroll": 390
+      },
+      {
+        "page": "library",
+        "requestedWidth": 390,
+        "width": 390,
+        "client": 390,
+        "scroll": 390
+      },
+      {
+        "page": "routines",
+        "requestedWidth": 390,
+        "width": 390,
+        "client": 390,
+        "scroll": 390
+      },
+      {
+        "page": "reports",
+        "requestedWidth": 390,
+        "width": 390,
+        "client": 390,
+        "scroll": 390
+      },
+      {
+        "page": "settings",
+        "requestedWidth": 390,
+        "width": 390,
+        "client": 390,
+        "scroll": 390
+      }
+    ],
+    "accordion_final": {
+      "contentPadding": [
+        "16px",
+        "16px"
+      ],
+      "controlPadding": [
+        "16px",
+        "16px"
+      ],
+      "itemBackground": "rgba(0, 0, 0, 0)",
+      "itemBorder": "0px 0px 1px",
+      "nativeSelects": 0,
+      "width": 390
+    },
+    "states": [
+      "filled five pages",
+      "expanded set details and kind Select",
+      "routine editor Drawer",
+      "settings split Select",
+      "reports condition Select and graph",
+      "custom exercise load mode Select"
+    ],
+    "method": "CUA DOM actions/read-only layout metrics; exact saved screenshots visually inspected",
+    "fullPage_limit": "fixed/sticky navigation can appear inside stitched fullPage image; viewport captures verify actual screen",
+    "not_run": [
+      "actual iPhone/Safari/keyboard/VoiceOver",
+      "automated browser runner or hosted CI",
+      "real Auth/multi-device",
+      "production offline/update"
+    ]
+  },
+  "automated": {
+    "unit": 19,
+    "integration": 25,
+    "ui": 11,
+    "total": 55,
+    "files": 12,
+    "lint": "passed",
+    "test": "passed/no unhandled errors",
+    "build": "passed",
+    "format": "passed"
+  },
+  "loops": [
+    {
+      "issue": "Accordion control/content padding0 and nested opaque surface",
+      "fix": "default variant,transparent item,16px control/content padding,heading order",
+      "recheck": {
+        "contentPadding": [
+          "16px",
+          "16px"
+        ],
+        "controlPadding": [
+          "16px",
+          "16px"
+        ],
+        "itemBackground": "rgba(0, 0, 0, 0)",
+        "itemBorder": "0px 0px 1px",
+        "nativeSelects": 0,
+        "width": 390
+      }
+    },
+    {
+      "issue": "NativeSelect native popup and repetitive outlines",
+      "fix": "Select custom Combobox,filled inputs,soft Paper surface",
+      "recheck": "open dropdown screenshots and existing report/filter/restore contracts"
+    },
+    {
+      "issue": "inline routine/stat texts ran together;Drawer local styles hid theme content styles",
+      "fix": "Stack/SimpleGrid spacing and centralized Drawer styles",
+      "recheck": "routine editor/header and Today captures"
+    },
+    {
+      "issue": "jsdom scrollIntoView is absent after Select migration",
+      "fix": "explicit no-layout shim in test setup",
+      "recheck": "55 contracts pass without uncaught errors"
+    }
+  ],
+  "inspection_tool_failures": [
+    "one chooser attempt used hidden input label instead of visible backup import button;retargeted with latest AX state",
+    "one multi-width CUA batch exceeded30s;split into per-width batches and persisted actual measurements"
+  ],
+  "screenshot_resources": [
+    {
+      "resource": "raw/design/2026-10-04-review12-after-custom-dropdown.png",
+      "state": "after-custom-dropdown",
+      "sha256": "5b4ba08d0dd75f5b1ec660dc243b53c5a3c2875529d949ed374f9c5aaab53fe7"
+    },
+    {
+      "resource": "raw/design/2026-10-04-review12-after-library.png",
+      "state": "after-library",
+      "sha256": "f5939cd794f938939ef7776b1dbb7361444afcc64b4d9d19eafa2bae257c63af"
+    },
+    {
+      "resource": "raw/design/2026-10-04-review12-after-reports-1440.png",
+      "state": "after-reports-1440",
+      "sha256": "a541d3fa564058c7e6fca5ae22f3e98e468dd452ed5e17d514b9137a4058b364"
+    },
+    {
+      "resource": "raw/design/2026-10-04-review12-after-reports-dropdown.png",
+      "state": "after-reports-dropdown",
+      "sha256": "ab3f51fe7a478b4006276add13fc1fb4fb5cdf35da7602bb5c089ce798920e0b"
+    },
+    {
+      "resource": "raw/design/2026-10-04-review12-after-reports-graph.png",
+      "state": "after-reports-graph",
+      "sha256": "a6a4199aa5f3bd0c8ad3ffbfc71206475f73f1409afc3ef13da887c7fa6106d8"
+    },
+    {
+      "resource": "raw/design/2026-10-04-review12-after-reports.png",
+      "state": "after-reports",
+      "sha256": "6c6f885b03d2ebd80309169610e84cd4e45bce2026d88089bd1f689425670a7c"
+    },
+    {
+      "resource": "raw/design/2026-10-04-review12-after-routine-editor.png",
+      "state": "after-routine-editor",
+      "sha256": "82ac73b91de9df9c59a85d04d2a33163316323f53556d123cffd3c5199bd3baa"
+    },
+    {
+      "resource": "raw/design/2026-10-04-review12-after-routines.png",
+      "state": "after-routines",
+      "sha256": "9515d8b43e2f9c4a49afa83d4897de0c09156a3a50038d678e97f0ba98ad3bb9"
+    },
+    {
+      "resource": "raw/design/2026-10-04-review12-after-settings-320.png",
+      "state": "after-settings-320",
+      "sha256": "4058be81c32cba3c47b3d9f5a636fb30ec04bf272cd4cfc77b49fc089ee9e8a5"
+    },
+    {
+      "resource": "raw/design/2026-10-04-review12-after-settings-dropdown.png",
+      "state": "after-settings-dropdown",
+      "sha256": "31764191e9039788b44bb3b1ae5704c2c3e606261bec5b37e003403e22ee611a"
+    },
+    {
+      "resource": "raw/design/2026-10-04-review12-after-settings.png",
+      "state": "after-settings",
+      "sha256": "7e8669836f55fe589dbd7a2ee06d364a9eac967330fd50a9ddc4a2a1443466e8"
+    },
+    {
+      "resource": "raw/design/2026-10-04-review12-after-today-accordion.png",
+      "state": "after-today-accordion",
+      "sha256": "d50ad6949ffebd2675d9ae9d0d39121da187a67e6b4e8930813d0ef4a2260232"
+    },
+    {
+      "resource": "raw/design/2026-10-04-review12-after-today.png",
+      "state": "after-today",
+      "sha256": "ac1640a504706d7b483d0e4fcf10df8c5d4efb1ce434e9ff9578c41a73f8fe25"
+    },
+    {
+      "resource": "raw/design/2026-10-04-review12-after-workout-dropdown.png",
+      "state": "after-workout-dropdown",
+      "sha256": "3cd07351e74a0f1e783d1d6b59303ae50fe2e7923463c1de4cd90d383ec48013"
+    },
+    {
+      "resource": "raw/design/2026-10-04-review12-after-workout.png",
+      "state": "after-workout",
+      "sha256": "848368f4a87128f5aa7d1c4ca09d7dabae34dafe447c7b2afeb73fe2d9c8adbe"
+    },
+    {
+      "resource": "raw/design/2026-10-04-review12-before-library.png",
+      "state": "before-library",
+      "sha256": "500bc7c4df08c4883100b77db45f42080110b1191c6fb7394c1cd50d5001a942"
+    },
+    {
+      "resource": "raw/design/2026-10-04-review12-before-reports.png",
+      "state": "before-reports",
+      "sha256": "06fe81f671aa37369342349819bc4b0b091b0090449f39b8a3c6a10b2fcfd3df"
+    },
+    {
+      "resource": "raw/design/2026-10-04-review12-before-routine-editor.png",
+      "state": "before-routine-editor",
+      "sha256": "4ffedc89da7ab33d26d78572273b92d5e2eb0e0d8b3d2f9049bafed3a2cedfab"
+    },
+    {
+      "resource": "raw/design/2026-10-04-review12-before-routines.png",
+      "state": "before-routines",
+      "sha256": "6d0896cdede003612d7195158eb81958682b70dc43890691873b7ce9f6297b01"
+    },
+    {
+      "resource": "raw/design/2026-10-04-review12-before-settings.png",
+      "state": "before-settings",
+      "sha256": "bc3b325ea57935eabf248f091ecdd3f601246f673a280b8baec749fd316dcb38"
+    },
+    {
+      "resource": "raw/design/2026-10-04-review12-before-today.png",
+      "state": "before-today",
+      "sha256": "c458f8ebcaaa098ee669fdba9c1d831a40c4eb93bde30bb2097420f1e60617da"
+    },
+    {
+      "resource": "raw/design/2026-10-04-review12-before-workout.png",
+      "state": "before-workout",
+      "sha256": "505b36e0f8e9e49d3e02d2c6a21d090f60fc2264a5f5eea801705ea935dd2c9e"
+    }
+  ]
+}

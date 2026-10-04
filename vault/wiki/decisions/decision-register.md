@@ -8,7 +8,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T14:16:08+09:00"
+  at: "2026-10-04T14:54:43+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-03-001.md"
@@ -46,6 +46,9 @@ sources:
   - id: "tone-request"
     resource: "../conversations/2026-10-04-011.md"
     title: "대화/변경"
+  - id: "component-request"
+    resource: "../conversations/2026-10-04-012.md"
+    title: "대화"
 ---
 
 # 결정과 제안 기록
@@ -114,3 +117,9 @@ sources:
 ## Related
 
 [원문](../../raw/conversations/2026-10-03-001.md) · [대화](../conversations/2026-10-03-001.md) · [PRD](../product/prd.md) · [미결](../product/open-questions.md)
+
+## CONV-0012 결정/제안
+
+- DEC-044 / 사용자 명시: 실제 페이지 캡처로 Mantine 선택/접기·여백/outline 전반 재점검. UI-03으로 기존 UI-02의 불만을 후속 추적한다.
+- DEC-045 / 사용자 명시: 운동별3D 해부학/자극부위 애니메이션을 추가하되 지금은 검토만/후순위.
+- DEC-046 / 구현·계획 제안: default Accordion/16px·filled Select/Paper/Drawer 일관성, FR-17 P2/VIS-3D-02~03 asset/검토·실기기 관문. 구체 renderer·budget·토큰 사용자 승인 아님.

@@ -34,7 +34,7 @@ export const theme = createTheme({
   },
   components: {
     Paper: {
-      defaultProps: { radius: "xl", p: "lg", withBorder: true, bg: "dark.7" },
+      defaultProps: { radius: "lg", p: "lg", withBorder: false, bg: "dark.7" },
     },
     Button: {
       defaultProps: { size: "md", radius: "lg" },
@@ -42,17 +42,41 @@ export const theme = createTheme({
     },
     ActionIcon: { defaultProps: { size: 44, radius: "lg", variant: "subtle" } },
     ThemeIcon: { defaultProps: { variant: "filled", autoContrast: true } },
-    TextInput: { defaultProps: { size: "md" } },
-    PasswordInput: { defaultProps: { size: "md" } },
-    NativeSelect: { defaultProps: { size: "md" } },
+    TextInput: {
+      defaultProps: { size: "md", radius: "md", variant: "filled" },
+    },
+    PasswordInput: {
+      defaultProps: { size: "md", radius: "md", variant: "filled" },
+    },
+    Select: {
+      defaultProps: {
+        size: "md",
+        radius: "md",
+        variant: "filled",
+        allowDeselect: false,
+      },
+      styles: {
+        dropdown: {
+          backgroundColor: "var(--mantine-color-dark-6)",
+          borderColor: "var(--mantine-color-dark-4)",
+          padding: 6,
+          borderRadius: "var(--mantine-radius-md)",
+        },
+        option: {
+          minHeight: 44,
+          padding: "10px 12px",
+          whiteSpace: "normal",
+          lineHeight: 1.5,
+        },
+      },
+    },
     Input: {
       styles: {
         input: {
           minHeight: 44,
           fontSize: 16,
           color: "var(--mantine-color-dark-0)",
-          backgroundColor: "var(--mantine-color-dark-8)",
-          borderColor: "var(--mantine-color-dark-4)",
+          backgroundColor: "var(--mantine-color-dark-6)",
         },
       },
     },
@@ -77,11 +101,14 @@ export const theme = createTheme({
     Drawer: {
       styles: {
         content: {
+          height: "auto",
+          maxHeight: "90dvh",
           borderRadius: "24px 24px 0 0",
-          backgroundColor: "var(--mantine-color-dark-8)",
+          backgroundColor: "var(--mantine-color-dark-7)",
           paddingBottom: "env(safe-area-inset-bottom)",
         },
-        header: { backgroundColor: "var(--mantine-color-dark-8)" },
+        body: { maxHeight: "calc(90dvh - 80px)", overflowY: "auto" },
+        header: { backgroundColor: "var(--mantine-color-dark-7)" },
         title: { fontWeight: 650 },
         close: { minWidth: 44, minHeight: 44 },
       },
@@ -107,13 +134,17 @@ export const theme = createTheme({
       },
     },
     Accordion: {
-      defaultProps: { variant: "separated", radius: "lg" },
+      defaultProps: { variant: "default", radius: "md" },
       styles: {
         item: {
-          backgroundColor: "var(--mantine-color-dark-8)",
+          backgroundColor: "transparent",
           borderColor: "var(--mantine-color-dark-5)",
         },
-        control: { minHeight: 44 },
+        control: { minHeight: 48, paddingInline: "var(--mantine-spacing-md)" },
+        content: {
+          padding:
+            "var(--mantine-spacing-xs) var(--mantine-spacing-md) var(--mantine-spacing-md)",
+        },
       },
     },
     Text: { defaultProps: { c: "dark.0" } },

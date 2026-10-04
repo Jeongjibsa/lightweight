@@ -16,3 +16,4 @@
 - [복원 설정 입력 회귀 루프](2026-10-04-settings-restore-loop.json) — 최초 실패→작은 수정→회귀2·전체52개/11파일.
 - [전체 Mantine/Geist 디자인 검증](2026-10-04-mantine-geist-design-verification.json) — 55개·실제 iframe25조합·가짜 캡처/루프·미검증 경계.
 - [차콜 테마 실행/관찰](2026-10-04-charcoal-theme-verification.json) — 공식 화면·색상/대비·55개·수동 폭 확인.
+- [컴포넌트 재감사 실행](2026-10-04-component-review.json) — 실제 캡처/20폭/화면·55개.

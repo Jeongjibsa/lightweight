@@ -5,7 +5,7 @@ import {
   Box,
   Button,
   Group,
-  NativeSelect,
+  Select,
   Paper,
   Progress,
   SimpleGrid,
@@ -147,15 +147,7 @@ function SetRow({
           <Check size={22} />
         </ActionIcon>
       </Group>
-      <Accordion
-        mt={8}
-        variant="default"
-        styles={{
-          item: { border: 0 },
-          control: { padding: 0, minHeight: 44 },
-          content: { padding: "0 0 12px" },
-        }}
-      >
+      <Accordion mt="sm" variant="default" order={4}>
         <Accordion.Item value="details">
           <Accordion.Control>
             <Text size="xs" c="dimmed">
@@ -164,13 +156,14 @@ function SetRow({
           </Accordion.Control>
           <Accordion.Panel>
             <SimpleGrid cols={{ base: 1, xs: 3 }} spacing="sm">
-              <NativeSelect
+              <Select
                 label="세트 종류"
                 aria-label={`${prefix} 종류`}
                 disabled={completed || readOnly}
                 value={kind}
-                onChange={(e) => {
-                  const value = e.target.value as TrainingSet["kind"];
+                onChange={(selection) => {
+                  if (!selection) return;
+                  const value = selection as TrainingSet["kind"];
                   setKind(value);
                   void run(() =>
                     store.updateSet(session.ownerId, session.id, set.id, {
@@ -184,13 +177,14 @@ function SetRow({
                   { value: "warmup", label: "준비 세트" },
                 ]}
               />
-              <NativeSelect
+              <Select
                 label="좌우"
                 aria-label={`${prefix} 좌우`}
                 disabled={completed || readOnly}
                 value={side}
-                onChange={(e) => {
-                  const value = e.target.value as TrainingSet["side"];
+                onChange={(selection) => {
+                  if (!selection) return;
+                  const value = selection as TrainingSet["side"];
                   setSide(value);
                   void run(() =>
                     store.updateSet(session.ownerId, session.id, set.id, {

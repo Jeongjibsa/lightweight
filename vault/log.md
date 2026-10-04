@@ -2,6 +2,8 @@
 
 ## 2026-10-04
 
+- **UI/Planning / CONV0012**: [컴포넌트 재감사](wiki/product/component-review.md)에서 다섯 페이지 before/after·실제 펼친 UI를 캡처/직접 확인해 Select/Accordion·16px 여백·표면·Drawer/텍스트를 수정했다.55개/lint/build/format·20폭/화면 overflow0. [원본](raw/research/2026-10-04-component-review.json). [FR17 3D 검토](wiki/product/anatomy-3d-feasibility.md)는 문서만/후순위P2이며 구현/asset 검수 미수행. PRD0.7.0·[CHG0012](history/changes/CHG-0012.md)·CONV/SRC041~042/캡처·스냅샷을 새로 보존했다. 다음은 HAR02 복원 재시도/프로필 DOM이다.
+
 - **Design / Tone**: [CONV-0011](wiki/conversations/2026-10-04-011.md)의 Monokai/Mantine 참고 요청으로 차콜·노란 강조를 적용. 배경/표면/입력/선택/그래프·PWA theme/아이콘, filled 버튼/ThemeIcon 전경 대비 조정. 같은 `codex/mantine-blue-dark` branch, 기능/데이터/권한 변경 없음. [현재 디자인](wiki/product/design-system.md).
 - **Verification / History**: 기존55개/12파일·lint/build/format 통과, fake 화면320/390/1440px overflow0·색/console0. ThemeIcon 흰 전경을 발견→명시 variant/autoContrast→검정 재확인. [새 불변 실행](raw/research/2026-10-04-charcoal-theme-verification.json)·[캡처](raw/design/index.md)·SRC040, [CHG-0011](history/changes/CHG-0011.md)·[PRD0.6.1 전체](history/versions/prd-v0.6.1.md). 이전 원본/해시 보존. local commit 지속 지침 적용; push/배포는 범위 밖.
 

@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T14:16:08+09:00"
+  at: "2026-10-04T14:54:43+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-03-001.md"
@@ -104,9 +104,18 @@ sources:
   - id: "tone-reference"
     resource: "../sources/SRC-040-charcoal-tone.md"
     title: "공식 디자인 참고"
-version: "0.6.1"
+  - id: "component-request"
+    resource: "../../raw/conversations/2026-10-04-012.md"
+    title: "컴포넌트 재점검/3D 요구"
+  - id: "component-check"
+    resource: "../../raw/research/2026-10-04-component-review.json"
+    title: "실제 페이지별 관찰"
+  - id: "3d-feasibility"
+    resource: "anatomy-3d-feasibility.md"
+    title: "후순위 기술/자산 검토"
+version: "0.7.0"
 approval_status: "proposal"
-change_id: "CHG-0011"
+change_id: "CHG-0012"
 aliases:
   - "앱 기획서"
   - "PRD"
@@ -114,7 +123,7 @@ aliases:
 
 # 근거 기반 웨이트 트레이닝 앱 기획서
 
-> **버전 0.6.1 · 2026-10-04 · 브레인스토밍 초안**  
+> **버전 0.7.0 · 2026-10-04 · 브레인스토밍 초안**  
 > 앱 이름은 미정. `lightweight`는 임시 프로젝트 식별자다.  
 > 사용자 범위·iOS·PWA·기본 스택과 명시 기능은 **요구사항/합의**, 배포 제공자·상세 보안/동기화·출시 순서·수치 목표는 **기획 제안**으로 구분한다.
 
@@ -176,6 +185,7 @@ Cloudflare Pages에 PWA 화면을, Supabase에 계정/DB와 서버 기능을 배
 | FR-14 | 운동별·일별 세트/반복/중량 볼륨과 그래프 추이 | P0, 관찰 지표부터 | [볼륨 MVP](volume-history-mvp.md) |
 | FR-15 | 과거 데이터 기반 오늘의 운동/권장 볼륨 안내 | P0, 기록 참고→검토된 조정 단계 | [후보/조정](volume-history-mvp.md) |
 | FR-16 | Monokai/Mantine 참고 차콜 톤·iOS 같은 UX·전 폭 하단 메뉴·클릭 수 감소/접근성·별도 branch 구현 | P0, UI 증분/실기기 잔여 | [디자인](design-system.md) · [감사](design-audit.md) |
+| FR-17 | 운동별 3D 해부학 모델·관련 근육 강조/동작 애니메이션 | P2, 지금은 가능성 검토만·운동 MVP 안정화 후 | [3D 검토](anatomy-3d-feasibility.md) |
 | QA-01 | 현재 검증 하네스 문서화·단위/통합 검사·실패 재현/회귀의 반복 개선 | 지속 품질 요구; 상세 구현안 제안 | [하네스](../operations/testing-harness.md) · [루프](../operations/loop-engineering.md) |
 | KM-01 | 루트 vault·Markdown·OKF·옵시디언 호환 | 이번 산출물 | [관리](../operations/knowledge-workflow.md) |
 | KM-02 | 대화에 따른 기획 수정과 이력·근거 축적 | 지속 관리 | [변경](../../history/changes/index.md) |
@@ -198,7 +208,7 @@ flowchart LR
 
 내비게이션은 **오늘 / 운동 탐색 / 나의 루틴 / 리포트 / 설정**의 전 폭 하단 다섯 탭으로 구현한다(CONV-0010). 식단 출시 시 ‘오늘’에 식사 기록 진입점을 추가하고 리포트에 영양 탭을 둔다.
 
-화면은 기종 이름 대신 폭과 입력 환경에 대응한다. 모든 폭에서 하단 메뉴를 유지하고 큰 화면은 본문 최대1080px·다중 열을 사용한다. 오늘 시작/재개·루틴 바로 시작, 운동 행 한 번 추가, 새 루틴 연속 선택과 운동 하단 dock으로 반복 조작을 줄인다. 모바일 확인/상세는 내용 높이 bottom sheet, 큰 화면은 Modal이다. Mantine theme과 Geist/한글 fallback·블루/다크로 통일한다. 구체 tokens/target/초점 기준은 [디자인 규칙](design-system.md)을 따르며 실제 iOS native 전환/실기기 검증 완료를 의미하지 않는다. 사용자별 목표·주당 횟수 범위·분할·시간·장비·단위·시간대를 설정하고 변경할 수 있다. 주당 횟수와 분할은 독립이다. 새 사용자의 목표·횟수·분할을 본인 조건으로 강제하지 않는다. 시작 당시 설정/루틴은 과거 기록에 보존한다. [구현 계약](implementation-contracts.md).
+화면은 기종 이름 대신 폭과 입력 환경에 대응한다. 모든 폭에서 하단 메뉴를 유지하고 큰 화면은 본문 최대1080px·다중 열을 사용한다. 오늘 시작/재개·루틴 바로 시작, 운동 행 한 번 추가, 새 루틴 연속 선택과 운동 하단 dock으로 반복 조작을 줄인다. 모바일 확인/상세는 내용 높이 bottom sheet, 큰 화면은 Modal이다. Mantine theme과 Geist/한글 fallback·차콜/노란 강조로 통일한다. 선택/접기는 Mantine Select/Accordion으로 구성하고 본문·control·panel의 수평 여백과 중첩 표면을 페이지별 캡처로 검토한다. [현재 재감사](component-review.md). 구체 tokens/target/초점 기준은 [디자인 규칙](design-system.md)을 따르며 실제 iOS native 전환/실기기 검증 완료를 의미하지 않는다. 사용자별 목표·주당 횟수 범위·분할·시간·장비·단위·시간대를 설정하고 변경할 수 있다. 주당 횟수와 분할은 독립이다. 새 사용자의 목표·횟수·분할을 본인 조건으로 강제하지 않는다. 시작 당시 설정/루틴은 과거 기록에 보존한다. [구현 계약](implementation-contracts.md).
 
 첫 사용에는 전체 프로필을 강제하기 전에 운동 탐색과 직접 기록을 허용한다. 추천 시 목표·경험·가능 횟수·시간·장비·제약을 단계적으로 받는다. 체중과 영양 계산 정보는 해당 기능에서 받는다.
 
@@ -215,7 +225,7 @@ flowchart LR
 
 운동 카드는 이름/별칭·장비·대상 근육·난이도·설정·수행법·흔한 오류·대체 운동·근거·검토일을 제공한다. 근육 그림의 색을 성장률이나 ‘자극 80%’로 표시하지 않는다. 급성 EMG만으로 장기 근비대 순위를 정하지 않는다.[^emg]
 
-시각 자료는 2D 전면/후면 근육 지도와 짧은 동작 자료부터 시작하는 제안이다. 3D·카메라 자세 추적은 추후 검증한다. 해부학·수행법은 전문가 검토와 권한 확인 후 공개한다.
+시각 자료는 검토된 2D 전면/후면 근육 지도와 짧은 동작 자료부터 시작하는 제안이다. CONV-0012에서 운동별 3D 해부학 모델의 자극부위/동작 애니메이션을 명시 요청했으며, 현재는 가능성 검토만 하고 후순위로 둔다(FR-17). PWA renderer는 후보가 있지만 자산의 근육 분리·rig/clip·권한/해부학 검토·실기기 성능 확인이 필요하다. 첫 운동 MVP 출시 선행 조건으로 넣지 않는다. [가능성/관문](anatomy-3d-feasibility.md)·VIS-3D-01~03. 카메라 자세 추적은 별도 미확정이다. 해부학·수행법은 전문가 검토와 권한 확인 후 공개한다.
 
 ## 6. 루틴 추천과 티어 원칙
 

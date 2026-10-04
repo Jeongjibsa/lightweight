@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-03T23:24:52+09:00"
+  at: "2026-10-04T14:54:43+09:00"
 sources:
   - id: "triceps"
     resource: "../sources/SRC-014-overhead-triceps.md"
@@ -23,6 +23,12 @@ sources:
   - id: "local-progress"
     resource: "implementation-progress.md"
     title: "실행 결과와 남은 작업"
+  - id: "component-request"
+    resource: "../../raw/conversations/2026-10-04-012.md"
+    title: "컴포넌트 재점검/3D 요구"
+  - id: "component-check"
+    resource: "../../raw/research/2026-10-04-component-review.json"
+    title: "실제 페이지별 관찰"
 ---
 
 # 운동 라이브러리와 시각 설명
@@ -72,3 +78,7 @@ FR-01·FR-02. [기획서](prd.md). 부위 선택 → 목록 → 상세 → 루�
 특정 iPhone 모델에 한정하지 않는 반응형과 각 사용자별 목표·주당 횟수·분할·시간·장비·단위·시간대 설정을 요구사항으로 추가했다. 본인의 조건은 하나의 시험 표본이다. Supabase 프로젝트가 없으므로 로컬부터 구현한다는 사용자 선택을 반영했다. [로컬 계약](implementation-contracts.md) · [실행 결과](implementation-progress.md).
 
 로컬 프로필/기록·루틴 스냅샷·백업·사실 집계·PWA는 구현했으며 계정/RLS·서버 전송·실제 iOS·검토된 시각/설명·추천/티어·완전한 개인화·배포는 미완료다. 기존 실사용/지인 제공 관문은 유지한다. 로컬 프로필을 인증 계정으로, 개념도를 자극 범위로, 분류별 행 수를 근육 성장량으로 표시하지 않는다.
+
+## 후순위 3D 해부학 애니메이션
+
+CONV-0012/FR-17은 운동별 3D 해부학 모델과 관련 근육/동작 애니메이션을 요청했다. 현재 [가능성 검토](anatomy-3d-feasibility.md)만 수행했으며 구현은 P2/VIS-3D-02~03. 기존2D·설명/전문 검토를 대체하지 않고 첫 MVP 선행 조건으로 두지 않는다.

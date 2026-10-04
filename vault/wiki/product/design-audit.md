@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T14:16:08+09:00"
+  at: "2026-10-04T14:54:43+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-010.md"
@@ -26,6 +26,12 @@ sources:
   - id: "tone-verification"
     resource: "../../raw/research/2026-10-04-charcoal-theme-verification.json"
     title: "차콜 증분 실행"
+  - id: "component-request"
+    resource: "../../raw/conversations/2026-10-04-012.md"
+    title: "컴포넌트 재점검/3D 요구"
+  - id: "component-check"
+    resource: "../../raw/research/2026-10-04-component-review.json"
+    title: "실제 페이지별 관찰"
 version: "0.1.1"
 change_id: "CHG-0011"
 ---
@@ -33,6 +39,10 @@ change_id: "CHG-0011"
 # 전체 화면 디자인 감사와 개선 결과
 
 2026-10-04, Product Design audit·Geist·React best-practices 기준을 기존 app 코드/브라우저에 적용했다. 대상은 이미 존재하는 다섯 화면·운동 기록·확인/폼·Auth/클라우드 표시다. native 앱 전체를 새로 만들거나 인증/과학 내용을 검증한 감사가 아니다. [원문](../../raw/conversations/2026-10-04-010.md) · [디자인 규칙](design-system.md) · [관찰/환경 원본](../../raw/research/2026-10-04-mantine-geist-design-verification.json).
+
+## 최신 감사 — CONV-0012
+
+사용자 재지적으로 접기/선택/여백을 다시 열어 UI-03으로 수정했다. **현재 판정/캡처는 [페이지별 재감사](component-review.md)**를 따른다. 아래는 이전 증분 관찰 이력이다.
 
 ## 최신 톤 증분 — CONV-0011
 

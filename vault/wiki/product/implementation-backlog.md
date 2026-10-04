@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T14:16:08+09:00"
+  at: "2026-10-04T14:54:43+09:00"
 sources:
   - id: "implementation-request"
     resource: "../../raw/conversations/2026-10-03-005.md"
@@ -62,14 +62,20 @@ sources:
   - id: "tone-verification"
     resource: "../../raw/research/2026-10-04-charcoal-theme-verification.json"
     title: "차콜 증분 실행"
-version: "0.5.1"
+  - id: "component-request"
+    resource: "../../raw/conversations/2026-10-04-012.md"
+    title: "컴포넌트 재점검/3D 요구"
+  - id: "component-check"
+    resource: "../../raw/research/2026-10-04-component-review.json"
+    title: "실제 페이지별 관찰"
+version: "0.6.0"
 approval_status: "proposal"
-change_id: "CHG-0011"
+change_id: "CHG-0012"
 ---
 
 # 운동 PWA 구현 백로그와 완료 기준
 
-> 계획 v0.5.1. 반응형·사용자별 설정을 반영한 로컬 구현을 진행했다. **운동 먼저, 식단 다음**은 사용자 선택이고 상세 항목은 구현 제안이다. 상태: `ready`는 착수 후보, `planned`는 선행 조건/선택이 남음, `in_progress`·`blocked`·`done`은 실제 진행 후 기록한다. 로컬 증분의 완료/부분 진행은 아래와 [실행 결과](implementation-progress.md)에 기록한다. 원래 작업의 전체 기준이 남으면 in_progress를 유지한다.
+> 계획 v0.6.0. 반응형·사용자별 설정을 반영한 로컬 구현을 진행했다. **운동 먼저, 식단 다음**은 사용자 선택이고 상세 항목은 구현 제안이다. 상태: `ready`는 착수 후보, `planned`는 선행 조건/선택이 남음, `in_progress`·`blocked`·`done`은 실제 진행 후 기록한다. 로컬 증분의 완료/부분 진행은 아래와 [실행 결과](implementation-progress.md)에 기록한다. 원래 작업의 전체 기준이 남으면 in_progress를 유지한다.
 
 ## 기준과 책임
 
@@ -84,6 +90,7 @@ UI-01은 당시 부분 Mantine/Spoqa/스택 명시 증분으로 done이었다. C
 | ID | 단계 | 작업과 산출물 | 선행 조건 | 완료 기준 | 상태 |
 |---|---|---|---|---|---|
 | UI-02 | M0~M2 | 전체 Mantine·Geist/차콜·하단5탭·클릭 단축·별도 branch | CONV-0010→0011/FR-12·16 | 디자인 계약/감사·키보드/빠른 추가/연속 선택·55개/빌드·25폭/화면 조합 관찰; 실기기는 RESP-01 | done |
+| UI-03 | M0~M2 | Mantine 공식 예시 재감사·Select/Accordion·여백/중첩 표면·실제 페이지 캡처 | CONV-0012/FR-12·16 | 다섯 페이지 before/after·펼친 상세/선택창·20폭/화면 관찰·기존55계약 | done |
 | PREF-01 | M0~M2 | 프로필별 목표/횟수/분할·시간/장비/단위/시간대 입력·수정·보존 | FR-11, 로컬 계약 | 새 사용자 미설정, A/B 다른 설정·기록 분리, 변경 시 과거 스냅샷 보존 | done |
 | RESP-01 | M1~M6 | 기종 무관 화면 재배치·입력/초점·safe area | FR-10 | 주요 화면320~1440px, 가로/키보드/확대·실제 Safari 검증 | in_progress |
 | PRE-01 | M0 | 기록/단위·집계·소유 관계·동기화·삭제·복원 계약과 가짜 표본 | 현재 PRD/상세 | 계획8/완료6/준비2·0/결측·좌우·보조·재시도·충돌의 예상 결과 정의 | in_progress |
@@ -138,6 +145,9 @@ PRE와 화면/계산 개발은 미결인 종목/장비·호스팅 선택 전 가
 
 | ID | 범위 | 선행 조건 | 완료 기준 | 상태 |
 |---|---|---|---|---|
+| VIS-3D-01 | FR-17 Web 3D/자산/권한·성능 가능성 검토만 | CONV-0012 | 일차 자료·읽은 범위·구현/자산 검수 미수행·후순위 계획 | done |
+| VIS-3D-02 | P2 한 운동/변형의 asset·근육 분리/rig/clip·검토/예산 선정 | 운동 MVP/기록 안정화·SCI-01~02·VIS-3D-01 | rights·content 검토·파일 성능·renderer/budget 선택 | planned |
+| VIS-3D-03 | P2 3D prototype·재생/정지·근육 설명·fallback·검토된 운동부터 확대 | VIS-3D-02·실기기 사용 가능 | 실제 Safari/GPU/기록 입력 영향·오프라인 용량·접근성 확인 | planned |
 | NUT-01 | 음식 DB 권한/표본 검색·기준량/조리/성분·커버리지 계약 | 운동 안정화·사용자 우선순위 | 실제 라이선스/API/누락 품질 검토·0/미분석 구별 | planned |
 | NUT-02 | 식사 기록·양 수정·최근/즐겨찾기·하루 완료 | NUT-01 | 성분 스냅샷·양 계산/복원·동기화, 미기록을0 처리하지 않음 | planned |
 | NUT-03 | KDRI/공식/단백질·활동/체중 추세 적용 검토 | NUT-01, 해당 전문 자료/검토자 | 기준/정오표/적용 범위·필수 입력·단위 표본과 과도한 진단 문구 검사 | planned |
@@ -161,15 +171,18 @@ PRE와 화면/계산 개발은 미결인 종목/장비·호스팅 선택 전 가
 | FR-09 영양/열량 | NUT-03~04 | 다음 출시, 검토/성분 품질 |
 | FR-10 반응형 PWA | RESP-01, BASE-02, REL-01~02 | 여러 폭 + 실제 기기 G3 |
 | FR-11 사용자별 설정 | PREF-01, PRE-01, SCI-03 | 설정/기록 소유 분리·간편 변경·과거 조건 보존 |
-| FR-12 UI/글꼴/스택 | UI-01→UI-02 | 전체 Mantine/Geist·한글 fallback·정확한 의존성 문서 |
-| FR-16 native형 톤/하단/빠른 접근 | UI-02, RESP-01, REL-02 | 차콜/노란 강조·전 폭 하단·빠른 시작/추가, 실기기 후속 |
+| FR-12 UI/글꼴/스택 | UI-01→UI-02→UI-03 | 전체 Mantine/Geist·한글 fallback·정확한 의존성 문서 |
+| FR-16 native형 톤/하단/빠른 접근 | UI-02/03, RESP-01, REL-02 | 차콜/노란 강조·전 폭 하단·빠른 시작/추가, 실기기 후속 |
 | FR-13 클라우드/가입 제한 | SYNC-01~05 | 연결 증분·실계정 검증 |
 | FR-14 볼륨/그래프 | REP-04/05 | 관찰 계산/조건·N/A·재계산/표 |
 | FR-15 오늘/권장량 | REP-06, SCI-03B | 기록 참고 후보와 검토된 조정 구분 |
+| FR-17 3D 해부학 애니메이션 | VIS-3D-01~03, SCI-01~02 | 검토만 완료/P2후순위; asset/권한/내용·실기기 관문 |
 | QA-01 하네스·반복 개선 | HAR-01~06 | 계층별 재현·실패 증거·회귀, 실기기/근거 검토 별도 |
 | KM-01/02 vault·이력 | 모든 의미 변경 | OKF 구조 검사·raw/CONV/CHG/PRD snapshot 유지 |
 
 ## 실행 기록
+
+CONV-0012/UI-03: 이전 UI-02 완료는 당시 증분 이력이다. 사용자 불만으로 Select/Accordion·spacing·surface를 재점검해 수정했고 현재 감사에서 다섯 페이지/펼친 화면 캡처를 직접 확인했다.55개·lint/build/format·20폭/화면 overflow0. [재감사](component-review.md). VIS-3D-01은 검토 문서만 done이며 구현02/03은 후순위 planned다. 다음은 HAR-02 backup retry/profile DOM 경계다.
 
 CONV-0011: UI-02의 팔레트만 차콜/노란 강조로 수정. theme/컴포넌트·PWA 색/아이콘,55개·lint/build/format·선택 화면320/390/1440px 확인. [원본](../../raw/research/2026-10-04-charcoal-theme-verification.json). 아래25조합/빠른 입력 검사는 CONV-0010 당시 이력이다.
 

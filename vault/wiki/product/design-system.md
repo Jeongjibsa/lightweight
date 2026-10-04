@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T14:16:08+09:00"
+  at: "2026-10-04T14:54:43+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-010.md"
@@ -29,17 +29,27 @@ sources:
   - id: "tone-reference"
     resource: "../sources/SRC-040-charcoal-tone.md"
     title: "공식 디자인 참고"
-version: "0.1.1"
-change_id: "CHG-0011"
+  - id: "component-request"
+    resource: "../../raw/conversations/2026-10-04-012.md"
+    title: "컴포넌트 재점검/3D 요구"
+  - id: "component-check"
+    resource: "../../raw/research/2026-10-04-component-review.json"
+    title: "실제 페이지별 관찰"
+version: "0.2.0"
+change_id: "CHG-0012"
 ---
 
 # Mantine·Geist 차콜 디자인 시스템
 
-CONV-0010→0011 / FR-12·16 / PRD0.6.1 / branch `codex/mantine-blue-dark`. [요구](../../raw/conversations/2026-10-04-010.md) · [감사/실행](design-audit.md) · [정확한 스택](technology-stack.md).
+CONV-0010→0012 / FR-12·16 / PRD0.7.0 / branch `codex/mantine-blue-dark`. [요구](../../raw/conversations/2026-10-04-010.md) · [감사/실행](design-audit.md) · [정확한 스택](technology-stack.md).
+
+## CONV-0012 컴포넌트 보정
+
+입력/선택은 Mantine filled TextInput/PasswordInput/Select·radius12px·dark6 표면, 일반 Paper는16px radius/20px padding·기본 border 없음. 필수 선택은 allowDeselect=false, 긴 기록/프로필 목록만 searchable. 내장 Accordion은 default/transparent item·control/panel 좌우16px·48px control·heading order, padding0 override 금지. 루틴 이름/설명은 Stack, 통계는 SimpleGrid/Stack으로 분리한다. Drawer의 높이/스크롤/배경은 theme에 한곳에 두어 local styles가 배경을 덮어쓰지 않게 한다. [페이지 캡처 재감사](component-review.md). 구체 토큰은 구현 판단이며 full accessibility/실기기 승인이 아니다.
 
 ## 톤과 공통 규칙
 
-Mantine9.6.3의 `theme`·`defaultProps`·`styles` API와 layout props로 카드/버튼/입력/목록/표/내비게이션/알림/Auth·클라우드 화면을 구성한다. `forceColorScheme=dark`, 배경dark9 `#1f1f1f`, surfacedark7 `#242424`, elevateddark6 `#2e2e2e`, inputdark8 `#1a1a1a`, primaryyellow4 `#ffd43b`, 본문dark0 `#f1f1f1`, 보조dark1/2. radius16/24px, 작은 장식보다 입력과 실행을 먼저 배치한다. 실제 palette는 `app/src/theme.ts` 단일 기준이며 위 값은 구현 선택이다. CONV-0011에 따라 [Mantine UI 다크 화면/Monokai 참고](../sources/SRC-040-charcoal-tone.md)로 블루 톤을 대체했다. `primaryColor=yellow`/`primaryShade=4`, `autoContrast=true`; filled ThemeIcon도 variant를 명시해 어두운 전경색을 적용한다. PWA theme-color와 홈 화면 아이콘도 같은 차콜/노란 방향이다.
+Mantine9.6.3의 `theme`·`defaultProps`·`styles` API와 layout props로 카드/버튼/입력/목록/표/내비게이션/알림/Auth·클라우드 화면을 구성한다. `forceColorScheme=dark`, 배경dark9 `#1f1f1f`, surfacedark7 `#242424`, elevateddark6 `#2e2e2e`, inputdark6 `#2e2e2e`, primaryyellow4 `#ffd43b`, 본문dark0 `#f1f1f1`, 보조dark1/2. input radius12px·paper16px·sheet24px, 작은 장식보다 입력과 실행을 먼저 배치한다. 실제 palette는 `app/src/theme.ts` 단일 기준이며 위 값은 구현 선택이다. CONV-0011에 따라 [Mantine UI 다크 화면/Monokai 참고](../sources/SRC-040-charcoal-tone.md)로 블루 톤을 대체했다. `primaryColor=yellow`/`primaryShade=4`, `autoContrast=true`; filled ThemeIcon도 variant를 명시해 어두운 전경색을 적용한다. PWA theme-color와 홈 화면 아이콘도 같은 차콜/노란 방향이다.
 
 글꼴은 `@fontsource-variable/geist5.3.0`, 제목650·일반 본문400/500·동작600. 숫자 tabular-nums. 영어/숫자는 Geist Variable, 한글은 `Apple SD Gothic Neo`, `Noto Sans KR`, sans-serif 순의 시스템 fallback이며 Noto 폰트를 별도 다운로드하지 않는다. 글꼴 assets는 같은 origin에서 번들/캐시하고 OFL license를 보존한다.
 

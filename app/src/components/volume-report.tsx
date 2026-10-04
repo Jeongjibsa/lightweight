@@ -2,7 +2,7 @@ import {
   Badge,
   Box,
   Group,
-  NativeSelect,
+  Select,
   Paper,
   SegmentedControl,
   SimpleGrid,
@@ -155,10 +155,14 @@ export function VolumeReport({
         <Badge>{days.length}일 기록</Badge>
       </Group>
       <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="lg">
-        <NativeSelect
+        <Select
           label="비교할 기록"
           value={condition?.key ?? "daily"}
-          onChange={(event) => setSelection(event.currentTarget.value)}
+          searchable
+          nothingFoundMessage="일치하는 기록이 없어요"
+          onChange={(value) => {
+            if (value) setSelection(value);
+          }}
           data={[
             { value: "daily", label: "일별 전체 · 총 중량 방식 부분합" },
             ...conditionChoices(conditions),

@@ -22,3 +22,4 @@
 - [Supabase 연결과 계정 준비](supabase-integration.md) — Auth/RPC/RLS·허용 목록·manual snapshot·실제 검증/남은 설정.
 - [볼륨·추이·오늘 후보 MVP](volume-history-mvp.md) — 관찰/비교·과거 참고→검토된 조정.
 - [디자인 시스템](design-system.md) · [전체 화면 감사](design-audit.md) — Mantine·Geist/차콜·노란 강조·전 폭 하단/빠른 기록.
+- [컴포넌트 재감사](component-review.md) · [3D 가능성](anatomy-3d-feasibility.md) — CONV0012/FR17·실제 캡처·후순위.

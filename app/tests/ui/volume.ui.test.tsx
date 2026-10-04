@@ -3,7 +3,7 @@ import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { expect, it } from "vitest";
 import { VolumeReport } from "../../src/components/volume-report";
-import { conditionKey } from "../../src/domain/volume";
+import { conditionLabel } from "../../src/components/volume-format";
 import {
   now,
   otherOwner,
@@ -39,10 +39,8 @@ it("기간·조건·지표를 조작해 수치 표와 그래프의 N/A·0을 확
   expect(screen.getByRole("img").querySelector("polyline")).toBeNull();
   await user.click(screen.getByRole("radio", { name: "84일", exact: true }));
   expect(within(table()).getByText("2026-08-01")).toBeTruthy();
-  await user.selectOptions(
-    screen.getByLabelText("비교할 기록"),
-    conditionKey(timed),
-  );
+  await user.click(screen.getByRole("combobox", { name: "비교할 기록" }));
+  await user.click(screen.getByRole("option", { name: /가짜 플랭크/ }));
   expect(within(table()).getAllByText("N/A")).toHaveLength(2);
   expect(screen.queryByRole("img")).toBeNull();
   await user.click(screen.getByRole("radio", { name: "시간", exact: true }));
@@ -60,9 +58,9 @@ it("기록 변경/삭제 props를 반영하고 이전 필터가 없어져도 타
     </MantineProvider>,
   );
   const user = userEvent.setup();
-  await user.selectOptions(
-    screen.getByLabelText("비교할 기록"),
-    conditionKey(session.sets[0]!),
+  await user.click(screen.getByRole("combobox", { name: "비교할 기록" }));
+  await user.click(
+    screen.getByRole("option", { name: conditionLabel(session.sets[0]!) }),
   );
   view.rerender(
     <MantineProvider env="test">

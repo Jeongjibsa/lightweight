@@ -4,7 +4,7 @@ import {
   Box,
   Button,
   Group,
-  NativeSelect,
+  Select,
   NavLink,
   Paper,
   ScrollArea,
@@ -162,30 +162,25 @@ function CustomExercise({ onPick }: { onPick: (exercise: Exercise) => void }) {
         label="운동 이름"
       />
       <SimpleGrid cols={{ base: 1, sm: 2 }} spacing="lg">
-        <Box component="label" fz="sm" fw={500} display="block">
-          기록 분류
-          <NativeSelect
-            value={group}
-            onChange={(e) => setGroup(e.target.value as Exercise["group"])}
-          >
-            {groups.map((item) => (
-              <option key={item}>{item}</option>
-            ))}
-          </NativeSelect>
-        </Box>
-        <Box component="label" fz="sm" fw={500} display="block">
-          중량 표기
-          <NativeSelect
-            value={mode}
-            onChange={(e) => setMode(e.target.value as Exercise["loadMode"])}
-          >
-            {Object.entries(loadModes).map(([value, label]) => (
-              <option value={value} key={value}>
-                {label}
-              </option>
-            ))}
-          </NativeSelect>
-        </Box>
+        <Select
+          label="기록 분류"
+          value={group}
+          data={[...groups]}
+          onChange={(value) => {
+            if (value) setGroup(value as Exercise["group"]);
+          }}
+        />
+        <Select
+          label="중량 표기"
+          value={mode}
+          data={Object.entries(loadModes).map(([value, label]) => ({
+            value,
+            label,
+          }))}
+          onChange={(value) => {
+            if (value) setMode(value as Exercise["loadMode"]);
+          }}
+        />
       </SimpleGrid>
       <Button type="submit" variant="filled">
         이 운동 추가
@@ -331,74 +326,72 @@ function RoutineEditor({
         />
         <Stack gap="md">
           {entries.map((entry, index) => (
-            <Paper
-              key={`${entry.exercise.id}-${index}`}
-              p="md"
-              bg="dark.8"
-              mb="sm"
-            >
-              <Box>
-                <Text component="span" c="inherit" fw={650}>
-                  {index + 1}. {entry.exercise.name}
-                </Text>
-                <Text component="span" size="xs" c="dimmed">
-                  {entry.exercise.group} · {loadModes[entry.exercise.loadMode]}
-                </Text>
-              </Box>
-              <TextInput
-                aria-label={`${entry.exercise.name} 계획 세트`}
-                type="number"
-                min={1}
-                max={12}
-                required
-                value={entry.sets}
-                onChange={(e) =>
-                  setEntries((prior) =>
-                    prior.map((item, i) =>
-                      i === index
-                        ? { ...item, sets: Number(e.target.value) }
-                        : item,
-                    ),
-                  )
-                }
-                label="계획 세트"
-              />
-              <Group gap="sm">
-                <Button
-                  type="button"
-                  aria-label={`${entry.exercise.name} 위로`}
-                  disabled={index === 0}
-                  onClick={() => move(index, -1)}
-                  variant="subtle"
-                  p={0}
-                  w={44}
-                >
-                  <ArrowUp size={16} />
-                </Button>
-                <Button
-                  type="button"
-                  aria-label={`${entry.exercise.name} 아래로`}
-                  disabled={index === entries.length - 1}
-                  onClick={() => move(index, 1)}
-                  variant="subtle"
-                  p={0}
-                  w={44}
-                >
-                  <ArrowDown size={16} />
-                </Button>
-                <Button
-                  type="button"
-                  aria-label={`${entry.exercise.name} 제거`}
-                  onClick={() =>
-                    setEntries((prior) => prior.filter((_, i) => i !== index))
+            <Paper key={`${entry.exercise.id}-${index}`} p="md" bg="dark.8">
+              <Stack gap="md">
+                <Stack gap={4}>
+                  <Text fw={650}>
+                    {index + 1}. {entry.exercise.name}
+                  </Text>
+                  <Text size="xs" c="dimmed">
+                    {entry.exercise.group} ·{" "}
+                    {loadModes[entry.exercise.loadMode]}
+                  </Text>
+                </Stack>
+                <TextInput
+                  aria-label={`${entry.exercise.name} 계획 세트`}
+                  type="number"
+                  min={1}
+                  max={12}
+                  required
+                  value={entry.sets}
+                  onChange={(e) =>
+                    setEntries((prior) =>
+                      prior.map((item, i) =>
+                        i === index
+                          ? { ...item, sets: Number(e.target.value) }
+                          : item,
+                      ),
+                    )
                   }
-                  variant="subtle"
-                  p={0}
-                  w={44}
-                >
-                  <Trash2 size={16} />
-                </Button>
-              </Group>
+                  label="계획 세트"
+                />
+                <Group gap="sm">
+                  <Button
+                    type="button"
+                    aria-label={`${entry.exercise.name} 위로`}
+                    disabled={index === 0}
+                    onClick={() => move(index, -1)}
+                    variant="subtle"
+                    p={0}
+                    w={44}
+                  >
+                    <ArrowUp size={16} />
+                  </Button>
+                  <Button
+                    type="button"
+                    aria-label={`${entry.exercise.name} 아래로`}
+                    disabled={index === entries.length - 1}
+                    onClick={() => move(index, 1)}
+                    variant="subtle"
+                    p={0}
+                    w={44}
+                  >
+                    <ArrowDown size={16} />
+                  </Button>
+                  <Button
+                    type="button"
+                    aria-label={`${entry.exercise.name} 제거`}
+                    onClick={() =>
+                      setEntries((prior) => prior.filter((_, i) => i !== index))
+                    }
+                    variant="subtle"
+                    p={0}
+                    w={44}
+                  >
+                    <Trash2 size={16} />
+                  </Button>
+                </Group>
+              </Stack>
             </Paper>
           ))}
         </Stack>

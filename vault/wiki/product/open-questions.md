@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T14:16:08+09:00"
+  at: "2026-10-04T14:54:43+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-03-002.md"
@@ -53,6 +53,12 @@ sources:
   - id: "tone-verification"
     resource: "../../raw/research/2026-10-04-charcoal-theme-verification.json"
     title: "차콜 증분 실행"
+  - id: "component-request"
+    resource: "../../raw/conversations/2026-10-04-012.md"
+    title: "컴포넌트 재점검/3D 요구"
+  - id: "component-check"
+    resource: "../../raw/research/2026-10-04-component-review.json"
+    title: "실제 페이지별 관찰"
 ---
 
 # 미결 사항과 다음 대화
@@ -90,3 +96,7 @@ CONV-0009: 볼륨/그래프·오늘 운동/권장량 요구를 추가했다. [�
 ## CONV-0010 UI/UX 변경
 
 현재 글꼴·하단 메뉴는 CONV-0010의 Geist/전 폭 하단이다. 톤은 CONV-0011의 Monokai/Mantine 참고 요청으로 차콜/노란 강조를 적용해 이전 blue-dark를 대체했다. 구체 팔레트는 구현 선택이며 이전 Spoqa 선택도 supersede했다. 색상/radius·iOS형 세부 조작성 만족은 파일럿에서 확인한다. Q-12의 실제 기기/지원 OS 검증, 키보드/VoiceOver·가로/확대는 미해결이다. 다른 사용자 기본 목표/횟수/분할은 여전히 강제하지 않는다. [디자인 규칙](design-system.md) · [감사](design-audit.md).
+
+## CONV-0012 후순위 미결
+
+FR-17은 사용자 명시 3D 애니메이션 요구이며 지금은 검토만/후순위다. [검토](anatomy-3d-feasibility.md)의 asset 제작/구매·근육 분리/rig/clip·license·전문 검토자·실기기 성능·예산은 미정이다. UI-03 실제 페이지에서 개선을 확인했으나 사용자 최종 디자인 승인·실제 iPhone/접근성 관문은 별도다.

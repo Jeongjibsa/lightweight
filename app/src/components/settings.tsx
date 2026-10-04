@@ -6,7 +6,7 @@ import {
   Checkbox,
   FileButton,
   Group,
-  NativeSelect,
+  Select,
   Paper,
   Radio,
   SimpleGrid,
@@ -123,26 +123,26 @@ function ProfileForm({ profile, run }: { profile: Profile; run: Run }) {
           주당 운동 횟수
         </Text>
         <SimpleGrid cols={2} spacing="sm">
-          <NativeSelect
+          <Select
             label="최소 횟수"
             required
-            value={min}
-            onChange={(e) => setMin(e.target.value)}
+            value={min || null}
+            placeholder="선택"
+            onChange={(value) => setMin(value ?? "")}
             data={[
-              { value: "", label: "선택" },
               ...[1, 2, 3, 4, 5, 6, 7].map((n) => ({
                 value: String(n),
                 label: `${n}회`,
               })),
             ]}
           />
-          <NativeSelect
+          <Select
             label="최대 횟수"
             required
-            value={max}
-            onChange={(e) => setMax(e.target.value)}
+            value={max || null}
+            placeholder="선택"
+            onChange={(value) => setMax(value ?? "")}
             data={[
-              { value: "", label: "선택" },
               ...[1, 2, 3, 4, 5, 6, 7].map((n) => ({
                 value: String(n),
                 label: `${n}회`,
@@ -155,14 +155,14 @@ function ProfileForm({ profile, run }: { profile: Profile; run: Run }) {
         </Text>
       </Box>
       <SimpleGrid cols={{ base: 1, xs: 2 }} spacing="sm">
-        <NativeSelect
+        <Select
           label="분할 방법"
           aria-label="분할 방법"
           required
-          value={split}
-          onChange={(e) => setSplit(e.target.value as Preferences["split"])}
+          value={split || null}
+          placeholder="선택"
+          onChange={(value) => setSplit((value ?? "") as Preferences["split"])}
           data={[
-            { value: "", label: "선택" },
             ...Object.entries(splits).map(([value, label]) => ({
               value,
               label,
@@ -209,10 +209,12 @@ function ProfileForm({ profile, run }: { profile: Profile; run: Run }) {
         </SimpleGrid>
       </Checkbox.Group>
       <SimpleGrid cols={{ base: 1, xs: 2 }} spacing="sm">
-        <NativeSelect
+        <Select
           label="중량 단위"
           value={unit}
-          onChange={(e) => setUnit(e.target.value as Profile["unit"])}
+          onChange={(value) => {
+            if (value) setUnit(value as Profile["unit"]);
+          }}
           data={["kg", "lb"]}
         />
         <TextInput
@@ -297,10 +299,14 @@ export function SettingsView({
                 각 프로필의 설정·루틴·기록을 따로 관리합니다. 이 기기에서 누구나
                 전환할 수 있어요.
               </Text>
-              <NativeSelect
+              <Select
                 label="현재 프로필"
                 value={profile.ownerId}
-                onChange={(e) => switchProfile(e.target.value)}
+                searchable
+                nothingFoundMessage="프로필을 찾을 수 없어요"
+                onChange={(value) => {
+                  if (value) switchProfile(value);
+                }}
                 data={profiles.map((item) => ({
                   value: item.ownerId,
                   label: item.name,

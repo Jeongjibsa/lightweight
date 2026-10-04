@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T14:16:08+09:00"
+  at: "2026-10-04T14:54:43+09:00"
 sources:
   - id: "implementation-request"
     resource: "../../raw/conversations/2026-10-03-005.md"
@@ -62,14 +62,20 @@ sources:
   - id: "tone-verification"
     resource: "../../raw/research/2026-10-04-charcoal-theme-verification.json"
     title: "차콜 증분 실행"
-version: "0.5.1"
+  - id: "component-request"
+    resource: "../../raw/conversations/2026-10-04-012.md"
+    title: "컴포넌트 재점검/3D 요구"
+  - id: "component-check"
+    resource: "../../raw/research/2026-10-04-component-review.json"
+    title: "실제 페이지별 관찰"
+version: "0.6.0"
 approval_status: "proposal"
-change_id: "CHG-0011"
+change_id: "CHG-0012"
 ---
 
 # 운동 PWA 구현 작업계획
 
-> PRD 0.6.1 기준, 계획 v0.5.1. **운동 기능을 먼저 완성하고 식단을 다음 단계에 둔다**는 사용자 선택을 반영했다. 기본 스택은 합의했다. 아래 작업 순서·상세 설계·도구·공수는 구현안이다. CONV-0006에서 반응형·사용자별 설정을 반영한 순차 구현과 로컬 우선을 요청했다. 첫 로컬 증분을 구현/시험했고 상태는 [실행 결과](implementation-progress.md)에서 확인한다. 원격/검토 콘텐츠/실기기/배포 단계는 미완료다.
+> PRD 0.7.0 기준, 계획 v0.6.0. **운동 기능을 먼저 완성하고 식단을 다음 단계에 둔다**는 사용자 선택을 반영했다. 기본 스택은 합의했다. 아래 작업 순서·상세 설계·도구·공수는 구현안이다. CONV-0006에서 반응형·사용자별 설정을 반영한 순차 구현과 로컬 우선을 요청했다. 첫 로컬 증분을 구현/시험했고 상태는 [실행 결과](implementation-progress.md)에서 확인한다. 원격/검토 콘텐츠/실기기/배포 단계는 미완료다.
 
 ## 목표와 완료 범위
 
@@ -232,3 +238,7 @@ UI-02의 색상 기준을 차콜/노란 강조로 수정했고 동일 branch에�
 작업 상태는 [백로그](implementation-backlog.md)의 ID로 관리한다. 시작 전 의존성, 종료 때 검증/산출물/미결을 기록하고 요구 변경은 PRD·CHG·전체 스냅샷으로 이어간다. 단순 진행 갱신은 백로그/log에 남기고 제품 결론이 바뀔 때 PRD 버전을 올린다. 이번 계획은 이후 구현 요청의 출발점이며 모든 작업이 완료됐다는 뜻이 아니다.
 
 [PRD](prd.md) · [작업 목록](implementation-backlog.md) · [CONV-0005](../conversations/2026-10-03-005.md) · [CHG-0005](../../history/changes/CHG-0005.md)
+
+## CONV-0012 순차 증분
+
+UI-03의 실제 페이지 재감사/수정→VIS-3D-01 검토/후순위 계획→HAR-02 백업 재시도·프로필 DOM 보강→HAR-03/05 자동 browser/CI 기반을 이어간다. FR-17은 P2로 운동 MVP 안정화 이후 asset/검토/실기기 관문을 통과해 착수하며 현재 구현하지 않는다. [재감사](component-review.md)·[3D](anatomy-3d-feasibility.md).

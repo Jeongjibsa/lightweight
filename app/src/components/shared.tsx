@@ -41,16 +41,7 @@ export function Modal({
     removeScrollProps: { allowPinchZoom: true },
   };
   return mobile ? (
-    <Drawer
-      {...props}
-      position="bottom"
-      size="auto"
-      styles={{
-        content: { height: "auto", maxHeight: "90dvh" },
-        body: { maxHeight: "calc(90dvh - 80px)", overflowY: "auto" },
-      }}
-      padding="lg"
-    >
+    <Drawer {...props} position="bottom" size="auto" padding="lg">
       {children}
     </Drawer>
   ) : (

@@ -90,12 +90,14 @@ it("같은 owner/revision의 백업도 복원 즉시 입력값을 바꾸며 다�
     (screen.getByRole("radio", { name: "근력 향상" }) as HTMLInputElement)
       .checked,
   ).toBe(true);
-  expect((screen.getByLabelText("분할 방법") as HTMLSelectElement).value).toBe(
-    "two_way",
-  );
-  expect((screen.getByLabelText("중량 단위") as HTMLSelectElement).value).toBe(
-    "lb",
-  );
+  expect(
+    (screen.getByRole("combobox", { name: "분할 방법" }) as HTMLInputElement)
+      .value,
+  ).toBe("2분할");
+  expect(
+    (screen.getByRole("combobox", { name: "중량 단위" }) as HTMLInputElement)
+      .value,
+  ).toBe("lb");
   await user.click(screen.getByRole("button", { name: "훈련 설정 저장" }));
   await waitFor(async () =>
     expect((await db.profiles.get(owner))!.revision).toBeGreaterThan(

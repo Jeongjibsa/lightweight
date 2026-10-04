@@ -38,11 +38,13 @@ body {
 .skip-link {
   position: fixed;
   top: -100px;
+  opacity: 0;
   left: 16px;
   z-index: 400;
 }
 .skip-link:focus {
   top: 12px;
+  opacity: 1;
 }
 .notice-stack {
   position: fixed;
