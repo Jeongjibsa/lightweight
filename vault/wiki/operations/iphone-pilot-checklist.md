@@ -10,7 +10,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T22:59:58+09:00"
+  at: "2026-10-04T23:46:05+09:00"
 sources:
   - id: "human"
     resource: "../../raw/research/2026-10-04-iphone-install-user-report.json"
@@ -55,7 +55,7 @@ sources:
 | 오프라인 입력→재실행→재연결 | 준비된 앱에서 기기 저장, 연결 후 별도 전송 | not_run |
 | 키보드/작은 화면/가로 | 입력/완료 버튼 가림·가로 넘침 없음 | not_run |
 | 확대/VoiceOver | 입력 이름/순서/버튼/오류·초점 복귀 이해 가능 | not_run |
-| 운동 중 잠금/재실행·휴식 타이머 | 저장 값/진행·타이머 기준 유지 | not_run |
+| 운동 중 잠금/재실행·휴식 타이머 | 기본1분/즐겨찾기·deadline/pause·저장 값 보존 | desktop browser pass; iPhone not_run |
 | 대기 중 새 버전 | 진행 운동에서는 적용 보류, 안전한 적용 뒤 보존 | not_run |
 | 종료 기록 삭제/복구 | 값/시각 유지·집계 제외/복귀 | desktop browser pass; iPhone not_run |
 | 백업 파일 앱 저장/복원 | 동일 기록/삭제 표시·개인 저장 위치 | desktop browser pass; iPhone not_run |

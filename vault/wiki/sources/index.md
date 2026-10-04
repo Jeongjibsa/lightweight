@@ -46,3 +46,4 @@
 - [SRC-045 Cloudflare 공식 설정](SRC-045-cloudflare-agent-setup.md) — 같은 prompt 재확인·main MCP OAuth/읽기 성공, 배포 별도.
 - [SRC046 Compression Streams](SRC-046-compression-streams.md)
 - [SRC047 Auth 운영 반환 URL](SRC-047-auth-production-origin.md)
+- [SRC048 Pages Git/build](SRC-048-pages-git-integration.md) · [SRC049 Google OAuth](SRC-049-google-oauth.md)

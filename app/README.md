@@ -58,7 +58,7 @@ npm run cloud:allow-user -- <AUTH_USER_UUID>
 
 ## 콘텐츠와 남은 범위
 
-12개 기본 종목은 기록용 분류 초안입니다. 검토 전 탐색 개념 그림은 제거했습니다. 해부학적 자극 범위 자료는 검토 후 제공합니다. 근거 검토가 완료된 운동 설명·시각 자료·조건별 티어·추천 루틴, 검토된 권장량 조정·개인화 행동 리포트, 식단은 후속 단계입니다. 현재 같은 운동 조건의 관찰 추이와 본인 루틴/과거 기록 참고 후보를 제공합니다. 자동 증량/회복 판정은 제공하지 않습니다. 검토 전 과학적 순위나 숫자를 표시하지 않습니다.
+34개 기본 종목(바벨18개)과 세부 부위는 기록용 분류 초안입니다. 검토 전 탐색 개념 그림은 제거했습니다. 해부학적 자극 범위 자료는 검토 후 제공합니다. 근거 검토가 완료된 운동 설명·시각 자료·조건별 티어·추천 루틴, 검토된 권장량 조정·개인화 행동 리포트, 식단은 후속 단계입니다. 현재 같은 운동 조건의 관찰 추이와 본인 루틴/과거 기록 참고 후보를 제공합니다. 자동 증량/회복 판정은 제공하지 않습니다. 검토 전 과학적 순위나 숫자를 표시하지 않습니다.
 
 ## 검증
 
@@ -160,3 +160,7 @@ iPhone 홈 화면 설치·실행·로그인은 사용자 보고로 확인했습�
 종료 상세에서 삭제 확인/취소, 리포트에서 삭제한 종료 기록 복구를 제공합니다. 세트/시각·다른 active 운동·atomic/CAS/실패/중복과 집계1→0→1·새 저장소 백업을 확인했습니다.90개/Node8/24browser·build/types/format/artifact25 통과(lint기존6경고), 1db637d의 GitHub3job과 운영/preview 공개24file hash/헤더 배포 일치를 확인했습니다. [계약/실제 화면](../vault/wiki/operations/ended-record-recovery.md).
 
 [현재 종료 기록 배포](../vault/raw/research/2026-10-04-ended-record-release.json) · [iPhone 실사용 체크리스트](../vault/wiki/operations/iphone-pilot-checklist.md). 후속 문서 commit은 앱 bundle을 바꾸지 않습니다.
+
+기본1분의 세트 휴식 타이머와 수정 가능한3~4개 즐겨찾기, 일시정지/재개/종료를 제공합니다. 진행 deadline은 기기별이며 즐겨찾기는 profile/outbox와 백업에 포함합니다. 다섯 메뉴 제목의 focus는 유지하고 outline을 제거했습니다.98개/Node8·전체30browser와 최종 문구6을 확인했습니다. [계약/화면](../vault/wiki/operations/catalog-rest-timer.md).
+
+현재 Pages는 Jeongjibsa/lightweight/main Git 자동 배포로 연결했습니다. build는 `cd app && npm ci && npm run build && npm run pages:check`, output app/dist, Node24입니다. production 공개 Supabase 환경을 설정했고 preview는 비워 둡니다. [운영](../vault/wiki/operations/pages-git-integration.md). [Google 로그인](../vault/wiki/product/google-oauth-review.md)은 검토만 완료했고 provider/callback은 아직 구현하지 않았습니다.

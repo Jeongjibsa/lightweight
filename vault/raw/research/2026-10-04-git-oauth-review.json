@@ -1,0 +1,74 @@
+{
+  "type": "Technical Verification",
+  "title": "Git Pages integration and Google OAuth feasibility",
+  "generated": {
+    "by": "codex/gpt-6",
+    "at": "2026-10-04T23:46:05+09:00"
+  },
+  "immutable": true,
+  "read_scope": "Official product guides plus authenticated read-only Pages GET/public Auth settings. Google login not executed. No scientific review.",
+  "official_sources": [
+    "https://developers.cloudflare.com/pages/configuration/git-integration/",
+    "https://developers.cloudflare.com/pages/configuration/build-configuration/",
+    "https://developers.cloudflare.com/pages/configuration/build-image/",
+    "https://supabase.com/docs/guides/auth/social-login/auth-google",
+    "https://supabase.com/docs/guides/auth/auth-identity-linking",
+    "https://supabase.com/docs/guides/auth/sessions/pkce-flow"
+  ],
+  "pages": {
+    "project": "lightweight-training",
+    "origin": "https://lightweight-training.pages.dev",
+    "repository": "Jeongjibsa/lightweight",
+    "source_type": "github",
+    "production_branch": "main",
+    "automatic_production": true,
+    "preview": "all; public DB configuration empty",
+    "build_command": "cd app && npm ci && npm run build && npm run pages:check",
+    "output": "app/dist",
+    "root": "",
+    "environment_presence": {
+      "preview": {
+        "VITE_SUPABASE_URL": false,
+        "VITE_SUPABASE_PUBLISHABLE_KEY": false,
+        "NODE_VERSION": true
+      },
+      "production": {
+        "VITE_SUPABASE_URL": true,
+        "VITE_SUPABASE_PUBLISHABLE_KEY": true,
+        "NODE_VERSION": true
+      }
+    },
+    "before_observed": {
+      "build_command": "cd app && npm run build",
+      "production_public_config_present": false,
+      "node_version_present": false
+    },
+    "correction": "PATCH added locked dependency install/artifact gate, Node24, previously authorized public production configuration; preview empty. No auth/db permission change.",
+    "last_deployment_at_inspection": {
+      "trigger": "ad_hoc",
+      "source_commit": "1db637d2f773aa78b022fd19624ca60bb10ba4a5",
+      "status": "success"
+    },
+    "new_git_build": "not yet triggered at capture"
+  },
+  "supabase_auth_public_settings": {
+    "httpStatus": 200,
+    "googleEnabled": false,
+    "signupDisabled": true,
+    "anonymousEnabled": false
+  },
+  "google_review": {
+    "feasible": true,
+    "implemented": false,
+    "provider_enabled": false,
+    "existing_client": "detectSessionInUrl:false; no OAuth callback handler",
+    "required": [
+      "Google web OAuth client; secret kept in provider settings",
+      "PKCE start and explicit callback exchange/error cleanup",
+      "verified email linking/existing UID and membership preserved",
+      "unknown user/signupOFF/allowlist tests",
+      "actual iPhone PWA/Safari return storage verification"
+    ]
+  },
+  "privacy": "No secrets, account IDs, emails, tokens or workout data."
+}

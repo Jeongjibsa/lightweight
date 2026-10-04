@@ -2,6 +2,10 @@
 
 ## 2026-10-04
 
+- **Verification correction**: [공개 Auth 응답](raw/research/2026-10-04-oauth-public-settings-correction.json)의 익명 필드는 absent였다. 첫 수집의 false 변환을 검증 근거로 쓰지 않도록 Google 검토에 정정하고 원본은 보존했다. Google=false/가입 차단=true만 이번 공개 응답으로 확인했다.
+
+- **CONV0022 / Training / Git / OAuth review**: 원문 보존·34종목/바벨18·세부 분류/별칭·기본1분/즐겨찾기3~4개/atomic 설정·기기 deadline/pause·H1 focus 유지/outline 수정.98개/Node8/30browser/최종6·build/types/format/artifact25(lint기존6경고)·9PNG 직접 확인, 문구 잘림2개 수정. Git source/main/자동 배포 확인·Node24/npm ci/승인 공개 production/빈 preview 보완; 새 source CI/Git deploy 별도. Google OAuth는 가능성 검토만/providerOFF·credential/callback/기존UID/실PWA 관문. [CHG0032](history/changes/CHG-0032.md)·PRD0.9.0 snapshot/SRC048~049·이전180불변 보존·실운동/SCI/기기/운영/파일럿/P2 유지.
+
 - **Human / Pilot timing**: [CONV0021](wiki/conversations/2026-10-04-021.md) “다음 운동 후 확인” 원문 보존. 운동 저장→재실행→수동 전송을 다음 운동 이후 사용자 확인 예정으로 갱신; 실제 결과는 not_run. 새 저장소 적용은 별도 과업. [CHG0031](history/changes/CHG-0031.md)·PRD0.8.16 전체 보존·이전177불변 유지. 나머지 구현/검증 관문은 유지한다.
 
 - **Release / Physical follow-up**: 1db637d main push·GitHub37206666022 세 검사 success·운영/DB없는preview24file hash/헤더 일치.90개/Node8/24browser. [실행](raw/research/2026-10-04-ended-record-release.json)·[CHG0030](history/changes/CHG-0030.md)·PRD0.8.15 전체 보존/이전174불변 유지. [실기기 과업](wiki/operations/iphone-pilot-checklist.md) 작성·본인 운동 저장/재실행/수동 전송 요청/응답 대기. 메모/장비/REP/SCI/실Auth/나머지 G3/운영/4주파일럿/P2 유지.

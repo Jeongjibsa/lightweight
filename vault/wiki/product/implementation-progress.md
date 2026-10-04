@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T22:59:58+09:00"
+  at: "2026-10-04T23:46:05+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -179,8 +179,17 @@ sources:
   - id: "next-workout"
     resource: "../../raw/conversations/2026-10-04-021.md"
     title: "다음 운동 후 확인 응답"
-version: "0.3.12"
-change_id: "CHG-0031"
+  - id: "request22"
+    resource: "../../raw/conversations/2026-10-04-022.md"
+    title: "카탈로그·휴식·제목·Git·Google 요청"
+  - id: "request22-loop"
+    resource: "../../raw/research/2026-10-04-catalog-rest-timer-loop.json"
+    title: "실행/캡처"
+  - id: "git-google"
+    resource: "../../raw/research/2026-10-04-git-oauth-review.json"
+    title: "Git 구성/Google 검토"
+version: "0.4.0"
+change_id: "CHG-0032"
 ---
 
 # 로컬 PWA 구현 결과와 다음 작업
@@ -449,3 +458,9 @@ app **0.2.0** / PRD **0.4.0** / IndexedDB **schema2**. Mantine UI·Spoqa Han San
 [구현 계약](implementation-contracts.md) · [작업계획](implementation-plan.md) · [백로그](implementation-backlog.md) · [문서 검증](../../history/validation-latest.json) · [CHG-0006](../../history/changes/CHG-0006.md)
 
 최종 설명 검토: 이력 검토를 건너뛴 active/오늘/설정 보류에는 제외0개 대신 미검토를 표시한다. 최종50개/10파일·l int/build/format 통과, precache23개/1644.45KiB. [마지막 실행](../../raw/research/2026-10-04-volume-history-final-verification.json).
+
+## CONV0022 구현/검토 — 2026-10-04
+
+34종목/바벨18·큰 부위 아래 세부 분류/장비·별칭 필터와 사용자 추가 선택을 적용했다. 기본1분·즐겨찾기3~4개·완료 자동 시작·pause/resume/stop·deadline 재실행·profile/outbox/백업 보존을 구현했다. 다섯 H1 outline을 제거하고 programmatic focus는 유지했다.98개/19파일·Node8·전체30browser/최종문구6·build/types/format/artifact25, lint기존6경고. 실제 좁은 화면에서 문구 잘림을 찾아 수정했다. [계약/실행](../operations/catalog-rest-timer.md).
+
+GitHub source=Jeongjibsa/lightweight·main·자동 배포 활성화를 읽었고 dependency 설치/Node24·승인된 production 공개 연결/빈 preview를 보완했다. 새 commit의 자동 Git 배포/원격 CI는 기록 시점 별도다. [배포 운영](../operations/pages-git-integration.md). Google OAuth는 가능하며 현재providerOFF/callback없음·credential/동일UID 연결/가입 차단·실기기 복귀가 필요하다. [검토](google-oauth-review.md). 과학 승인 콘텐츠0개/실제 운동·새 기기/나머지 G3/메일·운영·파일럿/P2 관문과 다음 운동 후 사용자 확인 일정은 유지한다.

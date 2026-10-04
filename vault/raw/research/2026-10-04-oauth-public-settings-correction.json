@@ -1,0 +1,18 @@
+{
+  "type": "Verification Correction",
+  "title": "Auth public settings missing-field correction",
+  "generated": {
+    "by": "codex/gpt-6",
+    "at": "2026-10-04T23:48:57+09:00"
+  },
+  "immutable": true,
+  "corrects": "2026-10-04-git-oauth-review.json",
+  "observation": {
+    "google_enabled": false,
+    "signup_disabled": true,
+    "external_anonymous_field": "absent",
+    "anonymous_users_enabled_field": "absent"
+  },
+  "correction": "The first capture coerced a missing anonymous field to false. That boolean is not evidence of anonymous login disabled. The new public response confirms Google and signup flags only. Earlier management configuration was not changed or re-verified here.",
+  "privacy": "No identifiers, secrets, sessions or personal records."
+}

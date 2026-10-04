@@ -181,7 +181,22 @@
     "history/changes/CHG-0030.md": "3db1eda788cf49a68548f2eb8dbda3ff0c5b71a82cc062b2685ecae39aff45c1",
     "raw/conversations/2026-10-04-021.md": "491ee24f6ec9298dfc45596bf06b0dd4088f6a8fab23dfcee7a765ea6bddce7c",
     "history/versions/prd-v0.8.16.md": "ecbbb4f46901d0a95dbe58428408013e2b0ffdd2b556125048f1174f0ade271d",
-    "history/changes/CHG-0031.md": "a0a7f6de1c907a1dc27983f96f7f33d11078c390febea5a9096cc2d7462abf80"
+    "history/changes/CHG-0031.md": "a0a7f6de1c907a1dc27983f96f7f33d11078c390febea5a9096cc2d7462abf80",
+    "raw/conversations/2026-10-04-022.md": "03037cc93954e25106115f409199e4e132f0861288323508e1fd5870fe66141a",
+    "raw/research/2026-10-04-git-oauth-review.json": "f7b1b2887e6248a21d45b42f80b7b534f22b696be27635ed9246c9dfe959b01e",
+    "raw/design/2026-10-04-request22-rest-320.png": "be893d8f7d5ac1434bbfaa669119e5d4e8310f6d6250fa1f4c52ffd786089fd3",
+    "raw/design/2026-10-04-request22-rest-390.png": "5a07eac586e87088c6fd03fe60db4991675ddca7c49499206eae867dc29e8d19",
+    "raw/design/2026-10-04-request22-rest-favorites-320.png": "98d8c7d80d638b4af3850eee62d89f820b6237c478b8f2160597bb3b24904a3c",
+    "raw/design/2026-10-04-request22-shoulder-regions.png": "008e275b9670f934f7c6b510dee494b5b394145e15c0be5acd173fedad215da3",
+    "raw/design/2026-10-04-request22-heading-오늘.png": "7898c2f4579d11d7e6eae2d2ada2180fe75757dfe384546838f9f5a6097a59bf",
+    "raw/design/2026-10-04-request22-heading-운동 탐색.png": "9ba585a6587cf96b5208de1c39ec9762b28b238a0ddcefc1101f8dd2b96afb68",
+    "raw/design/2026-10-04-request22-heading-나의 루틴.png": "54a3606f54740a4c137f358634e7e42f01ddbf13dec5c1a680b4d8283984c7d6",
+    "raw/design/2026-10-04-request22-heading-리포트.png": "5229bb442b331fb34ebd4ca34944db7f606eb509737ad14b6f7f15eb5904e0e5",
+    "raw/design/2026-10-04-request22-heading-설정.png": "f4c801ad2f6e80252f47c93ffc131a487810fbffe732f729db771d11674b1119",
+    "raw/research/2026-10-04-catalog-rest-timer-loop.json": "284490acd16fc813d91959a5e493f828082810aa84ee0a447f1573a71f032953",
+    "history/versions/prd-v0.9.0.md": "719a8adb91440eae7fef1f863a0cc45e4f262bb6fae0227af490036e56b7efee",
+    "history/changes/CHG-0032.md": "db08846690e320bcc975c572f53b9b0e0310e17b8babd98c96909e2d3d2df4bf",
+    "raw/research/2026-10-04-oauth-public-settings-correction.json": "d97da0968a4b7f6dd239d2a0125ed82c6b2e73a2d8c01b9219ec1a8bc9711447"
   },
-  "updated_at": "2026-10-04T22:59:58+09:00"
+  "updated_at": "2026-10-04T23:48:57+09:00"
 }

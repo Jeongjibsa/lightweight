@@ -695,7 +695,12 @@ export default function App() {
                 weekday: "long",
               }).format(now)}
             </Text>
-            <Title order={1} ref={headingRef} tabIndex={-1}>
+            <Title
+              order={1}
+              ref={headingRef}
+              tabIndex={-1}
+              style={{ outline: "none" }}
+            >
               {session ? "운동 기록" : screen === "today" ? "오늘" : title}
             </Title>
           </Box>

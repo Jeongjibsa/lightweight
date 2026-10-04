@@ -27,3 +27,4 @@
 - [HAR03/05 현재증분](implementation-progress.md) — 로컬9과업/27반복·CI설정/실패probe·외부미확인.
 - [HAR04 현재 결과](implementation-progress.md) — CI확인·저장/큰백업/update 보존, 실기기관문 유지.
 - [Cloudflare 연결 운영](../operations/cloudflare-setup.md) — PRD0.8.2/main MCP 인증 현황·cf 생략 선택.
+- [Google 계정 로그인 검토](google-oauth-review.md)

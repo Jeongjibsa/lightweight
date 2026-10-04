@@ -40,3 +40,5 @@
 - [루틴 복구 CI/운영·preview 배포](2026-10-04-routine-recovery-release.json)
 - [종료 기록 삭제/복구·집계/보존 loop](2026-10-04-ended-record-recovery-loop.json)
 - [종료 기록 CI/운영·preview 배포](2026-10-04-ended-record-release.json)
+- [Git 연결/Google 검토](2026-10-04-git-oauth-review.json) · [운동/휴식/UI loop](2026-10-04-catalog-rest-timer-loop.json)
+- [OAuth 공개 설정의 누락 필드 정정](2026-10-04-oauth-public-settings-correction.json)

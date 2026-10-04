@@ -48,6 +48,9 @@ export const theme = createTheme({
     PasswordInput: {
       defaultProps: { size: "md", radius: "md", variant: "filled" },
     },
+    NumberInput: {
+      defaultProps: { size: "md", radius: "md", variant: "filled" },
+    },
     Select: {
       defaultProps: {
         size: "md",
@@ -86,7 +89,11 @@ export const theme = createTheme({
       defaultProps: { variant: "light" },
       styles: {
         root: { borderRadius: "var(--mantine-radius-lg)", minHeight: 60 },
-        label: { fontWeight: 550 },
+        label: {
+          fontWeight: 550,
+          wordBreak: "keep-all",
+          overflowWrap: "anywhere",
+        },
         description: { color: "var(--mantine-color-dark-1)", marginTop: 4 },
       },
     },

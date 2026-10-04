@@ -34,6 +34,8 @@ import { catalog } from "../content/catalog";
 import {
   exerciseSchema,
   groups,
+  subgroups,
+  equipmentOptions,
   loadModes,
   type Exercise,
   type Profile,
@@ -52,11 +54,17 @@ export function ExercisePicker({
 }) {
   const [query, setQuery] = useState("");
   const [group, setGroup] = useState<string>("전체");
+  const [subgroup, setSubgroup] = useState("전체");
+  const [equipment, setEquipment] = useState("전체");
   const [custom, setCustom] = useState(false);
   const filtered = catalog.filter(
     (item) =>
       (group === "전체" || item.group === group) &&
-      `${item.name} ${item.equipment}`.includes(query.trim()),
+      (subgroup === "전체" || item.subgroup === subgroup) &&
+      (equipment === "전체" || item.equipment === equipment) &&
+      `${item.name} ${item.equipment} ${item.subgroup ?? ""} ${(item.aliases ?? []).join(" ")}`
+        .toLowerCase()
+        .includes(query.trim().toLowerCase()),
   );
   return (
     <Stack gap="md">
@@ -77,13 +85,32 @@ export function ExercisePicker({
               size="compact-md"
               px="md"
               aria-pressed={item === group}
-              onClick={() => setGroup(item)}
+              onClick={() => {
+                setGroup(item);
+                setSubgroup("전체");
+              }}
             >
               {item}
             </Button>
           ))}
         </Group>
       </ScrollArea>
+      <SimpleGrid cols={{ base: 1, xs: 2 }} spacing="sm">
+        {group !== "전체" && (
+          <Select
+            label="세부 부위"
+            value={subgroup}
+            data={["전체", ...subgroups[group as Exercise["group"]]]}
+            onChange={(value) => setSubgroup(value ?? "전체")}
+          />
+        )}
+        <Select
+          label="장비"
+          value={equipment}
+          data={["전체", ...equipmentOptions]}
+          onChange={(value) => setEquipment(value ?? "전체")}
+        />
+      </SimpleGrid>
       <Stack gap={4}>
         {filtered.map((exercise) => (
           <Group key={exercise.id} wrap="nowrap" gap={4}>
@@ -95,7 +122,7 @@ export function ExercisePicker({
               onClick={() => onPick(exercise)}
               aria-label={`${exercise.name} 추가`}
               label={exercise.name}
-              description={`${exercise.group} · ${exercise.equipment} · ${loadModes[exercise.loadMode]}`}
+              description={`${exercise.group}${exercise.subgroup ? ` / ${exercise.subgroup}` : ""} · ${exercise.equipment} · ${loadModes[exercise.loadMode]}`}
               leftSection={
                 <ThemeIcon variant="light" color="gray" radius="lg" size={38}>
                   <Dumbbell size={19} />
@@ -136,6 +163,7 @@ export function ExercisePicker({
 function CustomExercise({ onPick }: { onPick: (exercise: Exercise) => void }) {
   const [name, setName] = useState("");
   const [group, setGroup] = useState<Exercise["group"]>("가슴");
+  const [subgroup, setSubgroup] = useState<string | null>(null);
   const [mode, setMode] = useState<Exercise["loadMode"]>("total");
   const [error, setError] = useState("");
   function submit(event: FormEvent) {
@@ -144,6 +172,7 @@ function CustomExercise({ onPick }: { onPick: (exercise: Exercise) => void }) {
       id: crypto.randomUUID(),
       name,
       group,
+      subgroup: subgroup ?? undefined,
       equipment: "직접 입력",
       loadMode: mode,
       review: "user_added",
@@ -170,8 +199,19 @@ function CustomExercise({ onPick }: { onPick: (exercise: Exercise) => void }) {
           value={group}
           data={[...groups]}
           onChange={(value) => {
-            if (value) setGroup(value as Exercise["group"]);
+            if (value) {
+              setGroup(value as Exercise["group"]);
+              setSubgroup(null);
+            }
           }}
+        />
+        <Select
+          label="세부 부위 (선택)"
+          value={subgroup}
+          clearable
+          allowDeselect
+          data={[...subgroups[group]]}
+          onChange={setSubgroup}
         />
         <Select
           label="중량 표기"
@@ -230,8 +270,9 @@ export function LibraryView({
         />
       </Paper>
       <Text size="xs" c="dimmed">
-        현재 12개 종목은 입력과 기록을 위한 목록입니다. 논문 기반 설명·자극
-        범위·티어는 검토를 마친 콘텐츠부터 제공할 예정입니다.
+        현재 {catalog.length}개 종목과 세부 부위는 입력·탐색을 위한 기록
+        분류입니다. 논문 기반 설명·자극 범위·티어는 검토를 마친 콘텐츠부터
+        제공할 예정입니다.
       </Text>
       {detail && (
         <Modal title={detail.name} onClose={() => setDetail(null)}>

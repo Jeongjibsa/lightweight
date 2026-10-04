@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T22:52:11+09:00"
+  at: "2026-10-04T23:46:05+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -59,6 +59,9 @@ sources:
   - id: "iphone-checklist"
     resource: "../operations/iphone-pilot-checklist.md"
     title: "다음 실제 기기 과업"
+  - id: "git-check"
+    resource: "../../raw/research/2026-10-04-git-oauth-review.json"
+    title: "Git 설정 관찰"
 ---
 
 # Cloudflare 연결과 정적 PWA 배포
@@ -136,3 +139,7 @@ Wrangler 로그인/계정 확인에 성공했다. 실제 scope는 user:read/acco
 ## 실제 배포 일치 검사
 
 app에서 npm run pages:verify -- https://lightweight-training.pages.dev dist, preview는 해당 origin과 dist-preview를 지정한다. bare HTTPS origin만 허용하고 root/asset redirect를 거부한다. _headers는 서버 처리용이라 원격 파일 비교에서 제외한다. 누락 헤더/정책 차이/파일 hash 차이·통신 실패는 검사 실패다. test:deploy의3계약이 npm run check와 GitHub CI에 포함된다. 자동 CI 배포 credential은 만들지 않았으므로 push만으로 Pages 배포되지 않는다.
+
+## 현재 Git 자동 배포 — CONV0022
+
+사용자가 Git 연결을 완료했고 API에서 github/Jeongjibsa/lightweight/main·automatic production=true를 확인했다. Node24·locked dependency 설치/artifact gate·기존 승인 공개 production 설정/빈 preview를 보완했다. 현재 경로와 Git trigger 결과 판정은 [Git 운영](pages-git-integration.md)을 따른다. Google provider/DB 접근 권한은 변경하지 않았다.

@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T21:04:19+09:00"
+  at: "2026-10-04T23:46:05+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-008.md"
@@ -74,6 +74,15 @@ sources:
   - id: "redirect"
     resource: "../sources/SRC-047-auth-production-origin.md"
     title: "Auth 반환 주소"
+  - id: "request22"
+    resource: "../../raw/conversations/2026-10-04-022.md"
+    title: "카탈로그·휴식·제목·Git·Google 요청"
+  - id: "request22-loop"
+    resource: "../../raw/research/2026-10-04-catalog-rest-timer-loop.json"
+    title: "실행/캡처"
+  - id: "git-google"
+    resource: "../../raw/research/2026-10-04-git-oauth-review.json"
+    title: "Git 구성/Google 검토"
 version: "0.2.3"
 change_id: "CHG-0014"
 ---
@@ -147,3 +156,9 @@ NativeSelect native popup을 제거하고 Mantine Select/Combobox로 통일했�
 ## CONV-0015 배포 도구
 
 Wrangler4.147.0을 devDependency로 pin했다(Node >=22; 현재 프로젝트 Node24 기준). Cloudflare official skills16/MCP5는 사용자 개발 환경에만 등록하며 앱 runtime/bundle에 넣지 않는다. Pages config와 actual-dist 검사는 연결 준비이고 원격 인증/배포는 별도다. [연결 운영](../operations/cloudflare-setup.md).
+
+## CONV0022 구현/검토 — 2026-10-04
+
+34종목/바벨18·큰 부위 아래 세부 분류/장비·별칭 필터와 사용자 추가 선택을 적용했다. 기본1분·즐겨찾기3~4개·완료 자동 시작·pause/resume/stop·deadline 재실행·profile/outbox/백업 보존을 구현했다. 다섯 H1 outline을 제거하고 programmatic focus는 유지했다.98개/19파일·Node8·전체30browser/최종문구6·build/types/format/artifact25, lint기존6경고. 실제 좁은 화면에서 문구 잘림을 찾아 수정했다. [계약/실행](../operations/catalog-rest-timer.md).
+
+GitHub source=Jeongjibsa/lightweight·main·자동 배포 활성화를 읽었고 dependency 설치/Node24·승인된 production 공개 연결/빈 preview를 보완했다. 새 commit의 자동 Git 배포/원격 CI는 기록 시점 별도다. [배포 운영](../operations/pages-git-integration.md). Google OAuth는 가능하며 현재providerOFF/callback없음·credential/동일UID 연결/가입 차단·실기기 복귀가 필요하다. [검토](google-oauth-review.md). 과학 승인 콘텐츠0개/실제 운동·새 기기/나머지 G3/메일·운영·파일럿/P2 관문과 다음 운동 후 사용자 확인 일정은 유지한다.

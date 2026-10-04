@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T22:59:58+09:00"
+  at: "2026-10-04T23:46:05+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -122,6 +122,15 @@ sources:
   - id: "next-workout"
     resource: "../../raw/conversations/2026-10-04-021.md"
     title: "다음 운동 후 확인 응답"
+  - id: "request22"
+    resource: "../../raw/conversations/2026-10-04-022.md"
+    title: "카탈로그·휴식·제목·Git·Google 요청"
+  - id: "request22-loop"
+    resource: "../../raw/research/2026-10-04-catalog-rest-timer-loop.json"
+    title: "실행/캡처"
+  - id: "git-google"
+    resource: "../../raw/research/2026-10-04-git-oauth-review.json"
+    title: "Git 구성/Google 검토"
 ---
 
 # 미결 사항과 다음 대화
@@ -213,3 +222,7 @@ iPhone 설치/홈 화면/로그인은 CONV0020 사용자 보고로 확인했다.
 ## 현재 실사용 확인 시점 — CHG0031
 
 사용자가 “다음 운동 후 확인”이라고 응답했다. 운동 기록 저장→재실행→수동 클라우드 전송은 다음 운동 이후 사용자 확인 예정이며, 실제 결과는 not_run이다. 구체 날짜는 정하지 않았다. [CONV0021](../conversations/2026-10-04-021.md)·[체크리스트](../operations/iphone-pilot-checklist.md). CHG0030의 응답 대기는 당시 상태다. 확인 시점의 답변을 완료 결과로 표시하지 않는다. 새 저장소 복원/실Auth/나머지 G3/운영/과학 검토/4주 파일럿은 별도 관문이다.
+
+## CONV0022 현재 미결
+
+Google 계정 로그인은 기술적으로 가능하지만 검토 요청만 처리했다. Google web client/동의 화면·기존 계정 이메일 관계·provider/callback 구현·동일 UID 및 가입OFF/허용 목록·실제 iPhone 복귀 검증은 남는다. [검토](google-oauth-review.md). 휴식 default1분/즐겨찾기3~4개는 명시 요구이며 초깃값60/90/120/180·15~1800초는 구현 정책이다. 물리 잠금/알림 관문은 완료하지 않았다. 새 Git 자동 배포 성공/정적 자산 일치는 후속 receipt에서 확인한다.

@@ -74,3 +74,4 @@
 - [종목 순서 수정 전320](2026-10-04-order-before-320.png) · [수정 후320](2026-10-04-order-after-320.png) · [수정 후390](2026-10-04-order-after-390.png) — 가짜 기록/실제 browser·알림 가림 확인.
 - [루틴 복구 목록320](2026-10-04-routine-recovery-list-320.png) · [목록390](2026-10-04-routine-recovery-list-390.png) · [확인320](2026-10-04-routine-recovery-dialog-320.png) · [확인390](2026-10-04-routine-recovery-dialog-390.png) — 가짜 자료/실제 browser.
 - [종료 기록 삭제320](2026-10-04-ended-record-delete-320.png) · [삭제390](2026-10-04-ended-record-delete-390.png) · [목록320](2026-10-04-ended-record-list-320.png) · [목록390](2026-10-04-ended-record-list-390.png) · [복구320](2026-10-04-ended-record-recover-320.png) · [복구390](2026-10-04-ended-record-recover-390.png) — 가짜 자료.
+- [CONV0022 WebKit 캡처9개](../research/2026-10-04-catalog-rest-timer-loop.json)

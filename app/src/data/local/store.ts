@@ -12,6 +12,7 @@ import {
   backupSchema,
   dateInZone,
   preferencesSchema,
+  restPreferencesSchema,
   profileSchema,
   routineSchema,
   sessionSchema,
@@ -22,6 +23,7 @@ import {
   type Preferences,
   type Profile,
   type Routine,
+  type RestPreferences,
   type Session,
   type TrainingSet,
   toKilograms,
@@ -110,8 +112,30 @@ export class TrainingStore {
         const prior = await this.database.profiles.get(ownerId);
         requireOwner(prior, ownerId);
         const profile = profileSchema.parse({
+          ...prior,
           ...input,
           ownerId,
+          revision: prior!.revision + 1,
+          updatedAt: now(),
+        });
+        await this.database.profiles.put(profile);
+        await this.enqueue(ownerId, "profile", ownerId, profile);
+        return profile;
+      },
+    );
+  }
+  async saveRestPreferences(ownerId: string, input: RestPreferences) {
+    const restTimer = restPreferencesSchema.parse(input);
+    return this.database.transaction(
+      "rw",
+      this.database.profiles,
+      this.database.outbox,
+      async () => {
+        const prior = await this.database.profiles.get(ownerId);
+        requireOwner(prior, ownerId);
+        const profile = profileSchema.parse({
+          ...prior,
+          restTimer,
           revision: prior!.revision + 1,
           updatedAt: now(),
         });

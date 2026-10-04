@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T22:59:58+09:00"
+  at: "2026-10-04T23:46:05+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -179,9 +179,18 @@ sources:
   - id: "next-workout"
     resource: "../../raw/conversations/2026-10-04-021.md"
     title: "다음 운동 후 확인 응답"
-version: "0.6.20"
+  - id: "request22"
+    resource: "../../raw/conversations/2026-10-04-022.md"
+    title: "카탈로그·휴식·제목·Git·Google 요청"
+  - id: "request22-loop"
+    resource: "../../raw/research/2026-10-04-catalog-rest-timer-loop.json"
+    title: "실행/캡처"
+  - id: "git-google"
+    resource: "../../raw/research/2026-10-04-git-oauth-review.json"
+    title: "Git 구성/Google 검토"
+version: "0.7.0"
 approval_status: "proposal"
-change_id: "CHG-0031"
+change_id: "CHG-0032"
 ---
 
 # 운동 PWA 구현 백로그와 완료 기준
@@ -209,11 +218,11 @@ UI-01은 당시 부분 Mantine/Spoqa/스택 명시 증분으로 done이었다. C
 | PRE-03 | M0 | 사용자 조건별 종목 후보/검토 목록, 본인 표본 주3~4회·무분할~3분할, 공개 저장소/미결 관리 | 현재 library/Q | 골격근량 증대 목표 반영, 경험/종목/장비/시간 미결과 콘텐츠/비밀 경계·검토 책임 기록 | in_progress |
 | BASE-01 | M1 | app TypeScript/React/Vite·Zod 후보·Vitest/Playwright·검사/CI | PRE-01 | 지원 런타임/버전 lockfile·strict 타입 검사·빌드·핵심 계약 검사 통과; 실제 비밀 없음 | done |
 | BASE-02 | M1 | 공통 화면·PWA manifest/서비스 워커·업데이트 안내 | BASE-01, PRE-02 | 작은 화면/키보드 조작, 준비 후 오프라인 앱 실행, 업데이트 제어 시안 | in_progress |
-| LOG-01 | M2 | 부위·장비/이름 필터·운동/변형·사용자 추가 운동 | BASE-02, PRE-03 | 선택 ID/변형 유지; 미등록 부위/사용자 운동의 검토 상태 표시 | in_progress |
+| LOG-01 | M2 | 부위·장비/이름 필터·운동/변형·사용자 추가 운동 | BASE-02, PRE-03 | 34종목/바벨18·세부 분류/별칭·custom 선택 구현·이전 snapshot/ID 보존; 과학 콘텐츠는 별도 | in_progress |
 | LOG-02 | M2 | 운동 상세·2D 근육 지도·수행 그림/대체 텍스트 | LOG-01 | 주/보조 역할을 색 외에도 설명; 자극% 미표시·콘텐츠/권한 상태 구분 | in_progress |
 | LOG-03 | M2 | 루틴 작성·복사·정렬·편집·이전 세션 재사용 | LOG-01, PRE-01 | 직접 재시작/미완료 종목 교체 구현·원본 snapshot 보존; 루틴/오늘 종목 순서 구현·83개/22browser; 루틴 복구/CAS/과거 보존·86개/22browser·메모 등 후속 | in_progress |
 | LOG-04 | M2 | 오늘 세션·이전 값·중량/횟수·완료/수정/취소 | BASE-02, PRE-01; 전체 연결은 LOG-03 | 이전 빈 값/종료 명시 수정·CAS/시각 보존 구현·72개/20browser; 오늘 종목 순서/CAS 보존 구현·83개/22browser; 남은 입력 UX/장비 식별 후속 | in_progress |
-| LOG-05 | M2 | Dexie 트랜잭션/outbox·재개·휴식 타이머 | LOG-04 | 저장 실패 시 성공 금지, 중복 탭 0중복, 재시작/잠금 후 상태 복귀 | in_progress |
+| LOG-05 | M2 | Dexie 트랜잭션/outbox·재개·휴식 타이머 | LOG-04 | 기본60초·즐겨찾기3~4개/atomic 설정·재실행/pause/backup 검증; 실제 iPhone 잠금/복귀는 별도 | in_progress |
 | LOG-06 | M2 | JSON 내보내기·가져오기/복원·삭제 흐름 | LOG-05 | 가짜 데이터 빈 저장소 복원 동일, 형식/계정/중복/삭제 정책·루틴 명시 복구/CAS/atomic·86개/22browser; 종료 운동 명시 삭제/복구·집계/값/시각/CAS·90개/24browser; 실기기/대용량 복구 후속 | in_progress |
 | SYNC-01 | M3 | SQL migrations·제약·필요 grants/RLS·형식/범위 계약 | PRE-01, LOG-05 | 부모/자식 소유 일치·타인 user_id 대입/변경 차단, DB 초기 구성 재현 | in_progress |
 | SYNC-02 | M3 | 초대 Auth·실제 로그인 경로·계정별 로컬 DB·로그아웃 | SYNC-01; Q-15 | 가입/익명 차단·메일/복구 시험, 계정 전환 비노출/오전송, 만료 시 로컬 대기 유지 | in_progress |
@@ -369,3 +378,9 @@ iPhone 홈 화면 설치/실행/로그인은 CONV0020의 사용자 보고로 확
 main push·GitHub37206666022 check/Chromium/WebKit 모두 success 뒤 [운영 앱](https://lightweight-training.pages.dev)·[DB 없는 preview](https://preview.lightweight-training.pages.dev)에 배포했다. 각 공개24file hash/보안 헤더가 검증한 빌드와 일치한다.90 Vitest/17파일·Node8·Chromium13/WebKit11=24·build/types/format/artifact25·vault 통과(lint기존6경고). [불변 배포](../../raw/research/2026-10-04-ended-record-release.json). 앞선 CI/배포 대기는 당시 이력이며 현재 완료했다.
 
 iPhone 홈 화면 설치/실행/로그인은 사용자 보고 확인이다. 본인이 수행한 운동의 저장→재실행→수동 전송은 CONV0021의 “다음 운동 후 확인” 응답에 따라 다음 운동 후 확인 예정이며 실제 결과는 not_run이다. [실사용 체크리스트](../operations/iphone-pilot-checklist.md)를 준비했다. 실제 운동/새 저장소 복원·A/B/만료/메일·나머지 G3/운영 복구·전문/전문가/자산·실제4주 파일럿·후순위 식단/3D는 유지한다. 다음 독립 기록 구현은 메모/장비 비교 조건이다. 이 문서 단위는 앱 bundle을 바꾸지 않는다.
+
+## CONV0022 구현/검토 — 2026-10-04
+
+34종목/바벨18·큰 부위 아래 세부 분류/장비·별칭 필터와 사용자 추가 선택을 적용했다. 기본1분·즐겨찾기3~4개·완료 자동 시작·pause/resume/stop·deadline 재실행·profile/outbox/백업 보존을 구현했다. 다섯 H1 outline을 제거하고 programmatic focus는 유지했다.98개/19파일·Node8·전체30browser/최종문구6·build/types/format/artifact25, lint기존6경고. 실제 좁은 화면에서 문구 잘림을 찾아 수정했다. [계약/실행](../operations/catalog-rest-timer.md).
+
+GitHub source=Jeongjibsa/lightweight·main·자동 배포 활성화를 읽었고 dependency 설치/Node24·승인된 production 공개 연결/빈 preview를 보완했다. 새 commit의 자동 Git 배포/원격 CI는 기록 시점 별도다. [배포 운영](../operations/pages-git-integration.md). Google OAuth는 가능하며 현재providerOFF/callback없음·credential/동일UID 연결/가입 차단·실기기 복귀가 필요하다. [검토](google-oauth-review.md). 과학 승인 콘텐츠0개/실제 운동·새 기기/나머지 G3/메일·운영·파일럿/P2 관문과 다음 운동 후 사용자 확인 일정은 유지한다.

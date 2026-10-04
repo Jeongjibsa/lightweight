@@ -18,7 +18,6 @@ import { useEffect, useState } from "react";
 import {
   Check,
   Plus,
-  Timer,
   Flag,
   ArrowLeft,
   Pencil,
@@ -32,6 +31,7 @@ import { loadModes, type Session, type TrainingSet } from "../domain/models";
 import { useTraining } from "../context/training";
 import { ExercisePicker } from "./exercises";
 import { Modal, type Run } from "./shared";
+import { RestTimer } from "./rest-timer";
 
 function SetRow({
   set,
@@ -394,37 +394,6 @@ function SetCorrection({
   );
 }
 
-function RestClock({ session }: { session: Session }) {
-  const last = session.sets
-    .map((set) => set.completedAt)
-    .filter((at): at is string => !!at)
-    .sort()
-    .at(-1);
-  const [clock, setClock] = useState(() => Date.now());
-  useEffect(() => {
-    if (!last) return;
-    const interval = setInterval(() => setClock(Date.now()), 1000);
-    return () => clearInterval(interval);
-  }, [last]);
-  if (!last || session.status !== "active") return null;
-  const seconds = Math.min(
-    120,
-    Math.max(0, Math.ceil((new Date(last).getTime() + 120000 - clock) / 1000)),
-  );
-  return (
-    <Paper py="sm" px="md" bg="dark.6">
-      <Group gap="sm" wrap="nowrap">
-        <Timer size={19} color="var(--mantine-color-yellow-4)" />
-        <Text fw={650} fz={20} style={{ fontVariantNumeric: "tabular-nums" }}>
-          {Math.floor(seconds / 60)}:{String(seconds % 60).padStart(2, "0")}
-        </Text>
-        <Text size="xs" c="dimmed">
-          최근 완료부터 2분 · 편의용 타이머
-        </Text>
-      </Group>
-    </Paper>
-  );
-}
 function ExerciseOrder({
   session,
   run,
@@ -610,7 +579,7 @@ export function WorkoutView({
           운동 순서 변경
         </Button>
       )}
-      <RestClock session={session} />
+      {active && <RestTimer key={session.id} session={session} run={run} />}
       {exercises.map((exercise) => (
         <Paper key={exercise.id} p={{ base: "md", sm: "lg" }}>
           <Group justify="space-between" align="flex-start" mb="md">

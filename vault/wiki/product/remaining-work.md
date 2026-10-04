@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T22:59:58+09:00"
+  at: "2026-10-04T23:46:05+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -164,14 +164,23 @@ sources:
   - id: "next-workout"
     resource: "../../raw/conversations/2026-10-04-021.md"
     title: "다음 운동 후 확인 응답"
-version: "0.3.12"
+  - id: "request22"
+    resource: "../../raw/conversations/2026-10-04-022.md"
+    title: "카탈로그·휴식·제목·Git·Google 요청"
+  - id: "request22-loop"
+    resource: "../../raw/research/2026-10-04-catalog-rest-timer-loop.json"
+    title: "실행/캡처"
+  - id: "git-google"
+    resource: "../../raw/research/2026-10-04-git-oauth-review.json"
+    title: "Git 구성/Google 검토"
+version: "0.4.0"
 approval_status: "proposal"
-change_id: "CHG-0031"
+change_id: "CHG-0032"
 ---
 
 # 남은 작업 한눈에 보기
 
-2026-10-04 / PRD0.8.16. **운동 MVP 전체는 진행 중**이며 식단·3D는 후순위다.
+2026-10-04 / PRD0.9.0. **운동 MVP 전체는 진행 중**이며 식단·3D는 후순위다.
 
 [운영 앱](https://lightweight-training.pages.dev) · [DB 연결 없는 preview](https://preview.lightweight-training.pages.dev) · [세부 백로그](implementation-backlog.md).
 
@@ -202,3 +211,9 @@ change_id: "CHG-0031"
 [종료 기록 삭제/복구·집계 보존](../operations/ended-record-recovery.md).
 
 [실제 iPhone 다음 과업 체크리스트](../operations/iphone-pilot-checklist.md). 운동 저장→재실행→수동 전송은 [CONV0021](../conversations/2026-10-04-021.md)에 따라 다음 운동 후 사용자 확인 예정이다. 실제 결과는 not_run이며 새 저장소 복원은 별도 확인한다.
+
+## CONV0022 구현/검토 — 2026-10-04
+
+34종목/바벨18·큰 부위 아래 세부 분류/장비·별칭 필터와 사용자 추가 선택을 적용했다. 기본1분·즐겨찾기3~4개·완료 자동 시작·pause/resume/stop·deadline 재실행·profile/outbox/백업 보존을 구현했다. 다섯 H1 outline을 제거하고 programmatic focus는 유지했다.98개/19파일·Node8·전체30browser/최종문구6·build/types/format/artifact25, lint기존6경고. 실제 좁은 화면에서 문구 잘림을 찾아 수정했다. [계약/실행](../operations/catalog-rest-timer.md).
+
+GitHub source=Jeongjibsa/lightweight·main·자동 배포 활성화를 읽었고 dependency 설치/Node24·승인된 production 공개 연결/빈 preview를 보완했다. 새 commit의 자동 Git 배포/원격 CI는 기록 시점 별도다. [배포 운영](../operations/pages-git-integration.md). Google OAuth는 가능하며 현재providerOFF/callback없음·credential/동일UID 연결/가입 차단·실기기 복귀가 필요하다. [검토](google-oauth-review.md). 과학 승인 콘텐츠0개/실제 운동·새 기기/나머지 G3/메일·운영·파일럿/P2 관문과 다음 운동 후 사용자 확인 일정은 유지한다.

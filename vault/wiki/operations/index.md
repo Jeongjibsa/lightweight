@@ -20,3 +20,4 @@
 - [삭제 루틴 복구 계약](routine-recovery.md)
 - [종료 운동 기록 삭제·복구](ended-record-recovery.md)
 - [실제 iPhone 다음 과업](iphone-pilot-checklist.md)
+- [운동 세부 분류/휴식/H1 계약](catalog-rest-timer.md) · [Git 자동 배포](pages-git-integration.md)

@@ -22,6 +22,31 @@ export const equipmentOptions = [
   "맨몸",
 ] as const;
 export const groups = ["가슴", "등", "어깨", "팔", "하체", "코어"] as const;
+// Recording/navigation taxonomy, not exclusive muscle recruitment or a ranking.
+export const subgroups = {
+  가슴: ["상부", "중부", "하부"],
+  등: ["광배", "상부 등", "등 전체"],
+  어깨: ["전면", "측면", "후면"],
+  팔: ["이두", "삼두", "전완"],
+  하체: ["허벅지 앞쪽", "허벅지 뒤쪽", "둔부", "종아리", "하체 전체"],
+  코어: ["복부", "옆구리"],
+} as const;
+export const restPreferencesSchema = z.object({
+  seconds: z.number().int().min(15).max(1800),
+  favorites: z
+    .array(z.number().int().min(15).max(1800))
+    .min(3)
+    .max(4)
+    .refine(
+      (values) => new Set(values).size === values.length,
+      "서로 다른 시간을 입력해주세요.",
+    ),
+});
+export type RestPreferences = z.infer<typeof restPreferencesSchema>;
+export const defaultRestPreferences: RestPreferences = {
+  seconds: 60,
+  favorites: [60, 90, 120, 180],
+};
 export const loadModes = {
   total: "총 중량",
   per_hand: "한 손 중량",
@@ -75,6 +100,7 @@ export const profileSchema = z.object({
   ownerId: id,
   name: z.string().trim().min(1).max(40),
   preferences: preferencesSchema.nullable(),
+  restTimer: restPreferencesSchema.optional(),
   unit: z.enum(["kg", "lb"]),
   timeZone: z
     .string()
@@ -95,6 +121,8 @@ export const exerciseSchema = z.object({
   id: z.string().min(1).max(100),
   name: z.string().trim().min(1).max(80),
   group: z.enum(groups),
+  subgroup: z.string().min(1).max(40).optional(),
+  aliases: z.array(z.string().min(1).max(80)).max(8).optional(),
   equipment: z.string().max(80),
   loadMode: z.enum([
     "total",

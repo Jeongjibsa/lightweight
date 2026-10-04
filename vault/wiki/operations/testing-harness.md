@@ -1,7 +1,7 @@
 ---
 type: "Testing Harness"
 title: "현재 테스트 하네스와 확장 설계"
-description: "Vitest83개·browser22과업·배포 계약8개·실제 보존/가림 검사와 실기기/Auth 경계."
+description: "Vitest98개·browser30과업·배포 계약8개·실제 보존/가림 검사와 실기기/Auth 경계."
 tags:
   - "operations"
   - "testing"
@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T22:43:11+09:00"
+  at: "2026-10-04T23:46:05+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
@@ -101,6 +101,9 @@ sources:
   - id: "ended-check"
     resource: "../../raw/research/2026-10-04-ended-record-recovery-loop.json"
     title: "실행"
+  - id: "request22-loop"
+    resource: "../../raw/research/2026-10-04-catalog-rest-timer-loop.json"
+    title: "실행/캡처"
 version: "0.5.1"
 approval_status: "current-audit-and-proposal"
 change_id: "CHG-0014"
@@ -309,3 +312,7 @@ Node 기본 test runner의3개(test:deploy)를 npm run check에 추가했다. �
 ## 공개 설명 계약 검사
 
 content:compile을 일반 build에 연결하고 Node5계약을 추가했다(배포3과 총8). agent 승인/수정 문구·abstract/깨진 참조/unknown 권리·중복/unknown 종목·변경 파일/외부 symlink의 거부와 draft/reviewer 비출력을 확인한다.78 Vitest는 유지, UI 흐름/건강 주장은 추가하지 않았다. 실제 과학 검토·원격 CI는 별도다. [계약](content-publication.md).
+
+## CONV0022 현재 증분
+
+31unit/40integration/27UI=98개/19파일·Node8·전체Chromium16/WebKit14=30, 문구만 수정 후 마지막6과업·build/types/format/artifact25를 확인했다(lint기존6경고). unit은 deadline/pause와 설정 bounds·기존 schema/카탈로그, integration은 atomic profile/outbox/owner/backup, UI는 타이머 재진입·중복/실패/재시도, browser는 필터·휴식 clock/reload/설정 backup·H1 focus/outline·320/390px이다. 실제 캡처에서2문구 잘림을 발견해 짧은 표시와 원래 accessible 이름을 제공했다. [증거](../../raw/research/2026-10-04-catalog-rest-timer-loop.json)·[계약](catalog-rest-timer.md). 실제 Auth/Google/물리 iPhone/과학 검토는 별도다.

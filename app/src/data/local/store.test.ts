@@ -814,3 +814,51 @@ describe("이전 기록 재사용·대체·종료 수정", () => {
     expect(await database.outbox.count()).toBe(count);
   });
 });
+
+it("휴식 즐겨찾기 저장은 운동·다른 owner를 보존하고 설정/백업 roundtrip에 유지한다", async () => {
+  const session = await plannedSession();
+  const priorOther = await database.profiles.get(other);
+  const favorites = { seconds: 90, favorites: [45, 60, 90, 150] };
+  await store.saveRestPreferences(owner, favorites);
+  const profile = (await database.profiles.get(owner))!;
+  await store.saveProfile(owner, {
+    name: "가짜 변경",
+    preferences,
+    unit: profile.unit,
+    timeZone: profile.timeZone,
+  });
+  expect((await database.profiles.get(owner))!.restTimer).toEqual(favorites);
+  expect(await database.profiles.get(other)).toEqual(priorOther);
+  expect(await database.sessions.get(session.id)).toEqual(session);
+  const backup = await store.backup(owner);
+  const fresh = new TrainingDatabase(`rest-restore-${crypto.randomUUID()}`);
+  try {
+    const target = new TrainingStore(fresh);
+    await target.ensureProfile(owner);
+    await target.restore(owner, backup);
+    expect((await fresh.profiles.get(owner))!.restTimer).toEqual(favorites);
+    expect(await fresh.sessions.get(session.id)).toEqual(session);
+  } finally {
+    await fresh.delete();
+  }
+});
+it("휴식 설정 transaction 실패/잘못된 즐겨찾기/없는 owner는 profile과 outbox를 보존한다", async () => {
+  const prior = await database.profiles.toArray();
+  const queue = await database.outbox.toArray();
+  const favorites = { seconds: 60, favorites: [60, 90, 120] };
+  vi.spyOn(database.outbox, "add").mockRejectedValueOnce(
+    new Error("synthetic rest preference failure"),
+  );
+  await expect(store.saveRestPreferences(owner, favorites)).rejects.toThrow();
+  await expect(
+    store.saveRestPreferences(owner, { ...favorites, favorites: [60, 60, 90] }),
+  ).rejects.toThrow();
+  await expect(
+    store.saveRestPreferences(
+      "00000000-0000-4000-8000-000000000003",
+      favorites,
+    ),
+  ).rejects.toThrow();
+  expect(await database.profiles.toArray()).toEqual(prior);
+  expect(await database.outbox.toArray()).toEqual(queue);
+});
