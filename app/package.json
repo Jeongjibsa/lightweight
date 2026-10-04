@@ -15,7 +15,8 @@
     "test:unit": "vitest run --project unit",
     "test:integration": "vitest run --project integration",
     "test:ui": "vitest run --project ui",
-    "check": "npm run lint && npm run test && npm run build && npm run typecheck:e2e",
+    "test:deploy": "node --test tests/deploy/*.test.mjs",
+    "check": "npm run lint && npm run test && npm run test:deploy && npm run build && npm run typecheck:e2e",
     "cloud:probe": "node --env-file=.env scripts/supabase-probe.mjs",
     "cloud:verify": "node --env-file=.env scripts/verify-cloud.mjs",
     "cloud:allow-user": "node --env-file=.env scripts/allow-cloud-user.mjs",
@@ -23,6 +24,7 @@
     "test:e2e:probe": "node scripts/probe-e2e-artifacts.mjs",
     "typecheck:e2e": "tsc -p tsconfig.e2e.json",
     "pages:check": "node scripts/check-pages-artifact.mjs dist",
+    "pages:verify": "node scripts/verify-pages-deployment.mjs",
     "pages:deploy": "npm run build && npm run pages:check && wrangler pages deploy dist --project-name lightweight-training --branch main"
   },
   "dependencies": {

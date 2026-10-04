@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T20:47:40+09:00"
+  at: "2026-10-04T21:04:19+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -116,11 +116,31 @@ sources:
   - id: "coverage-check"
     resource: "../../raw/research/2026-10-04-report-coverage-verification.json"
     title: "실행"
+  - id: "email-complete"
+    resource: "../../raw/conversations/2026-10-04-017.md"
+    title: "사용자 이메일 인증 완료"
+  - id: "deployment-check"
+    resource: "../../raw/research/2026-10-04-pages-deployment.json"
+    title: "실제 HTTPS 배포"
+  - id: "redirect"
+    resource: "../sources/SRC-047-auth-production-origin.md"
+    title: "Auth 반환 주소"
 version: "0.3.3"
 change_id: "CHG-0017"
 ---
 
 # 로컬 PWA 구현 결과와 다음 작업
+
+## 첫 HTTPS 배포 — 2026-10-04 현재
+
+운영: [lightweight-training.pages.dev](https://lightweight-training.pages.dev). preview: [운영 DB 연결 없는 미리보기](https://preview.lightweight-training.pages.dev). 화면과 기기 기록을 바로 사용할 수 있다. 공개 페이지이며 계정 데이터 접근은 Supabase 허용 목록/RLS로 제한한다. site-wide Access는 미설정이다.
+
+이메일 완료 답변 뒤 project 생성 성공, 검증된3bc6022를 main에 fast-forward/push했다. GitHub3job success 후 app/dist만 배포했다. 24파일 artifact gate, 실제 공개23파일(index/PWA/font/JS/CSS)의 SHA256 일치와 보안 헤더를 운영/preview에서 확인했다. 다섯 실제 HTTPS 화면을 캡처/직접 확인했다. [실행](../../raw/research/2026-10-04-pages-deployment.json).
+
+Supabase Site URL과 정확한 root 반환 경로 하나를 저장했다. Auth settings200/signupDisabled=true, 비로그인 read/write RPC401을 재확인했다. Auth 계정0개: 본인 등록/비밀번호는 사용자가 직접 준비, 허용 UUID·실제 로그인/복원/A-B/만료는 다음 단계다. 비밀번호 복구 UI는 아직 없다.
+
+78개 Vitest + 배포 계약3개·build/format/E2E타입 통과, lint exit0이지만 기존WorkoutView effect 경고6개는 남는다. pages:verify는 읽기 전용으로 실제 헤더/파일 hash를 검사하며 네트워크/불일치에 실패한다. 실제 iPhone/과학 검토/운영 복구 관문은 유지한다. 다음 독립 구현은 공개 콘텐츠 registry/검토 gate와 기록 편의의 남은 범위다. 아래 증분은 당시의 상태다.
+
 
 ## 리포트 기록 점검 후속 — 2026-10-04
 

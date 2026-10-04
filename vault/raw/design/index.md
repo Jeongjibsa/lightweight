@@ -61,3 +61,13 @@
 
 저장한 정확한viewport를 직접 확인했다. 전체페이지/실제사용자자료아님. [실행](../research/2026-10-04-e2e-harness-verification.json).
 - [업데이트 가림 before](2026-10-04-update-blocked-before.png) · [main 안내 after](2026-10-04-update-inline-after.png) — fake390×844 실제 viewport 확인; [실행](../research/2026-10-04-storage-recovery-verification.json).
+
+## 첫 HTTPS 배포 다섯 화면
+
+1280×720 실제 앱·빈 로컬 기록/미설정, 직접 확인했다. 실기기/실사용자 기록 아님.
+
+- [today](2026-10-04-pages-today.png)
+- [library](2026-10-04-pages-library.png)
+- [routines](2026-10-04-pages-routines.png)
+- [reports](2026-10-04-pages-reports.png)
+- [settings](2026-10-04-pages-settings.png)

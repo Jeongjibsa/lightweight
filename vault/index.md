@@ -4,7 +4,7 @@ okf_version: "0.2"
 
 # 웨이트 트레이닝 앱 — 기획과 지식 베이스
 
-옵시디언에서 이 `vault` 폴더를 열고 시작한다. 현재 기획은 **0.8.4 브레인스토밍 초안**이다.
+옵시디언에서 이 `vault` 폴더를 열고 시작한다. 현재 기획은 **0.8.5 브레인스토밍 초안**이다.
 
 ## 먼저 읽기
 
@@ -34,7 +34,7 @@ okf_version: "0.2"
 ## 제품과 근거
 
 - [제품 상세](wiki/product/index.md) — 운동·티어·추천·기록·리포트·영양·데이터·검증.
-- [출처 노트 46개](wiki/sources/index.md) — 공식 규격·기관·운동/영양 연구·iOS 기술 안내.
+- [출처 노트 47개](wiki/sources/index.md) — 공식 규격·기관·운동/영양 연구·iOS 기술 안내.
 - [주장-근거 지도](wiki/concepts/evidence-map.md) — 적용·상충·공백.
 - [보존 원본](raw/index.md) — 사용자 발언·수집 당시 기록.
 
@@ -48,7 +48,7 @@ okf_version: "0.2"
 - [양식](templates/index.md) — 출처·변경 작성.
 - [시각 자료](assets/index.md) — 추후 콘텐츠.
 
-과학 자료는 **2026-10-03 초기 표적 탐색**, 하네스 기술/코드 확인은 **2026-10-04**다. 일부 연구는 초록만 확인했고 공개 전 전문 검토가 남았다. app0.2.0/schema2에 전체 Mantine/Geist 차콜·노란 강조·하단 UI를 적용했다. 최신unit21/integration26/ui17·64개를 통과했다. CONV-0010의 수동25폭/화면 조합과 CONV-0011의 색상/320·390·1440px 관찰을 구분한다. 기존 Auth/계정 DB·manual snapshot·SQL16·비로그인HTTP 이력을 보존한다. 자동browser16개·새7개×3회21회/실패probe를 완료했다. 이전187c47c의GitHub CI3job·실패증거 수신 완료, 새HAR04는local검사다. 실제Auth·iPhone/배포·콘텐츠전문검토·자동문서감지는 남았다.
+과학 자료는2026-10-03 초기 표적 탐색이며 일부 초록/전문 미검토 자료가 있다. 현재 PRD0.8.5·app0.2.0/schema2·Mantine/Geist/차콜·노란 강조·하단 UI. [운영 앱](https://lightweight-training.pages.dev)과 DB 연결 없는 preview를 배포했다.78개 Vitest·배포 계약3개·browser20·GitHub3job을 통과했다. 실제 Auth/다기기·iPhone·과학 공개/전문가·운영 복구·파일럿과 전체 운동 MVP는 남는다. [현재 남은 작업](wiki/product/remaining-work.md). 아래 링크는 누적 증분이며 당시 검사와 최신 상태를 구별한다.
 
 - [최신 컴포넌트 재감사](wiki/product/component-review.md) — 다섯 페이지 수정 전/후·펼친 선택창·55개 검사·20폭/화면 관찰.
 - [3D 해부학 애니메이션 검토](wiki/product/anatomy-3d-feasibility.md) — FR-17·P2후순위, 가능성/자산/검토·실기기 관문.
@@ -63,6 +63,8 @@ okf_version: "0.2"
 
 - [압축 백업 독립 복구](wiki/operations/compressed-backup.md) —66개/18browser/새6회·10MiB초과24,000세트 복구.
 
-- [최신 기록 재사용/수정](wiki/operations/record-reuse.md) —72개/20browser/새6회·과거/시각/CAS 보존. Pages 제한 인증 성공, project 이메일 인증 대기.
+- [최신 기록 재사용/수정](wiki/operations/record-reuse.md) —72개/20browser/새6회·과거/시각/CAS 보존. Pages 제한 인증 성공, project/HTTPS 후속 완료는 최신 배포 문서를 참조한다.
 
 - [최신 주간 기록 점검](wiki/operations/report-coverage.md) —78개/browser20·기간/상태/조건/입력 revision·직접 수정 진입.
+
+- [최신 HTTPS 배포 검사](raw/research/2026-10-04-pages-deployment.json) —운영/preview·23file hash·Auth 반환 URL·계정/iPhone 관문 유지.

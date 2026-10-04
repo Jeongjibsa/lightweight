@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T20:32:03+09:00"
+  at: "2026-10-04T21:04:19+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -26,9 +26,29 @@ sources:
   - id: "scope-check"
     resource: "../../raw/research/2026-10-04-pages-scoped-auth.json"
     title: "Pages 확인"
+  - id: "email-complete"
+    resource: "../../raw/conversations/2026-10-04-017.md"
+    title: "사용자 이메일 인증 완료"
+  - id: "deployment-check"
+    resource: "../../raw/research/2026-10-04-pages-deployment.json"
+    title: "실제 HTTPS 배포"
+  - id: "redirect"
+    resource: "../sources/SRC-047-auth-production-origin.md"
+    title: "Auth 반환 주소"
 ---
 
 # Cloudflare 연결과 정적 PWA 배포
+
+## 첫 HTTPS 배포 — 2026-10-04 현재
+
+운영: [lightweight-training.pages.dev](https://lightweight-training.pages.dev). preview: [운영 DB 연결 없는 미리보기](https://preview.lightweight-training.pages.dev). 화면과 기기 기록을 바로 사용할 수 있다. 공개 페이지이며 계정 데이터 접근은 Supabase 허용 목록/RLS로 제한한다. site-wide Access는 미설정이다.
+
+이메일 완료 답변 뒤 project 생성 성공, 검증된3bc6022를 main에 fast-forward/push했다. GitHub3job success 후 app/dist만 배포했다. 24파일 artifact gate, 실제 공개23파일(index/PWA/font/JS/CSS)의 SHA256 일치와 보안 헤더를 운영/preview에서 확인했다. 다섯 실제 HTTPS 화면을 캡처/직접 확인했다. [실행](../../raw/research/2026-10-04-pages-deployment.json).
+
+Supabase Site URL과 정확한 root 반환 경로 하나를 저장했다. Auth settings200/signupDisabled=true, 비로그인 read/write RPC401을 재확인했다. Auth 계정0개: 본인 등록/비밀번호는 사용자가 직접 준비, 허용 UUID·실제 로그인/복원/A-B/만료는 다음 단계다. 비밀번호 복구 UI는 아직 없다.
+
+78개 Vitest + 배포 계약3개·build/format/E2E타입 통과, lint exit0이지만 기존WorkoutView effect 경고6개는 남는다. pages:verify는 읽기 전용으로 실제 헤더/파일 hash를 검사하며 네트워크/불일치에 실패한다. 실제 iPhone/과학 검토/운영 복구 관문은 유지한다. 다음 독립 구현은 공개 콘텐츠 registry/검토 gate와 기록 편의의 남은 범위다. 아래 증분은 당시의 상태다.
+
 
 ## 현재 상태
 
@@ -60,3 +80,7 @@ Direct Upload 프로젝트는 Git 연동으로 전환할 수 없으므로 향후
 ## Pages 제한 인증의 현재 결과
 
 Wrangler 로그인/계정 확인에 성공했다. 실제 scope는 user:read/account:read/pages:write/offline_access 네 개다. 계정 전체 관리 권한을 CLI에 추가하지 않았다. Pages project 목록은 빈 배열이었고 생성 요청은 이메일 인증 필요(API8000077)로 거부됐다. 이메일 인증 후 한 번 다시 진행한다. 원격 URL/배포/Auth site_url은 아직 없다. 첫 생성에서 CLI4.147.0이 Workers로 자동 위임해 entrypoint 오류가 나, 설치된 코드의 create force 의미를 확인하고 직접 Pages 생성만 선택했다. 삭제/덮어쓰기/권한 검토 우회가 아니다. [불변 확인](../../raw/research/2026-10-04-pages-scoped-auth.json).
+
+## 실제 배포 일치 검사
+
+app에서 npm run pages:verify -- https://lightweight-training.pages.dev dist, preview는 해당 origin과 dist-preview를 지정한다. bare HTTPS origin만 허용하고 root/asset redirect를 거부한다. _headers는 서버 처리용이라 원격 파일 비교에서 제외한다. 누락 헤더/정책 차이/파일 hash 차이·통신 실패는 검사 실패다. test:deploy의3계약이 npm run check와 GitHub CI에 포함된다. 자동 CI 배포 credential은 만들지 않았으므로 push만으로 Pages 배포되지 않는다.

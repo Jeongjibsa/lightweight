@@ -21,85 +21,85 @@ sources:
     resource: "../../raw/conversations/2026-10-03-001.md"
     title: "최초 요구"
   - id: "emg"
-    resource: "../sources/SRC-008-emg.md"
+    resource: "../../wiki/sources/SRC-008-emg.md"
     title: "EMG"
   - id: "acsm"
-    resource: "../sources/SRC-003-acsm-2026.md"
+    resource: "../../wiki/sources/SRC-003-acsm-2026.md"
     title: "ACSM"
   - id: "volume"
-    resource: "../sources/SRC-004-volume-frequency.md"
+    resource: "../../wiki/sources/SRC-004-volume-frequency.md"
     title: "운동량"
   - id: "kdri"
-    resource: "../sources/SRC-011-kdri-2025.md"
+    resource: "../../wiki/sources/SRC-011-kdri-2025.md"
     title: "KDRI"
   - id: "platform-request"
     resource: "../../raw/conversations/2026-10-03-002.md"
     title: "iOS와 개인 사용 요구"
   - id: "platform"
-    resource: "platform-distribution.md"
+    resource: "../../wiki/product/platform-distribution.md"
     title: "설치·배포 검토"
   - id: "pwa-choice"
     resource: "../../raw/conversations/2026-10-03-003.md"
     title: "PWA 선택과 언어·저장 질문"
   - id: "technology"
-    resource: "technology-data-storage.md"
+    resource: "../../wiki/product/technology-data-storage.md"
     title: "언어·개인 데이터 저장 제안"
   - id: "stack-agreement"
     resource: "../../raw/conversations/2026-10-03-004.md"
     title: "스택 동의와 배포·보안 의견 요청"
   - id: "deployment"
-    resource: "deployment-security.md"
+    resource: "../../wiki/product/deployment-security.md"
     title: "배포·보안 추천"
   - id: "implementation-request"
     resource: "../../raw/conversations/2026-10-03-005.md"
     title: "계획 요청과 운동 우선 선택"
   - id: "implementation-plan"
-    resource: "implementation-plan.md"
+    resource: "../../wiki/product/implementation-plan.md"
     title: "단계별 작업계획"
   - id: "implementation-backlog"
-    resource: "implementation-backlog.md"
+    resource: "../../wiki/product/implementation-backlog.md"
     title: "작업 ID와 의존성"
   - id: "responsive-local-request"
     resource: "../../raw/conversations/2026-10-03-006.md"
     title: "반응형·사용자별 설정·로컬 구현 요청"
   - id: "local-contract"
-    resource: "implementation-contracts.md"
+    resource: "../../wiki/product/implementation-contracts.md"
     title: "로컬 구현 계약"
   - id: "local-progress"
-    resource: "implementation-progress.md"
+    resource: "../../wiki/product/implementation-progress.md"
     title: "실행 결과와 남은 작업"
   - id: "harness-request"
     resource: "../../raw/conversations/2026-10-04-007.md"
     title: "남은 작업·하네스·루프 요청"
   - id: "harness"
-    resource: "../operations/testing-harness.md"
+    resource: "../../wiki/operations/testing-harness.md"
     title: "현재 검증 구조"
   - id: "quality-loop"
-    resource: "../operations/loop-engineering.md"
+    resource: "../../wiki/operations/loop-engineering.md"
     title: "반복 개선"
   - id: "remaining"
-    resource: "remaining-work.md"
+    resource: "../../wiki/product/remaining-work.md"
     title: "우선순위"
   - id: "ui-cloud-request"
     resource: "../../raw/conversations/2026-10-04-008.md"
     title: "UI/클라우드/가입 차단 요구"
   - id: "stack"
-    resource: "technology-stack.md"
+    resource: "../../wiki/product/technology-stack.md"
     title: "현재 실제 스택"
   - id: "cloud"
-    resource: "supabase-integration.md"
+    resource: "../../wiki/product/supabase-integration.md"
     title: "연결 증분"
   - id: "volume-request"
     resource: "../../raw/conversations/2026-10-04-009.md"
     title: "볼륨/추천 요구"
   - id: "volume-mvp"
-    resource: "volume-history-mvp.md"
+    resource: "../../wiki/product/volume-history-mvp.md"
     title: "계산/단계"
   - id: "design-request"
     resource: "../../raw/conversations/2026-10-04-010.md"
     title: "전체 Mantine/Geist/하단 UX 요구"
   - id: "design"
-    resource: "design-system.md"
+    resource: "../../wiki/product/design-system.md"
     title: "디자인 계약"
   - id: "tone-request"
     resource: "../../raw/conversations/2026-10-04-011.md"
@@ -108,7 +108,7 @@ sources:
     resource: "../../raw/research/2026-10-04-charcoal-theme-verification.json"
     title: "차콜 증분 실행"
   - id: "tone-reference"
-    resource: "../sources/SRC-040-charcoal-tone.md"
+    resource: "../../wiki/sources/SRC-040-charcoal-tone.md"
     title: "공식 디자인 참고"
   - id: "component-request"
     resource: "../../raw/conversations/2026-10-04-012.md"
@@ -117,7 +117,7 @@ sources:
     resource: "../../raw/research/2026-10-04-component-review.json"
     title: "실제 페이지별 관찰"
   - id: "3d-feasibility"
-    resource: "anatomy-3d-feasibility.md"
+    resource: "../../wiki/product/anatomy-3d-feasibility.md"
     title: "후순위 기술/자산 검토"
   - id: "e2e-request"
     resource: "../../raw/conversations/2026-10-04-013.md"
@@ -138,16 +138,16 @@ sources:
     resource: "../../raw/conversations/2026-10-04-015.md"
     title: "Cloudflare 요청"
   - id: "cf-setup"
-    resource: "../operations/cloudflare-setup.md"
+    resource: "../../wiki/operations/cloudflare-setup.md"
     title: "연결 운영"
   - id: "gzip"
-    resource: "../operations/compressed-backup.md"
+    resource: "../../wiki/operations/compressed-backup.md"
     title: "압축 복구 계약"
   - id: "gzip-check"
     resource: "../../raw/research/2026-10-04-compressed-backup-verification.json"
     title: "실행"
   - id: "record-reuse"
-    resource: "../operations/record-reuse.md"
+    resource: "../../wiki/operations/record-reuse.md"
     title: "재사용 계약"
   - id: "record-check"
     resource: "../../raw/research/2026-10-04-record-reuse-verification.json"
@@ -156,7 +156,7 @@ sources:
     resource: "../../raw/research/2026-10-04-pages-scoped-auth.json"
     title: "Pages 연결 확인"
   - id: "coverage"
-    resource: "../operations/report-coverage.md"
+    resource: "../../wiki/operations/report-coverage.md"
     title: "기록 점검 계약"
   - id: "coverage-check"
     resource: "../../raw/research/2026-10-04-report-coverage-verification.json"
@@ -168,14 +168,13 @@ sources:
     resource: "../../raw/research/2026-10-04-pages-deployment.json"
     title: "실제 HTTPS 배포"
   - id: "redirect"
-    resource: "../sources/SRC-047-auth-production-origin.md"
+    resource: "../../wiki/sources/SRC-047-auth-production-origin.md"
     title: "Auth 반환 주소"
 version: "0.8.5"
 approval_status: "proposal"
 change_id: "CHG-0020"
-aliases:
-  - "앱 기획서"
-  - "PRD"
+snapshot_of: "../../wiki/product/prd.md"
+immutable: true
 ---
 
 # 근거 기반 웨이트 트레이닝 앱 기획서
@@ -202,50 +201,50 @@ aliases:
 | 기록은 쌓이지만 개선 방향을 모르겠다 | 변화 요약·다음 행동 1~3개 | 이해도·제안 실행률 |
 | 운동과 식단을 따로 관리한다 | 운동·섭취·체중 추세 연결 | 식단 수요·입력 지속성 |
 
-**사용자 범위 확정:** 첫 사용자는 본인 1명이다. 추후 확장도 주변 지인에게 직접 제공하는 범위를 현재 가정한다. 모바일 사용을 우선하며 iPhone/iOS가 대상이다. [CONV-0002](../conversations/2026-10-03-002.md).
+**사용자 범위 확정:** 첫 사용자는 본인 1명이다. 추후 확장도 주변 지인에게 직접 제공하는 범위를 현재 가정한다. 모바일 사용을 우선하며 iPhone/iOS가 대상이다. [CONV-0002](../../wiki/conversations/2026-10-03-002.md).
 
 **개인 조건 확인:** 사용자는 골격근량 증대·주3~4회·무분할~3분할 운동을 보고했다. 보고된 iPhone 16 Pro Max·iOS 27.0.1은 하나의 파일럿 표본이다(CONV-0005). CONV-0006에서 특정 기종에 한정하지 않는 반응형과 사용자별 설정을 요구했다. 개인 조건을 앱 전역 기본값으로 고정하지 않는다. 운동 경험·주요 종목·장비·회당 시간·불편감은 미결이다. 건강한 성인·초보~중급이라는 기존 가설은 아직 사용자 조건으로 확정하지 않는다.
 
 ### 2.1 모바일 설치와 제공 방식
 
-**PWA 진행 확정:** 사용자가 PWA로 진행할 의사를 명시했다. iPhone 홈 화면 설치와 링크 제공을 기준으로 기획을 발전시킨다. [CONV-0003](../conversations/2026-10-03-003.md) · [플랫폼 검토](platform-distribution.md). 건강 앱·Watch 요구가 달라지면 구현 범위를 다시 검토한다.
+**PWA 진행 확정:** 사용자가 PWA로 진행할 의사를 명시했다. iPhone 홈 화면 설치와 링크 제공을 기준으로 기획을 발전시킨다. [CONV-0003](../../wiki/conversations/2026-10-03-003.md) · [플랫폼 검토](../../wiki/product/platform-distribution.md). 건강 앱·Watch 요구가 달라지면 구현 범위를 다시 검토한다.
 
-첫 구현은 한 손 입력·오프라인 기록·백업/복원·설명 가능한 리포트에 집중하는 제안이다. **TypeScript·React+Vite·IndexedDB/Dexie·Supabase PostgreSQL/Auth 구성은 사용자 동의로 방향을 채택했다.** Mantine UI는 CONV-0008에서 채택했다. CONV-0010에서 전체 화면 Mantine 적용·Geist·블루/다크·iOS 같은 UX·전 폭 하단 메뉴·빠른 접근을 요구하여 별도 branch로 재설계했다. 글꼴은 Spoqa에서 Geist/한글 시스템 fallback으로 변경했다. CONV-0011에서 [Mantine UI/Monokai 참고 톤](../sources/SRC-040-charcoal-tone.md)으로 변경하도록 요청해 차콜 배경/노란 강조로 조정했다. 구체 팔레트는 구현 선택이며 기존 Mantine·Geist·하단 UX 기준을 이어간다.  현재 정확한 패키지/역할은 [기술 스택](technology-stack.md)을 따른다. Supabase 프로젝트 연결과 등록 이메일/비밀번호·계정 DB·수동 snapshot 증분은 구현했으며 로그인 수단 최종 선택·지원 OS·동기화 고도화·운영비는 남았다. [언어와 개인 데이터 저장](technology-data-storage.md).
+첫 구현은 한 손 입력·오프라인 기록·백업/복원·설명 가능한 리포트에 집중하는 제안이다. **TypeScript·React+Vite·IndexedDB/Dexie·Supabase PostgreSQL/Auth 구성은 사용자 동의로 방향을 채택했다.** Mantine UI는 CONV-0008에서 채택했다. CONV-0010에서 전체 화면 Mantine 적용·Geist·블루/다크·iOS 같은 UX·전 폭 하단 메뉴·빠른 접근을 요구하여 별도 branch로 재설계했다. 글꼴은 Spoqa에서 Geist/한글 시스템 fallback으로 변경했다. CONV-0011에서 [Mantine UI/Monokai 참고 톤](../../wiki/sources/SRC-040-charcoal-tone.md)으로 변경하도록 요청해 차콜 배경/노란 강조로 조정했다. 구체 팔레트는 구현 선택이며 기존 Mantine·Geist·하단 UX 기준을 이어간다.  현재 정확한 패키지/역할은 [기술 스택](../../wiki/product/technology-stack.md)을 따른다. Supabase 프로젝트 연결과 등록 이메일/비밀번호·계정 DB·수동 snapshot 증분은 구현했으며 로그인 수단 최종 선택·지원 OS·동기화 고도화·운영비는 남았다. [언어와 개인 데이터 저장](../../wiki/product/technology-data-storage.md).
 
 ### 2.2 배포와 개인 기록 보호
 
-Cloudflare Pages에 PWA 화면을, Supabase에 계정/DB와 서버 기능을 배포하는 구성을 추천한다. CONV-0015에서 Cloudflare 공식 연결/후속 배포 작업을 요청했다. CONV-0016에서 main MCP OAuth 성공·계정 읽기 HTTP200을 확인했고 사용자가 cf 생략·기존 Wrangler 유지를 선택했다. Pages Direct Upload lightweight-training을 생성했고 운영 origin은 https://lightweight-training.pages.dev 이다. Wrangler의 Pages 제한 인증은 후속에서 성공했다. 이메일 인증 완료 뒤 project 생성/운영 HTTPS·DB 연결 없는 preview·Auth 반환 URL 저장을 완료했다. 특화 MCP3개·실앱 Auth/기기 관문은 별도다. 공개 HTTPS 주소를 사용하되 본인·초대 지인 계정으로 개인 기록 접근을 제한하는 안이다. [배포·보안 상세](deployment-security.md).
+Cloudflare Pages에 PWA 화면을, Supabase에 계정/DB와 서버 기능을 배포하는 구성을 추천한다. CONV-0015에서 Cloudflare 공식 연결/후속 배포 작업을 요청했다. CONV-0016에서 main MCP OAuth 성공·계정 읽기 HTTP200을 확인했고 사용자가 cf 생략·기존 Wrangler 유지를 선택했다. Pages Direct Upload lightweight-training을 생성했고 운영 origin은 https://lightweight-training.pages.dev 이다. Wrangler의 Pages 제한 인증은 후속에서 성공했다. 이메일 인증 완료 뒤 project 생성/운영 HTTPS·DB 연결 없는 preview·Auth 반환 URL 저장을 완료했다. 특화 MCP3개·실앱 Auth/기기 관문은 별도다. 공개 HTTPS 주소를 사용하되 본인·초대 지인 계정으로 개인 기록 접근을 제한하는 안이다. [배포·보안 상세](../../wiki/product/deployment-security.md).
 
-개인 API는 화면을 우회한 직접 호출에서도 인증·소유자 권한을 검사한다. 공개 가입/익명 로그인 차단, 사용자별 RLS, 비밀키의 서버 보관, 동적 콘텐츠의 안전한 출력, preview/운영 데이터 분리와 접근 차단 시험을 제공 전 조건으로 제안한다. 사이트 전체 Cloudflare Access는 별도 선택이다. CONV-0008에서 제공한 프로젝트에 Auth/DB/RPC·허용 목록·권한을 적용했다. 공개 가입 차단은 사용자 명시 승인 후 저장하고 API로 확인했다. 외부 HTTPS 앱 배포/헤더·파일 검증을 완료했고 실제 Auth/iPhone/운영 복구 관문은 남는다. [현재 연결/계정 준비](supabase-integration.md).
+개인 API는 화면을 우회한 직접 호출에서도 인증·소유자 권한을 검사한다. 공개 가입/익명 로그인 차단, 사용자별 RLS, 비밀키의 서버 보관, 동적 콘텐츠의 안전한 출력, preview/운영 데이터 분리와 접근 차단 시험을 제공 전 조건으로 제안한다. 사이트 전체 Cloudflare Access는 별도 선택이다. CONV-0008에서 제공한 프로젝트에 Auth/DB/RPC·허용 목록·권한을 적용했다. 공개 가입 차단은 사용자 명시 승인 후 저장하고 API로 확인했다. 외부 HTTPS 앱 배포/헤더·파일 검증을 완료했고 실제 Auth/iPhone/운영 복구 관문은 남는다. [현재 연결/계정 준비](../../wiki/product/supabase-integration.md).
 
 **추천 범위 제안:** 재활·질환 치료·임신/수유·미성년자용 자동 처방은 별도 검토가 필요하다. 범위 밖 사용자의 직접 기록·일반 정보 열람은 별도로 설계한다.
 
 ## 3. 요구사항과 우선순위
 
-**운동 기능을 먼저 완성하고 식단을 다음 출시로 둔다**는 순서는 사용자 선택으로 확정했다(CONV-0005). P0 세부 콘텐츠 범위와 구현 단계는 제안이며, 사용자 핵심 요구를 누락하지 않고 [작업 목록](implementation-backlog.md)에서 추적한다. 근거 운영은 모든 단계의 출시 조건이다.
+**운동 기능을 먼저 완성하고 식단을 다음 출시로 둔다**는 순서는 사용자 선택으로 확정했다(CONV-0005). P0 세부 콘텐츠 범위와 구현 단계는 제안이며, 사용자 핵심 요구를 누락하지 않고 [작업 목록](../../wiki/product/implementation-backlog.md)에서 추적한다. 근거 운영은 모든 단계의 출시 조건이다.
 
 | ID | 사용자 요구 | 단계 제안 | 상세 |
 |---|---|---|---|
-| FR-01 | 부위별 운동 리스트·검색·필터 | P0 | [운동 정보](exercise-library.md) |
-| FR-02 | 자극범위·대상 근육·시각적 설명 | P0 | [운동 정보](exercise-library.md) |
-| FR-03 | 최신 연구 근거 기반 루틴 추천 | P0 | [추천](routine-engine.md) |
-| FR-04 | 부위별 운동 티어 | P0, 검토 완료 범위부터 | [티어](tier-system.md) |
-| FR-05 | 개인 루틴 작성·복사·편집·저장 | P0 | [기록](training-log.md) |
-| FR-06 | 수행 운동·중량·횟수·세트의 간편 기록 | P0 | [기록](training-log.md) |
-| FR-07 | 수행 기록 기반 개인화 리포트 | P0 | [리포트](reports.md) |
-| FR-08 | 식단·식사량·섭취일 기록 | P1 | [영양](nutrition.md) |
-| FR-09 | 부족 가능 영양소·추천 열량·식단 리포트 | P1 | [영양](nutrition.md) |
-| FR-10 | 모바일 우선 반응형 PWA, 휴대폰·태블릿·데스크톱 확장 | P0 | [설치·배포](platform-distribution.md) |
-| FR-11 | 사용자별 목표·운동 횟수·분할 등의 간편 입력/변경/보존 | P0 | [설정·로컬 계약](implementation-contracts.md) |
-| FR-12 | 전체 Mantine UI·Geist·현재 스택/라이브러리 명시 | P0, 적용한 증분 | [스택](technology-stack.md) |
-| FR-13 | 생성한 Supabase 연결·공개 가입 차단 | P0, 연결 증분/실계정 검증 잔여 | [클라우드](supabase-integration.md) |
-| FR-14 | 운동별·일별 세트/반복/중량 볼륨과 그래프 추이 | P0, 관찰 지표부터 | [볼륨 MVP](volume-history-mvp.md) |
-| FR-15 | 과거 데이터 기반 오늘의 운동/권장 볼륨 안내 | P0, 기록 참고→검토된 조정 단계 | [후보/조정](volume-history-mvp.md) |
-| FR-16 | Monokai/Mantine 참고 차콜 톤·iOS 같은 UX·전 폭 하단 메뉴·클릭 수 감소/접근성·별도 branch 구현 | P0, UI 증분/실기기 잔여 | [디자인](design-system.md) · [감사](design-audit.md) |
-| FR-17 | 운동별 3D 해부학 모델·관련 근육 강조/동작 애니메이션 | P2, 지금은 가능성 검토만·운동 MVP 안정화 후 | [3D 검토](anatomy-3d-feasibility.md) |
-| QA-01 | 현재 검증 하네스 문서화·단위/통합 검사·실패 재현/회귀의 반복 개선 | 지속 품질 요구; 상세 구현안 제안 | [하네스](../operations/testing-harness.md) · [루프](../operations/loop-engineering.md) |
-| KM-01 | 루트 vault·Markdown·OKF·옵시디언 호환 | 이번 산출물 | [관리](../operations/knowledge-workflow.md) |
-| KM-02 | 대화에 따른 기획 수정과 이력·근거 축적 | 지속 관리 | [변경](../../history/changes/index.md) |
+| FR-01 | 부위별 운동 리스트·검색·필터 | P0 | [운동 정보](../../wiki/product/exercise-library.md) |
+| FR-02 | 자극범위·대상 근육·시각적 설명 | P0 | [운동 정보](../../wiki/product/exercise-library.md) |
+| FR-03 | 최신 연구 근거 기반 루틴 추천 | P0 | [추천](../../wiki/product/routine-engine.md) |
+| FR-04 | 부위별 운동 티어 | P0, 검토 완료 범위부터 | [티어](../../wiki/product/tier-system.md) |
+| FR-05 | 개인 루틴 작성·복사·편집·저장 | P0 | [기록](../../wiki/product/training-log.md) |
+| FR-06 | 수행 운동·중량·횟수·세트의 간편 기록 | P0 | [기록](../../wiki/product/training-log.md) |
+| FR-07 | 수행 기록 기반 개인화 리포트 | P0 | [리포트](../../wiki/product/reports.md) |
+| FR-08 | 식단·식사량·섭취일 기록 | P1 | [영양](../../wiki/product/nutrition.md) |
+| FR-09 | 부족 가능 영양소·추천 열량·식단 리포트 | P1 | [영양](../../wiki/product/nutrition.md) |
+| FR-10 | 모바일 우선 반응형 PWA, 휴대폰·태블릿·데스크톱 확장 | P0 | [설치·배포](../../wiki/product/platform-distribution.md) |
+| FR-11 | 사용자별 목표·운동 횟수·분할 등의 간편 입력/변경/보존 | P0 | [설정·로컬 계약](../../wiki/product/implementation-contracts.md) |
+| FR-12 | 전체 Mantine UI·Geist·현재 스택/라이브러리 명시 | P0, 적용한 증분 | [스택](../../wiki/product/technology-stack.md) |
+| FR-13 | 생성한 Supabase 연결·공개 가입 차단 | P0, 연결 증분/실계정 검증 잔여 | [클라우드](../../wiki/product/supabase-integration.md) |
+| FR-14 | 운동별·일별 세트/반복/중량 볼륨과 그래프 추이 | P0, 관찰 지표부터 | [볼륨 MVP](../../wiki/product/volume-history-mvp.md) |
+| FR-15 | 과거 데이터 기반 오늘의 운동/권장 볼륨 안내 | P0, 기록 참고→검토된 조정 단계 | [후보/조정](../../wiki/product/volume-history-mvp.md) |
+| FR-16 | Monokai/Mantine 참고 차콜 톤·iOS 같은 UX·전 폭 하단 메뉴·클릭 수 감소/접근성·별도 branch 구현 | P0, UI 증분/실기기 잔여 | [디자인](../../wiki/product/design-system.md) · [감사](../../wiki/product/design-audit.md) |
+| FR-17 | 운동별 3D 해부학 모델·관련 근육 강조/동작 애니메이션 | P2, 지금은 가능성 검토만·운동 MVP 안정화 후 | [3D 검토](../../wiki/product/anatomy-3d-feasibility.md) |
+| QA-01 | 현재 검증 하네스 문서화·단위/통합 검사·실패 재현/회귀의 반복 개선 | 지속 품질 요구; 상세 구현안 제안 | [하네스](../../wiki/operations/testing-harness.md) · [루프](../../wiki/operations/loop-engineering.md) |
+| KM-01 | 루트 vault·Markdown·OKF·옵시디언 호환 | 이번 산출물 | [관리](../../wiki/operations/knowledge-workflow.md) |
+| KM-02 | 대화에 따른 기획 수정과 이력·근거 축적 | 지속 관리 | [변경](../changes/index.md) |
 
 ## 4. 사용자 흐름과 정보 구조
 
@@ -265,7 +264,7 @@ flowchart LR
 
 내비게이션은 **오늘 / 운동 탐색 / 나의 루틴 / 리포트 / 설정**의 전 폭 하단 다섯 탭으로 구현한다(CONV-0010). 식단 출시 시 ‘오늘’에 식사 기록 진입점을 추가하고 리포트에 영양 탭을 둔다.
 
-화면은 기종 이름 대신 폭과 입력 환경에 대응한다. 모든 폭에서 하단 메뉴를 유지하고 큰 화면은 본문 최대1080px·다중 열을 사용한다. 오늘 시작/재개·루틴 바로 시작, 운동 행 한 번 추가, 새 루틴 연속 선택과 운동 하단 dock으로 반복 조작을 줄인다. 모바일 확인/상세는 내용 높이 bottom sheet, 큰 화면은 Modal이다. Mantine theme과 Geist/한글 fallback·차콜/노란 강조로 통일한다. 선택/접기는 Mantine Select/Accordion으로 구성하고 본문·control·panel의 수평 여백과 중첩 표면을 페이지별 캡처로 검토한다. [현재 재감사](component-review.md). 구체 tokens/target/초점 기준은 [디자인 규칙](design-system.md)을 따르며 실제 iOS native 전환/실기기 검증 완료를 의미하지 않는다. 사용자별 목표·주당 횟수 범위·분할·시간·장비·단위·시간대를 설정하고 변경할 수 있다. 주당 횟수와 분할은 독립이다. 새 사용자의 목표·횟수·분할을 본인 조건으로 강제하지 않는다. 시작 당시 설정/루틴은 과거 기록에 보존한다. [구현 계약](implementation-contracts.md).
+화면은 기종 이름 대신 폭과 입력 환경에 대응한다. 모든 폭에서 하단 메뉴를 유지하고 큰 화면은 본문 최대1080px·다중 열을 사용한다. 오늘 시작/재개·루틴 바로 시작, 운동 행 한 번 추가, 새 루틴 연속 선택과 운동 하단 dock으로 반복 조작을 줄인다. 모바일 확인/상세는 내용 높이 bottom sheet, 큰 화면은 Modal이다. Mantine theme과 Geist/한글 fallback·차콜/노란 강조로 통일한다. 선택/접기는 Mantine Select/Accordion으로 구성하고 본문·control·panel의 수평 여백과 중첩 표면을 페이지별 캡처로 검토한다. [현재 재감사](../../wiki/product/component-review.md). 구체 tokens/target/초점 기준은 [디자인 규칙](../../wiki/product/design-system.md)을 따르며 실제 iOS native 전환/실기기 검증 완료를 의미하지 않는다. 사용자별 목표·주당 횟수 범위·분할·시간·장비·단위·시간대를 설정하고 변경할 수 있다. 주당 횟수와 분할은 독립이다. 새 사용자의 목표·횟수·분할을 본인 조건으로 강제하지 않는다. 시작 당시 설정/루틴은 과거 기록에 보존한다. [구현 계약](../../wiki/product/implementation-contracts.md).
 
 첫 사용에는 전체 프로필을 강제하기 전에 운동 탐색과 직접 기록을 허용한다. 추천 시 목표·경험·가능 횟수·시간·장비·제약을 단계적으로 받는다. 체중과 영양 계산 정보는 해당 기능에서 받는다.
 
@@ -282,7 +281,7 @@ flowchart LR
 
 운동 카드는 이름/별칭·장비·대상 근육·난이도·설정·수행법·흔한 오류·대체 운동·근거·검토일을 제공한다. 근육 그림의 색을 성장률이나 ‘자극 80%’로 표시하지 않는다. 급성 EMG만으로 장기 근비대 순위를 정하지 않는다.[^emg]
 
-시각 자료는 검토된 2D 전면/후면 근육 지도와 짧은 동작 자료부터 시작하는 제안이다. CONV-0012에서 운동별 3D 해부학 모델의 자극부위/동작 애니메이션을 명시 요청했으며, 현재는 가능성 검토만 하고 후순위로 둔다(FR-17). PWA renderer는 후보가 있지만 자산의 근육 분리·rig/clip·권한/해부학 검토·실기기 성능 확인이 필요하다. 첫 운동 MVP 출시 선행 조건으로 넣지 않는다. [가능성/관문](anatomy-3d-feasibility.md)·VIS-3D-01~03. 카메라 자세 추적은 별도 미확정이다. 해부학·수행법은 전문가 검토와 권한 확인 후 공개한다.
+시각 자료는 검토된 2D 전면/후면 근육 지도와 짧은 동작 자료부터 시작하는 제안이다. CONV-0012에서 운동별 3D 해부학 모델의 자극부위/동작 애니메이션을 명시 요청했으며, 현재는 가능성 검토만 하고 후순위로 둔다(FR-17). PWA renderer는 후보가 있지만 자산의 근육 분리·rig/clip·권한/해부학 검토·실기기 성능 확인이 필요하다. 첫 운동 MVP 출시 선행 조건으로 넣지 않는다. [가능성/관문](../../wiki/product/anatomy-3d-feasibility.md)·VIS-3D-01~03. 카메라 자세 추적은 별도 미확정이다. 해부학·수행법은 전문가 검토와 권한 확인 후 공개한다.
 
 ## 6. 루틴 추천과 티어 원칙
 
@@ -314,7 +313,7 @@ flowchart LR
 
 CONV-0009에서 운동별/일별 볼륨·그래프와 과거 기록을 통한 오늘 운동/권장량을 요청했다. 완료 본세트·반복·시간·조건별 기록 중량×반복을 계산하고 날짜 그래프/표와 비교 범위를 표시한다. kg/lb 정규화, 한 손/머신/맨몸·보조/좌우·조건 변경·0/N/A를 구분한다. 기록량을 성장/회복 점수로 바꾸지 않는다.
 
-MVP는 과거 수행량과 현재 본인 루틴의 오늘 후보부터 제공한다. 기록 부족/오늘 수행/진행 운동/설정·장비 변경은 보류하고 적용은 사용자 선택이다. 충분성·노력/불편감·경험 입력과 전문 검토 이후 권장 운동량 조정을 연결한다. [계산/화면/후보 계약](volume-history-mvp.md)·REP-04~06/SCI-03B. 새 상세 정책은 초기 구현안이며 최적 처방 승인으로 표시하지 않는다.
+MVP는 과거 수행량과 현재 본인 루틴의 오늘 후보부터 제공한다. 기록 부족/오늘 수행/진행 운동/설정·장비 변경은 보류하고 적용은 사용자 선택이다. 충분성·노력/불편감·경험 입력과 전문 검토 이후 권장 운동량 조정을 연결한다. [계산/화면/후보 계약](../../wiki/product/volume-history-mvp.md)·REP-04~06/SCI-03B. 새 상세 정책은 초기 구현안이며 최적 처방 승인으로 표시하지 않는다.
 
 ## 8. 식단 확장
 
@@ -333,7 +332,7 @@ MVP는 과거 수행량과 현재 본인 루틴의 오늘 후보부터 제공한
 | 2. 식단 | 한국 음식·열량/단백질·성분 커버리지별 리포트 | DB 권한·성분 품질·영양 검토 |
 | 3. 고도화 | 개인 반응 조정·사진 보조·건강 앱/웨어러블 연동 | 충분한 데이터·실제 수요 |
 
-기본 스택과 운동 우선 순서는 합의했고 첫 기기는 사용자 보고로 확인했다. 실제 기기 동작·콘텐츠 검토·계정/메일·호스팅/운영비를 구체화하고 단계별로 구현한다. [구현 작업계획](implementation-plan.md)과 [백로그](implementation-backlog.md)에 의존성·완료 기준·검증·초기 공수 가정을 적었다. 날짜 확정 전 실제 난도와 검토 대기를 재평가한다. 초기 제외 제안: 커뮤니티, 경쟁 순위, PT 중개, 의학적 재활, 카메라 자세 교정.
+기본 스택과 운동 우선 순서는 합의했고 첫 기기는 사용자 보고로 확인했다. 실제 기기 동작·콘텐츠 검토·계정/메일·호스팅/운영비를 구체화하고 단계별로 구현한다. [구현 작업계획](../../wiki/product/implementation-plan.md)과 [백로그](../../wiki/product/implementation-backlog.md)에 의존성·완료 기준·검증·초기 공수 가정을 적었다. 날짜 확정 전 실제 난도와 검토 대기를 재평가한다. 초기 제외 제안: 커뮤니티, 경쟁 순위, PT 중개, 의학적 재활, 카메라 자세 교정.
 
 현재는 본인·지인 사용을 위한 도구로 기획한다. 구독·가격·공개 서비스 성장은 초기 검증의 우선순위에서 내리는 제안이다. 향후 상용화는 별도 논의하고, 지금은 호스팅·AI·계정 DB·메일 등 운영 부담을 비교한다.
 
@@ -341,11 +340,11 @@ MVP는 과거 수행량과 현재 본인 루틴의 오늘 후보부터 제공한
 
 설계 계약 → 앱 기반 → 탐색/직접 루틴/로컬 기록/백업 → 계정/동기화/접근 제한 → 계산 리포트 → 검토된 추천/티어 → 실제 iPhone 검증/본인 제공 → 관찰/소수 지인 → 식단 순서다. 근거/시각 자료 검토는 설계부터 진행하며 해당 콘텐츠 공개의 선행 조건이다.
 
-가짜 데이터의 한 세트 저장/재시작/복원을 먼저 리뷰한다. 실제 기록은 권한·동기화·복원 검증 후 쌓고, 운동 MVP 완료에는 FR-01~07·FR-10~11의 연결과 검토된 콘텐츠 범위가 필요하다. 외부 AI 설명은 선택 후속이며 초기 개인화는 결정적 계산·규칙과 템플릿으로 제공하는 구현안이다. CONV-0006의 로컬 우선 이후 CONV-0008에서 생성한 Supabase 연결과 순차 구현을 요청했다. app0.2.0에 반응형·설정·운동/루틴·기기 기록·기초 집계·백업/PWA·Mantine/글꼴·등록 Auth/계정 DB·수동 snapshot을 구현했고 서버 권한/충돌 계약을 검사했다. 실제 계정 로그인/다기기 전체 흐름·자동 sync/충돌 고도화·검토된 과학 시각/추천/티어·완전한 개인화·실기기/배포는 남았다. [실행 결과](implementation-progress.md). 운동 MVP 완성으로 표시하지 않는다.
+가짜 데이터의 한 세트 저장/재시작/복원을 먼저 리뷰한다. 실제 기록은 권한·동기화·복원 검증 후 쌓고, 운동 MVP 완료에는 FR-01~07·FR-10~11의 연결과 검토된 콘텐츠 범위가 필요하다. 외부 AI 설명은 선택 후속이며 초기 개인화는 결정적 계산·규칙과 템플릿으로 제공하는 구현안이다. CONV-0006의 로컬 우선 이후 CONV-0008에서 생성한 Supabase 연결과 순차 구현을 요청했다. app0.2.0에 반응형·설정·운동/루틴·기기 기록·기초 집계·백업/PWA·Mantine/글꼴·등록 Auth/계정 DB·수동 snapshot을 구현했고 서버 권한/충돌 계약을 검사했다. 실제 계정 로그인/다기기 전체 흐름·자동 sync/충돌 고도화·검토된 과학 시각/추천/티어·완전한 개인화·실기기/배포는 남았다. [실행 결과](../../wiki/product/implementation-progress.md). 운동 MVP 완성으로 표시하지 않는다.
 
 ## 10. 데이터·AI·운영 요구
 
-[데이터 모델](data-model.md): 프로필, 운동/변형, 루틴/버전, 세션/세트, 연구/주장, 추천/계산 버전, 리포트, 음식/식사.
+[데이터 모델](../../wiki/product/data-model.md): 프로필, 운동/변형, 루틴/버전, 세션/세트, 연구/주장, 추천/계산 버전, 리포트, 음식/식사.
 
 - PWA의 캐시·로컬 DB를 별도 구현하여 오프라인 기록·재시도 중복 방지를 실제 iPhone에서 검증한다. 로컬 저장 실패 시 완료 성공으로 표시하지 않는다.
 - 내보내기와 새 저장소에 복원하는 기능을 첫 버전에 포함하는 제안이다. 웹 저장소만으로 영구 보존을 보장하지 않는다.
@@ -375,51 +374,51 @@ MVP는 과거 수행량과 현재 본인 루틴의 오늘 후보부터 제공한
 | 기록 보존 | 강제 종료·오프라인 복귀·버전 업데이트 후 보존, 중복 완료 0건, 백업 복원 성공 |
 | 계산 정확성 | 단위·세트·누락 집계가 명시 계산 계약과 일치 |
 
-첫 검증은 본인의 iPhone에서 설치·실제 운동 기록·백업 복원과 4주 사용 관찰을 제안한다. 편의성이 안정되면 소수 지인 과업으로 확장한다. 본인 한 명의 결과를 전체 사용자 효용으로 일반화하지 않는다. [검증 계획](validation-plan.md)을 따른다.
+첫 검증은 본인의 iPhone에서 설치·실제 운동 기록·백업 복원과 4주 사용 관찰을 제안한다. 편의성이 안정되면 소수 지인 과업으로 확장한다. 본인 한 명의 결과를 전체 사용자 효용으로 일반화하지 않는다. [검증 계획](../../wiki/product/validation-plan.md)을 따른다.
 
 ### 11.1 검증 하네스와 반복 개선
 
-CONV-0014 요청으로 이전187c47c를 push했고 GitHub check/Chromium/WebKit 3job·실패 artifact 수신을 확인했다. HAR05 done이다. 새HAR04는 local에서 unit21/integration26/ui17의64개/14파일·lint/build/E2E typecheck/format, browser16개와 신규7개×3회21개·실패probe를 통과했다. [현재 하네스](../operations/testing-harness.md) · [보존 검사](../operations/storage-recovery-harness.md) · [실행](../../raw/research/2026-10-04-storage-recovery-verification.json) · [GitHub 원본](../../raw/research/2026-10-04-github-ci-37184261544.json).
+CONV-0014 요청으로 이전187c47c를 push했고 GitHub check/Chromium/WebKit 3job·실패 artifact 수신을 확인했다. HAR05 done이다. 새HAR04는 local에서 unit21/integration26/ui17의64개/14파일·lint/build/E2E typecheck/format, browser16개와 신규7개×3회21개·실패probe를 통과했다. [현재 하네스](../../wiki/operations/testing-harness.md) · [보존 검사](../../wiki/operations/storage-recovery-harness.md) · [실행](../../raw/research/2026-10-04-storage-recovery-verification.json) · [GitHub 원본](../../raw/research/2026-10-04-github-ci-37184261544.json).
 
-백업 version1 내용/필드는 유지하되 compact JSON으로 출력하고, import/export 파일 모두 최대10MiB UTF-8 byte 한도를 적용한다. 초과 export는 다운로드 전에, import는 적용 전에 거부하며 원본을 잘라내거나 삭제하지 않는다. 이하의 이전 들여쓰기 파일은 호환한다. 원시 Store/cloud snapshot 한도는 변경하지 않는다. 이 수치는 기존 import 한도를 대칭으로 명확히 한 구현 정책이며 사용자 처방/새 기능 승인으로 표현하지 않는다. 후속 구현에서10MiB 초과 기록은gzip으로 출력/복원한다(output10MiB·expanded64MiB). 모든 원본 필드·기존JSONv1/작은 JSON 한도를 유지하고 손상/잘림/팽창/UTF-8/schema 오류는 DB 적용 전에 거부한다.64MiB 초과/분할은 미지원이다. [압축 복구 계약](../operations/compressed-backup.md).
+백업 version1 내용/필드는 유지하되 compact JSON으로 출력하고, import/export 파일 모두 최대10MiB UTF-8 byte 한도를 적용한다. 초과 export는 다운로드 전에, import는 적용 전에 거부하며 원본을 잘라내거나 삭제하지 않는다. 이하의 이전 들여쓰기 파일은 호환한다. 원시 Store/cloud snapshot 한도는 변경하지 않는다. 이 수치는 기존 import 한도를 대칭으로 명확히 한 구현 정책이며 사용자 처방/새 기능 승인으로 표현하지 않는다. 후속 구현에서10MiB 초과 기록은gzip으로 출력/복원한다(output10MiB·expanded64MiB). 모든 원본 필드·기존JSONv1/작은 JSON 한도를 유지하고 손상/잘림/팽창/UTF-8/schema 오류는 DB 적용 전에 거부한다.64MiB 초과/분할은 미지원이다. [압축 복구 계약](../../wiki/operations/compressed-backup.md).
 
 실제 큰 파일14,400세트 roundtrip·native schema1→2·quota 합성 오류/transaction rollback·Chromium 실제 waiting SW/진행운동 적용 차단→종료/업데이트→offline/DB 보존을 고정했다. 업데이트 안내의 종료 버튼 가림을 main 상단으로 수정했다. HAR04는 실제iPhone/physical quota/eviction·초과 백업/다기기 복구가 남아 in_progress다. 실제Auth·SCI 전문/자산검토·REL/HTTPS 배포 관문은 유지한다. 새HAR04 GitHub CI는 아직 실행하지 않았다.
 
-독립 기대값→첫 실패 증거→작은 수정→동일 조건 재검증→회귀/이력의 루프를 유지한다. backup 한도/안내 가림은 제품 결함, 배열 순서/blur fault 경합/UI matcher는 test fixture 결함으로 구분했다. retries0·고유runID로 최초 실패를 보존했다. PRD0.7.2는 계약/현황 PATCH이며 운동 먼저·식단/3D 후순위·전체 FR은 유지한다. [루프](../operations/loop-engineering.md).
+독립 기대값→첫 실패 증거→작은 수정→동일 조건 재검증→회귀/이력의 루프를 유지한다. backup 한도/안내 가림은 제품 결함, 배열 순서/blur fault 경합/UI matcher는 test fixture 결함으로 구분했다. retries0·고유runID로 최초 실패를 보존했다. PRD0.7.2는 계약/현황 PATCH이며 운동 먼저·식단/3D 후순위·전체 FR은 유지한다. [루프](../../wiki/operations/loop-engineering.md).
 
 ## 12. 미결 사항
 
-본인 경험·종목/장비/회당 시간, 호스팅/도메인·사이트 Access·계정/초대/메일·동기화/백업·운영 예산, 건강 앱/Watch 요구와 검토 역할은 [미결 사항](open-questions.md)에서 관리한다. [결정 기록](../decisions/decision-register.md)에는 사용자 요구와 제안의 상태를 구분한다.
+본인 경험·종목/장비/회당 시간, 호스팅/도메인·사이트 Access·계정/초대/메일·동기화/백업·운영 예산, 건강 앱/Watch 요구와 검토 역할은 [미결 사항](../../wiki/product/open-questions.md)에서 관리한다. [결정 기록](../../wiki/decisions/decision-register.md)에는 사용자 요구와 제안의 상태를 구분한다.
 
 ## 13. 근거와 이력
 
-최신 톤 변경은 [CONV-0011](../conversations/2026-10-04-011.md) · [CHG-0011](../../history/changes/CHG-0011.md) · [차콜 감사/증거](design-audit.md)를 따른다. PRD0.6.1은 기능 범위 변화 없이 색상 방향을 수정한 PATCH다.
+최신 톤 변경은 [CONV-0011](../../wiki/conversations/2026-10-04-011.md) · [CHG-0011](../changes/CHG-0011.md) · [차콜 감사/증거](../../wiki/product/design-audit.md)를 따른다. PRD0.6.1은 기능 범위 변화 없이 색상 방향을 수정한 PATCH다.
 
-- [볼륨/추이/추천·지속 commit 요구](../../raw/conversations/2026-10-04-009.md) · [CHG-0009](../../history/changes/CHG-0009.md) · [추가 읽기](../sources/SRC-037-volume-history.md).
+- [볼륨/추이/추천·지속 commit 요구](../../raw/conversations/2026-10-04-009.md) · [CHG-0009](../changes/CHG-0009.md) · [추가 읽기](../../wiki/sources/SRC-037-volume-history.md).
 
-- [UI/클라우드/가입 차단 요청](../../raw/conversations/2026-10-04-008.md) · [CHG-0008](../../history/changes/CHG-0008.md) · [기술 근거](../sources/SRC-036-mantine-supabase.md) · [실제 검사](../../raw/research/2026-10-04-mantine-supabase-verification.json).
+- [UI/클라우드/가입 차단 요청](../../raw/conversations/2026-10-04-008.md) · [CHG-0008](../changes/CHG-0008.md) · [기술 근거](../../wiki/sources/SRC-036-mantine-supabase.md) · [실제 검사](../../raw/research/2026-10-04-mantine-supabase-verification.json).
 
-- [하네스/루프 요청](../../raw/conversations/2026-10-04-007.md) · [CHG-0007](../../history/changes/CHG-0007.md) · [기술 근거](../sources/SRC-035-testing-harness.md).
+- [하네스/루프 요청](../../raw/conversations/2026-10-04-007.md) · [CHG-0007](../changes/CHG-0007.md) · [기술 근거](../../wiki/sources/SRC-035-testing-harness.md).
 
-이번 조사는 **2026-10-03 초기 표적 탐색**이며 체계적 문헌고찰이나 전체 최신 문헌 포괄을 뜻하지 않는다. 일부 논문은 초록·서지 수준으로 확인했다. iOS 배포 비교는 같은 날 Apple/WebKit 공식 안내를 확인한 별도 기술 조사다. [주장-근거 지도](../concepts/evidence-map.md)와 출처 노트에서 범위를 확인한다.
+이번 조사는 **2026-10-03 초기 표적 탐색**이며 체계적 문헌고찰이나 전체 최신 문헌 포괄을 뜻하지 않는다. 일부 논문은 초록·서지 수준으로 확인했다. iOS 배포 비교는 같은 날 Apple/WebKit 공식 안내를 확인한 별도 기술 조사다. [주장-근거 지도](../../wiki/concepts/evidence-map.md)와 출처 노트에서 범위를 확인한다.
 
-- [원 요청](../../raw/conversations/2026-10-03-001.md) · [CHG-0001](../../history/changes/CHG-0001.md).
-- [iOS·개인 사용 원문](../../raw/conversations/2026-10-03-002.md) · [CHG-0002](../../history/changes/CHG-0002.md).
-- [PWA 선택·저장 질문](../../raw/conversations/2026-10-03-003.md) · [CHG-0003](../../history/changes/CHG-0003.md).
-- [스택 동의·배포/보안 우려](../../raw/conversations/2026-10-03-004.md) · [CHG-0004](../../history/changes/CHG-0004.md).
-- [계획 요청·운동 우선 선택](../../raw/conversations/2026-10-03-005.md) · [CHG-0005](../../history/changes/CHG-0005.md).
-- [반응형·사용자별 설정·로컬 구현](../../raw/conversations/2026-10-03-006.md) · [CHG-0006](../../history/changes/CHG-0006.md) · [버전 보관](../../history/versions/index.md).
+- [원 요청](../../raw/conversations/2026-10-03-001.md) · [CHG-0001](../changes/CHG-0001.md).
+- [iOS·개인 사용 원문](../../raw/conversations/2026-10-03-002.md) · [CHG-0002](../changes/CHG-0002.md).
+- [PWA 선택·저장 질문](../../raw/conversations/2026-10-03-003.md) · [CHG-0003](../changes/CHG-0003.md).
+- [스택 동의·배포/보안 우려](../../raw/conversations/2026-10-03-004.md) · [CHG-0004](../changes/CHG-0004.md).
+- [계획 요청·운동 우선 선택](../../raw/conversations/2026-10-03-005.md) · [CHG-0005](../changes/CHG-0005.md).
+- [반응형·사용자별 설정·로컬 구현](../../raw/conversations/2026-10-03-006.md) · [CHG-0006](../changes/CHG-0006.md) · [버전 보관](index.md).
 
-[^emg]: [Vigotsky 외 2022](../sources/SRC-008-emg.md), [연구 안내](https://pubmed.ncbi.nlm.nih.gov/35006527/).
-[^acsm]: [ACSM 2026](../sources/SRC-003-acsm-2026.md), [학회 공식 설명](https://acsm.org/resistance-training-guidelines-update-2026/).
-[^volume]: [Pelland 외](../sources/SRC-004-volume-frequency.md), [출판사 초록](https://link.springer.com/article/10.1007/s40279-025-02344-w).
-[^kdri]: [2025 KDRI](../sources/SRC-011-kdri-2025.md), [공식 배포](https://kns.or.kr/fileroom/fileroom_view.asp?BoardID=Kdr&idx=167).
+[^emg]: [Vigotsky 외 2022](../../wiki/sources/SRC-008-emg.md), [연구 안내](https://pubmed.ncbi.nlm.nih.gov/35006527/).
+[^acsm]: [ACSM 2026](../../wiki/sources/SRC-003-acsm-2026.md), [학회 공식 설명](https://acsm.org/resistance-training-guidelines-update-2026/).
+[^volume]: [Pelland 외](../../wiki/sources/SRC-004-volume-frequency.md), [출판사 초록](https://link.springer.com/article/10.1007/s40279-025-02344-w).
+[^kdri]: [2025 KDRI](../../wiki/sources/SRC-011-kdri-2025.md), [공식 배포](https://kns.or.kr/fileroom/fileroom_view.asp?BoardID=Kdr&idx=167).
 
 ## CONV-0015 Cloudflare 연결과 순차 진행 — 2026-10-04
 
 아래는 당시 상태다. main MCP 인증의 현재 상태는 CONV-0016의 성공 확인으로 갱신했다.
 
-Cloudflare 공식 설정과 남은 구현의 commit/push를 사용자가 요청했다. 호스팅 제공자는 Cloudflare 방향으로 정했으며 Pages Direct Upload·lightweight-training 고정 project/main은 구현 선택이다. 공식 skills16/MCP5 등록과 Wrangler4.147.0/artifact gate를 준비했다. **새 OAuth 권한 승인·원격 배포는 pending**이며 기존 plugin account 조회 성공과 구별한다. 자동 검토의 broad OAuth Continue 거부를 우회하지 않고 full/Pages 제한 권한 선택을 요청했다. [운영](../operations/cloudflare-setup.md).
+Cloudflare 공식 설정과 남은 구현의 commit/push를 사용자가 요청했다. 호스팅 제공자는 Cloudflare 방향으로 정했으며 Pages Direct Upload·lightweight-training 고정 project/main은 구현 선택이다. 공식 skills16/MCP5 등록과 Wrangler4.147.0/artifact gate를 준비했다. **새 OAuth 권한 승인·원격 배포는 pending**이며 기존 plugin account 조회 성공과 구별한다. 자동 검토의 broad OAuth Continue 거부를 우회하지 않고 full/Pages 제한 권한 선택을 요청했다. [운영](../../wiki/operations/cloudflare-setup.md).
 
 a2b3f9f push 뒤 새 [GitHub CI3job](../../raw/research/2026-10-04-cloudflare-setup.json)이 모두 성공했다. 기존64개·lint/build/E2E typecheck와 실제 dist24파일 검사를 확인했다. main 반영·후속 배포는 현재 요청 범위에서 진행한다. 운동 MVP 전체는 미완료이며 실제 Auth/다기기·iPhone·SCI·콘텐츠/3D/식단의 관문은 유지한다. usage limit은 발생하지 않았고 실제 제공되는 기능 외 quota reset을 실행하지 않았다.
 
@@ -427,19 +426,19 @@ a2b3f9f push 뒤 새 [GitHub CI3job](../../raw/research/2026-10-04-cloudflare-se
 
 CONV0015의 남은 순차 작업에서10MiB 초과 기록의 독립복구를 구현했다. 기존 JSONv1·DB schema2·cloud snapshot10MB는 유지하며 큰 파일은gzip output10MiB/expanded64MiB로 제한해 모든 필드를 보존한다. unsupported API/손상/잘림/과도팽창·schema 오류는 DB 적용 전에 거부한다. 공통 writer를 기기/교체 전 복구 export에 적용했다.
 
-66개·lint/build/E2E typecheck/format/artifact24 통과. browser18(Chromium10/WebKit8)·새2×3회6회,24,000세트 실제 gzip download→새context restore/reload·CRC 손상 때5table 동일을 확인했다. 최초2 실패는 fixture의tables 오참조였으며 원본 증거를 보존했다. [계약](../operations/compressed-backup.md)·[실행](../../raw/research/2026-10-04-compressed-backup-verification.json).
+66개·lint/build/E2E typecheck/format/artifact24 통과. browser18(Chromium10/WebKit8)·새2×3회6회,24,000세트 실제 gzip download→새context restore/reload·CRC 손상 때5table 동일을 확인했다. 최초2 실패는 fixture의tables 오참조였으며 원본 증거를 보존했다. [계약](../../wiki/operations/compressed-backup.md)·[실행](../../raw/research/2026-10-04-compressed-backup-verification.json).
 
 64MiB 초과/분할·actualiPhone/physical quota/eviction·실Auth/다기기 서버복구는 남아 HAR04/LOG06을 전체done으로 표시하지 않는다. 당시 Cloudflare 신규 OAuth는 응답 없이 만료했으며 승인 질문 pending/미배포였다.67ec882의 새CI3job success를 확인했다. 다음은 이전 값/운동 재사용·종목 대체·종료 기록 수정이다.
 
 ## CONV-0016 Cloudflare 공식 설정 재확인 — 2026-10-04
 
-공식 prompt의 Codex 절차를 재실행해 스킬16개를 갱신하고 기존 MCP5개 등록을 확인했다. `codex mcp login cloudflare`는 성공했고 현재 main MCP의 계정 읽기 HTTP200·public docs 검색을 확인했다. 사용자는 선택적 beta cf를 생략하고 기존 Wrangler를 유지하도록 답했다. [원문](../../raw/conversations/2026-10-04-016.md) · [실행](../../raw/research/2026-10-04-cloudflare-setup-recheck.json) · [CHG-0017](../../history/changes/CHG-0017.md).
+공식 prompt의 Codex 절차를 재실행해 스킬16개를 갱신하고 기존 MCP5개 등록을 확인했다. `codex mcp login cloudflare`는 성공했고 현재 main MCP의 계정 읽기 HTTP200·public docs 검색을 확인했다. 사용자는 선택적 beta cf를 생략하고 기존 Wrangler를 유지하도록 답했다. [원문](../../raw/conversations/2026-10-04-016.md) · [실행](../../raw/research/2026-10-04-cloudflare-setup-recheck.json) · [CHG-0017](../changes/CHG-0017.md).
 
 PRD0.8.2는 인증 현황 PATCH다. 특화 MCP3개·Wrangler 인증은 각각 미검증이고 원격 HTTPS 배포/고정 origin·실제 앱 Auth/iPhone·SCI 관문은 유지한다. 이번 작업은 개발 환경 설정과 문서이며 앱 코드를 변경하거나 배포하지 않았다. 전체 등록 도구 갱신에는 agent 재시작을 안내한다.
 
 ## 기록 편의와 Pages 연결 후속 — 2026-10-04
 
-이전 값의 빈 입력 채우기·종료 운동 다시 시작·미완료 종목 교체·종료 세트 명시 수정/CAS를 구현했다. 원본/완료 시각·ID/snapshot 보존, 현재 단위/시간대/설정, 수정 후 즉시 리포트 재계산을 확인했다.72개·browser20·새6회·lint/build/types/format/artifact24 통과. 최초 browser2개와 DOM selector 실패 증거를 보존했다. [계약](../operations/record-reuse.md)·[실행](../../raw/research/2026-10-04-record-reuse-verification.json).
+이전 값의 빈 입력 채우기·종료 운동 다시 시작·미완료 종목 교체·종료 세트 명시 수정/CAS를 구현했다. 원본/완료 시각·ID/snapshot 보존, 현재 단위/시간대/설정, 수정 후 즉시 리포트 재계산을 확인했다.72개·browser20·새6회·lint/build/types/format/artifact24 통과. 최초 browser2개와 DOM selector 실패 증거를 보존했다. [계약](../../wiki/operations/record-reuse.md)·[실행](../../raw/research/2026-10-04-record-reuse-verification.json).
 
 별도 대화의 CONV0016/CHG0017 문서는 유지했다. Wrangler OAuth의 실제 권한은 Pages write/account+user read/offline_access이며 intended account와 일치했다. 신규 프로젝트 생성은 CLI의 자동 Workers 전환 실패 후 직접 Pages 생성으로 바꿨으나, API8000077 이메일 인증 관문으로 거부됐다. 리소스/HTTPS는 미생성·미배포, 사용자 이메일 인증 답변 pending이다. [현재 확인](../../raw/research/2026-10-04-pages-scoped-auth.json). MCP 인증과 배포 CLI 인증을 구별한다.
 
@@ -447,7 +446,7 @@ LOG03/04의 정렬/메모/삭제 복구·장비 식별, 실Auth/동기화·SCI·
 
 ## 리포트 기록 점검 후속 — 2026-10-04
 
-종료 운동 횟수/고유 기록일·주간 사용자 설정·선택 RIR 누락·같은 조건의 두 날짜 기록 여부를 설명한다. 진행 중/미완료 세션과 미설정 프로필을 바로 열 수 있으며 수정 즉시 갱신한다. 처방/효과/최적 볼륨이나 연구 승인으로 해석하지 않는다. [계약](../operations/report-coverage.md)·[검사](../../raw/research/2026-10-04-report-coverage-verification.json).
+종료 운동 횟수/고유 기록일·주간 사용자 설정·선택 RIR 누락·같은 조건의 두 날짜 기록 여부를 설명한다. 진행 중/미완료 세션과 미설정 프로필을 바로 열 수 있으며 수정 즉시 갱신한다. 처방/효과/최적 볼륨이나 연구 승인으로 해석하지 않는다. [계약](../../wiki/operations/report-coverage.md)·[검사](../../raw/research/2026-10-04-report-coverage-verification.json).
 
 78개/16파일·lint/build/types/format/artifact24·browser20 통과. record-coverage-v1/입력revision을 계산하되 저장 report는 없으며 REP02/03은 전체 in_progress다. 이전 af7937f GitHub CI3job success를 확인했다. 실제 Auth 계정은0개로 확인했고, security advisor lints=[]는 실제 login/RLS 통과와 구별한다. 다음은 Cloudflare HTTPS 배포·실Auth 계정 준비·공개 콘텐츠 gate다. 식단/3D 후순위와 전문/실기기 관문을 유지한다.
 

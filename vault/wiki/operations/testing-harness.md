@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T20:47:40+09:00"
+  at: "2026-10-04T21:04:19+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
@@ -74,6 +74,9 @@ sources:
   - id: "coverage"
     resource: "report-coverage.md"
     title: "기록 점검"
+  - id: "deployment-check"
+    resource: "../../raw/research/2026-10-04-pages-deployment.json"
+    title: "실제 HTTPS 배포"
 version: "0.5.1"
 approval_status: "current-audit-and-proposal"
 change_id: "CHG-0014"
@@ -252,3 +255,7 @@ HAR-02는 in_progress다. DOM 과업 기반을 만들었지만 backup/Auth 전�
 ## 주간 기록 점검 회귀
 
 [기록 점검](report-coverage.md)의 owner/시간대/기간/취소/삭제/active·같은 날/다른 조건·RIR0/누락·수정revision을4unit와2UI 계약으로 추가했다.78개/16파일·browser20 통과, 실제 WebKit390px 화면/여백을 확인했다. 설정/오늘/진행·미완료 바로가기와 수정 후 표시 갱신을 확인한다. 실제 계정/iPhone·과학적 충분성 검토를 대체하지 않는다.
+
+## HTTPS 배포 계약
+
+Node 기본 test runner의3개(test:deploy)를 npm run check에 추가했다. 실제 헤더 누락/오래된 SW hash/credential·HTTP URL 거부를 검사한다. pages:verify로 운영/preview23파일 hash와 헤더 일치를 확인했다. 78개 Vitest/browser20과 별도이며 실Auth/iPhone은 미통과다. lint는exit0·기존effect경고6개다. [배포 증거](../../raw/research/2026-10-04-pages-deployment.json).

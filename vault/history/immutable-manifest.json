@@ -122,7 +122,16 @@
     "history/changes/CHG-0018.md": "a8ffeded9d13a81f875a16fcbda590c9ac8baeabfd5ac3944f3a696de68ce35d",
     "raw/research/2026-10-04-report-coverage-verification.json": "1db1671c009282a7e24736556d6649a0dc25d17f2633a226145b6383d80a3f17",
     "history/versions/prd-v0.8.4.md": "8552a128bcdd3bf8a0191f9032851d9c544313dfd8d27071761b3a6c581b4587",
-    "history/changes/CHG-0019.md": "1e6e3f0092d2119173881319b5f228f9627b1448be751af75c918b174e2b1d9c"
+    "history/changes/CHG-0019.md": "1e6e3f0092d2119173881319b5f228f9627b1448be751af75c918b174e2b1d9c",
+    "raw/conversations/2026-10-04-017.md": "831879ea8d403ffbfeee6f3fd74ba5f305e28ed1081e2e1a7bbba14fc49606a2",
+    "raw/design/2026-10-04-pages-today.png": "b97b5ed4f668e130d6989bdffe3c2e9040648b2be2416ef3572c21a026f1e97f",
+    "raw/design/2026-10-04-pages-library.png": "55bbcc6c3870180786e9e99d91a7ea4f44b02b69c16058833e8b50943db28584",
+    "raw/design/2026-10-04-pages-routines.png": "6a2dd706a544554e37bdce5f9926c74de7e6bed30155db3fe367e01be0664319",
+    "raw/design/2026-10-04-pages-reports.png": "62d1474a2953e1f3cb5985f462a603afaf8dc45b28812e65b122fc0aee8d1b5b",
+    "raw/design/2026-10-04-pages-settings.png": "4fbc7bf76eb62c86fec79446b9370040e7150e2887b6bbef264e276ff2e779fc",
+    "raw/research/2026-10-04-pages-deployment.json": "26235a36f3faa4eabba8bbae641dc5a1416764f53fcd895716be2e84ffdba9a8",
+    "history/versions/prd-v0.8.5.md": "d24bcb18ad8c04dd61fae50de5dd56b8ef76d7a37a61d1c941912accfc571eb9",
+    "history/changes/CHG-0020.md": "8455c25e1090214e004c0692318a0191d08ecf573f4871715e449c31fe71fe1a"
   },
   "updated_at": "2026-10-04T20:28:29+09:00"
 }

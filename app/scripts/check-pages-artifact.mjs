@@ -76,7 +76,7 @@ export async function checkPagesArtifact(directory) {
   );
   if (manifest.display !== "standalone" || manifest.start_url !== "/")
     throw new Error("Unexpected PWA origin or display configuration");
-  return { files: files.length, directory: root };
+  return { files: files.length, directory: root, paths: files.sort() };
 }
 
 if (

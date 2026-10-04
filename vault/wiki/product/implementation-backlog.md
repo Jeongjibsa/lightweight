@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T20:47:40+09:00"
+  at: "2026-10-04T21:04:19+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -116,9 +116,18 @@ sources:
   - id: "coverage-check"
     resource: "../../raw/research/2026-10-04-report-coverage-verification.json"
     title: "실행"
-version: "0.6.8"
+  - id: "email-complete"
+    resource: "../../raw/conversations/2026-10-04-017.md"
+    title: "사용자 이메일 인증 완료"
+  - id: "deployment-check"
+    resource: "../../raw/research/2026-10-04-pages-deployment.json"
+    title: "실제 HTTPS 배포"
+  - id: "redirect"
+    resource: "../sources/SRC-047-auth-production-origin.md"
+    title: "Auth 반환 주소"
+version: "0.6.9"
 approval_status: "proposal"
-change_id: "CHG-0019"
+change_id: "CHG-0020"
 ---
 
 # 운동 PWA 구현 백로그와 완료 기준

@@ -45,3 +45,4 @@
 - [SRC-044 storage/PWA](SRC-044-storage-pwa-recovery.md) — quota/파일한도·실제SW와 합성오류 경계.
 - [SRC-045 Cloudflare 공식 설정](SRC-045-cloudflare-agent-setup.md) — 같은 prompt 재확인·main MCP OAuth/읽기 성공, 배포 별도.
 - [SRC046 Compression Streams](SRC-046-compression-streams.md)
+- [SRC047 Auth 운영 반환 URL](SRC-047-auth-production-origin.md)

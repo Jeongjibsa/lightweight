@@ -126,3 +126,7 @@ JSON10MiB 이하를 기존 형식으로 내보내고 초과 기록은 자동 .js
 ## 주간 기록 점검
 
 기록 상태·주간 사용자 목표·선택 누락/비교 조건과 직접 확인을 제공합니다.78개/16파일/browser20 통과. [계약](../vault/wiki/operations/report-coverage.md). 운동 효과나 권장량의 판정은 제공하지 않습니다.
+
+## 현재 운영 배포
+
+[운영 앱](https://lightweight-training.pages.dev) · [DB 연결 없는 preview](https://preview.lightweight-training.pages.dev).3bc6022 main/GitHub3job 성공 후 배포·원격23file hash/헤더 확인. Auth 반환 URL 저장, 계정 등록/실제 login·iPhone/콘텐츠 검토는 남음. npm run pages:verify -- <HTTPS origin> <dist path>로 공개 파일 일치를 검사하며 test:deploy의3계약이 check/CI에 포함됩니다.78 Vitest/browser20과 별도입니다. [현재 남은 작업](../vault/wiki/product/remaining-work.md).

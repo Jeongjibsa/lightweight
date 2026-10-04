@@ -2,6 +2,8 @@
 
 ## 2026-10-04
 
+- **Deploy / CONV0017**: “이메일 인증 완료” 뒤 Pages 생성·검증3bc6022 main merge/push·HTTPS 운영/DB없는preview 배포.23공개파일 hash/헤더·5화면 캡처/직접 확인, Auth Site URL/정확한 root1개 저장·signupOFF/비로그인 RPC401 재검사.78 Vitest/배포3계약·build/format/types 통과(lint exit0/기존effect경고6). [실행](raw/research/2026-10-04-pages-deployment.json)·[CHG0020](history/changes/CHG-0020.md)·CONV17/SRC47/PRD0.8.5 전체 보존, 이전121immutable 유지. 계정0개/사용자 직접 등록·실Auth/iPhone/SCI/운영/P2 관문 유지.
+
 - **Reports / Loop**: 종료 횟수/고유일·사용자 주간 목표·선택 RIR 누락·비교 조건/기간/입력revision·직접 기록 확인 구현.78개/16파일/browser20·lint/build/types/format/artifact24 통과;390px WebKit 캡처 직접 관찰. [계약](wiki/operations/report-coverage.md)·[CHG0019](history/changes/CHG-0019.md)·PRD0.8.4 전체 보존, 이전118immutable 유지. REP02/03 전체/과학 다음 행동·실Auth/iPhone은 남음.
 
 - **Records / Loop**: 이전 빈 값·새 세션 재사용·미완료 종목 교체·종료 명시 수정/CAS·원본/시각 보존 구현.72개/20browser/새6회·lint/build/types/format/artifact24 통과, fixture/selector 첫 실패 보존. [계약](wiki/operations/record-reuse.md)·[실행](raw/research/2026-10-04-record-reuse-verification.json)·[CHG0018](history/changes/CHG-0018.md)·PRD0.8.3 전체 보관. 다른 대화 CONV0016/CHG0017 유지. Wrangler Pages 제한 인증 성공·project 생성은 이메일 인증(API8000077)으로 거부/대기·미배포. 이전114immutable·실Auth/iPhone/SCI/전체 LOG03/04 관문 유지.

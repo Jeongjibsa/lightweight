@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T20:32:03+09:00"
+  at: "2026-10-04T21:04:19+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -86,6 +86,15 @@ sources:
   - id: "pages-scope"
     resource: "../../raw/research/2026-10-04-pages-scoped-auth.json"
     title: "Pages 연결 확인"
+  - id: "email-complete"
+    resource: "../../raw/conversations/2026-10-04-017.md"
+    title: "사용자 이메일 인증 완료"
+  - id: "deployment-check"
+    resource: "../../raw/research/2026-10-04-pages-deployment.json"
+    title: "실제 HTTPS 배포"
+  - id: "redirect"
+    resource: "../sources/SRC-047-auth-production-origin.md"
+    title: "Auth 반환 주소"
 ---
 
 # 미결 사항과 다음 대화
@@ -107,7 +116,7 @@ sources:
 | Q-13 | TypeScript·React/Vite·Dexie를 사용할까? | 기본 스택 방향 합의 | 동의 확인 CONV-0004 |
 | Q-14 | Supabase 계정 DB를 사용할까? | 프로젝트 제공/연결 완료 증분 | CONV-0008 Auth/DB/RPC 적용; 실계정 검증/배포 남음 |
 | Q-15 | 로그인·초대·여러 기기 동시 사용 범위는? | 공개 가입 차단 승인/적용, 익명OFF, 등록계정 password 초기 구현 | 본인 계정 등록/허용 목록·실제 login/복원·최종 로그인/복구/SMTP·다기기 해결 남음 |
-| Q-16 | 호스팅과 고정 운영 도메인은? | Cloudflare + Supabase, 고정 HTTPS 주소 | CONV0016 main MCP OAuth 성공; Pages project 이름은 구현 선택/원격 생성·Wrangler 인증·고정 origin 미확정 |
+| Q-16 | 호스팅과 고정 운영 도메인은? | Cloudflare + Supabase, 고정 HTTPS 주소 | CONV0017 Pages 생성/HTTPS 배포·고정 origin/반환 경로 저장 완료; 도메인/Access/운영 관문 후속 |
 | Q-17 | 사이트 화면도 초대자만 열게 할까? | 기본 로그인/DB 권한 제한, preview Access; 운영 Access는 추가 선택 | 미확정 |
 
 기본 스택과 운동 우선 순서는 합의했고 개인 조건은 하나의 시험 표본이다. 반응형과 각 사용자 설정은 CONV-0006 요구로 확정했다. 로컬부터 진행한 뒤 CONV-0008에서 Supabase를 연결했다. 공개 가입 차단은 명시 승인/적용했다. 로그인/수동 snapshot 상세는 초기 구현 정책이다. [실행 결과](implementation-progress.md). [구현 계획](implementation-plan.md)은 가짜 데이터로 착수한다. 종목/장비/시간/경험은 Q-01, 로그인은 Q-15, 배포는 Q-08/16/17을 필요한 단계 전에 정하고 실제 기기 동작은 REL-02에서 검증한다. 상세 설계는 제안이다. [언어·개인 데이터 저장 의견](technology-data-storage.md)을 먼저 검토한다. PWA 선택 이후 건강 앱·Watch는 별도 범위 질문으로 남긴다. 미응답을 승인으로 간주하지 않는다.
@@ -144,6 +153,10 @@ FR-17은 사용자 명시 3D 애니메이션 요구이며 지금은 검토만/�
 
 `codex mcp login cloudflare`의 성공과 현재 main 계정 읽기 HTTP200을 확인해 main MCP의 pending을 갱신했다. 사용자가 beta cf 생략·기존 Wrangler 유지를 명시했다. 특화 MCP3개와 Wrangler 인증·Q-16 고정 origin/실제 배포·Q-15 앱 Auth는 각각 확인이 남았다. [실행](../../raw/research/2026-10-04-cloudflare-setup-recheck.json) · [운영](../operations/cloudflare-setup.md).
 
-## 현재 외부 관문
+## CHG0018 당시 외부 관문
 
 Wrangler Pages 제한 인증은 성공했다. Cloudflare Pages project 생성은 API8000077 이메일 인증 필요로 거부됐으며 사용자 인증 완료 답변을 기다린다. 실제 앱 Auth 등록/비밀번호는 사용자가 준비하며 대화로 수집하지 않는다. 콘텐츠 전문/전문가·자산 권한과 실제 iPhone 관문을 자동 검사 완료로 대체하지 않는다.
+
+## 현재 외부 관문 — CHG0020
+
+이메일 인증/Pages 생성/HTTPS·Auth URL 저장을 완료했다. 본인 계정0개로 실제 login/허용 목록/다기기 검증은 계정 등록을 기다린다. password 입력은 사용자가 직접 수행하고 대화로 수집하지 않는다. 과학 전문/전문가·자산/실제iPhone·파일럿 관문은 유지한다.
