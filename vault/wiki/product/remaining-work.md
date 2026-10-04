@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T22:43:11+09:00"
+  at: "2026-10-04T22:52:11+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -155,18 +155,24 @@ sources:
   - id: "ended-recovery"
     resource: "../operations/ended-record-recovery.md"
     title: "삭제 복구 계약"
-version: "0.3.10"
+  - id: "ended-release"
+    resource: "../../raw/research/2026-10-04-ended-record-release.json"
+    title: "종료 기록 CI·운영/preview 일치"
+  - id: "iphone-checklist"
+    resource: "../operations/iphone-pilot-checklist.md"
+    title: "다음 실제 기기 과업"
+version: "0.3.11"
 approval_status: "proposal"
-change_id: "CHG-0029"
+change_id: "CHG-0030"
 ---
 
 # 남은 작업 한눈에 보기
 
-2026-10-04 / PRD0.8.14. **운동 MVP 전체는 진행 중**이며 식단·3D는 후순위다.
+2026-10-04 / PRD0.8.15. **운동 MVP 전체는 진행 중**이며 식단·3D는 후순위다.
 
 [운영 앱](https://lightweight-training.pages.dev) · [DB 연결 없는 preview](https://preview.lightweight-training.pages.dev) · [세부 백로그](implementation-backlog.md).
 
-삭제 루틴 복구까지 main86cc158로 push/배포했다.86 Vitest·Node8·browser22/최종목록2·GitHub3job success, 실제 공개24파일 hash/헤더 일치를 확인했다. 등록1/허용1·실제 desktop Chrome 빈 프로필의 클라우드 저장/조회/같은 기기 적용도 확인했다.
+종료 기록 삭제/복구까지 main1db637d로 push/배포했다.90 Vitest·Node8·browser24·GitHub3job success, 실제 공개24파일 hash/헤더 일치를 확인했다. 등록1/허용1·실제 desktop Chrome 빈 프로필의 클라우드 저장/조회/같은 기기 적용도 확인했다.
 
 | 순서 | 남은 작업 | 현재 완료한 부분 | 완료에 필요한 것 | ID |
 |---|---|---|---|---|
@@ -180,14 +186,16 @@ change_id: "CHG-0029"
 | 8 | 본인 파일럿→지인 제공 | 앱/검사 기반 준비 | 실제4주 관찰/입력누락·오해 개선→회귀, 계정 독립/복원·G3/G4 관문 | PIL01/02 |
 | 후순위 | 식단/영양·3D·선택 AI 설명 | 요구/3D feasibility 문서 | 음식DB/license·기록/계산·검토 공식/결측, 3Dasset/rig/clip/권한/전문검토/실기기성능 | NUT01~04, VIS3D02/03, AI01 |
 
-삭제 루틴 복구는86개/22browser·최종목록2와 실제 좁은 화면 및 GitHub3job/운영·preview24file 일치 검사를 완료했다. 종료 기록 삭제/복구도90개/24browser·실제 좁은 화면에서 검사했으며 새 source CI/배포는 저장 당시 별도다. 다음 독립 구현은 운동 메모와 장비 조건 등 기록 편의다. 실제 운동의 새 기기 복원·계정 A/B/만료·메일/권한 검증은 병행한다. 실제 iPhone 설치·실행·로그인은 사용자 보고로 완료했으며 키보드/VoiceOver/잠금/offline/update/quota 검증은 별도다.
+삭제 루틴 복구는86개/22browser·최종목록2와 실제 좁은 화면 및 GitHub3job/운영·preview24file 일치 검사를 완료했다. 종료 기록 삭제/복구도90개/24browser·실제 좁은 화면·GitHub3job·운영/preview24file 일치를 완료했다. 다음 독립 구현은 운동 메모와 장비 조건 등 기록 편의다. 실제 운동의 새 기기 복원·계정 A/B/만료·메일/권한 검증은 병행한다. 실제 iPhone 설치·실행·로그인은 사용자 보고로 완료했으며 키보드/VoiceOver/잠금/offline/update/quota 검증은 별도다.
 
 과학 승인 설명은0개다. 콘텐츠 공개 gate는 실제 전문/전문가·자산 권리 검토를 대신하지 않는다.4주 파일럿도 자동검사로 대체하지 않는다. lint exit0/기존 effect경고6개가 남는다. 개인 기록·비밀번호/token/ID는 공개 vault에 넣지 않는다.
 
-[진행](implementation-progress.md) · [하네스](../operations/testing-harness.md) · [순서/가림 루프](../operations/workout-order.md) · [현재 배포 증거](../../raw/research/2026-10-04-routine-recovery-release.json) · [실제 Auth 범위](../../raw/research/2026-10-04-auth-profile-roundtrip.json).
+[진행](implementation-progress.md) · [하네스](../operations/testing-harness.md) · [순서/가림 루프](../operations/workout-order.md) · [현재 배포 증거](../../raw/research/2026-10-04-ended-record-release.json) · [실제 Auth 범위](../../raw/research/2026-10-04-auth-profile-roundtrip.json).
 
 [실제 기기 사용자 보고와 미검증 범위](../../raw/research/2026-10-04-iphone-install-user-report.json).
 
 [삭제 루틴 복구 계약/실제 화면](../operations/routine-recovery.md).
 
 [종료 기록 삭제/복구·집계 보존](../operations/ended-record-recovery.md).
+
+[실제 iPhone 다음 과업 체크리스트](../operations/iphone-pilot-checklist.md). 운동 저장→재실행→수동 전송은 저장 시점 사용자 확인 대기이며 자동 통과로 표시하지 않는다.

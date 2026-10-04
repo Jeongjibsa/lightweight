@@ -175,7 +175,10 @@
     "raw/design/2026-10-04-ended-record-recover-390.png": "cda83458f7d1ebe235a487768679eb1fe0cccbb48a3abd09735ab39d31cf39c0",
     "raw/research/2026-10-04-ended-record-recovery-loop.json": "25baef6666bdacd5bce6c299f25f4bdbae1ffd864de5324ba54383a77fc0e20c",
     "history/versions/prd-v0.8.14.md": "eaae7cdb006af085048c33a7dc384eb82b78b70a924739cf613fb4dddd0633d2",
-    "history/changes/CHG-0029.md": "5fadaaaaaebfa70ee770a7a22b2f002b913fa03b0bc58a8b51d8a8392df7744a"
+    "history/changes/CHG-0029.md": "5fadaaaaaebfa70ee770a7a22b2f002b913fa03b0bc58a8b51d8a8392df7744a",
+    "raw/research/2026-10-04-ended-record-release.json": "9e07c17274e9c1a5e5f8e865afd342ee4ad4d5c257bb21d81e032804dbd3af72",
+    "history/versions/prd-v0.8.15.md": "1d329d8e1d3d248afc71f3c4c703f1b18a24f362ad69d2e5b5446d80ed7b807d",
+    "history/changes/CHG-0030.md": "3db1eda788cf49a68548f2eb8dbda3ff0c5b71a82cc062b2685ecae39aff45c1"
   },
-  "updated_at": "2026-10-04T22:43:11+09:00"
+  "updated_at": "2026-10-04T22:52:11+09:00"
 }

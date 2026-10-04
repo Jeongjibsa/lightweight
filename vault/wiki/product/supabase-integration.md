@@ -10,7 +10,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T22:32:51+09:00"
+  at: "2026-10-04T22:52:11+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-008.md"
@@ -51,12 +51,25 @@ sources:
   - id: "recovery-release"
     resource: "../../raw/research/2026-10-04-routine-recovery-release.json"
     title: "루틴 복구 CI·운영/preview 일치"
+  - id: "ended-release"
+    resource: "../../raw/research/2026-10-04-ended-record-release.json"
+    title: "종료 기록 CI·운영/preview 일치"
+  - id: "iphone-checklist"
+    resource: "../operations/iphone-pilot-checklist.md"
+    title: "다음 실제 기기 과업"
 version: "0.1.1"
 change_id: "CHG-0023"
 approval_status: "implemented-increment; policy-details-provisional"
 ---
 
 # Supabase 연결·계정·기록 전송 계약
+
+## 현재 운영 배포 — 종료 기록 1db637d
+
+main push·GitHub37206666022 check/Chromium/WebKit 모두 success 뒤 [운영 앱](https://lightweight-training.pages.dev)·[DB 없는 preview](https://preview.lightweight-training.pages.dev)에 배포했다. 각 공개24file hash/보안 헤더가 검증한 빌드와 일치한다.90 Vitest/17파일·Node8·Chromium13/WebKit11=24·build/types/format/artifact25·vault 통과(lint기존6경고). [불변 배포](../../raw/research/2026-10-04-ended-record-release.json). 앞선 CI/배포 대기는 당시 이력이며 현재 완료했다.
+
+iPhone 홈 화면 설치/실행/로그인은 사용자 보고 확인이다. 본인이 수행한 운동의 저장→재실행→수동 전송 결과를 요청했고 저장 시점 응답 대기다. [실사용 체크리스트](../operations/iphone-pilot-checklist.md)를 준비했다. 실제 운동/새 저장소 복원·A/B/만료/메일·나머지 G3/운영 복구·전문/전문가/자산·실제4주 파일럿·후순위 식단/3D는 유지한다. 다음 독립 기록 구현은 메모/장비 비교 조건이다. 이 문서 단위는 앱 bundle을 바꾸지 않는다.
+
 
 ## 현재 운영 배포 — 루틴 복구 86cc158
 

@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T22:16:02+09:00"
+  at: "2026-10-04T22:52:11+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -113,6 +113,12 @@ sources:
   - id: "iphone-user-report"
     resource: "../../raw/research/2026-10-04-iphone-install-user-report.json"
     title: "실제 iPhone 설치·실행·로그인 사용자 확인"
+  - id: "ended-release"
+    resource: "../../raw/research/2026-10-04-ended-record-release.json"
+    title: "종료 기록 CI·운영/preview 일치"
+  - id: "iphone-checklist"
+    resource: "../operations/iphone-pilot-checklist.md"
+    title: "다음 실제 기기 과업"
 ---
 
 # 미결 사항과 다음 대화
@@ -196,3 +202,7 @@ e912f0c CI/운영·preview24file 일치를 완료했다. 물리 iPhone 홈 화�
 사용자가 운영 앱의 iPhone 홈 화면 설치·실행·로그인에 “홈 화면 실행·로그인 완료”라고 응답했다. [CONV0020](../conversations/2026-10-04-020.md)·[확인 범위](../../raw/research/2026-10-04-iphone-install-user-report.json). 해당 세 과업은 사용자 보고로 확인했으며 에이전트의 직접 기기 관찰·OS 재측정은 아니다. 앞선 ‘응답 대기’ 문단은 당시 이력이다.
 
 REL02는 부분 진행이다. 실제 운동/모바일 클라우드 왕복·새 기기 복원·키보드/VoiceOver/확대/가로/잠금·오프라인/업데이트/physical quota/eviction 검사는 남는다. 설치·로그인 확인을 G3 전체 통과로 확대하지 않는다. 운영 앱은 e912f0c이며 진행 중인 루틴 복구는 아직 배포하지 않았다.
+
+## 다음 실사용 확인 — CHG0030
+
+iPhone 설치/홈 화면/로그인은 CONV0020 사용자 보고로 확인했다. 실제 운동 저장→재실행→수동 클라우드 전송 확인을 요청했으며 저장 시점 응답 대기다. 개인 수치/백업/계정 식별자/비밀번호는 수집하지 않는다. [과업](../operations/iphone-pilot-checklist.md). 메모/장비·과학/실Auth/나머지 기기/운영/파일럿/P2 관문은 유지한다.

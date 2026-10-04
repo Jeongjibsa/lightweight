@@ -157,4 +157,6 @@ iPhone 홈 화면 설치·실행·로그인은 사용자 보고로 확인했습�
 
 ## 종료 운동 기록 삭제·복구
 
-종료 상세에서 삭제 확인/취소, 리포트에서 삭제한 종료 기록 복구를 제공합니다. 세트/시각·다른 active 운동·atomic/CAS/실패/중복과 집계1→0→1·새 저장소 백업을 확인했습니다.90개/Node8/24browser·build/types/format/artifact25 통과(lint기존6경고), source CI/배포는 기록 시점 별도입니다. [계약/실제 화면](../vault/wiki/operations/ended-record-recovery.md).
+종료 상세에서 삭제 확인/취소, 리포트에서 삭제한 종료 기록 복구를 제공합니다. 세트/시각·다른 active 운동·atomic/CAS/실패/중복과 집계1→0→1·새 저장소 백업을 확인했습니다.90개/Node8/24browser·build/types/format/artifact25 통과(lint기존6경고), 1db637d의 GitHub3job과 운영/preview 공개24file hash/헤더 배포 일치를 확인했습니다. [계약/실제 화면](../vault/wiki/operations/ended-record-recovery.md).
+
+[현재 종료 기록 배포](../vault/raw/research/2026-10-04-ended-record-release.json) · [iPhone 실사용 체크리스트](../vault/wiki/operations/iphone-pilot-checklist.md). 후속 문서 commit은 앱 bundle을 바꾸지 않습니다.
