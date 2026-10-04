@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T10:11:39+09:00"
+  at: "2026-10-04T10:18:25+09:00"
 sources:
   - id: "responsive-local-request"
     resource: "../../raw/conversations/2026-10-03-006.md"
@@ -47,13 +47,20 @@ sources:
   - id: "volume-final"
     resource: "../../raw/research/2026-10-04-volume-history-final-verification.json"
     title: "최종 설명/코드 검사"
+  - id: "settings-loop"
+    resource: "../../raw/research/2026-10-04-settings-restore-loop.json"
+    title: "복원 입력 회귀/수정"
 version: "0.2.0"
 change_id: "CHG-0008"
 ---
 
 # 로컬 PWA 구현 결과와 다음 작업
 
-## 최신 볼륨/오늘 후보 증분 — 2026-10-04
+## 최신 복원 입력 회귀 수정 — 2026-10-04
+
+볼륨 기능78e5cb1 local commit 후 LOOP-SETTINGS-RESTORE-01을 닫았다. 실제SettingsView/Store의 파일복원 직후 이전 입력 잔류를 재현하고 profile payload가 바뀌면 form을 갱신했다. same-owner/revision 복원→재저장 보존, unrelated 기록 갱신의 미저장 초안 보존2과업. unit19/integration25/ui8·52개/11파일·lint/build/format 통과. 최종PWA update/리포트와320/375/1440px도 확인했다. [원본](../../raw/research/2026-10-04-settings-restore-loop.json). [루프 설명](../operations/loop-engineering.md). 실제 browser 파일복원은 수정 후 반복하지 않았고 Auth/iPhone/runner·CI 관문은 남았다.
+
+## 이전 볼륨/오늘 후보 증분 — 2026-10-04
 
 PRD0.5.0의 REP-04/05/06을 구현/검증했다. 일별/같은 운동 조건·28/84/전체·본세트/반복/시간/중량 기록량, 실제 날짜 간격 SVG·N/A 선 끊기·유효1점·숫자 표/coverage·변화율 보류, kg/lb·한 손/머신/좌우 구분과 owner/준비/삭제/미래 제외. 현재 live session에서 계산해 편집/완료 취소·DB 재개·삭제·백업 복원 후 재계산한다. schema/RPC 변경 없음.
 
@@ -61,7 +68,7 @@ PRD0.5.0의 REP-04/05/06을 구현/검증했다. 일별/같은 운동 조건·28
 
 unit19/integration25/ui6, 합계50개/10파일·lint 경고0/strict build/format 통과. precache23개/1644.45KiB. 수치·기간·조건/0/N/A·설정/장비/owner/오늘 보류, Store 재계산과 DOM 필터/명시 선택을 검사했다. 수동 CUA의 가짜4174에서 복원→28/84→시간/한 손/스쿼트→후보B 계획3/실제partial2→선택/active보류→reload 확인, 320/375/1440px 리포트 page overflow0·표 내부 가로 스크롤, console0. 마지막 label 분류/중복 구분은 이후 코드 검사로 확인했다. [원본](../../raw/research/2026-10-04-volume-history-verification.json).
 
-기존 누적 구현9cccb4f, 계획/지침897f44d, HAR-02 초기ead48d7을 local commit했다. 실제 Auth·browser runner/CI·iPhone/HTTPS/근거 공개 관문은 남았다. browser 복원 중 이전 설정 입력값 잔류를 발견했으며 별도 재현/회귀 수정이 다음 순서다.
+기존 누적 구현9cccb4f, 계획/지침897f44d, HAR-02 초기ead48d7을 local commit했다. 실제 Auth·browser runner/CI·iPhone/HTTPS/근거 공개 관문은 남았다. browser 복원 중 이전 설정 입력값 잔류를 발견했으며 위 최신 복원 입력 회귀 증분에서 수정했다.
 
 ## 이전 HAR-02 증분 — 2026-10-04
 

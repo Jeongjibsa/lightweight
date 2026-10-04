@@ -1,0 +1,73 @@
+{
+  "captured_at": "2026-10-04T10:18:25+09:00",
+  "loop_id": "LOOP-SETTINGS-RESTORE-01",
+  "baseline_commit": "78e5cb1",
+  "problem": "restored profile header/database changed but same-owner ProfileForm kept previous local inputs; saving could overwrite restored settings",
+  "browser_initial": "synthetic4174 backup header: 가짜 볼륨 검증; name input remained 가짜 검증 프로필 and custom goal/frequency/split until reload",
+  "environment_failure": {
+    "initial_ui_test": "restore dialog absent because jsdom File.text is undefined",
+    "observed": "jsdom27.4.0 typeof file.text=undefined, typeof FileReader=function",
+    "resolution": "test-only File.prototype.text uses FileReader to read actual uploaded bytes; no application file reader mock"
+  },
+  "product_failure": {
+    "test": "settings.ui.test.tsx restore same owner/revision",
+    "expected": "복원된 가짜 설정",
+    "received": "저장하지 않은 이전 초안",
+    "before": "1failed/1passed after environment fix; DB correctly restored but input stale"
+  },
+  "fix": "ProfileForm key is serialized persisted profile payload, replacing local input state on actual profile change even if owner/revision collide; unchanged profile payload retains drafts",
+  "after": {
+    "targeted_ui": 2,
+    "all_unit": 19,
+    "all_integration": 25,
+    "all_ui": 8,
+    "all_files": 11,
+    "all_tests": 52,
+    "lint": "passed, zero warnings",
+    "build": "passed",
+    "format": "passed",
+    "precache_entries": 23,
+    "precache_KiB": 1644.45
+  },
+  "browser_final": {
+    "flows": [
+      "PWA update after cancelling agent-only zero-completion test session",
+      "final condition label and persisted squat graph",
+      "original4173 left untouched"
+    ],
+    "responsive": [
+      {
+        "pageWidth": 320,
+        "points": 3,
+        "tableScroll": 467,
+        "tableWidth": 262,
+        "width": 320
+      },
+      {
+        "pageWidth": 375,
+        "points": 3,
+        "tableScroll": 467,
+        "tableWidth": 297,
+        "width": 375
+      },
+      {
+        "pageWidth": 1440,
+        "points": 3,
+        "tableScroll": 1080,
+        "tableWidth": 1080,
+        "width": 1440
+      }
+    ],
+    "console_error_warning_count": 0
+  },
+  "limits": [
+    "actual browser restore after fix not rerun; restore fix proven through real SettingsView/Store/Dexie + jsdom upload/dialog and subsequent save",
+    "browser PWA update/final report checked on synthetic4174 only; real4173 records not changed",
+    "actual Auth/different device/iPhone/automatic browser runner/CI not verified; HAR-02 still in_progress"
+  ],
+  "code_sha256": {
+    "app/src/components/settings.tsx": "6ef02902ceee1bdba1561e0abf093d38b4400aebe2d6f8406b04e57fee96aaf3",
+    "app/tests/ui/setup.ts": "79652edc66111ffb7dd625715da141243118408e0948f5fca37d4a2b2368bb4c",
+    "app/tests/ui/settings.ui.test.tsx": "7d6040ac38e573bd2e5104b7a10859667b0caf4495b95e6733789277f2a744af"
+  }
+}

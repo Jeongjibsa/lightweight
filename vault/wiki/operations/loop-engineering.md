@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T02:02:14+09:00"
+  at: "2026-10-04T10:18:25+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
@@ -26,6 +26,9 @@ sources:
   - id: "cloud-verification"
     resource: "../../raw/research/2026-10-04-mantine-supabase-verification.json"
     title: "재현/수정/검사"
+  - id: "settings-loop"
+    resource: "../../raw/research/2026-10-04-settings-restore-loop.json"
+    title: "복원 입력 회귀/수정"
 version: "0.2.0"
 approval_status: "proposal"
 change_id: "CHG-0008"
@@ -75,6 +78,16 @@ flowchart LR
 2026-10-04 CUA의 가짜4174 화면에서 ‘루틴 만들기’→모달 내부 초점/ShiftTab→Escape 과업을 수행했다. 기대: 닫은 뒤 열었던 버튼으로 초점 복귀. 최초 결과: `document.activeElement`가 BODY로 바뀜. 조건부 unmount가 Mantine `opened=false` 전환을 거치지 않는 것이 원인이었다.
 
 `app/src/components/shared.tsx`가 열기 시점 HTMLElement를 보관하고 unmount 시 연결된 opener로 focus를 되돌리게 수정했다. 동일 과업을 다시 실행해 BUTTON ‘루틴 만들기’ 복귀와 trap/Escape, console0을 확인했다. format/lint/30개/strict build 통과. 이는 브라우저 재검증이며 자동 UI regression spec은 아직 아니다. HAR-03의 E2E-06에 고정할 다음 사례다. [실행 증거](../../raw/research/2026-10-04-mantine-supabase-verification.json).
+
+## 닫은 루프 — 복원 후 설정 입력 잔류
+
+LOOP-SETTINGS-RESTORE-01, 2026-10-04. CUA 가짜4174에서 백업을 복원한 직후 header/DB는 새 프로필 설정인데 이름·목표·횟수·분할 입력은 이전 값으로 남았다. 그대로 저장하면 복원된 설정을 덮어쓸 수 있다. 원인은 owner만 key로 둔 ProfileForm이 기존 local input state를 유지하는 것이었다.
+
+먼저 `app/tests/ui/settings.ui.test.tsx`에 실제 SettingsView+Mantine+Store/Dexie+upload/복원 dialog를 연결했다. jsdom File.text 부재라는 환경 실패를 먼저 구분했고, 테스트 setup에서 FileReader로 실제 업로드 bytes를 읽게 했다. 이후 기대 ‘복원된 가짜 설정’/실제 ‘저장하지 않은 이전 초안’으로 제품 실패를 재현했다. DB 복원 성공과 입력 잔류를 함께 확인했다.
+
+ProfileForm을 실제 profile payload key로 다시 생성하도록 수정했다. owner/revision이 같아도 복원된 데이터가 다르면 초기 입력을 갱신한다. 같은 profile의 unrelated session 갱신은 draft를 유지한다. 회귀2개에서 복원→입력값/목표/분할/단위→재저장 후 복원 설정 보존과 미저장 초안 보존을 확인했다. targeted2와 전체unit19/integration25/ui8·52개/11파일·lint 경고0/strict build/format 통과. [불변 실행 기록](../../raw/research/2026-10-04-settings-restore-loop.json).
+
+이 루프는 DOM·실제 저장소로 닫았다. 수정 뒤 실제 browser 파일 복원은 반복하지 않았으며 최종 PWA update/리포트·320/375/1440px/console0은 CUA로 확인했다. 실제 Auth/iPhone/CI/서비스워커 자동 회귀 성공으로 표현하지 않는다. HAR-02에는 Auth/프로필 전환 등의 과업이 남아 있다.
 
 ## 원격 보존/권한 루프의 현재 경계
 

@@ -2,6 +2,8 @@
 
 ## 2026-10-04
 
+- **Regression Fix**: 볼륨78e5cb1 commit 후 LOOP-SETTINGS-RESTORE-01 재현·수정. 복원된DB/이전입력 불일치를 same-owner/revision 회귀로 고정, unrelated 기록 갱신의 초안 보존. unit19/integration25/ui8·52개/11파일·lint/build/format·최종CUA report/update/폭/console0. [불변 증거](raw/research/2026-10-04-settings-restore-loop.json)/[루프 설명](wiki/operations/loop-engineering.md). 실제browser 파일복원은 수정 뒤 미반복, 실제Auth/CI/iPhone 관문 유지.
+
 - **Volume Implementation**: REP-04/05/06 계산·SVG/표·필터·루틴 후보 구현. unit19/integration25/ui6·50개/10파일·lint/build/format·가짜CUA/320·375·1440px 통과. [원본](raw/research/2026-10-04-volume-history-verification.json). SCI-03B/실Auth/runner·CI/iPhone은 후속. 복원 설정 입력 잔류는 발견돼 별도 회귀 수정 예정. 이전 구현9cccb4f·계획897f44d·DOMead48d7 local commit.
 
 - **Harness Implementation**: 계획/지침 `897f44d` 이후 HAR-02 DOM project·실제 WorkoutView/Dexie 과업3개 추가. unit6/integration24/ui3·33개/5파일·lint/build/format 통과. [원본](raw/research/2026-10-04-dom-harness-verification.json)/SRC-038 추가, HAR-02 in_progress. 실제 Auth/backup UI/브라우저 runner·CI/iPhone은 미통과.

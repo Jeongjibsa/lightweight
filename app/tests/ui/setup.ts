@@ -22,3 +22,16 @@ globalThis.ResizeObserver = class {
   unobserve() {}
   disconnect() {}
 };
+// jsdom File lacks text(); use its FileReader to read the actual uploaded bytes.
+if (typeof File.prototype.text !== "function") {
+  Object.defineProperty(File.prototype, "text", {
+    value: function (this: File): Promise<string> {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(String(reader.result));
+        reader.onerror = () => reject(reader.error);
+        reader.readAsText(this);
+      });
+    },
+  });
+}

@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T02:20:54+09:00"
+  at: "2026-10-04T10:18:25+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-008.md"
@@ -20,6 +20,9 @@ sources:
   - id: "verification"
     resource: "../../raw/research/2026-10-04-mantine-supabase-verification.json"
     title: "설치/실제 검사"
+  - id: "settings-loop"
+    resource: "../../raw/research/2026-10-04-settings-restore-loop.json"
+    title: "복원 입력 회귀/수정"
 version: "0.1.0"
 change_id: "CHG-0008"
 ---
@@ -64,3 +67,5 @@ React·Mantine·Supabase·저장/검증 의존성 청크를 나눴다. 앱 진�
 ## HAR-02 이후 검사 도구
 
 @testing-library/react16.3.3·dom10.4.2·user-event14.6.7, jsdom27.4.0을 devDependencies에 추가했다. `test:ui`와 Vitest ui project로 실제 입력/오류 과업을 DOM에서 검사한다. 위 DOM 미설치 표기는 당시 이력이며 Playwright Test runner는 여전히 미구현이다. [근거/환경](../sources/SRC-038-dom-harness.md).
+
+볼륨/추이는 순수 TypeScript 계산과 SVG·Mantine NativeSelect/SegmentedControl/접근 가능한 HTML 표로 구현했다. 추가 production chart 의존성은 없다. 최신 검사는 unit19/integration25/ui8, 52개/11파일이며 FileReader 기반 jsdom 보완은 test setup에만 있다. [원본](../../raw/research/2026-10-04-settings-restore-loop.json).

@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T10:09:23+09:00"
+  at: "2026-10-04T10:18:25+09:00"
 sources:
   - id: "implementation-request"
     resource: "../../raw/conversations/2026-10-03-005.md"
@@ -47,6 +47,9 @@ sources:
   - id: "volume-check"
     resource: "../../raw/research/2026-10-04-volume-history-verification.json"
     title: "볼륨/후보 구현 검사"
+  - id: "settings-loop"
+    resource: "../../raw/research/2026-10-04-settings-restore-loop.json"
+    title: "복원 입력 회귀/수정"
 version: "0.4.0"
 approval_status: "proposal"
 change_id: "CHG-0009"
@@ -154,7 +157,9 @@ PRE와 화면/계산 개발은 미결인 종목/장비·호스팅 선택 전 가
 
 ## 실행 기록
 
-REP-04/05/06 done: 계산/그래프·표/오늘 참고 후보와 독립unit13·Store 재계산1·DOM3을 추가. 합계50개/10파일, lint/build/format·가짜 CUA/리포트320/375/1440px 통과. SCI-03B planned; 실제 Auth/자동 E2E/실기기는 별도. [검사 원본](../../raw/research/2026-10-04-volume-history-verification.json). 복원 설정 입력 잔류가 발견돼 다음 HAR-02/LOG-06 수정으로 추적한다.
+LOOP-SETTINGS-RESTORE-01: 78e5cb1 이후 복원 입력 잔류를 실제 DOM/Store로 재현·수정. same-owner/revision 복원 재저장·unrelated session draft 보존2개 회귀. 전체52개/11파일·lint/build/format, 최종CUA update/리포트/폭 검사 통과. 실제browser 복원/계정 전환은 남아 HAR-02/LOG-06은 in_progress. [원본](../../raw/research/2026-10-04-settings-restore-loop.json).
+
+REP-04/05/06 done: 계산/그래프·표/오늘 참고 후보와 독립unit13·Store 재계산1·DOM3을 추가. 합계50개/10파일, lint/build/format·가짜 CUA/리포트320/375/1440px 통과. SCI-03B planned; 실제 Auth/자동 E2E/실기기는 별도. [검사 원본](../../raw/research/2026-10-04-volume-history-verification.json). 복원 설정 입력 잔류가 발견돼 위 LOOP-SETTINGS-RESTORE-01에서 회귀 수정했다.
 
 HAR-02: DOM 입력/transaction 실패·재시도/결측수정3과업을 추가했다. unit6/integration24/ui3·lint/build/format 통과. backup/Auth 전환/실browser 과업은 남아 in_progress. [원본](../../raw/research/2026-10-04-dom-harness-verification.json).
 

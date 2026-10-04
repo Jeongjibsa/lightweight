@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T10:09:23+09:00"
+  at: "2026-10-04T10:18:25+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
@@ -35,6 +35,9 @@ sources:
   - id: "volume-check"
     resource: "../../raw/research/2026-10-04-volume-history-verification.json"
     title: "볼륨/후보 구현 검사"
+  - id: "settings-loop"
+    resource: "../../raw/research/2026-10-04-settings-restore-loop.json"
+    title: "복원 입력 회귀/수정"
 version: "0.2.0"
 approval_status: "proposal"
 change_id: "CHG-0008"
@@ -69,7 +72,7 @@ change_id: "CHG-0008"
 
 ## CONV-0009 이후 실제 다음 묶음
 
-HAR-02 초기 DOM·REP-04/05/06은 구현했다. 현재unit19/integration25/ui6·50개/10파일, lint/build/format·수동 CUA 리포트/후보 확인. 다음은 복원 후 설정 입력 잔류의 HAR-02/LOG-06 회귀 수정, 자동 browser E2E·실제 계정 준비 이후 Auth/다기기·실기기/콘텐츠/운영 관문이다. [증거](../../raw/research/2026-10-04-volume-history-verification.json). 아래 문단은 진행 순서를 보존한다.
+HAR-02 초기 DOM·REP-04/05/06은 구현했다. 현재unit19/integration25/ui8·52개/11파일, lint/build/format·수동 CUA 리포트/후보 확인. 복원 후 설정 입력 잔류 회귀는 해결했다. 다음은 자동 browser E2E·실제 계정 준비 이후 Auth/다기기·실기기/콘텐츠/운영 관문이다. [증거](../../raw/research/2026-10-04-volume-history-verification.json). 아래 문단은 진행 순서를 보존한다.
 
 HAR-02 DOM 과업을 먼저 추가하고 REP-04 볼륨 계산→REP-05 그래프/표→REP-06 본인 루틴/과거 수행량 후보를 진행한다. [세부 계약](volume-history-mvp.md). 실제 계정·자동 browser E2E·iPhone/근거 공개 관문은 유지한다. 권장 운동량 조정은 SCI-03B 후속이며 새로운 자동 증량을 먼저 켜지 않는다. 각 검증된 단위는 [commit 지침](../operations/commit-workflow.md)에 따라 local commit한다.
 
@@ -80,3 +83,5 @@ HAR-02 DOM 과업을 먼저 추가하고 REP-04 볼륨 계산→REP-05 그래프
 연결 증분이 진행됐어도 G2~G5 전체 미통과, 외부 CI/실제 iPhone/공개 배포 미수행이다. 날짜/진척 백분율은 단정하지 않는다.
 
 [하네스](../operations/testing-harness.md) · [루프](../operations/loop-engineering.md) · [기술 스택](technology-stack.md) · [미결](open-questions.md) · [CHG-0008](../../history/changes/CHG-0008.md)
+
+복원 입력 루프와 최종52개 검사 범위: [실행 원본](../../raw/research/2026-10-04-settings-restore-loop.json). 실제 Auth 계정은 사용자가 직접 등록하고 비밀번호는 대화로 공유하지 않는다. HAR-03/05와 입력 편의는 계정 준비 전에도 진행 가능하다.

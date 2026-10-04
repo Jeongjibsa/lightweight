@@ -25,7 +25,7 @@ npm run preview -- --port 4173
 - 루틴 작성·복사·정렬·편집·삭제, 운동 시작 당시 루틴/설정 스냅샷 보존
 - 중량·횟수·시간·준비/본세트·좌우·선택 RIR 기록, 완료/완료 취소·세트 추가·일부 완료 종료
 - IndexedDB/Dexie 저장과 변경 대기 항목의 원자적 트랜잭션, 재개, 시각 기준 휴식 타이머
-- 프로필 전체 JSON 내보내기, 크기·버전·소유자·중복·충돌 확인 후 원자적 교체 복원
+- 프로필 전체 JSON 내보내기, 크기·버전·소유자·중복·충돌 확인 후 원자적 교체 복원, 복원된 설정 입력값 갱신
 - 완료 본세트 입력 행 수·운동 횟수·기록일·운동 분류별 주간 요약
 - 운동/일별 기록 볼륨·세트/반복/시간·28/84/전체 추이 그래프와 수치 표, 같은 종목 조건·kg/lb·0/N/A/coverage
 - 과거 종료 기록/현재 설정·장비에 맞는 본인 루틴 후보, 현재 계획과 과거 실제/partial 구분·보류 이유·명시 선택
@@ -70,6 +70,6 @@ npm run check
 npm run format:check
 ```
 
-Vitest v4 projects의 unit19/integration25/ui6(50개/10파일)는 소유자·보존·롤백·백업·계산과 pending/ACK/충돌/교체/schema migration 계약을 검사합니다. 서버 환경이 있는 로컬에서 `npm run cloud:probe`와 `npm run cloud:verify`로 Auth 상태/비로그인 HTTP/TLS 및16개 SQL 계약을 별도 검사합니다. SQL 표본의 임시 자료/권한은 rollback하며 실제 Auth 토큰/브라우저 전체 흐름과 구별합니다.
+Vitest v4 projects의 unit19/integration25/ui8(52개/11파일)는 소유자·보존·롤백·백업·계산과 pending/ACK/충돌/교체/schema migration 계약을 검사합니다. 서버 환경이 있는 로컬에서 `npm run cloud:probe`와 `npm run cloud:verify`로 Auth 상태/비로그인 HTTP/TLS 및16개 SQL 계약을 별도 검사합니다. SQL 표본의 임시 자료/권한은 rollback하며 실제 Auth 토큰/브라우저 전체 흐름과 구별합니다.
 
 [현재 하네스](../vault/wiki/operations/testing-harness.md)와 [진행 보고](../vault/wiki/product/implementation-progress.md)에 실제 범위를 기록했습니다. DOM은 Testing Library/user-event/jsdom으로 추가했습니다. Playwright Test runner·CI 브라우저 회귀는 아직 없습니다. Chromium 폭 시험은 실제 iPhone/Safari 설치·키보드·잠금·저장소 정책을 대신하지 않습니다. GitHub 검사 워크플로는 공통 check를 사용하도록 설정했으며 외부 실행 결과는 아직 없습니다. [정확한 기술 스택](../vault/wiki/product/technology-stack.md) · [남은 작업](../vault/wiki/product/remaining-work.md).

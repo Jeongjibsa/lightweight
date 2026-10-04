@@ -286,7 +286,11 @@ export function SettingsView({
           </div>
           <span className="badge">프로필별 설정</span>
         </div>
-        <ProfileForm key={profile.ownerId} profile={profile} run={run} />
+        <ProfileForm
+          key={JSON.stringify(profile)}
+          profile={profile}
+          run={run}
+        />
       </section>
       <div className="stack">
         {!accountId && (

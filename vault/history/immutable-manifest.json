@@ -41,7 +41,8 @@
     "history/versions/prd-v0.5.0.md": "e11de4e322d5d82b352183a4d16d3d25b4331f721d087da8af981d8e8d02b238",
     "raw/research/2026-10-04-dom-harness-verification.json": "38ea4bf99999902f26aba645234b220f1db4d829c6b93d3158a0097a561c7f09",
     "raw/research/2026-10-04-volume-history-verification.json": "32d29849f18358b2abe4ebe0e4008a277c016c8f96a47101aec4c5ebcf954159",
-    "raw/research/2026-10-04-volume-history-final-verification.json": "4d22c5b3c78628ae0adf17e4616a24618129b3220e27a3f3dbc0bb3431442ca7"
+    "raw/research/2026-10-04-volume-history-final-verification.json": "4d22c5b3c78628ae0adf17e4616a24618129b3220e27a3f3dbc0bb3431442ca7",
+    "raw/research/2026-10-04-settings-restore-loop.json": "732fda8118ce37a35867f9ce40b5f1a0d30092fd1dc932c29583d7497af87509"
   },
-  "updated_at": "2026-10-04T10:11:39+09:00"
+  "updated_at": "2026-10-04T10:18:25+09:00"
 }

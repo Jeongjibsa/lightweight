@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T10:11:39+09:00"
+  at: "2026-10-04T10:18:25+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
@@ -38,6 +38,9 @@ sources:
   - id: "volume-final"
     resource: "../../raw/research/2026-10-04-volume-history-final-verification.json"
     title: "최종 설명/코드 검사"
+  - id: "settings-loop"
+    resource: "../../raw/research/2026-10-04-settings-restore-loop.json"
+    title: "복원 입력 회귀/수정"
 version: "0.2.0"
 approval_status: "current-audit-and-proposal"
 change_id: "CHG-0008"
@@ -53,7 +56,7 @@ flowchart TD
   A --> C[Vitest v4 projects]
   C --> U[unit / Node / 19개]
   C --> I[integration / fake IndexedDB / 25개]
-  C --> J[ui / jsdom + Testing Library / 6개]
+  C --> J[ui / jsdom + Testing Library / 8개]
   I --> D[실제 Dexie Store·transaction·cloud 계약]
   A --> E[strict TypeScript + Vite PWA build]
   A --> V[vault YAML·링크·불변 해시]
@@ -70,7 +73,7 @@ flowchart TD
 |---|---|---|
 | unit | `app/tests/unit/models.unit.test.ts`, `cloud.unit.test.ts`, `volume.unit.test.ts`, `history.unit.test.ts` | DB setup 없이 설정/날짜/단위·공개 URL/키·계정 DB 이름·원격 owner/revision 검증과 볼륨/날짜/후보 정책, 합계19개 |
 | integration | `app/src/data/local/store.test.ts`, `cloud.test.ts`, `volume.test.ts` | 기존 저장소14개+클라우드10개, fake-indexeddb와 실제 Dexie/Store/Zod, 볼륨 Store 편집/재개/복원1개, 합계25개 |
-| ui | `app/tests/ui/*.ui.test.tsx`, `setup.ts` | 실제 WorkoutView/VolumeReport/HistorySuggestion·Mantine, 라벨/사용자 동작·오류/필터/명시 선택, 합계6개; fake DB/ResizeObserver no-layout stub |
+| ui | `app/tests/ui/*.ui.test.tsx`, `setup.ts` | 실제 WorkoutView/VolumeReport/HistorySuggestion/SettingsView·Mantine, 라벨/사용자 동작·오류/필터/명시 선택, 합계8개; fake DB/ResizeObserver no-layout stub, jsdom 파일 읽기는 FileReader로 보완 |
 | 실행 설정 | `app/vitest.config.ts` | Node unit/integration + jsdom ui projects·경로 include 고정, PWA Vite config와 분리 |
 | DB fixture | 위 integration 파일의 beforeEach/afterEach | 검사마다 UUID DB·A/B 가짜 자료, mock/DB 삭제; cloud 날짜는 Date만 고정 후 복원 |
 | 원격 계약 | `app/scripts/verify-cloud.mjs` | 실제 DB transaction의16개 계약, 가짜 사용자/임시 grant/row를 finally rollback |
@@ -106,6 +109,10 @@ ruby scripts/validate_vault.rb
 2026-10-04 01:49 KST 기준 format/lint/30개/strict build 통과, unit6/integration24 분리 명령도 통과. PWA precache23개/1623.05KiB. 원격 SQL16 통과·잔여0·Advisor 빈 배열. [이번 실행 수집](../../raw/research/2026-10-04-mantine-supabase-verification.json). 외부 CI 실행은 미확인, coverage 백분율은 측정하지 않았다.
 
 CUA에서는 가짜 설정/reload/update·320/375/1440px 관찰·Spoqa 로딩·입력16px·모달 trap/ShiftTab/Escape/opener 복귀·console0을 확인했다. 실제 Safari/iPhone·설치·키보드·잠금·200% 확대·모든 화면·실저장 quota·클라우드 Auth 전체 흐름을 통과시킨 것은 아니다. 과거 Chromium offline/빈DB/업데이트와 전체 폭 검증 이력은 [진행 보고](../product/implementation-progress.md)에 범위를 보존한다.
+
+## 2026-10-04 복원 입력 회귀
+
+현재 unit19/integration25/ui8·52개/11파일, lint/build/format 통과. settings.ui.test.tsx는 실제 파일 선택/복원 dialog→same-owner/revision 입력값 갱신→재저장 보존과 unrelated session update의 draft 유지를 검사한다. 기존 key=owner에서 실패를 먼저 재현했다. File.text 부재는 test 환경으로 구분하고 FileReader 실제 byte 읽기를 보완했다. [루프 원본](../../raw/research/2026-10-04-settings-restore-loop.json). HAR-02는 Auth/프로필 전환 등 남은 과업으로 in_progress다.
 
 ## 2026-10-04 볼륨/후보 증분
 
