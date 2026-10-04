@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T15:44:32+09:00"
+  at: "2026-10-04T16:22:01+09:00"
 sources:
   - id: "responsive-local-request"
     resource: "../../raw/conversations/2026-10-03-006.md"
@@ -77,13 +77,32 @@ sources:
   - id: "e2e-run"
     resource: "../../raw/research/2026-10-04-e2e-harness-verification.json"
     title: "9과업·27반복·최초 실패 증거"
-version: "0.3.1"
-change_id: "CHG-0013"
+  - id: "storage-request"
+    resource: "../../raw/conversations/2026-10-04-014.md"
+    title: "순차 요청"
+  - id: "storage-run"
+    resource: "../../raw/research/2026-10-04-storage-recovery-verification.json"
+    title: "저장 보존 검사"
+  - id: "ci-receipt"
+    resource: "../../raw/research/2026-10-04-github-ci-37184261544.json"
+    title: "GitHub CI 증거"
+version: "0.3.2"
+change_id: "CHG-0014"
 ---
 
 # 로컬 PWA 구현 결과와 다음 작업
 
-## HAR-03/05 현재 증분 — 2026-10-04
+## HAR04 / 외부 CI 현재 증분 — 2026-10-04
+
+기존187c47c를 codex/e2e-harness에 push했고 [GitHub 3job](../../raw/research/2026-10-04-github-ci-37184261544.json)이 모두 성공했다. 실패 trace/화면/console/환경을 실제 다운로드해 확인하여 HAR05를 done으로 갱신했다. 이 결과는 이전187c47c이며 아래 새 코드는 아직 GitHub에서 실행하지 않았다.
+
+HAR04에서 실제 큰 Blob을 자체 parser가 거부하는 문제를 재현→compact JSON/입출력10MiB byte 계약으로 수정했다. 초과 파일을 만들거나 잘라내지 않고 기존 기록을 보존하며 안내한다. 실제 waiting SW 안내가 운동 종료 버튼을 막는 문제도 재현→Mantine 안내를 main 상단 흐름으로 수정했다.
+
+unit21/integration26/ui17의64개/14파일, lint 경고0/build/E2E typecheck/format 통과. 실제 browser16개(Chromium9/WebKit7), 새7개만3회21개 반복과 실패probe 통과. 14,400세트7,778,029byte 파일의 실제 다운로드/복원·10MiB+1 거부, native schema10→20 보존, quota 오류 주입 후5테이블 rollback/재시도1회, 실제SW v1→waiting v2→적용/offline과5테이블 동일을 확인했다. [불변 실행](../../raw/research/2026-10-04-storage-recovery-verification.json) · [자세한 하네스](../operations/storage-recovery-harness.md).
+
+HAR04는 in_progress다. 실제iPhone/physical quota/eviction·10MiB 초과 파일의 독립 복구/분할 정책·실계정/다기기 복구가 남았다. Q12/15·SCI/REL/운영 관문을 유지한다. PRD0.7.2 PATCH·app0.2.0/schema2·운동 먼저/식단·3D 후순위 유지. 아래는 이전 증분 이력이다.
+
+## 이전 HAR-03/05 증분 — 2026-10-04
 
 `codex/e2e-harness`에서 @playwright/test1.63.0 runner·독립 production build/preview·빈 context·실제 UI 입력/파일 다운로드/복원·Chromium SW 오프라인을 추가했다. **Chromium5/WebKit4의9과업을 세 번씩27회 통과**했고, 종료 처리 수정 후9회 재확인했다. Vitest59개/13파일·lint 경고0/build/E2E typecheck/format도 통과했다. [불변 실행](../../raw/research/2026-10-04-e2e-harness-verification.json).
 

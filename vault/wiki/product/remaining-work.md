@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T15:44:32+09:00"
+  at: "2026-10-04T16:22:01+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
@@ -62,14 +62,33 @@ sources:
   - id: "e2e-run"
     resource: "../../raw/research/2026-10-04-e2e-harness-verification.json"
     title: "9과업·27반복·최초 실패 증거"
-version: "0.3.1"
+  - id: "storage-request"
+    resource: "../../raw/conversations/2026-10-04-014.md"
+    title: "순차 요청"
+  - id: "storage-run"
+    resource: "../../raw/research/2026-10-04-storage-recovery-verification.json"
+    title: "저장 보존 검사"
+  - id: "ci-receipt"
+    resource: "../../raw/research/2026-10-04-github-ci-37184261544.json"
+    title: "GitHub CI 증거"
+version: "0.3.2"
 approval_status: "proposal"
-change_id: "CHG-0013"
+change_id: "CHG-0014"
 ---
 
 # 현재 구현에서 운동 MVP까지 남은 작업
 
-## HAR-03/05 현재 증분 — 2026-10-04
+## HAR04 / 외부 CI 현재 증분 — 2026-10-04
+
+기존187c47c를 codex/e2e-harness에 push했고 [GitHub 3job](../../raw/research/2026-10-04-github-ci-37184261544.json)이 모두 성공했다. 실패 trace/화면/console/환경을 실제 다운로드해 확인하여 HAR05를 done으로 갱신했다. 이 결과는 이전187c47c이며 아래 새 코드는 아직 GitHub에서 실행하지 않았다.
+
+HAR04에서 실제 큰 Blob을 자체 parser가 거부하는 문제를 재현→compact JSON/입출력10MiB byte 계약으로 수정했다. 초과 파일을 만들거나 잘라내지 않고 기존 기록을 보존하며 안내한다. 실제 waiting SW 안내가 운동 종료 버튼을 막는 문제도 재현→Mantine 안내를 main 상단 흐름으로 수정했다.
+
+unit21/integration26/ui17의64개/14파일, lint 경고0/build/E2E typecheck/format 통과. 실제 browser16개(Chromium9/WebKit7), 새7개만3회21개 반복과 실패probe 통과. 14,400세트7,778,029byte 파일의 실제 다운로드/복원·10MiB+1 거부, native schema10→20 보존, quota 오류 주입 후5테이블 rollback/재시도1회, 실제SW v1→waiting v2→적용/offline과5테이블 동일을 확인했다. [불변 실행](../../raw/research/2026-10-04-storage-recovery-verification.json) · [자세한 하네스](../operations/storage-recovery-harness.md).
+
+HAR04는 in_progress다. 실제iPhone/physical quota/eviction·10MiB 초과 파일의 독립 복구/분할 정책·실계정/다기기 복구가 남았다. Q12/15·SCI/REL/운영 관문을 유지한다. PRD0.7.2 PATCH·app0.2.0/schema2·운동 먼저/식단·3D 후순위 유지. 아래는 이전 증분 이력이다.
+
+## 이전 HAR-03/05 증분 — 2026-10-04
 
 `codex/e2e-harness`에서 @playwright/test1.63.0 runner·독립 production build/preview·빈 context·실제 UI 입력/파일 다운로드/복원·Chromium SW 오프라인을 추가했다. **Chromium5/WebKit4의9과업을 세 번씩27회 통과**했고, 종료 처리 수정 후9회 재확인했다. Vitest59개/13파일·lint 경고0/build/E2E typecheck/format도 통과했다. [불변 실행](../../raw/research/2026-10-04-e2e-harness-verification.json).
 
@@ -107,8 +126,8 @@ UI-02 전체 Mantine·Geist/차콜·노란 강조·전 폭 하단 메뉴·빠른
 
 | 순서 | 남은 작업 | 작업 ID | 완료 조건/현재 제한 |
 |---|---|---|---|
-| 1 | 새 CI 외부 실행·남은 Auth DOM | HAR-02/05 | HAR03 로컬9과업·27반복 완료. CI설정/실패probe 완료; GitHub 실행과 artifact 업로드는 미확인 |
-| 2 | 실제 migration/update·저장 실패·대용량 | HAR-04, LOG-05/06 | schema1→2 계약은 통과. 브라우저 quota·진행 운동 update·큰백업 정책/경계·새기기/서버복구는 미완료 |
+| 1 | 백업 한도 초과 독립복구·실기기 저장/업데이트 | HAR-04, LOG-05/06, REL-02 | 로컬16/새21회 보존 검사 완료. 압축/분할·실제quota/eviction·iPhone 관문 남음 |
+| 2 | 로컬 기록 편의의 다음 증분·남은 Auth DOM | LOG-03/04, HAR-02/06 | 이전 값 재사용/종목 대체/종료 기록 편집을 보존 계약과 함께 진행; 실계정 시험은 준비 후 |
 | 3 | 본인 계정 등록/허용 목록·실제 Auth/복원 | SYNC-02/05 | 사용자가 비밀번호/계정 등록, 승인 UUID 허용 후 login→전송→다른 저장소 불러오기; A/B/만료/권한회수/오프라인 확인. 서버 연결정보 부족은 해결됨 |
 | 4 | 전송/편집 충돌 흐름 고도화 | SYNC-03/04/05 | manual snapshot CAS/retry는 구현. 두 변경 명시 해결·삭제 재등장·pending 취소/복구·증가한 기록 크기 정책, 필요 시 자동 레코드 sync |
 | 5 | 실제 운동 입력 편의 | LOG-03~06, RESP-01 | 이전 세션 재사용·종목 대체·종료 기록 편집·부하/장비 조건·삭제 흐름과 회귀 |

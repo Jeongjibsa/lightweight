@@ -70,7 +70,7 @@ npm run check
 npm run format:check
 ```
 
-Vitest v4 projects의 unit19/integration25/ui15(59개/13파일)는 소유자·보존·롤백·백업·계산과 pending/ACK/충돌/교체/schema migration 계약을 검사합니다. 서버 환경이 있는 로컬에서 `npm run cloud:probe`와 `npm run cloud:verify`로 Auth 상태/비로그인 HTTP/TLS 및16개 SQL 계약을 별도 검사합니다. SQL 표본의 임시 자료/권한은 rollback하며 실제 Auth 토큰/브라우저 전체 흐름과 구별합니다.
+Vitest v4 projects의 unit21/integration26/ui17(64개/14파일)는 소유자·보존·롤백·백업·계산과 pending/ACK/충돌/교체/schema migration 계약을 검사합니다. 서버 환경이 있는 로컬에서 `npm run cloud:probe`와 `npm run cloud:verify`로 Auth 상태/비로그인 HTTP/TLS 및16개 SQL 계약을 별도 검사합니다. SQL 표본의 임시 자료/권한은 rollback하며 실제 Auth 토큰/브라우저 전체 흐름과 구별합니다.
 
 [현재 하네스](../vault/wiki/operations/testing-harness.md)와 [진행 보고](../vault/wiki/product/implementation-progress.md)에 실제 범위를 기록했습니다. DOM은 Testing Library/user-event/jsdom, 실제 브라우저는 Playwright Test 1.63.0으로 검사합니다. 새 GitHub 브라우저 workflow의 외부 실행은 미확인입니다. desktop WebKit/폭 시험은 실제 iPhone/Safari 설치·키보드·잠금·저장소 정책을 대신하지 않습니다. [정확한 기술 스택](../vault/wiki/product/technology-stack.md) · [남은 작업](../vault/wiki/product/remaining-work.md).
 
@@ -83,15 +83,15 @@ npm run test:e2e -- --repeat-each=3
 npm run test:e2e:probe
 ```
 
-Linux에서는 브라우저 설치 시 `--with-deps`를 추가합니다. `npm run check`는 기존 59개 검사와 E2E 타입 검사까지 실행합니다. 브라우저 검사는 별도 명령과 CI job으로 실행합니다.
+Linux에서는 브라우저 설치 시 `--with-deps`를 추가합니다. `npm run check`는 64개 검사와 E2E 타입 검사까지 실행합니다. 브라우저 검사는 별도 명령과 CI job으로 실행합니다.
 
-Chromium 5개/WebKit 4개, 합계 9개 과업으로 즉시 완료·재개·실제 파일 다운로드/빈 저장소 복원·로컬 프로필 분리·정보창 키보드/초점·5화면×4폭을 확인합니다. Chromium에서만 실제 서비스 워커를 준비하고 네트워크 차단→재시작→2세트 저장→재연결 후 보존을 검사합니다. WebKit에서는 서비스 워커를 차단합니다. 로컬 27회 반복과 종료 처리 수정 후 9회가 통과했습니다. 실제 Auth/RLS·iPhone·200% 확대·quota·V1/V2 업데이트는 후속입니다.
+Chromium 9개/WebKit 7개, 합계 16개 과업으로 즉시 완료·재개·실제 파일 다운로드/빈 저장소 복원·로컬 프로필 분리·정보창 키보드/초점·5화면×4폭을 확인합니다. Chromium에서만 실제 서비스 워커를 준비하고 네트워크 차단→재시작→2세트 저장→재연결 후 보존을 검사합니다. WebKit에서는 서비스 워커를 차단합니다. 이전9개/27회에 이어 현재16개와 새 보존7개×3회21회가 통과했습니다. schema1→2의 native DB·quota 오류 주입 후 transaction rollback/재시도·14,400세트 실제 다운로드/복원·SW V1/V2 교체/오프라인 보존을 확인합니다. 실제 Auth/RLS·iPhone·200% 확대·실제 저장 공간 소진/eviction·10MiB 초과 분할 복구는 후속입니다.
 
-검사는 빈 context에서 가짜 자료를 UI로 만듭니다. Supabase VITE URL/key를 빈 값으로 덮어쓴 `dist-e2e`를 전용 `127.0.0.1:4188`에서 빌드/실행하며 사용자 browser·preview·저장소를 재사용하지 않습니다. 포트가 사용 중이면 실패합니다. 필요한 경우 `LIGHTWEIGHT_E2E_PORT`로 별도 포트를 지정합니다.
+검사는 빈 context에서 가짜 자료만 사용합니다. core 과업은 UI로 만들고, migration/큰 파일 과업은 앱 실행 전 독립 native schema1 DB를 준비합니다. Supabase VITE URL/key를 빈 값으로 덮어쓴 `dist-e2e`를 전용 `127.0.0.1:4188`의 loopback 정적 서버에서 빌드/실행하며 사용자 browser·preview·저장소를 재사용하지 않습니다. 포트가 사용 중이면 실패합니다. 필요한 경우 `LIGHTWEIGHT_E2E_PORT`로 별도 포트를 지정합니다.
 
 `output/playwright/e2e/{runID}/`에 JSON/HTML report·환경/코드 SHA256·per-test console/실행 metadata, 실패 화면/trace를 보존합니다. 새 실행은 고유 ID를 만들고 같은 ID 재사용은 거부합니다. 자동 retries는 0입니다. `npx playwright show-report <report>`/`show-trace <trace.zip>`로 증거를 열 수 있습니다. 로컬 출력은 Git에서 제외하며 용량 정리는 별도로 수행합니다.
 
-`test:e2e:probe`는 정상 9개에서 제외한 의도적 실패 하나를 실행합니다. 자식 runner의 exit 1·정확한 실패·retry 0·실제 증거 파일을 확인한 부모 도구가 exit 0으로 끝나며, 다른 실패나 증거 누락은 실패합니다. CI는 엔진별 job과 Chromium probe, 실패 후에도 artifact 업로드·7일 보관을 설정했습니다. public repository의 artifact에는 가짜 검사 출력만 포함하고 `.env`·실제 백업·토큰을 넣지 않습니다. 설정 완료와 실제 GitHub 실행 성공은 구별합니다.
+`test:e2e:probe`는 정상 16개에서 제외한 의도적 실패 하나를 실행합니다. 자식 runner의 exit 1·정확한 실패·retry 0·실제 증거 파일을 확인한 부모 도구가 exit 0으로 끝나며, 다른 실패나 증거 누락은 실패합니다. CI는 엔진별 job과 Chromium probe, 실패 후에도 artifact 업로드·7일 보관을 설정했습니다. public repository의 artifact에는 가짜 검사 출력만 포함하고 `.env`·실제 백업·토큰을 넣지 않습니다. 187c47c의 [GitHub 실행](https://github.com/Jeongjibsa/lightweight/actions/runs/37184261544)에서 check/Chromium/WebKit 3job 성공과 artifact 다운로드를 확인했습니다. 새 HAR04 코드는 local 검사이며 새 GitHub 실행으로 표시하지 않습니다.
 
 ## 디자인과 반응형 수동 검사
 
@@ -102,3 +102,11 @@ Chromium 5개/WebKit 4개, 합계 9개 과업으로 즉시 완료·재개·실�
 CONV-0011에서 Mantine UI 다크/Monokai를 참고해 차콜 배경·노란 강조색으로 바꿨습니다. primary filled 버튼/ThemeIcon은 어두운 전경색이고 PWA theme-color/아이콘도 같은 톤입니다. [최신 실행](../vault/raw/research/2026-10-04-charcoal-theme-verification.json)은 색상/선택 화면 폭 검사이며 실제 iPhone 시험을 뜻하지 않습니다.
 
 HAR-02 후속에서는 실제 App/Mantine/Store의 로컬 프로필 A→B→A·저장 중 전환 차단·workspace 경합 비노출과 동일 백업 파일 재선택/복원4개 DOM 계약을 추가했습니다. `tests/harness/pwa-register.ts`는 Vitest 전용 no-op alias이고 cloud client도 해당 profile test에서만 대체합니다. 실제 Auth/서비스워커/오프라인 검증을 대신하지 않습니다. [최초 실패와 검증](../vault/raw/research/2026-10-04-profile-backup-dom-loop.json).
+
+## HAR04 보존 계약
+
+JSON 파일은 모든 필드를 유지하는 compact 출력이며 import/export 모두 최대10MiB(10,485,760bytes) UTF-8입니다. 이전 들여쓰기 파일도 이 한도 이하면 읽습니다. 한도를 넘으면 다운로드/적용 전에 오류를 보여주고 자료를 삭제하거나 자르지 않습니다. 압축/분할은 아직 지원하지 않습니다. 파일 한도는 browser IndexedDB quota와 별개이고 원시 Store.backup/cloud snapshot 계약은 유지합니다.
+
+E2E server는 production 설정을 공유하는 test-only config로 dist-e2e/v1·v2를 만들고, HTML meta 차이로 실제 SW precache revision을 바꿉니다. 현재 runID header로 /__e2e/build를 전환하고 매 과업 v1로 초기화합니다. /__e2e/blank는 앱 실행 전 native DB 준비용입니다. 두 endpoint와 marker는 운영 app/dist에 없습니다. 저장 실패는 test-only native outbox.add에 QuotaExceededError를 1회 주입하며 실제 디스크를 채우지 않습니다. 입력 blur draft가 끝난 뒤 complete transaction만 실패시켜 전체 DB rollback과 한 번의 재시도를 비교합니다.
+
+업데이트 안내는 main 상단의 Mantine Alert이며 운동 중에는 적용을 막고 종료 버튼을 가리지 않습니다. [자세한 하네스/한계](../vault/wiki/operations/storage-recovery-harness.md) · [첫 실패/현재 실행](../vault/raw/research/2026-10-04-storage-recovery-verification.json).

@@ -60,3 +60,4 @@
 - [Chromium 오프라인 리포트390px](2026-10-04-e2e-chromium-offline.png) — 실제SW제어/네트워크차단·2세트저장 직후.
 
 저장한 정확한viewport를 직접 확인했다. 전체페이지/실제사용자자료아님. [실행](../research/2026-10-04-e2e-harness-verification.json).
+- [업데이트 가림 before](2026-10-04-update-blocked-before.png) · [main 안내 after](2026-10-04-update-inline-after.png) — fake390×844 실제 viewport 확인; [실행](../research/2026-10-04-storage-recovery-verification.json).

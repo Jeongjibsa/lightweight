@@ -8,7 +8,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T15:44:32+09:00"
+  at: "2026-10-04T16:22:01+09:00"
 sources:
   - id: "platform"
     resource: "platform-distribution.md"
@@ -55,6 +55,15 @@ sources:
   - id: "e2e-run"
     resource: "../../raw/research/2026-10-04-e2e-harness-verification.json"
     title: "9과업·27반복·최초 실패 증거"
+  - id: "storage-request"
+    resource: "../../raw/conversations/2026-10-04-014.md"
+    title: "순차 요청"
+  - id: "storage-run"
+    resource: "../../raw/research/2026-10-04-storage-recovery-verification.json"
+    title: "저장 보존 검사"
+  - id: "ci-receipt"
+    resource: "../../raw/research/2026-10-04-github-ci-37184261544.json"
+    title: "GitHub CI 증거"
 ---
 
 # 제품 검증과 출시 조건
@@ -155,3 +164,7 @@ QA-01을 [HAR-01~06](implementation-backlog.md)과 [우선6개 시나리오](../
 ## CONV-0010 UI/UX 변경
 
 추가 UI 과업: keyboard 하단 현재 위치/한 번 추가·정보 분리·Escape 복귀/연속 루틴 저장. 실제 iframe25조합 width/scroll/nav target을 확인했다. iPhone/Safari soft keyboard·가로/200% 확대·safe area·VoiceOver·production offline/update는 실제 기기 과업으로 남는다. [디자인 규칙](design-system.md) · [감사](design-audit.md).
+
+## CONV0014 현재 후속
+
+187c47c push/GitHub CI3job·artifact 수신 완료(HAR05 done). HAR04 local64개·browser16/새21회·실패probe 완료, quota합성/native rollback·큰파일/schema/update 보존. 실제iPhone/physical quota·10MiB초과 독립복구·실Auth/SCI/REL은 남았다. 새HAR04 CI는 미실행. [현재검증](../../raw/research/2026-10-04-storage-recovery-verification.json) · [다음순서](remaining-work.md).

@@ -2,6 +2,8 @@
 
 ## 2026-10-04
 
+- **Push / CI / HAR04 / CONV0014**: 기존187c47c를 origin/codex/e2e-harness에 push, [GitHub3job/2artifact 실제수신](raw/research/2026-10-04-github-ci-37184261544.json) 확인으로 HAR05done. 이후 Blob 한도/업데이트 안내 가림을 먼저 재현/수정·compact/대칭10MiB·main Mantine 안내와 nativeDB/schema/합성quota/실제SWupdate 보존을 고정.64개/14파일·lint/build/E2E타입/format·browser16/신규21회·실패probe통과. [불변실행](raw/research/2026-10-04-storage-recovery-verification.json)·[하네스](wiki/operations/storage-recovery-harness.md). PRD0.7.2PATCH/[CHG0014](history/changes/CHG-0014.md)/snapshot·SRC044/44출처·기존94불변해시보존. HAR04in_progress: 초과백업 독립복구·physical quota/eviction·iPhone/Auth/SCI/REL유지. 새HAR04GitHub미실행·지속localcommit범위, 개인graph보존.
+
 - **HAR03/05 / CONV0013**: main18620d8 merge/push 이후 [다음작업요청](wiki/conversations/2026-10-04-013.md)으로 codex/e2e-harness에 고정Playwright1.63.0·독립4188build/context·실제UI/파일/ChromiumSW를 추가. 최초test형식2실패→27반복통과, 정상종료정리수정→9재확인/실패probe. 기존59/lint/build/E2E타입/format통과. [불변실행/캡처](raw/research/2026-10-04-e2e-harness-verification.json). HAR03done/HAR05CI설정·로컬probe완료, 외부실행미확인/in_progress. PRD0.7.1현황PATCH·[CHG0013](history/changes/CHG-0013.md)/전체snapshot·SRC043/43출처; 기존원본해시보존. 기능/app/schema/원격설정 유지. 다음HAR04·실Auth/SCI/REL관문; 지속localcommit범위.
 
 - **HAR-02 / Loop**: UI/3D 검토 다음 로컬 파일·프로필 DOM 작업. 백업 동일 파일 재선택·pending 전환 차단·workspace owner 경합의3제품 실패를 먼저 재현/수정하고 A→B→A 정상 보존 포함4회귀 추가.59개(19/25/15)/13파일·lint/build/format:check 통과. CUA 가짜4177 오류→동일 경로 미리보기/취소·390px 복원 버튼 잘림 수정/새 캡처 확인. [불변 실행](raw/research/2026-10-04-profile-backup-dom-loop.json)·[루프](wiki/operations/loop-engineering.md). 로컬 HAR02부분 완료/전체 in_progress; Auth/SW/자동 E2E/CI/실기기 관문 유지, PRD0.7.0/schema2·원격 설정 유지. 지속 승인 범위의 local commit 단위.

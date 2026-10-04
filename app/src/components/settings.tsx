@@ -1,4 +1,9 @@
 import {
+  checkBackupFileSize,
+  serializeBackupFile,
+} from "../domain/backup-file";
+import { errorMessage } from "../domain/errors";
+import {
   Alert,
   Badge,
   Box,
@@ -259,7 +264,7 @@ export function SettingsView({
     await run(async () => {
       const data = await store.backup(profile.ownerId);
       const url = URL.createObjectURL(
-        new Blob([JSON.stringify(data, null, 2)], { type: "application/json" }),
+        new Blob([serializeBackupFile(data)], { type: "application/json" }),
       );
       const link = document.createElement("a");
       link.href = url;
@@ -272,10 +277,13 @@ export function SettingsView({
     if (!file) return;
     setFileError("");
     setBackup(null);
-    if (file.size > 10 * 1024 * 1024) {
-      setFileError("10MB 이하의 백업 파일을 선택해주세요.");
+    try {
+      checkBackupFileSize(file.size);
+    } catch (error) {
+      setFileError(errorMessage(error));
       return;
     }
+
     try {
       setBackup(store.parseBackup(await file.text()));
     } catch {

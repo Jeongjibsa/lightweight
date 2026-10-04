@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T15:44:32+09:00"
+  at: "2026-10-04T16:22:01+09:00"
 sources:
   - id: "implementation-request"
     resource: "../../raw/conversations/2026-10-03-005.md"
@@ -77,9 +77,18 @@ sources:
   - id: "e2e-run"
     resource: "../../raw/research/2026-10-04-e2e-harness-verification.json"
     title: "9과업·27반복·최초 실패 증거"
-version: "0.6.2"
+  - id: "storage-request"
+    resource: "../../raw/conversations/2026-10-04-014.md"
+    title: "순차 요청"
+  - id: "storage-run"
+    resource: "../../raw/research/2026-10-04-storage-recovery-verification.json"
+    title: "저장 보존 검사"
+  - id: "ci-receipt"
+    resource: "../../raw/research/2026-10-04-github-ci-37184261544.json"
+    title: "GitHub CI 증거"
+version: "0.6.3"
 approval_status: "proposal"
-change_id: "CHG-0013"
+change_id: "CHG-0014"
 ---
 
 # 운동 PWA 구현 백로그와 완료 기준
@@ -146,8 +155,8 @@ PRE와 화면/계산 개발은 미결인 종목/장비·호스팅 선택 전 가
 | HAR-01 | 단위/통합 projects·fixture/독립 기대값·공통 명령 | BASE-01/현재16개 | 기존검사 보존, unit에 DB 불필요, 날짜/시간대 결정적, 로컬/CI 같은 명령 | done |
 | HAR-02 | 세트 입력·오류·복원·프로필 전환 DOM 통합 | HAR-01 | blur/click·반복 클릭·실패 재시도·전환 중 저장 상태 확인, 사용자 라벨 기반 | in_progress |
 | HAR-03 | 버전 고정 browser runner·빌드 preview·핵심 E2E | HAR-01; 입력 계약은 HAR-02 연결 | E2E01~04·E2E06부분, Chromium5/WebKit4·독립context, 9과업×3회27통과·종료 수정 후9재확인 | done |
-| HAR-04 | 저장 실패·큰 백업·migration·V1/V2 업데이트 | HAR-03, LOG-05/06 | 최초 실패 증거·기존 데이터 보존·RISK-BACKUP-01 재현/정책·E2E-05·실기기 절차 | in_progress |
-| HAR-05 | CI 검사 분리·실패 trace/console/실행 메타데이터 | HAR-01/03 | 엔진별CI/7일보관·고유ID/해시·로컬실패probe 완료; 새 GitHub 실제 실행/업로드 결과는 미확인 | in_progress |
+| HAR-04 | 저장 실패·큰 백업·migration·V1/V2 업데이트 | HAR-03, LOG-05/06 | 본 증분: quota 주입/native rollback·schema10→20·14,400세트/10MiB 경계·실제 waiting SW/업데이트 보존. 남음: 초과 파일 독립복구·physical quota/eviction·실기기·서버복구 | in_progress |
+| HAR-05 | CI 검사 분리·실패 trace/console/실행 메타데이터 | HAR-01/03 | 187c47c GitHub check/Chromium/WebKit 성공·artifact 다운로드/첫실패trace 확인, 새HAR04는 local 검사 | done |
 | HAR-06 | 보존/권한/계산/근거의 scenario 추적·원격/콘텐츠 평가 | HAR-01; 원격은 SYNC, 콘텐츠는 SCI | 계약→검사/검토→증거 연결, 미지원 not_run, 잘못된 계산/주장/타인 접근 반례 | in_progress |
 
 ## 운동 MVP 다음

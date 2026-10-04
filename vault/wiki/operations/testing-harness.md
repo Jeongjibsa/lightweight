@@ -1,7 +1,7 @@
 ---
 type: "Testing Harness"
 title: "현재 테스트 하네스와 확장 설계"
-description: "Vitest59개·browser9과업·실제 SW/파일·CI 증거와 실기기/Auth 경계를 기록한다."
+description: "Vitest64개·browser16과업·실제 보존 검사·확인한 CI 증거와 실기기/Auth 경계."
 tags:
   - "operations"
   - "testing"
@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T15:44:32+09:00"
+  at: "2026-10-04T16:22:01+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
@@ -56,12 +56,25 @@ sources:
   - id: "e2e-tools"
     resource: "../sources/SRC-043-playwright-runner-ci.md"
     title: "공식 도구/읽은 범위"
-version: "0.5.0"
+  - id: "storage-request"
+    resource: "../../raw/conversations/2026-10-04-014.md"
+    title: "순차 요청"
+  - id: "storage-run"
+    resource: "../../raw/research/2026-10-04-storage-recovery-verification.json"
+    title: "저장 보존 검사"
+  - id: "ci-receipt"
+    resource: "../../raw/research/2026-10-04-github-ci-37184261544.json"
+    title: "GitHub CI 증거"
+version: "0.5.1"
 approval_status: "current-audit-and-proposal"
-change_id: "CHG-0013"
+change_id: "CHG-0014"
 ---
 
 # 현재 테스트 하네스와 확장 설계
+
+현재: unit21/integration26/ui17의64개/14파일, Chromium9/WebKit7의16과업과 신규7개×3회21회 통과. HAR05는187c47c의 GitHub3job/실패artifact 수신으로 done. HAR04는 실제iPhone/physical quota·초과 백업/기기복구가 남아 in_progress. [보존 하네스/최신 구조](storage-recovery-harness.md) · [최신 실행](../../raw/research/2026-10-04-storage-recovery-verification.json). 이전 single preview는 두 production build를 전환하는 loopback test server로 확장했다. 새코드의CI는 아직 실행하지 않았다.
+
+## 이전 HAR03 생성 당시 구조/실행
 
 2026-10-04 / app0.2.0 / IndexedDB schema2 / PRD0.7.1. 하네스는 **실행 환경·가짜 데이터·준비/정리·과업·독립 기대값·실패 증거를 같은 조건으로 반복하는 장치**다. HAR-01을 구현했고 단위/저장소 통합은 자동 실행한다. 원격 SQL 계약 검사는 별도 수동 명령이다. HAR03 runner의 로컬 실행을 완료했고 HAR05 CI설정/실패probe는 완료했으나 새 GitHub 실행은 미확인이다.
 

@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T15:44:32+09:00"
+  at: "2026-10-04T16:22:01+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-03-002.md"
@@ -65,6 +65,15 @@ sources:
   - id: "e2e-run"
     resource: "../../raw/research/2026-10-04-e2e-harness-verification.json"
     title: "9과업·27반복·최초 실패 증거"
+  - id: "storage-request"
+    resource: "../../raw/conversations/2026-10-04-014.md"
+    title: "순차 요청"
+  - id: "storage-run"
+    resource: "../../raw/research/2026-10-04-storage-recovery-verification.json"
+    title: "저장 보존 검사"
+  - id: "ci-receipt"
+    resource: "../../raw/research/2026-10-04-github-ci-37184261544.json"
+    title: "GitHub CI 증거"
 ---
 
 # 미결 사항과 다음 대화
@@ -110,3 +119,7 @@ FR-17은 사용자 명시 3D 애니메이션 요구이며 지금은 검토만/�
 ## CONV0013 후속 상태
 
 새 제품입력 미결은 추가하지 않았다. HAR03 로컬9과업·27반복을 완료했다. 새GitHub CI실행·실제Auth/iPhone은 남았다. 다음 HAR04는 계정없이 진행가능하다. Q15계정/메일·Q12실기기·Q08/16/17운영·Q01/06과학조건/검토 관문을 유지한다. [현재우선순위](remaining-work.md).
+
+## CONV0014 현재 후속
+
+187c47c push/GitHub CI3job·artifact 수신 완료(HAR05 done). HAR04 local64개·browser16/새21회·실패probe 완료, quota합성/native rollback·큰파일/schema/update 보존. 실제iPhone/physical quota·10MiB초과 독립복구·실Auth/SCI/REL은 남았다. 새HAR04 CI는 미실행. [현재검증](../../raw/research/2026-10-04-storage-recovery-verification.json) · [다음순서](remaining-work.md).

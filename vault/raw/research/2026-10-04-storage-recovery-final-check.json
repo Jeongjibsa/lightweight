@@ -1,0 +1,37 @@
+{
+  "type": "Verification Record",
+  "title": "HAR04 final check and build-size precision correction",
+  "generated": {
+    "by": "codex/gpt-6",
+    "at": "2026-10-04T16:26:11+09:00"
+  },
+  "immutable": true,
+  "checks": {
+    "lint": "passed, errors/warnings0",
+    "unit": 21,
+    "integration": 26,
+    "ui": 17,
+    "test_total": 64,
+    "test_files": 14,
+    "strict_build": "passed",
+    "e2e_typecheck": "passed",
+    "format": "passed"
+  },
+  "production_build": {
+    "precache_entries": 25,
+    "precache_kib": 1278.1,
+    "index_js_kb": 97.88,
+    "index_js_gzip_kb": 30.8
+  },
+  "source_log_sha256": "9782ec76ac5c7a8382bdd6b4324dcac1ee0115062c02bdda1ce53b333f15c551",
+  "correction": {
+    "resource": "raw/research/2026-10-04-storage-recovery-verification.json",
+    "field": "fast_tests.precache_kib",
+    "previous": 1278.09,
+    "final": 1278.1,
+    "reason": "Previous value came from the earlier pre-inline-notice check. Actual final log after main UpdateNotice relocation reports1278.10KiB. Preserve previous capture/hash; test pass counts are unchanged."
+  },
+  "browser_final": "20261004T071249843Z-d7823d37:16passed; 20261004T071410234Z-9402ff27:new7x3=21passed",
+  "probe": "probe-51524c33-37c5-4e2e-8b73-ec6fae9221a2:child deliberate1failed,parent verified/exit0",
+  "data": "synthetic only; no real account/iPhone or physical storage exhaustion"
+}

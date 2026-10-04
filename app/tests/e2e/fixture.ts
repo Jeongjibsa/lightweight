@@ -2,11 +2,11 @@ import { test as base, expect, type Page } from "@playwright/test";
 import { readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { platform, arch } from "node:os";
-import { origin, fixedTime } from "./environment";
+import { origin, fixedTime, buildHeaders } from "./environment";
 
 export const test = base.extend<{ diagnostics: (page: Page) => void }>({
   diagnostics: [
-    async ({ page, browser }, use, info) => {
+    async ({ page, browser, request }, use, info) => {
       const messages: { kind: string; text: string }[] = [];
       const pageErrors: string[] = [];
       const external: string[] = [];
@@ -32,6 +32,10 @@ export const test = base.extend<{ diagnostics: (page: Page) => void }>({
             external.push(request.url());
         });
       };
+      const reset = await request.post(`${origin}/__e2e/build`, {
+        headers: buildHeaders("v1"),
+      });
+      expect(reset.status()).toBe(204);
       observe(page);
       await page.clock.setFixedTime(new Date(fixedTime));
       await use(observe);

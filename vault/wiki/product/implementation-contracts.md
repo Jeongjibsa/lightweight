@@ -10,7 +10,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T13:35:43+09:00"
+  at: "2026-10-04T16:22:01+09:00"
 sources:
   - id: "responsive-local-request"
     resource: "../../raw/conversations/2026-10-03-006.md"
@@ -24,8 +24,17 @@ sources:
   - id: "design-request"
     resource: "../../raw/conversations/2026-10-04-010.md"
     title: "전체 Mantine/Geist/하단 UX 요구"
-version: "0.2.0"
-change_id: "CHG-0008"
+  - id: "storage-request"
+    resource: "../../raw/conversations/2026-10-04-014.md"
+    title: "순차 요청"
+  - id: "storage-run"
+    resource: "../../raw/research/2026-10-04-storage-recovery-verification.json"
+    title: "저장 보존 검사"
+  - id: "ci-receipt"
+    resource: "../../raw/research/2026-10-04-github-ci-37184261544.json"
+    title: "GitHub CI 증거"
+version: "0.2.1"
+change_id: "CHG-0014"
 ---
 
 # 반응형·프로필·로컬 기록 계약
@@ -80,7 +89,9 @@ CONV-0010에서 전 폭 하단 5개 메뉴로 변경했다. 큰 화면은 본문
 
 현재 프로필의 설정·루틴·세션(삭제 표식/미완료 포함)을 `lightweight-backup` version 1 JSON으로 내보낸다. 개인 백업은 Git/vault/dist에 넣지 않는다.
 
-가져오기는 적용 전 10MB 한도·JSON·버전·필드·기록 ID 중복·파일 내부 소유자 일치·최대 하나의 진행 세션을 검사한다. 루틴/운동 개수와 교체 범위를 미리 보여준다. 사용자가 복원을 선택하면 현재 로컬 프로필의 데이터만 전체 교체하고 해당 프로필 outbox를 재생성한다. 새 기기에서는 로컬 owner ID를 현재 프로필로 매핑한다. 다른 로컬 프로필과 ID 충돌 시 전부 취소한다. 오류 시 기존 자료를 보존한다.
+내보내기는 들여쓰기 없는 JSON으로 모든 필드를 유지하며 UTF-8 10MiB 초과 시 다운로드 전에 오류를 표시한다. 잘라내기/삭제/분할은 하지 않는다. 파일 한도는 browser quota와 별개이고 클라우드 Store snapshot에는 추가하지 않았다. 기존 들여쓰기 파일도 한도 이하면 읽는다.
+
+가져오기는 적용 전 10MiB(10,485,760bytes) 한도·JSON·버전·필드·기록 ID 중복·파일 내부 소유자 일치·최대 하나의 진행 세션을 검사한다. 루틴/운동 개수와 교체 범위를 미리 보여준다. 사용자가 복원을 선택하면 현재 로컬 프로필의 데이터만 전체 교체하고 해당 프로필 outbox를 재생성한다. 새 기기에서는 로컬 owner ID를 현재 프로필로 매핑한다. 다른 로컬 프로필과 ID 충돌 시 전부 취소한다. 오류 시 기존 자료를 보존한다.
 
 인증 계정 JSON 이관은 명시적인 현재 owner remap/새 outbox/기존 baseRevision 보존/pending 취소로 확장했고 계약 검사를 추가했다. 클라우드 미리보기 교체는 서명·revision 재검사/최근 recovery와 원자 교체를 별도로 검증한다. 서버 자동 병합/삭제 재등장·실제 Auth UI는 SYNC-04/05에 남았다. 저장소 삭제·기기/origin 변경에 자동 복구가 없고, 별도 JSON 백업이 필요하다.
 
@@ -93,3 +104,5 @@ CONV-0010에서 전 폭 하단 5개 메뉴로 변경했다. 큰 화면은 본문
 ## Related
 
 [PRD](prd.md) · [실행 결과](implementation-progress.md) · [데이터 모델](data-model.md) · [작업 목록](implementation-backlog.md)
+
+[큰 백업·저장 실패·업데이트 검증](../operations/storage-recovery-harness.md).

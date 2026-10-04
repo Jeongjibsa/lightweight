@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { errorMessage } from "../../src/domain/errors";
 import { useLiveQuery } from "dexie-react-hooks";
 import { MantineProvider } from "@mantine/core";
 import { render, screen, waitFor } from "@testing-library/react";
@@ -7,6 +9,7 @@ import { SettingsView } from "../../src/components/settings";
 import { TrainingContext } from "../../src/context/training";
 import { TrainingDatabase, TrainingStore } from "../../src/data/local/store";
 import { owner, profileFixture } from "../fixtures/training";
+import { largeBackupFixture } from "../fixtures/large-backup";
 
 let db: TrainingDatabase;
 let store: TrainingStore;
@@ -17,20 +20,29 @@ beforeEach(async () => {
   await store.saveProfile(owner, profileFixture());
 });
 afterEach(async () => {
+  vi.restoreAllMocks();
+  vi.unstubAllGlobals();
   await db.delete();
 });
 function Harness() {
+  const [failure, setFailure] = useState("");
   const workspace = useLiveQuery(() => store.workspace(owner), []);
   return (
     <MantineProvider env="test">
+      {failure && <div role="alert">{failure}</div>}
       <TrainingContext.Provider value={{ db, store, accountId: null }}>
         {workspace?.profile && (
           <SettingsView
             profile={workspace.profile}
             profiles={[workspace.profile]}
             run={async (action) => {
-              await action();
-              return true;
+              try {
+                await action();
+                return true;
+              } catch (error) {
+                setFailure(errorMessage(error));
+                return false;
+              }
             }}
             switchProfile={() => {}}
             createProfile={async () => {}}
@@ -42,6 +54,36 @@ function Harness() {
 }
 const profileName = () =>
   screen.getByLabelText("프로필 이름") as HTMLInputElement;
+
+it("큰 기록의 실제 내보내기 파일을 자체 parser로 다시 읽고 ID·세트를 보존한다", async () => {
+  const fixture = largeBackupFixture(owner);
+  await db.sessions.bulkPut(fixture.sessions);
+  let download: Blob | undefined;
+  vi.stubGlobal("URL", {
+    createObjectURL: (blob: Blob) => {
+      download = blob;
+      return "blob:synthetic-backup";
+    },
+    revokeObjectURL: vi.fn(),
+  });
+  vi.spyOn(HTMLAnchorElement.prototype, "click").mockImplementation(() => {});
+  render(<Harness />);
+  await screen.findByLabelText("프로필 이름");
+  await userEvent
+    .setup()
+    .click(
+      screen.getByRole("button", { name: "현재 프로필 백업", exact: true }),
+    );
+  await waitFor(() => expect(download).toBeDefined());
+  const text = await new File([download!], "synthetic-large.json").text();
+  // This is the application's actual download Blob, not a copied serializer.
+  expect(() => store.parseBackup(text)).not.toThrow();
+  const parsed = store.parseBackup(text);
+  expect(parsed.sessions).toHaveLength(36);
+  const sorted = (sessions: typeof fixture.sessions) =>
+    sessions.toSorted((a, b) => a.id.localeCompare(b.id));
+  expect(sorted(parsed.sessions)).toEqual(sorted(fixture.sessions));
+}, 15000);
 
 it("같은 owner/revision의 백업도 복원 즉시 입력값을 바꾸며 다시 저장해도 이전 설정으로 덮어쓰지 않는다", async () => {
   const user = userEvent.setup();
@@ -155,3 +197,25 @@ it("파일 읽기가 일시적으로 실패해도 같은 백업 파일을 다시
     "같은 파일 재시도 가짜 설정",
   );
 });
+
+it("크기 초과 export는 다운로드 전에 안내하며 DB 기록을 변경하지 않는다", async () => {
+  const fixture = largeBackupFixture(owner, 60);
+  await db.sessions.bulkPut(fixture.sessions);
+  const before = await store.backup(owner);
+  const createObjectURL = vi.fn();
+  vi.stubGlobal("URL", { createObjectURL, revokeObjectURL: vi.fn() });
+  render(<Harness />);
+  await screen.findByLabelText("프로필 이름");
+  await userEvent
+    .setup()
+    .click(
+      screen.getByRole("button", { name: "현재 프로필 백업", exact: true }),
+    );
+  expect(
+    (await screen.findByText(/기록이 10MiB를 초과해/)).textContent,
+  ).toContain("분할 백업은 아직 지원하지 않습니다");
+  expect(createObjectURL).not.toHaveBeenCalled();
+  const after = await store.backup(owner);
+  expect(after.profile).toEqual(before.profile);
+  expect(after.sessions).toEqual(before.sessions);
+}, 15000);

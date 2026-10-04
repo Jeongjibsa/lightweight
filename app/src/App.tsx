@@ -427,6 +427,7 @@ function UpdateNotice({ active }: { active: boolean }) {
     <Alert
       icon={<RefreshCw size={18} />}
       title="새 버전이 준비됐어요"
+      mb="lg"
       withCloseButton
       onClose={() => setNeedRefresh(false)}
       closeButtonLabel="업데이트 안내 닫기"
@@ -666,6 +667,7 @@ export default function App() {
         tabIndex={-1}
         pt={{ base: "lg", sm: "xl" }}
       >
+        <UpdateNotice active={sessions.some((s) => s.status === "active")} />
         <Group justify="space-between" mb="lg">
           <Box>
             <Text c="dimmed" size="xs" mb={6}>
@@ -757,7 +759,6 @@ export default function App() {
             {notice.message}
           </Alert>
         )}
-        <UpdateNotice active={sessions.some((s) => s.status === "active")} />
       </Stack>
     </Box>
   );

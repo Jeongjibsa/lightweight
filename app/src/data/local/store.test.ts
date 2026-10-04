@@ -324,3 +324,19 @@ describe("백업과 집계", () => {
     expect((await store.backup(owner)).sessions[0]?.deletedAt).not.toBeNull();
   });
 });
+
+it("백업 입력의 정확한 10MiB UTF-8 경계를 지키며 거부해도 원본 DB는 유지된다", async () => {
+  const before = await store.backup(owner);
+  const text = JSON.stringify(before);
+  const bytes = new TextEncoder().encode(text).byteLength;
+  expect(store.parseBackup(text + " ".repeat(10485760 - bytes))).toEqual(
+    before,
+  );
+  expect(() => store.parseBackup(text + " ".repeat(10485761 - bytes))).toThrow(
+    "10MiB",
+  );
+  const multibyte = text + "\u3000".repeat(Math.ceil((10485761 - bytes) / 3));
+  expect(multibyte.length).toBeLessThan(10485760);
+  expect(() => store.parseBackup(multibyte)).toThrow("10MiB");
+  expect(await store.backup(owner)).toEqual(before);
+});

@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T15:44:32+09:00"
+  at: "2026-10-04T16:22:01+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
@@ -41,9 +41,18 @@ sources:
   - id: "e2e-run"
     resource: "../../raw/research/2026-10-04-e2e-harness-verification.json"
     title: "9과업·27반복·최초 실패 증거"
-version: "0.3.1"
+  - id: "storage-request"
+    resource: "../../raw/conversations/2026-10-04-014.md"
+    title: "순차 요청"
+  - id: "storage-run"
+    resource: "../../raw/research/2026-10-04-storage-recovery-verification.json"
+    title: "저장 보존 검사"
+  - id: "ci-receipt"
+    resource: "../../raw/research/2026-10-04-github-ci-37184261544.json"
+    title: "GitHub CI 증거"
+version: "0.3.2"
 approval_status: "proposal"
-change_id: "CHG-0013"
+change_id: "CHG-0014"
 ---
 
 # 실패를 재현하고 회귀를 남기는 개선 루프
@@ -178,3 +187,7 @@ CUA 가짜4177의 invalid JSON 오류→동일 경로 정상 파일→미리보�
 반복 실행 종료에서 Vite의 정상 SIGTERM/exit143이 오류로 출력돼 lifecycle 결함으로 분류했다. 명시 종료 중에만 exit를 허용하고 build 취소 후 preview 시작을 막았다. 새9과업 통과/오류 출력 없음·서버 해제를 확인했다. 이어 의도적 실패 probe로 자식exit1·정확한 실패assertion/retry0·trace/화면/console/metadata/HTML·JSON 존재를 검증했다. probe 성공은 제품 실패를 pass 처리한 것이 아니며 정상spec에는 포함하지 않는다.
 
 독립 9과업을 세 번 반복한27은 새27개 기능 계약이 아니다. same-environment 안정 관찰이며 Linux CI/iPhone/Auth/200%/quota/update 성공으로 일반화하지 않는다. WebKit SW 차단/Node color 경고는 환경 로그로 보존한다. CI설정과 로컬 증거 성공은 외부 GitHub 실행 성공과 구별한다.
+
+## HAR04 보존 루프
+
+[검사 계약](storage-recovery-harness.md)의 첫 Blob roundtrip/실제SW 운동종료 가림은 제품 결함으로 분류해 compact/대칭byte검사·main 안내 흐름으로 수정했다. 랜덤 배열 순서/blur전fault/UI matcher는 test fixture 결함이며 정확한경계/기대값을 고쳤다. 강제click·자동retry없이16개/새21회·64개/실패probe를 통과했다. [첫실패와실행](../../raw/research/2026-10-04-storage-recovery-verification.json). [GitHubCI](../../raw/research/2026-10-04-github-ci-37184261544.json)는187c47c 기준3job/9과업·실패증거 수신, 새HAR04local결과와 구별한다.

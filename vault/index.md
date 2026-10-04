@@ -4,7 +4,7 @@ okf_version: "0.2"
 
 # 웨이트 트레이닝 앱 — 기획과 지식 베이스
 
-옵시디언에서 이 `vault` 폴더를 열고 시작한다. 현재 기획은 **0.7.1 브레인스토밍 초안**이다.
+옵시디언에서 이 `vault` 폴더를 열고 시작한다. 현재 기획은 **0.7.2 브레인스토밍 초안**이다.
 
 ## 먼저 읽기
 
@@ -34,7 +34,7 @@ okf_version: "0.2"
 ## 제품과 근거
 
 - [제품 상세](wiki/product/index.md) — 운동·티어·추천·기록·리포트·영양·데이터·검증.
-- [출처 노트 43개](wiki/sources/index.md) — 공식 규격·기관·운동/영양 연구·iOS 기술 안내.
+- [출처 노트 44개](wiki/sources/index.md) — 공식 규격·기관·운동/영양 연구·iOS 기술 안내.
 - [주장-근거 지도](wiki/concepts/evidence-map.md) — 적용·상충·공백.
 - [보존 원본](raw/index.md) — 사용자 발언·수집 당시 기록.
 
@@ -48,7 +48,7 @@ okf_version: "0.2"
 - [양식](templates/index.md) — 출처·변경 작성.
 - [시각 자료](assets/index.md) — 추후 콘텐츠.
 
-과학 자료는 **2026-10-03 초기 표적 탐색**, 하네스 기술/코드 확인은 **2026-10-04**다. 일부 연구는 초록만 확인했고 공개 전 전문 검토가 남았다. app0.2.0/schema2에 전체 Mantine/Geist 차콜·노란 강조·하단 UI를 적용했다. 최신unit19/integration25/ui15·59개를 통과했다. CONV-0010의 수동25폭/화면 조합과 CONV-0011의 색상/320·390·1440px 관찰을 구분한다. 기존 Auth/계정 DB·manual snapshot·SQL16·비로그인HTTP 이력을 보존한다. 자동browser9과업/27반복·실패probe를 완료했다. 새CI설정은 추가했으나 외부실행미확인. 실제Auth·iPhone/배포·콘텐츠전문검토·자동문서감지는 남았다.
+과학 자료는 **2026-10-03 초기 표적 탐색**, 하네스 기술/코드 확인은 **2026-10-04**다. 일부 연구는 초록만 확인했고 공개 전 전문 검토가 남았다. app0.2.0/schema2에 전체 Mantine/Geist 차콜·노란 강조·하단 UI를 적용했다. 최신unit21/integration26/ui17·64개를 통과했다. CONV-0010의 수동25폭/화면 조합과 CONV-0011의 색상/320·390·1440px 관찰을 구분한다. 기존 Auth/계정 DB·manual snapshot·SQL16·비로그인HTTP 이력을 보존한다. 자동browser16개·새7개×3회21회/실패probe를 완료했다. 이전187c47c의GitHub CI3job·실패증거 수신 완료, 새HAR04는local검사다. 실제Auth·iPhone/배포·콘텐츠전문검토·자동문서감지는 남았다.
 
 - [최신 컴포넌트 재감사](wiki/product/component-review.md) — 다섯 페이지 수정 전/후·펼친 선택창·55개 검사·20폭/화면 관찰.
 - [3D 해부학 애니메이션 검토](wiki/product/anatomy-3d-feasibility.md) — FR-17·P2후순위, 가능성/자산/검토·실기기 관문.
@@ -56,3 +56,5 @@ okf_version: "0.2"
 - [프로필/백업 후속 루프](raw/research/2026-10-04-profile-backup-dom-loop.json) — 최초3제품 실패·새4DOM 계약·59개 통과; 실제 Auth/자동 browser 별도.
 
 - [자동browser 최신증분](raw/research/2026-10-04-e2e-harness-verification.json) — Chromium5/WebKit4·실제offline/파일·실패artifact; 다음HAR04.
+
+- [저장 보존 최신증분](wiki/operations/storage-recovery-harness.md) — 백업/업데이트 제품실패 재현·수정과nativeDB검사.

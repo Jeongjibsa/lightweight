@@ -1,0 +1,336 @@
+{
+  "type": "Verification Record",
+  "generated": {
+    "by": "codex/gpt-6",
+    "at": "2026-10-04T16:22:01+09:00"
+  },
+  "immutable": true,
+  "title": "187c47c GitHub CI and downloaded failure evidence",
+  "run_url": "https://github.com/Jeongjibsa/lightweight/actions/runs/37184261544",
+  "run_id": 37184261544,
+  "head_sha": "187c47c6a7d5114f7065027c6bd9a47f9f906bae",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "name": "check",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm ci",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run check",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run format:check",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run ruby scripts/validate_vault.rb",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "name": "browser (webkit-mobile, webkit)",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm ci",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npx playwright install --with-deps webkit",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:e2e -- --project=webkit-mobile",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify first-failure artifacts",
+          "conclusion": "skipped"
+        },
+        {
+          "name": "Preserve browser evidence",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "name": "browser (chromium-mobile, chromium)",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm ci",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npx playwright install --with-deps chromium",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run test:e2e -- --project=chromium-mobile",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify first-failure artifacts",
+          "conclusion": "success"
+        },
+        {
+          "name": "Preserve browser evidence",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "id": 11296162346,
+      "name": "browser-webkit-mobile-37184261544-1",
+      "size": 281585,
+      "metadata_digest": "sha256:794aff0d0717fd09d1871b526d4fe33486fd789f6f9078e6721df25994866802",
+      "expires_at": "2026-10-11T06:57:34Z"
+    },
+    {
+      "id": 11296072541,
+      "name": "browser-chromium-mobile-37184261544-1",
+      "size": 2319242,
+      "metadata_digest": "sha256:6c41b10edc6c26d75adc16c1af04a275c6753b66830c004ea35095369f31ea6f",
+      "expires_at": "2026-10-11T06:57:09Z"
+    }
+  ],
+  "reports": [
+    {
+      "path": "output/playwright/ci/37184261544/browser-webkit-mobile-37184261544-1/20261004T065704617Z-bbcd007d/results.json",
+      "sha256": "1ce4c9567de66b0f0befaef28e0300b24308f86c50dbe603798d5d4b53fdaf95",
+      "stats": {
+        "startTime": "2026-10-04T06:57:05.089Z",
+        "duration": 29017.752,
+        "expected": 4,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    {
+      "path": "output/playwright/ci/37184261544/browser-chromium-mobile-37184261544-1/probe-6b9833d4-74a4-45b4-a637-cb59d0fb8840/results.json",
+      "sha256": "eb85e02eb6137eff1fa1ad4291e9d2094248b11cc73b1c239f685aada512a3fb",
+      "stats": {
+        "startTime": "2026-10-04T06:57:05.176Z",
+        "duration": 4325.775000000001,
+        "expected": 0,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      }
+    },
+    {
+      "path": "output/playwright/ci/37184261544/browser-chromium-mobile-37184261544-1/20261004T065643815Z-a8269586/results.json",
+      "sha256": "08de3d8f6257cdd4218c470b12d1ce54c8b1bd57a3159c5892c898e49cda6e9d",
+      "stats": {
+        "startTime": "2026-10-04T06:56:44.424Z",
+        "duration": 19958.904000000002,
+        "expected": 5,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    }
+  ],
+  "executions": [
+    {
+      "gitRevision": "187c47c6a7d5114f7065027c6bd9a47f9f906bae",
+      "project": "webkit-mobile",
+      "test": "E2E-01 빈 프로필→설정/루틴→결측 거부/0kg 즉시 완료→reload/리포트",
+      "status": "passed",
+      "retry": 0,
+      "externalRequests": [],
+      "browser": "26.6",
+      "node": "v24.21.0",
+      "platform": "linux"
+    },
+    {
+      "gitRevision": "187c47c6a7d5114f7065027c6bd9a47f9f906bae",
+      "project": "webkit-mobile",
+      "test": "E2E-04 로컬 A→B 설정/루틴 분리→A 복귀/reload 원본 보존",
+      "status": "passed",
+      "retry": 0,
+      "externalRequests": [],
+      "browser": "26.6",
+      "node": "v24.21.0",
+      "platform": "linux"
+    },
+    {
+      "gitRevision": "187c47c6a7d5114f7065027c6bd9a47f9f906bae",
+      "project": "webkit-mobile",
+      "test": "E2E-06 부분:5화면×4폭 overflow/키보드 선택·Escape opener 복귀",
+      "status": "passed",
+      "retry": 0,
+      "externalRequests": [],
+      "browser": "26.6",
+      "node": "v24.21.0",
+      "platform": "linux"
+    },
+    {
+      "gitRevision": "187c47c6a7d5114f7065027c6bd9a47f9f906bae",
+      "project": "webkit-mobile",
+      "test": "E2E-03 다운로드 백업→잘못된 파일 거부→빈 context 복원→IDs/삭제/기록 보존",
+      "status": "passed",
+      "retry": 0,
+      "externalRequests": [],
+      "browser": "26.6",
+      "node": "v24.21.0",
+      "platform": "linux"
+    },
+    {
+      "gitRevision": "187c47c6a7d5114f7065027c6bd9a47f9f906bae",
+      "project": "chromium-mobile",
+      "test": "E2E-02 Chromium:실제 SW→오프라인 reload/2세트 저장→재연결/단일 기록",
+      "status": "passed",
+      "retry": 0,
+      "externalRequests": [],
+      "browser": "153.0.8010.12",
+      "node": "v24.21.0",
+      "platform": "linux"
+    },
+    {
+      "gitRevision": "187c47c6a7d5114f7065027c6bd9a47f9f906bae",
+      "project": "chromium-mobile",
+      "test": "E2E-04 로컬 A→B 설정/루틴 분리→A 복귀/reload 원본 보존",
+      "status": "passed",
+      "retry": 0,
+      "externalRequests": [],
+      "browser": "153.0.8010.12",
+      "node": "v24.21.0",
+      "platform": "linux"
+    },
+    {
+      "gitRevision": "187c47c6a7d5114f7065027c6bd9a47f9f906bae",
+      "project": "chromium-mobile",
+      "test": "E2E-06 부분:5화면×4폭 overflow/키보드 선택·Escape opener 복귀",
+      "status": "passed",
+      "retry": 0,
+      "externalRequests": [],
+      "browser": "153.0.8010.12",
+      "node": "v24.21.0",
+      "platform": "linux"
+    },
+    {
+      "gitRevision": "187c47c6a7d5114f7065027c6bd9a47f9f906bae",
+      "project": "chromium-mobile",
+      "test": "E2E-03 다운로드 백업→잘못된 파일 거부→빈 context 복원→IDs/삭제/기록 보존",
+      "status": "passed",
+      "retry": 0,
+      "externalRequests": [],
+      "browser": "153.0.8010.12",
+      "node": "v24.21.0",
+      "platform": "linux"
+    },
+    {
+      "gitRevision": "187c47c6a7d5114f7065027c6bd9a47f9f906bae",
+      "project": "chromium-mobile",
+      "test": "E2E-01 빈 프로필→설정/루틴→결측 거부/0kg 즉시 완료→reload/리포트",
+      "status": "passed",
+      "retry": 0,
+      "externalRequests": [],
+      "browser": "153.0.8010.12",
+      "node": "v24.21.0",
+      "platform": "linux"
+    },
+    {
+      "gitRevision": "187c47c6a7d5114f7065027c6bd9a47f9f906bae",
+      "project": "chromium-mobile",
+      "test": "HAR-05 intentional failure artifact probe",
+      "status": "failed",
+      "retry": 0,
+      "externalRequests": [],
+      "browser": "153.0.8010.12",
+      "node": "v24.21.0",
+      "platform": "linux"
+    }
+  ],
+  "failure_trace": [
+    {
+      "path": "output/playwright/ci/37184261544/browser-chromium-mobile-37184261544-1/probe-6b9833d4-74a4-45b4-a637-cb59d0fb8840/test-results/evidence.probe.ts-HAR-05-intentional-failure-artifact-probe-chromium-mobile/trace.zip",
+      "sha256": "359d5620061fd2a19f37ea3ab17bd5eb77b4cc8d18b18f0dd372e5ff93422c5f",
+      "zip_crc_check": "passed"
+    }
+  ],
+  "screenshots_found": 5,
+  "limitations": "GitHub metadata digest recorded; original uploaded outer zip digest not independently recalculated. Downloaded trace zip CRC validated. This run is baseline 187c47c, not later HAR04 changes. Intentional probe unexpected1 is required and parent job succeeded; normal Chromium5/WebKit4 passed. Synthetic only."
+}

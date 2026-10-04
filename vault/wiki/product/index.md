@@ -25,3 +25,4 @@
 - [컴포넌트 재감사](component-review.md) · [3D 가능성](anatomy-3d-feasibility.md) — CONV0012/FR17·실제 캡처·후순위.
 - [HAR-02 후속](implementation-progress.md) — 백업 재선택/로컬 프로필 보존·59개 검사; Auth/browser 관문 유지.
 - [HAR03/05 현재증분](implementation-progress.md) — 로컬9과업/27반복·CI설정/실패probe·외부미확인.
+- [HAR04 현재 결과](implementation-progress.md) — CI확인·저장/큰백업/update 보존, 실기기관문 유지.

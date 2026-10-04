@@ -1,3 +1,4 @@
+import { checkBackupFileSize } from "../../domain/backup-file";
 import Dexie, { type Table } from "dexie";
 import {
   checkRemote,
@@ -381,8 +382,7 @@ export class TrainingStore {
     );
   }
   parseBackup(text: string) {
-    if (new TextEncoder().encode(text).length > 10 * 1024 * 1024)
-      throw new Error("백업 파일은 10MB 이하만 가져올 수 있습니다.");
+    checkBackupFileSize(new TextEncoder().encode(text).byteLength);
     return backupSchema.parse(JSON.parse(text));
   }
   async restore(ownerId: string, input: Backup) {

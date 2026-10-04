@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T15:44:32+09:00"
+  at: "2026-10-04T16:22:01+09:00"
 sources:
   - id: "implementation-request"
     resource: "../../raw/conversations/2026-10-03-005.md"
@@ -77,6 +77,15 @@ sources:
   - id: "e2e-run"
     resource: "../../raw/research/2026-10-04-e2e-harness-verification.json"
     title: "9과업·27반복·최초 실패 증거"
+  - id: "storage-request"
+    resource: "../../raw/conversations/2026-10-04-014.md"
+    title: "순차 요청"
+  - id: "storage-run"
+    resource: "../../raw/research/2026-10-04-storage-recovery-verification.json"
+    title: "저장 보존 검사"
+  - id: "ci-receipt"
+    resource: "../../raw/research/2026-10-04-github-ci-37184261544.json"
+    title: "GitHub CI 증거"
 version: "0.6.2"
 approval_status: "proposal"
 change_id: "CHG-0013"
@@ -257,3 +266,7 @@ HAR-02 후속: 파일 재선택/프로필 A→B→A·pending 저장·workspace o
 ## HAR03/05 증분
 
 CONV0013에서 다음 구현을 요청했다. 고정runner·9과업/27반복·최종9/실패probe 완료, CI설정/7일보관 완료·외부실행은미확인이다. HAR03 done/HAR05 in_progress. 다음은 계정 없이 진행가능한 HAR04 저장 실패/큰백업/브라우저업데이트, 이후 준비된 실제Auth 관문이다. 기능범위/app/schema 유지, PRD0.7.1현황정정. [검증](../../raw/research/2026-10-04-e2e-harness-verification.json).
+
+## CONV0014 현재 후속
+
+187c47c push/GitHub CI3job·artifact 수신 완료(HAR05 done). HAR04 local64개·browser16/새21회·실패probe 완료, quota합성/native rollback·큰파일/schema/update 보존. 실제iPhone/physical quota·10MiB초과 독립복구·실Auth/SCI/REL은 남았다. 새HAR04 CI는 미실행. [현재검증](../../raw/research/2026-10-04-storage-recovery-verification.json) · [다음순서](remaining-work.md).
