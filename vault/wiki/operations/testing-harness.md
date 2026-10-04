@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T20:32:03+09:00"
+  at: "2026-10-04T20:47:40+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
@@ -71,6 +71,9 @@ sources:
   - id: "reuse"
     resource: "record-reuse.md"
     title: "재사용 계약"
+  - id: "coverage"
+    resource: "report-coverage.md"
+    title: "기록 점검"
 version: "0.5.1"
 approval_status: "current-audit-and-proposal"
 change_id: "CHG-0014"
@@ -245,3 +248,7 @@ HAR-02는 in_progress다. DOM 과업 기반을 만들었지만 backup/Auth 전�
 ## 재사용/종료 수정 회귀
 
 [새 기록 계약](record-reuse.md)에서72개·browser20·새6회를 확인했다. 실제 UI→다운로드/원본 비교→볼륨 재계산→repeat/reuse/replace/reload를 두 엔진에 고정했다. source/owner/동시 시작/stale revision/잘못된 완료 입력은 integration으로 검사한다. 최초 fixture/selector 실패를 고유 ID와 로그 hash로 보존한다. 실제 계정/iPhone은 별도다.
+
+## 주간 기록 점검 회귀
+
+[기록 점검](report-coverage.md)의 owner/시간대/기간/취소/삭제/active·같은 날/다른 조건·RIR0/누락·수정revision을4unit와2UI 계약으로 추가했다.78개/16파일·browser20 통과, 실제 WebKit390px 화면/여백을 확인했다. 설정/오늘/진행·미완료 바로가기와 수정 후 표시 갱신을 확인한다. 실제 계정/iPhone·과학적 충분성 검토를 대체하지 않는다.

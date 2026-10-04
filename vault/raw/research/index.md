@@ -27,3 +27,4 @@
 - [압축 백업 확인](2026-10-04-compressed-backup-verification.json)
 - [Cloudflare 설정 재확인/OAuth](2026-10-04-cloudflare-setup-recheck.json) — skills16/MCP5·main login 성공/계정 읽기HTTP200·범위 구분.
 - [기록 재사용 검사](2026-10-04-record-reuse-verification.json) · [Pages 제한 인증](2026-10-04-pages-scoped-auth.json)
+- [리포트 점검 검사](2026-10-04-report-coverage-verification.json)

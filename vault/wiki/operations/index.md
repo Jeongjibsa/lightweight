@@ -14,3 +14,4 @@
 - [Cloudflare 연결/배포 운영](cloudflare-setup.md) — CONV-0016 main MCP OAuth 성공·특화 MCP/CLI와 배포 별도.
 - [압축 백업 계약](compressed-backup.md)
 - [기록 재사용과 수정](record-reuse.md)
+- [주간 기록 점검](report-coverage.md)

@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T20:32:03+09:00"
+  at: "2026-10-04T20:47:40+09:00"
 sources:
   - id: "volume"
     resource: "../sources/SRC-004-volume-frequency.md"
@@ -34,6 +34,12 @@ sources:
     title: "재사용 계약"
   - id: "record-check"
     resource: "../../raw/research/2026-10-04-record-reuse-verification.json"
+    title: "실행"
+  - id: "coverage"
+    resource: "../operations/report-coverage.md"
+    title: "기록 점검 계약"
+  - id: "coverage-check"
+    resource: "../../raw/research/2026-10-04-report-coverage-verification.json"
     title: "실행"
 ---
 
@@ -89,3 +95,9 @@ FR-07·FR-09. [기획서](prd.md). 관찰 사실/기간 → 비교 조건·불�
 ## 종료 수정과 현재 재계산
 
 실제 browser에서20kg×8 기록을40kg×6으로 명시 수정한 뒤 같은 조건 볼륨240kg·회로 바뀌는 것을 확인했다. 완료/시각은 그대로이며 준비 세트 변경은 본세트 집계에서 제외된다. 현재 리포트는 liveQuery의 최신 기록을 계산하므로 오래된 저장 report를 노출하지 않는다. 저장 report/충분성/정책 version·검토 매핑은 후속이다. [재사용/수정 계약](../operations/record-reuse.md).
+
+## 리포트 기록 점검 후속 — 2026-10-04
+
+종료 운동 횟수/고유 기록일·주간 사용자 설정·선택 RIR 누락·같은 조건의 두 날짜 기록 여부를 설명한다. 진행 중/미완료 세션과 미설정 프로필을 바로 열 수 있으며 수정 즉시 갱신한다. 처방/효과/최적 볼륨이나 연구 승인으로 해석하지 않는다. [계약](../operations/report-coverage.md)·[검사](../../raw/research/2026-10-04-report-coverage-verification.json).
+
+78개/16파일·lint/build/types/format/artifact24·browser20 통과. record-coverage-v1/입력revision을 계산하되 저장 report는 없으며 REP02/03은 전체 in_progress다. 이전 af7937f GitHub CI3job success를 확인했다. 실제 Auth 계정은0개로 확인했고, security advisor lints=[]는 실제 login/RLS 통과와 구별한다. 다음은 Cloudflare HTTPS 배포·실Auth 계정 준비·공개 콘텐츠 gate다. 식단/3D 후순위와 전문/실기기 관문을 유지한다.

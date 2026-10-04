@@ -261,6 +261,22 @@ test("종료 기록 수정→볼륨 재계산→다시 시작·이전값·종목
   await expect(
     page.getByRole("cell", { name: "240 kg·회", exact: true }),
   ).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "이번 주 기록 점검", exact: true }),
+  ).toBeVisible();
+  await expect(
+    page.getByText(
+      "완료 본세트 1행 중 RIR 미입력 1행 · RIR은 선택 입력이에요.",
+      { exact: true },
+    ),
+  ).toBeVisible();
+  await page
+    .getByRole("heading", { name: "이번 주 기록 점검", exact: true })
+    .scrollIntoViewIfNeeded();
+  await info.attach("report-coverage.png", {
+    body: await page.screenshot(),
+    contentType: "image/png",
+  });
   await navigate(page, "오늘");
   await page
     .getByRole("button", { name: /가짜 재사용 루틴.*1\/1세트/ })

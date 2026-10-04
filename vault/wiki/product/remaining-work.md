@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T20:32:03+09:00"
+  at: "2026-10-04T20:47:40+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -95,12 +95,25 @@ sources:
   - id: "pages-scope"
     resource: "../../raw/research/2026-10-04-pages-scoped-auth.json"
     title: "Pages 연결 확인"
+  - id: "coverage"
+    resource: "../operations/report-coverage.md"
+    title: "기록 점검 계약"
+  - id: "coverage-check"
+    resource: "../../raw/research/2026-10-04-report-coverage-verification.json"
+    title: "실행"
 version: "0.3.3"
 approval_status: "proposal"
 change_id: "CHG-0017"
 ---
 
 # 현재 구현에서 운동 MVP까지 남은 작업
+
+## 리포트 기록 점검 후속 — 2026-10-04
+
+종료 운동 횟수/고유 기록일·주간 사용자 설정·선택 RIR 누락·같은 조건의 두 날짜 기록 여부를 설명한다. 진행 중/미완료 세션과 미설정 프로필을 바로 열 수 있으며 수정 즉시 갱신한다. 처방/효과/최적 볼륨이나 연구 승인으로 해석하지 않는다. [계약](../operations/report-coverage.md)·[검사](../../raw/research/2026-10-04-report-coverage-verification.json).
+
+78개/16파일·lint/build/types/format/artifact24·browser20 통과. record-coverage-v1/입력revision을 계산하되 저장 report는 없으며 REP02/03은 전체 in_progress다. 이전 af7937f GitHub CI3job success를 확인했다. 실제 Auth 계정은0개로 확인했고, security advisor lints=[]는 실제 login/RLS 통과와 구별한다. 다음은 Cloudflare HTTPS 배포·실Auth 계정 준비·공개 콘텐츠 gate다. 식단/3D 후순위와 전문/실기기 관문을 유지한다.
+
 
 ## 기록 편의와 Pages 연결 후속 — 2026-10-04
 

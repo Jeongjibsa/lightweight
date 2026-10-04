@@ -1,0 +1,53 @@
+{
+  "type": "Verification Record",
+  "title": "Weekly recorded-data coverage",
+  "generated": {
+    "by": "codex/gpt-6",
+    "at": "2026-10-04T20:47:40+09:00"
+  },
+  "immutable": true,
+  "checks": {
+    "unit": 27,
+    "integration": 30,
+    "ui": 21,
+    "total": 78,
+    "files": 16,
+    "lint": "passed",
+    "build": "passed",
+    "e2e_typecheck": "passed",
+    "format": "passed",
+    "pages_artifact": "24 files passed"
+  },
+  "browser": {
+    "run_id": "20261004T113816048Z-3be4d7eb",
+    "stats": {
+      "startTime": "2026-10-04T11:38:16.301Z",
+      "duration": 61312.602999999996,
+      "expected": 20,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "chromium": 11,
+    "webkit": 9
+  },
+  "contracts": [
+    "Own nondeleted noncancelled sessions only, original local date retained, Monday through today in current profile timezone",
+    "Ended-session completed working rows, same-day sessions and unique recorded days distinguished; active/incomplete correction shortcuts",
+    "RIR zero distinct from missing; completed warmup excluded; revisions trigger recalculation",
+    "Two distinct dates of identical full exercise conditions permit numeric comparison; no scientific sufficiency threshold or prescription",
+    "Policy record-coverage-v1 and deterministic input revision; no persisted report cache"
+  ],
+  "screenshots": "390px WebKit image directly inspected: Mantine card spacing and wrapped text readable; browser attachment retained; real iPhone not tested",
+  "first_failure": "Attachment extractor initially assumed filesystem path; Playwright JSON used base64 body. Corrected extraction without changing product or browser results.",
+  "limits": [
+    "No real Auth/device testing, no reviewed muscle mapping, no automatic progression or training effect inference",
+    "Registered Auth accounts=0 and security advisor lints=[] observed separately; not proof of real login"
+  ],
+  "log_sha256": {
+    "lightweight-coverage-check-first.log": "008bf05424bb0ab6572c5d270d8720b2e87191f157915d42e05882c136d44057",
+    "lightweight-coverage-format-final.log": "3c0f730f585655d8e668350e26e55399ee31ea80643a9e4616f52ee76b1c8ece",
+    "lightweight-coverage-artifact.log": "c1a6e3e3171d91cf9b2f1272696bd0ce0b80b64955de6e58c72c174a53f7df92",
+    "lightweight-coverage-browser.log": "eb663d6786611ae668f07b23b5593a76d9311c545b0b0680159e9e331631b72a"
+  }
+}

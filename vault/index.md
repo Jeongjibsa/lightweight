@@ -4,7 +4,7 @@ okf_version: "0.2"
 
 # 웨이트 트레이닝 앱 — 기획과 지식 베이스
 
-옵시디언에서 이 `vault` 폴더를 열고 시작한다. 현재 기획은 **0.8.3 브레인스토밍 초안**이다.
+옵시디언에서 이 `vault` 폴더를 열고 시작한다. 현재 기획은 **0.8.4 브레인스토밍 초안**이다.
 
 ## 먼저 읽기
 
@@ -64,3 +64,5 @@ okf_version: "0.2"
 - [압축 백업 독립 복구](wiki/operations/compressed-backup.md) —66개/18browser/새6회·10MiB초과24,000세트 복구.
 
 - [최신 기록 재사용/수정](wiki/operations/record-reuse.md) —72개/20browser/새6회·과거/시각/CAS 보존. Pages 제한 인증 성공, project 이메일 인증 대기.
+
+- [최신 주간 기록 점검](wiki/operations/report-coverage.md) —78개/browser20·기간/상태/조건/입력 revision·직접 수정 진입.

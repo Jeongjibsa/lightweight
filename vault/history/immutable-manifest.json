@@ -119,7 +119,10 @@
     "raw/research/2026-10-04-record-reuse-verification.json": "24e4e96ed854cda5b00a61c23e6eb81f03aabd82048e5f5f65d88d8c5052cd0d",
     "raw/research/2026-10-04-pages-scoped-auth.json": "4a1bad9f3acd0bd45ea85cf2d90202ae3b1fb4a376287df66cae8c5ed7e68d7d",
     "history/versions/prd-v0.8.3.md": "c11e308a38ad72e86df9fddcbed3af891c67c97b6387e8accbd982262c22ab2d",
-    "history/changes/CHG-0018.md": "a8ffeded9d13a81f875a16fcbda590c9ac8baeabfd5ac3944f3a696de68ce35d"
+    "history/changes/CHG-0018.md": "a8ffeded9d13a81f875a16fcbda590c9ac8baeabfd5ac3944f3a696de68ce35d",
+    "raw/research/2026-10-04-report-coverage-verification.json": "1db1671c009282a7e24736556d6649a0dc25d17f2633a226145b6383d80a3f17",
+    "history/versions/prd-v0.8.4.md": "8552a128bcdd3bf8a0191f9032851d9c544313dfd8d27071761b3a6c581b4587",
+    "history/changes/CHG-0019.md": "1e6e3f0092d2119173881319b5f228f9627b1448be751af75c918b174e2b1d9c"
   },
   "updated_at": "2026-10-04T20:28:29+09:00"
 }

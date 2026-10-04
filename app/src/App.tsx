@@ -51,6 +51,7 @@ import { LibraryView, RoutinesView } from "./components/exercises";
 import { SettingsView } from "./components/settings";
 import { WorkoutView } from "./components/workout";
 import { VolumeReport } from "./components/volume-report";
+import { RecordCoverage } from "./components/report-coverage";
 import { HistorySuggestion } from "./components/history-suggestion";
 import { BottomNavigation } from "./components/navigation";
 import { screens, type Screen } from "./components/screens";
@@ -351,11 +352,15 @@ function ReportsView({
   sessions,
   inspect,
   now,
+  settings,
+  today,
 }: {
   now: Date;
   profile: Profile;
   sessions: Session[];
   inspect: (s: Session) => void;
+  settings: () => void;
+  today: () => void;
 }) {
   const dates = weekDates(profile.timeZone, now);
   const stats = summarize(
@@ -371,6 +376,14 @@ function ReportsView({
         <Stat label="완료 본세트" value={stats.workingRows} unit="개" />
         <Stat label="계획 본세트" value={stats.plannedRows} unit="개" />
       </SimpleGrid>
+      <RecordCoverage
+        profile={profile}
+        sessions={sessions}
+        now={now}
+        inspect={inspect}
+        settings={settings}
+        today={today}
+      />
       <VolumeReport profile={profile} sessions={sessions} now={now} />
       <Paper>
         <Stack gap="md">
@@ -722,6 +735,8 @@ export default function App() {
             profile={profile}
             sessions={sessions}
             inspect={inspect}
+            settings={() => navigate("settings")}
+            today={() => navigate("today")}
           />
         ) : (
           <Stack gap="lg">

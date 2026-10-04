@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T20:32:03+09:00"
+  at: "2026-10-04T20:47:40+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -110,9 +110,15 @@ sources:
   - id: "pages-scope"
     resource: "../../raw/research/2026-10-04-pages-scoped-auth.json"
     title: "Pages 연결 확인"
-version: "0.6.7"
+  - id: "coverage"
+    resource: "../operations/report-coverage.md"
+    title: "기록 점검 계약"
+  - id: "coverage-check"
+    resource: "../../raw/research/2026-10-04-report-coverage-verification.json"
+    title: "실행"
+version: "0.6.8"
 approval_status: "proposal"
-change_id: "CHG-0018"
+change_id: "CHG-0019"
 ---
 
 # 운동 PWA 구현 백로그와 완료 기준
@@ -152,8 +158,8 @@ UI-01은 당시 부분 Mantine/Spoqa/스택 명시 증분으로 done이었다. C
 | SYNC-04 | M3 | 편집/삭제 충돌·복원 병합·오래된 응답 처리 | SYNC-03, LOG-06 | 두 편집 보존, 사용자 해결 추적, 오프라인 재접속 삭제 재등장 없음 | in_progress |
 | SYNC-05 | M3 | A/B/비로그인 API·동기화/복원 통합 검증 | SYNC-01~04 | 구현된 CRUD·RPC·내보내기·부모 바꾸기 차단, 새 기기 동기화분 복원; 후속 리포트 API는 REL-02 재검사 | in_progress |
 | REP-01 | M4 | 세션/주간·계획 대비·직접/간접·동일 조건 추세 계산 | LOG-05, PRE-01 | 고정 표본 합계/단위 일치, 분모0 N/A, 직접/간접 중복 없음 | in_progress |
-| REP-02 | M4 | 리포트 화면·충분성·기간/입력revision·오래된 결과 | REP-01, SYNC-03 | 기록 수정 후 재계산, 조건 다른 추세 보류, 로컬 미전송 포함/서버 기준 구분 | in_progress |
-| REP-03 | M4 | 관찰/한계/다음 행동 템플릿 | REP-02, SCI-01의 해당 주장/정책 검토 | 숫자/근거 생성 없음, 데이터 부족 요약 가능, 자동 루틴/중량 변경 없음 | planned |
+| REP-02 | M4 | 리포트 화면·충분성·기간/입력revision·오래된 결과 | REP-01, SYNC-03 | 주간 입력 점검/revision/직접 수정 진입 구현·78개/20browser; 저장 report/검토 매핑 후속 | in_progress |
+| REP-03 | M4 | 관찰/한계/다음 행동 템플릿 | REP-02, SCI-01의 해당 주장/정책 검토 | 기록 관찰/한계/바로가기 구현, 근거 기반 다음 행동은 검토 후; 자동 변경 없음 | in_progress |
 | REP-04 | M4 | 운동/일별 볼륨·조건/단위/coverage 계산 | LOG-05, HAR-01 | 소유자/준비·삭제·0/N/A/kg/lb/한손·머신/시간 독립 계약 검사 | done |
 | REP-05 | M4 | 기간/운동/지표 그래프·표·재계산 | REP-04, HAR-02 | 날짜 간격·결측 보류·유효1점·narrow UI/기간/조건 선택·reload | done |
 | REP-06 | M4 | 오늘 사용자 루틴/과거 수행량 참고 후보 | REP-04, PREF-01, LOG-03 | 최근 종료/같은 설정·장비·자료 부족/오늘/진행 보류, 명시 선택·과거량 표시 | done |
