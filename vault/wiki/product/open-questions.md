@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T21:31:00+09:00"
+  at: "2026-10-04T21:48:06+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -101,6 +101,12 @@ sources:
   - id: "final-release"
     resource: "../../raw/research/2026-10-04-release-account-gate.json"
     title: "최종 배포/권한 관문"
+  - id: "account-approved"
+    resource: "../../raw/conversations/2026-10-04-019.md"
+    title: "지정 계정 SQL 승인·로그인"
+  - id: "real-profile-roundtrip"
+    resource: "../../raw/research/2026-10-04-auth-profile-roundtrip.json"
+    title: "실제 빈 프로필 저장/조회/적용"
 ---
 
 # 미결 사항과 다음 대화
@@ -170,3 +176,7 @@ Wrangler Pages 제한 인증은 성공했다. Cloudflare Pages project 생성은
 ## 최신 계정/운영 관문 — CHG0022
 
 Pages/preview·현재앱96bbb74 CI/배포/24file hash를 완료했다. Auth user1개/허용0개. 자동 승인 검토가 exact account/SQL 방식 승인 부재로 권한 등록을 거부했으며, 해당 명시 승인 질문이 pending이다. 실제 login/전송·복원은 다음이다. 개인 ID/비밀번호를 vault에 저장하지 않는다.
+
+## 현재 권한/로그인 관문 — CHG0023
+
+지정 계정 SQL 허용 승인 후 등록1/허용1·실제 Chrome 로그인/빈 프로필 revision1 저장·조회·명시 적용을 확인했다. CHG0022의 승인 pending은 해소됐다. 실제 운동 기록·새 기기/계정 A·B/만료·로그아웃·메일/iPhone은 후속이다. 개인 ID/credential을 공개 문서에 넣지 않는다.

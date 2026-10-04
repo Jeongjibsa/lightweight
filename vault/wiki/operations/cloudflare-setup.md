@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T21:31:00+09:00"
+  at: "2026-10-04T21:48:06+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -41,6 +41,12 @@ sources:
   - id: "final-release"
     resource: "../../raw/research/2026-10-04-release-account-gate.json"
     title: "최종 배포/권한 관문"
+  - id: "account-approved"
+    resource: "../../raw/conversations/2026-10-04-019.md"
+    title: "지정 계정 SQL 승인·로그인"
+  - id: "real-profile-roundtrip"
+    resource: "../../raw/research/2026-10-04-auth-profile-roundtrip.json"
+    title: "실제 빈 프로필 저장/조회/적용"
 ---
 
 # Cloudflare 연결과 정적 PWA 배포
@@ -49,7 +55,7 @@ sources:
 
 운영/DB 연결 없는 preview에 검증한96bbb74를 배포했다. GitHub37201900937의3job success·78 Vitest/Node8·Chromium11/WebKit9, 실제 공개24파일 hash/헤더 일치를 확인했다. 과학 승인 설명은0개다. 후속 문서 commit은 앱 bundle을 바꾸지 않는다. [확인](../../raw/research/2026-10-04-release-account-gate.json).
 
-본인이 직접 생성한 뒤 실제 Auth 계정1개를 확인했다. 허용 목록 등록은 자동 승인 검토가 exact account/SQL 방식의 명시 승인을 요구해 거부했고 적용되지 않았다(allowed_accounts=0). 대상 계정/SQL 승인 질문이 pending이며 우회하지 않는다. 실제 로그인·기록 전송/새 기기 복원·다기기/권한 시험은 다음 관문이다. 비밀번호·UUID/이메일/credential은 vault에 저장하지 않는다.
+사용자가 지정 계정의 SQL 등록을 명시 승인한 뒤 허용 목록에 적용했고 enabled=true·등록1/허용1을 확인했다. 사용자가 직접 로그인한 Chrome에서 빈 기본 프로필의 실제 전송 ACK→서버 revision1→조회/명시 기기 적용·대기0·교체 전 복구 수단을 확인했다. 같은 기기 빈 프로필 시험이며 실제 운동 기록/새 기기/A·B/만료/로그아웃/메일·iPhone 검증은 남는다. [최신 확인](../../raw/research/2026-10-04-auth-profile-roundtrip.json). 개인 식별자/비밀번호/token은 vault에 보관하지 않는다.
 
 
 ## 첫 HTTPS 배포 — 2026-10-04 현재

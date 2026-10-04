@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T21:31:00+09:00"
+  at: "2026-10-04T21:48:06+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -122,20 +122,26 @@ sources:
   - id: "final-release"
     resource: "../../raw/research/2026-10-04-release-account-gate.json"
     title: "최종 배포/권한 관문"
-version: "0.3.3"
+  - id: "account-approved"
+    resource: "../../raw/conversations/2026-10-04-019.md"
+    title: "지정 계정 SQL 승인·로그인"
+  - id: "real-profile-roundtrip"
+    resource: "../../raw/research/2026-10-04-auth-profile-roundtrip.json"
+    title: "실제 빈 프로필 저장/조회/적용"
+version: "0.3.4"
 approval_status: "proposal"
-change_id: "CHG-0017"
+change_id: "CHG-0023"
 ---
 
 # 남은 작업 한눈에 보기
 
-2026-10-04 / PRD0.8.7. 운동 기능 우선, 식단·3D는 후순위다. **운동 MVP 전체는 아직 완료하지 않았다.** 완료한 부분과 사용자/검토자가 필요한 관문을 구별한다.
+2026-10-04 / PRD0.8.8. 운동 기능 우선, 식단·3D는 후순위다. **운동 MVP 전체는 아직 완료하지 않았다.** 완료한 부분과 사용자/검토자가 필요한 관문을 구별한다.
 
 운영: [앱 열기](https://lightweight-training.pages.dev) · [운영 DB 연결 없는 preview](https://preview.lightweight-training.pages.dev) · [세부 백로그](implementation-backlog.md).
 
 | 순서 | 남은 작업 | 현재 완료한 부분 | 완료에 필요한 것 | ID |
 |---|---|---|---|---|
-| 1 | 본인 계정 허용·실제 로그인/동기화 | Auth/허용 목록/RLS·수동 snapshot/CAS·공개 가입OFF·반환 주소 저장 | 등록 계정1개 확인; exact account/SQL 허용 승인 pending→실제 전송/새 저장소 복원·로그아웃 | SYNC02/05, HAR02/06 |
+| 1 | 실제 운동 기록·새 기기 로그인/동기화 | Auth/허용 목록/RLS·수동 snapshot/CAS·공개 가입OFF·반환 주소 저장 | 지정 계정 허용·실제 Chrome 빈 프로필 저장/조회/적용 완료; 실제 운동 기록/새 저장소 복원·로그아웃 검증 필요 | SYNC02/05, HAR02/06 |
 | 2 | 다기기 편집·충돌/실패 복구 | manual CAS/retry/ACK·교체 전 백업 | A/B·만료/권한 회수/응답 유실·서로 다른 편집 명시 해결·삭제 재등장 방지·크기 정책 | SYNC03~05 |
 | 3 | 기록 편의 완성 | 이전값·재시작·미완료 종목 교체·종료 수정 | 운동 순서/메모·삭제 복구·머신/ROM 비교 조건·운동 중 입력 UX | LOG03~06 |
 | 4 | 설명 가능한 개인화 완성 | 볼륨/추이·기록 참고 후보·주간 입력 점검/직접 수정 | 검토된 직접/간접 매핑·저장 report/입력·정책·근거 버전·근거 기반 다음 행동 | REP01~06, SCI03B |
@@ -145,10 +151,10 @@ change_id: "CHG-0017"
 | 8 | 본인 파일럿→지인 제공 | 앱/검사 기반 준비 | 실제4주 관찰/입력누락·오해 개선→회귀, 계정 독립/복원·G3/G4 관문 | PIL01/02 |
 | 후순위 | 식단/영양·3D·선택 AI 설명 | 요구/3D feasibility 문서 | 음식DB/license·기록/계산·검토 공식/결측, 3Dasset/rig/clip/권한/전문검토/실기기성능 | NUT01~04, VIS3D02/03, AI01 |
 
-공개 설명 gate를 준비했고 다음 독립 구현은 LOG03/04 남은 입력 편의다. 실제 콘텐츠/UI·추천 규칙은 검토 후 진행한다. 실제 과학 검토/사용자 기기/파일럿을 자동검사로 대신 완료하지 않는다. 최신 Auth는 등록1개/허용0개다. 권한 SQL은 자동 검토가 대상/방식 명시 승인 부재로 거부해 적용하지 않았고 승인 질문이 pending이다. 비밀번호·개인 기록·credential은 대화/vault/공개 bundle에 보관하지 않는다.
+공개 설명 gate를 준비했고 다음 독립 구현은 LOG03/04 남은 입력 편의다. 실제 콘텐츠/UI·추천 규칙은 검토 후 진행한다. 실제 과학 검토/사용자 기기/파일럿을 자동검사로 대신 완료하지 않는다. 최신 Auth는 등록1개/허용1개다. 지정 계정 SQL 허용 승인 후 실제 Chrome 빈 프로필의 전송/조회/명시 적용을 확인했다. 실제 운동/새 기기 검증과 구별한다. 비밀번호·개인 기록·credential은 대화/vault/공개 bundle에 보관하지 않는다.
 
 최신 확인:78개 Vitest·Node계약8개(배포3/공개5)·browser20·GitHub3job success·vault 검증. lint exit0/기존 effect경고6개는 남는다. 최신25개 정적 파일 gate와 원격 공개24파일 비교를 구별한다. URL 설정만으로 login/복구/메일 통과를 주장하지 않는다. [진행](implementation-progress.md)·[하네스](../operations/testing-harness.md)·[배포 실행](../../raw/research/2026-10-04-pages-deployment.json).
 
 [공개 설명 계약](../operations/content-publication.md). 현재 관문은 구조/내용 동일성 검사이며 실제 전문/권리 검토를 증명하지 않는다. 새 공개 gate96bbb74 CI3job·운영/preview24file 일치 확인을 완료했다.
 
-[최신 배포·계정 관문](../../raw/research/2026-10-04-release-account-gate.json). 승인 전 권한 등록 경로를 바꿔 우회하지 않는다.
+[최신 배포·계정 관문](../../raw/research/2026-10-04-release-account-gate.json). 이 당시 pending은 CHG0023의 명시 승인으로 해소됐다. [실제 Auth 확인](../../raw/research/2026-10-04-auth-profile-roundtrip.json).

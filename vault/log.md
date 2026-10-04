@@ -2,6 +2,8 @@
 
 ## 2026-10-04
 
+- **Auth / CONV0019**: 지정 계정/SQL 명시 승인 후 enabled=true·등록1/허용1 확인. 사용자가 직접 Chrome 로그인, 빈 기본 프로필(운동/루틴0) 저장 ACK/서버revision1→조회/명시 같은 기기 적용·대기0/복구 수단 확인. [실행](raw/research/2026-10-04-auth-profile-roundtrip.json)·[CHG0023](history/changes/CHG-0023.md)·PRD0.8.8 전체 보존, 이전138불변 유지. 개인 credential/ID/기록payload 미보관. 실제 운동/새 기기/A·B/만료/로그아웃/메일·iPhone/SCI/파일럿 관문 유지.
+
 - **Release / CONV0018**:96bbb74 main CI37201900937 3job success·운영/DB없는preview 갱신·25file gate/공개24file hash/헤더 확인. 사용자 직접 생성 뒤 Auth1개 확인; 회원 권한 SQL은 자동 검토가 대상/방식 명시 승인 부재로 거부/미적용(허용0), 정확한 승인 질문 pending. [확인](raw/research/2026-10-04-release-account-gate.json)·[CHG0022](history/changes/CHG-0022.md)·PRD0.8.7 전체 보존, 이전134immutable 유지. 개인식별자/비밀번호 미보관·우회 없음. 실Auth/SCI/iPhone/운영/파일럿/P2 미완료.
 
 - **SCI02 / Gate**: source registry→선택 공개 JSON·일반 build gate, draft 제외·human 선언/receipt/hash·ID/full_review/한계·권리/file hash/외부 symlink 검사. 승인 설명0개/실과학·권리 검토 증명 아님.78 Vitest+Node8(새 공개5)·build/types/format/artifact25 통과(lint 기존6경고). [계약](wiki/operations/content-publication.md)·[CHG0021](history/changes/CHG-0021.md)·PRD0.8.6 전체 보존, 이전130immutable 유지. SCI02/전문/UI·추천 규칙·실Auth/iPhone·P2 미완료.1e1fd9d CI37200956750 success, 새 gate CI/배포 저장 당시 별도.

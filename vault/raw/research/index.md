@@ -32,3 +32,4 @@
 - [공개 관문 검사](2026-10-04-content-publication-gate.json)
 - [공개 관문 최종 보강](2026-10-04-content-publication-final.json)
 - [최종 배포·계정 권한 관문](2026-10-04-release-account-gate.json)
+- [실제 Auth 빈 프로필 저장·조회·적용](2026-10-04-auth-profile-roundtrip.json)

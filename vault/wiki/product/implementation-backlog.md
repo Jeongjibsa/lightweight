@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T21:31:00+09:00"
+  at: "2026-10-04T21:48:06+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -137,9 +137,15 @@ sources:
   - id: "final-release"
     resource: "../../raw/research/2026-10-04-release-account-gate.json"
     title: "최종 배포/권한 관문"
-version: "0.6.11"
+  - id: "account-approved"
+    resource: "../../raw/conversations/2026-10-04-019.md"
+    title: "지정 계정 SQL 승인·로그인"
+  - id: "real-profile-roundtrip"
+    resource: "../../raw/research/2026-10-04-auth-profile-roundtrip.json"
+    title: "실제 빈 프로필 저장/조회/적용"
+version: "0.6.12"
 approval_status: "proposal"
-change_id: "CHG-0022"
+change_id: "CHG-0023"
 ---
 
 # 운동 PWA 구현 백로그와 완료 기준
@@ -189,7 +195,7 @@ UI-01은 당시 부분 Mantine/Spoqa/스택 명시 증분으로 done이었다. C
 | SCI-02 | M5 | 공개 콘텐츠/규칙 등록부와 앱 JSON 빌드 | SCI-01, LOG-02 | registry/선택 JSON·receipt/hash/ID/full_review/asset gate 구현·승인0개; 실검토/UI/추천 규칙 연결 후속 | in_progress |
 | SCI-03 | M5 | 프로필별 목표·횟수·분할 조건 루틴/대체·시간/장비 검사·채택 저장 | SCI-02, LOG-03, REP-01; Q-01/06 | 검토된 규칙만 사용, 3↔4회/분할 변경·누락·장비/시간 처리·입력/출력/근거 버전 재현 | planned |
 | SCI-04 | M5 | 한 부위 조건 티어·이유·근거 배지·갱신일 | SCI-02, REP-03 | 직접 비교 없는 경우 보류/동등 허용, 목표/장비별 일관성·단일 연구 자동S 금지 | planned |
-| REL-01 | M6 | Pages preview/운영·HTTPS origin·환경/인증 URL 분리 | BASE-02, SYNC-05; Q-08/16/17 | 공식 skills16/MCP5·main MCP OAuth/계정 읽기 확인; Wrangler/특화 MCP 인증·원격project·실제 HTTPS/인증 URL·운영 검사 pending | in_progress |
+| REL-01 | M6 | Pages preview/운영·HTTPS origin·환경/인증 URL 분리 | BASE-02, SYNC-05; Q-08/16/17 | Pages/HTTPS/정확한 Auth 반환 URL·현재 앱 24file hash 확인 완료; 실제 운동/새 기기 Auth·Access/자동 배포·메일/복구 후속 | in_progress |
 | REL-02 | M6 | 실제 iPhone 16 Pro Max/iOS 27.0.1·API·콘텐츠/보안 통합 검증 | M2~M5, REL-01; 실제 기기 사용 가능 | 설치→추천/루틴→오프라인 기록→재연결→리포트→복원·업데이트 G3 통과; 사용자 보고 OS 현장 확인 | planned |
 | REL-03 | M6 | 본인 제공·운영/백업/복구·비용/회수 안내 | REL-02; Q-08/15 | 실제 기록/토큰 없는 안내, 사용자별 삭제/내보내기·운영 복원시험·장애 대응 증거 | planned |
 | PIL-01 | M7 | 본인 사용 관찰·불편/기록 유실/리포트 해석 수정 | G3 | 4주 관찰 제안·실제 세션 대비 누락/실패/다음 행동 기록, 문제별 수정/재검증 | planned |
@@ -290,4 +296,4 @@ HAR-02: DOM 입력/transaction 실패·재시도/결측수정3과업을 추가�
 
 ## 현재 운영/계정 준비
 
-96bbb74 main/GitHub3job·Pages/preview24file 일치 완료. Auth 등록1개/허용0개: exact account/SQL 방식 명시 승인이 필요해 등록은 미적용/pending이다. 실제 Auth/다기기·SCI/기기/파일럿 관문 상태를 유지한다.
+96bbb74 main/GitHub3job·Pages/preview24file 일치 완료. Auth 등록1개/허용1개: exact account/SQL 방식 명시 승인 뒤 실제 Chrome 빈 프로필의 저장 ACK/revision1·조회/적용 완료. 실제 운동 기록·새 기기/A·B/만료/로그아웃·메일은 남는다. 실제 Auth/다기기·SCI/기기/파일럿 관문 상태를 유지한다.

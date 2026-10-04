@@ -139,7 +139,11 @@
     "raw/conversations/2026-10-04-018.md": "2e6192b56a4bc79cf5500f9dc5417f84c2a2dd055374278068d7a59ae187dcfe",
     "raw/research/2026-10-04-release-account-gate.json": "2ce05524c6e75a97fa3c8fe5b9495bbd6cc3df26599e347e8c5e8a054991d770",
     "history/versions/prd-v0.8.7.md": "47784bfb1c3cf86a967924f63dcba138b39e3810e74860dd9bc5e765932ba290",
-    "history/changes/CHG-0022.md": "7c08965074a7f400bad005634ac83a7c7478e4b451018037643fd91843db7a0d"
+    "history/changes/CHG-0022.md": "7c08965074a7f400bad005634ac83a7c7478e4b451018037643fd91843db7a0d",
+    "raw/conversations/2026-10-04-019.md": "e44df3caac24c6cbdc0bea8eaa8a0555b5068d47a0c78a3da82c103d3b13962c",
+    "raw/research/2026-10-04-auth-profile-roundtrip.json": "ef88059b401b86ef1247ea06e0fb9568fcdf2359d2094e66f14c818b36d82652",
+    "history/versions/prd-v0.8.8.md": "b19a065e4a11e63b36491978593876e6535b26f19471492162ca4cba8b78833a",
+    "history/changes/CHG-0023.md": "26f48cb1953d192003ea6cae5c7b2210f00506287a812e55defbed107f8d6137"
   },
-  "updated_at": "2026-10-04T20:28:29+09:00"
+  "updated_at": "2026-10-04T21:48:06+09:00"
 }

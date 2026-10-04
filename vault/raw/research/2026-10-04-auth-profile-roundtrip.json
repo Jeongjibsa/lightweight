@@ -1,0 +1,49 @@
+{
+  "type": "Verification Record",
+  "title": "Explicit member grant and real authenticated empty-profile roundtrip",
+  "generated": {
+    "by": "codex/gpt-6",
+    "at": "2026-10-04T21:48:06+09:00"
+  },
+  "immutable": true,
+  "app_source": "96bbb7425b4deec873b08c153bd506e274c11027",
+  "origin": "https://lightweight-training.pages.dev",
+  "authorization": "Human explicitly confirmed the observed single target account and SQL INSERT method after the initial automatic-review rejection. Target identifier intentionally omitted.",
+  "membership": {
+    "insert_executed": true,
+    "return_enabled": true,
+    "read_back": {
+      "registered_accounts": 1,
+      "allowed_accounts": 1,
+      "approved_account_enabled": true
+    }
+  },
+  "actual_browser": {
+    "browser": "User Chrome desktop",
+    "human_login_completion_reported": true,
+    "authenticated_account_panel_observed": true,
+    "own_account_workspace_observed": true,
+    "initial_queued_changes": 0,
+    "upload_clicked": true,
+    "upload_ack_and_sync_timestamp_observed": true,
+    "read_clicked": true,
+    "preview_remote_revision": 1,
+    "explicit_apply_clicked": true,
+    "preview_closed": true,
+    "after_apply_queued_changes": 0,
+    "recovery_download_control_observed": true
+  },
+  "server_aggregate": {
+    "saved_workspaces": 1,
+    "latest_revision": 1,
+    "saved_session_count": 0,
+    "saved_routine_count": 0
+  },
+  "limits": [
+    "Only the empty default profile was stored/read/applied; no actual workout record roundtrip was tested.",
+    "Same browser account workspace; not a fresh device/database or account A/B isolation test.",
+    "No logout/re-login, token expiry/revocation, offline authentication, physical iPhone or mailbox/password recovery test.",
+    "No passwords, tokens, personal identifiers, screenshots containing email, or personal record payloads retained in public vault."
+  ],
+  "previous_rejection": "Not bypassed. Narrow SQL ran only after exact-target/method human approval."
+}

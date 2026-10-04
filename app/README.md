@@ -137,4 +137,6 @@ content:compile이 source registry의 검토 선언·payload/file hash/ID/근거
 
 ## 최신 확인
 
-96bbb74의 GitHub3job과 운영/preview 공개24file hash/헤더 일치를 확인했습니다. 계정은 등록1개/허용0개입니다. 허용 목록 SQL은 자동 검토가 정확한 대상/방식 승인을 요구해 거부했으며 미적용입니다. 승인 후 실제 login/전송·복원 검증을 이어갑니다. PRD0.8.7 문서 commit은 앱 bundle을 바꾸지 않습니다. [확인](../vault/raw/research/2026-10-04-release-account-gate.json).
+96bbb74의 GitHub3job과 운영/preview 공개24file hash/헤더 일치를 확인했습니다. 계정은 등록1개/허용1개입니다. 사용자가 지정 계정/SQL 방식을 명시 승인한 뒤 활성화했습니다. 실제 Chrome login·빈 프로필 전송 ACK/revision1·조회/같은 기기 명시 적용·대기0/복구 수단을 확인했습니다. 실제 운동 기록/새 기기/A·B/만료/로그아웃·메일/iPhone은 별도입니다. PRD0.8.8 계정 문서 commit은 앱 bundle을 바꾸지 않습니다. [확인](../vault/raw/research/2026-10-04-release-account-gate.json).
+
+[실제 Auth 확인과 한계](../vault/raw/research/2026-10-04-auth-profile-roundtrip.json).
