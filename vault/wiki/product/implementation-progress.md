@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T22:16:02+09:00"
+  at: "2026-10-04T22:22:46+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -155,11 +155,26 @@ sources:
   - id: "iphone-user-report"
     resource: "../../raw/research/2026-10-04-iphone-install-user-report.json"
     title: "실제 iPhone 설치·실행·로그인 사용자 확인"
-version: "0.3.7"
-change_id: "CHG-0026"
+  - id: "routine-recovery-check"
+    resource: "../../raw/research/2026-10-04-routine-recovery-loop.json"
+    title: "삭제 루틴 보존·실화면 검사"
+  - id: "routine-recovery"
+    resource: "../operations/routine-recovery.md"
+    title: "복구 계약"
+version: "0.3.8"
+change_id: "CHG-0027"
 ---
 
 # 로컬 PWA 구현 결과와 다음 작업
+
+## 삭제한 루틴 복구 — 2026-10-04
+
+현재 프로필 삭제 목록→Mantine 확인/취소→same ID/계획/설정 보존 복구를 구현했다. owner/deleted/revision·atomic outbox·실패 rollback/재시도·중복 한 번 저장·과거 운동 snapshot/백업 보존을 검사했다. [계약](../operations/routine-recovery.md)·[실행](../../raw/research/2026-10-04-routine-recovery-loop.json).
+
+Vitest86(27/35/24)·Node8·전체 browser22 및 최종 목록 검사2·build/types/format/artifact25 통과(lint 기존6경고). 320/390px 펼친 목록/모달 PNG를 직접 확인했다. 최초 애니메이션 중간 캡처는 실제 panel 완료를 확인해 재캡처한 하네스 보정이다. 새 source CI/운영 배포는 저장 당시 별도다.
+
+루틴 복구는 완료했으나 LOG03~06 전체·운동 기록 삭제/복구·메모·머신/ROM 비교·다기기/리포트/SCI/나머지 실기기·운영/파일럿/P2는 남는다. iPhone 홈 화면/로그인은 CONV0020 사용자 보고로 확인했으며 복구 과업의 실기기 통과로 표시하지 않는다.
+
 
 ## 실제 iPhone 확인 — 사용자 보고, 2026-10-04
 

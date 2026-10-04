@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T22:16:02+09:00"
+  at: "2026-10-04T22:22:46+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
@@ -89,12 +89,23 @@ sources:
   - id: "iphone-user-report"
     resource: "../../raw/research/2026-10-04-iphone-install-user-report.json"
     title: "실제 iPhone 설치·실행·로그인 사용자 확인"
+  - id: "recovery"
+    resource: "routine-recovery.md"
+    title: "계약"
+  - id: "recovery-check"
+    resource: "../../raw/research/2026-10-04-routine-recovery-loop.json"
+    title: "실행"
 version: "0.5.1"
 approval_status: "current-audit-and-proposal"
 change_id: "CHG-0014"
 ---
 
 # 현재 테스트 하네스와 확장 설계
+
+## 최신 루틴 복구 루프
+
+[계약](routine-recovery.md)·[실행](../../raw/research/2026-10-04-routine-recovery-loop.json). Vitest86(27unit/35integration/24UI)·Node8·Chromium12/WebKit10=22, 최종 목록 추가2개. 실제 panel 확장 완료를 기다려 중간 프레임을 최종 PNG로 오인하지 않으며320/390px 여백/44px hit target·overflow를 확인했다. 취소/실패/중복/새 저장소 복원과 과거 운동 보존을 검사한다. 사용자 보고 iPhone 설치/로그인과 본 복구의 실제 기기 검사는 구분한다.
+
 
 ## 실제 iPhone 확인 — 사용자 보고, 2026-10-04
 

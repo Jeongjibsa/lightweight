@@ -168,6 +168,41 @@ export class TrainingStore {
       },
     );
   }
+  async deletedRoutines(ownerId: string) {
+    return this.database.routines
+      .where("ownerId")
+      .equals(ownerId)
+      .filter((routine) => !!routine.deletedAt)
+      .reverse()
+      .sortBy("deletedAt");
+  }
+  async recoverRoutine(
+    ownerId: string,
+    routineId: string,
+    expectedRevision: number,
+  ) {
+    return this.database.transaction(
+      "rw",
+      this.database.routines,
+      this.database.outbox,
+      async () => {
+        const prior = await this.database.routines.get(routineId);
+        requireOwner(prior, ownerId);
+        if (!prior!.deletedAt) throw new Error("이미 복구된 루틴입니다.");
+        if (prior!.revision !== expectedRevision)
+          throw new Error("루틴이 바뀌었습니다. 복구 창을 다시 열어주세요.");
+        const routine = routineSchema.parse({
+          ...prior!,
+          deletedAt: null,
+          updatedAt: now(),
+          revision: prior!.revision + 1,
+        });
+        await this.database.routines.put(routine);
+        await this.enqueue(ownerId, "routine", routine.id, routine);
+        return routine;
+      },
+    );
+  }
   async startSession(ownerId: string, routineId?: string) {
     return this.database.transaction(
       "rw",

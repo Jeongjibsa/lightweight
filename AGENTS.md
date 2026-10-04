@@ -58,3 +58,5 @@
 - CHG-0024의 종목 순서는 session.sets 배열에 보존하며 각 set의 order/입력/완료·루틴 계획/시각은 바꾸지 않는다. active·owner·전체 ID permutation·expected revision을 검사하고 session/outbox를 atomic 저장한다. 순서가 보존되는 백업/수정/보고서 회귀와 실제 hit target 검사(성공 알림 가림)를 유지한다.
 
 - CHG0026/CONV0020에서 iPhone 홈 화면 설치·실행·로그인은 사용자 보고로 확인했다. 직접 기기 관찰/OS 재측정/운동 클라우드 왕복·나머지 G3 통과로 확대하지 않는다.
+
+- CHG0027 루틴 복구는 owner/deleted/expected revision을 확인하고 same ID/계획/설정·과거 운동 snapshot을 보존한다. routine/outbox atomic·실패 rollback/중복 한 번 저장·native Accordion full-height 대기 후 캡처를 유지한다. 운동 기록 복구·자동 클라우드 동기화로 확대하지 않는다.

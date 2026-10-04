@@ -156,7 +156,14 @@
     "raw/conversations/2026-10-04-020.md": "f6a13c10a7e8889ffbb7b04a8f6f80e8679dab18d9640e2a724c7750dec44c14",
     "raw/research/2026-10-04-iphone-install-user-report.json": "718aea63a42c66b28f7d0e5cd95c5b0f19665ee90cad701b7471eeb9a05d007e",
     "history/versions/prd-v0.8.11.md": "d300c5acdf0cce984374d8c26fbc88671201e582b4ba30f21cb8c2b8cfc1c740",
-    "history/changes/CHG-0026.md": "bf9fc7e467003409248d014ba0aad25dbf456cc83d709984a7bbf0c962765d11"
+    "history/changes/CHG-0026.md": "bf9fc7e467003409248d014ba0aad25dbf456cc83d709984a7bbf0c962765d11",
+    "raw/design/2026-10-04-routine-recovery-dialog-320.png": "bfef66a8b9e7bc537f3595a3e74c3a8f6bee6a05d28cb748fc2d171b75fdf5fb",
+    "raw/design/2026-10-04-routine-recovery-list-320.png": "b71bd27e734e5dc03a8ed17603c42cb2a63e4a1dcc5922d69932dfd3555c8b03",
+    "raw/design/2026-10-04-routine-recovery-dialog-390.png": "3cb23a4c0477f3237d0b1b7e8efec7269763328e5c78dfe3fc91da078fce0fcd",
+    "raw/design/2026-10-04-routine-recovery-list-390.png": "7ec1efd73e1c17a82122473719f2f6c587c0ae46487ec0d8b9489a8f5966ea6c",
+    "raw/research/2026-10-04-routine-recovery-loop.json": "361cb445a086c2d5822fdf098d80891db402f826a47568c44de05b9035f8b3fd",
+    "history/versions/prd-v0.8.12.md": "66733363ab99512fef99eec4f8aa138741a1f6dad0d7c13e6fc04a0c8f793826",
+    "history/changes/CHG-0027.md": "4863d9b2efd3a129eb3ccc7c8d370a35fd2a76d65fea7ff78ead925f410e6e16"
   },
-  "updated_at": "2026-10-04T22:16:02+09:00"
+  "updated_at": "2026-10-04T22:22:46+09:00"
 }

@@ -148,3 +148,7 @@ content:compile이 source registry의 검토 선언·payload/file hash/ID/근거
 [최신 배포](../vault/raw/research/2026-10-04-workout-order-release.json). 후속 PRD0.8.10 문서 commit은 배포 앱을 변경하지 않습니다.
 
 iPhone 홈 화면 설치·실행·로그인은 사용자 보고로 확인했습니다(CONV0020). 나머지 실기기/클라우드 운동 기록/접근성/보존 검증과 전체 G3는 남습니다. [범위](../vault/raw/research/2026-10-04-iphone-install-user-report.json).
+
+## 삭제한 루틴 복구
+
+나의 루틴 → 삭제한 루틴 목록 → 복구 확인으로 같은 계획을 되살립니다. 취소/실패/중복·과거 운동/백업 보존과86 Vitest/Node8/22browser·최종목록2개·build/types/format/artifact25를 확인했습니다(lint기존6경고). 운동 기록 복구나 자동 전송 기능은 별도입니다. 새 source CI/배포는 기록 시점 별도입니다. [계약/320·390px 화면](../vault/wiki/operations/routine-recovery.md).

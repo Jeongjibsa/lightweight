@@ -11,6 +11,8 @@ import { TrainingContext } from "../../src/context/training";
 import { TrainingDatabase, TrainingStore } from "../../src/data/local/store";
 import { owner, profileFixture } from "../fixtures/training";
 import { theme } from "../../src/theme";
+import { useLiveQuery } from "dexie-react-hooks";
+import { catalog } from "../../src/content/catalog";
 
 let db: TrainingDatabase | undefined;
 afterEach(async () => {
@@ -111,4 +113,87 @@ it("새 루틴의 운동 선택을 바로 열고 연속 선택한 두 종목과 
     ["바벨 스쿼트", 3],
     ["랫풀다운", 3],
   ]);
+});
+
+it("삭제한 루틴 복구의 취소·실패·재시도는 같은 계획과 과거 기록을 보존한다", async () => {
+  const database = new TrainingDatabase(
+    `routine-recovery-ui-${crypto.randomUUID()}`,
+  );
+  db = database;
+  const store = new TrainingStore(database);
+  await store.ensureProfile(owner);
+  const routine = await store.saveRoutine(owner, {
+    name: "가짜 복구 계획",
+    exercises: [{ exercise: catalog[0]!, sets: 2 }],
+  });
+  const session = await store.startSession(owner, routine.id);
+  await store.tombstone(owner, "routine", routine.id);
+  const deleted = (await database.routines.get(routine.id))!;
+  const before = await database.outbox.toArray();
+  function Harness() {
+    const current = useLiveQuery(() => store.workspace(owner), []);
+    const [error, setError] = useState("");
+    return (
+      <MantineProvider env="test" theme={theme} forceColorScheme="dark">
+        {error && <p role="alert">{error}</p>}
+        <TrainingContext.Provider
+          value={{ db: database, store, accountId: null }}
+        >
+          {current?.profile && (
+            <RoutinesView
+              profile={current.profile}
+              routines={current.routines}
+              start={vi.fn()}
+              run={async (action) => {
+                try {
+                  await action();
+                  setError("");
+                  return true;
+                } catch {
+                  setError("저장 오류: 다시 시도해주세요.");
+                  return false;
+                }
+              }}
+            />
+          )}
+        </TrainingContext.Provider>
+      </MantineProvider>
+    );
+  }
+  render(<Harness />);
+  const user = userEvent.setup();
+  await user.click(
+    await screen.findByRole("button", { name: "삭제한 루틴 1개", exact: true }),
+  );
+  await user.click(
+    await screen.findByRole("button", {
+      name: "가짜 복구 계획 복구",
+      exact: true,
+    }),
+  );
+  await user.click(screen.getByRole("button", { name: "취소", exact: true }));
+  expect(await database.routines.get(routine.id)).toEqual(deleted);
+  await user.click(
+    screen.getByRole("button", { name: "가짜 복구 계획 복구", exact: true }),
+  );
+  vi.spyOn(database.outbox, "add").mockRejectedValueOnce(
+    new Error("synthetic recovery write failure"),
+  );
+  await user.click(
+    screen.getByRole("button", { name: "루틴 복구", exact: true }),
+  );
+  await screen.findByRole("alert");
+  expect(screen.queryByRole("dialog")).not.toBeNull();
+  expect(await database.routines.get(routine.id)).toEqual(deleted);
+  expect(await database.outbox.toArray()).toEqual(before);
+  await user.click(
+    screen.getByRole("button", { name: "루틴 복구", exact: true }),
+  );
+  await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
+  await screen.findByRole("heading", { name: "가짜 복구 계획", exact: true });
+  expect((await database.routines.get(routine.id))!.exercises).toEqual(
+    routine.exercises,
+  );
+  expect(await database.sessions.get(session.id)).toEqual(session);
+  expect(await database.outbox.count()).toBe(before.length + 1);
 });

@@ -203,11 +203,11 @@ test("운동 순서 변경의 취소/저장→reload/빈 저장소 복원에서 
   }
 });
 
-test("E2E-03 다운로드 백업→잘못된 파일 거부→빈 context 복원→IDs/삭제/기록 보존", async ({
+test("E2E-03 다운로드 백업→잘못된 파일 거부→빈 context 복원→삭제한 루틴 복구/과거 기록 보존", async ({
   page,
   browser,
   diagnostics,
-}) => {
+}, info) => {
   await page.goto("/");
   await configure(page);
   await createRoutine(page);
@@ -278,6 +278,117 @@ test("E2E-03 다운로드 백업→잘못된 파일 거부→빈 context 복원�
     await restored.reload();
     expect(normalizeBackup((await downloadBackup(restored)).data)).toEqual(
       normalizeBackup(source.data),
+    );
+    await navigate(restored, "나의 루틴");
+    await restored
+      .getByRole("button", { name: "삭제한 루틴 1개", exact: true })
+      .click();
+    const recoverButton = restored.getByRole("button", {
+      name: "가짜 E2E 전신 A 복사 복구",
+      exact: true,
+    });
+    const deletedPanel = restored.getByRole("region", {
+      name: "삭제한 루틴 1개",
+      exact: true,
+    });
+    await expect
+      .poll(() =>
+        deletedPanel.evaluate(
+          (panel) =>
+            panel.scrollHeight > 0 &&
+            panel.getBoundingClientRect().height >= panel.scrollHeight - 1,
+        ),
+      )
+      .toBe(true);
+    for (const width of [320, 390]) {
+      await restored.setViewportSize({ width, height: 844 });
+      await recoverButton.scrollIntoViewIfNeeded();
+      expect(
+        await restored.evaluate(() => document.documentElement.scrollWidth),
+      ).toBe(width);
+      const hit = await recoverButton.evaluate((button) => {
+        const bounds = button.getBoundingClientRect();
+        return {
+          height: bounds.height,
+          unobscured: button.contains(
+            document.elementFromPoint(
+              bounds.x + bounds.width / 2,
+              bounds.y + bounds.height / 2,
+            ),
+          ),
+        };
+      });
+      expect(hit.height).toBeGreaterThanOrEqual(44);
+      expect(hit.unobscured).toBe(true);
+      const closeNotice = restored.getByRole("button", {
+        name: "알림 닫기",
+        exact: true,
+      });
+      if (await closeNotice.isVisible()) await closeNotice.click();
+      await info.attach(`routine-recovery-list-${width}.png`, {
+        body: await restored.screenshot(),
+        contentType: "image/png",
+      });
+    }
+    await recoverButton.click();
+    const recovery = restored.getByRole("dialog", {
+      name: "삭제한 루틴 복구",
+      exact: true,
+    });
+    for (const width of [320, 390]) {
+      await restored.setViewportSize({ width, height: 844 });
+      expect(
+        await restored.evaluate(() => document.documentElement.scrollWidth),
+      ).toBe(width);
+      await info.attach(`routine-recovery-${width}.png`, {
+        body: await restored.screenshot(),
+        contentType: "image/png",
+      });
+    }
+    await recovery.getByRole("button", { name: "취소", exact: true }).click();
+    expect(normalizeBackup((await downloadBackup(restored)).data)).toEqual(
+      normalizeBackup(source.data),
+    );
+    await navigate(restored, "나의 루틴");
+    await restored
+      .getByRole("button", { name: "삭제한 루틴 1개", exact: true })
+      .click();
+    await restored
+      .getByRole("button", { name: "가짜 E2E 전신 A 복사 복구", exact: true })
+      .click();
+    await restored
+      .getByRole("dialog", { name: "삭제한 루틴 복구", exact: true })
+      .getByRole("button", { name: "루틴 복구", exact: true })
+      .click();
+    await expect(restored.getByRole("dialog")).toBeHidden();
+    await expect(
+      restored.getByRole("heading", {
+        name: "가짜 E2E 전신 A 복사",
+        exact: true,
+      }),
+    ).toBeVisible();
+    const after = (await downloadBackup(restored)).data;
+    const normalizedAfter = normalizeBackup(after);
+    const originalDeleted = normalizeBackup(source.data).routines.find(
+      (r) => !!r.deletedAt,
+    )!;
+    const recovered = normalizedAfter.routines.find(
+      (r) => r.id === originalDeleted.id,
+    )!;
+    expect({
+      ...recovered,
+      revision: originalDeleted.revision,
+      updatedAt: originalDeleted.updatedAt,
+      deletedAt: originalDeleted.deletedAt,
+    }).toEqual(originalDeleted);
+    expect(recovered.deletedAt).toBeNull();
+    expect(recovered.revision).toBe(originalDeleted.revision + 1);
+    expect(normalizedAfter.sessions).toEqual(
+      normalizeBackup(source.data).sessions,
+    );
+    await restored.reload();
+    expect(normalizeBackup((await downloadBackup(restored)).data)).toEqual(
+      normalizedAfter,
     );
   } finally {
     await context.close();

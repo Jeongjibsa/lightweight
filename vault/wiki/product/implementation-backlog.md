@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T22:16:02+09:00"
+  at: "2026-10-04T22:22:46+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -155,9 +155,15 @@ sources:
   - id: "iphone-user-report"
     resource: "../../raw/research/2026-10-04-iphone-install-user-report.json"
     title: "실제 iPhone 설치·실행·로그인 사용자 확인"
-version: "0.6.15"
+  - id: "routine-recovery-check"
+    resource: "../../raw/research/2026-10-04-routine-recovery-loop.json"
+    title: "삭제 루틴 보존·실화면 검사"
+  - id: "routine-recovery"
+    resource: "../operations/routine-recovery.md"
+    title: "복구 계약"
+version: "0.6.16"
 approval_status: "proposal"
-change_id: "CHG-0026"
+change_id: "CHG-0027"
 ---
 
 # 운동 PWA 구현 백로그와 완료 기준
@@ -187,10 +193,10 @@ UI-01은 당시 부분 Mantine/Spoqa/스택 명시 증분으로 done이었다. C
 | BASE-02 | M1 | 공통 화면·PWA manifest/서비스 워커·업데이트 안내 | BASE-01, PRE-02 | 작은 화면/키보드 조작, 준비 후 오프라인 앱 실행, 업데이트 제어 시안 | in_progress |
 | LOG-01 | M2 | 부위·장비/이름 필터·운동/변형·사용자 추가 운동 | BASE-02, PRE-03 | 선택 ID/변형 유지; 미등록 부위/사용자 운동의 검토 상태 표시 | in_progress |
 | LOG-02 | M2 | 운동 상세·2D 근육 지도·수행 그림/대체 텍스트 | LOG-01 | 주/보조 역할을 색 외에도 설명; 자극% 미표시·콘텐츠/권한 상태 구분 | in_progress |
-| LOG-03 | M2 | 루틴 작성·복사·정렬·편집·이전 세션 재사용 | LOG-01, PRE-01 | 직접 재시작/미완료 종목 교체 구현·원본 snapshot 보존; 루틴/오늘 종목 순서 구현·83개/22browser; 메모 등 후속 | in_progress |
+| LOG-03 | M2 | 루틴 작성·복사·정렬·편집·이전 세션 재사용 | LOG-01, PRE-01 | 직접 재시작/미완료 종목 교체 구현·원본 snapshot 보존; 루틴/오늘 종목 순서 구현·83개/22browser; 루틴 복구/CAS/과거 보존·86개/22browser·메모 등 후속 | in_progress |
 | LOG-04 | M2 | 오늘 세션·이전 값·중량/횟수·완료/수정/취소 | BASE-02, PRE-01; 전체 연결은 LOG-03 | 이전 빈 값/종료 명시 수정·CAS/시각 보존 구현·72개/20browser; 오늘 종목 순서/CAS 보존 구현·83개/22browser; 남은 입력 UX/장비 식별 후속 | in_progress |
 | LOG-05 | M2 | Dexie 트랜잭션/outbox·재개·휴식 타이머 | LOG-04 | 저장 실패 시 성공 금지, 중복 탭 0중복, 재시작/잠금 후 상태 복귀 | in_progress |
-| LOG-06 | M2 | JSON 내보내기·가져오기/복원·삭제 흐름 | LOG-05 | 가짜 데이터 빈 저장소 복원 동일, 형식/계정/중복/삭제 정책; 미전송 포함 표시 | in_progress |
+| LOG-06 | M2 | JSON 내보내기·가져오기/복원·삭제 흐름 | LOG-05 | 가짜 데이터 빈 저장소 복원 동일, 형식/계정/중복/삭제 정책·루틴 명시 복구/CAS/atomic·86개/22browser; 운동 삭제/복구 등 후속 | in_progress |
 | SYNC-01 | M3 | SQL migrations·제약·필요 grants/RLS·형식/범위 계약 | PRE-01, LOG-05 | 부모/자식 소유 일치·타인 user_id 대입/변경 차단, DB 초기 구성 재현 | in_progress |
 | SYNC-02 | M3 | 초대 Auth·실제 로그인 경로·계정별 로컬 DB·로그아웃 | SYNC-01; Q-15 | 가입/익명 차단·메일/복구 시험, 계정 전환 비노출/오전송, 만료 시 로컬 대기 유지 | in_progress |
 | SYNC-03 | M3 | outbox 전송/확인·중복 처리·서버 변경 내려받기 | SYNC-02 | 같은 operation 재시도/응답 유실 0중복, 서버 확정 기준/페이지 경계에서 변경 누락 없음 | in_progress |
@@ -319,3 +325,11 @@ HAR-02: DOM 입력/transaction 실패·재시도/결측수정3과업을 추가�
 사용자가 운영 앱의 iPhone 홈 화면 설치·실행·로그인에 “홈 화면 실행·로그인 완료”라고 응답했다. [CONV0020](../conversations/2026-10-04-020.md)·[확인 범위](../../raw/research/2026-10-04-iphone-install-user-report.json). 해당 세 과업은 사용자 보고로 확인했으며 에이전트의 직접 기기 관찰·OS 재측정은 아니다. 앞선 ‘응답 대기’ 문단은 당시 이력이다.
 
 REL02는 부분 진행이다. 실제 운동/모바일 클라우드 왕복·새 기기 복원·키보드/VoiceOver/확대/가로/잠금·오프라인/업데이트/physical quota/eviction 검사는 남는다. 설치·로그인 확인을 G3 전체 통과로 확대하지 않는다. 운영 앱은 e912f0c이며 진행 중인 루틴 복구는 아직 배포하지 않았다.
+
+## 삭제한 루틴 복구 — 2026-10-04
+
+현재 프로필 삭제 목록→Mantine 확인/취소→same ID/계획/설정 보존 복구를 구현했다. owner/deleted/revision·atomic outbox·실패 rollback/재시도·중복 한 번 저장·과거 운동 snapshot/백업 보존을 검사했다. [계약](../operations/routine-recovery.md)·[실행](../../raw/research/2026-10-04-routine-recovery-loop.json).
+
+Vitest86(27/35/24)·Node8·전체 browser22 및 최종 목록 검사2·build/types/format/artifact25 통과(lint 기존6경고). 320/390px 펼친 목록/모달 PNG를 직접 확인했다. 최초 애니메이션 중간 캡처는 실제 panel 완료를 확인해 재캡처한 하네스 보정이다. 새 source CI/운영 배포는 저장 당시 별도다.
+
+루틴 복구는 완료했으나 LOG03~06 전체·운동 기록 삭제/복구·메모·머신/ROM 비교·다기기/리포트/SCI/나머지 실기기·운영/파일럿/P2는 남는다. iPhone 홈 화면/로그인은 CONV0020 사용자 보고로 확인했으며 복구 과업의 실기기 통과로 표시하지 않는다.

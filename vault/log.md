@@ -2,6 +2,8 @@
 
 ## 2026-10-04
 
+- **Records / Recovery**: Mantine 삭제 루틴 목록/명시 복구·owner/deleted/revision/atomic·취소/실패/재시도/중복/과거 snapshot 보존 구현.86개(새2integration/1UI)·Node8·22browser·최종목록2/build/types/format/artifact25 통과(lint기존6경고). 실제 panel 완료 확인 후320/390 목록/확인 PNG 직접 관찰. [실행](raw/research/2026-10-04-routine-recovery-loop.json)·[CHG0027](history/changes/CHG-0027.md)·PRD0.8.12 전체 보존, 이전155불변 유지. 새 source CI/배포 별도·메모/운동 삭제복구/장비/SYNC/REP/SCI/기기/운영/파일럿/P2 유지.
+
 - **Human / iPhone**: CONV0020 “홈 화면 실행·로그인 완료” 새 원본 보존. 설치/실행/로그인은 사용자 보고 확인·직접 기기 관찰/OS 재측정 아님. REL02 부분 진행·나머지 G3/운동/클라우드/접근성/보존 관문 유지. [범위](raw/research/2026-10-04-iphone-install-user-report.json)·[CHG0026](history/changes/CHG-0026.md)·PRD0.8.11 전체 보존, 이전151불변 유지. 앱 e912f0c bundle 변경 없음.
 
 - **Release**: e912f0c main push·GitHub37203886001 3job success·운영/DB없는preview 배포·각25file gate/공개24file hash/헤더 일치.83 Vitest/Node8/browser22. [실행](raw/research/2026-10-04-workout-order-release.json)·[CHG0025](history/changes/CHG-0025.md)·PRD0.8.10 전체 보존, 이전148불변 유지. 현재 남은 표 정리·물리iPhone 확인 요청/저장 시점 응답 대기. 실제 운동/새 기기/계정 A·B/만료/메일·SCI/나머지LOG/REP/운영/파일럿/P2 관문 유지.

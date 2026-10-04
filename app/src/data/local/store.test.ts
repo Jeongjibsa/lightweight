@@ -203,6 +203,70 @@ describe("사용자 설정과 소유 경계", () => {
     expect((await database.sessions.get(session.id))?.revision).toBe(1);
   });
 });
+describe("삭제한 루틴의 명시 복구", () => {
+  it("같은 루틴 ID/계획/당시 설정을 복구하고 기존 운동 snapshot과 백업 삭제 상태를 보존한다", async () => {
+    const session = await plannedSession();
+    const routine = session.routineSnapshot!;
+    await store.tombstone(owner, "routine", routine.id);
+    const deleted = (await store.deletedRoutines(owner))[0]!;
+    expect((await store.workspace(owner)).routines).toHaveLength(0);
+    const before = await store.backup(owner);
+    expect(before.routines[0]).toEqual(deleted);
+    const count = await database.outbox.count();
+    const recovered = await store.recoverRoutine(
+      owner,
+      routine.id,
+      deleted.revision,
+    );
+    expect({
+      ...recovered,
+      revision: deleted.revision,
+      updatedAt: deleted.updatedAt,
+      deletedAt: deleted.deletedAt,
+    }).toEqual(deleted);
+    expect(recovered.deletedAt).toBeNull();
+    expect(recovered.revision).toBe(deleted.revision + 1);
+    expect((await store.workspace(owner)).routines).toEqual([recovered]);
+    expect(await store.deletedRoutines(owner)).toHaveLength(0);
+    expect(await database.sessions.get(session.id)).toEqual(session);
+    expect(await database.outbox.count()).toBe(count + 1);
+    expect((await store.backup(owner)).routines).toEqual([recovered]);
+    expect(before.routines[0]!.deletedAt).not.toBeNull();
+  });
+  it("다른 소유자/오래된 revision/저장 실패/중복 복구가 기존 삭제 상태와 outbox를 덮지 않는다", async () => {
+    const session = await plannedSession();
+    const id = session.routineSnapshot!.id;
+    await store.tombstone(owner, "routine", id);
+    const prior = (await database.routines.get(id))!;
+    const outbox = await database.outbox.toArray();
+    expect(await store.deletedRoutines(other)).toEqual([]);
+    await expect(
+      store.recoverRoutine(other, id, prior.revision),
+    ).rejects.toThrow("현재 프로필");
+    await expect(
+      store.recoverRoutine(owner, id, prior.revision - 1),
+    ).rejects.toThrow("루틴이 바뀌었습니다");
+    vi.spyOn(database.outbox, "add").mockRejectedValueOnce(
+      new Error("synthetic recovery failure"),
+    );
+    await expect(
+      store.recoverRoutine(owner, id, prior.revision),
+    ).rejects.toThrow("synthetic recovery failure");
+    expect(await database.routines.get(id)).toEqual(prior);
+    expect(await database.outbox.toArray()).toEqual(outbox);
+    const attempts = await Promise.allSettled([
+      store.recoverRoutine(owner, id, prior.revision),
+      store.recoverRoutine(owner, id, prior.revision),
+    ]);
+    expect(
+      attempts.filter((attempt) => attempt.status === "fulfilled"),
+    ).toHaveLength(1);
+    expect(
+      attempts.filter((attempt) => attempt.status === "rejected"),
+    ).toHaveLength(1);
+    expect(await database.outbox.count()).toBe(outbox.length + 1);
+  });
+});
 describe("기록 보존과 트랜잭션", () => {
   it("중복 시작과 완료 탭은 기록과 세트를 복제하지 않는다", async () => {
     const [a, b] = await Promise.all([

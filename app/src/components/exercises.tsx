@@ -1,5 +1,6 @@
 import {
   ActionIcon,
+  Accordion,
   Badge,
   Box,
   Button,
@@ -16,6 +17,7 @@ import {
   Title,
 } from "@mantine/core";
 import { useState, type FormEvent } from "react";
+import { useLiveQuery } from "dexie-react-hooks";
 import {
   Plus,
   Search,
@@ -26,6 +28,7 @@ import {
   Copy,
   Info,
   Dumbbell,
+  RotateCcw,
 } from "lucide-react";
 import { catalog } from "../content/catalog";
 import {
@@ -444,6 +447,13 @@ export function RoutinesView({
   const { store } = useTraining();
   const [editor, setEditor] = useState<Routine | "new" | null>(null);
   const [deleting, setDeleting] = useState<Routine | null>(null);
+  const [recovering, setRecovering] = useState<Routine | null>(null);
+  const [recoverBusy, setRecoverBusy] = useState(false);
+  const deleted = useLiveQuery(
+    () => store.deletedRoutines(profile.ownerId),
+    [store, profile.ownerId],
+    [],
+  ).filter((routine) => routine.ownerId === profile.ownerId);
   return (
     <>
       <Group gap="sm" justify="space-between" mb="md">
@@ -531,6 +541,94 @@ export function RoutinesView({
           run={run}
           onClose={() => setEditor(null)}
         />
+      )}
+      {deleted.length > 0 && (
+        <Paper mt="lg">
+          <Accordion>
+            <Accordion.Item value="deleted">
+              <Accordion.Control icon={<RotateCcw size={18} />}>
+                삭제한 루틴 {deleted.length}개
+              </Accordion.Control>
+              <Accordion.Panel>
+                <Stack gap="md">
+                  <Text size="sm" c="dimmed">
+                    삭제한 루틴을 다시 사용할 수 있어요. 복구해도 과거 운동
+                    기록은 바뀌지 않습니다.
+                  </Text>
+                  {deleted.map((routine) => (
+                    <Group key={routine.id} gap="sm" wrap="nowrap">
+                      <Stack gap={4} flex={1} miw={0}>
+                        <Text
+                          size="sm"
+                          fw={600}
+                          style={{ overflowWrap: "anywhere" }}
+                        >
+                          {routine.name}
+                        </Text>
+                        <Text size="xs" c="dimmed">
+                          {routine.exercises.length}개 운동 ·{" "}
+                          {new Date(routine.deletedAt!).toLocaleDateString(
+                            "ko-KR",
+                          )}{" "}
+                          삭제
+                        </Text>
+                      </Stack>
+                      <Button
+                        variant="light"
+                        aria-label={`${routine.name} 복구`}
+                        onClick={() => setRecovering(routine)}
+                      >
+                        복구
+                      </Button>
+                    </Group>
+                  ))}
+                </Stack>
+              </Accordion.Panel>
+            </Accordion.Item>
+          </Accordion>
+        </Paper>
+      )}
+      {recovering && (
+        <Modal
+          title="삭제한 루틴 복구"
+          onClose={() => {
+            if (!recoverBusy) setRecovering(null);
+          }}
+        >
+          <Stack gap="md">
+            <Text size="sm" style={{ overflowWrap: "anywhere" }}>
+              ‘{recovering.name}’의 운동 순서와 계획 세트를 복구합니다.
+            </Text>
+            <Group grow>
+              <Button
+                variant="default"
+                disabled={recoverBusy}
+                onClick={() => setRecovering(null)}
+              >
+                취소
+              </Button>
+              <Button
+                loading={recoverBusy}
+                onClick={async () => {
+                  setRecoverBusy(true);
+                  const ok = await run(
+                    () =>
+                      store.recoverRoutine(
+                        profile.ownerId,
+                        recovering.id,
+                        recovering.revision,
+                      ),
+                    "루틴을 복구했습니다.",
+                  );
+                  setRecoverBusy(false);
+                  if (ok) setRecovering(null);
+                }}
+              >
+                루틴 복구
+              </Button>
+            </Group>
+          </Stack>
+        </Modal>
       )}
       {deleting && (
         <Modal title="루틴 삭제" onClose={() => setDeleting(null)}>
