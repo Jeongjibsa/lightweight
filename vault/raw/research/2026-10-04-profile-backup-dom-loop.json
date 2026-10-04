@@ -1,0 +1,129 @@
+{
+  "type": "Verification Record",
+  "title": "HAR-02 local profile and backup retry loop",
+  "generated": {
+    "by": "codex/gpt-6",
+    "at": "2026-10-04T15:11:42+09:00"
+  },
+  "captured_at": "2026-10-04T15:11:42+09:00",
+  "immutable": true,
+  "request": "CONV-0012 sequential PRD work",
+  "baseline_commit": "bf98038",
+  "branch": "codex/mantine-blue-dark",
+  "app_version": "0.2.0",
+  "schema_version": 2,
+  "automated": {
+    "unit": 19,
+    "integration": 25,
+    "ui": 15,
+    "total": 59,
+    "files": 13,
+    "lint": "passed/0 warnings",
+    "test": "passed/no unhandled errors",
+    "build": "passed",
+    "format_check": "passed",
+    "precache_entries": 25,
+    "precache_KiB": 1277.55
+  },
+  "new_dom_contracts": [
+    {
+      "file": "app/tests/ui/settings.ui.test.tsx",
+      "case": "same File transient read failure/reselect/restore",
+      "before": "Unable to find role=\"button\" and name \"현재 프로필에 복원\"; second same File upload did not re-read",
+      "fix": "FileButton resetRef clears native input every selection; friendly error and stale preview reset",
+      "after": "read twice; first failure preserves profile; restored UI and actual Dexie profile equal backup name"
+    },
+    {
+      "file": "app/tests/ui/profiles.ui.test.tsx",
+      "case": "App A to B initialization delay and return A",
+      "before": "contract coverage, not claimed product failure",
+      "after": "loading hides prior settings; B split/unit/routine only; A/B profile and routines preserved; active local profile A"
+    },
+    {
+      "file": "app/tests/ui/profiles.ui.test.tsx",
+      "case": "save A while profile switch/create attempted",
+      "before": "AssertionError: expected false to be true; Select/create enabled during pending save",
+      "fix": "pending busy disables selection/create; callbacks guarded",
+      "after": "disabled until gate released; only A saved, B unchanged, then B displays"
+    },
+    {
+      "file": "app/tests/ui/profiles.ui.test.tsx",
+      "case": "B ensure finishes before B workspace while liveQuery retains A",
+      "before": "AssertionError: expected <input …(8)></input> to be null; A input displayed again",
+      "fix": "App requires workspace.profile.ownerId equal active ownerId",
+      "after": "loading persists until B workspace returns; no A input before B"
+    }
+  ],
+  "test_environment": {
+    "components": "actual App/SettingsView+Mantine/theme+TrainingStore/Dexie+liveQuery",
+    "isolation": "UUID fake IndexedDB per test; A/B synthetic fixtures; clear localStorage/delete fake DB/restore mocks after tests",
+    "controlled_async": "promise gates on actual Store methods, then real implementation; no wall-clock sleep",
+    "cloud": "test-only mocked supabase:null/configurationError empty; no cloud requests/auth credentials",
+    "service_worker": "Vitest-only virtual:pwa-register/react alias to no-op hook; no SW/offline proof",
+    "layout": "jsdom no-layout stubs; browser screenshots separately"
+  },
+  "browser": {
+    "origin": "http://127.0.0.1:4177",
+    "data": "synthetic screen profile/1 routine/2 completed sessions; no real records or secrets",
+    "method": "CUA user-facing filechooser; invalid JSON at same local path replaced with valid synthetic backup; reselect opened restore preview; canceled, no restore in this supplementary run",
+    "error_copy": "백업 파일을 읽지 못했습니다. 파일 형식을 확인한 뒤 다시 선택해주세요.",
+    "visual_loop": "restore label clipped in two equal columns at390; responsive Mantine SimpleGrid single column below xs; fresh saved image inspected, full label visible",
+    "viewport": "390x844",
+    "screenshots": [
+      {
+        "resource": "raw/design/2026-10-04-har02-invalid-file.png",
+        "sha256": "40d2ede88e4bc6dd4cb581d1f60b32d4321880ebad575745327a76030d4da2a4",
+        "viewport": "390x844",
+        "exact_saved_image_visually_inspected": true,
+        "synthetic_data_only": true
+      },
+      {
+        "resource": "raw/design/2026-10-04-har02-same-file-retry.png",
+        "sha256": "bd2341d812a419dec5b4a4671bc8ecff922acfb6f992a4a48f40fcd220c464c9",
+        "viewport": "390x844",
+        "exact_saved_image_visually_inspected": true,
+        "synthetic_data_only": true
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "local_artifact": "/private/tmp/lightweight-profile-first-failures.log",
+      "sha256": "023dc1e604585ec8472d5720fdabcf6cfe8df8bff06a1471148f220c2b132dda",
+      "scope": "actual product failures after test locator correction;2 failed/12 passed/ui14",
+      "full_log_retention": "local temporary file only; durable failure summaries below"
+    },
+    {
+      "local_artifact": "/private/tmp/lightweight-workspace-before.log",
+      "sha256": "ddf2b4f82ab01f8811f1aa01f9ee4fd96b28f28de4892cf7d860337e98b0308a",
+      "scope": "delayed B workspace while ensureProfile finished;1 failed/2 passed/profile3",
+      "full_log_retention": "local temporary file only; durable failure summaries below"
+    },
+    {
+      "local_artifact": "/private/tmp/lightweight-har02-final.log",
+      "sha256": "9f0d60703c4b95b5525fc57d411e2fa0b3d5f884cd81f0a942a09c51718899fb",
+      "scope": "final check after responsive restore buttons;59 passed/13 files/lint/build",
+      "full_log_retention": "local temporary file only; durable failure summaries below"
+    }
+  ],
+  "code_sha256": {
+    "app/src/App.tsx": "3a5c063409cb278e5144ecc35007a219480677b9629c0ace9767738a8c48e5d0",
+    "app/src/components/settings.tsx": "de94d8c474a6b5ef03db26da8abc30161ccd8ec2d76bd050b954d0d290f86bff",
+    "app/tests/ui/settings.ui.test.tsx": "7aa63523f7e02cc95162e06511c71d91c19aecee9716502862439f105b372062",
+    "app/tests/ui/profiles.ui.test.tsx": "234b03ae84506df45d60fd4a86a4f5388f2bb58d061e2133b2817f05a2e72123",
+    "app/tests/harness/pwa-register.ts": "f5daaeccf1caaa0aedd41e445ad79e8ffcf6e6208e2fc5a34c34ab8e8d45ce1f",
+    "app/vitest.config.ts": "26a9178cb6e6789c293d96134a7db9f897ba38603be98a4bffa72058deb696cc"
+  },
+  "limitations": [
+    "local profiles are not authentication/RLS; same-browser local owner contracts only",
+    "no actual Auth token/account A/B/multi-device verification",
+    "no automated browser runner/hosted CI/production SW/offline/update",
+    "no real iPhone/Safari/keyboard/VoiceOver certification",
+    "59 tests do not prove scientific effect or MVP release readiness"
+  ],
+  "next": [
+    "HAR-03/05 automated browser/CI evidence",
+    "remaining HAR-02 actual Auth transition after registered/allowed test accounts",
+    "HAR-04 browser persistence/update/large backup and SYNC/SCI/REL gates"
+  ]
+}

@@ -48,7 +48,9 @@ okf_version: "0.2"
 - [양식](templates/index.md) — 출처·변경 작성.
 - [시각 자료](assets/index.md) — 추후 콘텐츠.
 
-과학 자료는 **2026-10-03 초기 표적 탐색**, 하네스 기술/코드 확인은 **2026-10-04**다. 일부 연구는 초록만 확인했고 공개 전 전문 검토가 남았다. app0.2.0/schema2에 전체 Mantine/Geist 차콜·노란 강조·하단 UI를 적용했다. 최신unit19/integration25/ui11·55개를 통과했다. CONV-0010의 수동25폭/화면 조합과 CONV-0011의 색상/320·390·1440px 관찰을 구분한다. 기존 Auth/계정 DB·manual snapshot·SQL16·비로그인HTTP 이력을 보존한다. 실제 Auth·자동 browser E2E/외부 CI·iPhone/배포·콘텐츠 전문 검토·자동 문서 감지는 남았다.
+과학 자료는 **2026-10-03 초기 표적 탐색**, 하네스 기술/코드 확인은 **2026-10-04**다. 일부 연구는 초록만 확인했고 공개 전 전문 검토가 남았다. app0.2.0/schema2에 전체 Mantine/Geist 차콜·노란 강조·하단 UI를 적용했다. 최신unit19/integration25/ui15·59개를 통과했다. CONV-0010의 수동25폭/화면 조합과 CONV-0011의 색상/320·390·1440px 관찰을 구분한다. 기존 Auth/계정 DB·manual snapshot·SQL16·비로그인HTTP 이력을 보존한다. 실제 Auth·자동 browser E2E/외부 CI·iPhone/배포·콘텐츠 전문 검토·자동 문서 감지는 남았다.
 
 - [최신 컴포넌트 재감사](wiki/product/component-review.md) — 다섯 페이지 수정 전/후·펼친 선택창·55개 검사·20폭/화면 관찰.
 - [3D 해부학 애니메이션 검토](wiki/product/anatomy-3d-feasibility.md) — FR-17·P2후순위, 가능성/자산/검토·실기기 관문.
+
+- [프로필/백업 후속 루프](raw/research/2026-10-04-profile-backup-dom-loop.json) — 최초3제품 실패·새4DOM 계약·59개 통과; 실제 Auth/자동 browser 별도.

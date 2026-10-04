@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T13:35:43+09:00"
+  at: "2026-10-04T15:11:42+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
@@ -32,9 +32,12 @@ sources:
   - id: "design-verification"
     resource: "../../raw/research/2026-10-04-mantine-geist-design-verification.json"
     title: "디자인 루프 증거"
-version: "0.2.0"
+  - id: "profile-backup-loop"
+    resource: "../../raw/research/2026-10-04-profile-backup-dom-loop.json"
+    title: "HAR-02 최초 실패·실제 수정·59개 검사"
+version: "0.3.0"
 approval_status: "proposal"
-change_id: "CHG-0008"
+change_id: "CHG-0012"
 ---
 
 # 실패를 재현하고 회귀를 남기는 개선 루프
@@ -145,3 +148,19 @@ ProfileForm을 실제 profile payload key로 다시 생성하도록 수정했다
 - LOOP-HARNESS-UI-01: 도구에320 요청했어도 다른 tab의 실제 viewport390인 상태를 확인했다. 실패를 제품 overflow와 구별하고 dev iframe fixture를 추가했다. 다섯 실제폭×다섯화면 child width/scroll/target25조합으로 다시 검사했다. 요청값/초기 screenshot 파일명을 성공 증거로 재사용하지 않았다.
 
 새3개 DOM 과업·기존52개 총55개 통과. 낮은 영향의 스타일을 복제하는 검사 대신 키보드/클릭 수/저장 결과를 고정했다. 검사 환경 export warning은 dev component export로 해결하고 lint 경고0을 재확인했다. 원본/캡처는 fake-only·해시 보존, PRD0.6.0/CHG0010에 제품 변경과 실제 검증 한계를 남겼다. 다음 루프는 HAR-03 결정적 browser/CI 증거와 실제 iPhone 입력/설치 과업이다.
+
+## CONV-0012 후속 — 파일 재선택/프로필 비동기 경합
+
+[실행 원본](../../raw/research/2026-10-04-profile-backup-dom-loop.json). 정상 과업 하나와 아래 세 최초 실패를 구분해 기록했다. Test locator의 여러 alert 선택 오류는 테스트 결함으로 먼저 수정했으며 제품 결함 증거에 포함하지 않았다.
+
+| 문제 | 독립 기대값·최초 제품 실패 | 작은 수정·회귀 |
+|---|---|---|
+| LOOP-BACKUP-RETRY-01 | 실제 같은 File의 첫 읽기만 실패시킴→두 번째 업로드는 복원 가능; 실제는 change 이벤트가 없어서 미리보기 없음 | Mantine FileButton resetRef로 선택 직후 초기화; 두 번 읽기/오류시 DB 유지/복원 UI·DB 일치 |
+| LOOP-PROFILE-PENDING-01 | A 저장을 gate로 지연→전환/생성 disabled; 실제 enabled | App pending guard·SettingsView busy; release 뒤 A만 저장/B 보존 |
+| LOOP-PROFILE-WORKSPACE-01 | B 초기화 완료/조회 지연→A 입력 비노출; 실제 A input 재등장 | workspace.profile.ownerId 일치까지 로딩; release 뒤 B 설정 표시 |
+
+무수정 기준 재현(첫 두 문제: UI14중2실패/12통과, workspace 추가: profile3중1실패/2통과)을 먼저 남겼다. 최종59개/13파일·lint/build/format:check 통과. A→B→A의 서로 다른 설정·루틴/원본 보존도 실제 App/Store 계약으로 추가했으나 이 정상 과업을 기존 제품 실패로 주장하지 않는다. 각 검사 UUID DB·mock/localStorage 정리, gate release, 실제 Store 실행으로 격리한다.
+
+CUA 가짜4177의 invalid JSON 오류→동일 경로 정상 파일→미리보기·취소와 캡처를 확인했다.390px 버튼 label 잘림을 발견해 Mantine SimpleGrid의 작은 화면 단일 열로 수정하고 정확한 저장 캡처에서 전체 label을 재확인했다. DOM의 실제 복원과 browser의 미리보기 관찰을 구분한다. [오류](../../raw/design/2026-10-04-har02-invalid-file.png) · [복원 미리보기](../../raw/design/2026-10-04-har02-same-file-retry.png).
+
+실제 Auth·RLS·서비스워커·레이아웃은 이 DOM 증분의 대체 hook/mock으로 검증되지 않는다. 실제 browser E2E/외부 CI·iPhone 과업은 HAR-03/05·REL-02에서 이어가며 HAR-02 전체는 in_progress다. 기능 요구는 그대로라 PRD0.7.0을 유지하고 실행 증거를 새 불변 원본으로 보존했다.

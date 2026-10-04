@@ -23,3 +23,4 @@
 - [볼륨·추이·오늘 후보 MVP](volume-history-mvp.md) — 관찰/비교·과거 참고→검토된 조정.
 - [디자인 시스템](design-system.md) · [전체 화면 감사](design-audit.md) — Mantine·Geist/차콜·노란 강조·전 폭 하단/빠른 기록.
 - [컴포넌트 재감사](component-review.md) · [3D 가능성](anatomy-3d-feasibility.md) — CONV0012/FR17·실제 캡처·후순위.
+- [HAR-02 후속](implementation-progress.md) — 백업 재선택/로컬 프로필 보존·59개 검사; Auth/browser 관문 유지.

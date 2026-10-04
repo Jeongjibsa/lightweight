@@ -46,3 +46,10 @@
 - [before-settings](2026-10-04-review12-before-settings.png)
 - [before-today](2026-10-04-review12-before-today.png)
 - [before-workout](2026-10-04-review12-before-workout.png)
+
+## HAR-02 후속 가짜 파일 재선택
+
+- [잘못된 파일 오류](2026-10-04-har02-invalid-file.png)
+- [같은 경로 재선택·복원 버튼](2026-10-04-har02-same-file-retry.png)
+
+실제390×844 캡처를 저장 후 직접 확인했다. 미리보기에서 취소했으며 별도 DOM에서 실제 복원/DB 보존을 확인했다. [실행](../research/2026-10-04-profile-backup-dom-loop.json).

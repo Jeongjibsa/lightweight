@@ -86,7 +86,10 @@
     "raw/design/2026-10-04-review12-before-workout.png": "505b36e0f8e9e49d3e02d2c6a21d090f60fc2264a5f5eea801705ea935dd2c9e",
     "raw/research/2026-10-04-component-review.json": "b23b41c27d7e4d6a3d80472bfa3cc369c1ab1a03e8ee78c8dcf1decc0be8cba6",
     "history/changes/CHG-0012.md": "e08ebda52d6a725e81f3acde25b35fc3daecfe15a9f9b884a601c9d32265c8cc",
-    "history/versions/prd-v0.7.0.md": "0d58d5cd4f6d9a34190d02532e09bb76856ace0bc34bb030b81d26d8e2b68dd7"
+    "history/versions/prd-v0.7.0.md": "0d58d5cd4f6d9a34190d02532e09bb76856ace0bc34bb030b81d26d8e2b68dd7",
+    "raw/design/2026-10-04-har02-invalid-file.png": "40d2ede88e4bc6dd4cb581d1f60b32d4321880ebad575745327a76030d4da2a4",
+    "raw/design/2026-10-04-har02-same-file-retry.png": "bd2341d812a419dec5b4a4671bc8ecff922acfb6f992a4a48f40fcd220c464c9",
+    "raw/research/2026-10-04-profile-backup-dom-loop.json": "a1b2674d043509e70390bacfe327a4b193e260fb757bf1d2bf69ebe0bf9ca5a7"
   },
   "updated_at": "2026-10-04T14:54:43+09:00"
 }

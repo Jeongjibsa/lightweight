@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T14:54:43+09:00"
+  at: "2026-10-04T15:11:42+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-012.md"
@@ -20,7 +20,10 @@ sources:
   - id: "reference"
     resource: "../sources/SRC-041-mantine-components.md"
     title: "공식 비교"
-version: "0.1.0"
+  - id: "profile-backup-loop"
+    resource: "../../raw/research/2026-10-04-profile-backup-dom-loop.json"
+    title: "HAR-02 최초 실패·실제 수정·59개 검사"
+version: "0.1.1"
 change_id: "CHG-0012"
 ---
 
@@ -141,4 +144,12 @@ change_id: "CHG-0012"
 
 55개/12파일(19 unit·25 integration·11 DOM), lint/build/format 통과. jsdom에는 레이아웃/scrollIntoView가 없어 명시 shim만 추가했고 실제 스크롤/화면 크기의 증거로 사용하지 않았다. 320/390/768/1440px ×5페이지의 실제 document width와 scrollWidth가 같았다. 단순 색상/간격 구현을 복제하는 테스트는 추가하지 않았다. [수집/검증 원본](../../raw/research/2026-10-04-component-review.json).
 
-남은 관문: 실제 iPhone/Safari·소프트 키보드/확대/가로/VoiceOver·전체 텍스트/상태별 대비, production offline/update·Auth/다기기·자동 E2E/외부 CI. 해당 작업은 RESP/REL/HAR/SYNC를 유지한다. 넓은 table은 내부 수평 스크롤이며 document overflow와 구분한다. 디자인은 이번 관찰에서 개선 확인 상태이며 사용자의 최종 승인이 아니다. 후속으로 HAR-02 파일 선택 재시도/프로필 전환 계약을 진행한다.
+남은 관문: 실제 iPhone/Safari·소프트 키보드/확대/가로/VoiceOver·전체 텍스트/상태별 대비, production offline/update·Auth/다기기·자동 E2E/외부 CI. 해당 작업은 RESP/REL/HAR/SYNC를 유지한다. 넓은 table은 내부 수평 스크롤이며 document overflow와 구분한다. 디자인은 이번 관찰에서 개선 확인 상태이며 사용자의 최종 승인이 아니다. 후속 HAR-02의 로컬 파일/프로필 DOM은59개 증분에서 보강했고 실제 Auth/자동 browser는 남는다.
+
+## 후속 복원 화면 확인
+
+HAR-02를 이어가며 잘못된 백업의 한국어 오류/재선택을 확인했다.390px에서 복원 버튼 글자 잘림을 발견해 Mantine SimpleGrid를 작은 화면 단일 열로 바꾸고 저장한 정확한 캡처를 직접 확인했다.59개 검사·lint/build/format:check 통과. 위55개 UI 감사 원본은 당시 이력으로 보존한다. [후속 실행](../../raw/research/2026-10-04-profile-backup-dom-loop.json).
+
+![잘못된 파일 오류·가짜 데이터](../../raw/design/2026-10-04-har02-invalid-file.png)
+
+![같은 파일 재선택/잘림 없는 복원 버튼·가짜 데이터](../../raw/design/2026-10-04-har02-same-file-retry.png)

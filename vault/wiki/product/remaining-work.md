@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T14:54:43+09:00"
+  at: "2026-10-04T15:11:42+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
@@ -53,20 +53,32 @@ sources:
   - id: "component-check"
     resource: "../../raw/research/2026-10-04-component-review.json"
     title: "실제 페이지별 관찰"
-version: "0.2.1"
+  - id: "profile-backup-loop"
+    resource: "../../raw/research/2026-10-04-profile-backup-dom-loop.json"
+    title: "HAR-02 최초 실패·실제 수정·59개 검사"
+version: "0.3.0"
 approval_status: "proposal"
-change_id: "CHG-0011"
+change_id: "CHG-0012"
 ---
 
 # 현재 구현에서 운동 MVP까지 남은 작업
 
+## HAR-02 후속 — 로컬 프로필/파일 재시도 완료
+
+CONV-0012의 순차 작업으로 실제 App/SettingsView·Mantine·Dexie/liveQuery를 연결했다. 백업 읽기 실패 후 같은 파일 재선택, A→B→A 설정/루틴 보존, 저장 중 프로필 전환/생성 차단, B 초기화 완료/조회 지연 중 A 입력 비노출의4개 DOM 계약을 추가했다. 세 제품 실패를 먼저 재현하고 FileButton resetRef·pending guard·workspace owner 확인으로 수정했다. [최초 실패/검사 원본](../../raw/research/2026-10-04-profile-backup-dom-loop.json).
+
+현재 **unit19/integration25/ui15·59개/13파일**, lint 경고0/build/format:check 통과. 전용4177 가짜 화면에서 잘못된 파일의 한국어 오류→같은 경로의 정상 파일 재선택→복원 미리보기·취소를 확인했고,390px 복원 버튼 글자 잘림도 responsive SimpleGrid로 수정/재캡처했다. 실제 복원/DB 보존은 DOM 계약에서 확인했다. 본 후속 browser 실행에서는 미리보기에서 취소했다.
+
+HAR-02의 **로컬 파일·프로필 DOM 부분**은 완료했으며 실제 Auth 전환은 남아 전체 상태를 in_progress로 유지한다. Auth client와 SW hook은 test-only 대체이며 실제 로그인/RLS/오프라인을 시험한 것이 아니다. 다음 순서는 HAR-03/05 자동 browser/CI 증거, 이어 HAR-04·실계정 SYNC·콘텐츠 SCI·실기기 REL 관문이다. PRD는0.7.0이고 기능 요구/데이터 schema/원격 설정 변경은 없다.
+
+
 ## CONV-0012 현재 재점검
 
-[UI-03 재감사](component-review.md)에서 공식 Mantine 예시와 실제 페이지 캡처를 비교해 Select/Accordion·여백·표면/편집창을 수정했다.55개·lint/build/format·20폭/화면 overflow0. FR-17 [3D 검토](anatomy-3d-feasibility.md)는 기술/자산 관문 문서만 완료하고 VIS-3D-02/03은 P2후순위다. 다음 순차 작업은 HAR-02 백업 재선택/프로필 전환 DOM 보강, 이어 HAR-03/05 자동 browser/CI·SYNC 실계정·SCI 콘텐츠/REL 실기기 관문이다. 운동 MVP 전체 완료로 표시하지 않는다.
+[UI-03 재감사](component-review.md)에서 공식 Mantine 예시와 실제 페이지 캡처를 비교해 Select/Accordion·여백·표면/편집창을 수정했다.55개·lint/build/format·20폭/화면 overflow0. FR-17 [3D 검토](anatomy-3d-feasibility.md)는 기술/자산 관문 문서만 완료하고 VIS-3D-02/03은 P2후순위다. 이 UI 감사 후 HAR-02 로컬 파일 재선택/프로필 DOM 보강을 위 후속 증분에서 마쳤다. 다음은 HAR-03/05 자동 browser/CI·실계정 SYNC·콘텐츠 SCI·실기기 REL 관문이다. 운동 MVP 전체 완료로 표시하지 않는다.
 
 ## CONV-0010→0011 전체 UI 반영
 
-UI-02 전체 Mantine·Geist/차콜·노란 강조·전 폭 하단 메뉴·빠른 접근 증분은 완료했다. 최신55개(19/25/11), lint/build/format 통과. CONV-0010에서 iframe25조합, CONV-0011 색상 수정에서 오늘/리포트390px·설정320px·오늘1440px overflow0를 확인했다. [디자인 감사](design-audit.md). 다음 우선순위는 **HAR-03/05 실제 browser 회귀/CI**, **RESP-01/REL-02 iPhone/Safari 키보드·가로/확대·safe area·설치/오프라인 업데이트**, 실제 계정 준비 후 Auth/다기기·검토된 콘텐츠와 권장량 정책이다. 수동 하네스/모양 개선만으로 이 관문을 완료하지 않는다.
+UI-02 전체 Mantine·Geist/차콜·노란 강조·전 폭 하단 메뉴·빠른 접근 증분은 완료했다. 당시55개(19/25/11), lint/build/format 통과. CONV-0010에서 iframe25조합, CONV-0011 색상 수정에서 오늘/리포트390px·설정320px·오늘1440px overflow0를 확인했다. [디자인 감사](design-audit.md). 다음 우선순위는 **HAR-03/05 실제 browser 회귀/CI**, **RESP-01/REL-02 iPhone/Safari 키보드·가로/확대·safe area·설치/오프라인 업데이트**, 실제 계정 준비 후 Auth/다기기·검토된 콘텐츠와 권장량 정책이다. 수동 하네스/모양 개선만으로 이 관문을 완료하지 않는다.
 
 
 2026-10-04 / app0.2.0. 반응형·사용자 설정·로컬 기록/백업·Mantine/글꼴·Supabase 연결 증분을 구현했다. **운동 MVP 전체와 실제 실사용 관문은 아직 완료하지 않았다.** 실제 상태는 [진행 보고](implementation-progress.md), 작업 계약은 [백로그](implementation-backlog.md)를 따른다.
@@ -81,8 +93,8 @@ UI-02 전체 Mantine·Geist/차콜·노란 강조·전 폭 하단 메뉴·빠른
 
 | 순서 | 남은 작업 | 작업 ID | 완료 조건/현재 제한 |
 |---|---|---|---|
-| 1 | 본인 계정 등록/허용 목록·실제 Auth/복원 | SYNC-02/05 | 사용자가 비밀번호/계정 등록, 승인 UUID 허용 후 login→전송→다른 저장소 불러오기; A/B/만료/권한회수/오프라인 확인. 서버 연결정보 부족은 해결됨 |
-| 2 | 입력/오류 DOM·browser E2E·CI 실패 증거 | HAR-02/03/05 | 세트 입력즉시완료·계정분리·offline·빈DB복원·모달 초점, 결정적 기대값/새context/trace; 외부 CI 결과 |
+| 1 | browser E2E·CI 실패 증거·남은 Auth DOM | HAR-02/03/05 | 로컬 파일/프로필 DOM은 완료. 실제 browser 입력/파일·offline·새DB복원·초점/계정 경계를 새context/trace로 고정; 외부 CI 결과 |
+| 2 | 본인 계정 등록/허용 목록·실제 Auth/복원 | SYNC-02/05 | 사용자가 비밀번호/계정 등록, 승인 UUID 허용 후 login→전송→다른 저장소 불러오기; A/B/만료/권한회수/오프라인 확인. 서버 연결정보 부족은 해결됨 |
 | 3 | 실제 migration/update·저장 실패·대용량 | HAR-04, LOG-05/06 | schema1→2 계약은 통과. 브라우저 quota·진행 운동 update·큰백업 정책/경계·새기기/서버복구는 미완료 |
 | 4 | 전송/편집 충돌 흐름 고도화 | SYNC-03/04/05 | manual snapshot CAS/retry는 구현. 두 변경 명시 해결·삭제 재등장·pending 취소/복구·증가한 기록 크기 정책, 필요 시 자동 레코드 sync |
 | 5 | 실제 운동 입력 편의 | LOG-03~06, RESP-01 | 이전 세션 재사용·종목 대체·종료 기록 편집·부하/장비 조건·삭제 흐름과 회귀 |
@@ -96,7 +108,7 @@ UI-02 전체 Mantine·Geist/차콜·노란 강조·전 폭 하단 메뉴·빠른
 
 ## CONV-0009 이후 실제 다음 묶음
 
-HAR-02 초기 DOM·REP-04/05/06은 구현했다. 현재unit19/integration25/ui8·52개/11파일, lint/build/format·수동 CUA 리포트/후보 확인. 복원 후 설정 입력 잔류 회귀는 해결했다. 다음은 자동 browser E2E·실제 계정 준비 이후 Auth/다기기·실기기/콘텐츠/운영 관문이다. [증거](../../raw/research/2026-10-04-volume-history-verification.json). 아래 문단은 진행 순서를 보존한다.
+HAR-02 초기 DOM·REP-04/05/06은 구현했다. 당시unit19/integration25/ui8·52개/11파일, lint/build/format·수동 CUA 리포트/후보 확인. 복원 후 설정 입력 잔류 회귀는 해결했다. 다음은 자동 browser E2E·실제 계정 준비 이후 Auth/다기기·실기기/콘텐츠/운영 관문이다. [증거](../../raw/research/2026-10-04-volume-history-verification.json). 아래 문단은 진행 순서를 보존한다.
 
 HAR-02 DOM 과업을 먼저 추가하고 REP-04 볼륨 계산→REP-05 그래프/표→REP-06 본인 루틴/과거 수행량 후보를 진행한다. [세부 계약](volume-history-mvp.md). 실제 계정·자동 browser E2E·iPhone/근거 공개 관문은 유지한다. 권장 운동량 조정은 SCI-03B 후속이며 새로운 자동 증량을 먼저 켜지 않는다. 각 검증된 단위는 [commit 지침](../operations/commit-workflow.md)에 따라 local commit한다.
 

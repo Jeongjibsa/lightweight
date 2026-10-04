@@ -556,10 +556,12 @@ export default function App() {
     setSessionId(session.id);
   }
   function switchProfile(id: string) {
+    if (pending > 0) return;
     setSessionId(null);
     setOwnerId(id);
   }
   async function createProfile() {
+    if (pending > 0) return;
     await run(async () => {
       const id = crypto.randomUUID();
       await store.ensureProfile(id);
@@ -583,7 +585,11 @@ export default function App() {
         </Stack>
       </Container>
     );
-  if (readyOwner !== ownerId || !workspace?.profile)
+  if (
+    readyOwner !== ownerId ||
+    !workspace?.profile ||
+    workspace.profile.ownerId !== ownerId
+  )
     return (
       <Stack
         component="main"
@@ -722,6 +728,7 @@ export default function App() {
               run={run}
               switchProfile={switchProfile}
               createProfile={createProfile}
+              busy={pending > 0}
             />
             <AccountPanel
               busy={pending > 0 || sessions.some((s) => s.status === "active")}

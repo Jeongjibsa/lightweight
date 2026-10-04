@@ -1,7 +1,7 @@
 ---
 type: "Testing Harness"
 title: "현재 테스트 하네스와 확장 설계"
-description: "실제 코드·55개 검사·원격 SQL·CI·브라우저 관찰을 구분하고 자동 회귀 구조를 설계한다."
+description: "실제 코드·59개 검사·원격 SQL·CI·브라우저 관찰을 구분하고 자동 회귀 구조를 설계한다."
 tags:
   - "operations"
   - "testing"
@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T13:35:43+09:00"
+  at: "2026-10-04T15:11:42+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
@@ -44,14 +44,17 @@ sources:
   - id: "design-verification"
     resource: "../../raw/research/2026-10-04-mantine-geist-design-verification.json"
     title: "현재 UI 검사"
-version: "0.3.0"
+  - id: "profile-backup-loop"
+    resource: "../../raw/research/2026-10-04-profile-backup-dom-loop.json"
+    title: "HAR-02 최초 실패·실제 수정·59개 검사"
+version: "0.4.0"
 approval_status: "current-audit-and-proposal"
-change_id: "CHG-0010"
+change_id: "CHG-0012"
 ---
 
 # 현재 테스트 하네스와 확장 설계
 
-2026-10-04 / app0.2.0 / IndexedDB schema2 / PRD0.6.0. 하네스는 **실행 환경·가짜 데이터·준비/정리·과업·독립 기대값·실패 증거를 같은 조건으로 반복하는 장치**다. HAR-01을 구현했고 단위/저장소 통합은 자동 실행한다. 원격 SQL 계약 검사는 별도 수동 명령, 실제 브라우저 관찰은 아직 CI E2E가 아니다.
+2026-10-04 / app0.2.0 / IndexedDB schema2 / PRD0.7.0. 하네스는 **실행 환경·가짜 데이터·준비/정리·과업·독립 기대값·실패 증거를 같은 조건으로 반복하는 장치**다. HAR-01을 구현했고 단위/저장소 통합은 자동 실행한다. 원격 SQL 계약 검사는 별도 수동 명령, 실제 브라우저 관찰은 아직 CI E2E가 아니다.
 
 ```mermaid
 flowchart TD
@@ -59,7 +62,7 @@ flowchart TD
   A --> C[Vitest v4 projects]
   C --> U[unit / Node / 19개]
   C --> I[integration / fake IndexedDB / 25개]
-  C --> J[ui / jsdom + Testing Library / 11개]
+  C --> J[ui / jsdom + Testing Library / 15개]
   I --> D[실제 Dexie Store·transaction·cloud 계약]
   A --> E[strict TypeScript + Vite PWA build]
   A --> V[vault YAML·링크·불변 해시]
@@ -72,11 +75,19 @@ flowchart TD
 
 ## 최신 UI 검증과 수동 반응형 하네스
 
-현재 unit19/integration25/ui11·55개/12파일, lint 경고0/build/format. navigation.ui.test.tsx의3과업은 하단탭 keyboard/aria-current·운동 한 번 추가와 별도 info/Escape focus·초기 열린 루틴 picker/연속2종목 저장이다. 기존 설정 복원/입력 직후 완료/저장 실패·계산 계약을 함께 유지한다.
+현재 unit19/integration25/ui15·59개/13파일, lint 경고0/build/format:check. 아래 navigation3개는 기존 검사이고 이번 profile/backup4개를 함께 유지한다. navigation.ui.test.tsx의3과업은 하단탭 keyboard/aria-current·운동 한 번 추가와 별도 info/Escape focus·초기 열린 루틴 picker/연속2종목 저장이다. 기존 설정 복원/입력 직후 완료/저장 실패·계산 계약을 함께 유지한다.
 
 `npm --prefix app run dev -- --host 127.0.0.1 --port 4176` 실행 후 `http://127.0.0.1:4176/tests/harness/responsive.html`에서 폭/화면을 선택한다. iframe은 앱과 **같은 origin/저장소**를 사용하고 자동 seed/clear를 하지 않으므로 전용 origin의 가짜 프로필로 검사한다. 320/375/390/768/1440px·5개 화면을 실제 child html clientWidth/scrollWidth로 측정하고 screenshot/target 크기를 남긴다. 표 내부 overflow와 전체 page overflow를 구분한다. 개발 HTML은 production entry/public asset이 아니고 build/dist에는 포함되지 않는다.
 
 이 fixture는 **수동 browser 검사**다. device emulator/Playwright Test runner/CI trace/실제 iPhone keyboard가 아니다. viewport 도구의 요청치만으로 통과하지 않고 실제 CSS viewport를 읽는다. [원본](../../raw/research/2026-10-04-mantine-geist-design-verification.json) · [디자인 감사](../product/design-audit.md). 아래30/33/50/52개는 이전 실행의 범위다.
+
+## HAR-02 후속 — 로컬 프로필/파일 재시도 완료
+
+CONV-0012의 순차 작업으로 실제 App/SettingsView·Mantine·Dexie/liveQuery를 연결했다. 백업 읽기 실패 후 같은 파일 재선택, A→B→A 설정/루틴 보존, 저장 중 프로필 전환/생성 차단, B 초기화 완료/조회 지연 중 A 입력 비노출의4개 DOM 계약을 추가했다. 세 제품 실패를 먼저 재현하고 FileButton resetRef·pending guard·workspace owner 확인으로 수정했다. [최초 실패/검사 원본](../../raw/research/2026-10-04-profile-backup-dom-loop.json).
+
+현재 **unit19/integration25/ui15·59개/13파일**, lint 경고0/build/format:check 통과. 전용4177 가짜 화면에서 잘못된 파일의 한국어 오류→같은 경로의 정상 파일 재선택→복원 미리보기·취소를 확인했고,390px 복원 버튼 글자 잘림도 responsive SimpleGrid로 수정/재캡처했다. 실제 복원/DB 보존은 DOM 계약에서 확인했다. 본 후속 browser 실행에서는 미리보기에서 취소했다.
+
+HAR-02의 **로컬 파일·프로필 DOM 부분**은 완료했으며 실제 Auth 전환은 남아 전체 상태를 in_progress로 유지한다. Auth client와 SW hook은 test-only 대체이며 실제 로그인/RLS/오프라인을 시험한 것이 아니다. 다음 순서는 HAR-03/05 자동 browser/CI 증거, 이어 HAR-04·실계정 SYNC·콘텐츠 SCI·실기기 REL 관문이다. PRD는0.7.0이고 기능 요구/데이터 schema/원격 설정 변경은 없다.
 
 ## 실제 파일과 격리
 
@@ -84,8 +95,8 @@ flowchart TD
 |---|---|---|
 | unit | `app/tests/unit/models.unit.test.ts`, `cloud.unit.test.ts`, `volume.unit.test.ts`, `history.unit.test.ts` | DB setup 없이 설정/날짜/단위·공개 URL/키·계정 DB 이름·원격 owner/revision 검증과 볼륨/날짜/후보 정책, 합계19개 |
 | integration | `app/src/data/local/store.test.ts`, `cloud.test.ts`, `volume.test.ts` | 기존 저장소14개+클라우드10개, fake-indexeddb와 실제 Dexie/Store/Zod, 볼륨 Store 편집/재개/복원1개, 합계25개 |
-| ui | `app/tests/ui/*.ui.test.tsx`, `setup.ts` | 실제 WorkoutView/VolumeReport/HistorySuggestion/SettingsView·Mantine, 라벨/사용자 동작·오류/필터/명시 선택, 합계11개; fake DB/ResizeObserver no-layout stub, jsdom 파일 읽기는 FileReader로 보완 |
-| 실행 설정 | `app/vitest.config.ts` | Node unit/integration + jsdom ui projects·경로 include 고정, PWA Vite config와 분리 |
+| ui | `app/tests/ui/*.ui.test.tsx`, `setup.ts` | 실제 App/WorkoutView/VolumeReport/HistorySuggestion/SettingsView·Mantine, 라벨/사용자 동작·오류/필터/명시 선택, 합계15개; fake DB/ResizeObserver no-layout stub, jsdom 파일 읽기는 FileReader로 보완 |
+| 실행 설정 | `app/vitest.config.ts` | Node unit/integration + jsdom ui projects·경로 include 고정, PWA Vite config와 분리; SW virtual hook은 test-only no-op alias |
 | DB fixture | 위 integration 파일의 beforeEach/afterEach | 검사마다 UUID DB·A/B 가짜 자료, mock/DB 삭제; cloud 날짜는 Date만 고정 후 복원 |
 | 원격 계약 | `app/scripts/verify-cloud.mjs` | 실제 DB transaction의16개 계약, 가짜 사용자/임시 grant/row를 finally rollback |
 | HTTP/TLS probe | `app/scripts/supabase-probe.mjs`, `db-client.mjs` | Auth flags·publishable-only RPC401·Session pooler CA/hostname 확인 |
@@ -130,7 +141,7 @@ CUA에서는 가짜 설정/reload/update·320/375/1440px 관찰·Spoqa 로딩·�
 
 unit19/integration25/ui6·50개/10파일, lint 경고0/build/format 통과. owner·조건/단위·N/A·날짜 간격·0 변화율/미래, 설정/장비/이력/partial/오늘/active 보류를 독립 기대값으로 확인한다. 실제Store의 편집/완료취소/재개/삭제/복원 재계산, 실제화면의 기간/조건/지표·표·명시 시작을 연결한다. jsdom 초기 ResizeObserver 누락을 환경 실패로 분류해 관찰 stub을 추가했다. 실제 layout은 별도CUA로 확인했다. [원본](../../raw/research/2026-10-04-volume-history-verification.json). 아래33개 표기는 앞선 초기 증분 이력이다.
 
-## 2026-10-04 HAR-02 DOM 증분
+## 이전 2026-10-04 HAR-02 초기 DOM 증분
 
 `app/tests/ui/setup.ts`·`workout.ui.test.tsx`와 Vitest `ui`/jsdom project·`test:ui`를 추가했다. 실제 WorkoutView+Mantine+Dexie를 사용하고 사용자 라벨/동작과 저장 결과를 검사한다. 0kg/반복 입력 직후 완료/blur·재진입, transaction 실패와 UI 오류/기존 payload/outbox·재시도, 중량 결측→0 수정의3개 과업 통과. 기존unit6/integration24와 합계33개/5파일, lint/build/format 통과. [실행 원본](../../raw/research/2026-10-04-dom-harness-verification.json).
 
@@ -139,7 +150,7 @@ HAR-02는 in_progress다. DOM 과업 기반을 만들었지만 backup/Auth 전�
 ## 다음 자동 회귀
 
 - HAR-01 done: projects·기존 검사 분리·unit/integration/check 명령·결정적 cloud 날짜.
-- HAR-02 in_progress: 입력 직후 완료·반복 클릭·저장 오류/복원·계정 전환의 DOM 과업. DOM 환경/입력·실패 과업3개는 추가했고 backup/계정 과업은 남았다.
+- HAR-02 in_progress: 입력·저장 오류/복원·로컬 프로필 전환 DOM 부분 완료. 같은 파일 재시도/A→B→A/pending/workspace 경합4개 추가. 실제 Auth 전환·browser는 남았다.
 - HAR-03 planned: 고정 Playwright Test runner·빌드 preview·새 context·Chromium PWA/WebKit UI 경계. 지금 CUA 관찰은 spec이 아니다.
 - HAR-04 in_progress: schema1→2 저장소 계약 추가. 실제 브라우저 migration/update·quota·대용량 백업 정책은 남았다.
 - HAR-05 planned: CI UI 회귀·실패 trace/console/실행ID 보존·외부 CI 실제 결과. 공통 check만 연결했다.

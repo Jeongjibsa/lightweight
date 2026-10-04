@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T14:54:43+09:00"
+  at: "2026-10-04T15:11:42+09:00"
 sources:
   - id: "implementation-request"
     resource: "../../raw/conversations/2026-10-03-005.md"
@@ -68,7 +68,10 @@ sources:
   - id: "component-check"
     resource: "../../raw/research/2026-10-04-component-review.json"
     title: "실제 페이지별 관찰"
-version: "0.6.0"
+  - id: "profile-backup-loop"
+    resource: "../../raw/research/2026-10-04-profile-backup-dom-loop.json"
+    title: "HAR-02 최초 실패·실제 수정·59개 검사"
+version: "0.6.1"
 approval_status: "proposal"
 change_id: "CHG-0012"
 ---
@@ -242,3 +245,5 @@ UI-02의 색상 기준을 차콜/노란 강조로 수정했고 동일 branch에�
 ## CONV-0012 순차 증분
 
 UI-03의 실제 페이지 재감사/수정→VIS-3D-01 검토/후순위 계획→HAR-02 백업 재시도·프로필 DOM 보강→HAR-03/05 자동 browser/CI 기반을 이어간다. FR-17은 P2로 운동 MVP 안정화 이후 asset/검토/실기기 관문을 통과해 착수하며 현재 구현하지 않는다. [재감사](component-review.md)·[3D](anatomy-3d-feasibility.md).
+
+HAR-02 후속: 파일 재선택/프로필 A→B→A·pending 저장·workspace owner 경합을 실제 App/Store DOM으로 보강하고59개 검사·lint/build/format:check를 통과했다. 로컬 부분은 완료, 실제 Auth/자동 browser는 미완료다. 다음 HAR-03/05를 진행한다. [실행](../../raw/research/2026-10-04-profile-backup-dom-loop.json). 요구/PRD0.7.0·schema는 유지한다.

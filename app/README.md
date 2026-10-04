@@ -70,7 +70,7 @@ npm run check
 npm run format:check
 ```
 
-Vitest v4 projects의 unit19/integration25/ui11(55개/12파일)는 소유자·보존·롤백·백업·계산과 pending/ACK/충돌/교체/schema migration 계약을 검사합니다. 서버 환경이 있는 로컬에서 `npm run cloud:probe`와 `npm run cloud:verify`로 Auth 상태/비로그인 HTTP/TLS 및16개 SQL 계약을 별도 검사합니다. SQL 표본의 임시 자료/권한은 rollback하며 실제 Auth 토큰/브라우저 전체 흐름과 구별합니다.
+Vitest v4 projects의 unit19/integration25/ui15(59개/13파일)는 소유자·보존·롤백·백업·계산과 pending/ACK/충돌/교체/schema migration 계약을 검사합니다. 서버 환경이 있는 로컬에서 `npm run cloud:probe`와 `npm run cloud:verify`로 Auth 상태/비로그인 HTTP/TLS 및16개 SQL 계약을 별도 검사합니다. SQL 표본의 임시 자료/권한은 rollback하며 실제 Auth 토큰/브라우저 전체 흐름과 구별합니다.
 
 [현재 하네스](../vault/wiki/operations/testing-harness.md)와 [진행 보고](../vault/wiki/product/implementation-progress.md)에 실제 범위를 기록했습니다. DOM은 Testing Library/user-event/jsdom으로 추가했습니다. Playwright Test runner·CI 브라우저 회귀는 아직 없습니다. Chromium 폭 시험은 실제 iPhone/Safari 설치·키보드·잠금·저장소 정책을 대신하지 않습니다. GitHub 검사 워크플로는 공통 check를 사용하도록 설정했으며 외부 실행 결과는 아직 없습니다. [정확한 기술 스택](../vault/wiki/product/technology-stack.md) · [남은 작업](../vault/wiki/product/remaining-work.md).
 
@@ -81,3 +81,5 @@ Vitest v4 projects의 unit19/integration25/ui11(55개/12파일)는 소유자·�
 개발 서버에서 `/tests/harness/responsive.html`을 열면 실제 iframe320/375/390/768/1440px와 다섯 화면을 선택할 수 있습니다. 같은 origin/IndexedDB를 사용하고 자료를 자동 초기화하지 않으므로 가짜 전용 프로필/origin에서만 검사하세요. production entry/public asset이 아니며 실제 iPhone·자동 browser runner/CI를 대신하지 않습니다.
 
 CONV-0011에서 Mantine UI 다크/Monokai를 참고해 차콜 배경·노란 강조색으로 바꿨습니다. primary filled 버튼/ThemeIcon은 어두운 전경색이고 PWA theme-color/아이콘도 같은 톤입니다. [최신 실행](../vault/raw/research/2026-10-04-charcoal-theme-verification.json)은 색상/선택 화면 폭 검사이며 실제 iPhone 시험을 뜻하지 않습니다.
+
+HAR-02 후속에서는 실제 App/Mantine/Store의 로컬 프로필 A→B→A·저장 중 전환 차단·workspace 경합 비노출과 동일 백업 파일 재선택/복원4개 DOM 계약을 추가했습니다. `tests/harness/pwa-register.ts`는 Vitest 전용 no-op alias이고 cloud client도 해당 profile test에서만 대체합니다. 실제 Auth/서비스워커/오프라인 검증을 대신하지 않습니다. [최초 실패와 검증](../vault/raw/research/2026-10-04-profile-backup-dom-loop.json).

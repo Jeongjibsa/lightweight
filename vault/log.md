@@ -2,6 +2,8 @@
 
 ## 2026-10-04
 
+- **HAR-02 / Loop**: UI/3D 검토 다음 로컬 파일·프로필 DOM 작업. 백업 동일 파일 재선택·pending 전환 차단·workspace owner 경합의3제품 실패를 먼저 재현/수정하고 A→B→A 정상 보존 포함4회귀 추가.59개(19/25/15)/13파일·lint/build/format:check 통과. CUA 가짜4177 오류→동일 경로 미리보기/취소·390px 복원 버튼 잘림 수정/새 캡처 확인. [불변 실행](raw/research/2026-10-04-profile-backup-dom-loop.json)·[루프](wiki/operations/loop-engineering.md). 로컬 HAR02부분 완료/전체 in_progress; Auth/SW/자동 E2E/CI/실기기 관문 유지, PRD0.7.0/schema2·원격 설정 유지. 지속 승인 범위의 local commit 단위.
+
 - **UI/Planning / CONV0012**: [컴포넌트 재감사](wiki/product/component-review.md)에서 다섯 페이지 before/after·실제 펼친 UI를 캡처/직접 확인해 Select/Accordion·16px 여백·표면·Drawer/텍스트를 수정했다.55개/lint/build/format·20폭/화면 overflow0. [원본](raw/research/2026-10-04-component-review.json). [FR17 3D 검토](wiki/product/anatomy-3d-feasibility.md)는 문서만/후순위P2이며 구현/asset 검수 미수행. PRD0.7.0·[CHG0012](history/changes/CHG-0012.md)·CONV/SRC041~042/캡처·스냅샷을 새로 보존했다. 다음은 HAR02 복원 재시도/프로필 DOM이다.
 
 - **Design / Tone**: [CONV-0011](wiki/conversations/2026-10-04-011.md)의 Monokai/Mantine 참고 요청으로 차콜·노란 강조를 적용. 배경/표면/입력/선택/그래프·PWA theme/아이콘, filled 버튼/ThemeIcon 전경 대비 조정. 같은 `codex/mantine-blue-dark` branch, 기능/데이터/권한 변경 없음. [현재 디자인](wiki/product/design-system.md).

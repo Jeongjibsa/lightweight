@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T14:54:43+09:00"
+  at: "2026-10-04T15:11:42+09:00"
 sources:
   - id: "implementation-request"
     resource: "../../raw/conversations/2026-10-03-005.md"
@@ -68,7 +68,10 @@ sources:
   - id: "component-check"
     resource: "../../raw/research/2026-10-04-component-review.json"
     title: "실제 페이지별 관찰"
-version: "0.6.0"
+  - id: "profile-backup-loop"
+    resource: "../../raw/research/2026-10-04-profile-backup-dom-loop.json"
+    title: "HAR-02 최초 실패·실제 수정·59개 검사"
+version: "0.6.1"
 approval_status: "proposal"
 change_id: "CHG-0012"
 ---
@@ -182,7 +185,16 @@ PRE와 화면/계산 개발은 미결인 종목/장비·호스팅 선택 전 가
 
 ## 실행 기록
 
-CONV-0012/UI-03: 이전 UI-02 완료는 당시 증분 이력이다. 사용자 불만으로 Select/Accordion·spacing·surface를 재점검해 수정했고 현재 감사에서 다섯 페이지/펼친 화면 캡처를 직접 확인했다.55개·lint/build/format·20폭/화면 overflow0. [재감사](component-review.md). VIS-3D-01은 검토 문서만 done이며 구현02/03은 후순위 planned다. 다음은 HAR-02 backup retry/profile DOM 경계다.
+## HAR-02 후속 — 로컬 프로필/파일 재시도 완료
+
+CONV-0012의 순차 작업으로 실제 App/SettingsView·Mantine·Dexie/liveQuery를 연결했다. 백업 읽기 실패 후 같은 파일 재선택, A→B→A 설정/루틴 보존, 저장 중 프로필 전환/생성 차단, B 초기화 완료/조회 지연 중 A 입력 비노출의4개 DOM 계약을 추가했다. 세 제품 실패를 먼저 재현하고 FileButton resetRef·pending guard·workspace owner 확인으로 수정했다. [최초 실패/검사 원본](../../raw/research/2026-10-04-profile-backup-dom-loop.json).
+
+현재 **unit19/integration25/ui15·59개/13파일**, lint 경고0/build/format:check 통과. 전용4177 가짜 화면에서 잘못된 파일의 한국어 오류→같은 경로의 정상 파일 재선택→복원 미리보기·취소를 확인했고,390px 복원 버튼 글자 잘림도 responsive SimpleGrid로 수정/재캡처했다. 실제 복원/DB 보존은 DOM 계약에서 확인했다. 본 후속 browser 실행에서는 미리보기에서 취소했다.
+
+HAR-02의 **로컬 파일·프로필 DOM 부분**은 완료했으며 실제 Auth 전환은 남아 전체 상태를 in_progress로 유지한다. Auth client와 SW hook은 test-only 대체이며 실제 로그인/RLS/오프라인을 시험한 것이 아니다. 다음 순서는 HAR-03/05 자동 browser/CI 증거, 이어 HAR-04·실계정 SYNC·콘텐츠 SCI·실기기 REL 관문이다. PRD는0.7.0이고 기능 요구/데이터 schema/원격 설정 변경은 없다.
+
+
+CONV-0012/UI-03: 이전 UI-02 완료는 당시 증분 이력이다. 사용자 불만으로 Select/Accordion·spacing·surface를 재점검해 수정했고 현재 감사에서 다섯 페이지/펼친 화면 캡처를 직접 확인했다.55개·lint/build/format·20폭/화면 overflow0. [재감사](component-review.md). VIS-3D-01은 검토 문서만 done이며 구현02/03은 후순위 planned다. 후속 HAR-02 로컬 file retry/profile DOM 계약은 위59개 증분에서 완료했고, 실제 Auth 전환/자동 browser는 남는다.
 
 CONV-0011: UI-02의 팔레트만 차콜/노란 강조로 수정. theme/컴포넌트·PWA 색/아이콘,55개·lint/build/format·선택 화면320/390/1440px 확인. [원본](../../raw/research/2026-10-04-charcoal-theme-verification.json). 아래25조합/빠른 입력 검사는 CONV-0010 당시 이력이다.
 

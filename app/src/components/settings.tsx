@@ -16,8 +16,7 @@ import {
   ThemeIcon,
   Title,
 } from "@mantine/core";
-import { errorMessage } from "../domain/errors";
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import { Download, Upload, Plus, ShieldCheck } from "lucide-react";
 import {
   goals,
@@ -242,14 +241,17 @@ export function SettingsView({
   run,
   switchProfile,
   createProfile,
+  busy = false,
 }: {
   profile: Profile;
   profiles: Profile[];
   run: Run;
   switchProfile: (id: string) => void;
   createProfile: () => Promise<void>;
+  busy?: boolean;
 }) {
   const { store, accountId } = useTraining();
+  const resetFile = useRef<(() => void) | null>(null);
   const [backup, setBackup] = useState<Backup | null>(null);
   const [fileError, setFileError] = useState("");
   const [restoring, setRestoring] = useState(false);
@@ -269,12 +271,17 @@ export function SettingsView({
   async function importFile(file?: File) {
     if (!file) return;
     setFileError("");
+    setBackup(null);
+    if (file.size > 10 * 1024 * 1024) {
+      setFileError("10MB 이하의 백업 파일을 선택해주세요.");
+      return;
+    }
     try {
-      if (file.size > 10 * 1024 * 1024)
-        throw new Error("10MB 이하의 백업 파일을 선택해주세요.");
       setBackup(store.parseBackup(await file.text()));
-    } catch (error) {
-      setFileError(errorMessage(error));
+    } catch {
+      setFileError(
+        "백업 파일을 읽지 못했습니다. 파일 형식을 확인한 뒤 다시 선택해주세요.",
+      );
     }
   }
   return (
@@ -302,10 +309,11 @@ export function SettingsView({
               <Select
                 label="현재 프로필"
                 value={profile.ownerId}
+                disabled={busy || restoring}
                 searchable
                 nothingFoundMessage="프로필을 찾을 수 없어요"
                 onChange={(value) => {
-                  if (value) switchProfile(value);
+                  if (value && !busy && !restoring) switchProfile(value);
                 }}
                 data={profiles.map((item) => ({
                   value: item.ownerId,
@@ -315,6 +323,7 @@ export function SettingsView({
               <Button
                 variant="light"
                 leftSection={<Plus size={18} />}
+                disabled={busy || restoring}
                 onClick={() => void createProfile()}
               >
                 새 프로필 만들기
@@ -342,7 +351,12 @@ export function SettingsView({
               현재 프로필 백업
             </Button>
             <FileButton
-              onChange={(file) => void importFile(file ?? undefined)}
+              resetRef={resetFile}
+              onChange={(file) => {
+                // Clear the input after every selection so the same file can be retried.
+                resetFile.current?.();
+                void importFile(file ?? undefined);
+              }}
               accept="application/json,.json"
               inputProps={{ "aria-label": "백업 파일 선택" }}
             >
@@ -399,7 +413,7 @@ export function SettingsView({
               현재 프로필의 설정·루틴·기록을 이 백업으로 교체합니다. 다른 로컬
               프로필은 유지됩니다. 먼저 현재 기록을 백업하는 것을 권장합니다.
             </Text>
-            <Group grow>
+            <SimpleGrid cols={{ base: 1, xs: 2 }} spacing="sm">
               <Button
                 variant="default"
                 disabled={restoring}
@@ -421,7 +435,7 @@ export function SettingsView({
               >
                 {restoring ? "복원 중…" : "현재 프로필에 복원"}
               </Button>
-            </Group>
+            </SimpleGrid>
           </Stack>
         </Modal>
       )}

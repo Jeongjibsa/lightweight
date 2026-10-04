@@ -17,3 +17,4 @@
 - [전체 Mantine/Geist 디자인 검증](2026-10-04-mantine-geist-design-verification.json) — 55개·실제 iframe25조합·가짜 캡처/루프·미검증 경계.
 - [차콜 테마 실행/관찰](2026-10-04-charcoal-theme-verification.json) — 공식 화면·색상/대비·55개·수동 폭 확인.
 - [컴포넌트 재감사 실행](2026-10-04-component-review.json) — 실제 캡처/20폭/화면·55개.
+- [프로필/백업 DOM 루프](2026-10-04-profile-backup-dom-loop.json) — 최초3제품 실패/정상1과업·59개/13파일·실제 파일 미리보기.

@@ -2,7 +2,7 @@ import { useLiveQuery } from "dexie-react-hooks";
 import { MantineProvider } from "@mantine/core";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { afterEach, beforeEach, expect, it } from "vitest";
+import { afterEach, beforeEach, expect, it, vi } from "vitest";
 import { SettingsView } from "../../src/components/settings";
 import { TrainingContext } from "../../src/context/training";
 import { TrainingDatabase, TrainingStore } from "../../src/data/local/store";
@@ -120,4 +120,38 @@ it("기록 갱신으로 다시 렌더링해도 저장하지 않은 프로필 입
   await store.startSession(owner);
   await waitFor(async () => expect(await db.sessions.count()).toBe(1));
   expect(profileName().value).toBe("아직 저장하지 않은 이름");
+});
+
+it("파일 읽기가 일시적으로 실패해도 같은 백업 파일을 다시 선택해 복원할 수 있다", async () => {
+  const user = userEvent.setup();
+  render(<Harness />);
+  await screen.findByLabelText("프로필 이름");
+  const before = await db.profiles.get(owner);
+  const backup = await store.backup(owner);
+  backup.profile.name = "같은 파일 재시도 가짜 설정";
+  const file = new File([JSON.stringify(backup)], "retry-synthetic.json", {
+    type: "application/json",
+  });
+  const read = vi
+    .spyOn(file, "text")
+    .mockRejectedValueOnce(new Error("일시적인 파일 읽기 실패"));
+  const input = screen.getByLabelText("백업 파일 선택");
+  await user.upload(input, file);
+  expect(
+    await screen.findByText(
+      "백업 파일을 읽지 못했습니다. 파일 형식을 확인한 뒤 다시 선택해주세요.",
+    ),
+  ).toBeTruthy();
+  expect(await db.profiles.get(owner)).toEqual(before);
+  await user.upload(input, file);
+  await user.click(
+    await screen.findByRole("button", { name: "현재 프로필에 복원" }),
+  );
+  await waitFor(() =>
+    expect(profileName().value).toBe("같은 파일 재시도 가짜 설정"),
+  );
+  expect(read).toHaveBeenCalledTimes(2);
+  expect((await db.profiles.get(owner))!.name).toBe(
+    "같은 파일 재시도 가짜 설정",
+  );
 });
