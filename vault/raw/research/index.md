@@ -29,3 +29,5 @@
 - [기록 재사용 검사](2026-10-04-record-reuse-verification.json) · [Pages 제한 인증](2026-10-04-pages-scoped-auth.json)
 - [리포트 점검 검사](2026-10-04-report-coverage-verification.json)
 - [실제 Pages 배포](2026-10-04-pages-deployment.json)
+- [공개 관문 검사](2026-10-04-content-publication-gate.json)
+- [공개 관문 최종 보강](2026-10-04-content-publication-final.json)

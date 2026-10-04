@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T21:04:19+09:00"
+  at: "2026-10-04T21:17:12+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -110,6 +110,12 @@ sources:
   - id: "redirect"
     resource: "../sources/SRC-047-auth-production-origin.md"
     title: "Auth 반환 주소"
+  - id: "publication"
+    resource: "../operations/content-publication.md"
+    title: "공개 계약"
+  - id: "publication-check"
+    resource: "../../raw/research/2026-10-04-content-publication-gate.json"
+    title: "검사"
 version: "0.3.3"
 approval_status: "proposal"
 change_id: "CHG-0017"
@@ -117,7 +123,7 @@ change_id: "CHG-0017"
 
 # 남은 작업 한눈에 보기
 
-2026-10-04 / PRD0.8.5. 운동 기능 우선, 식단·3D는 후순위다. **운동 MVP 전체는 아직 완료하지 않았다.** 완료한 부분과 사용자/검토자가 필요한 관문을 구별한다.
+2026-10-04 / PRD0.8.6. 운동 기능 우선, 식단·3D는 후순위다. **운동 MVP 전체는 아직 완료하지 않았다.** 완료한 부분과 사용자/검토자가 필요한 관문을 구별한다.
 
 운영: [앱 열기](https://lightweight-training.pages.dev) · [운영 DB 연결 없는 preview](https://preview.lightweight-training.pages.dev) · [세부 백로그](implementation-backlog.md).
 
@@ -127,12 +133,14 @@ change_id: "CHG-0017"
 | 2 | 다기기 편집·충돌/실패 복구 | manual CAS/retry/ACK·교체 전 백업 | A/B·만료/권한 회수/응답 유실·서로 다른 편집 명시 해결·삭제 재등장 방지·크기 정책 | SYNC03~05 |
 | 3 | 기록 편의 완성 | 이전값·재시작·미완료 종목 교체·종료 수정 | 운동 순서/메모·삭제 복구·머신/ROM 비교 조건·운동 중 입력 UX | LOG03~06 |
 | 4 | 설명 가능한 개인화 완성 | 볼륨/추이·기록 참고 후보·주간 입력 점검/직접 수정 | 검토된 직접/간접 매핑·저장 report/입력·정책·근거 버전·근거 기반 다음 행동 | REP01~06, SCI03B |
-| 5 | 근거 운동 정보·시각·티어·추천 | 기록용12종목·초기 연구/3D 가능성 문서 | 공개 콘텐츠 registry/gate·전문/전문가/권리 검토→설명/시각→조건 추천/티어, 승인 콘텐츠만 제공 | SCI01~04, PRE01, LOG02 |
+| 5 | 근거 운동 정보·시각·티어·추천 | 기록용12종목·초기 연구/3D 검토·공개 JSON gate(승인0개) | 등록부 실제 승인/규칙 연결·전문/전문가/권리 검토→설명/시각→조건 추천/티어, 승인 콘텐츠만 제공 | SCI01~04, PRE01, LOG02 |
 | 6 | 실제 iPhone/PWA·접근성/보존 | 반응형/Mantine·두 브라우저20과업·업데이트/백업/gzip 보존 | 홈 화면 설치·키보드/VoiceOver/확대/가로/잠금·실제offline/update·physical quota/eviction·64MiB초과 분할복구 | RESP01, REL02, HAR04 |
 | 7 | 운영·배포/복구 마무리 | Pages HTTPS·운영/preview DB 분리·23file hash/헤더·main push | 실Auth/메일/비밀번호복구·백업 drill·승인 credential 기반 CI자동배포·도메인/Access 선택 | REL01/03, Q08/16/17 |
 | 8 | 본인 파일럿→지인 제공 | 앱/검사 기반 준비 | 실제4주 관찰/입력누락·오해 개선→회귀, 계정 독립/복원·G3/G4 관문 | PIL01/02 |
 | 후순위 | 식단/영양·3D·선택 AI 설명 | 요구/3D feasibility 문서 | 음식DB/license·기록/계산·검토 공식/결측, 3Dasset/rig/clip/권한/전문검토/실기기성능 | NUT01~04, VIS3D02/03, AI01 |
 
-다음 독립 구현은 공개 콘텐츠 registry/gate 및 LOG03/04 남은 입력 편의다. 실제 과학 검토/사용자 기기/파일럿을 자동검사로 대신 완료하지 않는다. Auth 계정은0개로 확인해 사용자 등록을 안내했다. 비밀번호·개인 기록·credential은 대화/vault/공개 bundle에 보관하지 않는다.
+공개 설명 gate를 준비했고 다음 독립 구현은 LOG03/04 남은 입력 편의다. 실제 콘텐츠/UI·추천 규칙은 검토 후 진행한다. 실제 과학 검토/사용자 기기/파일럿을 자동검사로 대신 완료하지 않는다. 마지막 Auth 확인은0개였고 사용자 직접 등록이 진행 중이다. 비밀번호·개인 기록·credential은 대화/vault/공개 bundle에 보관하지 않는다.
 
-최신 확인:78개 Vitest·배포 계약3개·browser20·GitHub3job success·vault 검증. lint exit0/기존 effect경고6개는 남는다. 24개 정적 파일 gate와 원격 공개23파일 비교를 구별한다. URL 설정만으로 login/복구/메일 통과를 주장하지 않는다. [진행](implementation-progress.md)·[하네스](../operations/testing-harness.md)·[배포 실행](../../raw/research/2026-10-04-pages-deployment.json).
+최신 확인:78개 Vitest·Node계약8개(배포3/공개5)·browser20·GitHub3job success·vault 검증. lint exit0/기존 effect경고6개는 남는다. 24개 정적 파일 gate와 원격 공개23파일 비교를 구별한다. URL 설정만으로 login/복구/메일 통과를 주장하지 않는다. [진행](implementation-progress.md)·[하네스](../operations/testing-harness.md)·[배포 실행](../../raw/research/2026-10-04-pages-deployment.json).
+
+[공개 설명 계약](../operations/content-publication.md). 현재 관문은 구조/내용 동일성 검사이며 실제 전문/권리 검토를 증명하지 않는다. 새 공개 gate는 저장 당시 CI/배포 별도다.

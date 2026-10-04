@@ -1,0 +1,49 @@
+{
+  "type": "Verification Record",
+  "title": "Reviewed exercise-guide export gate",
+  "generated": {
+    "by": "codex/gpt-6",
+    "at": "2026-10-04T21:17:12+09:00"
+  },
+  "immutable": true,
+  "scope": "SCI02 build/declaration/identity gate only; no actual scientific claim approved",
+  "checks": {
+    "vitest": 78,
+    "deploy_and_content_contracts": 8,
+    "new_content_contracts": 5,
+    "build": "passed",
+    "format": "passed",
+    "e2e_typecheck": "passed",
+    "lint": "exit0, six existing effect warnings",
+    "artifact_files": 25
+  },
+  "registry": {
+    "version": "0.1.0",
+    "published_guides": 0,
+    "catalog_rows": 12,
+    "catalog_review": "catalog_draft",
+    "generated_json": "app/public/content/exercise-guides.json",
+    "source_in_app_bundle": false,
+    "vault_in_bundle": false
+  },
+  "contracts": [
+    "Draft/held entries omitted; approved payload requires human/expertise/reviewRef/date and matching SHA256 receipt",
+    "All claim source IDs known and declared full_review, claim kinds science/inference/user-fit and limits distinct, exercise/source/claim IDs checked",
+    "Rights unknown denied; public asset paths restricted, actual file hash matches reviewed hash, symlink escapes rejected before read",
+    "Only payload and public review version exported; reviewer identity and private draft never included",
+    "Build compiles registry before TypeScript/Vite; deterministic empty manifest, no UI guide or recommendation engine yet"
+  ],
+  "boundaries": [
+    "Mechanical validation of declarations and identity, not proof of human credentials, full-source reading, scientific correctness or legal rights",
+    "No approved real entries, expert/source/rights verification remains SCI01/SCI02; no source URL reachability or private reviewRef document existence check",
+    "Actual exercise guide UI, muscle mapping, recommendation/rule registry/tier and offline JSON consumption remain",
+    "Real Auth account creation is in progress by user; no password collected, actual login not tested",
+    "1e1fd9d main CI37200956750 succeeded; new gate not yet pushed/deployed at capture"
+  ],
+  "failure_evidence": "Five synthetic contracts intentionally reject agent approval, changed text, abstracts/missing refs/pending rights, duplicate or unknown IDs, changed files/outside symlinks. New tests passed on first execution; no product failure claimed.",
+  "log_sha256": {
+    "lightweight-content-check2.log": "d1198e032b28472fc06c027d35ec5fee24ba1853a9bc84c82a58a538c2d5fc0d",
+    "lightweight-content-deploy-tests.log": "46063f0cf2ac65de19c45bf044cf5692ba919869523d5a24aab19a905fa3a86d",
+    "lightweight-content-format-final.log": "8eb6d234e87d0da04a9faab4c9482abe011dcdbfcbb8be70cee2813251ffd321"
+  }
+}

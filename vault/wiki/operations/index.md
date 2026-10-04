@@ -15,3 +15,4 @@
 - [압축 백업 계약](compressed-backup.md)
 - [기록 재사용과 수정](record-reuse.md)
 - [주간 기록 점검](report-coverage.md)
+- [공개 설명 빌드 관문](content-publication.md)

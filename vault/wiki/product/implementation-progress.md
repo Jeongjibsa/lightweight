@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T21:04:19+09:00"
+  at: "2026-10-04T21:17:12+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -125,11 +125,24 @@ sources:
   - id: "redirect"
     resource: "../sources/SRC-047-auth-production-origin.md"
     title: "Auth 반환 주소"
+  - id: "publication"
+    resource: "../operations/content-publication.md"
+    title: "공개 계약"
+  - id: "publication-check"
+    resource: "../../raw/research/2026-10-04-content-publication-gate.json"
+    title: "검사"
 version: "0.3.3"
 change_id: "CHG-0017"
 ---
 
 # 로컬 PWA 구현 결과와 다음 작업
+
+## 검토 설명 공개 관문 — 2026-10-04
+
+SCI02의 source registry→선택 공개 JSON 빌드를 추가했다. 초안/보류 제외, human 검토 선언과 payload hash·ID/full_review·한계·권리/asset 파일 hash를 검사하고 reviewer identity/초안을 공개하지 않는다. 승인 설명은0개이며 현재 종목 분류는 기록용 초안이다. 이 기계 검사는 실제 과학/권리·전문 검토를 증명하지 않는다. [계약](../operations/content-publication.md)·[실행](../../raw/research/2026-10-04-content-publication-gate.json).
+
+78개 Vitest + Node8계약·build/types/format/artifact25 통과(lint exit0/기존 경고6). UI/추천 엔진은 변경하지 않았고 SCI02는 in_progress다. 실제 주장/시각/추천 규칙·티어/근육 매핑·offline guide 제공은 검토 후 진행한다. 사용자 본인 계정 등록 진행 중이며 비밀번호를 수집하지 않는다. 기존 main1e1fd9d CI37200956750 success 확인, 새 콘텐츠 관문 CI/배포는 이 저장 당시 별도다.
+
 
 ## 첫 HTTPS 배포 — 2026-10-04 현재
 

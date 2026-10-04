@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T21:04:19+09:00"
+  at: "2026-10-04T21:17:12+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
@@ -77,6 +77,9 @@ sources:
   - id: "deployment-check"
     resource: "../../raw/research/2026-10-04-pages-deployment.json"
     title: "실제 HTTPS 배포"
+  - id: "contract"
+    resource: "content-publication.md"
+    title: "공개 관문"
 version: "0.5.1"
 approval_status: "current-audit-and-proposal"
 change_id: "CHG-0014"
@@ -259,3 +262,7 @@ HAR-02는 in_progress다. DOM 과업 기반을 만들었지만 backup/Auth 전�
 ## HTTPS 배포 계약
 
 Node 기본 test runner의3개(test:deploy)를 npm run check에 추가했다. 실제 헤더 누락/오래된 SW hash/credential·HTTP URL 거부를 검사한다. pages:verify로 운영/preview23파일 hash와 헤더 일치를 확인했다. 78개 Vitest/browser20과 별도이며 실Auth/iPhone은 미통과다. lint는exit0·기존effect경고6개다. [배포 증거](../../raw/research/2026-10-04-pages-deployment.json).
+
+## 공개 설명 계약 검사
+
+content:compile을 일반 build에 연결하고 Node5계약을 추가했다(배포3과 총8). agent 승인/수정 문구·abstract/깨진 참조/unknown 권리·중복/unknown 종목·변경 파일/외부 symlink의 거부와 draft/reviewer 비출력을 확인한다.78 Vitest는 유지, UI 흐름/건강 주장은 추가하지 않았다. 실제 과학 검토·원격 CI는 별도다. [계약](content-publication.md).

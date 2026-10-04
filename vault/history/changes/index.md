@@ -20,3 +20,4 @@
 - [CHG0018 재사용/수정](CHG-0018.md)
 - [CHG0019 기록 점검](CHG-0019.md)
 - [CHG0020 첫 HTTPS 배포](CHG-0020.md)
+- [CHG0021 공개 설명 gate](CHG-0021.md)

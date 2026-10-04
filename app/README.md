@@ -130,3 +130,7 @@ JSON10MiB 이하를 기존 형식으로 내보내고 초과 기록은 자동 .js
 ## 현재 운영 배포
 
 [운영 앱](https://lightweight-training.pages.dev) · [DB 연결 없는 preview](https://preview.lightweight-training.pages.dev).3bc6022 main/GitHub3job 성공 후 배포·원격23file hash/헤더 확인. Auth 반환 URL 저장, 계정 등록/실제 login·iPhone/콘텐츠 검토는 남음. npm run pages:verify -- <HTTPS origin> <dist path>로 공개 파일 일치를 검사하며 test:deploy의3계약이 check/CI에 포함됩니다.78 Vitest/browser20과 별도입니다. [현재 남은 작업](../vault/wiki/product/remaining-work.md).
+
+## 공개 설명 빌드 관문
+
+content:compile이 source registry의 검토 선언·payload/file hash/ID/근거·권리 조건을 확인하고 선택 JSON만 공개합니다. build/check/CI에 포함되며 승인 설명은0개입니다. 실제 과학/라이선스 검토를 증명하지 않고 UI/추천 정책은 후속입니다.78 Vitest+Node8계약·artifact25 통과. [계약](../vault/wiki/operations/content-publication.md).

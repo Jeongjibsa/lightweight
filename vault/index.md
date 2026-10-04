@@ -4,7 +4,7 @@ okf_version: "0.2"
 
 # 웨이트 트레이닝 앱 — 기획과 지식 베이스
 
-옵시디언에서 이 `vault` 폴더를 열고 시작한다. 현재 기획은 **0.8.5 브레인스토밍 초안**이다.
+옵시디언에서 이 `vault` 폴더를 열고 시작한다. 현재 기획은 **0.8.6 브레인스토밍 초안**이다.
 
 ## 먼저 읽기
 
@@ -48,7 +48,7 @@ okf_version: "0.2"
 - [양식](templates/index.md) — 출처·변경 작성.
 - [시각 자료](assets/index.md) — 추후 콘텐츠.
 
-과학 자료는2026-10-03 초기 표적 탐색이며 일부 초록/전문 미검토 자료가 있다. 현재 PRD0.8.5·app0.2.0/schema2·Mantine/Geist/차콜·노란 강조·하단 UI. [운영 앱](https://lightweight-training.pages.dev)과 DB 연결 없는 preview를 배포했다.78개 Vitest·배포 계약3개·browser20·GitHub3job을 통과했다. 실제 Auth/다기기·iPhone·과학 공개/전문가·운영 복구·파일럿과 전체 운동 MVP는 남는다. [현재 남은 작업](wiki/product/remaining-work.md). 아래 링크는 누적 증분이며 당시 검사와 최신 상태를 구별한다.
+과학 자료는2026-10-03 초기 표적 탐색이며 일부 초록/전문 미검토 자료가 있다. 현재 PRD0.8.6·app0.2.0/schema2·Mantine/Geist/차콜·노란 강조·하단 UI. [운영 앱](https://lightweight-training.pages.dev)과 DB 연결 없는 preview를 배포했다.78개 Vitest·Node계약8개(배포3/공개5)·browser20·이전 배포 GitHub3job을 통과했다. 새 공개 gate의 CI/배포는 저장 당시 별도다. 실제 Auth/다기기·iPhone·과학 공개/전문가·운영 복구·파일럿과 전체 운동 MVP는 남는다. [현재 남은 작업](wiki/product/remaining-work.md). 아래 링크는 누적 증분이며 당시 검사와 최신 상태를 구별한다.
 
 - [최신 컴포넌트 재감사](wiki/product/component-review.md) — 다섯 페이지 수정 전/후·펼친 선택창·55개 검사·20폭/화면 관찰.
 - [3D 해부학 애니메이션 검토](wiki/product/anatomy-3d-feasibility.md) — FR-17·P2후순위, 가능성/자산/검토·실기기 관문.
@@ -68,3 +68,5 @@ okf_version: "0.2"
 - [최신 주간 기록 점검](wiki/operations/report-coverage.md) —78개/browser20·기간/상태/조건/입력 revision·직접 수정 진입.
 
 - [최신 HTTPS 배포 검사](raw/research/2026-10-04-pages-deployment.json) —운영/preview·23file hash·Auth 반환 URL·계정/iPhone 관문 유지.
+
+- [검토된 설명 공개 관문](wiki/operations/content-publication.md) —기계적 선언/내용·파일 hash·권리 gate, 실제 승인 설명0개·SCI02 in_progress.

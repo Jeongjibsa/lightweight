@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T21:04:19+09:00"
+  at: "2026-10-04T21:17:12+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -125,9 +125,15 @@ sources:
   - id: "redirect"
     resource: "../sources/SRC-047-auth-production-origin.md"
     title: "Auth 반환 주소"
-version: "0.6.9"
+  - id: "publication"
+    resource: "../operations/content-publication.md"
+    title: "공개 계약"
+  - id: "publication-check"
+    resource: "../../raw/research/2026-10-04-content-publication-gate.json"
+    title: "검사"
+version: "0.6.10"
 approval_status: "proposal"
-change_id: "CHG-0020"
+change_id: "CHG-0021"
 ---
 
 # 운동 PWA 구현 백로그와 완료 기준
@@ -174,7 +180,7 @@ UI-01은 당시 부분 Mantine/Spoqa/스택 명시 증분으로 done이었다. C
 | REP-06 | M4 | 오늘 사용자 루틴/과거 수행량 참고 후보 | REP-04, PREF-01, LOG-03 | 최근 종료/같은 설정·장비·자료 부족/오늘/진행 보류, 명시 선택·과거량 표시 | done |
 | SCI-03B | M5 | 과거 수행 기반 권장 운동량 조정 | REP-06, SCI-01~03; 경험/effort/불편감 | 검토된 정책·충분성/보류·이유·사용자 채택, 자동 증량/최적량 단정 없음 | planned |
 | SCI-01 | M0~M5 | 논문/해부학·정정/철회·대상/측정/비교·제안 수치 검토 등록 | PRE-03 | 공개 주장별 출처/읽은 범위/제약/검토자/일자·전문 공백 기록; 미검토 정책 제공 차단 | planned |
-| SCI-02 | M5 | 공개 콘텐츠/규칙 등록부와 앱 JSON 빌드 | SCI-01, LOG-02 | 검토·권한 확인한 파일만 출력, 링크/ID/버전/검토 상태 검사, vault 원문 번들 제외 | planned |
+| SCI-02 | M5 | 공개 콘텐츠/규칙 등록부와 앱 JSON 빌드 | SCI-01, LOG-02 | registry/선택 JSON·receipt/hash/ID/full_review/asset gate 구현·승인0개; 실검토/UI/추천 규칙 연결 후속 | in_progress |
 | SCI-03 | M5 | 프로필별 목표·횟수·분할 조건 루틴/대체·시간/장비 검사·채택 저장 | SCI-02, LOG-03, REP-01; Q-01/06 | 검토된 규칙만 사용, 3↔4회/분할 변경·누락·장비/시간 처리·입력/출력/근거 버전 재현 | planned |
 | SCI-04 | M5 | 한 부위 조건 티어·이유·근거 배지·갱신일 | SCI-02, REP-03 | 직접 비교 없는 경우 보류/동등 허용, 목표/장비별 일관성·단일 연구 자동S 금지 | planned |
 | REL-01 | M6 | Pages preview/운영·HTTPS origin·환경/인증 URL 분리 | BASE-02, SYNC-05; Q-08/16/17 | 공식 skills16/MCP5·main MCP OAuth/계정 읽기 확인; Wrangler/특화 MCP 인증·원격project·실제 HTTPS/인증 URL·운영 검사 pending | in_progress |

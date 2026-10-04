@@ -1,0 +1,31 @@
+{
+  "type": "Verification Record",
+  "title": "Content gate final asset checks",
+  "generated": {
+    "by": "codex/gpt-6",
+    "at": "2026-10-04T21:21:27+09:00"
+  },
+  "immutable": true,
+  "supersedes_scope": "Adds orphan public visual files and output/directory path confinement to earlier content gate capture; previous capture retained",
+  "checks": {
+    "node_contracts": 8,
+    "build": "passed",
+    "reviewed_guides": 0,
+    "artifact_files": 25,
+    "new_behavior": "Unreferenced public content/assets files rejected; outside asset/output directory paths rejected before publishing"
+  },
+  "source_sha256": {
+    "app/scripts/compile-reviewed-content.mjs": "e8d9919bbe0e2460b5230ac7f400d51397c9f21162c0f764165e12c5f4b868a7",
+    "app/tests/deploy/content.test.mjs": "837f5db4465ea5d7084dd6fbb48da846c433129e5b9d261b0dcdb15466c9a7a2"
+  },
+  "log_sha256": {
+    "lightweight-content-final2-tests.log": "21d68eed041270930e84ee0c2a4b54823060348edc435606f4fefefd8fae1c9f",
+    "lightweight-content-final2-build.log": "5e2843cdd424fdab7daefa90650019f983a3a2a9a7e29e0e35908e66aa7d8534",
+    "lightweight-content-final-lint.log": "c6e6302545cdd5a2ec0447568b029994f0d7ce6eec38d7b7866ef40e8df384a4",
+    "lightweight-content-format4.log": "1588b7a0bf45af57f881cc07deae895acbb8dd8d130be2cde919a04f8eb84790"
+  },
+  "limits": [
+    "Current registry empty; metadata/identity checks not actual scientific or legal approval",
+    "UI unchanged, no real account/device/browser result added here"
+  ]
+}

@@ -8,6 +8,7 @@ vault/.obsidian/workspace*.json
 **/node_modules/
 app/dist/
 app/dist-preview/
+app/public/content/exercise-guides.json
 **/.env
 **/.env.*
 !**/.env.example
