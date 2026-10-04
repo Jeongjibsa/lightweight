@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T23:46:05+09:00"
+  at: "2026-10-04T23:58:53+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -131,6 +131,9 @@ sources:
   - id: "git-google"
     resource: "../../raw/research/2026-10-04-git-oauth-review.json"
     title: "Git 구성/Google 검토"
+  - id: "git-release22"
+    resource: "../../raw/research/2026-10-04-catalog-rest-git-release.json"
+    title: "0f6381d CI/Git build/production asset verification"
 ---
 
 # 미결 사항과 다음 대화
@@ -226,3 +229,9 @@ iPhone 설치/홈 화면/로그인은 CONV0020 사용자 보고로 확인했다.
 ## CONV0022 현재 미결
 
 Google 계정 로그인은 기술적으로 가능하지만 검토 요청만 처리했다. Google web client/동의 화면·기존 계정 이메일 관계·provider/callback 구현·동일 UID 및 가입OFF/허용 목록·실제 iPhone 복귀 검증은 남는다. [검토](google-oauth-review.md). 휴식 default1분/즐겨찾기3~4개는 명시 요구이며 초깃값60/90/120/180·15~1800초는 구현 정책이다. 물리 잠금/알림 관문은 완료하지 않았다. 새 Git 자동 배포 성공/정적 자산 일치는 후속 receipt에서 확인한다.
+
+## 현재 운영 배포 — Git0f6381d
+
+0f6381d main push의 GitHub37210829022 check/Chromium/WebKit 세 job이 모두 success다. Pages trigger=github:push·같은 source commit의 build/deploy success를 확인했고 [운영 앱](https://lightweight-training.pages.dev)의 공개24file hash/보안 헤더가 최종 build와 일치한다. 검토 시점 Git/CI 대기는 이 실행으로 해소됐다. [불변 확인](../../raw/research/2026-10-04-catalog-rest-git-release.json).
+
+이번 확인은 production이다. preview 환경은 DB 설정 없이 유지했고 이번 작업에서 새 preview branch는 push하지 않았다.98개/Node8/전체30browser·마지막문구6·9PNG·build/types/format/artifact25(lint기존6경고)는 feature source의 검증이다. 이어지는 문서 commit은 앱 bundle을 바꾸지 않는다. Google provider/callback은 검토만이며 실제 iPhone 운동/잠금/클라우드·나머지 Auth/SCI/운영/파일럿/P2는 유지한다.

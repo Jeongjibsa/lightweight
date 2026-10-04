@@ -164,3 +164,5 @@ iPhone 홈 화면 설치·실행·로그인은 사용자 보고로 확인했습�
 기본1분의 세트 휴식 타이머와 수정 가능한3~4개 즐겨찾기, 일시정지/재개/종료를 제공합니다. 진행 deadline은 기기별이며 즐겨찾기는 profile/outbox와 백업에 포함합니다. 다섯 메뉴 제목의 focus는 유지하고 outline을 제거했습니다.98개/Node8·전체30browser와 최종 문구6을 확인했습니다. [계약/화면](../vault/wiki/operations/catalog-rest-timer.md).
 
 현재 Pages는 Jeongjibsa/lightweight/main Git 자동 배포로 연결했습니다. build는 `cd app && npm ci && npm run build && npm run pages:check`, output app/dist, Node24입니다. production 공개 Supabase 환경을 설정했고 preview는 비워 둡니다. [운영](../vault/wiki/operations/pages-git-integration.md). [Google 로그인](../vault/wiki/product/google-oauth-review.md)은 검토만 완료했고 provider/callback은 아직 구현하지 않았습니다.
+
+0f6381d main의 GitHub37210829022 세 job과 Pages github:push/build/deploy가 success이며 production 공개24file hash/헤더 일치를 확인했습니다. [receipt](../vault/raw/research/2026-10-04-catalog-rest-git-release.json). 후속 문서 commit은 bundle을 바꾸지 않습니다.

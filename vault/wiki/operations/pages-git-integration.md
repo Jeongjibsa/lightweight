@@ -8,7 +8,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T23:46:05+09:00"
+  at: "2026-10-04T23:58:53+09:00"
 sources:
   - id: "docs"
     resource: "../sources/SRC-048-pages-git-integration.md"
@@ -16,6 +16,9 @@ sources:
   - id: "check"
     resource: "../../raw/research/2026-10-04-git-oauth-review.json"
     title: "현재 API 관찰"
+  - id: "git-release22"
+    resource: "../../raw/research/2026-10-04-catalog-rest-git-release.json"
+    title: "0f6381d CI/Git build/production asset verification"
 ---
 
 # GitHub에서 Pages로 배포
@@ -42,3 +45,7 @@ API에서 lightweight-training의 source=github·Jeongjibsa/lightweight·product
 검토 시점의 canonical deployment는 기존1db637d ad_hoc였다. 이번 source commit의 Git 자동 배포/원격 CI는 아래 기록 당시 아직 별도다. 후속 receipt로 실제 결과를 남긴다. 일반 배포는 Git 경로를 사용하고 수동 Wrangler는 명시적인 복구/특정 배포 작업에만 사용한다.
 
 [공식 근거](../sources/SRC-048-pages-git-integration.md)·[관찰](../../raw/research/2026-10-04-git-oauth-review.json)·[Cloudflare 운영](cloudflare-setup.md).
+
+## Git 자동 배포 확인 완료
+
+0f6381d의 main push→GitHub37210829022 세 job success→Pages github:push/build/deploy success를 확인했다. production24file hash/보안 헤더가 검증한 build와 일치한다. [불변 receipt](../../raw/research/2026-10-04-catalog-rest-git-release.json). 최초 Git 연결 확인 시점의 대기 문단은 당시 이력이다. Google 검토/실기기/새 preview branch 검증은 각각 별도다.

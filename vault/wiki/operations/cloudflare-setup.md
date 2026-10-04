@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T23:46:05+09:00"
+  at: "2026-10-04T23:58:53+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -62,6 +62,9 @@ sources:
   - id: "git-check"
     resource: "../../raw/research/2026-10-04-git-oauth-review.json"
     title: "Git 설정 관찰"
+  - id: "git-release22"
+    resource: "../../raw/research/2026-10-04-catalog-rest-git-release.json"
+    title: "0f6381d CI/Git build/production asset verification"
 ---
 
 # Cloudflare 연결과 정적 PWA 배포
@@ -143,3 +146,7 @@ app에서 npm run pages:verify -- https://lightweight-training.pages.dev dist, p
 ## 현재 Git 자동 배포 — CONV0022
 
 사용자가 Git 연결을 완료했고 API에서 github/Jeongjibsa/lightweight/main·automatic production=true를 확인했다. Node24·locked dependency 설치/artifact gate·기존 승인 공개 production 설정/빈 preview를 보완했다. 현재 경로와 Git trigger 결과 판정은 [Git 운영](pages-git-integration.md)을 따른다. Google provider/DB 접근 권한은 변경하지 않았다.
+
+## Git 자동 배포 확인 완료
+
+0f6381d의 main push→GitHub37210829022 세 job success→Pages github:push/build/deploy success를 확인했다. production24file hash/보안 헤더가 검증한 build와 일치한다. [불변 receipt](../../raw/research/2026-10-04-catalog-rest-git-release.json). 최초 Git 연결 확인 시점의 대기 문단은 당시 이력이다. Google 검토/실기기/새 preview branch 검증은 각각 별도다.

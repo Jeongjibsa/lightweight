@@ -2,6 +2,8 @@
 
 ## 2026-10-04
 
+- **Git release**:0f6381d main push·GitHub37210829022 3job success·Pages github:push/build/deploy success·production24공개file hash/보안 헤더 일치. [receipt](raw/research/2026-10-04-catalog-rest-git-release.json)·[CHG0033](history/changes/CHG-0033.md)·PRD0.9.1 전체 보존/이전195불변 유지. 앱 변경 없는 후속 문서 commit·Google는 검토만·실운동/iPhone/Auth/SCI/운영/파일럿/P2 유지.
+
 - **Verification correction**: [공개 Auth 응답](raw/research/2026-10-04-oauth-public-settings-correction.json)의 익명 필드는 absent였다. 첫 수집의 false 변환을 검증 근거로 쓰지 않도록 Google 검토에 정정하고 원본은 보존했다. Google=false/가입 차단=true만 이번 공개 응답으로 확인했다.
 
 - **CONV0022 / Training / Git / OAuth review**: 원문 보존·34종목/바벨18·세부 분류/별칭·기본1분/즐겨찾기3~4개/atomic 설정·기기 deadline/pause·H1 focus 유지/outline 수정.98개/Node8/30browser/최종6·build/types/format/artifact25(lint기존6경고)·9PNG 직접 확인, 문구 잘림2개 수정. Git source/main/자동 배포 확인·Node24/npm ci/승인 공개 production/빈 preview 보완; 새 source CI/Git deploy 별도. Google OAuth는 가능성 검토만/providerOFF·credential/callback/기존UID/실PWA 관문. [CHG0032](history/changes/CHG-0032.md)·PRD0.9.0 snapshot/SRC048~049·이전180불변 보존·실운동/SCI/기기/운영/파일럿/P2 유지.

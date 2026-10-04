@@ -196,7 +196,10 @@
     "raw/research/2026-10-04-catalog-rest-timer-loop.json": "284490acd16fc813d91959a5e493f828082810aa84ee0a447f1573a71f032953",
     "history/versions/prd-v0.9.0.md": "719a8adb91440eae7fef1f863a0cc45e4f262bb6fae0227af490036e56b7efee",
     "history/changes/CHG-0032.md": "db08846690e320bcc975c572f53b9b0e0310e17b8babd98c96909e2d3d2df4bf",
-    "raw/research/2026-10-04-oauth-public-settings-correction.json": "d97da0968a4b7f6dd239d2a0125ed82c6b2e73a2d8c01b9219ec1a8bc9711447"
+    "raw/research/2026-10-04-oauth-public-settings-correction.json": "d97da0968a4b7f6dd239d2a0125ed82c6b2e73a2d8c01b9219ec1a8bc9711447",
+    "raw/research/2026-10-04-catalog-rest-git-release.json": "b48a4a35379c7661979a3a286e9c6aed7b7ef12086565eb0127845391ed4933f",
+    "history/versions/prd-v0.9.1.md": "4902222f20ad23647b74f8928af7fefb1513e0e65b73ec512e1979892343a4b5",
+    "history/changes/CHG-0033.md": "a77ecad1a2e4ea4d25199b755d8e7d59c05996774408c2deca0db35cd9fede36"
   },
-  "updated_at": "2026-10-04T23:48:57+09:00"
+  "updated_at": "2026-10-04T23:58:53+09:00"
 }
