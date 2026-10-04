@@ -60,3 +60,5 @@
 - CHG0026/CONV0020에서 iPhone 홈 화면 설치·실행·로그인은 사용자 보고로 확인했다. 직접 기기 관찰/OS 재측정/운동 클라우드 왕복·나머지 G3 통과로 확대하지 않는다.
 
 - CHG0027 루틴 복구는 owner/deleted/expected revision을 확인하고 same ID/계획/설정·과거 운동 snapshot을 보존한다. routine/outbox atomic·실패 rollback/중복 한 번 저장·native Accordion full-height 대기 후 캡처를 유지한다. 운동 기록 복구·자동 클라우드 동기화로 확대하지 않는다.
+
+- CHG0029 종료 기록 삭제/복구는 complete/partial·endedAt에 한정한다. owner/deleted/expected revision·세트/시각/snapshot·atomic outbox/rollback/중복과 집계1→0→1을 유지한다. active/기존 취소 기록은 복구 대상으로 제공하지 않으며 실제 Auth/다기기/기기 검증과 구분한다.

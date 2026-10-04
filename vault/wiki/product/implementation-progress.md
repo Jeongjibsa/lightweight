@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T22:32:51+09:00"
+  at: "2026-10-04T22:43:11+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -164,11 +164,24 @@ sources:
   - id: "recovery-release"
     resource: "../../raw/research/2026-10-04-routine-recovery-release.json"
     title: "루틴 복구 CI·운영/preview 일치"
-version: "0.3.9"
-change_id: "CHG-0028"
+  - id: "ended-recovery-check"
+    resource: "../../raw/research/2026-10-04-ended-record-recovery-loop.json"
+    title: "종료 기록/집계 보존 검사"
+  - id: "ended-recovery"
+    resource: "../operations/ended-record-recovery.md"
+    title: "삭제 복구 계약"
+version: "0.3.10"
+change_id: "CHG-0029"
 ---
 
 # 로컬 PWA 구현 결과와 다음 작업
+
+## 종료 기록 삭제·복구 — 2026-10-04
+
+종료 상세의 삭제 확인/취소·리포트의 복구 목록/확인을 구현했다. complete/partial·endedAt·owner/deleted/revision·atomic outbox·실패/재시도/중복을 검사한다. 진행/취소 기록은 대상이 아니며 다른 active 운동을 보존한다. 세트/시각/ID/snapshot을 유지하고 집계1→0→1·reload/새 context 백업 동일을 확인했다. [계약](../operations/ended-record-recovery.md)·[실행](../../raw/research/2026-10-04-ended-record-recovery-loop.json).
+
+90 Vitest(27/38/25)/17파일·Node8·Chromium13/WebKit11=24개·build/types/format/artifact25 통과(lint기존6경고). 320/390px 삭제/목록/복구6PNG를 직접 확인했다. 새 source CI/배포는 저장 시점 별도다. 영구 삭제/자동 전송·병합·취소 active 복구는 포함하지 않는다. 메모/장비 조건·리포트/SCI/실제 운동 Auth/기기/운영/파일럿/P2 관문은 유지한다.
+
 
 ## 현재 운영 배포 — 루틴 복구 86cc158
 

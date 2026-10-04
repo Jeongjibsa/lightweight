@@ -267,6 +267,118 @@ describe("삭제한 루틴의 명시 복구", () => {
     expect(await database.outbox.count()).toBe(outbox.length + 1);
   });
 });
+describe("종료 기록 삭제·복구와 집계 보존", () => {
+  async function ended() {
+    let session = await plannedSession();
+    session = await store.updateSet(
+      owner,
+      session.id,
+      session.sets[0]!.id,
+      { load: 20, reps: 8 },
+      true,
+    );
+    return store.endSession(owner, session.id);
+  }
+  it("삭제 시 집계에서 제외하고 다른 진행 운동이 있어도 같은 종료 기록과 당시 값을 복구한다", async () => {
+    const original = await ended();
+    const expected = summarize([original]);
+    const count = await database.outbox.count();
+    const deleted = await store.deleteEndedSession(
+      owner,
+      original.id,
+      original.revision,
+    );
+    expect((await store.workspace(owner)).sessions).toEqual([]);
+    expect(summarize((await store.workspace(owner)).sessions).workingRows).toBe(
+      0,
+    );
+    expect((await store.backup(owner)).sessions).toEqual([deleted]);
+    expect(await store.deletedEndedSessions(owner)).toEqual([deleted]);
+    const active = await store.startSession(owner);
+    const restored = await store.recoverEndedSession(
+      owner,
+      original.id,
+      deleted.revision,
+    );
+    expect({
+      ...restored,
+      deletedAt: original.deletedAt,
+      updatedAt: original.updatedAt,
+      revision: original.revision,
+    }).toEqual(original);
+    expect(restored.revision).toBe(original.revision + 2);
+    expect(restored.status).toBe("partial");
+    expect(await database.sessions.get(active.id)).toEqual(active);
+    expect(
+      (await store.workspace(owner)).sessions.filter(
+        (s) => s.status === "active",
+      ),
+    ).toHaveLength(1);
+    expect(summarize((await store.workspace(owner)).sessions)).toEqual(
+      expected,
+    );
+    expect(await database.outbox.count()).toBe(count + 3);
+    expect(await store.deletedEndedSessions(owner)).toEqual([]);
+  });
+  it("소유자/오래된 창/저장 실패/중복 처리에서 원본과 outbox를 보존한다", async () => {
+    const original = await ended();
+    const before = await database.outbox.toArray();
+    await expect(
+      store.deleteEndedSession(other, original.id, original.revision),
+    ).rejects.toThrow("현재 프로필");
+    await expect(
+      store.deleteEndedSession(owner, original.id, original.revision - 1),
+    ).rejects.toThrow("기록이 바뀌었습니다");
+    vi.spyOn(database.outbox, "add").mockRejectedValueOnce(
+      new Error("synthetic deletion failure"),
+    );
+    await expect(
+      store.deleteEndedSession(owner, original.id, original.revision),
+    ).rejects.toThrow("synthetic deletion failure");
+    expect(await database.sessions.get(original.id)).toEqual(original);
+    expect(await database.outbox.toArray()).toEqual(before);
+    const deletes = await Promise.allSettled([
+      store.deleteEndedSession(owner, original.id, original.revision),
+      store.deleteEndedSession(owner, original.id, original.revision),
+    ]);
+    expect(deletes.filter((r) => r.status === "fulfilled")).toHaveLength(1);
+    const deleted = (await database.sessions.get(original.id))!;
+    expect(await store.deletedEndedSessions(other)).toEqual([]);
+    await expect(
+      store.recoverEndedSession(other, original.id, deleted.revision),
+    ).rejects.toThrow("현재 프로필");
+    await expect(
+      store.recoverEndedSession(owner, original.id, deleted.revision - 1),
+    ).rejects.toThrow("기록이 바뀌었습니다");
+    vi.spyOn(database.outbox, "add").mockRejectedValueOnce(
+      new Error("synthetic recovery failure"),
+    );
+    await expect(
+      store.recoverEndedSession(owner, original.id, deleted.revision),
+    ).rejects.toThrow("synthetic recovery failure");
+    expect(await database.sessions.get(original.id)).toEqual(deleted);
+    expect(await database.outbox.count()).toBe(before.length + 1);
+    const restores = await Promise.allSettled([
+      store.recoverEndedSession(owner, original.id, deleted.revision),
+      store.recoverEndedSession(owner, original.id, deleted.revision),
+    ]);
+    expect(restores.filter((r) => r.status === "fulfilled")).toHaveLength(1);
+    expect(await database.outbox.count()).toBe(before.length + 2);
+  });
+  it("진행 중이거나 취소된 기록을 종료 기록처럼 삭제/복구하지 않는다", async () => {
+    const active = await plannedSession();
+    await expect(
+      store.deleteEndedSession(owner, active.id, active.revision),
+    ).rejects.toThrow("종료한 운동 기록만");
+    await store.tombstone(owner, "session", active.id);
+    const cancelled = (await database.sessions.get(active.id))!;
+    await expect(
+      store.recoverEndedSession(owner, active.id, cancelled.revision),
+    ).rejects.toThrow("종료한 운동 기록만");
+    expect(await store.deletedEndedSessions(owner)).toEqual([]);
+    expect(await database.sessions.get(active.id)).toEqual(cancelled);
+  });
+});
 describe("기록 보존과 트랜잭션", () => {
   it("중복 시작과 완료 탭은 기록과 세트를 복제하지 않는다", async () => {
     const [a, b] = await Promise.all([

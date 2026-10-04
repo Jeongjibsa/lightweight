@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T22:22:46+09:00"
+  at: "2026-10-04T22:43:11+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
@@ -95,12 +95,23 @@ sources:
   - id: "recovery-check"
     resource: "../../raw/research/2026-10-04-routine-recovery-loop.json"
     title: "실행"
+  - id: "ended-recovery"
+    resource: "ended-record-recovery.md"
+    title: "계약"
+  - id: "ended-check"
+    resource: "../../raw/research/2026-10-04-ended-record-recovery-loop.json"
+    title: "실행"
 version: "0.5.1"
 approval_status: "current-audit-and-proposal"
 change_id: "CHG-0014"
 ---
 
 # 현재 테스트 하네스와 확장 설계
+
+## 최신 종료 기록 보존 루프
+
+[계약](ended-record-recovery.md)·[실행](../../raw/research/2026-10-04-ended-record-recovery-loop.json).90개(27unit/38integration/25UI)/17파일·Node8·Chromium13/WebKit11=24개. 집계1→0→1·종료 값/시각·다른 active 보존·실패/중복·reload/빈 context 파일 복원을 연결한다. native Accordion 준비 전 즉시 조회 실패를 async accessible query로 보정했고320/390px6PNG·44px hit target/overflow0을 확인했다. 실제 Auth/나머지 기기/SCI 검증 경계는 유지한다.
+
 
 ## 최신 루틴 복구 루프
 

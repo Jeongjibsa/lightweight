@@ -38,3 +38,4 @@
 - [iPhone 설치/실행/로그인 사용자 보고](2026-10-04-iphone-install-user-report.json)
 - [루틴 복구 보존/목록 하네스](2026-10-04-routine-recovery-loop.json)
 - [루틴 복구 CI/운영·preview 배포](2026-10-04-routine-recovery-release.json)
+- [종료 기록 삭제/복구·집계/보존 loop](2026-10-04-ended-record-recovery-loop.json)

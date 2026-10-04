@@ -599,3 +599,202 @@ test("종료 기록 수정→볼륨 재계산→다시 시작·이전값·종목
   await page.reload();
   expect((await downloadBackup(page)).data.sessions).toEqual(after.sessions);
 });
+
+test("종료 기록 삭제/복구→집계 제외/복귀→reload/새 저장소 백업 보존", async ({
+  page,
+  browser,
+  diagnostics,
+}, info) => {
+  await page.goto("/");
+  await configure(page);
+  await createRoutine(page);
+  await startRoutine(page);
+  await completeSet(page, 1, "20", "8");
+  await endWorkout(page);
+  const before = (await downloadBackup(page)).data;
+  const original = before.sessions[0]!;
+  const record = () =>
+    page.getByRole("button", { name: /가짜 E2E 전신 A.*1\/1세트.*완료/ });
+  await navigate(page, "리포트");
+  await expect(
+    page
+      .getByRole("group", { name: "완료 본세트", exact: true })
+      .getByText("1", { exact: true }),
+  ).toBeVisible();
+  await record().click();
+  await page
+    .getByRole("button", { name: "종료 기록 삭제", exact: true })
+    .click();
+  let deletion = page.getByRole("dialog", {
+    name: "종료 기록을 삭제할까요?",
+    exact: true,
+  });
+  for (const width of [320, 390]) {
+    await page.setViewportSize({ width, height: 844 });
+    expect(
+      await page.evaluate(() => document.documentElement.scrollWidth),
+    ).toBe(width);
+    await info.attach(`ended-record-delete-${width}.png`, {
+      body: await page.screenshot(),
+      contentType: "image/png",
+    });
+  }
+  await deletion.getByRole("button", { name: "취소", exact: true }).click();
+  expect((await downloadBackup(page)).data.sessions).toEqual(before.sessions);
+  await navigate(page, "리포트");
+  await record().click();
+  await page
+    .getByRole("button", { name: "종료 기록 삭제", exact: true })
+    .click();
+  deletion = page.getByRole("dialog", {
+    name: "종료 기록을 삭제할까요?",
+    exact: true,
+  });
+  await deletion
+    .getByRole("button", { name: "기록 삭제", exact: true })
+    .click();
+  await expect(deletion).toBeHidden();
+  await expect(
+    page.getByRole("heading", { name: "아직 기록이 없어요", exact: true }),
+  ).toBeVisible();
+  await expect(
+    page
+      .getByRole("group", { name: "완료 본세트", exact: true })
+      .getByText("0", { exact: true }),
+  ).toBeVisible();
+  const deletedFile = await downloadBackup(page);
+  const deleted = deletedFile.data.sessions[0]!;
+  expect(deleted.deletedAt).not.toBeNull();
+  expect({
+    ...deleted,
+    revision: original.revision,
+    updatedAt: original.updatedAt,
+    deletedAt: original.deletedAt,
+  }).toEqual(original);
+  await page.reload();
+  await navigate(page, "리포트");
+  await page
+    .getByRole("button", { name: "삭제한 종료 기록 1개", exact: true })
+    .click();
+  const panel = page.getByRole("region", {
+    name: "삭제한 종료 기록 1개",
+    exact: true,
+  });
+  await expect
+    .poll(() =>
+      panel.evaluate(
+        (el) =>
+          el.scrollHeight > 0 &&
+          el.getBoundingClientRect().height >= el.scrollHeight - 1,
+      ),
+    )
+    .toBe(true);
+  const recoveryButton = page.getByRole("button", {
+    name: `${original.localDate} ${original.name} 복구`,
+    exact: true,
+  });
+  for (const width of [320, 390]) {
+    await page.setViewportSize({ width, height: 844 });
+    await recoveryButton.scrollIntoViewIfNeeded();
+    expect(
+      await page.evaluate(() => document.documentElement.scrollWidth),
+    ).toBe(width);
+    expect(
+      await recoveryButton.evaluate((button) => {
+        const bounds = button.getBoundingClientRect();
+        return (
+          bounds.height >= 44 &&
+          button.contains(
+            document.elementFromPoint(
+              bounds.x + bounds.width / 2,
+              bounds.y + bounds.height / 2,
+            ),
+          )
+        );
+      }),
+    ).toBe(true);
+    const close = page.getByRole("button", { name: "알림 닫기", exact: true });
+    if (await close.isVisible()) await close.click();
+    await info.attach(`ended-record-list-${width}.png`, {
+      body: await page.screenshot(),
+      contentType: "image/png",
+    });
+  }
+  await recoveryButton.click();
+  let recovery = page.getByRole("dialog", {
+    name: "종료 기록 복구",
+    exact: true,
+  });
+  for (const width of [320, 390]) {
+    await page.setViewportSize({ width, height: 844 });
+    expect(
+      await page.evaluate(() => document.documentElement.scrollWidth),
+    ).toBe(width);
+    await info.attach(`ended-record-recover-${width}.png`, {
+      body: await page.screenshot(),
+      contentType: "image/png",
+    });
+  }
+  await recovery.getByRole("button", { name: "취소", exact: true }).click();
+  expect((await downloadBackup(page)).data.sessions).toEqual(
+    deletedFile.data.sessions,
+  );
+  await navigate(page, "리포트");
+  await page
+    .getByRole("button", { name: "삭제한 종료 기록 1개", exact: true })
+    .click();
+  await recoveryButton.click();
+  recovery = page.getByRole("dialog", { name: "종료 기록 복구", exact: true });
+  await recovery
+    .getByRole("button", { name: "기록 복구", exact: true })
+    .click();
+  await expect(recovery).toBeHidden();
+  await expect(record()).toBeVisible();
+  await expect(
+    page
+      .getByRole("group", { name: "완료 본세트", exact: true })
+      .getByText("1", { exact: true }),
+  ).toBeVisible();
+  const after = await downloadBackup(page);
+  const recovered = after.data.sessions[0]!;
+  expect({
+    ...recovered,
+    revision: original.revision,
+    updatedAt: original.updatedAt,
+  }).toEqual(original);
+  expect(recovered.revision).toBe(original.revision + 2);
+  expect(after.data.routines).toEqual(before.routines);
+  await page.reload();
+  expect((await downloadBackup(page)).data.sessions).toEqual(
+    after.data.sessions,
+  );
+  const context = await browser.newContext({
+    baseURL: origin,
+    viewport: { width: 390, height: 844 },
+    locale: "ko-KR",
+    timezoneId: "Asia/Seoul",
+    serviceWorkers: "block",
+  });
+  try {
+    const restored = await context.newPage();
+    diagnostics(restored);
+    await restored.goto("/#settings");
+    await restored
+      .getByLabel("백업 파일 선택", { exact: true })
+      .setInputFiles(after.path);
+    await restored
+      .getByRole("dialog", { name: "백업을 복원할까요?", exact: true })
+      .getByRole("button", { name: "현재 프로필에 복원", exact: true })
+      .click();
+    await expect(restored.getByRole("dialog")).toBeHidden();
+    expect(normalizeBackup((await downloadBackup(restored)).data)).toEqual(
+      normalizeBackup(after.data),
+    );
+    await navigate(restored, "리포트");
+    await expect(
+      restored.getByRole("button", { name: /가짜 E2E 전신 A.*1\/1세트.*완료/ }),
+    ).toBeVisible();
+  } finally {
+    await context.close();
+  }
+});

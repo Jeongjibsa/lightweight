@@ -166,7 +166,16 @@
     "history/changes/CHG-0027.md": "4863d9b2efd3a129eb3ccc7c8d370a35fd2a76d65fea7ff78ead925f410e6e16",
     "raw/research/2026-10-04-routine-recovery-release.json": "4aa894c994522e28ec23d74c9e07f96aa7ea92b0a948ce37a4400243afa45182",
     "history/versions/prd-v0.8.13.md": "c4be977a50c956e83c702cd1f64eee0403fc3520f5c33f58c54767efdc0bbd3e",
-    "history/changes/CHG-0028.md": "201dc1c1a08398b463b256256fefcda14c867636c1685a87412485e7bab18bd8"
+    "history/changes/CHG-0028.md": "201dc1c1a08398b463b256256fefcda14c867636c1685a87412485e7bab18bd8",
+    "raw/design/2026-10-04-ended-record-delete-320.png": "06accc0f8f2b7fc2b2eecdbfcbed200d541614bb409f2c78d0a1312cc30dbae7",
+    "raw/design/2026-10-04-ended-record-delete-390.png": "3b9c1826be3032435d5f84ce40cffe439513addd4cf0014949b5e8476dc2c6f5",
+    "raw/design/2026-10-04-ended-record-list-320.png": "67e86aeaade770ac47a88278b33470ff943e6d9313d21c8e7359b22a42198220",
+    "raw/design/2026-10-04-ended-record-list-390.png": "33e57fbc2ab398ad1a178524a6107417db15b66d9d150c5dbde52122f6b63e29",
+    "raw/design/2026-10-04-ended-record-recover-320.png": "65902a57f997076343a08aee65516f0c71b2384747d95cf46ef09922472d1195",
+    "raw/design/2026-10-04-ended-record-recover-390.png": "cda83458f7d1ebe235a487768679eb1fe0cccbb48a3abd09735ab39d31cf39c0",
+    "raw/research/2026-10-04-ended-record-recovery-loop.json": "25baef6666bdacd5bce6c299f25f4bdbae1ffd864de5324ba54383a77fc0e20c",
+    "history/versions/prd-v0.8.14.md": "eaae7cdb006af085048c33a7dc384eb82b78b70a924739cf613fb4dddd0633d2",
+    "history/changes/CHG-0029.md": "5fadaaaaaebfa70ee770a7a22b2f002b913fa03b0bc58a8b51d8a8392df7744a"
   },
-  "updated_at": "2026-10-04T22:32:51+09:00"
+  "updated_at": "2026-10-04T22:43:11+09:00"
 }

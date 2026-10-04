@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T22:32:51+09:00"
+  at: "2026-10-04T22:43:11+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -164,9 +164,15 @@ sources:
   - id: "recovery-release"
     resource: "../../raw/research/2026-10-04-routine-recovery-release.json"
     title: "루틴 복구 CI·운영/preview 일치"
-version: "0.6.17"
+  - id: "ended-recovery-check"
+    resource: "../../raw/research/2026-10-04-ended-record-recovery-loop.json"
+    title: "종료 기록/집계 보존 검사"
+  - id: "ended-recovery"
+    resource: "../operations/ended-record-recovery.md"
+    title: "삭제 복구 계약"
+version: "0.6.18"
 approval_status: "proposal"
-change_id: "CHG-0028"
+change_id: "CHG-0029"
 ---
 
 # 운동 PWA 구현 백로그와 완료 기준
@@ -199,7 +205,7 @@ UI-01은 당시 부분 Mantine/Spoqa/스택 명시 증분으로 done이었다. C
 | LOG-03 | M2 | 루틴 작성·복사·정렬·편집·이전 세션 재사용 | LOG-01, PRE-01 | 직접 재시작/미완료 종목 교체 구현·원본 snapshot 보존; 루틴/오늘 종목 순서 구현·83개/22browser; 루틴 복구/CAS/과거 보존·86개/22browser·메모 등 후속 | in_progress |
 | LOG-04 | M2 | 오늘 세션·이전 값·중량/횟수·완료/수정/취소 | BASE-02, PRE-01; 전체 연결은 LOG-03 | 이전 빈 값/종료 명시 수정·CAS/시각 보존 구현·72개/20browser; 오늘 종목 순서/CAS 보존 구현·83개/22browser; 남은 입력 UX/장비 식별 후속 | in_progress |
 | LOG-05 | M2 | Dexie 트랜잭션/outbox·재개·휴식 타이머 | LOG-04 | 저장 실패 시 성공 금지, 중복 탭 0중복, 재시작/잠금 후 상태 복귀 | in_progress |
-| LOG-06 | M2 | JSON 내보내기·가져오기/복원·삭제 흐름 | LOG-05 | 가짜 데이터 빈 저장소 복원 동일, 형식/계정/중복/삭제 정책·루틴 명시 복구/CAS/atomic·86개/22browser; 운동 삭제/복구 등 후속 | in_progress |
+| LOG-06 | M2 | JSON 내보내기·가져오기/복원·삭제 흐름 | LOG-05 | 가짜 데이터 빈 저장소 복원 동일, 형식/계정/중복/삭제 정책·루틴 명시 복구/CAS/atomic·86개/22browser; 종료 운동 명시 삭제/복구·집계/값/시각/CAS·90개/24browser; 실기기/대용량 복구 후속 | in_progress |
 | SYNC-01 | M3 | SQL migrations·제약·필요 grants/RLS·형식/범위 계약 | PRE-01, LOG-05 | 부모/자식 소유 일치·타인 user_id 대입/변경 차단, DB 초기 구성 재현 | in_progress |
 | SYNC-02 | M3 | 초대 Auth·실제 로그인 경로·계정별 로컬 DB·로그아웃 | SYNC-01; Q-15 | 가입/익명 차단·메일/복구 시험, 계정 전환 비노출/오전송, 만료 시 로컬 대기 유지 | in_progress |
 | SYNC-03 | M3 | outbox 전송/확인·중복 처리·서버 변경 내려받기 | SYNC-02 | 같은 operation 재시도/응답 유실 0중복, 서버 확정 기준/페이지 경계에서 변경 누락 없음 | in_progress |
@@ -342,3 +348,9 @@ Vitest86(27/35/24)·Node8·전체 browser22 및 최종 목록 검사2·build/typ
 main push·GitHub37205447895 세 검사 success 뒤 [운영 앱](https://lightweight-training.pages.dev)과 [DB 없는 preview](https://preview.lightweight-training.pages.dev)에 배포했다. 각 공개24file hash/보안 헤더가 검증한 빌드와 일치한다.86 Vitest/Node8/전체browser22·최종목록2/build/types/format/artifact25·vault 검사 통과. [불변 배포](../../raw/research/2026-10-04-routine-recovery-release.json). 앞선 새 source CI/배포 대기는 당시 이력이며 현재 완료했다.
 
 iPhone 홈 화면 설치/실행/로그인은 CONV0020의 사용자 보고로 확인했다. 실제 운동/새 저장소 클라우드 복원·A/B/만료/메일·나머지 기기 G3·SCI/운영/파일럿/P2는 남는다. 다음 로컬 단위는 종료 운동 기록 삭제/복구다. 이 후속 문서 commit은 앱 bundle을 바꾸지 않는다.
+
+## 종료 기록 삭제·복구 — 2026-10-04
+
+종료 상세의 삭제 확인/취소·리포트의 복구 목록/확인을 구현했다. complete/partial·endedAt·owner/deleted/revision·atomic outbox·실패/재시도/중복을 검사한다. 진행/취소 기록은 대상이 아니며 다른 active 운동을 보존한다. 세트/시각/ID/snapshot을 유지하고 집계1→0→1·reload/새 context 백업 동일을 확인했다. [계약](../operations/ended-record-recovery.md)·[실행](../../raw/research/2026-10-04-ended-record-recovery-loop.json).
+
+90 Vitest(27/38/25)/17파일·Node8·Chromium13/WebKit11=24개·build/types/format/artifact25 통과(lint기존6경고). 320/390px 삭제/목록/복구6PNG를 직접 확인했다. 새 source CI/배포는 저장 시점 별도다. 영구 삭제/자동 전송·병합·취소 active 복구는 포함하지 않는다. 메모/장비 조건·리포트/SCI/실제 운동 Auth/기기/운영/파일럿/P2 관문은 유지한다.

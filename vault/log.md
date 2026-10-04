@@ -2,6 +2,8 @@
 
 ## 2026-10-04
 
+- **Records / Ended recovery**: 종료 상세 삭제/확인·리포트 복구/확인·종료/owner/deleted/revision/atomic·실패/중복/다른 active·세트/시각 보존·집계1→0→1 구현.90개(새3integration/1UI)/Node8/24browser/build/types/format/artifact25 통과(lint6경고).320/390px6PNG 직접 확인. [실행](raw/research/2026-10-04-ended-record-recovery-loop.json)·[CHG0029](history/changes/CHG-0029.md)·PRD0.8.14 전체 보존/이전165불변 유지. 새 source CI/배포·메모/장비/SYNC/REP/SCI/실기기/운영/파일럿/P2 후속.
+
 - **Release**: 86cc158 main push·GitHub37205447895 세 검사 success·운영/DB없는preview 배포·각24file hash/헤더 일치.86개/Node8/전체22browser/최종목록2. [실행](raw/research/2026-10-04-routine-recovery-release.json)·[CHG0028](history/changes/CHG-0028.md)·PRD0.8.13 전체 보존/이전162불변 유지. iPhone 초기 과업 사용자 보고·나머지 G3/Auth/SCI/운영/파일럿/P2 유지. 다음 종료 기록 삭제/복구는 별도 구현.
 
 - **Records / Recovery**: Mantine 삭제 루틴 목록/명시 복구·owner/deleted/revision/atomic·취소/실패/재시도/중복/과거 snapshot 보존 구현.86개(새2integration/1UI)·Node8·22browser·최종목록2/build/types/format/artifact25 통과(lint기존6경고). 실제 panel 완료 확인 후320/390 목록/확인 PNG 직접 관찰. [실행](raw/research/2026-10-04-routine-recovery-loop.json)·[CHG0027](history/changes/CHG-0027.md)·PRD0.8.12 전체 보존, 이전155불변 유지. 새 source CI/배포 별도·메모/운동 삭제복구/장비/SYNC/REP/SCI/기기/운영/파일럿/P2 유지.

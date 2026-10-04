@@ -26,6 +26,7 @@ import {
   ArrowUp,
   ArrowDown,
   ListOrdered,
+  Trash2,
 } from "lucide-react";
 import { loadModes, type Session, type TrainingSet } from "../domain/models";
 import { useTraining } from "../context/training";
@@ -539,6 +540,8 @@ export function WorkoutView({
   const [ending, setEnding] = useState(false);
   const [cancel, setCancel] = useState(false);
   const [ordering, setOrdering] = useState(false);
+  const [deleting, setDeleting] = useState<Session | null>(null);
+  const [deleteBusy, setDeleteBusy] = useState(false);
   const [replacement, setReplacement] = useState<
     TrainingSet["exercise"] | null
   >(null);
@@ -749,7 +752,66 @@ export function WorkoutView({
             본세트만 집계합니다. 다시 시작하면 수행한 세트의 입력값을 계획으로
             가져오며 오늘의 완료로 집계하지 않습니다.
           </Text>
+          {session.endedAt &&
+            (session.status === "complete" || session.status === "partial") && (
+              <Button
+                variant="subtle"
+                color="red"
+                leftSection={<Trash2 size={17} />}
+                w="fit-content"
+                onClick={() => setDeleting(session)}
+              >
+                종료 기록 삭제
+              </Button>
+            )}
         </Stack>
+      )}
+      {deleting && (
+        <Modal
+          title="종료 기록을 삭제할까요?"
+          onClose={() => {
+            if (!deleteBusy) setDeleting(null);
+          }}
+        >
+          <Stack gap="md">
+            <Text size="sm" style={{ overflowWrap: "anywhere" }}>
+              ‘{deleting.name}’은 목록과 리포트 집계에서 제외됩니다. 리포트의
+              ‘삭제한 종료 기록’에서 다시 복구할 수 있어요.
+            </Text>
+            <Group grow>
+              <Button
+                variant="default"
+                disabled={deleteBusy}
+                onClick={() => setDeleting(null)}
+              >
+                취소
+              </Button>
+              <Button
+                color="red"
+                loading={deleteBusy}
+                onClick={async () => {
+                  setDeleteBusy(true);
+                  const ok = await run(
+                    () =>
+                      store.deleteEndedSession(
+                        deleting.ownerId,
+                        deleting.id,
+                        deleting.revision,
+                      ),
+                    "종료 기록을 삭제했습니다. 리포트에서 복구할 수 있어요.",
+                  );
+                  setDeleteBusy(false);
+                  if (ok) {
+                    setDeleting(null);
+                    onBack();
+                  }
+                }}
+              >
+                기록 삭제
+              </Button>
+            </Group>
+          </Stack>
+        </Modal>
       )}
       {replacement && (
         <Modal title="다른 운동으로 교체" onClose={() => setReplacement(null)}>

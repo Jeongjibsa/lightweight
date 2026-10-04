@@ -18,3 +18,4 @@
 - [공개 설명 빌드 관문](content-publication.md)
 - [운동 종목 순서 보존·알림 가림 루프](workout-order.md)
 - [삭제 루틴 복구 계약](routine-recovery.md)
+- [종료 운동 기록 삭제·복구](ended-record-recovery.md)

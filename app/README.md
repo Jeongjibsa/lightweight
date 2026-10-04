@@ -154,3 +154,7 @@ iPhone 홈 화면 설치·실행·로그인은 사용자 보고로 확인했습�
 나의 루틴 → 삭제한 루틴 목록 → 복구 확인으로 같은 계획을 되살립니다. 취소/실패/중복·과거 운동/백업 보존과86 Vitest/Node8/22browser·최종목록2개·build/types/format/artifact25를 확인했습니다(lint기존6경고). 운동 기록 복구나 자동 전송 기능은 별도입니다. 86cc158의 GitHub3job과 운영/preview 공개24file hash/헤더 배포 일치를 확인했습니다. [계약/320·390px 화면](../vault/wiki/operations/routine-recovery.md).
 
 [현재 배포 증거](../vault/raw/research/2026-10-04-routine-recovery-release.json). 후속 문서 commit은 앱 bundle을 바꾸지 않습니다.
+
+## 종료 운동 기록 삭제·복구
+
+종료 상세에서 삭제 확인/취소, 리포트에서 삭제한 종료 기록 복구를 제공합니다. 세트/시각·다른 active 운동·atomic/CAS/실패/중복과 집계1→0→1·새 저장소 백업을 확인했습니다.90개/Node8/24browser·build/types/format/artifact25 통과(lint기존6경고), source CI/배포는 기록 시점 별도입니다. [계약/실제 화면](../vault/wiki/operations/ended-record-recovery.md).

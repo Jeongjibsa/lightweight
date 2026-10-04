@@ -605,6 +605,77 @@ export class TrainingStore {
       },
     );
   }
+  async deletedEndedSessions(ownerId: string) {
+    return this.database.sessions
+      .where("ownerId")
+      .equals(ownerId)
+      .filter(
+        (session) =>
+          !!session.deletedAt &&
+          !!session.endedAt &&
+          (session.status === "complete" || session.status === "partial"),
+      )
+      .reverse()
+      .sortBy("deletedAt");
+  }
+  async deleteEndedSession(
+    ownerId: string,
+    sessionId: string,
+    expectedRevision: number,
+  ) {
+    return this.setEndedSessionDeleted(
+      ownerId,
+      sessionId,
+      expectedRevision,
+      true,
+    );
+  }
+  async recoverEndedSession(
+    ownerId: string,
+    sessionId: string,
+    expectedRevision: number,
+  ) {
+    return this.setEndedSessionDeleted(
+      ownerId,
+      sessionId,
+      expectedRevision,
+      false,
+    );
+  }
+  private async setEndedSessionDeleted(
+    ownerId: string,
+    sessionId: string,
+    expectedRevision: number,
+    deleted: boolean,
+  ) {
+    return this.database.transaction(
+      "rw",
+      this.database.sessions,
+      this.database.outbox,
+      async () => {
+        const prior = await this.database.sessions.get(sessionId);
+        requireOwner(prior, ownerId);
+        if (
+          !prior!.endedAt ||
+          (prior!.status !== "complete" && prior!.status !== "partial")
+        )
+          throw new Error("종료한 운동 기록만 삭제하거나 복구할 수 있습니다.");
+        if (!!prior!.deletedAt === deleted)
+          throw new Error("이미 처리한 기록입니다. 목록을 다시 확인해주세요.");
+        if (prior!.revision !== expectedRevision)
+          throw new Error("기록이 바뀌었습니다. 확인창을 다시 열어주세요.");
+        const session = sessionSchema.parse({
+          ...prior!,
+          deletedAt: deleted ? now() : null,
+          updatedAt: now(),
+          revision: prior!.revision + 1,
+        });
+        await this.database.sessions.put(session);
+        await this.enqueue(ownerId, "session", session.id, session);
+        return session;
+      },
+    );
+  }
   async backup(ownerId: string): Promise<Backup> {
     return this.database.transaction(
       "r",

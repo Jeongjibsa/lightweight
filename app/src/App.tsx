@@ -52,6 +52,7 @@ import { SettingsView } from "./components/settings";
 import { WorkoutView } from "./components/workout";
 import { VolumeReport } from "./components/volume-report";
 import { RecordCoverage } from "./components/report-coverage";
+import { DeletedSessionRecords } from "./components/deleted-session-records";
 import { HistorySuggestion } from "./components/history-suggestion";
 import { BottomNavigation } from "./components/navigation";
 import { screens, type Screen } from "./components/screens";
@@ -133,7 +134,7 @@ function Stat({
   unit: string;
 }) {
   return (
-    <Paper p={{ base: "sm", sm: "lg" }}>
+    <Paper p={{ base: "sm", sm: "lg" }} role="group" aria-label={label}>
       <Text size="xs" c="dimmed">
         {label}
       </Text>
@@ -354,6 +355,7 @@ function ReportsView({
   now,
   settings,
   today,
+  run,
 }: {
   now: Date;
   profile: Profile;
@@ -361,6 +363,7 @@ function ReportsView({
   inspect: (s: Session) => void;
   settings: () => void;
   today: () => void;
+  run: Run;
 }) {
   const dates = weekDates(profile.timeZone, now);
   const stats = summarize(
@@ -427,6 +430,7 @@ function ReportsView({
           </Empty>
         )}
       </Paper>
+      <DeletedSessionRecords ownerId={profile.ownerId} run={run} />
     </Stack>
   );
 }
@@ -731,6 +735,7 @@ export default function App() {
           />
         ) : screen === "reports" ? (
           <ReportsView
+            run={run}
             now={now}
             profile={profile}
             sessions={sessions}
