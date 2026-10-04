@@ -10,7 +10,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T16:22:01+09:00"
+  at: "2026-10-04T17:15:45+09:00"
 sources:
   - id: "responsive-local-request"
     resource: "../../raw/conversations/2026-10-03-006.md"
@@ -33,6 +33,12 @@ sources:
   - id: "ci-receipt"
     resource: "../../raw/research/2026-10-04-github-ci-37184261544.json"
     title: "GitHub CI 증거"
+  - id: "gzip"
+    resource: "../operations/compressed-backup.md"
+    title: "압축 복구 계약"
+  - id: "gzip-check"
+    resource: "../../raw/research/2026-10-04-compressed-backup-verification.json"
+    title: "실행"
 version: "0.2.1"
 change_id: "CHG-0014"
 ---
@@ -106,3 +112,7 @@ CONV-0010에서 전 폭 하단 5개 메뉴로 변경했다. 큰 화면은 본문
 [PRD](prd.md) · [실행 결과](implementation-progress.md) · [데이터 모델](data-model.md) · [작업 목록](implementation-backlog.md)
 
 [큰 백업·저장 실패·업데이트 검증](../operations/storage-recovery-harness.md).
+
+## 압축 파일 복구 후속
+
+[압축 복구 계약](../operations/compressed-backup.md)을 따른다. 작은 JSON10MiB 한도·이전 v1 호환을 유지하고 큰 기록을 gzip파일10MiB/해제64MiB로 보관한다. schema/owner/중복을 모두 검사한 뒤 명시 atomic restore한다. cloud snapshot/DB schema와 데이터 업로드 권한을 확대하지 않는다.

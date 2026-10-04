@@ -1,5 +1,6 @@
 import { expect, type Page } from "@playwright/test";
 import { readFile } from "node:fs/promises";
+import { gunzipSync } from "node:zlib";
 import type { Backup } from "../../src/domain/models";
 
 export async function navigate(page: Page, name: string) {
@@ -112,10 +113,20 @@ export async function downloadBackup(page: Page) {
   const file = await download;
   const path = await file.path();
   if (!path) throw new Error("Synthetic backup download missing");
-  const data = JSON.parse(await readFile(path, "utf8")) as Backup;
+  const bytes = await readFile(path);
+  const text =
+    bytes[0] === 0x1f && bytes[1] === 0x8b
+      ? gunzipSync(bytes).toString("utf8")
+      : bytes.toString("utf8");
+  const data = JSON.parse(text) as Backup;
   expect(data.format).toBe("lightweight-backup");
   expect(data.version).toBe(1);
-  return { path, data };
+  return {
+    path,
+    data,
+    filename: file.suggestedFilename(),
+    bytes: bytes.byteLength,
+  };
 }
 // Only ownership remapping and the profile's restore revision/time are excluded.
 // IDs, set values, deletion state and routine/session snapshots must remain equal.

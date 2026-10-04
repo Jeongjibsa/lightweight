@@ -48,3 +48,5 @@
 - CONV-0015는 공식 agent-setup prompt 수행과 남은 구현의 commit/push를 요청했다. 설치/MCP 등록과 OAuth 성공·실제 배포를 구별한다. 현재 절차/권한 선택은 `vault/wiki/operations/cloudflare-setup.md`를 읽는다. 자동 검토의 broad OAuth 거부를 다른 CLI/connector로 우회하지 않는다.
 - Cloudflare 작업에는 관련 skill과 최신 공식 문서·설치된 Wrangler help/schema를 확인한다. Wrangler4.147.0·Pages config/actual-dist gate를 사용하며 root/vault/.env/개인 기록을 전송하지 않는다. 운영/preview DB 연결을 분리하고 HTTPS 헤더/인증/실기기 관문을 유지한다.
 - 사용량 제한은 실제 지원되는 기능으로 확인한다. Git reset·개인 데이터 삭제·quota 우회를 사용량 reset으로 실행하지 않는다.
+
+- CHG-0016의 큰 파일은 공통 backup writer/reader로 JSONv1을 gzip(output10MiB/expanded64MiB) 보관한다. schema·owner·CRC/UTF8/한도 확인 후 명시 atomic restore한다. 기존10MiB 초과 export 거부 정책은 압축 지원 환경에서 이 후속 계약으로 대체한다. `compressed-backup.md`의66개/browser18/새6회와 실제iPhone/64MiB초과/physical quota·서버 snapshot 경계를 구별한다.

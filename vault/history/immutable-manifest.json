@@ -108,7 +108,10 @@
     "raw/research/2026-10-04-cloudflare-setup.json": "79ff83c1e48489604269aaf2d0953cf82e7ddf1213bbb8d0172cda1e43fa3620",
     "history/changes/CHG-0015.md": "e17c6b7aafceff216ee301104a1b97b59f2fc4434ee10fe9bd1552e04ecee3e9",
     "history/versions/prd-v0.8.0.md": "6b6f9cce7641dd69e83d14ea8ca9af9fc682b8d0e7d998db353c86ff67725677",
-    "raw/research/2026-10-04-cloudflare-snapshot-construction.json": "9c07caef8eda2f097317cd07054fed67dd97f61fdc7d0cc9bc383df07bce088d"
+    "raw/research/2026-10-04-cloudflare-snapshot-construction.json": "9c07caef8eda2f097317cd07054fed67dd97f61fdc7d0cc9bc383df07bce088d",
+    "raw/research/2026-10-04-compressed-backup-verification.json": "f883118ea1999cc2919a507bbbe0c1024cb2d6a11958b7799c3e71eea348b116",
+    "history/versions/prd-v0.8.1.md": "2fba1ef4ead91ddfc8692f1707c4e80b1fa414679badee262ec6d3f29c011faf",
+    "history/changes/CHG-0016.md": "4c2cba323af57318ea9c5ad3b94950b2d94003c7a78662bea4aab246f1d061f3"
   },
   "updated_at": "2026-10-04T16:26:11+09:00"
 }

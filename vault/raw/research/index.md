@@ -24,3 +24,4 @@
 - [Cloudflare setup/새 CI](2026-10-04-cloudflare-setup.json)
 
 - [새 snapshot 생성 오류 수정 기록](2026-10-04-cloudflare-snapshot-construction.json)
+- [압축 백업 확인](2026-10-04-compressed-backup-verification.json)

@@ -2,6 +2,8 @@
 
 ## 2026-10-04
 
+- **Backup / Loop**: gzip output10MiB/expanded64MiB·native CRC/한도/UTF8/schema·명시 atomic restore·공통 recovery writer 구현.66개/browser18/새2×3회6회·artifact24 통과,24,000세트 새context 복구/손상5table보존. 첫 fixture.tables2실패 증거 보존. [계약](wiki/operations/compressed-backup.md)·[원본](raw/research/2026-10-04-compressed-backup-verification.json)·[CHG0016](history/changes/CHG-0016.md)·PRD0.8.1 snapshot/SRC046. 이전107immutable 유지. 실제iPhone/quota/Auth·64MiB분할 및 Cloudflare OAuth/배포 pending.67ec882 CI3job success 확인.
+
 - **Cloudflare / Implementation**: CONV0015 공식 skills16/MCP5 등록·Wrangler4.147.0/artifact gate 준비. a2b3f9f push·새 CI3job success. 신규 broad OAuth Continue 자동 검토 거부/full-or-Pages 권한 질문 pending·실제 HTTPS 미배포. [운영](wiki/operations/cloudflare-setup.md)·[검사](raw/research/2026-10-04-cloudflare-setup.json). PRD0.8.0·[CHG0015](history/changes/CHG-0015.md)·원문/전체 snapshot 보존; 기존102immutable 유지. 모든 남은 작업 순차 요청을 반영하되 실기기/SCI/외부 승인 관문은 유지.
 
 - **Push / CI / HAR04 / CONV0014**: 기존187c47c를 origin/codex/e2e-harness에 push, [GitHub3job/2artifact 실제수신](raw/research/2026-10-04-github-ci-37184261544.json) 확인으로 HAR05done. 이후 Blob 한도/업데이트 안내 가림을 먼저 재현/수정·compact/대칭10MiB·main Mantine 안내와 nativeDB/schema/합성quota/실제SWupdate 보존을 고정.64개/14파일·lint/build/E2E타입/format·browser16/신규21회·실패probe통과. [불변실행](raw/research/2026-10-04-storage-recovery-verification.json)·[하네스](wiki/operations/storage-recovery-harness.md). PRD0.7.2PATCH/[CHG0014](history/changes/CHG-0014.md)/snapshot·SRC044/44출처·기존94불변해시보존. HAR04in_progress: 초과백업 독립복구·physical quota/eviction·iPhone/Auth/SCI/REL유지. 새HAR04GitHub미실행·지속localcommit범위, 개인graph보존.

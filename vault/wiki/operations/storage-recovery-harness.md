@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T16:22:01+09:00"
+  at: "2026-10-04T17:15:45+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-014.md"
@@ -20,6 +20,9 @@ sources:
   - id: "technical"
     resource: "../sources/SRC-044-storage-pwa-recovery.md"
     title: "공식 안내"
+  - id: "gzip"
+    resource: "compressed-backup.md"
+    title: "압축 복구 계약"
 version: "0.1.0"
 approval_status: "implementation-policy-not-new-user-approval"
 change_id: "CHG-0014"
@@ -69,3 +72,7 @@ fault는 앱 코드를 mock하지 않고 blank test context에 addInitScript로 
 실제 Safari/iPhone의 저장 압력/eviction·홈화면 설치·background/잠금/키보드·persist·다중 tab update는 REL02에서 확인한다. 개인 backup/토큰을 공개 CI에 올리지 않는다. 실제 Auth A/B·만료·RLS/다기기 복구는 계정 준비 후 SYNC/HAR06에서 검사한다. [남은 순서](../product/remaining-work.md).
 
 [최종 check/빌드 크기 정정](../../raw/research/2026-10-04-storage-recovery-final-check.json). 이전 실행 원본/해시를 수정하지 않고 final1278.10KiB를 별도로 기록했다.
+
+## 압축 백업 후속
+
+[새 gzip 복구 계약](compressed-backup.md)에서66개·browser18·새2×3회6회를 확인했다. 기존16과업에 새24,000세트 gzip 독립context 복구/CRC거부 두 엔진을 추가했다. 기존큰JSON검사는 유지한다. 첫 fixture.tables 오참조 실패와 이후 success는 각 runID로 보존한다. 실제 Auth/iPhone·physical quota는 별도다.

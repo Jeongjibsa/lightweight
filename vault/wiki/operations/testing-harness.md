@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T16:22:01+09:00"
+  at: "2026-10-04T17:15:45+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
@@ -65,6 +65,9 @@ sources:
   - id: "ci-receipt"
     resource: "../../raw/research/2026-10-04-github-ci-37184261544.json"
     title: "GitHub CI 증거"
+  - id: "gzip"
+    resource: "compressed-backup.md"
+    title: "압축 복구 계약"
 version: "0.5.1"
 approval_status: "current-audit-and-proposal"
 change_id: "CHG-0014"
@@ -231,3 +234,7 @@ HAR-02는 in_progress다. DOM 과업 기반을 만들었지만 backup/Auth 전�
 [남은 작업](../product/remaining-work.md) · [루프 운영](loop-engineering.md) · [검증 계획](../product/validation-plan.md) · [검사 기록 양식](../../templates/verification-record.md)
 
 최종 설명 검토: 이력 검토를 건너뛴 active/오늘/설정 보류에는 제외0개 대신 미검토를 표시한다. 최종50개/10파일·l int/build/format 통과, precache23개/1644.45KiB. [마지막 실행](../../raw/research/2026-10-04-volume-history-final-verification.json).
+
+## 압축 백업 후속
+
+[새 gzip 복구 계약](compressed-backup.md)에서66개·browser18·새2×3회6회를 확인했다. 기존16과업에 새24,000세트 gzip 독립context 복구/CRC거부 두 엔진을 추가했다. 기존큰JSON검사는 유지한다. 첫 fixture.tables 오참조 실패와 이후 success는 각 runID로 보존한다. 실제 Auth/iPhone·physical quota는 별도다.

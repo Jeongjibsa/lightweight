@@ -1,6 +1,7 @@
 import {
   checkBackupFileSize,
-  serializeBackupFile,
+  createBackupFile,
+  readBackupFile,
 } from "../domain/backup-file";
 import { errorMessage } from "../domain/errors";
 import {
@@ -260,18 +261,21 @@ export function SettingsView({
   const [backup, setBackup] = useState<Backup | null>(null);
   const [fileError, setFileError] = useState("");
   const [restoring, setRestoring] = useState(false);
+  const [fileBusy, setFileBusy] = useState(false);
   async function exportBackup() {
+    if (fileBusy) return;
+    setFileBusy(true);
     await run(async () => {
       const data = await store.backup(profile.ownerId);
-      const url = URL.createObjectURL(
-        new Blob([serializeBackupFile(data)], { type: "application/json" }),
-      );
+      const { blob, extension } = await createBackupFile(data);
+      const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
-      link.download = `lightweight-${data.exportedAt.slice(0, 10)}.json`;
+      link.download = `lightweight-${data.exportedAt.slice(0, 10)}.${extension}`;
       link.click();
       setTimeout(() => URL.revokeObjectURL(url), 10000);
     }, "백업 파일을 만들었습니다. 안전한 곳에 보관해주세요.");
+    setFileBusy(false);
   }
   async function importFile(file?: File) {
     if (!file) return;
@@ -285,11 +289,17 @@ export function SettingsView({
     }
 
     try {
-      setBackup(store.parseBackup(await file.text()));
-    } catch {
+      setFileBusy(true);
+      setBackup(await readBackupFile(file));
+    } catch (error) {
+      const message = errorMessage(error);
       setFileError(
-        "백업 파일을 읽지 못했습니다. 파일 형식을 확인한 뒤 다시 선택해주세요.",
+        message.includes("백업") || message.includes("브라우저")
+          ? message
+          : "백업 파일을 읽지 못했습니다. 파일 형식을 확인한 뒤 다시 선택해주세요.",
       );
+    } finally {
+      setFileBusy(false);
     }
   }
   return (
@@ -317,11 +327,12 @@ export function SettingsView({
               <Select
                 label="현재 프로필"
                 value={profile.ownerId}
-                disabled={busy || restoring}
+                disabled={busy || restoring || fileBusy}
                 searchable
                 nothingFoundMessage="프로필을 찾을 수 없어요"
                 onChange={(value) => {
-                  if (value && !busy && !restoring) switchProfile(value);
+                  if (value && !busy && !restoring && !fileBusy)
+                    switchProfile(value);
                 }}
                 data={profiles.map((item) => ({
                   value: item.ownerId,
@@ -331,7 +342,7 @@ export function SettingsView({
               <Button
                 variant="light"
                 leftSection={<Plus size={18} />}
-                disabled={busy || restoring}
+                disabled={busy || restoring || fileBusy}
                 onClick={() => void createProfile()}
               >
                 새 프로필 만들기
@@ -355,6 +366,7 @@ export function SettingsView({
               variant="default"
               leftSection={<Download size={18} />}
               onClick={() => void exportBackup()}
+              loading={fileBusy}
             >
               현재 프로필 백업
             </Button>
@@ -365,7 +377,8 @@ export function SettingsView({
                 resetFile.current?.();
                 void importFile(file ?? undefined);
               }}
-              accept="application/json,.json"
+              accept="application/json,application/gzip,.json,.gz"
+              disabled={fileBusy}
               inputProps={{ "aria-label": "백업 파일 선택" }}
             >
               {(props) => (
@@ -385,6 +398,8 @@ export function SettingsView({
             )}
             <Text size="xs" c="dimmed">
               백업에는 개인 기록이 들어 있습니다. 공유할 때 내용을 확인해주세요.
+              큰 기록은 자동으로 .json.gz 압축 파일로 저장합니다. 암호화 파일은
+              아닙니다.
             </Text>
           </Stack>
         </Paper>

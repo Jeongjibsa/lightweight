@@ -177,3 +177,80 @@ test("HAR-04 14,400세트: 실제 큰 다운로드→복원·초과 입력 거�
     contentType: "application/json",
   });
 });
+
+test("10MiB 초과 기록의 압축 다운로드를 새 기기에 복원하고 손상 파일에서 기록을 보존한다", async ({
+  page,
+  browser,
+  diagnostics,
+}, info) => {
+  const backup = largeBackupFixture(owner, 60);
+  expect(Buffer.byteLength(JSON.stringify(backup))).toBeGreaterThan(10485760);
+  await seedVersionOne(page, backup);
+  await page.goto("/");
+  const source = await downloadBackup(page);
+  expect(source.filename).toMatch(/\.json\.gz$/);
+  expect(source.bytes).toBeLessThanOrEqual(10485760);
+  expect(sorted(source.data.sessions)).toEqual(sorted(backup.sessions));
+  const context = await browser.newContext();
+  try {
+    const restored = await context.newPage();
+    diagnostics(restored);
+    await restored.goto("/#settings");
+    await expect(
+      restored.getByLabel("프로필 이름", { exact: true }),
+    ).toBeVisible();
+    expect((await databaseSnapshot(restored)).tables.sessions).toHaveLength(0);
+    await restored
+      .getByLabel("백업 파일 선택", { exact: true })
+      .setInputFiles(source.path);
+    const dialog = restored.getByRole("dialog", {
+      name: "백업을 복원할까요?",
+      exact: true,
+    });
+    await expect(dialog).toBeVisible();
+    await dialog
+      .getByRole("button", { name: "현재 프로필에 복원", exact: true })
+      .click();
+    await expect(dialog).toBeHidden();
+    const result = await downloadBackup(restored);
+    // An independent context creates its own owner; IDs and actual sets must survive.
+    expect(
+      sorted(result.data.sessions).map((s) => ({ ...s, ownerId: owner })),
+    ).toEqual(sorted(backup.sessions));
+    await restored.reload();
+    expect(sorted((await downloadBackup(restored)).data.sessions)).toEqual(
+      sorted(result.data.sessions),
+    );
+    const before = await databaseSnapshot(restored);
+    const corrupt = await readFile(source.path);
+    corrupt[corrupt.length - 8] ^= 1;
+    await restored.getByLabel("백업 파일 선택", { exact: true }).setInputFiles({
+      name: "corrupt.json.gz",
+      mimeType: "application/gzip",
+      buffer: corrupt,
+    });
+    await expect(
+      restored.getByText(
+        "백업 파일을 읽지 못했습니다. 파일 형식을 확인한 뒤 다시 선택해주세요.",
+        { exact: true },
+      ),
+    ).toBeVisible();
+    await expect(dialog).toBeHidden();
+    expect(await databaseSnapshot(restored)).toEqual(before);
+    await info.attach("compressed-backup.json", {
+      body: Buffer.from(
+        JSON.stringify({
+          sessions: 60,
+          sets: 24000,
+          expandedBytes: Buffer.byteLength(JSON.stringify(backup)),
+          compressedBytes: source.bytes,
+          independentContext: true,
+          corruptionRejected: true,
+        }),
+      ),
+      contentType: "application/json",
+    });
+  } finally {
+    await context.close();
+  }
+});

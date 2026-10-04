@@ -198,12 +198,13 @@ it("파일 읽기가 일시적으로 실패해도 같은 백업 파일을 다시
   );
 });
 
-it("크기 초과 export는 다운로드 전에 안내하며 DB 기록을 변경하지 않는다", async () => {
+it("압축을 지원하지 않는 환경의 큰 export는 다운로드 전에 안내하며 DB 기록을 변경하지 않는다", async () => {
   const fixture = largeBackupFixture(owner, 60);
   await db.sessions.bulkPut(fixture.sessions);
   const before = await store.backup(owner);
   const createObjectURL = vi.fn();
   vi.stubGlobal("URL", { createObjectURL, revokeObjectURL: vi.fn() });
+  vi.stubGlobal("CompressionStream", undefined);
   render(<Harness />);
   await screen.findByLabelText("프로필 이름");
   await userEvent
@@ -212,8 +213,8 @@ it("크기 초과 export는 다운로드 전에 안내하며 DB 기록을 변경
       screen.getByRole("button", { name: "현재 프로필 백업", exact: true }),
     );
   expect(
-    (await screen.findByText(/기록이 10MiB를 초과해/)).textContent,
-  ).toContain("분할 백업은 아직 지원하지 않습니다");
+    (await screen.findByText(/이 브라우저는 큰 기록의 압축 백업/)).textContent,
+  ).toContain("기존 기록은 유지됩니다");
   expect(createObjectURL).not.toHaveBeenCalled();
   const after = await store.backup(owner);
   expect(after.profile).toEqual(before.profile);

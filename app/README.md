@@ -25,7 +25,7 @@ npm run preview -- --port 4173
 - 루틴 작성·복사·정렬·편집·삭제, 운동 시작 당시 루틴/설정 스냅샷 보존
 - 중량·횟수·시간·준비/본세트·좌우·선택 RIR 기록, 완료/완료 취소·세트 추가·일부 완료 종료
 - IndexedDB/Dexie 저장과 변경 대기 항목의 원자적 트랜잭션, 재개, 시각 기준 휴식 타이머
-- 프로필 전체 JSON 내보내기, 크기·버전·소유자·중복·충돌 확인 후 원자적 교체 복원, 복원된 설정 입력값 갱신
+- 프로필 전체 JSON/큰 기록 gzip 내보내기, 크기·버전·소유자·중복·충돌 확인 후 원자적 교체 복원, 복원된 설정 입력값 갱신
 - 완료 본세트 입력 행 수·운동 횟수·기록일·운동 분류별 주간 요약
 - 운동/일별 기록 볼륨·세트/반복/시간·28/84/전체 추이 그래프와 수치 표, 같은 종목 조건·kg/lb·0/N/A/coverage
 - 과거 종료 기록/현재 설정·장비에 맞는 본인 루틴 후보, 현재 계획과 과거 실제/partial 구분·보류 이유·명시 선택
@@ -70,9 +70,9 @@ npm run check
 npm run format:check
 ```
 
-Vitest v4 projects의 unit21/integration26/ui17(64개/14파일)는 소유자·보존·롤백·백업·계산과 pending/ACK/충돌/교체/schema migration 계약을 검사합니다. 서버 환경이 있는 로컬에서 `npm run cloud:probe`와 `npm run cloud:verify`로 Auth 상태/비로그인 HTTP/TLS 및16개 SQL 계약을 별도 검사합니다. SQL 표본의 임시 자료/권한은 rollback하며 실제 Auth 토큰/브라우저 전체 흐름과 구별합니다.
+Vitest v4 projects의 unit23/integration26/ui17(66개/14파일)는 소유자·보존·롤백·백업·계산과 pending/ACK/충돌/교체/schema migration 계약을 검사합니다. 서버 환경이 있는 로컬에서 `npm run cloud:probe`와 `npm run cloud:verify`로 Auth 상태/비로그인 HTTP/TLS 및16개 SQL 계약을 별도 검사합니다. SQL 표본의 임시 자료/권한은 rollback하며 실제 Auth 토큰/브라우저 전체 흐름과 구별합니다.
 
-[현재 하네스](../vault/wiki/operations/testing-harness.md)와 [진행 보고](../vault/wiki/product/implementation-progress.md)에 실제 범위를 기록했습니다. DOM은 Testing Library/user-event/jsdom, 실제 브라우저는 Playwright Test 1.63.0으로 검사합니다. 새 GitHub 브라우저 workflow의 외부 실행은 미확인입니다. desktop WebKit/폭 시험은 실제 iPhone/Safari 설치·키보드·잠금·저장소 정책을 대신하지 않습니다. [정확한 기술 스택](../vault/wiki/product/technology-stack.md) · [남은 작업](../vault/wiki/product/remaining-work.md).
+[현재 하네스](../vault/wiki/operations/testing-harness.md)와 [진행 보고](../vault/wiki/product/implementation-progress.md)에 실제 범위를 기록했습니다. DOM은 Testing Library/user-event/jsdom, 실제 브라우저는 Playwright Test 1.63.0으로 검사합니다. a2b3f9f와67ec882의 GitHub3job 성공을 확인했습니다. 최신 압축 증분의 외부 CI는 push 후 확인합니다. desktop WebKit/폭 시험은 실제 iPhone/Safari 설치·키보드·잠금·저장소 정책을 대신하지 않습니다. [정확한 기술 스택](../vault/wiki/product/technology-stack.md) · [남은 작업](../vault/wiki/product/remaining-work.md).
 
 ## 자동 브라우저 검사와 실패 증거
 
@@ -114,3 +114,7 @@ E2E server는 production 설정을 공유하는 test-only config로 dist-e2e/v1�
 ## Cloudflare 배포 준비
 
 Wrangler4.147.0과 `wrangler.jsonc`를 사용합니다. `npm run pages:check`는 실제 dist의 PWA/보안 헤더·private 경로·비밀키/privileged JWT·E2E marker를 검사합니다. `npm run pages:deploy`는 build/검사 후 Pages에 dist만 전송하므로 OAuth/대상 계정·project 확인과 사용자 배포 승인 범위가 먼저 필요합니다. 공식 skills16/MCP5 등록을 인증 성공으로 표시하지 않습니다. 현재 broad OAuth 승인과 실제 HTTPS 배포는 pending입니다. [연결 운영](../vault/wiki/operations/cloudflare-setup.md).
+
+## 큰 백업 복구
+
+JSON10MiB 이하를 기존 형식으로 내보내고 초과 기록은 자동 .json.gz로 보관합니다. 파일10MiB/해제 JSON64MiB 한도·gzip손상/UTF8/schema를 확인한 뒤 기존 명시 atomic restore를 사용합니다.24,000세트 실제 압축 다운로드→새context 복구를 두 엔진/3회씩 확인했습니다. gzip은 암호화가 아니며 실제iPhone·physicalquota/eviction/실Auth·64MiB초과 분할은 남았습니다. [압축 계약](../vault/wiki/operations/compressed-backup.md).

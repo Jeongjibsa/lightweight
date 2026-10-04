@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T16:59:17+09:00"
+  at: "2026-10-04T17:15:45+09:00"
 sources:
   - id: "implementation-request"
     resource: "../../raw/conversations/2026-10-03-005.md"
@@ -92,7 +92,13 @@ sources:
   - id: "cf-setup"
     resource: "../operations/cloudflare-setup.md"
     title: "연결 운영"
-version: "0.6.4"
+  - id: "gzip"
+    resource: "../operations/compressed-backup.md"
+    title: "압축 복구 계약"
+  - id: "gzip-check"
+    resource: "../../raw/research/2026-10-04-compressed-backup-verification.json"
+    title: "실행"
+version: "0.6.5"
 approval_status: "proposal"
 change_id: "CHG-0014"
 ---
@@ -161,7 +167,7 @@ PRE와 화면/계산 개발은 미결인 종목/장비·호스팅 선택 전 가
 | HAR-01 | 단위/통합 projects·fixture/독립 기대값·공통 명령 | BASE-01/현재16개 | 기존검사 보존, unit에 DB 불필요, 날짜/시간대 결정적, 로컬/CI 같은 명령 | done |
 | HAR-02 | 세트 입력·오류·복원·프로필 전환 DOM 통합 | HAR-01 | blur/click·반복 클릭·실패 재시도·전환 중 저장 상태 확인, 사용자 라벨 기반 | in_progress |
 | HAR-03 | 버전 고정 browser runner·빌드 preview·핵심 E2E | HAR-01; 입력 계약은 HAR-02 연결 | E2E01~04·E2E06부분, Chromium5/WebKit4·독립context, 9과업×3회27통과·종료 수정 후9재확인 | done |
-| HAR-04 | 저장 실패·큰 백업·migration·V1/V2 업데이트 | HAR-03, LOG-05/06 | 본 증분: quota 주입/native rollback·schema10→20·14,400세트/10MiB 경계·실제 waiting SW/업데이트 보존. 남음: 초과 파일 독립복구·physical quota/eviction·실기기·서버복구 | in_progress |
+| HAR-04 | 저장 실패·큰 백업·migration·V1/V2 업데이트 | HAR-03, LOG-05/06 | 본 증분: quota 주입/native rollback·schema10→20·14,400세트/10MiB 경계·실제 waiting SW/업데이트 보존. gzip24,000세트/새context/손상거부 완료. 남음:64MiB초과 분할·physical quota/eviction·실기기·서버복구 | in_progress |
 | HAR-05 | CI 검사 분리·실패 trace/console/실행 메타데이터 | HAR-01/03 | 187c47c GitHub check/Chromium/WebKit 성공·artifact 다운로드/첫실패trace 확인, 새HAR04는 local 검사 | done |
 | HAR-06 | 보존/권한/계산/근거의 scenario 추적·원격/콘텐츠 평가 | HAR-01; 원격은 SYNC, 콘텐츠는 SCI | 계약→검사/검토→증거 연결, 미지원 not_run, 잘못된 계산/주장/타인 접근 반례 | in_progress |
 

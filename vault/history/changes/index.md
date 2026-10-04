@@ -15,3 +15,4 @@
 - [CHG-0013](CHG-0013.md) — PRD0.7.1현황PATCH·HAR03/05 runner/증거.
 - [CHG-0014](CHG-0014.md) — PRD0.7.2·보존계약/CI확인.
 - [CHG-0015 Cloudflare 연결 준비](CHG-0015.md)
+- [CHG0016 압축 백업](CHG-0016.md)

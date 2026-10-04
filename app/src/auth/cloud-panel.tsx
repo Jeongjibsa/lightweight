@@ -17,15 +17,15 @@ import { supabase } from "../data/cloud/client";
 import { supabaseTransport, uploadWorkspace } from "../data/cloud/sync";
 import { type DownloadPreview } from "../data/cloud/contracts";
 import { type Backup } from "../domain/models";
+import { createBackupFile } from "../domain/backup-file";
 import { errorMessage } from "../domain/errors";
 import { Modal, type Run } from "../components/shared";
-function download(backup: Backup) {
-  const url = URL.createObjectURL(
-    new Blob([JSON.stringify(backup, null, 2)], { type: "application/json" }),
-  );
+async function download(backup: Backup) {
+  const { blob, extension } = await createBackupFile(backup);
+  const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
   link.href = url;
-  link.download = `lightweight-${backup.exportedAt.slice(0, 10)}.json`;
+  link.download = `lightweight-${backup.exportedAt.slice(0, 10)}.${extension}`;
   link.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
@@ -134,7 +134,7 @@ export function CloudPanel({ busy, run }: { busy: boolean; run: Run }) {
           <Button
             variant="subtle"
             leftSection={<Download size={18} />}
-            onClick={() => download(state.recovery!)}
+            onClick={() => void act(async () => download(state.recovery!))}
           >
             최근 교체 전 기록 다운로드
           </Button>

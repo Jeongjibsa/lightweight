@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T16:59:17+09:00"
+  at: "2026-10-04T17:15:45+09:00"
 sources:
   - id: "responsive-local-request"
     resource: "../../raw/conversations/2026-10-03-006.md"
@@ -92,11 +92,26 @@ sources:
   - id: "cf-setup"
     resource: "../operations/cloudflare-setup.md"
     title: "연결 운영"
+  - id: "gzip"
+    resource: "../operations/compressed-backup.md"
+    title: "압축 복구 계약"
+  - id: "gzip-check"
+    resource: "../../raw/research/2026-10-04-compressed-backup-verification.json"
+    title: "실행"
 version: "0.3.2"
 change_id: "CHG-0014"
 ---
 
 # 로컬 PWA 구현 결과와 다음 작업
+
+## 압축 백업 후속 증분 — 2026-10-04
+
+CONV0015의 남은 순차 작업에서10MiB 초과 기록의 독립복구를 구현했다. 기존 JSONv1·DB schema2·cloud snapshot10MB는 유지하며 큰 파일은gzip output10MiB/expanded64MiB로 제한해 모든 필드를 보존한다. unsupported API/손상/잘림/과도팽창·schema 오류는 DB 적용 전에 거부한다. 공통 writer를 기기/교체 전 복구 export에 적용했다.
+
+66개·lint/build/E2E typecheck/format/artifact24 통과. browser18(Chromium10/WebKit8)·새2×3회6회,24,000세트 실제 gzip download→새context restore/reload·CRC 손상 때5table 동일을 확인했다. 최초2 실패는 fixture의tables 오참조였으며 원본 증거를 보존했다. [계약](../operations/compressed-backup.md)·[실행](../../raw/research/2026-10-04-compressed-backup-verification.json).
+
+64MiB 초과/분할·actualiPhone/physical quota/eviction·실Auth/다기기 서버복구는 남아 HAR04/LOG06을 전체done으로 표시하지 않는다. Cloudflare 신규 OAuth는 응답 없이 만료했으며 승인 질문 pending/미배포다.67ec882의 새CI3job success를 확인했다. 다음은 이전 값/운동 재사용·종목 대체·종료 기록 수정이다.
+
 
 ## CONV-0015 Cloudflare 연결과 순차 진행 — 2026-10-04
 

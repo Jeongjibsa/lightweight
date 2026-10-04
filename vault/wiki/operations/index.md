@@ -12,3 +12,4 @@
 - [browser runner/실패증거](testing-harness.md) — 독립preview/context·9과업·고유실행ID/코드해시·CI7일보관설정.
 - [저장 보존 하네스](storage-recovery-harness.md) — 실제SW/파일/nativeDB·합성quota·한도/한계.
 - [Cloudflare 연결/배포 운영](cloudflare-setup.md)
+- [압축 백업 계약](compressed-backup.md)

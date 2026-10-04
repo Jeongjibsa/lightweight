@@ -16,6 +16,18 @@ Object.defineProperty(window, "matchMedia", {
   }),
 });
 afterEach(cleanup);
+if (typeof Blob.prototype.arrayBuffer !== "function") {
+  Object.defineProperty(Blob.prototype, "arrayBuffer", {
+    value: function (this: Blob): Promise<ArrayBuffer> {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result as ArrayBuffer);
+        reader.onerror = () => reject(reader.error);
+        reader.readAsArrayBuffer(this);
+      });
+    },
+  });
+}
 // jsdom has no layout engine. Observe semantics without pretending to test size.
 globalThis.ResizeObserver = class {
   observe() {}

@@ -4,7 +4,7 @@ okf_version: "0.2"
 
 # 웨이트 트레이닝 앱 — 기획과 지식 베이스
 
-옵시디언에서 이 `vault` 폴더를 열고 시작한다. 현재 기획은 **0.8.0 브레인스토밍 초안**이다.
+옵시디언에서 이 `vault` 폴더를 열고 시작한다. 현재 기획은 **0.8.1 브레인스토밍 초안**이다.
 
 ## 먼저 읽기
 
@@ -34,7 +34,7 @@ okf_version: "0.2"
 ## 제품과 근거
 
 - [제품 상세](wiki/product/index.md) — 운동·티어·추천·기록·리포트·영양·데이터·검증.
-- [출처 노트 45개](wiki/sources/index.md) — 공식 규격·기관·운동/영양 연구·iOS 기술 안내.
+- [출처 노트 46개](wiki/sources/index.md) — 공식 규격·기관·운동/영양 연구·iOS 기술 안내.
 - [주장-근거 지도](wiki/concepts/evidence-map.md) — 적용·상충·공백.
 - [보존 원본](raw/index.md) — 사용자 발언·수집 당시 기록.
 
@@ -60,3 +60,5 @@ okf_version: "0.2"
 - [저장 보존 최신증분](wiki/operations/storage-recovery-harness.md) — 백업/업데이트 제품실패 재현·수정과nativeDB검사.
 
 - [Cloudflare 공식 연결/배포 운영](wiki/operations/cloudflare-setup.md) — skills16/MCP5 등록·Wrangler/artifact gate; OAuth/HTTPS pending.
+
+- [압축 백업 독립 복구](wiki/operations/compressed-backup.md) —66개/18browser/새6회·10MiB초과24,000세트 복구.

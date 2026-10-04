@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T16:59:17+09:00"
+  at: "2026-10-04T17:15:45+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
@@ -77,12 +77,27 @@ sources:
   - id: "cf-setup"
     resource: "../operations/cloudflare-setup.md"
     title: "연결 운영"
+  - id: "gzip"
+    resource: "../operations/compressed-backup.md"
+    title: "압축 복구 계약"
+  - id: "gzip-check"
+    resource: "../../raw/research/2026-10-04-compressed-backup-verification.json"
+    title: "실행"
 version: "0.3.2"
 approval_status: "proposal"
 change_id: "CHG-0014"
 ---
 
 # 현재 구현에서 운동 MVP까지 남은 작업
+
+## 압축 백업 후속 증분 — 2026-10-04
+
+CONV0015의 남은 순차 작업에서10MiB 초과 기록의 독립복구를 구현했다. 기존 JSONv1·DB schema2·cloud snapshot10MB는 유지하며 큰 파일은gzip output10MiB/expanded64MiB로 제한해 모든 필드를 보존한다. unsupported API/손상/잘림/과도팽창·schema 오류는 DB 적용 전에 거부한다. 공통 writer를 기기/교체 전 복구 export에 적용했다.
+
+66개·lint/build/E2E typecheck/format/artifact24 통과. browser18(Chromium10/WebKit8)·새2×3회6회,24,000세트 실제 gzip download→새context restore/reload·CRC 손상 때5table 동일을 확인했다. 최초2 실패는 fixture의tables 오참조였으며 원본 증거를 보존했다. [계약](../operations/compressed-backup.md)·[실행](../../raw/research/2026-10-04-compressed-backup-verification.json).
+
+64MiB 초과/분할·actualiPhone/physical quota/eviction·실Auth/다기기 서버복구는 남아 HAR04/LOG06을 전체done으로 표시하지 않는다. Cloudflare 신규 OAuth는 응답 없이 만료했으며 승인 질문 pending/미배포다.67ec882의 새CI3job success를 확인했다. 다음은 이전 값/운동 재사용·종목 대체·종료 기록 수정이다.
+
 
 ## CONV-0015 Cloudflare 연결과 순차 진행 — 2026-10-04
 
@@ -139,7 +154,7 @@ UI-02 전체 Mantine·Geist/차콜·노란 강조·전 폭 하단 메뉴·빠른
 
 | 순서 | 남은 작업 | 작업 ID | 완료 조건/현재 제한 |
 |---|---|---|---|
-| 1 | 백업 한도 초과 독립복구·실기기 저장/업데이트 | HAR-04, LOG-05/06, REL-02 | 로컬16/새21회 보존 검사 완료. 압축/분할·실제quota/eviction·iPhone 관문 남음 |
+| 1 | 백업 한도 초과 독립복구·실기기 저장/업데이트 | HAR-04, LOG-05/06, REL-02 | 로컬16/새21회 보존 검사 완료. gzip 독립복구18/새6회 완료;64MiB초과/분할·실제quota/eviction·iPhone 관문 남음 |
 | 2 | 로컬 기록 편의의 다음 증분·남은 Auth DOM | LOG-03/04, HAR-02/06 | 이전 값 재사용/종목 대체/종료 기록 편집을 보존 계약과 함께 진행; 실계정 시험은 준비 후 |
 | 3 | 본인 계정 등록/허용 목록·실제 Auth/복원 | SYNC-02/05 | 사용자가 비밀번호/계정 등록, 승인 UUID 허용 후 login→전송→다른 저장소 불러오기; A/B/만료/권한회수/오프라인 확인. 서버 연결정보 부족은 해결됨 |
 | 4 | 전송/편집 충돌 흐름 고도화 | SYNC-03/04/05 | manual snapshot CAS/retry는 구현. 두 변경 명시 해결·삭제 재등장·pending 취소/복구·증가한 기록 크기 정책, 필요 시 자동 레코드 sync |
