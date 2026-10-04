@@ -2,6 +2,8 @@
 
 ## 2026-10-04
 
+- **Human / Pilot timing**: [CONV0021](wiki/conversations/2026-10-04-021.md) “다음 운동 후 확인” 원문 보존. 운동 저장→재실행→수동 전송을 다음 운동 이후 사용자 확인 예정으로 갱신; 실제 결과는 not_run. 새 저장소 적용은 별도 과업. [CHG0031](history/changes/CHG-0031.md)·PRD0.8.16 전체 보존·이전177불변 유지. 나머지 구현/검증 관문은 유지한다.
+
 - **Release / Physical follow-up**: 1db637d main push·GitHub37206666022 세 검사 success·운영/DB없는preview24file hash/헤더 일치.90개/Node8/24browser. [실행](raw/research/2026-10-04-ended-record-release.json)·[CHG0030](history/changes/CHG-0030.md)·PRD0.8.15 전체 보존/이전174불변 유지. [실기기 과업](wiki/operations/iphone-pilot-checklist.md) 작성·본인 운동 저장/재실행/수동 전송 요청/응답 대기. 메모/장비/REP/SCI/실Auth/나머지 G3/운영/4주파일럿/P2 유지.
 
 - **Records / Ended recovery**: 종료 상세 삭제/확인·리포트 복구/확인·종료/owner/deleted/revision/atomic·실패/중복/다른 active·세트/시각 보존·집계1→0→1 구현.90개(새3integration/1UI)/Node8/24browser/build/types/format/artifact25 통과(lint6경고).320/390px6PNG 직접 확인. [실행](raw/research/2026-10-04-ended-record-recovery-loop.json)·[CHG0029](history/changes/CHG-0029.md)·PRD0.8.14 전체 보존/이전165불변 유지. 새 source CI/배포·메모/장비/SYNC/REP/SCI/실기기/운영/파일럿/P2 후속.

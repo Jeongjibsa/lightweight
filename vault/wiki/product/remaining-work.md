@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T22:52:11+09:00"
+  at: "2026-10-04T22:59:58+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -161,14 +161,17 @@ sources:
   - id: "iphone-checklist"
     resource: "../operations/iphone-pilot-checklist.md"
     title: "다음 실제 기기 과업"
-version: "0.3.11"
+  - id: "next-workout"
+    resource: "../../raw/conversations/2026-10-04-021.md"
+    title: "다음 운동 후 확인 응답"
+version: "0.3.12"
 approval_status: "proposal"
-change_id: "CHG-0030"
+change_id: "CHG-0031"
 ---
 
 # 남은 작업 한눈에 보기
 
-2026-10-04 / PRD0.8.15. **운동 MVP 전체는 진행 중**이며 식단·3D는 후순위다.
+2026-10-04 / PRD0.8.16. **운동 MVP 전체는 진행 중**이며 식단·3D는 후순위다.
 
 [운영 앱](https://lightweight-training.pages.dev) · [DB 연결 없는 preview](https://preview.lightweight-training.pages.dev) · [세부 백로그](implementation-backlog.md).
 
@@ -198,4 +201,4 @@ change_id: "CHG-0030"
 
 [종료 기록 삭제/복구·집계 보존](../operations/ended-record-recovery.md).
 
-[실제 iPhone 다음 과업 체크리스트](../operations/iphone-pilot-checklist.md). 운동 저장→재실행→수동 전송은 저장 시점 사용자 확인 대기이며 자동 통과로 표시하지 않는다.
+[실제 iPhone 다음 과업 체크리스트](../operations/iphone-pilot-checklist.md). 운동 저장→재실행→수동 전송은 [CONV0021](../conversations/2026-10-04-021.md)에 따라 다음 운동 후 사용자 확인 예정이다. 실제 결과는 not_run이며 새 저장소 복원은 별도 확인한다.

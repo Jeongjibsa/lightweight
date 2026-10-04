@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T22:52:11+09:00"
+  at: "2026-10-04T22:59:58+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -119,6 +119,9 @@ sources:
   - id: "iphone-checklist"
     resource: "../operations/iphone-pilot-checklist.md"
     title: "다음 실제 기기 과업"
+  - id: "next-workout"
+    resource: "../../raw/conversations/2026-10-04-021.md"
+    title: "다음 운동 후 확인 응답"
 ---
 
 # 미결 사항과 다음 대화
@@ -206,3 +209,7 @@ REL02는 부분 진행이다. 실제 운동/모바일 클라우드 왕복·새 �
 ## 다음 실사용 확인 — CHG0030
 
 iPhone 설치/홈 화면/로그인은 CONV0020 사용자 보고로 확인했다. 실제 운동 저장→재실행→수동 클라우드 전송 확인을 요청했으며 저장 시점 응답 대기다. 개인 수치/백업/계정 식별자/비밀번호는 수집하지 않는다. [과업](../operations/iphone-pilot-checklist.md). 메모/장비·과학/실Auth/나머지 기기/운영/파일럿/P2 관문은 유지한다.
+
+## 현재 실사용 확인 시점 — CHG0031
+
+사용자가 “다음 운동 후 확인”이라고 응답했다. 운동 기록 저장→재실행→수동 클라우드 전송은 다음 운동 이후 사용자 확인 예정이며, 실제 결과는 not_run이다. 구체 날짜는 정하지 않았다. [CONV0021](../conversations/2026-10-04-021.md)·[체크리스트](../operations/iphone-pilot-checklist.md). CHG0030의 응답 대기는 당시 상태다. 확인 시점의 답변을 완료 결과로 표시하지 않는다. 새 저장소 복원/실Auth/나머지 G3/운영/과학 검토/4주 파일럿은 별도 관문이다.
