@@ -4,7 +4,7 @@ okf_version: "0.2"
 
 # 웨이트 트레이닝 앱 — 기획과 지식 베이스
 
-옵시디언에서 이 `vault` 폴더를 열고 시작한다. 현재 기획은 **0.9.2 브레인스토밍 초안**이다.
+옵시디언에서 이 `vault` 폴더를 열고 시작한다. 현재 기획은 **0.9.3 브레인스토밍 초안**이다.
 
 ## 먼저 읽기
 
@@ -94,3 +94,5 @@ okf_version: "0.2"
 - [현재 Git 자동 배포 확인](raw/research/2026-10-04-catalog-rest-git-release.json).
 
 - [최신 기록 메모/조건](wiki/operations/record-details.md) — 로컬106/Node10/browser32·서버 필드 승인/배포 대기. [한도 복구 예약](wiki/operations/usage-resumption.md).
+
+- 최신 PRD0.9.3: [서버 변경 승인/28개 검사](raw/research/2026-10-05-cloud-validator-approved.json), 새 Git 배포 검증을 이어간다.

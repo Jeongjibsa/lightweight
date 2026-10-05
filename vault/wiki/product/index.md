@@ -28,3 +28,5 @@
 - [HAR04 현재 결과](implementation-progress.md) — CI확인·저장/큰백업/update 보존, 실기기관문 유지.
 - [Cloudflare 연결 운영](../operations/cloudflare-setup.md) — PRD0.8.2/main MCP 인증 현황·cf 생략 선택.
 - [Google 계정 로그인 검토](google-oauth-review.md)
+
+- PRD0.9.3: [승인된 서버 계약과 다음 작업](implementation-progress.md).

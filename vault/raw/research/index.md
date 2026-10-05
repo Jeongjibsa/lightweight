@@ -44,3 +44,5 @@
 - [OAuth 공개 설정의 누락 필드 정정](2026-10-04-oauth-public-settings-correction.json)
 - [0f6381d Git 자동 배포/운영·CI 검증](2026-10-04-catalog-rest-git-release.json)
 - [메모/조건/서버 승인 전 루프](2026-10-05-record-details-loop.json)
+
+- [2026-10-05 승인된 서버 계약/28개 rollback](2026-10-05-cloud-validator-approved.json).

@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T23:58:53+09:00"
+  at: "2026-10-05T10:16:15+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -65,6 +65,9 @@ sources:
   - id: "git-release22"
     resource: "../../raw/research/2026-10-04-catalog-rest-git-release.json"
     title: "0f6381d CI/Git build/production asset verification"
+  - id: "validator-human-approval"
+    resource: "../../raw/conversations/2026-10-05-024.md"
+    title: "검증 함수 SQL 승인과 재개"
 ---
 
 # Cloudflare 연결과 정적 PWA 배포
@@ -150,3 +153,11 @@ app에서 npm run pages:verify -- https://lightweight-training.pages.dev dist, p
 ## Git 자동 배포 확인 완료
 
 0f6381d의 main push→GitHub37210829022 세 job success→Pages github:push/build/deploy success를 확인했다. production24file hash/보안 헤더가 검증한 build와 일치한다. [불변 receipt](../../raw/research/2026-10-04-catalog-rest-git-release.json). 최초 Git 연결 확인 시점의 대기 문단은 당시 이력이다. Google 검토/실기기/새 preview branch 검증은 각각 별도다.
+
+## CONV0024 승인된 서버 변경 — 2026-10-05
+
+인간 사용자의 명시 승인 후 준비된 `training_optional_record_fields` SQL을 같은 Supabase MCP 경로로 적용했다. 기존 함수 identity·owner·security invoker/빈 search_path·ACL, private 세 테이블의 RLS/force RLS·ACL·정책은 그대로다. 기존 형식 및 새 메모/장비·가동범위·휴식 즐겨찾기·세부 분류/별칭을 RPC 저장→조회와 idempotent retry로 확인했다. 잘못된 소유자·중복·길이/입력/시각을 포함한 **28개 서버 검사**가 통과했고 테스트 계정·기록·임시 권한은 모두 rollback했다. 실제 본인 운동 기록이나 실제 브라우저 Auth 왕복의 검증으로 확대하지 않는다.
+
+자동 검토의 앞선 승인 대기/거부는 당시 이력이며 이 명시 승인과 적용으로 해소됐다. app0.2.0/IndexedDB2/backup1, 106 Vitest·Node10·build/types/format/artifact25(lint기존6경고)를 유지한다. 신규 서버 검증 뒤 main push/새 GitHub CI/Pages 배포 검증을 이어간다. 실제 iPhone/운동·다기기/다버전·과학 승인0개·운영복구/파일럿/P2 관문은 남는다.
+
+[인간 승인](../conversations/2026-10-05-024.md) · [불변 서버 확인](../../raw/research/2026-10-05-cloud-validator-approved.json).

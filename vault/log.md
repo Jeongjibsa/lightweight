@@ -2,6 +2,8 @@
 
 ## 2026-10-05
 
+- **CONV0024 / Server approval**: 인간 승인 후 준비 validator SQL 적용·28개 합성 RPC/권한 검사 rollback·ACL/RLS 유지, 106/Node10/build/types/format/artifact25 통과(lint6경고). [확인](raw/research/2026-10-05-cloud-validator-approved.json)·[CHG0035](history/changes/CHG-0035.md)·PRD0.9.3 snapshot/기존206불변 보존. 새 Git 배포 검증을 이어간다.
+
 - **CONV0023 / Records**: note/비교 조건·전체/개별/owner/CAS/atomic/backup·재시작/추가/교체·v2 추이/이전값 분리,106개/Node10/32browser/신규6반복/build/types/format/artifact25·4PNG 직접 확인. [계약](wiki/operations/record-details.md)·[루프](raw/research/2026-10-05-record-details-loop.json). 서버 strict schema의 새 선택 필드 거부를 확인; 준비 migration은 자동 승인 거부로 미적용/인간 승인 대기, push/배포 보류.
 - **Resumption / History**: 초기화 뒤03:00 KST 일회 조건부 heartbeat 생성; 실제 한도 미도달/완료·승인 대기는 새 작업 금지. [예약](wiki/operations/usage-resumption.md). PRD0.9.2/CHG0034/전체 snapshot·SRC050·이전198불변 보존. 과학/실기기/다기기/운영/P2 관문 유지.
 

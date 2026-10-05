@@ -1,11 +1,7 @@
 # Lightweight
 
-반응형 운동 기록 PWA는 [app](app/README.md)에 있습니다. `cd app && npm ci && npm run dev`로 실행합니다. app0.2.0은 기기 기록·백업·Mantine UI·Spoqa Han Sans Neo와 Supabase Auth/계정별 DB·수동 클라우드 기록 전송을 구현했습니다. 볼륨/추이·과거 기록 기반 루틴 후보와 DOM 검사까지 구현했습니다. 실제 계정 전체 흐름·자동 browser 회귀·검토된 추천/권장량 콘텐츠·실기기 검증은 남았습니다.
+[운영 앱](https://lightweight-training.pages.dev)은 반응형 운동 기록 PWA입니다. 전체 Mantine UI·Geist/한글 시스템 fallback·차콜/노란 강조와 하단 메뉴를 사용합니다. 사용자별 설정·운동/루틴 기록·볼륨 추이·휴식 즐겨찾기·운동 메모/장비·가동범위 기록·백업·수동 Supabase 전송을 제공합니다.
 
-현재 [기술 스택](vault/wiki/product/technology-stack.md), [Supabase 연결과 계정 준비](vault/wiki/product/supabase-integration.md), [남은 작업](vault/wiki/product/remaining-work.md), [테스트 하네스](vault/wiki/operations/testing-harness.md)를 문서화했습니다. 공개 가입은 차단했으며 등록된 Auth 계정과 별도 서버 허용 목록이 필요합니다.
+[app 안내](app/README.md)에서 실행 방법을, [기술 스택](vault/wiki/product/technology-stack.md)과 [남은 작업](vault/wiki/product/remaining-work.md)에서 현재 범위를 확인합니다. 과학 검토를 마친 추천/티어 콘텐츠와 실제 운동·다기기/실기기 검증은 진행 중입니다.
 
-[vault/index.md](vault/index.md)에서 시작합니다. 현재 기획서는 [vault/wiki/product/prd.md](vault/wiki/product/prd.md)입니다.
-
-옵시디언에서 프로젝트 하위 `vault` 폴더를 보관함으로 여세요. 대화에 따른 요구·결정·근거 변경은 기획서와 변경 이력에 함께 반영합니다.
-
-문서 구조 확인: `ruby scripts/validate_vault.rb`. 이 검사는 연구 전문 검토나 앱 기능 테스트를 대신하지 않습니다.
+[vault/index.md](vault/index.md)를 옵시디언 보관함으로 열어 기획·근거·변경 이력을 읽습니다. 구조 확인은 `ruby scripts/validate_vault.rb`이며 앱 기능이나 과학 검토를 대신하지 않습니다.

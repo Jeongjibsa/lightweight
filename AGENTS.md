@@ -66,3 +66,5 @@
 ## 한도 후 재개
 
 - CONV0023에서 사용자가 한도로 중단될 경우 초기화 후 재개를 예약하도록 요청했다. 현재 예약/승인 상태는 `vault/wiki/operations/usage-resumption.md`와 최신 진행 문서를 읽는다. 실제 사용량 초기화 시간을 도구로 확인하고 기존 예약을 먼저 조회하여 중복을 피한다. 완료/인간 승인 대기는 한도 중단으로 간주하지 않으며 예약·시간 경과로 승인 거부를 우회하지 않는다.
+
+- CONV0024/CHG0035에서 운영 `training_private.valid_snapshot`의 준비 SQL 교체를 인간 사용자가 명시 승인했고 같은 MCP로 적용했다. 선택 필드 RPC 왕복/엄격한 부정 입력·권한 28개를 합성 transaction으로 검사/rollback했으며 함수 identity/owner/ACL·RLS/정책을 보존했다. 이전 거부는 당시 이력이고 이 승인 범위의 보류는 해소됐다. 다른 계정/RLS/Google 설정 승인으로 확대하지 않는다. MCP 원격 이력20261005010803과 로컬 CLI 파일20261004162726의 대응은 `record-details.md`를 읽고 향후 CLI db push 전에 확인한다. 실제 운동/Auth/다기기/실기기·SCI/파일럿 관문을 유지한다.

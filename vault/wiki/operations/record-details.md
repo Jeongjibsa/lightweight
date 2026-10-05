@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-05T01:38:13+09:00"
+  at: "2026-10-05T10:16:15+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-05-023.md"
@@ -20,6 +20,9 @@ sources:
   - id: "schema"
     resource: "../sources/SRC-050-cloud-json-schema.md"
     title: "공식 기술 문서"
+  - id: "validator-human-approval"
+    resource: "../../raw/conversations/2026-10-05-024.md"
+    title: "검증 함수 SQL 승인과 재개"
 ---
 
 # 운동 기록 상세
@@ -35,3 +38,17 @@ app0.2.0/IndexedDB2/backup1을 유지하고 선택 필드로 기존 백업을 �
 106개(34unit/43integration/29UI)·Node10·32browser(17Chromium/15WebKit)·신규 과업 반복6·build/types/format/artifact25가 통과했다. lint기존6경고는 남는다.320/390 가짜 PNG4개를 직접 확인했다. [원본 실행](../../raw/research/2026-10-05-record-details-loop.json).
 
 **서버/배포 보류**: 기존 strict valid_snapshot은 restTimer/세부 분류/메모·조건을 거부한다. CLI로 생성한 migration은 새 클라이언트 schema와 일치하며 원본 migration/소유·cross-field/권한을 유지한다. drift 검사2개를 추가했다. 적용은 자동 승인 검토가 거부하여 명시적 인간 승인을 기다린다. 본 단위 main push/운영 배포는 하지 않았다. 실제 사용자 cloud 전송 성공으로 표시하지 않는다.
+
+## CONV0024 승인된 서버 변경 — 2026-10-05
+
+인간 사용자의 명시 승인 후 준비된 `training_optional_record_fields` SQL을 같은 Supabase MCP 경로로 적용했다. 기존 함수 identity·owner·security invoker/빈 search_path·ACL, private 세 테이블의 RLS/force RLS·ACL·정책은 그대로다. 기존 형식 및 새 메모/장비·가동범위·휴식 즐겨찾기·세부 분류/별칭을 RPC 저장→조회와 idempotent retry로 확인했다. 잘못된 소유자·중복·길이/입력/시각을 포함한 **28개 서버 검사**가 통과했고 테스트 계정·기록·임시 권한은 모두 rollback했다. 실제 본인 운동 기록이나 실제 브라우저 Auth 왕복의 검증으로 확대하지 않는다.
+
+자동 검토의 앞선 승인 대기/거부는 당시 이력이며 이 명시 승인과 적용으로 해소됐다. app0.2.0/IndexedDB2/backup1, 106 Vitest·Node10·build/types/format/artifact25(lint기존6경고)를 유지한다. 신규 서버 검증 뒤 main push/새 GitHub CI/Pages 배포 검증을 이어간다. 실제 iPhone/운동·다기기/다버전·과학 승인0개·운영복구/파일럿/P2 관문은 남는다.
+
+[인간 승인](../conversations/2026-10-05-024.md) · [불변 서버 확인](../../raw/research/2026-10-05-cloud-validator-approved.json).
+
+## Migration 이력과 남은 경계
+
+CLI로 만든 로컬 파일은 `20261004162726_training_optional_record_fields.sql`이며 적용한 SQL은 이 파일과 같다. MCP 원격 migration history는 적용 시각 `20261005010803`을 부여했다. 원본 파일을 바꾸거나 history repair를 실행하지 않았다. 향후 CLI `db push`를 쓰기 전 이 대응을 확인해야 한다. 현재 릴리스는 Git 정적 앱 배포와 이미 완료한 MCP 서버 적용을 사용한다.
+
+Supabase advisors는 성능0개, Auth의 leaked password protection 비활성화 경고1개를 반환했다. 해당 Auth 설정은 이번 함수 승인 범위에서 바꾸지 않았다. [공식 설정/조건 안내](https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection).

@@ -9,3 +9,5 @@
 - [HAR03/05 실행](research/2026-10-04-e2e-harness-verification.json) — 가짜9과업·첫실패/반복/실패증거; private자료없음.
 - [GitHub CI](research/2026-10-04-github-ci-37184261544.json) · [저장 보존](research/2026-10-04-storage-recovery-verification.json).
 - [최종 check/정밀값](research/2026-10-04-storage-recovery-final-check.json) — 원본 덮어쓰기 없이 build metadata 보정.
+
+- [승인된 서버 검증](research/2026-10-05-cloud-validator-approved.json).

@@ -1,0 +1,109 @@
+{
+  "type": "Database Migration Verification",
+  "title": "Human-approved optional snapshot fields",
+  "generated": {
+    "by": "codex/gpt-6",
+    "at": "2026-10-05T10:16:15+09:00"
+  },
+  "immutable": true,
+  "approval": {
+    "source": "raw/conversations/2026-10-05-024.md",
+    "scope": "Replace training_private.valid_snapshot using the previously presented migration only; no account/RLS changes"
+  },
+  "migration": {
+    "file": "supabase/migrations/20261004162726_training_optional_record_fields.sql",
+    "sha256": "1daa3eb0f7c083a4607fb50d58964a194baf26c3552924ee4e4f37cc63e87187",
+    "name": "training_optional_record_fields",
+    "applied": true,
+    "remote_history_version": "20261005010803",
+    "local_cli_filename_version": "20261004162726",
+    "history_note": "MCP assigns application time to remote history. Local file remains unchanged; reconcile mapping before a future CLI db push; no migration-history repair attempted."
+  },
+  "security": {
+    "function_identity_and_owner_unchanged": true,
+    "security_definer": false,
+    "search_path_empty": true,
+    "function_acl_unchanged": true,
+    "table_acl_and_policies_unchanged": true,
+    "private_tables_rls_and_force_rls": true,
+    "before_definition_hash": "19690ce8407e997f2ad92a839308d0cf",
+    "after_definition_hash": "b62235e64995fb9b0af20f1440351ef4"
+  },
+  "remote_contract": {
+    "suite": "remote SQL authorization and snapshot contract",
+    "preflight": false,
+    "checks": 28,
+    "passed": [
+      "empty account",
+      "owned snapshot write",
+      "idempotent retry",
+      "operation payload mismatch",
+      "stale revision conflict",
+      "foreign owner rejected",
+      "malformed snapshot rejected",
+      "invalid preferences rejected",
+      "private table access blocked",
+      "unknown field rejected",
+      "duplicate rest favorites rejected",
+      "oversized note rejected",
+      "oversized equipment label rejected",
+      "oversized range label rejected",
+      "duplicate set ID rejected",
+      "foreign routine snapshot rejected",
+      "completed set without repetitions rejected",
+      "workout end before start rejected",
+      "owned optional fields snapshot write",
+      "optional fields roundtrip preserved",
+      "optional fields idempotent retry",
+      "account B cannot read A",
+      "uninvited account blocked",
+      "anonymous auth user blocked",
+      "anon RPC execution blocked",
+      "RLS own row visible",
+      "RLS foreign row hidden",
+      "revoked member blocked"
+    ],
+    "fixtureData": "synthetic only",
+    "transaction": "rolled back"
+  },
+  "advisors": {
+    "performance": [],
+    "security": [
+      {
+        "name": "auth_leaked_password_protection",
+        "level": "WARN",
+        "action": "No Auth setting changed in this approval scope",
+        "remediation": "https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection"
+      }
+    ]
+  },
+  "local_validation": {
+    "vitest": 106,
+    "node_contracts": 10,
+    "lint": "exit0; six existing warnings",
+    "build_types_format": "passed",
+    "artifact_static_files": 25
+  },
+  "previous_feature_browser": {
+    "commit": "c25d165",
+    "passed": 32,
+    "scope": "Previously completed isolated Chromium/WebKit run; latest remote CI not yet claimed"
+  },
+  "environment_failures_preserved": [
+    "First sandbox cloud verify failed ENOTFOUND; network-enabled execution passed",
+    "Wrangler help could not create home logs; subsequent command used allowed temporary logs"
+  ],
+  "official_review": {
+    "changelog": "https://supabase.com/changelog.md",
+    "relevant_sections": [
+      "https://supabase.com/docs/guides/database/extensions/pg_jsonschema",
+      "https://www.postgresql.org/docs/current/sql-createfunction.html",
+      "https://supabase.com/changelog/postgres-15-19-17-11-breaking-changes",
+      "https://supabase.com/changelog/extension-version-pinning-ignored"
+    ],
+    "scope": "Relevant official sections only; no DB/extension upgrade"
+  },
+  "deployment": "Commit/push and new Git deployment verification follow after this receipt",
+  "limits": "SQL synthetic-role/RPC verification is not real browser Auth, physical iPhone, actual personal workout upload, multidevice/multiversion, or scientific review.",
+  "privacy": "No credentials, auth identifiers or personal workouts saved."
+}

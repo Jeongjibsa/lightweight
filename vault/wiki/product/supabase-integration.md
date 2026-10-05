@@ -10,7 +10,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-05T01:38:13+09:00"
+  at: "2026-10-05T10:16:15+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-008.md"
@@ -75,8 +75,11 @@ sources:
   - id: "details-loop"
     resource: "../../raw/research/2026-10-05-record-details-loop.json"
     title: "로컬 검사/서버 보류"
-version: "0.1.1"
-change_id: "CHG-0023"
+  - id: "validator-human-approval"
+    resource: "../../raw/conversations/2026-10-05-024.md"
+    title: "검증 함수 SQL 승인과 재개"
+version: "0.1.2"
+change_id: "CHG-0035"
 approval_status: "implemented-increment; policy-details-provisional"
 ---
 
@@ -213,3 +216,11 @@ GitHub source=Jeongjibsa/lightweight·main·자동 배포 활성화를 읽었고
 서버 strict validator는 신규 필드를 거부함을 읽기 전용 가짜 자료로 확인했다. 준비한 optional-field migration은 자동 승인 검토가 명시 승인 부족으로 거부하여 **미적용/승인 대기**다. 이 단위는 local commit만 하며 push/Git 배포는 보류한다. 이전0f6381d 기능 배포는 그 당시 증거이며 새 선택 필드 클라우드 전송 보장으로 쓰지 않는다. 과학/실제 운동·다기기/기기/파일럿/후순위 관문은 유지한다.
 
 사용량 초기화 뒤 조건부 일회 재개를03:00 KST로 예약했다. 실제 한도 중단이 없거나 완료/승인 대기만 있으면 작업하지 않는다. [예약](../operations/usage-resumption.md).
+
+## CONV0024 승인된 서버 변경 — 2026-10-05
+
+인간 사용자의 명시 승인 후 준비된 `training_optional_record_fields` SQL을 같은 Supabase MCP 경로로 적용했다. 기존 함수 identity·owner·security invoker/빈 search_path·ACL, private 세 테이블의 RLS/force RLS·ACL·정책은 그대로다. 기존 형식 및 새 메모/장비·가동범위·휴식 즐겨찾기·세부 분류/별칭을 RPC 저장→조회와 idempotent retry로 확인했다. 잘못된 소유자·중복·길이/입력/시각을 포함한 **28개 서버 검사**가 통과했고 테스트 계정·기록·임시 권한은 모두 rollback했다. 실제 본인 운동 기록이나 실제 브라우저 Auth 왕복의 검증으로 확대하지 않는다.
+
+자동 검토의 앞선 승인 대기/거부는 당시 이력이며 이 명시 승인과 적용으로 해소됐다. app0.2.0/IndexedDB2/backup1, 106 Vitest·Node10·build/types/format/artifact25(lint기존6경고)를 유지한다. 신규 서버 검증 뒤 main push/새 GitHub CI/Pages 배포 검증을 이어간다. 실제 iPhone/운동·다기기/다버전·과학 승인0개·운영복구/파일럿/P2 관문은 남는다.
+
+[인간 승인](../conversations/2026-10-05-024.md) · [불변 서버 확인](../../raw/research/2026-10-05-cloud-validator-approved.json).

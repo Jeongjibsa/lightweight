@@ -8,7 +8,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T14:54:43+09:00"
+  at: "2026-10-05T10:16:15+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-03-001.md"
@@ -49,6 +49,9 @@ sources:
   - id: "component-request"
     resource: "../conversations/2026-10-04-012.md"
     title: "대화"
+  - id: "validator-human-approval"
+    resource: "../../raw/conversations/2026-10-05-024.md"
+    title: "검증 함수 SQL 승인과 재개"
 ---
 
 # 결정과 제안 기록
@@ -123,3 +126,7 @@ sources:
 - DEC-044 / 사용자 명시: 실제 페이지 캡처로 Mantine 선택/접기·여백/outline 전반 재점검. UI-03으로 기존 UI-02의 불만을 후속 추적한다.
 - DEC-045 / 사용자 명시: 운동별3D 해부학/자극부위 애니메이션을 추가하되 지금은 검토만/후순위.
 - DEC-046 / 구현·계획 제안: default Accordion/16px·filled Select/Paper/Drawer 일관성, FR-17 P2/VIS-3D-02~03 asset/검토·실기기 관문. 구체 renderer·budget·토큰 사용자 승인 아님.
+
+## CONV-0024
+
+사용자 명시 승인: 직전 제시된 운영 `training_private.valid_snapshot` SQL 적용과 보류 작업 재개. 적용은 동일 MCP 경로로 완료했고 계정/RLS/Google 등 다른 외부 설정 승인으로 확대하지 않는다. [원문](../../raw/conversations/2026-10-05-024.md) · [서버 검사](../../raw/research/2026-10-05-cloud-validator-approved.json).

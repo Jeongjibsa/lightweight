@@ -155,6 +155,137 @@ try {
     [],
     "42501",
   );
+  // Exercise the deployed optional fields through the same owned RPC.
+  // These fixtures and authorization changes are rolled back below.
+  const exercise = {
+    id: "fixture-barbell-press",
+    name: "Synthetic press",
+    group: "어깨",
+    subgroup: "전면",
+    aliases: ["Synthetic alias"],
+    equipment: "바벨",
+    loadMode: "total",
+    review: "catalog_draft",
+  };
+  const routine = {
+    id: randomUUID(),
+    ownerId: a,
+    revision: 1,
+    updatedAt: at,
+    deletedAt: null,
+    name: "Synthetic routine",
+    exercises: [{ exercise, sets: 1 }],
+    preferencesSnapshot: null,
+  };
+  const details = {
+    ...snapshot,
+    profile: {
+      ...snapshot.profile,
+      restTimer: { seconds: 60, favorites: [60, 90, 120, 180] },
+    },
+    routines: [routine],
+    sessions: [
+      {
+        id: randomUUID(),
+        ownerId: a,
+        revision: 1,
+        updatedAt: at,
+        deletedAt: null,
+        name: "Synthetic workout",
+        note: "Synthetic record note",
+        localDate: "2026-10-04",
+        timeZone: "Asia/Seoul",
+        startedAt: at,
+        endedAt: at,
+        status: "complete",
+        routineSnapshot: structuredClone(routine),
+        preferencesSnapshot: null,
+        sets: [
+          {
+            id: randomUUID(),
+            exercise,
+            order: 0,
+            unit: "kg",
+            load: 20,
+            reps: 8,
+            seconds: null,
+            kind: "working",
+            side: "both",
+            rir: null,
+            comparison: {
+              equipmentLabel: "Synthetic machine A",
+              rangeOfMotion: "Synthetic range",
+            },
+            completedAt: at,
+          },
+        ],
+      },
+    ],
+  };
+  const invalidDetails = [
+    ["unknown field rejected", (value) => (value.unexpected = true)],
+    [
+      "duplicate rest favorites rejected",
+      (value) => (value.profile.restTimer.favorites = [60, 60, 120]),
+    ],
+    [
+      "oversized note rejected",
+      (value) => (value.sessions[0].note = "x".repeat(1001)),
+    ],
+    [
+      "oversized equipment label rejected",
+      (value) =>
+        (value.sessions[0].sets[0].comparison.equipmentLabel = "x".repeat(81)),
+    ],
+    [
+      "oversized range label rejected",
+      (value) =>
+        (value.sessions[0].sets[0].comparison.rangeOfMotion = "x".repeat(81)),
+    ],
+    [
+      "duplicate set ID rejected",
+      (value) => value.sessions[0].sets.push(value.sessions[0].sets[0]),
+    ],
+    [
+      "foreign routine snapshot rejected",
+      (value) => (value.sessions[0].routineSnapshot.ownerId = b),
+    ],
+    [
+      "completed set without repetitions rejected",
+      (value) => (value.sessions[0].sets[0].reps = null),
+    ],
+    [
+      "workout end before start rejected",
+      (value) => (value.sessions[0].endedAt = "2026-10-03T15:00:00.000Z"),
+    ],
+  ];
+  for (const [label, mutate] of invalidDetails) {
+    const value = structuredClone(details);
+    mutate(value);
+    await denied(
+      label,
+      write,
+      [randomUUID(), 1, JSON.stringify(value)],
+      "22023",
+    );
+  }
+  const detailsOperation = randomUUID();
+  assert.deepEqual(
+    (await client.query(write, [detailsOperation, 1, JSON.stringify(details)]))
+      .rows[0].result,
+    { status: "saved", revision: 2 },
+  );
+  checks.push("owned optional fields snapshot write");
+  const roundtrip = (await client.query(read)).rows[0].result;
+  assert.equal(roundtrip.revision, 2);
+  assert.deepEqual(roundtrip.snapshot, details);
+  checks.push("optional fields roundtrip preserved");
+  assert.deepEqual(
+    (await client.query(write, [detailsOperation, 1, JSON.stringify(details)]))
+      .rows[0].result,
+    { status: "saved", revision: 2 },
+  );
+  checks.push("optional fields idempotent retry");
   await role("authenticated", b);
   assert.equal((await client.query(read)).rows[0].result.snapshot, null);
   checks.push("account B cannot read A");

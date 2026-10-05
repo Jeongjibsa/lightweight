@@ -22,3 +22,5 @@
 - [실제 iPhone 다음 과업](iphone-pilot-checklist.md)
 - [운동 세부 분류/휴식/H1 계약](catalog-rest-timer.md) · [Git 자동 배포](pages-git-integration.md)
 - [운동 메모/조건](record-details.md) · [사용량 조건부 재개](usage-resumption.md)
+
+- [기록 선택 필드 서버 적용/28개 RPC 검사](record-details.md).

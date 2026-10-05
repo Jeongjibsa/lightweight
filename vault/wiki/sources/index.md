@@ -48,3 +48,5 @@
 - [SRC047 Auth 운영 반환 URL](SRC-047-auth-production-origin.md)
 - [SRC048 Pages Git/build](SRC-048-pages-git-integration.md) · [SRC049 Google OAuth](SRC-049-google-oauth.md)
 - [SRC050 Supabase JSON Schema](SRC-050-cloud-json-schema.md)
+
+- [SRC050 JSON Schema](SRC-050-cloud-json-schema.md): 인간 승인 뒤 실제 서버 계약 검증을 추가했다.
