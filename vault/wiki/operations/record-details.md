@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-05T10:16:15+09:00"
+  at: "2026-10-05T10:24:45+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-05-023.md"
@@ -23,6 +23,9 @@ sources:
   - id: "validator-human-approval"
     resource: "../../raw/conversations/2026-10-05-024.md"
     title: "검증 함수 SQL 승인과 재개"
+  - id: "record-details-git-release"
+    resource: "../../raw/research/2026-10-05-record-details-git-release.json"
+    title: "서버 승인 뒤 CI/Git 운영 배포"
 ---
 
 # 운동 기록 상세
@@ -52,3 +55,11 @@ app0.2.0/IndexedDB2/backup1을 유지하고 선택 필드로 기존 백업을 �
 CLI로 만든 로컬 파일은 `20261004162726_training_optional_record_fields.sql`이며 적용한 SQL은 이 파일과 같다. MCP 원격 migration history는 적용 시각 `20261005010803`을 부여했다. 원본 파일을 바꾸거나 history repair를 실행하지 않았다. 향후 CLI `db push`를 쓰기 전 이 대응을 확인해야 한다. 현재 릴리스는 Git 정적 앱 배포와 이미 완료한 MCP 서버 적용을 사용한다.
 
 Supabase advisors는 성능0개, Auth의 leaked password protection 비활성화 경고1개를 반환했다. 해당 Auth 설정은 이번 함수 승인 범위에서 바꾸지 않았다. [공식 설정/조건 안내](https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection).
+
+## 현재 운영 배포 — 메모·비교 조건
+
+인간 SQL 승인 뒤 dbddbda를 main에 push했다. GitHub37250900828의 check/Chromium/WebKit 세 job이 모두 success이며 artifact를 실제 수신해 **17+15=32 browser**와 의도적 최초 실패 probe의 증거 보존을 확인했다. Pages github:push의 동일 source build/deploy가 success이고 운영 공개24file SHA256/보안 헤더가 검증한 build와 일치한다. 서버 선택 필드 RPC/부정 입력·권한28개 rollback과 기존 ACL/RLS 보존도 완료했다.
+
+메모/장비·가동범위·휴식 즐겨찾기/세부 분류·별칭의 서버 미지원 및 이 단위의 승인/push/배포 대기는 해소됐다. 106 Vitest·Node10·build/types/format/artifact25(lint기존6경고)이다. preview DB는 비어 있으며 이번에 새 preview branch/asset 검사를 하지 않았다. 후속 문서 commit은 앱 bundle을 바꾸지 않는다.
+
+[운영 앱](https://lightweight-training.pages.dev) · [불변 배포 증거](../../raw/research/2026-10-05-record-details-git-release.json). 실제 본인 운동/iPhone 저장·재실행·수동 전송/새 저장소 복원·다기기/다버전 Auth·과학 승인 콘텐츠0개/운영 복구·4주 파일럿/P2 관문은 남는다.

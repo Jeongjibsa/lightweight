@@ -1,0 +1,261 @@
+{
+  "type": "Deployment Verification",
+  "generated": {
+    "by": "codex/gpt-6",
+    "at": "2026-10-05T10:24:45+09:00"
+  },
+  "immutable": true,
+  "source_commit": "dbddbdabc9f14cbe364313a2a423d3b11649fe50",
+  "feature_commit": "c25d165",
+  "github": {
+    "run_id": 37250900828,
+    "url": "https://github.com/Jeongjibsa/lightweight/actions/runs/37250900828",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "name": "check",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/Jeongjibsa/lightweight/actions/runs/37250900828/job/111578118484",
+        "startedAt": "2026-10-05T01:18:17Z",
+        "completedAt": "2026-10-05T01:19:09Z"
+      },
+      {
+        "name": "browser (chromium-mobile, chromium)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/Jeongjibsa/lightweight/actions/runs/37250900828/job/111578118549",
+        "startedAt": "2026-10-05T01:18:17Z",
+        "completedAt": "2026-10-05T01:20:50Z"
+      },
+      {
+        "name": "browser (webkit-mobile, webkit)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/Jeongjibsa/lightweight/actions/runs/37250900828/job/111578118686",
+        "startedAt": "2026-10-05T01:18:20Z",
+        "completedAt": "2026-10-05T01:21:24Z"
+      }
+    ]
+  },
+  "received_browser_evidence": [
+    {
+      "run_id": "20261005T011855024Z-fceb1a67",
+      "kind": "independent browser CI",
+      "stats": {
+        "startTime": "2026-10-05T01:18:55.674Z",
+        "duration": 102764.992,
+        "expected": 17,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "received": true
+    },
+    {
+      "run_id": "probe-7640a2be-4608-4d86-a14a-0e6726b77b46",
+      "kind": "intentional first-failure artifact probe",
+      "stats": {
+        "startTime": "2026-10-05T01:20:39.251Z",
+        "duration": 6331.169,
+        "expected": 0,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      },
+      "received": true
+    },
+    {
+      "run_id": "20261005T011921195Z-027c3acc",
+      "kind": "independent browser CI",
+      "stats": {
+        "startTime": "2026-10-05T01:19:21.856Z",
+        "duration": 118875.369,
+        "expected": 15,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "received": true
+    }
+  ],
+  "pages": {
+    "id": "8b6b93c6-a3cf-4915-9ef6-29cba3180579",
+    "url": "https://8b6b93c6.lightweight-training.pages.dev",
+    "environment": "production",
+    "created_on": "2026-10-05T01:18:12.841331Z",
+    "latest_stage": {
+      "name": "deploy",
+      "started_on": "2026-10-05T01:18:55.398166Z",
+      "ended_on": "2026-10-05T01:19:00.691185Z",
+      "status": "success"
+    },
+    "trigger": "github:push",
+    "commit": "dbddbdabc9f14cbe364313a2a423d3b11649fe50",
+    "stages": [
+      {
+        "name": "queued",
+        "started_on": "2026-10-05T01:18:12.981888Z",
+        "ended_on": "2026-10-05T01:18:12.989163Z",
+        "status": "success"
+      },
+      {
+        "name": "initialize",
+        "started_on": "2026-10-05T01:18:12.989163Z",
+        "ended_on": "2026-10-05T01:18:15.905524Z",
+        "status": "success"
+      },
+      {
+        "name": "clone_repo",
+        "started_on": "2026-10-05T01:18:15.905524Z",
+        "ended_on": "2026-10-05T01:18:18.064454Z",
+        "status": "success"
+      },
+      {
+        "name": "build",
+        "started_on": "2026-10-05T01:18:18.064454Z",
+        "ended_on": "2026-10-05T01:18:55.398166Z",
+        "status": "success"
+      },
+      {
+        "name": "deploy",
+        "started_on": "2026-10-05T01:18:55.398166Z",
+        "ended_on": "2026-10-05T01:19:00.691185Z",
+        "status": "success"
+      }
+    ],
+    "configured_env": {
+      "preview": {
+        "VITE_SUPABASE_URL": false,
+        "VITE_SUPABASE_PUBLISHABLE_KEY": false
+      },
+      "production": {
+        "VITE_SUPABASE_URL": true,
+        "VITE_SUPABASE_PUBLISHABLE_KEY": true
+      }
+    }
+  },
+  "production": {
+    "checkedAt": "2026-10-05T01:19:43.987Z",
+    "origin": "https://lightweight-training.pages.dev",
+    "files": 24,
+    "indexSha256": "8a349c88967c8d03d1f4d0b111e5beafa848a4948ba9dc661dcadca35ef339e9",
+    "headers": {
+      "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://xmdbivohdjczpbjcujvu.supabase.co; worker-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
+      "x-content-type-options": "nosniff",
+      "x-frame-options": "DENY",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "permissions-policy": "camera=(), microphone=(), geolocation=()"
+    },
+    "assets": [
+      {
+        "path": "apple-touch-icon.png",
+        "sha256": "1594d1e02221edf244f40e7928ff9a981ea9d26b807ac1c0248857b847142f79"
+      },
+      {
+        "path": "assets/geist-cyrillic-ext-wght-normal-DjL33-gN.woff2",
+        "sha256": "2317fa4bb293c9c0b110e18315d529235c47a0ddd3338cea3d8c7955e927899e"
+      },
+      {
+        "path": "assets/geist-cyrillic-wght-normal-BEAKL7Jp.woff2",
+        "sha256": "6894439694946a589d157ece003086960a6a4013d74a813dab7602efdb3d8c09"
+      },
+      {
+        "path": "assets/geist-latin-ext-wght-normal-DC-KSUi6.woff2",
+        "sha256": "824f485b5d26e2f2da3c2b236132ece1bc8e4e43373452950bb0e40548b4313f"
+      },
+      {
+        "path": "assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "sha256": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1"
+      },
+      {
+        "path": "assets/geist-vietnamese-wght-normal-6IgcOCM7.woff2",
+        "sha256": "8fa40e5d248247735eb97a0bd593b8852440430600d6ba01364c31fe0abc1fe1"
+      },
+      {
+        "path": "assets/index-DxbySrTZ.css",
+        "sha256": "e49c9d7ba11d95419bebbca9cdb91a3e42de3dbffa8543e1581b6edf0fcc8ff1"
+      },
+      {
+        "path": "assets/index-NDycfKrc.js",
+        "sha256": "f7a4fc38c7f861e23af236f6131b8a61916bc5f5e654cf67f019759d43f63181"
+      },
+      {
+        "path": "assets/mantine-B1k8zaqb.css",
+        "sha256": "23f64fb1d7b81e89f10821d66dbe05884bc952de99b13c5a7960c23b67336ca8"
+      },
+      {
+        "path": "assets/mantine-CIti4Mbs.js",
+        "sha256": "803747f2737932aed87206394dea669ea3da77bd31c8c8ad14960a88f3ad372e"
+      },
+      {
+        "path": "assets/react-DjX0U0Iu.js",
+        "sha256": "49f492b7a8b9e47e35b7a9aa36d96824c35439694a092fa912347d6fa34d5366"
+      },
+      {
+        "path": "assets/rolldown-runtime-CbXtAM7H.js",
+        "sha256": "bbf7c5086ae414dc3f33777e3eebf16ea8631325b8bb4690d25091c03567f31a"
+      },
+      {
+        "path": "assets/storage-validation-DOH7Xcnc.js",
+        "sha256": "993042dc8c21f481fe1b38f5bf0d3111f434c962425728dc4c1e0b937824acab"
+      },
+      {
+        "path": "assets/supabase-Di2CTJM2.js",
+        "sha256": "e60d96f27f56570076d1447292ba9bcf920f1eb4bcbeb019305314da62529f65"
+      },
+      {
+        "path": "assets/workbox-window.prod.es5-Bd17z0YL.js",
+        "sha256": "17bcc17d60dc78f927834b880c39649b03af46fd1f5cdbb8c42c5ae2b515dce9"
+      },
+      {
+        "path": "content/exercise-guides.json",
+        "sha256": "fb9b786e85ce30eb3990a70eeb4c21533057c590506849dfe0faaa851da5efae"
+      },
+      {
+        "path": "fonts/geist/LICENSE",
+        "sha256": "71609cbb5c78b5870d712eab73a31d76622635c6ed034ab5cee3b9ecbda8685f"
+      },
+      {
+        "path": "icon-192.png",
+        "sha256": "054139c0741db6e8d4c3add6cf71e2ce79557ddf7c5aad11019b8c73ea783c46"
+      },
+      {
+        "path": "icon-512.png",
+        "sha256": "f96dc0da0063445e34adae874750ff673a488f9077e12cb13e4a60d08d15609f"
+      },
+      {
+        "path": "icon.svg",
+        "sha256": "8541109036aef92c47eb992ae39a6ed6086877aa47b8ee6c1ae35ebdeb379329"
+      },
+      {
+        "path": "manifest.webmanifest",
+        "sha256": "ebeb087861a8cd32fdd8544ee4266ff45e7810d0254868db3ac1eff6b29d13ab"
+      },
+      {
+        "path": "sw.js",
+        "sha256": "7a2cdf0e75ec4c0ca55c07474e262a83b6ecbaa8f6437513c2de5862541c1393"
+      },
+      {
+        "path": "workbox-2fbc6a65.js",
+        "sha256": "39c2e6ae44c3f29666f6a328b6523bf13a053a1d95c74af8ddea82b1045b0b6e"
+      }
+    ],
+    "limits": "Read-only file/header verification; no real Auth or device test"
+  },
+  "server_verification": "2026-10-05-cloud-validator-approved.json; 28 synthetic checks rolled back; no personal workout write",
+  "validation": {
+    "vitest": 106,
+    "node_contracts": 10,
+    "browser_ci": 32,
+    "chromium": 17,
+    "webkit": 15,
+    "lint": "exit0;six existing warnings",
+    "build_types_format_artifact": "passed;25 static files"
+  },
+  "loop_note": "New uncommitted PRD0.9.3 snapshot initially used source-directory links. Rebased links before first commit; the 206 previously sealed immutable hashes stayed unchanged. Initial failed validation retained in temporary evidence.",
+  "preview": "DB URL/key remain empty. No new preview branch push or preview asset verification claimed.",
+  "limits": "Real personal workout/iPhone/multidevice/multiversion Auth and scientific review remain separate.",
+  "following_docs_commit": "No app code/bundle change; may trigger another identical Git build.",
+  "privacy": "No secrets, account identifiers or personal training records."
+}

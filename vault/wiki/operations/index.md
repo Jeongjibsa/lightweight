@@ -24,3 +24,5 @@
 - [운동 메모/조건](record-details.md) · [사용량 조건부 재개](usage-resumption.md)
 
 - [기록 선택 필드 서버 적용/28개 RPC 검사](record-details.md).
+
+- [메모·비교 조건 서버/Git 배포 완료](record-details.md).

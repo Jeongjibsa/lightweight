@@ -167,8 +167,10 @@ iPhone 홈 화면 설치·실행·로그인은 사용자 보고로 확인했습�
 
 0f6381d main의 GitHub37210829022 세 job과 Pages github:push/build/deploy가 success이며 production 공개24file hash/헤더 일치를 확인했습니다. [receipt](../vault/raw/research/2026-10-04-catalog-rest-git-release.json). 후속 문서 commit은 bundle을 바꾸지 않습니다.
 
-운동 메모·장비/가동범위 세트 조건을 로컬 구현했습니다.106개·Node10·browser32/반복6 검사 통과. 서버 validator의 새 필드 미지원은 확인했고 준비 migration은 명시 승인 대기로 미적용이며 새 push/운영 배포를 보류합니다. [계약](../vault/wiki/operations/record-details.md).
+운동 메모·장비/가동범위 세트 조건을 구현하고 명시 SQL 승인 뒤 서버 검사28개·GitHub3job/브라우저32·운영24파일 일치 배포를 완료했습니다.106개·Node10·browser32/반복6의 로컬 검사도 통과했습니다. [계약](../vault/wiki/operations/record-details.md).
 
 ## 승인된 서버 선택 필드 검사
 
 `npm run cloud:verify`는 server-only `.env`의 DB 연결로 28개 synthetic RPC/권한 검사를 실행하고 전체 rollback합니다. 메모·장비/가동범위·휴식 즐겨찾기·세부 분류/별칭의 왕복 및 잘못된 입력 거부를 포함합니다. 개인 기록이나 실제 Auth/iPhone 검증을 대체하지 않습니다. 서버 함수를 자동 적용하지 않으며 `--preflight`는 초기 schema 검사 전용입니다.
+
+서버 승인 이후 dbddbda main의 GitHub37250900828 세 job·Pages Git build/deploy와 운영24file hash/헤더 일치를 확인했습니다. [불변 배포](../vault/raw/research/2026-10-05-record-details-git-release.json). 실제 본인 운동·다기기·iPhone/다버전 검증은 남습니다.

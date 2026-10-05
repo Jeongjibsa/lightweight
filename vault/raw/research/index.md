@@ -46,3 +46,5 @@
 - [메모/조건/서버 승인 전 루프](2026-10-05-record-details-loop.json)
 
 - [2026-10-05 승인된 서버 계약/28개 rollback](2026-10-05-cloud-validator-approved.json).
+
+- [메모·비교 조건 실제 Git/CI 운영 배포](2026-10-05-record-details-git-release.json).

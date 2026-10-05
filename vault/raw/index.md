@@ -11,3 +11,5 @@
 - [최종 check/정밀값](research/2026-10-04-storage-recovery-final-check.json) — 원본 덮어쓰기 없이 build metadata 보정.
 
 - [승인된 서버 검증](research/2026-10-05-cloud-validator-approved.json).
+
+- [승인 뒤 실제 Git 배포](research/2026-10-05-record-details-git-release.json).

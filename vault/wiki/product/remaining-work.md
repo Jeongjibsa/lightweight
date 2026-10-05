@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-05T10:16:15+09:00"
+  at: "2026-10-05T10:24:45+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -185,32 +185,35 @@ sources:
   - id: "validator-human-approval"
     resource: "../../raw/conversations/2026-10-05-024.md"
     title: "검증 함수 SQL 승인과 재개"
-version: "0.4.3"
+  - id: "record-details-git-release"
+    resource: "../../raw/research/2026-10-05-record-details-git-release.json"
+    title: "서버 승인 뒤 CI/Git 운영 배포"
+version: "0.4.4"
 approval_status: "proposal"
-change_id: "CHG-0035"
+change_id: "CHG-0036"
 ---
 
 # 남은 작업 한눈에 보기
 
-2026-10-05 / PRD0.9.3. **운동 MVP 전체는 진행 중**이며 식단·3D는 후순위다.
+2026-10-05 / PRD0.9.4. **운동 MVP 전체는 진행 중**이며 식단·3D는 후순위다.
 
 [운영 앱](https://lightweight-training.pages.dev) · [DB 연결 없는 preview](https://preview.lightweight-training.pages.dev) · [세부 백로그](implementation-backlog.md).
 
-종료 기록 삭제/복구까지 main1db637d로 push/배포했다.90 Vitest·Node8·browser24·GitHub3job success, 실제 공개24파일 hash/헤더 일치를 확인했다. 등록1/허용1·실제 desktop Chrome 빈 프로필의 클라우드 저장/조회/같은 기기 적용도 확인했다.
+메모·장비/가동범위 기록과 서버 선택 필드까지 main dbddbda로 push/배포했다.106 Vitest·Node10·browser32·서버 rollback28·GitHub3job success, 운영 공개24파일 hash/헤더 일치를 확인했다. 등록1/허용1·실제 desktop Chrome 빈 프로필의 클라우드 저장/조회/같은 기기 적용도 확인했다.
 
 | 순서 | 남은 작업 | 현재 완료한 부분 | 완료에 필요한 것 | ID |
 |---|---|---|---|---|
 | 1 | 실제 운동 기록·새 기기 로그인/동기화 | Auth/허용 목록/RLS·수동 snapshot/CAS·공개 가입OFF·반환 주소 저장 | 지정 계정 허용·실제 Chrome 빈 프로필 저장/조회/적용 완료; 실제 운동 기록/새 저장소 복원·로그아웃 검증 필요 | SYNC02/05, HAR02/06 |
 | 2 | 다기기 편집·충돌/실패 복구 | manual CAS/retry/ACK·교체 전 백업 | A/B·만료/권한 회수/응답 유실·서로 다른 편집 명시 해결·삭제 재등장 방지·크기 정책 | SYNC03~05 |
-| 3 | 기록 편의 완성 | 이전값·재시작·미완료 종목 교체·종료 수정·운동 순서/CAS·삭제 루틴 복구·종료 기록 삭제/복구 | 메모·머신/ROM 및 서버 필드 승인/적용·합성 RPC 28개 완료; 새 배포·다기기/운동 중 입력 UX | LOG03~06 |
+| 3 | 기록 편의 완성 | 이전값·재시작·미완료 종목 교체·종료 수정·운동 순서/CAS·삭제 루틴 복구·종료 기록 삭제/복구 | 메모·머신/ROM 로컬·서버·배포 완료; 다기기/운동 중 입력 UX | LOG03~06 |
 | 4 | 설명 가능한 개인화 완성 | 볼륨/추이·기록 참고 후보·주간 입력 점검/직접 수정 | 검토된 직접/간접 매핑·저장 report/입력·정책·근거 버전·근거 기반 다음 행동 | REP01~06, SCI03B |
 | 5 | 근거 운동 정보·시각·티어·추천 | 기록용34종목/바벨18·초기 연구/3D 검토·공개 JSON gate(승인0개) | 등록부 실제 승인/규칙 연결·전문/전문가/권리 검토→설명/시각→조건 추천/티어, 승인 콘텐츠만 제공 | SCI01~04, PRE01, LOG02 |
-| 6 | 실제 iPhone/PWA·접근성/보존 | iPhone 홈 화면 설치/실행/로그인 사용자 보고 완료·반응형·browser24·백업 보존 | 키보드/VoiceOver/확대/가로/잠금·실제offline/update·physical quota/eviction·64MiB초과 분할복구 | RESP01, REL02, HAR04 |
-| 7 | 운영·배포/복구 마무리 | Pages HTTPS·운영/preview DB 분리·24file hash/헤더·main push | 실Auth/메일/비밀번호복구·백업 drill·승인 credential 기반 CI자동배포·도메인/Access 선택 | REL01/03, Q08/16/17 |
+| 6 | 실제 iPhone/PWA·접근성/보존 | iPhone 홈 화면 설치/실행/로그인 사용자 보고 완료·반응형·browser32·백업 보존 | 키보드/VoiceOver/확대/가로/잠금·실제offline/update·physical quota/eviction·64MiB초과 분할복구 | RESP01, REL02, HAR04 |
+| 7 | 운영·배포/복구 마무리 | Pages HTTPS·운영/preview DB 분리·24file hash/헤더·main push | 실Auth/메일/비밀번호복구·백업 drill·Git 자동 배포 완료; 도메인/Access 선택 | REL01/03, Q08/16/17 |
 | 8 | 본인 파일럿→지인 제공 | 앱/검사 기반 준비 | 실제4주 관찰/입력누락·오해 개선→회귀, 계정 독립/복원·G3/G4 관문 | PIL01/02 |
 | 후순위 | 식단/영양·3D·선택 AI 설명 | 요구/3D feasibility 문서 | 음식DB/license·기록/계산·검토 공식/결측, 3Dasset/rig/clip/권한/전문검토/실기기성능 | NUT01~04, VIS3D02/03, AI01 |
 
-삭제 루틴 복구는86개/22browser·최종목록2와 실제 좁은 화면 및 GitHub3job/운영·preview24file 일치 검사를 완료했다. 종료 기록 삭제/복구도90개/24browser·실제 좁은 화면·GitHub3job·운영/preview24file 일치를 완료했다. 메모/장비·가동범위 기록은 로컬 구현/검사를 완료했다. 서버 validator SQL은 명시 승인 뒤 적용/검사28개를 완료했고 새 Git 배포 검증을 이어간다. 실제 운동의 새 기기 복원·계정 A/B/만료·메일/권한 검증은 병행한다. 실제 iPhone 설치·실행·로그인은 사용자 보고로 완료했으며 키보드/VoiceOver/잠금/offline/update/quota 검증은 별도다.
+삭제 루틴 복구는86개/22browser·최종목록2와 실제 좁은 화면 및 GitHub3job/운영·preview24file 일치 검사를 완료했다. 종료 기록 삭제/복구도90개/24browser·실제 좁은 화면·GitHub3job·운영/preview24file 일치를 완료했다. 메모/장비·가동범위 기록은 로컬 구현/검사를 완료했다. 서버 validator SQL은 명시 승인 뒤 적용/검사28개와 새 Git 배포 검증을 완료했다. 실제 운동의 새 기기 복원·계정 A/B/만료·메일/권한 검증은 병행한다. 실제 iPhone 설치·실행·로그인은 사용자 보고로 완료했으며 키보드/VoiceOver/잠금/offline/update/quota 검증은 별도다.
 
 과학 승인 설명은0개다. 콘텐츠 공개 gate는 실제 전문/전문가·자산 권리 검토를 대신하지 않는다.4주 파일럿도 자동검사로 대체하지 않는다. lint exit0/기존 effect경고6개가 남는다. 개인 기록·비밀번호/token/ID는 공개 vault에 넣지 않는다.
 
@@ -251,3 +254,11 @@ GitHub source=Jeongjibsa/lightweight·main·자동 배포 활성화를 읽었고
 자동 검토의 앞선 승인 대기/거부는 당시 이력이며 이 명시 승인과 적용으로 해소됐다. app0.2.0/IndexedDB2/backup1, 106 Vitest·Node10·build/types/format/artifact25(lint기존6경고)를 유지한다. 신규 서버 검증 뒤 main push/새 GitHub CI/Pages 배포 검증을 이어간다. 실제 iPhone/운동·다기기/다버전·과학 승인0개·운영복구/파일럿/P2 관문은 남는다.
 
 [인간 승인](../conversations/2026-10-05-024.md) · [불변 서버 확인](../../raw/research/2026-10-05-cloud-validator-approved.json).
+
+## 현재 운영 배포 — 메모·비교 조건
+
+인간 SQL 승인 뒤 dbddbda를 main에 push했다. GitHub37250900828의 check/Chromium/WebKit 세 job이 모두 success이며 artifact를 실제 수신해 **17+15=32 browser**와 의도적 최초 실패 probe의 증거 보존을 확인했다. Pages github:push의 동일 source build/deploy가 success이고 운영 공개24file SHA256/보안 헤더가 검증한 build와 일치한다. 서버 선택 필드 RPC/부정 입력·권한28개 rollback과 기존 ACL/RLS 보존도 완료했다.
+
+메모/장비·가동범위·휴식 즐겨찾기/세부 분류·별칭의 서버 미지원 및 이 단위의 승인/push/배포 대기는 해소됐다. 106 Vitest·Node10·build/types/format/artifact25(lint기존6경고)이다. preview DB는 비어 있으며 이번에 새 preview branch/asset 검사를 하지 않았다. 후속 문서 commit은 앱 bundle을 바꾸지 않는다.
+
+[운영 앱](https://lightweight-training.pages.dev) · [불변 배포 증거](../../raw/research/2026-10-05-record-details-git-release.json). 실제 본인 운동/iPhone 저장·재실행·수동 전송/새 저장소 복원·다기기/다버전 Auth·과학 승인 콘텐츠0개/운영 복구·4주 파일럿/P2 관문은 남는다.

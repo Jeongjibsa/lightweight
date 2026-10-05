@@ -211,7 +211,10 @@
     "raw/conversations/2026-10-05-024.md": "e569688333e7e4a5978d841960718af813a4401d86697d3e97d2990a3d58d6b0",
     "raw/research/2026-10-05-cloud-validator-approved.json": "57c753881ea75dd698ca9d6c52f4251eeff7200055c45bc83014ad3ddd6019bf",
     "history/versions/prd-v0.9.3.md": "a936111ecbf8b86aa38e2dafbafcb47eda0f8714ed6e97d861f73f70a4bbb532",
-    "history/changes/CHG-0035.md": "d7519fce7627d1a81d86e8c9ca321ff1d1bd6ebf9a95de60346455d93d96e3f0"
+    "history/changes/CHG-0035.md": "d7519fce7627d1a81d86e8c9ca321ff1d1bd6ebf9a95de60346455d93d96e3f0",
+    "raw/research/2026-10-05-record-details-git-release.json": "0c0c1f4b56b1b7469c3e2baaa527a3f51fd6c987c0b10b143c103aa9435f4339",
+    "history/versions/prd-v0.9.4.md": "11edfcee537e7c462084206ee43c6d3c518954c965977892a22c2bfe42daeeeb",
+    "history/changes/CHG-0036.md": "2373c22ea1022d3956cc879c5fce72ce50de9a4773ede8df33648b4ae31f335a"
   },
-  "updated_at": "2026-10-05T01:38:13+09:00"
+  "updated_at": "2026-10-05T10:24:45+09:00"
 }

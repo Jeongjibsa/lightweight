@@ -9,3 +9,5 @@
 - [CHG-0012](changes/CHG-0012.md) · [PRD0.7.0](versions/prd-v0.7.0.md) — UI 재감사/후순위 FR17.
 
 - [CHG0035 서버 승인/검증](changes/CHG-0035.md).
+
+- [CHG0036 실제 CI/Git 배포](changes/CHG-0036.md).

@@ -2,6 +2,8 @@
 
 ## 2026-10-05
 
+- **Release / Records**: dbddbda main push·GitHub37250900828 세 job success·17Chromium/15WebKit artifact 수신/최초실패 probe 보존·Pages github:push/build/deploy success·운영24file hash/헤더 일치. [실행](raw/research/2026-10-05-record-details-git-release.json)·[CHG0036](history/changes/CHG-0036.md)·PRD0.9.4 전체/기존210불변 보존. 실제 운동/iPhone·다기기·SCI/운영/파일럿/P2는 유지한다.
+
 - **CONV0024 / Server approval**: 인간 승인 후 준비 validator SQL 적용·28개 합성 RPC/권한 검사 rollback·ACL/RLS 유지, 106/Node10/build/types/format/artifact25 통과(lint6경고). [확인](raw/research/2026-10-05-cloud-validator-approved.json)·[CHG0035](history/changes/CHG-0035.md)·PRD0.9.3 snapshot/기존206불변 보존. 새 Git 배포 검증을 이어간다.
 
 - **CONV0023 / Records**: note/비교 조건·전체/개별/owner/CAS/atomic/backup·재시작/추가/교체·v2 추이/이전값 분리,106개/Node10/32browser/신규6반복/build/types/format/artifact25·4PNG 직접 확인. [계약](wiki/operations/record-details.md)·[루프](raw/research/2026-10-05-record-details-loop.json). 서버 strict schema의 새 선택 필드 거부를 확인; 준비 migration은 자동 승인 거부로 미적용/인간 승인 대기, push/배포 보류.
