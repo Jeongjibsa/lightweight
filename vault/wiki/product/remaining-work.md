@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-07T21:33:11+09:00"
+  at: "2026-10-07T21:55:19+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -191,9 +191,12 @@ sources:
   - id: "workout-ux-request"
     resource: "../../raw/conversations/2026-10-07-025.md"
     title: "운동 접기/휴식 접근 요구"
-version: "0.5.0"
+  - id: "workout-ux-git-release"
+    resource: "../../raw/research/2026-10-07-workout-ux-git-release.json"
+    title: "운동 UX CI/운영 배포 확인"
+version: "0.5.1"
 approval_status: "proposal"
-change_id: "CHG-0037"
+change_id: "CHG-0038"
 ---
 
 # 남은 작업 한눈에 보기
@@ -202,14 +205,14 @@ change_id: "CHG-0037"
 
 [접기와 고정 휴식 타이머](../operations/workout-collapse-timer.md)를 구현했다. 운동 제목/모두 접기·완료 수 요약, 위로 벗어난 타이머의 safe-area 캡슐·일시정지/재개/조작창을 제공한다. 입력 실패 초안/기존 저장 계약을 보존하고108Vitest/Node10·browser34/관련 반복12·최종10PNG를 확인했다. app0.2.0/schema2/backup1·서버/Auth 설정을 유지한다. 기존6effect경고는 별도다.
 
-[Watch·Live Activity·AlarmKit 검토](rest-alert-feasibility.md)는 검토만 완료/P2다. Web Push 조건부 전달·native WidgetKit/ActivityKit·iOS26+ AlarmKit 후보를 확인했다. 사용자 구현 선택·실기기 관문은 남는다. 실제 iPhone/운동·다기기 Auth·SCI/운영/파일럿/식단·3D 관문을 유지한다. 이 단위의 새 Git push/CI/배포는 아직 별도다.
+[Watch·Live Activity·AlarmKit 검토](rest-alert-feasibility.md)는 검토만 완료/P2다. Web Push 조건부 전달·native WidgetKit/ActivityKit·iOS26+ AlarmKit 후보를 확인했다. 사용자 구현 선택·실기기 관문은 남는다. 실제 iPhone/운동·다기기 Auth·SCI/운영/파일럿/식단·3D 관문을 유지한다. 이 단위의 main push·GitHub3job/34browser artifact·Pages Git 운영24파일 일치 확인을 완료했다.
 
 
-2026-10-07 / PRD0.10.0. **운동 MVP 전체는 진행 중**이며 식단·3D는 후순위다.
+2026-10-07 / PRD0.10.1. **운동 MVP 전체는 진행 중**이며 식단·3D는 후순위다.
 
 [운영 앱](https://lightweight-training.pages.dev) · [DB 연결 없는 preview](https://preview.lightweight-training.pages.dev) · [세부 백로그](implementation-backlog.md).
 
-메모·장비/가동범위 기록과 서버 선택 필드까지 main dbddbda로 push/배포했다.106 Vitest·Node10·browser32·서버 rollback28·GitHub3job success, 운영 공개24파일 hash/헤더 일치를 확인했다. 등록1/허용1·실제 desktop Chrome 빈 프로필의 클라우드 저장/조회/같은 기기 적용도 확인했다.
+운동 접기·고정 휴식 타이머까지 main48c0f44로 push/배포했다.108Vitest·Node10·browser34·GitHub3job success/실제 artifact 수신·운영 공개24파일 hash/헤더 일치를 확인했다. 이전 서버 선택 필드28rollback 검사는 유지하며 이번에는 서버를 바꾸지 않았다. 등록1/허용1·실제 desktop Chrome 빈 프로필의 클라우드 저장/조회/같은 기기 적용도 확인했다.
 
 | 순서 | 남은 작업 | 현재 완료한 부분 | 완료에 필요한 것 | ID |
 |---|---|---|---|---|
@@ -272,3 +275,9 @@ GitHub source=Jeongjibsa/lightweight·main·자동 배포 활성화를 읽었고
 메모/장비·가동범위·휴식 즐겨찾기/세부 분류·별칭의 서버 미지원 및 이 단위의 승인/push/배포 대기는 해소됐다. 106 Vitest·Node10·build/types/format/artifact25(lint기존6경고)이다. preview DB는 비어 있으며 이번에 새 preview branch/asset 검사를 하지 않았다. 후속 문서 commit은 앱 bundle을 바꾸지 않는다.
 
 [운영 앱](https://lightweight-training.pages.dev) · [불변 배포 증거](../../raw/research/2026-10-05-record-details-git-release.json). 실제 본인 운동/iPhone 저장·재실행·수동 전송/새 저장소 복원·다기기/다버전 Auth·과학 승인 콘텐츠0개/운영 복구·4주 파일럿/P2 관문은 남는다.
+
+## 운동 접기/고정 휴식 운영 반영 — 2026-10-07
+
+48c0f44를 main에 push하고 GitHub37622605794 세 job success와 **Chromium18/WebKit16=34** artifact·의도적 최초 실패 probe를 실제 수신했다. 같은 source의 Pages `github:push` build/deploy가 성공했고 운영 공개24파일 SHA256·보안 헤더가 로컬 검증 빌드와 일치한다. [불변 배포 확인](../../raw/research/2026-10-07-workout-ux-git-release.json).
+
+108Vitest/Node10·로컬browser34/관련12반복·최종10PNG/문서 검증(기존6lint경고)을 유지한다. 새 서버/Auth/스키마/의존성을 변경하지 않았다. preview DB 환경은 비어 있고 새 preview branch 배포/asset 검증은 하지 않았다. Watch/Web Push·native AlarmKit/Live Activity는 **검토만/P2**다. 실제 운동/iPhone/Watch·다기기 Auth·SCI/운영/파일럿 관문은 남는다. 후속 문서 commit은 앱 bundle을 바꾸지 않는다.

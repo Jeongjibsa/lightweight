@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-07T21:33:11+09:00"
+  at: "2026-10-07T21:55:19+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -149,6 +149,9 @@ sources:
   - id: "workout-ux-request"
     resource: "../../raw/conversations/2026-10-07-025.md"
     title: "운동 접기/휴식 접근 요구"
+  - id: "workout-ux-git-release"
+    resource: "../../raw/research/2026-10-07-workout-ux-git-release.json"
+    title: "운동 UX CI/운영 배포 확인"
 ---
 
 # 미결 사항과 다음 대화
@@ -278,3 +281,9 @@ Google 계정 로그인은 기술적으로 가능하지만 검토 요청만 처�
 ## CONV0025 미결
 
 접기/고정 타이머 로컬 구현은 완료했다. 실제 iPhone 키보드/VoiceOver·잠금 복귀는 남는다. Watch 알림/Live Activity는 가능성 검토만 요구했다. [P2 검토](rest-alert-feasibility.md)의 PWA push 또는 native AlarmKit/WidgetKit 선택·지원OS/Watch·배포 방식·부드러운 알림/강한 알람 정책은 미정이다. 이 선택을 현재 운동 MVP 완료 조건으로 추가하지 않는다.
+
+## 운동 접기/고정 휴식 운영 반영 — 2026-10-07
+
+48c0f44를 main에 push하고 GitHub37622605794 세 job success와 **Chromium18/WebKit16=34** artifact·의도적 최초 실패 probe를 실제 수신했다. 같은 source의 Pages `github:push` build/deploy가 성공했고 운영 공개24파일 SHA256·보안 헤더가 로컬 검증 빌드와 일치한다. [불변 배포 확인](../../raw/research/2026-10-07-workout-ux-git-release.json).
+
+108Vitest/Node10·로컬browser34/관련12반복·최종10PNG/문서 검증(기존6lint경고)을 유지한다. 새 서버/Auth/스키마/의존성을 변경하지 않았다. preview DB 환경은 비어 있고 새 preview branch 배포/asset 검증은 하지 않았다. Watch/Web Push·native AlarmKit/Live Activity는 **검토만/P2**다. 실제 운동/iPhone/Watch·다기기 Auth·SCI/운영/파일럿 관문은 남는다. 후속 문서 commit은 앱 bundle을 바꾸지 않는다.

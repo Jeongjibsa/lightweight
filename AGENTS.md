@@ -72,3 +72,5 @@
 - CHG0036에서 승인 뒤 dbddbda main push·GitHub37250900828 세 job success/17+15 browser artifact 수신·같은 source Pages Git build/deploy·운영24file SHA256/보안 헤더 일치를 완료했다. 후속 문서는 bundle을 바꾸지 않는다. 현재 남은 작업은 PRD0.9.4와 remaining-work.md를 읽으며 앞선 승인/배포 보류를 현재 상태로 사용하지 않는다. 실제 운동/iPhone·다기기/다버전 Auth·SCI/운영/파일럿/P2 관문은 남는다.
 
 - CONV0025/CHG0037의 운동 항목은 Mantine multiple Accordion·keepMounted/display-none으로 입력 초안을 보존한다. 접기 자체는 session/outbox를 쓰지 않는다. 고정 휴식은 같은 state/deadline을 공유하며 위로 벗어난 카드만 표시하고 passive scroll/resize로 비가시 아래→위 점프를 처리한다. native collapse/full-height 대기·Safari pointer opener focus·320/390/768 hit 검사를 유지한다. Watch/Web Push·native AlarmKit/ActivityKit/WidgetKit은 공식 검토만/P2이며 구현 승인으로 확대하지 않는다. 현재 기준은 PRD0.10.0/남은 표이며 실제 iPhone/Watch·잠금/알림 관문은 별도다.
+
+- CHG0038에서48c0f44의 main push·GitHub37622605794 세 job success/18+16browser artifact와 최초 실패 probe 수신·같은 source Pages Git 배포·운영24파일 SHA256/보안 헤더 일치를 확인했다. 현재 PRD0.10.1/남은 표가 기준이며 CHG0037의 배포 대기는 해소됐다. 후속 문서는 bundle 변경이 없고 실제 iPhone/Watch/잠금·알림/네이티브/나머지 MVP 관문은 유지한다.

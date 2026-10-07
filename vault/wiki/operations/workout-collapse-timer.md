@@ -6,7 +6,7 @@ tags: ["training", "ux", "technology"]
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-07T21:33:11+09:00"
+  at: "2026-10-07T21:55:19+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-07-025.md"
@@ -17,8 +17,11 @@ sources:
   - id: "source"
     resource: "../sources/SRC-052-workout-accordion.md"
     title: "공식 컴포넌트"
-version: "0.1.0"
-change_id: "CHG-0037"
+  - id: "workout-ux-git-release"
+    resource: "../../raw/research/2026-10-07-workout-ux-git-release.json"
+    title: "운동 UX CI/운영 배포 확인"
+version: "0.1.1"
+change_id: "CHG-0038"
 ---
 
 # 운동 항목 접기와 고정 휴식 타이머
@@ -49,3 +52,9 @@ Mantine Paper/Portal/Button/ActionIcon/Drawer/Modal을 사용하며 CSS는 위�
 - [webkit-mobile workout-floating-390.png](../../raw/design/2026-10-07-ux37-webkit-mobile-workout-floating-390.png)
 - [webkit-mobile workout-floating-768.png](../../raw/design/2026-10-07-ux37-webkit-mobile-workout-floating-768.png)
 - [webkit-mobile workout-timer-sheet-390.png](../../raw/design/2026-10-07-ux37-webkit-mobile-workout-timer-sheet-390.png)
+
+## 운동 접기/고정 휴식 운영 반영 — 2026-10-07
+
+48c0f44를 main에 push하고 GitHub37622605794 세 job success와 **Chromium18/WebKit16=34** artifact·의도적 최초 실패 probe를 실제 수신했다. 같은 source의 Pages `github:push` build/deploy가 성공했고 운영 공개24파일 SHA256·보안 헤더가 로컬 검증 빌드와 일치한다. [불변 배포 확인](../../raw/research/2026-10-07-workout-ux-git-release.json).
+
+108Vitest/Node10·로컬browser34/관련12반복·최종10PNG/문서 검증(기존6lint경고)을 유지한다. 새 서버/Auth/스키마/의존성을 변경하지 않았다. preview DB 환경은 비어 있고 새 preview branch 배포/asset 검증은 하지 않았다. Watch/Web Push·native AlarmKit/Live Activity는 **검토만/P2**다. 실제 운동/iPhone/Watch·다기기 Auth·SCI/운영/파일럿 관문은 남는다. 후속 문서 commit은 앱 bundle을 바꾸지 않는다.

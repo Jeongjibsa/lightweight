@@ -229,8 +229,11 @@
     "raw/design/2026-10-07-ux37-webkit-mobile-workout-timer-sheet-390.png": "caf2ddd9ef1859130d10ac1b82f64b705b7e778e55684d6e0b000d909c81f7ff",
     "raw/research/2026-10-07-workout-collapse-timer-loop.json": "b7c9273379a7ace1d9c3d5b15ec076ca0573880e0c9edb798f964a5eaad4f2c7",
     "history/versions/prd-v0.10.0.md": "c92383d786feaff11c3a6f602e04f3e15678c6fa374ffc6d008713e0f56c8cdd",
-    "history/changes/CHG-0037.md": "0ff4a5b8e93fe589ace9ee83e76f72af48e8946504616ff357c813302bb13de5"
+    "history/changes/CHG-0037.md": "0ff4a5b8e93fe589ace9ee83e76f72af48e8946504616ff357c813302bb13de5",
+    "raw/research/2026-10-07-workout-ux-git-release.json": "f5d0969fef5032eed35036dc832f05f982c297bde0c56db8c460be6c83a98222",
+    "history/versions/prd-v0.10.1.md": "24574e619731cc91f560f53e66c98ad75868430adc3425183a615d3a63450eaa",
+    "history/changes/CHG-0038.md": "aea5978cab39deb727eaf54866a60b5c50e4279202c53a8d8a4dd215c31c6b3d"
   },
   "updated_at": "2026-10-05T10:24:45+09:00",
-  "last_extended_at": "2026-10-07T21:33:11+09:00"
+  "last_extended_at": "2026-10-07T21:55:19+09:00"
 }

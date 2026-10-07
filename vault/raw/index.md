@@ -15,3 +15,5 @@
 - [승인 뒤 실제 Git 배포](research/2026-10-05-record-details-git-release.json).
 
 - [CONV0025](conversations/2026-10-07-025.md) · [실행](research/2026-10-07-workout-collapse-timer-loop.json).
+
+- [운동 UX 실제 운영 반영](research/2026-10-07-workout-ux-git-release.json).

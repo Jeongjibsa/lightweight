@@ -2,6 +2,8 @@
 
 ## 2026-10-07
 
+- **Release / UX**:48c0f44 main push·GitHub37622605794 세 job success/18+16browser artifact·최초 실패 probe 수신·Pages Git build/deploy와 운영24파일 SHA256/보안 헤더 일치. [확인](raw/research/2026-10-07-workout-ux-git-release.json) · [CHG0038](history/changes/CHG-0038.md) · PRD0.10.1/기존228불변 보존. 실제 iPhone/Watch·알림/네이티브·나머지 MVP 관문 유지.
+
 - **UX / CONV0025**: 운동별 Mantine 접기·완료 수/모두 접기, 위로 벗어난 휴식 타이머의 safe-area 캡슐·단일 시간/조작창. Safari focus·scroll jump·native animation 회귀 보완.108Vitest/Node10·browser34/반복12·최종10PNG 확인(기존6lint경고). [실행](raw/research/2026-10-07-workout-collapse-timer-loop.json) · [CHG0037](history/changes/CHG-0037.md) · PRD0.10.0 전체/기존213불변 보존.
 - **검토**: [Watch/Web Push·Live Activity·iOS26+ AlarmKit](wiki/product/rest-alert-feasibility.md)은 공식 관련 절 검토/P2이며 구현·권한·전송/실기기 시험 없음. 현재 운동 MVP/실제 운동/Auth/SCI/운영/파일럿 관문 유지.
 

@@ -28,3 +28,5 @@
 - [메모·비교 조건 서버/Git 배포 완료](record-details.md).
 
 - [운동 접기/고정 휴식 계약](workout-collapse-timer.md).
+
+- [운동 UX Git 배포 확인](pages-git-integration.md).

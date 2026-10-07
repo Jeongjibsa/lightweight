@@ -176,3 +176,5 @@ iPhone 홈 화면 설치·실행·로그인은 사용자 보고로 확인했습�
 서버 승인 이후 dbddbda main의 GitHub37250900828 세 job·Pages Git build/deploy와 운영24file hash/헤더 일치를 확인했습니다. [불변 배포](../vault/raw/research/2026-10-05-record-details-git-release.json). 실제 본인 운동·다기기·iPhone/다버전 검증은 남습니다.
 
 운동별 Mantine 접기/완료 요약·스크롤 상단 휴식 캡슐/조작창을 추가했습니다.108Vitest/Node10·Chromium18/WebKit16=34·관련12반복/320·390·768px를 검사했습니다. [UX 계약](../vault/wiki/operations/workout-collapse-timer.md) · [Watch/Live Activity/AlarmKit 검토만](../vault/wiki/product/rest-alert-feasibility.md). 시스템 알림·네이티브 기능은 구현하지 않았습니다.
+
+48c0f44 main의 GitHub37622605794 세 job success/34browser artifact를 수신하고 같은 source Pages Git build/deploy·운영24파일 hash/헤더 일치를 확인했습니다. [운영 반영](../vault/raw/research/2026-10-07-workout-ux-git-release.json). 이 후속 문서 commit은 앱 bundle을 바꾸지 않습니다.

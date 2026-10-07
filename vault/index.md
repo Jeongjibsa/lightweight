@@ -4,7 +4,7 @@ okf_version: "0.2"
 
 # 웨이트 트레이닝 앱 — 기획과 지식 베이스
 
-옵시디언에서 이 `vault` 폴더를 열고 시작한다. 현재 기획은 **0.10.0 브레인스토밍 초안**이다.
+옵시디언에서 이 `vault` 폴더를 열고 시작한다. 현재 기획은 **0.10.1 브레인스토밍 초안**이다.
 
 ## 먼저 읽기
 
@@ -48,7 +48,7 @@ okf_version: "0.2"
 - [양식](templates/index.md) — 출처·변경 작성.
 - [시각 자료](assets/index.md) — 추후 콘텐츠.
 
-과학 자료는2026-10-03 초기 표적 탐색이며 일부 초록/전문 미검토 자료가 있다. 현재 PRD0.10.0·app0.2.0/schema2·Mantine/Geist/차콜·노란 강조·하단 UI. [운영 앱](https://lightweight-training.pages.dev)과 DB 연결 없는 preview를 배포했다.90개 Vitest·Node계약8개(배포3/공개5)·browser24를 통과했다. 종료 기록1db637d GitHub3job·운영/preview24file hash/헤더 배포 일치를 완료했다. 루틴 복구86cc158 GitHub3job·운영/preview24file hash/헤더 배포 일치를 완료했다. 순서 단위 e912f0c의 GitHub3job·운영/preview 공개24file 일치 배포를 확인했다. 새 공개 gate96bbb74 CI/운영·preview24file 일치 확인 완료. Auth 등록1개/허용1개·명시 승인 후 실제 Chrome 빈 프로필 전송/조회/같은 기기 적용을 확인했다. 실제 운동/새 기기·A/B/만료·로그아웃/메일은 남는다. iPhone 홈 화면/로그인은 사용자 보고 확인. 실제 운동 저장·재실행·수동 전송은 다음 운동 후 확인 예정이며 not_run이다. 실제 Auth/다기기·나머지 실기기·과학 공개/전문가·운영 복구·파일럿과 전체 운동 MVP는 남는다. [현재 남은 작업](wiki/product/remaining-work.md). 아래 링크는 누적 증분이며 당시 검사와 최신 상태를 구별한다.
+과학 자료는2026-10-03 초기 표적 탐색이며 일부 초록/전문 미검토 자료가 있다. 현재 PRD0.10.1·app0.2.0/schema2·Mantine/Geist/차콜·노란 강조·하단 UI. [운영 앱](https://lightweight-training.pages.dev)과 DB 연결 없는 preview를 배포했다.90개 Vitest·Node계약8개(배포3/공개5)·browser24를 통과했다. 종료 기록1db637d GitHub3job·운영/preview24file hash/헤더 배포 일치를 완료했다. 루틴 복구86cc158 GitHub3job·운영/preview24file hash/헤더 배포 일치를 완료했다. 순서 단위 e912f0c의 GitHub3job·운영/preview 공개24file 일치 배포를 확인했다. 새 공개 gate96bbb74 CI/운영·preview24file 일치 확인 완료. Auth 등록1개/허용1개·명시 승인 후 실제 Chrome 빈 프로필 전송/조회/같은 기기 적용을 확인했다. 실제 운동/새 기기·A/B/만료·로그아웃/메일은 남는다. iPhone 홈 화면/로그인은 사용자 보고 확인. 실제 운동 저장·재실행·수동 전송은 다음 운동 후 확인 예정이며 not_run이다. 실제 Auth/다기기·나머지 실기기·과학 공개/전문가·운영 복구·파일럿과 전체 운동 MVP는 남는다. [현재 남은 작업](wiki/product/remaining-work.md). 아래 링크는 누적 증분이며 당시 검사와 최신 상태를 구별한다.
 
 - [최신 컴포넌트 재감사](wiki/product/component-review.md) — 다섯 페이지 수정 전/후·펼친 선택창·55개 검사·20폭/화면 관찰.
 - [3D 해부학 애니메이션 검토](wiki/product/anatomy-3d-feasibility.md) — FR-17·P2후순위, 가능성/자산/검토·실기기 관문.
@@ -100,3 +100,5 @@ okf_version: "0.2"
 - 최신 PRD0.9.4: [메모·비교 조건 Git/CI·운영24파일 배포 완료](raw/research/2026-10-05-record-details-git-release.json).
 
 - 최신 UX: [운동 접기/고정 휴식](wiki/operations/workout-collapse-timer.md) · [Watch/Live Activity/AlarmKit P2 검토](wiki/product/rest-alert-feasibility.md), 108검사/34browser/관련12반복·최종10PNG.
+
+- 최신 PRD0.10.1: [운동 접기/고정 휴식 실제 Git/CI·운영 반영](raw/research/2026-10-07-workout-ux-git-release.json).

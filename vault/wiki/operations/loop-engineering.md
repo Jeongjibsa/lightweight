@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-07T21:33:11+09:00"
+  at: "2026-10-07T21:55:19+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
@@ -80,6 +80,9 @@ sources:
   - id: "workout-ux-request"
     resource: "../../raw/conversations/2026-10-07-025.md"
     title: "운동 접기/휴식 접근 요구"
+  - id: "workout-ux-git-release"
+    resource: "../../raw/research/2026-10-07-workout-ux-git-release.json"
+    title: "운동 UX CI/운영 배포 확인"
 version: "0.3.2"
 approval_status: "proposal"
 change_id: "CHG-0014"
@@ -260,3 +263,9 @@ CUA 가짜4177의 invalid JSON 오류→동일 경로 정상 파일→미리보�
 ## CONV0025 UI 루프
 
 사용자 스크롤 불편→Mantine 접기/상단 캡슐→실패한 입력 초안 검사→Safari opener focus 보완→전체 회귀에서 제목 blur/animation 및 non-intersecting scroll jump 확인→Tab blur/native height/위치 보완→34전체/12반복·최종 화면 확인. 첫 실패runID/trace를 보존했다. [계약](workout-collapse-timer.md).
+
+## 운동 접기/고정 휴식 운영 반영 — 2026-10-07
+
+48c0f44를 main에 push하고 GitHub37622605794 세 job success와 **Chromium18/WebKit16=34** artifact·의도적 최초 실패 probe를 실제 수신했다. 같은 source의 Pages `github:push` build/deploy가 성공했고 운영 공개24파일 SHA256·보안 헤더가 로컬 검증 빌드와 일치한다. [불변 배포 확인](../../raw/research/2026-10-07-workout-ux-git-release.json).
+
+108Vitest/Node10·로컬browser34/관련12반복·최종10PNG/문서 검증(기존6lint경고)을 유지한다. 새 서버/Auth/스키마/의존성을 변경하지 않았다. preview DB 환경은 비어 있고 새 preview branch 배포/asset 검증은 하지 않았다. Watch/Web Push·native AlarmKit/Live Activity는 **검토만/P2**다. 실제 운동/iPhone/Watch·다기기 Auth·SCI/운영/파일럿 관문은 남는다. 후속 문서 commit은 앱 bundle을 바꾸지 않는다.

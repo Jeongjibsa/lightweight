@@ -34,3 +34,5 @@
 - PRD0.9.4: [현재 배포와 남은 작업](remaining-work.md).
 
 - PRD0.10.0: [Watch/Live Activity 검토](rest-alert-feasibility.md) · [접기/고정 휴식](../operations/workout-collapse-timer.md).
+
+- PRD0.10.1: [운동 접기/고정 휴식 운영 반영](remaining-work.md).
