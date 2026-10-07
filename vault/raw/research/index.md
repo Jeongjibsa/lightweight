@@ -52,3 +52,5 @@
 - [접기/고정 휴식 루프](2026-10-07-workout-collapse-timer-loop.json) · [공식 시스템 알림 검토](2026-10-07-rest-alert-feasibility.json).
 
 - [운동 UX Git/CI·운영 배포](2026-10-07-workout-ux-git-release.json).
+
+- [세 종목/중량·browser 검증](2026-10-07-catalog-expansion-loop.json).

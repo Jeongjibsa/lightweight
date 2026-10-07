@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-07T21:55:19+09:00"
+  at: "2026-10-07T22:26:53+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
@@ -119,6 +119,9 @@ sources:
   - id: "workout-ux-git-release"
     resource: "../../raw/research/2026-10-07-workout-ux-git-release.json"
     title: "운동 UX CI/운영 배포 확인"
+  - id: "unit-chg-0039"
+    resource: "../../raw/conversations/2026-10-07-026.md"
+    title: "세 종목 추가와 순차 작업 요구"
 version: "0.5.1"
 approval_status: "current-audit-and-proposal"
 change_id: "CHG-0014"
@@ -361,3 +364,7 @@ Workout UI의 저장 실패 초안/접기 무변경과 RestTimer 동일 상태/o
 48c0f44를 main에 push하고 GitHub37622605794 세 job success와 **Chromium18/WebKit16=34** artifact·의도적 최초 실패 probe를 실제 수신했다. 같은 source의 Pages `github:push` build/deploy가 성공했고 운영 공개24파일 SHA256·보안 헤더가 로컬 검증 빌드와 일치한다. [불변 배포 확인](../../raw/research/2026-10-07-workout-ux-git-release.json).
 
 108Vitest/Node10·로컬browser34/관련12반복·최종10PNG/문서 검증(기존6lint경고)을 유지한다. 새 서버/Auth/스키마/의존성을 변경하지 않았다. preview DB 환경은 비어 있고 새 preview branch 배포/asset 검증은 하지 않았다. Watch/Web Push·native AlarmKit/Live Activity는 **검토만/P2**다. 실제 운동/iPhone/Watch·다기기 Auth·SCI/운영/파일럿 관문은 남는다. 후속 문서 commit은 앱 bundle을 바꾸지 않는다.
+
+## CONV0026 종목 입력 회귀
+
+머신/한 손/맨몸 추가 중량 계산 반례와 검색·0/미입력 완료·재실행/9세트 백업을 추가했다.109Vitest/Node10·36browser·새6반복/마지막2viewport. [증거](catalog-expansion.md). 별도 SYNC 실패 재현 검사는 다음 증분이며 이 카탈로그 단위 검사로 혼합하지 않는다.

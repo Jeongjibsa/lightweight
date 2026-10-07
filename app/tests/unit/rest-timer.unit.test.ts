@@ -47,7 +47,7 @@ it("favorites accept three or four distinct bounded durations and start with one
     ).toBe(false);
 });
 it("catalog keeps legacy IDs and includes big three, barbell loads and region navigation", () => {
-  expect(catalog).toHaveLength(34);
+  expect(catalog).toHaveLength(37);
   expect(new Set(catalog.map((e) => e.id)).size).toBe(catalog.length);
   for (const exercise of catalog) {
     expect(exerciseSchema.safeParse(exercise).success).toBe(true);

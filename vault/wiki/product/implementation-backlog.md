@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-07T21:55:19+09:00"
+  at: "2026-10-07T22:26:53+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -209,12 +209,20 @@ sources:
   - id: "workout-ux-git-release"
     resource: "../../raw/research/2026-10-07-workout-ux-git-release.json"
     title: "운동 UX CI/운영 배포 확인"
-version: "0.8.1"
+  - id: "unit-chg-0039"
+    resource: "../../raw/conversations/2026-10-07-026.md"
+    title: "세 종목 추가와 순차 작업 요구"
+version: "0.9.0"
 approval_status: "proposal"
-change_id: "CHG-0038"
+change_id: "CHG-0039"
 ---
 
 # 운동 PWA 구현 백로그와 완료 기준
+
+## CONV0026 세 종목 추가 — 2026-10-07
+
+스미스머신 스쿼트·덤벨 인클라인 벤치 프레스·딥스를 [기록용37종목](../operations/catalog-expansion.md)에 추가했다. 머신 기준/한 손/맨몸 추가 중량을 분리하고 기존34개 ID/순서·snapshot·schema2/backup1을 유지한다. 딥스는0/빈칸 완료가 가능하고 체중을 추정해 볼륨에 합산하지 않는다.109Vitest·Node10/36browser·관련6반복·마지막2viewport를 확인했다. 기존6lint경고·실제 운동/iPhone·SCI/나머지 MVP 관문은 남는다. 다음 순차 증분은 SYNC03~05의 오래된 응답/삭제 복구 계약이다. 신규 push/CI/배포는 후속 확인한다.
+
 
 ## CONV0025 운동 기록 UX — 2026-10-07
 

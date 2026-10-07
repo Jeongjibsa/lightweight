@@ -8,7 +8,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-07T21:33:11+09:00"
+  at: "2026-10-07T22:26:53+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-03-001.md"
@@ -55,6 +55,9 @@ sources:
   - id: "workout-ux-request"
     resource: "../../raw/conversations/2026-10-07-025.md"
     title: "운동 접기/휴식 접근 요구"
+  - id: "unit-chg-0039"
+    resource: "../../raw/conversations/2026-10-07-026.md"
+    title: "세 종목 추가와 순차 작업 요구"
 ---
 
 # 결정과 제안 기록
@@ -137,3 +140,7 @@ sources:
 ## CONV0025 결정/제안
 
 인간 명시 요구: 남은 작업보다 먼저 운동 항목 접기·스크롤 밖의 휴식 접근을 개선하고 Watch/Live Activity 가능성을 검토. 구현 판단: Mantine multiple/keepMounted·완료 요약·상단 capsule/동일 state 조작창. 제안/P2: Web Push server scheduling 또는 native iOS26+ AlarmKit/ActivityKit/WidgetKit. 네이티브 전환/알림 발송 승인으로 기록하지 않는다. [원문](../../raw/conversations/2026-10-07-025.md) · [검토](../product/rest-alert-feasibility.md).
+
+## CONV0026 명시 요구와 구현 정책
+
+세 종목 추가·남은 작업 순차 진행은 인간 명시 요구다. 검색 태그·machine/per_hand/bodyweight·별칭·다음 SYNC 계약 점검 순서는 구현 정책/기획자의 선택이며 과학 효과·티어·권장량 승인과 구별한다. [계약](../operations/catalog-expansion.md).

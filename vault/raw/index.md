@@ -17,3 +17,5 @@
 - [CONV0025](conversations/2026-10-07-025.md) · [실행](research/2026-10-07-workout-collapse-timer-loop.json).
 
 - [운동 UX 실제 운영 반영](research/2026-10-07-workout-ux-git-release.json).
+
+- [CONV0026](conversations/2026-10-07-026.md) · [종목 추가 검사](research/2026-10-07-catalog-expansion-loop.json).

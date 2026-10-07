@@ -135,14 +135,14 @@ function SetRow({
             <TextInput
               flex={1}
               miw={0}
-              label={`중량 · ${set.unit}`}
+              label={`${set.exercise.loadMode === "bodyweight" ? "추가 중량" : "중량"} · ${set.unit}`}
               aria-label={`${prefix} 중량`}
               type="number"
               min={0}
               max={3000}
               step="any"
               inputMode="decimal"
-              placeholder="—"
+              placeholder={set.exercise.loadMode === "bodyweight" ? "0" : "—"}
               value={load}
               disabled={completed || readOnly}
               onChange={(e) => setLoad(e.target.value)}
@@ -684,6 +684,12 @@ export function WorkoutView({
               </Text>
             </Group>
             <Accordion.Panel>
+              {exercise.loadMode === "bodyweight" && (
+                <Text size="xs" c="dimmed" mb="sm">
+                  추가 중량만 입력하세요. 맨몸 수행은 0 또는 빈칸으로 기록할 수
+                  있습니다.
+                </Text>
+              )}
               <Badge color="gray" size="sm" mb="sm">
                 {exercise.review === "user_added" ? "직접 입력" : "기록용 초안"}
               </Badge>

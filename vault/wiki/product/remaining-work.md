@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-07T21:55:19+09:00"
+  at: "2026-10-07T22:26:53+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -194,12 +194,20 @@ sources:
   - id: "workout-ux-git-release"
     resource: "../../raw/research/2026-10-07-workout-ux-git-release.json"
     title: "운동 UX CI/운영 배포 확인"
-version: "0.5.1"
+  - id: "unit-chg-0039"
+    resource: "../../raw/conversations/2026-10-07-026.md"
+    title: "세 종목 추가와 순차 작업 요구"
+version: "0.6.0"
 approval_status: "proposal"
-change_id: "CHG-0038"
+change_id: "CHG-0039"
 ---
 
 # 남은 작업 한눈에 보기
+
+## CONV0026 세 종목 추가 — 2026-10-07
+
+스미스머신 스쿼트·덤벨 인클라인 벤치 프레스·딥스를 [기록용37종목](../operations/catalog-expansion.md)에 추가했다. 머신 기준/한 손/맨몸 추가 중량을 분리하고 기존34개 ID/순서·snapshot·schema2/backup1을 유지한다. 딥스는0/빈칸 완료가 가능하고 체중을 추정해 볼륨에 합산하지 않는다.109Vitest·Node10/36browser·관련6반복·마지막2viewport를 확인했다. 기존6lint경고·실제 운동/iPhone·SCI/나머지 MVP 관문은 남는다. 다음 순차 증분은 SYNC03~05의 오래된 응답/삭제 복구 계약이다. 신규 push/CI/배포는 후속 확인한다.
+
 
 ## CONV0025 운동 기록 UX — 2026-10-07
 
@@ -208,7 +216,7 @@ change_id: "CHG-0038"
 [Watch·Live Activity·AlarmKit 검토](rest-alert-feasibility.md)는 검토만 완료/P2다. Web Push 조건부 전달·native WidgetKit/ActivityKit·iOS26+ AlarmKit 후보를 확인했다. 사용자 구현 선택·실기기 관문은 남는다. 실제 iPhone/운동·다기기 Auth·SCI/운영/파일럿/식단·3D 관문을 유지한다. 이 단위의 main push·GitHub3job/34browser artifact·Pages Git 운영24파일 일치 확인을 완료했다.
 
 
-2026-10-07 / PRD0.10.1. **운동 MVP 전체는 진행 중**이며 식단·3D는 후순위다.
+2026-10-07 / PRD0.11.0. **운동 MVP 전체는 진행 중**이며 식단·3D는 후순위다.
 
 [운영 앱](https://lightweight-training.pages.dev) · [DB 연결 없는 preview](https://preview.lightweight-training.pages.dev) · [세부 백로그](implementation-backlog.md).
 
@@ -220,7 +228,7 @@ change_id: "CHG-0038"
 | 2 | 다기기 편집·충돌/실패 복구 | manual CAS/retry/ACK·교체 전 백업 | A/B·만료/권한 회수/응답 유실·서로 다른 편집 명시 해결·삭제 재등장 방지·크기 정책 | SYNC03~05 |
 | 3 | 기록 편의 완성 | 이전값·재시작·미완료 종목 교체·종료 수정·운동 순서/CAS·삭제 루틴 복구·종료 기록 삭제/복구 | 메모·머신/ROM 로컬·서버·배포 완료; 접기·고정 타이머 구현 완료; 다기기/실기기 입력 UX | LOG03~06 |
 | 4 | 설명 가능한 개인화 완성 | 볼륨/추이·기록 참고 후보·주간 입력 점검/직접 수정 | 검토된 직접/간접 매핑·저장 report/입력·정책·근거 버전·근거 기반 다음 행동 | REP01~06, SCI03B |
-| 5 | 근거 운동 정보·시각·티어·추천 | 기록용34종목/바벨18·초기 연구/3D 검토·공개 JSON gate(승인0개) | 등록부 실제 승인/규칙 연결·전문/전문가/권리 검토→설명/시각→조건 추천/티어, 승인 콘텐츠만 제공 | SCI01~04, PRE01, LOG02 |
+| 5 | 근거 운동 정보·시각·티어·추천 | 기록용37종목/바벨18·초기 연구/3D 검토·공개 JSON gate(승인0개) | 등록부 실제 승인/규칙 연결·전문/전문가/권리 검토→설명/시각→조건 추천/티어, 승인 콘텐츠만 제공 | SCI01~04, PRE01, LOG02 |
 | 6 | 실제 iPhone/PWA·접근성/보존 | iPhone 홈 화면 설치/실행/로그인 사용자 보고 완료·반응형·browser34·백업 보존 | 키보드/VoiceOver/확대/가로/잠금·실제offline/update·physical quota/eviction·64MiB초과 분할복구 | RESP01, REL02, HAR04 |
 | 7 | 운영·배포/복구 마무리 | Pages HTTPS·운영/preview DB 분리·24file hash/헤더·main push | 실Auth/메일/비밀번호복구·백업 drill·Git 자동 배포 완료; 도메인/Access 선택 | REL01/03, Q08/16/17 |
 | 8 | 본인 파일럿→지인 제공 | 앱/검사 기반 준비 | 실제4주 관찰/입력누락·오해 개선→회귀, 계정 독립/복원·G3/G4 관문 | PIL01/02 |

@@ -4,7 +4,7 @@ okf_version: "0.2"
 
 # 웨이트 트레이닝 앱 — 기획과 지식 베이스
 
-옵시디언에서 이 `vault` 폴더를 열고 시작한다. 현재 기획은 **0.10.1 브레인스토밍 초안**이다.
+옵시디언에서 이 `vault` 폴더를 열고 시작한다. 현재 기획은 **0.11.0 브레인스토밍 초안**이다.
 
 ## 먼저 읽기
 
@@ -102,3 +102,5 @@ okf_version: "0.2"
 - 최신 UX: [운동 접기/고정 휴식](wiki/operations/workout-collapse-timer.md) · [Watch/Live Activity/AlarmKit P2 검토](wiki/product/rest-alert-feasibility.md), 108검사/34browser/관련12반복·최종10PNG.
 
 - 최신 PRD0.10.1: [운동 접기/고정 휴식 실제 Git/CI·운영 반영](raw/research/2026-10-07-workout-ux-git-release.json).
+
+- 최신 PRD0.11.0: [37종목/맨몸 추가 중량](wiki/operations/catalog-expansion.md). 실제 운동·다기기/SCI 관문은 남는다.

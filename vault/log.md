@@ -2,6 +2,8 @@
 
 ## 2026-10-07
 
+- **Catalog / CONV0026**: 스미스머신 스쿼트·덤벨 인클라인 벤치 프레스·딥스 추가,37종목/바벨18·기존 ID/순서/snapshot·중량 방식 보존.109Vitest/Node10·36browser/새6반복·최종390viewport2 확인(기존6lint경고). [실행](raw/research/2026-10-07-catalog-expansion-loop.json) · [CHG0039](history/changes/CHG-0039.md) · PRD0.11.0 전체/기존231불변 보존. 다음 SYNC 오래된 응답 검사·실기기/SCI 관문 유지.
+
 - **Release / UX**:48c0f44 main push·GitHub37622605794 세 job success/18+16browser artifact·최초 실패 probe 수신·Pages Git build/deploy와 운영24파일 SHA256/보안 헤더 일치. [확인](raw/research/2026-10-07-workout-ux-git-release.json) · [CHG0038](history/changes/CHG-0038.md) · PRD0.10.1/기존228불변 보존. 실제 iPhone/Watch·알림/네이티브·나머지 MVP 관문 유지.
 
 - **UX / CONV0025**: 운동별 Mantine 접기·완료 수/모두 접기, 위로 벗어난 휴식 타이머의 safe-area 캡슐·단일 시간/조작창. Safari focus·scroll jump·native animation 회귀 보완.108Vitest/Node10·browser34/반복12·최종10PNG 확인(기존6lint경고). [실행](raw/research/2026-10-07-workout-collapse-timer-loop.json) · [CHG0037](history/changes/CHG-0037.md) · PRD0.10.0 전체/기존213불변 보존.

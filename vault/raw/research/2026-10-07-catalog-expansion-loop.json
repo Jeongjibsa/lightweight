@@ -1,0 +1,65 @@
+{
+  "type": "Implementation Verification",
+  "generated": {
+    "by": "codex/gpt-6",
+    "at": "2026-10-07T22:26:53+09:00"
+  },
+  "immutable": true,
+  "scope": "Catalog/UI unit before separate sync guard; schema2/backup1/app0.2.0 unchanged",
+  "catalog": {
+    "before": 34,
+    "after": 37,
+    "barbell": 18,
+    "added": [
+      "smith-squat",
+      "dumbbell-incline-bench",
+      "dips"
+    ],
+    "approved_scientific_explanations": 0
+  },
+  "tests": {
+    "vitest": 109,
+    "unit": 35,
+    "integration": 43,
+    "ui": 31,
+    "node_contracts": 10,
+    "check": "passed",
+    "lint": "exit0; six pre-existing SetRow effect warnings",
+    "browser_full": {
+      "run": "20261007T131955735Z-010e58fb",
+      "chromium": 19,
+      "webkit": 17,
+      "passed": 36
+    },
+    "repeat": {
+      "run": "20261007T131911847Z-e809d110",
+      "passed": 6,
+      "retries": 0
+    },
+    "final_capture": {
+      "run": "20261007T132311591Z-79162e78",
+      "passed": 2
+    }
+  },
+  "first_failures": [
+    {
+      "run": "20261007T131717352Z-ff9ffb26",
+      "reason": "test expected one set/exercise; actual picker adds three; fix expectations to nine total/three completed/six untouched"
+    },
+    {
+      "run": "20261007T131806756Z-84d19bfc",
+      "reason": "test guessed data-hidden CSS; interrupted after failure; replaced with aria-controls native panel height; first evidence retained"
+    },
+    {
+      "run": "20261007T131838908Z-a632528a",
+      "reason": "previous interrupted isolated server retained port4188; only identified orphan from this run stopped before rerun"
+    }
+  ],
+  "screenshots": [
+    "raw/design/2026-10-07-catalog39-chromium.png",
+    "raw/design/2026-10-07-catalog39-webkit.png"
+  ],
+  "review": "Both final390x844 viewport PNGs directly viewed; added load input/dips completed12/shared floating timer/bottom controls visible. Fullpage fixed-element stitching replaced with viewport capture.",
+  "privacy": "Synthetic independent origin/context, blank Supabase overrides, no user records/browser modifications",
+  "limitations": "Navigation tags only; no muscle effect/tier approval. bodyweight load null or0, no inferred body mass volume; no assisted-dips conversion. Actual workout/iPhone and remote auth remain not_run."
+}

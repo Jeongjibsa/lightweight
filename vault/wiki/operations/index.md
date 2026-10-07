@@ -30,3 +30,5 @@
 - [운동 접기/고정 휴식 계약](workout-collapse-timer.md).
 
 - [운동 UX Git 배포 확인](pages-git-integration.md).
+
+- [세 종목 추가/중량 기준](catalog-expansion.md).
