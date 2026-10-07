@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-08T00:22:04+09:00"
+  at: "2026-10-08T00:51:02+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -221,12 +221,22 @@ sources:
   - id: "unit-chg-0042"
     resource: "../../raw/conversations/2026-10-08-027.md"
     title: "업데이트 버그와 REP/SCI 우선 요청"
-version: "0.9.3"
+  - id: "unit-chg-0043"
+    resource: "../../raw/conversations/2026-10-08-027.md"
+    title: "REP 우선: 주간 비교/저장 시점 리포트"
+version: "0.10.0"
 approval_status: "proposal"
-change_id: "CHG-0042"
+change_id: "CHG-0043"
 ---
 
 # 운동 PWA 구현 백로그와 완료 기준
+
+## REP-02 주간 비교/저장 시점 증분 — 2026-10-08
+
+지난주 같은 요일까지 운동 횟수·완료 본세트·볼륨 부분합을 비교하고 계산 범위를 설명한다. 읽기용 HTML 다운로드에 당시 입력/시각/계산 버전을 보존하며 수정 후 현재 화면을 재계산한다. 과학 규칙/근육 매핑은 null, 근거 목록은 비어 있으며 승인 근거로 꾸미지 않는다. 앱 보관함/서버/복원 백업에는 새 필드를 추가하지 않았다. [계약과 화면](../operations/weekly-report.md)·[실행](../../raw/research/2026-10-08-weekly-report-loop.json).
+
+REP 새3unit/1UI/2browser와 함께 준비한 SCI UI 포함122Vitest/Node10/40browser·build/types/format/artifact25 통과(기존6경고). 첫 전체2실패는 중복 수치의 global 테스트 selector를 해당 volume 표로 제한해 해결했고 최초 증거를 보존했다. 실제 iPhone 파일 저장/전문 근육 매핑/근거 기반 다음 행동과 앱 내부 report archive는 남아 REP01~03 전체 완료로 표시하지 않는다. 다음5 SCI의 설명 소비·연구 검토를 이어간다.
+
 
 ## 세 종목·동기화 보존 운영 반영 — 2026-10-07
 
@@ -287,7 +297,7 @@ UI-01은 당시 부분 Mantine/Spoqa/스택 명시 증분으로 done이었다. C
 | SYNC-04 | M3 | 편집/삭제 충돌·복원 병합·오래된 응답 처리 | SYNC-03, LOG-06 | 두 편집 보존, 사용자 해결 추적, 오프라인 재접속 삭제 재등장 없음 | in_progress |
 | SYNC-05 | M3 | A/B/비로그인 API·동기화/복원 통합 검증 | SYNC-01~04 | 구현된 CRUD·RPC·내보내기·부모 바꾸기 차단, 새 기기 동기화분 복원; 후속 리포트 API는 REL-02 재검사 | in_progress |
 | REP-01 | M4 | 세션/주간·계획 대비·직접/간접·동일 조건 추세 계산 | LOG-05, PRE-01 | 고정 표본 합계/단위 일치, 분모0 N/A, 직접/간접 중복 없음 | in_progress |
-| REP-02 | M4 | 리포트 화면·충분성·기간/입력revision·오래된 결과 | REP-01, SYNC-03 | 주간 입력 점검/revision/직접 수정 진입 구현·78개/20browser; 저장 report/검토 매핑 후속 | in_progress |
+| REP-02 | M4 | 리포트 화면·충분성·기간/입력revision·오래된 결과 | REP-01, SYNC-03 | 주간 입력 점검/revision/직접 수정 진입 구현·78개/20browser; 읽기용 저장 report/당시 입력·계산 version 구현; 앱 보관함/검토 매핑 후속 | in_progress |
 | REP-03 | M4 | 관찰/한계/다음 행동 템플릿 | REP-02, SCI-01의 해당 주장/정책 검토 | 기록 관찰/한계/바로가기 구현, 근거 기반 다음 행동은 검토 후; 자동 변경 없음 | in_progress |
 | REP-04 | M4 | 운동/일별 볼륨·조건/단위/coverage 계산 | LOG-05, HAR-01 | 소유자/준비·삭제·0/N/A/kg/lb/한손·머신/시간 독립 계약 검사 | done |
 | REP-05 | M4 | 기간/운동/지표 그래프·표·재계산 | REP-04, HAR-02 | 날짜 간격·결측 보류·유효1점·narrow UI/기간/조건 선택·reload | done |

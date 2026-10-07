@@ -48,6 +48,7 @@ import {
 import { LibraryView, RoutinesView } from "./components/exercises";
 import { SettingsView } from "./components/settings";
 import { WorkoutView } from "./components/workout";
+import { WeeklyRecordReport } from "./components/weekly-report";
 import { VolumeReport } from "./components/volume-report";
 import { UpdateNotice } from "./components/update-notice";
 import { RecordCoverage } from "./components/report-coverage";
@@ -386,6 +387,7 @@ function ReportsView({
         settings={settings}
         today={today}
       />
+      <WeeklyRecordReport profile={profile} sessions={sessions} now={now} />
       <VolumeReport profile={profile} sessions={sessions} now={now} />
       <Paper>
         <Stack gap="md">

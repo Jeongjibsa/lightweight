@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-08T00:22:04+09:00"
+  at: "2026-10-08T00:51:02+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -221,11 +221,21 @@ sources:
   - id: "unit-chg-0042"
     resource: "../../raw/conversations/2026-10-08-027.md"
     title: "업데이트 버그와 REP/SCI 우선 요청"
-version: "0.6.3"
-change_id: "CHG-0042"
+  - id: "unit-chg-0043"
+    resource: "../../raw/conversations/2026-10-08-027.md"
+    title: "REP 우선: 주간 비교/저장 시점 리포트"
+version: "0.7.0"
+change_id: "CHG-0043"
 ---
 
 # 로컬 PWA 구현 결과와 다음 작업
+
+## REP-02 주간 비교/저장 시점 증분 — 2026-10-08
+
+지난주 같은 요일까지 운동 횟수·완료 본세트·볼륨 부분합을 비교하고 계산 범위를 설명한다. 읽기용 HTML 다운로드에 당시 입력/시각/계산 버전을 보존하며 수정 후 현재 화면을 재계산한다. 과학 규칙/근육 매핑은 null, 근거 목록은 비어 있으며 승인 근거로 꾸미지 않는다. 앱 보관함/서버/복원 백업에는 새 필드를 추가하지 않았다. [계약과 화면](../operations/weekly-report.md)·[실행](../../raw/research/2026-10-08-weekly-report-loop.json).
+
+REP 새3unit/1UI/2browser와 함께 준비한 SCI UI 포함122Vitest/Node10/40browser·build/types/format/artifact25 통과(기존6경고). 첫 전체2실패는 중복 수치의 global 테스트 selector를 해당 volume 표로 제한해 해결했고 최초 증거를 보존했다. 실제 iPhone 파일 저장/전문 근육 매핑/근거 기반 다음 행동과 앱 내부 report archive는 남아 REP01~03 전체 완료로 표시하지 않는다. 다음5 SCI의 설명 소비·연구 검토를 이어간다.
+
 
 ## CONV0027 업데이트 안내와 작업 우선순위 — 2026-10-08
 

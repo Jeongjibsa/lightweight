@@ -42,3 +42,5 @@
 - PRD0.11.1: [오래된 응답/삭제 복구](../operations/local-sync-recovery.md).
 
 - PRD0.11.2: [세 종목/SYNC 운영 반영](remaining-work.md).
+
+- [주간 비교/저장](../operations/weekly-report.md).

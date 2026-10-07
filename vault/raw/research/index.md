@@ -60,3 +60,5 @@
 - [세 종목/SYNC 실제 Git/CI·운영 반영](2026-10-07-catalog-sync-git-release.json).
 
 - [업데이트 안내 루프](2026-10-08-update-notice-loop.json).
+
+- [REP 주간 보존 검사](2026-10-08-weekly-report-loop.json).

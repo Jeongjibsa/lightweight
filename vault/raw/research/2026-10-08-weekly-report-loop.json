@@ -1,0 +1,51 @@
+{
+  "type": "Implementation Verification",
+  "generated": {
+    "by": "codex/gpt-6",
+    "at": "2026-10-08T00:51:02+09:00"
+  },
+  "immutable": true,
+  "unit": "REP-02 saved reading report increment",
+  "policy": "weekly-record-report-v1",
+  "period": "Monday through today vs previous Monday through same weekday in profile time zone",
+  "scope": "same owner, non-deleted ended complete/partial sessions; completed working rows only; total load mode volume partial sum",
+  "storage": "explicit private HTML download with cloned source inputs and coverage/volume versions; no database table/backup/schema/cloud change; scientificRule/muscleMapping null, evidence empty",
+  "checks": {
+    "combined_report_and_prepared_guide_worktree": {
+      "vitest": 122,
+      "unit": 39,
+      "integration": 46,
+      "ui": 37,
+      "node_contracts": 10,
+      "browser": 40,
+      "chromium": 21,
+      "webkit": 19,
+      "retries": 0,
+      "lint": "exit0; six existing warnings",
+      "build_types_format_pages25": "passed"
+    },
+    "report_new_contracts": {
+      "unit": 3,
+      "ui": 1,
+      "browser": 2
+    },
+    "bounds": "10MiB uncompressed HTML refusal, no truncation; not gzip backup limits"
+  },
+  "first_full_browser_failure": {
+    "runId": "20261007T153310325Z-f7b63fe8",
+    "unexpected": 2,
+    "cause": "existing global cell locator matched new weekly table and old volume table; scoped to volume region; no math failure",
+    "preserved": "trace/PNG/console/execution"
+  },
+  "passed_full_run": "20261007T153525366Z-bd3302ff",
+  "stats": {
+    "startTime": "2026-10-07T15:35:25.603Z",
+    "duration": 117406.436,
+    "expected": 40,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "physical_iphone_and_download_files": "not_run",
+  "production": "pending"
+}

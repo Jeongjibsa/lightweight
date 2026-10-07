@@ -249,8 +249,11 @@
     "raw/conversations/2026-10-08-027.md": "efba1938085921c07b49f2dfd459a827168de78a320e530943ab7e313b815f75",
     "raw/research/2026-10-08-update-notice-loop.json": "00549718b30debad45ebf419e5546e74366dabdeced81a298b2f6e2129b4cbf4",
     "history/changes/CHG-0042.md": "61b99ea0e44bbb1c810860cff77a935f40e96103c6ffd106ae1ca710264b257e",
-    "history/versions/prd-v0.11.3.md": "ae3bbb3513d56b1955fc0ba99036dff017cafc2fb9a0549c3ca4458abb345f63"
+    "history/versions/prd-v0.11.3.md": "ae3bbb3513d56b1955fc0ba99036dff017cafc2fb9a0549c3ca4458abb345f63",
+    "raw/research/2026-10-08-weekly-report-loop.json": "b30efe422b88cc23a217ff36d7731515ee9ed93603809e2e01d042db44bd754d",
+    "history/changes/CHG-0043.md": "d5930f144e256e988e08f74c166dbbfd6f9f70da60c443bb87be1965f8ba9f27",
+    "history/versions/prd-v0.12.0.md": "0f4b33c99a9b49085a0c60f9298f6923d1c437c17afea243aad1439ff3c6c05a"
   },
   "updated_at": "2026-10-05T10:24:45+09:00",
-  "last_extended_at": "2026-10-08T00:22:04+09:00"
+  "last_extended_at": "2026-10-08T00:51:02+09:00"
 }

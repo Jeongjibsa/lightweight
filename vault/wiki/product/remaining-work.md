@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-08T00:22:04+09:00"
+  at: "2026-10-08T00:51:02+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -206,12 +206,22 @@ sources:
   - id: "unit-chg-0042"
     resource: "../../raw/conversations/2026-10-08-027.md"
     title: "업데이트 버그와 REP/SCI 우선 요청"
-version: "0.6.3"
+  - id: "unit-chg-0043"
+    resource: "../../raw/conversations/2026-10-08-027.md"
+    title: "REP 우선: 주간 비교/저장 시점 리포트"
+version: "0.7.0"
 approval_status: "proposal"
-change_id: "CHG-0042"
+change_id: "CHG-0043"
 ---
 
 # 남은 작업 한눈에 보기
+
+## REP-02 주간 비교/저장 시점 증분 — 2026-10-08
+
+지난주 같은 요일까지 운동 횟수·완료 본세트·볼륨 부분합을 비교하고 계산 범위를 설명한다. 읽기용 HTML 다운로드에 당시 입력/시각/계산 버전을 보존하며 수정 후 현재 화면을 재계산한다. 과학 규칙/근육 매핑은 null, 근거 목록은 비어 있으며 승인 근거로 꾸미지 않는다. 앱 보관함/서버/복원 백업에는 새 필드를 추가하지 않았다. [계약과 화면](../operations/weekly-report.md)·[실행](../../raw/research/2026-10-08-weekly-report-loop.json).
+
+REP 새3unit/1UI/2browser와 함께 준비한 SCI UI 포함122Vitest/Node10/40browser·build/types/format/artifact25 통과(기존6경고). 첫 전체2실패는 중복 수치의 global 테스트 selector를 해당 volume 표로 제한해 해결했고 최초 증거를 보존했다. 실제 iPhone 파일 저장/전문 근육 매핑/근거 기반 다음 행동과 앱 내부 report archive는 남아 REP01~03 전체 완료로 표시하지 않는다. 다음5 SCI의 설명 소비·연구 검토를 이어간다.
+
 
 ## CONV0027 업데이트 안내와 작업 우선순위 — 2026-10-08
 
@@ -244,7 +254,7 @@ change_id: "CHG-0042"
 [Watch·Live Activity·AlarmKit 검토](rest-alert-feasibility.md)는 검토만 완료/P2다. Web Push 조건부 전달·native WidgetKit/ActivityKit·iOS26+ AlarmKit 후보를 확인했다. 사용자 구현 선택·실기기 관문은 남는다. 실제 iPhone/운동·다기기 Auth·SCI/운영/파일럿/식단·3D 관문을 유지한다. 이 단위의 main push·GitHub3job/34browser artifact·Pages Git 운영24파일 일치 확인을 완료했다.
 
 
-2026-10-07 / PRD0.11.2. **운동 MVP 전체는 진행 중**이며 식단·3D는 후순위다.
+2026-10-08 / PRD0.12.0. **운동 MVP 전체는 진행 중**이며 식단·3D는 후순위다.
 
 [운영 앱](https://lightweight-training.pages.dev) · [DB 연결 없는 preview](https://preview.lightweight-training.pages.dev) · [세부 백로그](implementation-backlog.md).
 
@@ -255,7 +265,7 @@ change_id: "CHG-0042"
 | 1 | 실제 운동 기록·새 기기 로그인/동기화 | Auth/허용 목록/RLS·수동 snapshot/CAS·공개 가입OFF·반환 주소 저장 | 지정 계정 허용·실제 Chrome 빈 프로필 저장/조회/적용 완료; 실제 운동 기록/새 저장소 복원·로그아웃 검증 필요 | SYNC02/05, HAR02/06 |
 | 2 | 다기기 편집·충돌/실패 복구 | manual CAS/retry/ACK·교체 전 백업·합성 두 기기 응답 유실/삭제·오래된 응답 차단 | 실제 A/B·만료/권한 회수/응답 유실·서로 다른 편집 명시 해결·삭제 재접속·크기 정책 | SYNC03~05 |
 | 3 | 기록 편의 완성 | 이전값·재시작·미완료 종목 교체·종료 수정·운동 순서/CAS·삭제 루틴 복구·종료 기록 삭제/복구 | 메모·머신/ROM 로컬·서버·배포 완료; 접기·고정 타이머 구현 완료; 다기기/실기기 입력 UX | LOG03~06 |
-| 4 | 설명 가능한 개인화 완성 | 볼륨/추이·기록 참고 후보·주간 입력 점검/직접 수정 | 검토된 직접/간접 매핑·저장 report/입력·정책·근거 버전·근거 기반 다음 행동 | REP01~06, SCI03B |
+| 4 | 설명 가능한 개인화 완성 | 볼륨/추이·주간 점검/직접 수정·지난주 비교·읽기 파일/입력·계산 버전 보존 | 검토된 직접/간접 매핑·근거 기반 다음 행동·앱 보관함/과학 정책·근거 버전 | REP01~06, SCI03B |
 | 5 | 근거 운동 정보·시각·티어·추천 | 기록용37종목/바벨18·초기 연구/3D 검토·공개 JSON gate(승인0개) | 등록부 실제 승인/규칙 연결·전문/전문가/권리 검토→설명/시각→조건 추천/티어, 승인 콘텐츠만 제공 | SCI01~04, PRE01, LOG02 |
 | 6 | 실제 iPhone/PWA·접근성/보존 | iPhone 홈 화면 설치/실행/로그인 사용자 보고 완료·반응형·browser36·백업 보존 | 키보드/VoiceOver/확대/가로/잠금·실제offline/update·physical quota/eviction·64MiB초과 분할복구 | RESP01, REL02, HAR04 |
 | 7 | 운영·배포/복구 마무리 | Pages HTTPS·운영/preview DB 분리·24file hash/헤더·main push | 실Auth/메일/비밀번호복구·백업 drill·Git 자동 배포 완료; 도메인/Access 선택 | REL01/03, Q08/16/17 |

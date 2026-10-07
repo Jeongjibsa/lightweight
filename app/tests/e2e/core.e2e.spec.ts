@@ -503,7 +503,9 @@ test("종료 기록 수정→볼륨 재계산→다시 시작·이전값·종목
   expect(before.sessions[0]!.sets[0]).toMatchObject({ load: 40, reps: 6 });
   await navigate(page, "리포트");
   await expect(
-    page.getByRole("cell", { name: "240 kg·회", exact: true }),
+    page
+      .getByRole("region", { name: "볼륨과 기록 추이", exact: true })
+      .getByRole("cell", { name: "240 kg·회", exact: true }),
   ).toBeVisible();
   await expect(
     page.getByRole("heading", { name: "이번 주 기록 점검", exact: true }),
