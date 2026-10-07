@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-07T22:26:53+09:00"
+  at: "2026-10-07T22:31:48+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
@@ -122,6 +122,9 @@ sources:
   - id: "unit-chg-0039"
     resource: "../../raw/conversations/2026-10-07-026.md"
     title: "세 종목 추가와 순차 작업 요구"
+  - id: "unit-chg-0040"
+    resource: "../../raw/research/2026-10-07-sync-stale-response-loop.json"
+    title: "오래된 응답·합성 다기기 복구 검사"
 version: "0.5.1"
 approval_status: "current-audit-and-proposal"
 change_id: "CHG-0014"
@@ -368,3 +371,7 @@ Workout UI의 저장 실패 초안/접기 무변경과 RestTimer 동일 상태/o
 ## CONV0026 종목 입력 회귀
 
 머신/한 손/맨몸 추가 중량 계산 반례와 검색·0/미입력 완료·재실행/9세트 백업을 추가했다.109Vitest/Node10·36browser·새6반복/마지막2viewport. [증거](catalog-expansion.md). 별도 SYNC 실패 재현 검사는 다음 증분이며 이 카탈로그 단위 검사로 혼합하지 않는다.
+
+## CHG0040 합성 두 기기와 실패 회귀
+
+[오래된 응답/삭제 복구](local-sync-recovery.md)의3integration과112Vitest/Node10/36browser를 확인했다. 합성 전송은 실제 Auth/RLS·다기기 계정 검증을 대신하지 않는다. 새 SQL/권한 변경은 없으며 실제 운동/새 기기/Auth·SCI/파일럿은 남는다.

@@ -52,3 +52,5 @@
 - [SRC050 JSON Schema](SRC-050-cloud-json-schema.md): 인간 승인 뒤 실제 서버 계약 검증을 추가했다.
 
 - [SRC051 Watch/Live Activity/AlarmKit](SRC-051-rest-system-alerts.md) · [SRC052 Mantine 접기](SRC-052-workout-accordion.md).
+
+- [SRC053 Supabase API/revision 범위](SRC-053-sync-api-revision.md).

@@ -2,6 +2,8 @@
 
 ## 2026-10-07
 
+- **SYNC / CONV0026**: 두 합성 기기 receipt/응답 유실·삭제·편집 conflict/recovery 루프에서 오래된 응답2실패 재현→preview/apply 하한 검사·3integration 추가.112Vitest/Node10·36browser/build/types/format/artifact25(기존6lint경고) 통과. [실행](raw/research/2026-10-07-sync-stale-response-loop.json) · [CHG0040](history/changes/CHG-0040.md) · PRD0.11.1 전체/이전237불변 보존. 실제 Auth/실기기·서버/운영/SCI 관문 유지·push/배포 후속.
+
 - **Catalog / CONV0026**: 스미스머신 스쿼트·덤벨 인클라인 벤치 프레스·딥스 추가,37종목/바벨18·기존 ID/순서/snapshot·중량 방식 보존.109Vitest/Node10·36browser/새6반복·최종390viewport2 확인(기존6lint경고). [실행](raw/research/2026-10-07-catalog-expansion-loop.json) · [CHG0039](history/changes/CHG-0039.md) · PRD0.11.0 전체/기존231불변 보존. 다음 SYNC 오래된 응답 검사·실기기/SCI 관문 유지.
 
 - **Release / UX**:48c0f44 main push·GitHub37622605794 세 job success/18+16browser artifact·최초 실패 probe 수신·Pages Git build/deploy와 운영24파일 SHA256/보안 헤더 일치. [확인](raw/research/2026-10-07-workout-ux-git-release.json) · [CHG0038](history/changes/CHG-0038.md) · PRD0.10.1/기존228불변 보존. 실제 iPhone/Watch·알림/네이티브·나머지 MVP 관문 유지.

@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-07T22:26:53+09:00"
+  at: "2026-10-07T22:31:48+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -197,12 +197,20 @@ sources:
   - id: "unit-chg-0039"
     resource: "../../raw/conversations/2026-10-07-026.md"
     title: "세 종목 추가와 순차 작업 요구"
-version: "0.6.0"
+  - id: "unit-chg-0040"
+    resource: "../../raw/research/2026-10-07-sync-stale-response-loop.json"
+    title: "오래된 응답·합성 다기기 복구 검사"
+version: "0.6.1"
 approval_status: "proposal"
-change_id: "CHG-0039"
+change_id: "CHG-0040"
 ---
 
 # 남은 작업 한눈에 보기
+
+## SYNC 오래된 응답 차단 — 2026-10-07
+
+세 종목 추가(b44ebda) 다음으로 [합성 두 기기의 응답 유실·충돌·삭제 복구](../operations/local-sync-recovery.md)를 검증하고 오래된 서버 응답을 미리보기/적용 두 transaction에서 차단했다. 명시 교체 전 recovery와 같은 revision의 정상 적용은 보존한다. 최초2실패 재현→3integration 추가/112Vitest·Node10·전체36browser/build/types/format/artifact25 통과(기존6lint경고). schema2/backup1·서버/계정/Auth/RLS는 그대로다. SYNC03~05 전체는 in_progress이며 실제 새 기기/Auth/실기기·SCI/파일럿 관문이 남는다. 신규 push/CI/배포는 다음 확인 단위다.
+
 
 ## CONV0026 세 종목 추가 — 2026-10-07
 
@@ -216,7 +224,7 @@ change_id: "CHG-0039"
 [Watch·Live Activity·AlarmKit 검토](rest-alert-feasibility.md)는 검토만 완료/P2다. Web Push 조건부 전달·native WidgetKit/ActivityKit·iOS26+ AlarmKit 후보를 확인했다. 사용자 구현 선택·실기기 관문은 남는다. 실제 iPhone/운동·다기기 Auth·SCI/운영/파일럿/식단·3D 관문을 유지한다. 이 단위의 main push·GitHub3job/34browser artifact·Pages Git 운영24파일 일치 확인을 완료했다.
 
 
-2026-10-07 / PRD0.11.0. **운동 MVP 전체는 진행 중**이며 식단·3D는 후순위다.
+2026-10-07 / PRD0.11.1. **운동 MVP 전체는 진행 중**이며 식단·3D는 후순위다.
 
 [운영 앱](https://lightweight-training.pages.dev) · [DB 연결 없는 preview](https://preview.lightweight-training.pages.dev) · [세부 백로그](implementation-backlog.md).
 
@@ -225,11 +233,11 @@ change_id: "CHG-0039"
 | 순서 | 남은 작업 | 현재 완료한 부분 | 완료에 필요한 것 | ID |
 |---|---|---|---|---|
 | 1 | 실제 운동 기록·새 기기 로그인/동기화 | Auth/허용 목록/RLS·수동 snapshot/CAS·공개 가입OFF·반환 주소 저장 | 지정 계정 허용·실제 Chrome 빈 프로필 저장/조회/적용 완료; 실제 운동 기록/새 저장소 복원·로그아웃 검증 필요 | SYNC02/05, HAR02/06 |
-| 2 | 다기기 편집·충돌/실패 복구 | manual CAS/retry/ACK·교체 전 백업 | A/B·만료/권한 회수/응답 유실·서로 다른 편집 명시 해결·삭제 재등장 방지·크기 정책 | SYNC03~05 |
+| 2 | 다기기 편집·충돌/실패 복구 | manual CAS/retry/ACK·교체 전 백업·합성 두 기기 응답 유실/삭제·오래된 응답 차단 | 실제 A/B·만료/권한 회수/응답 유실·서로 다른 편집 명시 해결·삭제 재접속·크기 정책 | SYNC03~05 |
 | 3 | 기록 편의 완성 | 이전값·재시작·미완료 종목 교체·종료 수정·운동 순서/CAS·삭제 루틴 복구·종료 기록 삭제/복구 | 메모·머신/ROM 로컬·서버·배포 완료; 접기·고정 타이머 구현 완료; 다기기/실기기 입력 UX | LOG03~06 |
 | 4 | 설명 가능한 개인화 완성 | 볼륨/추이·기록 참고 후보·주간 입력 점검/직접 수정 | 검토된 직접/간접 매핑·저장 report/입력·정책·근거 버전·근거 기반 다음 행동 | REP01~06, SCI03B |
 | 5 | 근거 운동 정보·시각·티어·추천 | 기록용37종목/바벨18·초기 연구/3D 검토·공개 JSON gate(승인0개) | 등록부 실제 승인/규칙 연결·전문/전문가/권리 검토→설명/시각→조건 추천/티어, 승인 콘텐츠만 제공 | SCI01~04, PRE01, LOG02 |
-| 6 | 실제 iPhone/PWA·접근성/보존 | iPhone 홈 화면 설치/실행/로그인 사용자 보고 완료·반응형·browser34·백업 보존 | 키보드/VoiceOver/확대/가로/잠금·실제offline/update·physical quota/eviction·64MiB초과 분할복구 | RESP01, REL02, HAR04 |
+| 6 | 실제 iPhone/PWA·접근성/보존 | iPhone 홈 화면 설치/실행/로그인 사용자 보고 완료·반응형·browser36·백업 보존 | 키보드/VoiceOver/확대/가로/잠금·실제offline/update·physical quota/eviction·64MiB초과 분할복구 | RESP01, REL02, HAR04 |
 | 7 | 운영·배포/복구 마무리 | Pages HTTPS·운영/preview DB 분리·24file hash/헤더·main push | 실Auth/메일/비밀번호복구·백업 drill·Git 자동 배포 완료; 도메인/Access 선택 | REL01/03, Q08/16/17 |
 | 8 | 본인 파일럿→지인 제공 | 앱/검사 기반 준비 | 실제4주 관찰/입력누락·오해 개선→회귀, 계정 독립/복원·G3/G4 관문 | PIL01/02 |
 | 후순위 | 식단/영양·3D·선택 AI 설명·Watch/Live Activity | 요구/3D feasibility 문서 | 음식DB/license·기록/계산·검토 공식/결측, 3Dasset/rig/clip/권한/전문검토/실기기성능 | NUT01~04, VIS3D02/03, AI01, NTF02/03 |

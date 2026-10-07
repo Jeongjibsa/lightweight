@@ -178,3 +178,5 @@ iPhone 홈 화면 설치·실행·로그인은 사용자 보고로 확인했습�
 운동별 Mantine 접기/완료 요약·스크롤 상단 휴식 캡슐/조작창을 추가했습니다.108Vitest/Node10·Chromium18/WebKit16=34·관련12반복/320·390·768px를 검사했습니다. [UX 계약](../vault/wiki/operations/workout-collapse-timer.md) · [Watch/Live Activity/AlarmKit 검토만](../vault/wiki/product/rest-alert-feasibility.md). 시스템 알림·네이티브 기능은 구현하지 않았습니다.
 
 48c0f44 main의 GitHub37622605794 세 job success/34browser artifact를 수신하고 같은 source Pages Git build/deploy·운영24파일 hash/헤더 일치를 확인했습니다. [운영 반영](../vault/raw/research/2026-10-07-workout-ux-git-release.json). 이 후속 문서 commit은 앱 bundle을 바꾸지 않습니다.
+
+37종목에 스미스머신 스쿼트·덤벨 인클라인 벤치 프레스·딥스를 추가했습니다. [중량 기준](../vault/wiki/operations/catalog-expansion.md)·[오래된 응답/복구](../vault/wiki/operations/local-sync-recovery.md).112Vitest/Node10·36browser를 확인했으며 실제 Auth/기기·과학 검토는 별도입니다.

@@ -1,0 +1,51 @@
+{
+  "type": "Implementation Verification",
+  "generated": {
+    "by": "codex/gpt-6",
+    "at": "2026-10-07T22:31:48+09:00"
+  },
+  "immutable": true,
+  "request": "CONV0026 remaining work",
+  "parent_tasks": [
+    "SYNC-03",
+    "SYNC-04",
+    "SYNC-05",
+    "HAR-06"
+  ],
+  "catalog_commit": "b44ebda",
+  "before": {
+    "command": "vitest run src/data/local/sync-recovery.test.ts",
+    "failed": 2,
+    "passed": 1,
+    "reason": [
+      "preview accepted remote1 after local applied2 (deletion rollback possible)",
+      "apply accepted changed preview.remote1 with current localSignature for2"
+    ],
+    "captured_log_sha256": "9bfa423914f6a559a7b5c191c8dcf8a63d479c1813ef7d67ee4ccdd6cee6d221"
+  },
+  "after": {
+    "tests": 112,
+    "unit": 35,
+    "integration": 46,
+    "ui": 31,
+    "files": 23,
+    "node_contracts": 10,
+    "lint": "exit0; six pre-existing SetRow effect warnings",
+    "build_types_e2e_types_format_artifact": "passed; artifact25",
+    "browser": {
+      "run": "20261007T132803665Z-1e513e1d",
+      "chromium": 19,
+      "webkit": 17,
+      "passed": 36,
+      "retries": 0
+    }
+  },
+  "new_contracts": [
+    "Synthetic two same-owner device databases with memory CAS/operation receipt transport; committed response lost, other device deletion, original receipt replay no new commit, new offline edit remains queued, conflict does not overwrite, explicit pull saves local recovery and server tombstone",
+    "Preview rejects revision below locally ACKed/applied base; all five tables unchanged",
+    "Apply rechecks revision inside write transaction even if preview remote object is changed; all five tables unchanged",
+    "Equal revision remains allowed with explicit local replacement and recovery snapshot"
+  ],
+  "privacy": "No credentials/real Auth/allowlist/server SQL/network requests/account changes in contract tests; fake IndexedDB and memory transport. Existing isolated browser context/Supabase blank override retained.",
+  "limitations": "Known-local-base lower bound only. Does not prove unknown latest server revision/freshness, real concurrent Auth A/B, authorization expiry/revocation, automatic merge, physical devices, older application versions or server backup reset policy. SYNC parent tasks remain in_progress."
+}

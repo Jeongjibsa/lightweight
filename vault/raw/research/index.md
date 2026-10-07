@@ -54,3 +54,5 @@
 - [운동 UX Git/CI·운영 배포](2026-10-07-workout-ux-git-release.json).
 
 - [세 종목/중량·browser 검증](2026-10-07-catalog-expansion-loop.json).
+
+- [SYNC 늦은 응답·두 기기 검사](2026-10-07-sync-stale-response-loop.json) · [공식 API 범위](2026-10-07-supabase-sync-api-review.json).

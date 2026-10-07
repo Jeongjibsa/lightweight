@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-07T22:26:53+09:00"
+  at: "2026-10-07T22:31:48+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -155,6 +155,9 @@ sources:
   - id: "unit-chg-0039"
     resource: "../../raw/conversations/2026-10-07-026.md"
     title: "세 종목 추가와 순차 작업 요구"
+  - id: "unit-chg-0040"
+    resource: "../../raw/research/2026-10-07-sync-stale-response-loop.json"
+    title: "오래된 응답·합성 다기기 복구 검사"
 ---
 
 # 미결 사항과 다음 대화
@@ -294,3 +297,7 @@ Google 계정 로그인은 기술적으로 가능하지만 검토 요청만 처�
 ## CONV0026 후속 관문
 
 세 종목 추가는 구현/가짜 browser 검사 완료다. 별도 제품 입력을 요구하지 않는다. 실제 Smith 머신의 봉/원판 표기 기준은 사용자 장비 조건으로 기록한다. 다음 SYNC 증분은 합성 두 기기/오래된 응답 검사이며 실제 Auth/권한 회수·새 기기·iPhone/SCI 관문은 계속 남는다.
+
+## CHG0040 실제 관문 유지
+
+[오래된 응답/삭제 복구](../operations/local-sync-recovery.md)의3integration과112Vitest/Node10/36browser를 확인했다. 합성 전송은 실제 Auth/RLS·다기기 계정 검증을 대신하지 않는다. 새 SQL/권한 변경은 없으며 실제 운동/새 기기/Auth·SCI/파일럿은 남는다.

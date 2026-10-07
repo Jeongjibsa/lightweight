@@ -10,7 +10,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-05T10:24:45+09:00"
+  at: "2026-10-07T22:31:48+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-008.md"
@@ -81,6 +81,9 @@ sources:
   - id: "record-details-git-release"
     resource: "../../raw/research/2026-10-05-record-details-git-release.json"
     title: "서버 승인 뒤 CI/Git 운영 배포"
+  - id: "unit-chg-0040"
+    resource: "../../raw/research/2026-10-07-sync-stale-response-loop.json"
+    title: "오래된 응답·합성 다기기 복구 검사"
 version: "0.1.3"
 change_id: "CHG-0036"
 approval_status: "implemented-increment; policy-details-provisional"
@@ -235,3 +238,7 @@ GitHub source=Jeongjibsa/lightweight·main·자동 배포 활성화를 읽었고
 메모/장비·가동범위·휴식 즐겨찾기/세부 분류·별칭의 서버 미지원 및 이 단위의 승인/push/배포 대기는 해소됐다. 106 Vitest·Node10·build/types/format/artifact25(lint기존6경고)이다. preview DB는 비어 있으며 이번에 새 preview branch/asset 검사를 하지 않았다. 후속 문서 commit은 앱 bundle을 바꾸지 않는다.
 
 [운영 앱](https://lightweight-training.pages.dev) · [불변 배포 증거](../../raw/research/2026-10-05-record-details-git-release.json). 실제 본인 운동/iPhone 저장·재실행·수동 전송/새 저장소 복원·다기기/다버전 Auth·과학 승인 콘텐츠0개/운영 복구·4주 파일럿/P2 관문은 남는다.
+
+## CHG0040 클라이언트 오래된 응답 차단
+
+[오래된 응답/삭제 복구](../operations/local-sync-recovery.md)의3integration과112Vitest/Node10/36browser를 확인했다. 합성 전송은 실제 Auth/RLS·다기기 계정 검증을 대신하지 않는다. 새 SQL/권한 변경은 없으며 실제 운동/새 기기/Auth·SCI/파일럿은 남는다.

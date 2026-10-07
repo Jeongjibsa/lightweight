@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-07T22:26:53+09:00"
+  at: "2026-10-07T22:31:48+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -212,11 +212,19 @@ sources:
   - id: "unit-chg-0039"
     resource: "../../raw/conversations/2026-10-07-026.md"
     title: "세 종목 추가와 순차 작업 요구"
-version: "0.6.0"
-change_id: "CHG-0039"
+  - id: "unit-chg-0040"
+    resource: "../../raw/research/2026-10-07-sync-stale-response-loop.json"
+    title: "오래된 응답·합성 다기기 복구 검사"
+version: "0.6.1"
+change_id: "CHG-0040"
 ---
 
 # 로컬 PWA 구현 결과와 다음 작업
+
+## SYNC 오래된 응답 차단 — 2026-10-07
+
+세 종목 추가(b44ebda) 다음으로 [합성 두 기기의 응답 유실·충돌·삭제 복구](../operations/local-sync-recovery.md)를 검증하고 오래된 서버 응답을 미리보기/적용 두 transaction에서 차단했다. 명시 교체 전 recovery와 같은 revision의 정상 적용은 보존한다. 최초2실패 재현→3integration 추가/112Vitest·Node10·전체36browser/build/types/format/artifact25 통과(기존6lint경고). schema2/backup1·서버/계정/Auth/RLS는 그대로다. SYNC03~05 전체는 in_progress이며 실제 새 기기/Auth/실기기·SCI/파일럿 관문이 남는다. 신규 push/CI/배포는 다음 확인 단위다.
+
 
 ## CONV0026 세 종목 추가 — 2026-10-07
 

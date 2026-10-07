@@ -1,0 +1,29 @@
+{
+  "type": "Implementation Verification",
+  "generated": {
+    "by": "codex/gpt-6",
+    "at": "2026-10-07T22:31:48+09:00"
+  },
+  "immutable": true,
+  "scope": "Official changelog index scanned for related breaking changes; JavaScript rpc/getUser relevant sections and PostgreSQL minor-release notice read. No SDK, SQL, credentials or infrastructure changed. Not an audit of all server settings.",
+  "references": [
+    {
+      "url": "https://supabase.com/changelog.md",
+      "read": "summary index",
+      "capture_sha256": "f718b0dc1423d1984fc5f18b8ee81bec2847c6a0fdb6658262afa5a004ddf77a"
+    },
+    {
+      "url": "https://supabase.com/docs/reference/javascript/rpc",
+      "read": "function calls with/no arguments and returned data/error examples"
+    },
+    {
+      "url": "https://supabase.com/docs/reference/javascript/auth-getuser",
+      "read": "current-user request and session JWT description"
+    },
+    {
+      "url": "https://supabase.com/changelog/postgres-15-19-17-11-breaking-changes",
+      "read": "minor-release notice; affected extensions/operator/index items, not project diagnostic queries"
+    }
+  ],
+  "application": "Existing Auth getUser/owner check and RPC signatures retained. New monotonic-revision contract is our client policy, not a Supabase feature or guarantee of fresh network responses."
+}

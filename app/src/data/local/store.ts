@@ -908,6 +908,12 @@ export class TrainingStore {
         .toArray(),
     });
   }
+  private async assertRemoteRevision(ownerId: string, revision: number) {
+    if (revision < (await this.cloudState(ownerId)).baseRevision)
+      throw new Error(
+        "오래된 클라우드 응답입니다. 최신 기록을 다시 불러와주세요. 기기 기록은 보존됩니다.",
+      );
+  }
   async previewDownload(
     ownerId: string,
     input: RemoteSnapshot,
@@ -915,18 +921,25 @@ export class TrainingStore {
     const remote = checkRemote(input, ownerId);
     if (!remote.snapshot)
       throw new Error("이 계정에 아직 클라우드 기록이 없습니다.");
-    return this.database.transaction("r", this.database.tables, async () => ({
-      remote,
-      localSignature: await this.localSignature(ownerId),
-      dirty:
-        !!(await this.cloudState(ownerId)).pending ||
-        !!(await this.database.outbox.where("ownerId").equals(ownerId).count()),
-    }));
+    return this.database.transaction("r", this.database.tables, async () => {
+      await this.assertRemoteRevision(ownerId, remote.revision);
+      return {
+        remote,
+        localSignature: await this.localSignature(ownerId),
+        dirty:
+          !!(await this.cloudState(ownerId)).pending ||
+          !!(await this.database.outbox
+            .where("ownerId")
+            .equals(ownerId)
+            .count()),
+      };
+    });
   }
   async applyDownload(ownerId: string, preview: DownloadPreview) {
     const remote = checkRemote(preview.remote, ownerId);
     if (!remote.snapshot) throw new Error("클라우드 기록이 없습니다.");
     return this.database.transaction("rw", this.database.tables, async () => {
+      await this.assertRemoteRevision(ownerId, remote.revision);
       if ((await this.localSignature(ownerId)) !== preview.localSignature)
         throw new Error(
           "확인하는 동안 기기 기록이 바뀌었습니다. 다시 불러와주세요.",

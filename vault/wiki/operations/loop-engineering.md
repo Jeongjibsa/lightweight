@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-07T21:55:19+09:00"
+  at: "2026-10-07T22:31:48+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
@@ -83,6 +83,9 @@ sources:
   - id: "workout-ux-git-release"
     resource: "../../raw/research/2026-10-07-workout-ux-git-release.json"
     title: "운동 UX CI/운영 배포 확인"
+  - id: "unit-chg-0040"
+    resource: "../../raw/research/2026-10-07-sync-stale-response-loop.json"
+    title: "오래된 응답·합성 다기기 복구 검사"
 version: "0.3.2"
 approval_status: "proposal"
 change_id: "CHG-0014"
@@ -269,3 +272,7 @@ CUA 가짜4177의 invalid JSON 오류→동일 경로 정상 파일→미리보�
 48c0f44를 main에 push하고 GitHub37622605794 세 job success와 **Chromium18/WebKit16=34** artifact·의도적 최초 실패 probe를 실제 수신했다. 같은 source의 Pages `github:push` build/deploy가 성공했고 운영 공개24파일 SHA256·보안 헤더가 로컬 검증 빌드와 일치한다. [불변 배포 확인](../../raw/research/2026-10-07-workout-ux-git-release.json).
 
 108Vitest/Node10·로컬browser34/관련12반복·최종10PNG/문서 검증(기존6lint경고)을 유지한다. 새 서버/Auth/스키마/의존성을 변경하지 않았다. preview DB 환경은 비어 있고 새 preview branch 배포/asset 검증은 하지 않았다. Watch/Web Push·native AlarmKit/Live Activity는 **검토만/P2**다. 실제 운동/iPhone/Watch·다기기 Auth·SCI/운영/파일럿 관문은 남는다. 후속 문서 commit은 앱 bundle을 바꾸지 않는다.
+
+## CHG0040 SYNC 두 실패→하한 검사
+
+[오래된 응답/삭제 복구](local-sync-recovery.md)의3integration과112Vitest/Node10/36browser를 확인했다. 합성 전송은 실제 Auth/RLS·다기기 계정 검증을 대신하지 않는다. 새 SQL/권한 변경은 없으며 실제 운동/새 기기/Auth·SCI/파일럿은 남는다.

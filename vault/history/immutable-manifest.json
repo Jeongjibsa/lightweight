@@ -238,8 +238,12 @@
     "raw/design/2026-10-07-catalog39-webkit.png": "8352e39a18ae1616c5e91f2e65324743d39b4b24fbb85a0a7cdac90b66c12f79",
     "raw/research/2026-10-07-catalog-expansion-loop.json": "be804060cb9a253b32e1f2b1adc802f7722e6a003a143bab7a461297a76271e5",
     "history/changes/CHG-0039.md": "4f788b992df264fa65be99d3a97e545280dcda81c88c062e378b5ef9ad140c79",
-    "history/versions/prd-v0.11.0.md": "d3e150f785dcdcba1c4f000970ed919c60f1ca2f0ec79c972ad449d152bd052e"
+    "history/versions/prd-v0.11.0.md": "d3e150f785dcdcba1c4f000970ed919c60f1ca2f0ec79c972ad449d152bd052e",
+    "raw/research/2026-10-07-supabase-sync-api-review.json": "7da16308a455c78d3caba4cb913336d4d88af27b1523fccb22bf12ac3cca6b3e",
+    "raw/research/2026-10-07-sync-stale-response-loop.json": "c5abf63fd2ebb76c2758d95fc2b4075a00cfc825664114e44aa100d07677039c",
+    "history/changes/CHG-0040.md": "ee8918a01769c7f49ce36298ab3b36162fdae861fb7bce54d1d60365320e3ee3",
+    "history/versions/prd-v0.11.1.md": "56dec66913622d6f6f76ac2991ae6fce75ea2ca2fe40cefb4d292c5067e93398"
   },
   "updated_at": "2026-10-05T10:24:45+09:00",
-  "last_extended_at": "2026-10-07T22:26:53+09:00"
+  "last_extended_at": "2026-10-07T22:31:48+09:00"
 }

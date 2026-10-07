@@ -38,3 +38,5 @@
 - PRD0.10.1: [운동 접기/고정 휴식 운영 반영](remaining-work.md).
 
 - PRD0.11.0: [세 종목/중량 계약](../operations/catalog-expansion.md).
+
+- PRD0.11.1: [오래된 응답/삭제 복구](../operations/local-sync-recovery.md).
