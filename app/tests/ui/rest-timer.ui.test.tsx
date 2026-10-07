@@ -1,5 +1,5 @@
 import { MantineProvider } from "@mantine/core";
-import { act, render, screen, waitFor } from "@testing-library/react";
+import { act, render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, expect, it, vi } from "vitest";
 import { RestTimer } from "../../src/components/rest-timer";
@@ -112,4 +112,83 @@ it("favorite editor rejects duplicates, keeps modal on transaction failure and r
     seconds: 60,
     favorites: [45, 90, 120],
   });
+});
+
+it("위로 벗어난 경우에만 고정 타이머를 표시하고 같은 deadline/pause를 공유하며 해제한다", async () => {
+  let notify: IntersectionObserverCallback;
+  const disconnect = vi.fn();
+  vi.stubGlobal(
+    "IntersectionObserver",
+    class {
+      constructor(callback: IntersectionObserverCallback) {
+        notify = callback;
+      }
+      observe() {}
+      disconnect = disconnect;
+    },
+  );
+  const entry = (bottom: number) =>
+    act(() =>
+      notify(
+        [
+          {
+            boundingClientRect: { bottom },
+            rootBounds: { top: 0 },
+          } as IntersectionObserverEntry,
+        ],
+        {} as IntersectionObserver,
+      ),
+    );
+  const session = sessionFixture({
+    status: "active",
+    endedAt: null,
+    sets: [setFixture({ completedAt: new Date().toISOString() })],
+  });
+  const original = structuredClone(session);
+  const view = render(<Harness session={session} />);
+  try {
+    entry(1200);
+    expect(
+      screen.queryByRole("region", { name: "고정 휴식 타이머" }),
+    ).toBeNull();
+    entry(-1);
+    const floating = screen.getByRole("region", { name: "고정 휴식 타이머" });
+    const user = userEvent.setup();
+    act(() => {
+      vi.setSystemTime(new Date("2026-10-04T03:00:30Z"));
+      document.dispatchEvent(new Event("visibilitychange"));
+    });
+    await user.click(
+      within(floating).getByRole("button", { name: "휴식 일시정지" }),
+    );
+    act(() => {
+      vi.setSystemTime(new Date("2026-10-04T03:05:00Z"));
+      document.dispatchEvent(new Event("visibilitychange"));
+    });
+    expect(
+      within(floating).getByLabelText("고정 타이머 남은 시간").textContent,
+    ).toBe("0:30");
+    expect(screen.getByLabelText("남은 휴식 시간").textContent).toBe("0:30");
+    await user.click(
+      within(floating).getByRole("button", { name: "휴식 재개" }),
+    );
+    act(() => {
+      vi.setSystemTime(new Date("2026-10-04T03:05:31Z"));
+      document.dispatchEvent(new Event("visibilitychange"));
+    });
+    expect(within(floating).getByText("휴식 완료")).toBeDefined();
+    expect(
+      within(floating).getByLabelText("고정 타이머 남은 시간").textContent,
+    ).toBe("0:00");
+    expect(session).toEqual(original);
+    entry(200);
+    expect(
+      screen.queryByRole("region", { name: "고정 휴식 타이머" }),
+    ).toBeNull();
+    view.unmount();
+    expect(disconnect).toHaveBeenCalledOnce();
+  } finally {
+    view.unmount();
+    vi.unstubAllGlobals();
+  }
 });

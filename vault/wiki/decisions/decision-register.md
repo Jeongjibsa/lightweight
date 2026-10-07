@@ -8,7 +8,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-05T10:16:15+09:00"
+  at: "2026-10-07T21:33:11+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-03-001.md"
@@ -52,6 +52,9 @@ sources:
   - id: "validator-human-approval"
     resource: "../../raw/conversations/2026-10-05-024.md"
     title: "검증 함수 SQL 승인과 재개"
+  - id: "workout-ux-request"
+    resource: "../../raw/conversations/2026-10-07-025.md"
+    title: "운동 접기/휴식 접근 요구"
 ---
 
 # 결정과 제안 기록
@@ -130,3 +133,7 @@ sources:
 ## CONV-0024
 
 사용자 명시 승인: 직전 제시된 운영 `training_private.valid_snapshot` SQL 적용과 보류 작업 재개. 적용은 동일 MCP 경로로 완료했고 계정/RLS/Google 등 다른 외부 설정 승인으로 확대하지 않는다. [원문](../../raw/conversations/2026-10-05-024.md) · [서버 검사](../../raw/research/2026-10-05-cloud-validator-approved.json).
+
+## CONV0025 결정/제안
+
+인간 명시 요구: 남은 작업보다 먼저 운동 항목 접기·스크롤 밖의 휴식 접근을 개선하고 Watch/Live Activity 가능성을 검토. 구현 판단: Mantine multiple/keepMounted·완료 요약·상단 capsule/동일 state 조작창. 제안/P2: Web Push server scheduling 또는 native iOS26+ AlarmKit/ActivityKit/WidgetKit. 네이티브 전환/알림 발송 승인으로 기록하지 않는다. [원문](../../raw/conversations/2026-10-07-025.md) · [검토](../product/rest-alert-feasibility.md).

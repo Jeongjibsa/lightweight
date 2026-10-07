@@ -48,3 +48,5 @@
 - [2026-10-05 승인된 서버 계약/28개 rollback](2026-10-05-cloud-validator-approved.json).
 
 - [메모·비교 조건 실제 Git/CI 운영 배포](2026-10-05-record-details-git-release.json).
+
+- [접기/고정 휴식 루프](2026-10-07-workout-collapse-timer-loop.json) · [공식 시스템 알림 검토](2026-10-07-rest-alert-feasibility.json).

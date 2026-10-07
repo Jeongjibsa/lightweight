@@ -562,7 +562,7 @@ test("종료 기록 수정→볼륨 재계산→다시 시작·이전값·종목
     exact: true,
   });
   await load.fill("");
-  await page.getByRole("heading", { name: "바벨 스쿼트", exact: true }).click();
+  await load.press("Tab");
   await page
     .getByRole("button", { name: "이전 값 불러오기", exact: true })
     .click();

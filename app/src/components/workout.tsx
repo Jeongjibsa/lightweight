@@ -515,6 +515,7 @@ export function WorkoutView({
   history?: Session[];
 }) {
   const { store } = useTraining();
+  const [collapsedExercises, setCollapsedExercises] = useState<string[]>([]);
   const [picker, setPicker] = useState(false);
   const [ending, setEnding] = useState(false);
   const [cancel, setCancel] = useState(false);
@@ -537,6 +538,9 @@ export function WorkoutView({
   ];
   const completed = session.sets.filter((set) => set.completedAt).length;
   const active = session.status === "active";
+  const openedExercises = exercises
+    .filter((exercise) => !collapsedExercises.includes(exercise.id))
+    .map((exercise) => exercise.id);
   return (
     <Stack gap="md">
       <Button
@@ -611,107 +615,169 @@ export function WorkoutView({
         </Button>
       )}
       {active && <RestTimer key={session.id} session={session} run={run} />}
-      {exercises.map((exercise) => (
-        <Paper key={exercise.id} p={{ base: "md", sm: "lg" }}>
-          <Group justify="space-between" align="flex-start" mb="md">
-            <Box>
-              <Title order={3}>{exercise.name}</Title>
-              <Text size="xs" c="dimmed" mt={4}>
+      <Group justify="space-between">
+        <Text size="sm" c="dimmed">
+          {exercises.length}개 운동 · 제목을 눌러 접기
+        </Text>
+        <Button
+          variant="subtle"
+          size="sm"
+          onClick={() =>
+            setCollapsedExercises(
+              openedExercises.length
+                ? exercises.map((exercise) => exercise.id)
+                : [],
+            )
+          }
+        >
+          {openedExercises.length ? "모두 접기" : "모두 펼치기"}
+        </Button>
+      </Group>
+      <Accordion
+        multiple
+        order={3}
+        keepMounted
+        keepMountedMode="display-none"
+        value={openedExercises}
+        onChange={(next) =>
+          setCollapsedExercises(
+            exercises
+              .filter((exercise) => !next.includes(exercise.id))
+              .map((exercise) => exercise.id),
+          )
+        }
+        styles={{
+          item: {
+            border: 0,
+            borderRadius: "var(--mantine-radius-lg)",
+            backgroundColor: "var(--mantine-color-dark-7)",
+            marginBottom: "var(--mantine-spacing-md)",
+            overflow: "hidden",
+          },
+          control: { paddingBlock: "var(--mantine-spacing-sm)" },
+          label: { fontWeight: 650 },
+          content: { paddingTop: "var(--mantine-spacing-md)" },
+        }}
+      >
+        {exercises.map((exercise) => (
+          <Accordion.Item key={exercise.id} value={exercise.id}>
+            <Accordion.Control aria-label={`${exercise.name} 세트 접기/펼치기`}>
+              {exercise.name}
+            </Accordion.Control>
+            <Group justify="space-between" px="md" pb="sm" gap="xs">
+              <Text size="xs" c="dimmed">
                 {exercise.group} · {loadModes[exercise.loadMode]}
                 {exercise.loadMode === "per_hand" ? "을 입력하세요" : ""}
               </Text>
-            </Box>
-            <Badge color="gray" size="sm">
-              {exercise.review === "user_added" ? "직접 입력" : "기록용 초안"}
-            </Badge>
-          </Group>
-          {session.status !== "cancelled" && (
-            <Button
-              variant="subtle"
-              size="sm"
-              mb="sm"
-              aria-label={`${exercise.name} 비교 조건`}
-              onClick={() => setConditionEditor(exercise.id)}
-            >
-              장비·가동범위 기록
-            </Button>
-          )}
-          {session.sets
-            .filter((set) => set.exercise.id === exercise.id)
-            .map((set, index) => (
-              <SetRow
-                key={set.id}
-                set={set}
-                index={index}
-                session={session}
-                run={run}
-                onEdit={
-                  active
-                    ? undefined
-                    : () => setCorrection({ set, revision: session.revision })
+              <Text size="xs" c="dimmed">
+                {
+                  session.sets.filter(
+                    (set) => set.exercise.id === exercise.id && set.completedAt,
+                  ).length
+                }{" "}
+                /{" "}
+                {
+                  session.sets.filter((set) => set.exercise.id === exercise.id)
+                    .length
                 }
-              />
-            ))}
-          {active && (
-            <Button
-              variant="light"
-              fullWidth
-              mt="sm"
-              leftSection={<Plus size={17} />}
-              disabled={session.sets.length >= 400}
-              onClick={() =>
-                void run(() =>
-                  store.addSet(session.ownerId, session.id, exercise),
-                )
-              }
-            >
-              세트 추가
-            </Button>
-          )}
-          {active &&
-            session.sets.some(
-              (s) => s.exercise.id === exercise.id && !s.completedAt,
-            ) && (
-              <Group mt="sm">
-                {(!history ||
-                  history.some(
-                    (s) =>
-                      s.ownerId === session.ownerId &&
-                      !s.deletedAt &&
-                      s.endedAt &&
-                      s.sets.some(
-                        (t) => t.exercise.id === exercise.id && t.completedAt,
-                      ),
-                  )) && (
-                  <Button
-                    variant="subtle"
-                    size="xs"
-                    onClick={() =>
-                      void run(
-                        () =>
-                          store.reusePreviousValues(
-                            session.ownerId,
-                            session.id,
-                            exercise.id,
-                          ),
-                        "비어 있는 입력에 이전 수행 값을 불러왔습니다.",
-                      )
-                    }
-                  >
-                    이전 값 불러오기
-                  </Button>
-                )}
+                세트 완료
+              </Text>
+            </Group>
+            <Accordion.Panel>
+              <Badge color="gray" size="sm" mb="sm">
+                {exercise.review === "user_added" ? "직접 입력" : "기록용 초안"}
+              </Badge>
+              {session.status !== "cancelled" && (
                 <Button
                   variant="subtle"
-                  size="xs"
-                  onClick={() => setReplacement(exercise)}
+                  size="sm"
+                  mb="sm"
+                  aria-label={`${exercise.name} 비교 조건`}
+                  onClick={() => setConditionEditor(exercise.id)}
                 >
-                  다른 운동으로 교체
+                  장비·가동범위 기록
                 </Button>
-              </Group>
-            )}
-        </Paper>
-      ))}
+              )}
+              {session.sets
+                .filter((set) => set.exercise.id === exercise.id)
+                .map((set, index) => (
+                  <SetRow
+                    key={set.id}
+                    set={set}
+                    index={index}
+                    session={session}
+                    run={run}
+                    onEdit={
+                      active
+                        ? undefined
+                        : () =>
+                            setCorrection({ set, revision: session.revision })
+                    }
+                  />
+                ))}
+              {active && (
+                <Button
+                  variant="light"
+                  fullWidth
+                  mt="sm"
+                  leftSection={<Plus size={17} />}
+                  disabled={session.sets.length >= 400}
+                  onClick={() =>
+                    void run(() =>
+                      store.addSet(session.ownerId, session.id, exercise),
+                    )
+                  }
+                >
+                  세트 추가
+                </Button>
+              )}
+              {active &&
+                session.sets.some(
+                  (s) => s.exercise.id === exercise.id && !s.completedAt,
+                ) && (
+                  <Group mt="sm">
+                    {(!history ||
+                      history.some(
+                        (s) =>
+                          s.ownerId === session.ownerId &&
+                          !s.deletedAt &&
+                          s.endedAt &&
+                          s.sets.some(
+                            (t) =>
+                              t.exercise.id === exercise.id && t.completedAt,
+                          ),
+                      )) && (
+                      <Button
+                        variant="subtle"
+                        size="xs"
+                        onClick={() =>
+                          void run(
+                            () =>
+                              store.reusePreviousValues(
+                                session.ownerId,
+                                session.id,
+                                exercise.id,
+                              ),
+                            "비어 있는 입력에 이전 수행 값을 불러왔습니다.",
+                          )
+                        }
+                      >
+                        이전 값 불러오기
+                      </Button>
+                    )}
+                    <Button
+                      variant="subtle"
+                      size="xs"
+                      onClick={() => setReplacement(exercise)}
+                    >
+                      다른 운동으로 교체
+                    </Button>
+                  </Group>
+                )}
+            </Accordion.Panel>
+          </Accordion.Item>
+        ))}
+      </Accordion>
       {active && (
         <>
           <Button

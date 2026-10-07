@@ -214,7 +214,23 @@
     "history/changes/CHG-0035.md": "d7519fce7627d1a81d86e8c9ca321ff1d1bd6ebf9a95de60346455d93d96e3f0",
     "raw/research/2026-10-05-record-details-git-release.json": "0c0c1f4b56b1b7469c3e2baaa527a3f51fd6c987c0b10b143c103aa9435f4339",
     "history/versions/prd-v0.9.4.md": "11edfcee537e7c462084206ee43c6d3c518954c965977892a22c2bfe42daeeeb",
-    "history/changes/CHG-0036.md": "2373c22ea1022d3956cc879c5fce72ce50de9a4773ede8df33648b4ae31f335a"
+    "history/changes/CHG-0036.md": "2373c22ea1022d3956cc879c5fce72ce50de9a4773ede8df33648b4ae31f335a",
+    "raw/conversations/2026-10-07-025.md": "5a33dcceffefc3266f5fc849fce00a30735f0f8787ef46d16b18e6ae29b11066",
+    "raw/research/2026-10-07-rest-alert-feasibility.json": "821f77c0c1e3b867aa11453cd79299f382d19a768668f4771fdd758522342110",
+    "raw/design/2026-10-07-ux37-chromium-mobile-workout-collapsed-390.png": "e0a11d69a42a63cfe2939eb6b7d30177995c9389d583c9350c6331880600ea8d",
+    "raw/design/2026-10-07-ux37-chromium-mobile-workout-floating-320.png": "13cc74b11272ec70b5de5f57ae6b4bd28c916c7c1e5b39398a0c074f8a8f163e",
+    "raw/design/2026-10-07-ux37-chromium-mobile-workout-floating-390.png": "c8d459913ba7fe74d74a0c2ec75bb5df0d9f255be254fd71d2186215e3a7ad78",
+    "raw/design/2026-10-07-ux37-chromium-mobile-workout-floating-768.png": "830157a40331736d690ce4d0a8789e264b55f9e09b8f868f054e713b5fdad0bc",
+    "raw/design/2026-10-07-ux37-chromium-mobile-workout-timer-sheet-390.png": "ec885047d8501dc4d22b14f5d491e801db05803e05a403917724fd018a6a351f",
+    "raw/design/2026-10-07-ux37-webkit-mobile-workout-collapsed-390.png": "064231704a9f505fdb91d7af6fc18bc7c7622947e1df6746721d546940250e20",
+    "raw/design/2026-10-07-ux37-webkit-mobile-workout-floating-320.png": "e9b239ebe3178a8ca6025c6404253f70afa0ae4e33b6d1d9f0d77085de494efe",
+    "raw/design/2026-10-07-ux37-webkit-mobile-workout-floating-390.png": "4201c2d5540c9193e4d6576808b4cb8a97973d6872bf509fee8b00371ed28a4f",
+    "raw/design/2026-10-07-ux37-webkit-mobile-workout-floating-768.png": "33eb0bda81fc14dd3947e096c3c4ed814d7e3603c281ddcb659eaeee5bfc256d",
+    "raw/design/2026-10-07-ux37-webkit-mobile-workout-timer-sheet-390.png": "caf2ddd9ef1859130d10ac1b82f64b705b7e778e55684d6e0b000d909c81f7ff",
+    "raw/research/2026-10-07-workout-collapse-timer-loop.json": "b7c9273379a7ace1d9c3d5b15ec076ca0573880e0c9edb798f964a5eaad4f2c7",
+    "history/versions/prd-v0.10.0.md": "c92383d786feaff11c3a6f602e04f3e15678c6fa374ffc6d008713e0f56c8cdd",
+    "history/changes/CHG-0037.md": "0ff4a5b8e93fe589ace9ee83e76f72af48e8946504616ff357c813302bb13de5"
   },
-  "updated_at": "2026-10-05T10:24:45+09:00"
+  "updated_at": "2026-10-05T10:24:45+09:00",
+  "last_extended_at": "2026-10-07T21:33:11+09:00"
 }

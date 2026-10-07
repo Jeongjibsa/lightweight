@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-05T10:24:45+09:00"
+  at: "2026-10-07T21:33:11+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
@@ -113,6 +113,9 @@ sources:
   - id: "record-details-git-release"
     resource: "../../raw/research/2026-10-05-record-details-git-release.json"
     title: "서버 승인 뒤 CI/Git 운영 배포"
+  - id: "workout-ux-request"
+    resource: "../../raw/conversations/2026-10-07-025.md"
+    title: "운동 접기/휴식 접근 요구"
 version: "0.5.1"
 approval_status: "current-audit-and-proposal"
 change_id: "CHG-0014"
@@ -345,3 +348,7 @@ content:compile을 일반 build에 연결하고 Node5계약을 추가했다(배�
 메모/장비·가동범위·휴식 즐겨찾기/세부 분류·별칭의 서버 미지원 및 이 단위의 승인/push/배포 대기는 해소됐다. 106 Vitest·Node10·build/types/format/artifact25(lint기존6경고)이다. preview DB는 비어 있으며 이번에 새 preview branch/asset 검사를 하지 않았다. 후속 문서 commit은 앱 bundle을 바꾸지 않는다.
 
 [운영 앱](https://lightweight-training.pages.dev) · [불변 배포 증거](../../raw/research/2026-10-05-record-details-git-release.json). 실제 본인 운동/iPhone 저장·재실행·수동 전송/새 저장소 복원·다기기/다버전 Auth·과학 승인 콘텐츠0개/운영 복구·4주 파일럿/P2 관문은 남는다.
+
+## CONV0025 회귀 증분
+
+Workout UI의 저장 실패 초안/접기 무변경과 RestTimer 동일 상태/observer 해제를 추가했다. 새 E2E는3운동9세트 접기/keyboard·below→above jump·320/390/768px floating hit·pause/zero/조작창 focus·운동 종료/백업을 검사한다. 현재108Vitest/Node10·18Chromium/16WebKit=34·관련2흐름×3×2=12. 최초 실패/retries0/가짜 context·Supabase 빈 override 유지. [실행](workout-collapse-timer.md). 실제 iPhone/Watch/잠금 알림은 미수행.

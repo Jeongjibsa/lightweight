@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-04T23:46:05+09:00"
+  at: "2026-10-07T21:33:11+09:00"
 sources:
   - id: "human"
     resource: "../../raw/conversations/2026-10-04-022.md"
@@ -17,6 +17,9 @@ sources:
   - id: "loop"
     resource: "../../raw/research/2026-10-04-catalog-rest-timer-loop.json"
     title: "실행/캡처"
+  - id: "workout-ux-request"
+    resource: "../../raw/conversations/2026-10-07-025.md"
+    title: "운동 접기/휴식 접근 요구"
 ---
 
 # 운동 탐색과 세트 휴식
@@ -40,3 +43,7 @@ sources:
 98개(31unit/40integration/27UI)·Node8·전체 browser30(16Chromium/14WebKit)·최종 문구6개·build/types/format/artifact25 통과다. lint는 기존6경고다.320/390px actual capture를 확인해 pause/save 문구 잘림을 고쳤다. [불변 실행과9PNG](../../raw/research/2026-10-04-catalog-rest-timer-loop.json). 물리 기기 및 과학적 검토 완료가 아니다.
 
 [요구](../conversations/2026-10-04-022.md)·[하네스](testing-harness.md)·[실사용](iphone-pilot-checklist.md).
+
+## CONV0025 스크롤 휴식 접근
+
+운동 항목 접기/완료 요약·원래 타이머가 위로 벗어나면 상단 캡슐/조작창을 추가했다. 기본60초·즐겨찾기3~4·단일 deadline/pause와 기존 schema를 보존한다. [구현/검사](workout-collapse-timer.md) · [시스템 알림 P2 검토](../product/rest-alert-feasibility.md).

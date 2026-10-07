@@ -1,15 +1,17 @@
 import {
+  ActionIcon,
   Button,
   Group,
   NumberInput,
   Paper,
+  Portal,
   SimpleGrid,
   Stack,
   Text,
 } from "@mantine/core";
 import { useLiveQuery } from "dexie-react-hooks";
-import { useEffect, useState } from "react";
-import { Timer } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Pause, Play, Timer } from "lucide-react";
 import {
   defaultRestPreferences,
   restPreferencesSchema,
@@ -54,6 +56,35 @@ export function RestTimer({ session, run }: { session: Session; run: Run }) {
   const [editing, setEditing] = useState(false);
   const [busy, setBusy] = useState(false);
   const [persistError, setPersistError] = useState(false);
+  const anchor = useRef<HTMLElement>(null);
+  const [floating, setFloating] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+  useEffect(() => {
+    const element = anchor.current;
+    if (!element) return;
+    // Only float after scrolling past the original timer, never while it is below us.
+    const observer =
+      typeof IntersectionObserver === "undefined"
+        ? null
+        : new IntersectionObserver(([entry]) => {
+            if (entry)
+              setFloating(
+                entry.boundingClientRect.bottom <= (entry.rootBounds?.top ?? 0),
+              );
+          });
+    // A jump from below to above can leave IntersectionObserver non-intersecting
+    // throughout. Scroll/resize also check which side the original timer is on.
+    const updatePosition = () =>
+      setFloating(element.getBoundingClientRect().bottom <= 0);
+    observer?.observe(element);
+    window.addEventListener("scroll", updatePosition, { passive: true });
+    window.addEventListener("resize", updatePosition);
+    return () => {
+      observer?.disconnect();
+      window.removeEventListener("scroll", updatePosition);
+      window.removeEventListener("resize", updatePosition);
+    };
+  }, []);
   const current: RestState =
     state?.source === source
       ? state
@@ -95,6 +126,26 @@ export function RestTimer({ session, run }: { session: Session; run: Run }) {
   const finished = !idle && seconds === 0;
   const paused =
     current.deadline === null && current.pausedSeconds !== null && seconds > 0;
+  const status = finished
+    ? "휴식 완료"
+    : idle
+      ? "세트를 완료하면 시작"
+      : paused
+        ? "일시정지"
+        : "휴식 중";
+  const actionLabel =
+    idle || finished ? "타이머 시작" : paused ? "휴식 재개" : "휴식 일시정지";
+  function toggleTimer() {
+    const now = Date.now();
+    setClock(now);
+    setState(
+      idle || finished
+        ? startRest(source, current.duration, now)
+        : paused
+          ? resumeRest(current, now)
+          : pauseRest(current, now),
+    );
+  }
   async function handleDurationClick(duration: number, now: number) {
     if (busy) return;
     setBusy(true);
@@ -111,99 +162,154 @@ export function RestTimer({ session, run }: { session: Session; run: Run }) {
     }
     setBusy(false);
   }
+  const controls = (
+    <Stack gap="sm">
+      <Group justify="space-between">
+        <Group gap="sm">
+          <Timer size={20} aria-hidden="true" />
+          <Text fw={600}>세트 휴식</Text>
+        </Group>
+        <Button
+          variant="subtle"
+          size="compact-md"
+          onClick={() => setEditing(true)}
+        >
+          즐겨찾기 편집
+        </Button>
+      </Group>
+      <Group justify="space-between" align="center">
+        <Text
+          aria-label="남은 휴식 시간"
+          fz={32}
+          fw={650}
+          style={{ fontVariantNumeric: "tabular-nums" }}
+        >
+          {restLabel(seconds)}
+        </Text>
+        <Text size="sm" c={finished ? "yellow.4" : "dimmed"} role="status">
+          {status}
+        </Text>
+      </Group>
+      <SimpleGrid cols={preferences.favorites.length} spacing={6}>
+        {preferences.favorites.map((duration) => (
+          <Button
+            key={duration}
+            variant={current.duration === duration ? "filled" : "default"}
+            px={0}
+            disabled={busy}
+            aria-label={`${duration}초 휴식 시작`}
+            onClick={() => void handleDurationClick(duration, Date.now())}
+          >
+            {restLabel(duration)}
+          </Button>
+        ))}
+      </SimpleGrid>
+      <Group gap="sm" grow>
+        <Button variant="light" aria-label={actionLabel} onClick={toggleTimer}>
+          {idle || finished ? "시작" : paused ? "재개" : "일시정지"}
+        </Button>
+        <Button
+          variant="subtle"
+          disabled={idle || finished}
+          onClick={() => setState({ ...current, stopped: true })}
+        >
+          휴식 종료
+        </Button>
+      </Group>
+      {last && (
+        <Text size="xs" c="dimmed">
+          {last.exercise.name} {last.order + 1}세트 완료 후 · 편의용 시간
+        </Text>
+      )}
+      {persistError && (
+        <Text size="xs" c="red.4" role="alert">
+          타이머 상태를 기기에 저장하지 못했습니다. 앱을 다시 열면 시간 상태가
+          달라질 수 있습니다.
+        </Text>
+      )}
+    </Stack>
+  );
   return (
-    <Paper component="section" aria-label="세트 휴식 타이머" bg="dark.6" p="md">
-      <Stack gap="sm">
-        <Group justify="space-between">
-          <Group gap="sm">
-            <Timer size={20} aria-hidden="true" />
-            <Text fw={600}>세트 휴식</Text>
-          </Group>
-          <Button
-            variant="subtle"
-            size="compact-md"
-            onClick={() => setEditing(true)}
+    <>
+      <Paper
+        ref={anchor}
+        component="section"
+        aria-label="세트 휴식 타이머"
+        bg="dark.6"
+        p="md"
+      >
+        {controls}
+      </Paper>
+      {floating && (
+        <Portal>
+          <Paper
+            component="section"
+            aria-label="고정 휴식 타이머"
+            className="rest-timer-float"
+            radius="xl"
+            p={6}
+            shadow="xl"
+            bg="dark.8"
+            withBorder
+            style={{ borderColor: "var(--mantine-color-dark-4)" }}
           >
-            즐겨찾기 편집
-          </Button>
-        </Group>
-        <Group justify="space-between" align="center">
-          <Text
-            aria-label="남은 휴식 시간"
-            fz={32}
-            fw={650}
-            style={{ fontVariantNumeric: "tabular-nums" }}
-          >
-            {restLabel(seconds)}
-          </Text>
-          <Text size="sm" c={finished ? "yellow.4" : "dimmed"} role="status">
-            {finished
-              ? "휴식 완료"
-              : idle
-                ? "세트를 완료하면 시작"
-                : paused
-                  ? "일시정지"
-                  : "휴식 중"}
-          </Text>
-        </Group>
-        <SimpleGrid cols={preferences.favorites.length} spacing={6}>
-          {preferences.favorites.map((duration) => (
-            <Button
-              key={duration}
-              variant={current.duration === duration ? "filled" : "default"}
-              px={0}
-              disabled={busy}
-              aria-label={`${duration}초 휴식 시작`}
-              onClick={() => void handleDurationClick(duration, Date.now())}
-            >
-              {restLabel(duration)}
-            </Button>
-          ))}
-        </SimpleGrid>
-        <Group gap="sm" grow>
-          <Button
-            variant="light"
-            aria-label={
-              idle || finished
-                ? "타이머 시작"
-                : paused
-                  ? "휴식 재개"
-                  : "휴식 일시정지"
-            }
-            onClick={() => {
-              const now = Date.now();
-              setClock(now);
-              setState(
-                idle || finished
-                  ? startRest(source, current.duration, now)
-                  : paused
-                    ? resumeRest(current, now)
-                    : pauseRest(current, now),
-              );
-            }}
-          >
-            {idle || finished ? "시작" : paused ? "재개" : "일시정지"}
-          </Button>
-          <Button
-            variant="subtle"
-            disabled={idle || finished}
-            onClick={() => setState({ ...current, stopped: true })}
-          >
-            휴식 종료
-          </Button>
-        </Group>
-        {last && (
-          <Text size="xs" c="dimmed">
-            {last.exercise.name} {last.order + 1}세트 완료 후 · 편의용 시간
-          </Text>
-        )}
-        {persistError && (
-          <Text size="xs" c="red.4" role="alert">
-            타이머 상태를 기기에 저장하지 못했습니다. 앱을 다시 열면 시간 상태가
-            달라질 수 있습니다.
-          </Text>
-        )}
-      </Stack>
+            <Group gap={4} wrap="nowrap">
+              <Button
+                variant="subtle"
+                color="gray"
+                flex={1}
+                radius="xl"
+                px="sm"
+                aria-label="휴식 타이머 펼치기"
+                onClick={(event) => {
+                  // Safari does not focus buttons on pointer clicks by default.
+                  event.currentTarget.focus({ preventScroll: true });
+                  setExpanded(true);
+                }}
+                styles={{
+                  inner: { justifyContent: "flex-start" },
+                  label: { width: "100%" },
+                }}
+              >
+                <Timer size={18} aria-hidden="true" />
+                <Text
+                  component="span"
+                  size="xs"
+                  c={finished ? "yellow.4" : "dimmed"}
+                >
+                  {idle ? "세트 휴식" : status}
+                </Text>
+                <Text
+                  component="span"
+                  aria-label="고정 타이머 남은 시간"
+                  fw={650}
+                  ml="auto"
+                  style={{ fontVariantNumeric: "tabular-nums" }}
+                >
+                  {restLabel(seconds)}
+                </Text>
+              </Button>
+              <ActionIcon
+                aria-label={actionLabel}
+                variant="light"
+                radius="xl"
+                onClick={toggleTimer}
+              >
+                {idle || finished || paused ? (
+                  <Play size={18} aria-hidden="true" />
+                ) : (
+                  <Pause size={18} aria-hidden="true" />
+                )}
+              </ActionIcon>
+            </Group>
+          </Paper>
+        </Portal>
+      )}
+      {expanded && (
+        <Modal title="세트 휴식 조작" onClose={() => setExpanded(false)}>
+          {controls}
+        </Modal>
+      )}
       {editing && (
         <FavoritesEditor
           preferences={preferences}
@@ -216,7 +322,7 @@ export function RestTimer({ session, run }: { session: Session; run: Run }) {
           }
         />
       )}
-    </Paper>
+    </>
   );
 }
 function FavoritesEditor({

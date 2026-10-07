@@ -1,0 +1,56 @@
+{
+  "type": "Technical Research",
+  "generated": {
+    "by": "codex/gpt-6",
+    "at": "2026-10-07T21:33:11+09:00"
+  },
+  "immutable": true,
+  "scope": "Relevant official text sections only; no complete video viewing, native build, APNs/Web Push delivery or physical device test",
+  "sources": [
+    {
+      "id": "webkit-push",
+      "url": "https://webkit.org/blog/13878/web-push-for-web-apps-on-ios-and-ipados/",
+      "published": "2023-02-16",
+      "read": "Home Screen Web Push permission, paired Watch, Focus sections",
+      "finding": "iOS16.4+ Home Screen web apps can request Web Push after a user gesture; permitted notifications can appear on paired Watch."
+    },
+    {
+      "id": "watch-routing",
+      "url": "https://support.apple.com/en-us/108369",
+      "read": "iPhone lock/Watch lock routing and mirrored notification settings",
+      "finding": "Routing depends on iPhone/Watch state and settings."
+    },
+    {
+      "id": "watch-haptics",
+      "url": "https://support.apple.com/en-us/108368",
+      "published": "2026-09-14",
+      "read": "Haptics and Focus sections",
+      "finding": "Haptic alerts can be off/default/prominent; website cannot guarantee a specific vibration."
+    },
+    {
+      "id": "live-activity",
+      "url": "https://developer.apple.com/videos/play/wwdc2026/223/",
+      "read": "Transcript data model, WidgetKit widget extension/SwiftUI views and cross-device presentations",
+      "finding": "Native ActivityKit/WidgetKit implementation for Lock Screen/Dynamic Island; current PWA has no such target."
+    },
+    {
+      "id": "alarmkit",
+      "url": "https://developer.apple.com/videos/play/wwdc2025/230/",
+      "read": "Transcript experience/authorization/countdown Widget extension/lifecycle sections",
+      "finding": "iOS/iPadOS26 AlarmKit alarms/countdowns, paired Watch alert and Live Activity countdown; per-app opt-in; alarms can break silent mode/Focus."
+    },
+    {
+      "id": "worker-lifetime",
+      "url": "https://w3c.github.io/ServiceWorker/#service-worker-lifetime",
+      "read": "2.1.1 Lifetime",
+      "finding": "Service worker lifetime is event-bound; browser can terminate when idle or over imposed event execution limits."
+    },
+    {
+      "id": "mantine-accordion",
+      "url": "https://mantine.dev/core/accordion/",
+      "read": "Controlled multiple/order/compose controls/keyboard/transition sections; installed9.6.3 Accordion/Panel types and runtime keepMounted behavior",
+      "finding": "Native button semantics, no nested interactive controls; keepMounted/display-none retains failed input draft."
+    }
+  ],
+  "inference": "Timer-completion push needs server scheduling plus cancellation/version control; browser JS waiting is not a dependable background alarm. Native AlarmKit+Live Activity is a promising P2 option, not an implemented feature. Native local notification is an alternative for gentle alerts."
+}

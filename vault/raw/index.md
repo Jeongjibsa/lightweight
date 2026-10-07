@@ -13,3 +13,5 @@
 - [승인된 서버 검증](research/2026-10-05-cloud-validator-approved.json).
 
 - [승인 뒤 실제 Git 배포](research/2026-10-05-record-details-git-release.json).
+
+- [CONV0025](conversations/2026-10-07-025.md) · [실행](research/2026-10-07-workout-collapse-timer-loop.json).

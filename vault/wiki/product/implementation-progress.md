@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-05T10:24:45+09:00"
+  at: "2026-10-07T21:33:11+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -203,11 +203,21 @@ sources:
   - id: "record-details-git-release"
     resource: "../../raw/research/2026-10-05-record-details-git-release.json"
     title: "서버 승인 뒤 CI/Git 운영 배포"
-version: "0.4.4"
-change_id: "CHG-0036"
+  - id: "workout-ux-request"
+    resource: "../../raw/conversations/2026-10-07-025.md"
+    title: "운동 접기/휴식 접근 요구"
+version: "0.5.0"
+change_id: "CHG-0037"
 ---
 
 # 로컬 PWA 구현 결과와 다음 작업
+
+## CONV0025 운동 기록 UX — 2026-10-07
+
+[접기와 고정 휴식 타이머](../operations/workout-collapse-timer.md)를 구현했다. 운동 제목/모두 접기·완료 수 요약, 위로 벗어난 타이머의 safe-area 캡슐·일시정지/재개/조작창을 제공한다. 입력 실패 초안/기존 저장 계약을 보존하고108Vitest/Node10·browser34/관련 반복12·최종10PNG를 확인했다. app0.2.0/schema2/backup1·서버/Auth 설정을 유지한다. 기존6effect경고는 별도다.
+
+[Watch·Live Activity·AlarmKit 검토](rest-alert-feasibility.md)는 검토만 완료/P2다. Web Push 조건부 전달·native WidgetKit/ActivityKit·iOS26+ AlarmKit 후보를 확인했다. 사용자 구현 선택·실기기 관문은 남는다. 실제 iPhone/운동·다기기 Auth·SCI/운영/파일럿/식단·3D 관문을 유지한다. 이 단위의 새 Git push/CI/배포는 아직 별도다.
+
 
 ## 현재 운영 배포 — 종료 기록 1db637d
 

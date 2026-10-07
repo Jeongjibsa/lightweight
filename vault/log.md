@@ -1,5 +1,10 @@
 # Vault Update Log
 
+## 2026-10-07
+
+- **UX / CONV0025**: 운동별 Mantine 접기·완료 수/모두 접기, 위로 벗어난 휴식 타이머의 safe-area 캡슐·단일 시간/조작창. Safari focus·scroll jump·native animation 회귀 보완.108Vitest/Node10·browser34/반복12·최종10PNG 확인(기존6lint경고). [실행](raw/research/2026-10-07-workout-collapse-timer-loop.json) · [CHG0037](history/changes/CHG-0037.md) · PRD0.10.0 전체/기존213불변 보존.
+- **검토**: [Watch/Web Push·Live Activity·iOS26+ AlarmKit](wiki/product/rest-alert-feasibility.md)은 공식 관련 절 검토/P2이며 구현·권한·전송/실기기 시험 없음. 현재 운동 MVP/실제 운동/Auth/SCI/운영/파일럿 관문 유지.
+
 ## 2026-10-05
 
 - **Release / Records**: dbddbda main push·GitHub37250900828 세 job success·17Chromium/15WebKit artifact 수신/최초실패 probe 보존·Pages github:push/build/deploy success·운영24file hash/헤더 일치. [실행](raw/research/2026-10-05-record-details-git-release.json)·[CHG0036](history/changes/CHG-0036.md)·PRD0.9.4 전체/기존210불변 보존. 실제 운동/iPhone·다기기·SCI/운영/파일럿/P2는 유지한다.

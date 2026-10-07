@@ -174,3 +174,5 @@ iPhone 홈 화면 설치·실행·로그인은 사용자 보고로 확인했습�
 `npm run cloud:verify`는 server-only `.env`의 DB 연결로 28개 synthetic RPC/권한 검사를 실행하고 전체 rollback합니다. 메모·장비/가동범위·휴식 즐겨찾기·세부 분류/별칭의 왕복 및 잘못된 입력 거부를 포함합니다. 개인 기록이나 실제 Auth/iPhone 검증을 대체하지 않습니다. 서버 함수를 자동 적용하지 않으며 `--preflight`는 초기 schema 검사 전용입니다.
 
 서버 승인 이후 dbddbda main의 GitHub37250900828 세 job·Pages Git build/deploy와 운영24file hash/헤더 일치를 확인했습니다. [불변 배포](../vault/raw/research/2026-10-05-record-details-git-release.json). 실제 본인 운동·다기기·iPhone/다버전 검증은 남습니다.
+
+운동별 Mantine 접기/완료 요약·스크롤 상단 휴식 캡슐/조작창을 추가했습니다.108Vitest/Node10·Chromium18/WebKit16=34·관련12반복/320·390·768px를 검사했습니다. [UX 계약](../vault/wiki/operations/workout-collapse-timer.md) · [Watch/Live Activity/AlarmKit 검토만](../vault/wiki/product/rest-alert-feasibility.md). 시스템 알림·네이티브 기능은 구현하지 않았습니다.

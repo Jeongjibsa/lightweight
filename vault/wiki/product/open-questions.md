@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-05T10:24:45+09:00"
+  at: "2026-10-07T21:33:11+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -146,6 +146,9 @@ sources:
   - id: "record-details-git-release"
     resource: "../../raw/research/2026-10-05-record-details-git-release.json"
     title: "서버 승인 뒤 CI/Git 운영 배포"
+  - id: "workout-ux-request"
+    resource: "../../raw/conversations/2026-10-07-025.md"
+    title: "운동 접기/휴식 접근 요구"
 ---
 
 # 미결 사항과 다음 대화
@@ -271,3 +274,7 @@ Google 계정 로그인은 기술적으로 가능하지만 검토 요청만 처�
 메모/장비·가동범위·휴식 즐겨찾기/세부 분류·별칭의 서버 미지원 및 이 단위의 승인/push/배포 대기는 해소됐다. 106 Vitest·Node10·build/types/format/artifact25(lint기존6경고)이다. preview DB는 비어 있으며 이번에 새 preview branch/asset 검사를 하지 않았다. 후속 문서 commit은 앱 bundle을 바꾸지 않는다.
 
 [운영 앱](https://lightweight-training.pages.dev) · [불변 배포 증거](../../raw/research/2026-10-05-record-details-git-release.json). 실제 본인 운동/iPhone 저장·재실행·수동 전송/새 저장소 복원·다기기/다버전 Auth·과학 승인 콘텐츠0개/운영 복구·4주 파일럿/P2 관문은 남는다.
+
+## CONV0025 미결
+
+접기/고정 타이머 로컬 구현은 완료했다. 실제 iPhone 키보드/VoiceOver·잠금 복귀는 남는다. Watch 알림/Live Activity는 가능성 검토만 요구했다. [P2 검토](rest-alert-feasibility.md)의 PWA push 또는 native AlarmKit/WidgetKit 선택·지원OS/Watch·배포 방식·부드러운 알림/강한 알람 정책은 미정이다. 이 선택을 현재 운동 MVP 완료 조건으로 추가하지 않는다.

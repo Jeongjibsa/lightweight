@@ -1,0 +1,75 @@
+{
+  "type": "Browser UX Verification",
+  "generated": {
+    "by": "codex/gpt-6",
+    "at": "2026-10-07T21:33:11+09:00"
+  },
+  "immutable": true,
+  "tests": {
+    "vitest": 108,
+    "unit": 34,
+    "integration": 43,
+    "ui": 31,
+    "node_contracts": 10,
+    "lint": "exit0; six existing SetRow effect warnings",
+    "build_types_e2e_types_format": "passed"
+  },
+  "browser": {
+    "repeat": {
+      "run_id": "20261007T121704953Z-13f3011a",
+      "stats": {
+        "startTime": "2026-10-07T12:17:05.222Z",
+        "duration": 49747.212999999996,
+        "expected": 12,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    },
+    "full": {
+      "run_id": "20261007T123111113Z-934a0f2d",
+      "stats": {
+        "startTime": "2026-10-07T12:31:11.331Z",
+        "duration": 105012.318,
+        "expected": 34,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    }
+  },
+  "first_failures": [
+    {
+      "run": "20261007T120525662Z-797ca634",
+      "kind": "sandbox EPERM on isolated localhost4188; no browser execution",
+      "resolution": "rerun with authorized local test-server permissions"
+    },
+    {
+      "run": "20261007T120549977Z-affe2078",
+      "kind": "WebKit pointer click did not focus floating opener; one test wrongly expected ended fields on list screen",
+      "resolution": "focus opener before opening; verify ended payload through synthetic backup"
+    },
+    {
+      "run": "20261007T121226114Z-e283f630",
+      "kind": "legacy test clicked former heading to blur; expanded panel screenshot/scroll raced native height; observer alone can miss non-intersecting jump",
+      "resolution": "keyboard Tab for input blur; wait native collapse/expansion height; passive position check and short viewport jump regression"
+    }
+  ],
+  "ui_initial_failure": "First collapse regression wrongly assumed reopening focuses input for a retry blur; explicitly focus retained draft and retry before asserting storage. No existing failure hidden by retries.",
+  "screenshots": [
+    "raw/design/2026-10-07-ux37-chromium-mobile-workout-collapsed-390.png",
+    "raw/design/2026-10-07-ux37-chromium-mobile-workout-floating-320.png",
+    "raw/design/2026-10-07-ux37-chromium-mobile-workout-floating-390.png",
+    "raw/design/2026-10-07-ux37-chromium-mobile-workout-floating-768.png",
+    "raw/design/2026-10-07-ux37-chromium-mobile-workout-timer-sheet-390.png",
+    "raw/design/2026-10-07-ux37-webkit-mobile-workout-collapsed-390.png",
+    "raw/design/2026-10-07-ux37-webkit-mobile-workout-floating-320.png",
+    "raw/design/2026-10-07-ux37-webkit-mobile-workout-floating-390.png",
+    "raw/design/2026-10-07-ux37-webkit-mobile-workout-floating-768.png",
+    "raw/design/2026-10-07-ux37-webkit-mobile-workout-timer-sheet-390.png"
+  ],
+  "visually_reviewed": "Final preserved screenshots reviewed directly; actual iPhone/VoiceOver/Watch not_run",
+  "contracts": "Same SetRow node/draft after failed atomic save; collapse-only no session/outbox write; all controls/keyboard; completed values in backup; single deadline/pause/zero across card/capsule/sheet; below-to-above jump, 320/390/768 hit targets>=44 and no overflow; close focus; unmount after workout end",
+  "privacy": "Synthetic fixtures, independent4188 contexts, blank Supabase overrides; no user browser/profile/record seed or clear",
+  "native_webpush_alarmkit": "Review only; no permission request, subscription, remote message, scheduler, native build or account change"
+}

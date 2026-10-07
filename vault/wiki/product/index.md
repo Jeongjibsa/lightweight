@@ -32,3 +32,5 @@
 - PRD0.9.3: [승인된 서버 계약과 다음 작업](implementation-progress.md).
 
 - PRD0.9.4: [현재 배포와 남은 작업](remaining-work.md).
+
+- PRD0.10.0: [Watch/Live Activity 검토](rest-alert-feasibility.md) · [접기/고정 휴식](../operations/workout-collapse-timer.md).

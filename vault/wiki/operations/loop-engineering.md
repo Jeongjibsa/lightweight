@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-05T10:24:45+09:00"
+  at: "2026-10-07T21:33:11+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
@@ -77,6 +77,9 @@ sources:
   - id: "record-details-git-release"
     resource: "../../raw/research/2026-10-05-record-details-git-release.json"
     title: "서버 승인 뒤 CI/Git 운영 배포"
+  - id: "workout-ux-request"
+    resource: "../../raw/conversations/2026-10-07-025.md"
+    title: "운동 접기/휴식 접근 요구"
 version: "0.3.2"
 approval_status: "proposal"
 change_id: "CHG-0014"
@@ -253,3 +256,7 @@ CUA 가짜4177의 invalid JSON 오류→동일 경로 정상 파일→미리보�
 메모/장비·가동범위·휴식 즐겨찾기/세부 분류·별칭의 서버 미지원 및 이 단위의 승인/push/배포 대기는 해소됐다. 106 Vitest·Node10·build/types/format/artifact25(lint기존6경고)이다. preview DB는 비어 있으며 이번에 새 preview branch/asset 검사를 하지 않았다. 후속 문서 commit은 앱 bundle을 바꾸지 않는다.
 
 [운영 앱](https://lightweight-training.pages.dev) · [불변 배포 증거](../../raw/research/2026-10-05-record-details-git-release.json). 실제 본인 운동/iPhone 저장·재실행·수동 전송/새 저장소 복원·다기기/다버전 Auth·과학 승인 콘텐츠0개/운영 복구·4주 파일럿/P2 관문은 남는다.
+
+## CONV0025 UI 루프
+
+사용자 스크롤 불편→Mantine 접기/상단 캡슐→실패한 입력 초안 검사→Safari opener focus 보완→전체 회귀에서 제목 blur/animation 및 non-intersecting scroll jump 확인→Tab blur/native height/위치 보완→34전체/12반복·최종 화면 확인. 첫 실패runID/trace를 보존했다. [계약](workout-collapse-timer.md).

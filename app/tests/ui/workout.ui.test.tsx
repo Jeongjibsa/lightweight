@@ -384,3 +384,55 @@ it("비교 조건 전체/개별 적용·CAS 충돌에서 완료/입력 보존과
     (screen.getByLabelText("장비 이름 · 선택") as HTMLInputElement).value,
   ).toBe("머신 B");
 });
+
+it("운동을 접어도 저장 실패한 입력 초안을 보존하며 접기 자체는 기록/outbox를 바꾸지 않는다", async () => {
+  await store.updateSet(owner, session.id, session.sets[0]!.id, {
+    load: 20,
+    reps: 8,
+  });
+  const before = await db.sessions.get(session.id);
+  const outbox = await db.outbox.toArray();
+  render(<Harness />);
+  const user = userEvent.setup();
+  const input = await screen.findByLabelText(loadLabel);
+  await user.clear(input);
+  await user.type(input, "42");
+  const failure = vi
+    .spyOn(db.outbox, "add")
+    .mockRejectedValue(new Error("synthetic collapse save failure"));
+  const control = screen.getByRole("button", {
+    name: "바벨 스쿼트 세트 접기/펼치기",
+    exact: true,
+  });
+  await user.click(control);
+  await screen.findByRole("alert");
+  await waitFor(() =>
+    expect(
+      screen.queryByRole("button", {
+        name: "바벨 스쿼트 1세트 완료",
+        exact: true,
+      }),
+    ).toBeNull(),
+  );
+  expect(control.getAttribute("aria-expanded")).toBe("false");
+  expect(await db.sessions.get(session.id)).toEqual(before);
+  expect(await db.outbox.toArray()).toEqual(outbox);
+  await user.click(control);
+  expect(screen.getByLabelText(loadLabel)).toBe(input);
+  expect((input as HTMLInputElement).value).toBe("42");
+  failure.mockRestore();
+  await user.click(input);
+  await user.click(
+    screen.getByRole("button", { name: "모두 접기", exact: true }),
+  );
+  await waitFor(async () =>
+    expect((await db.sessions.get(session.id))!.sets[0]!.load).toBe(42),
+  );
+  const saved = await db.sessions.get(session.id);
+  const savedOutbox = await db.outbox.toArray();
+  await user.click(
+    screen.getByRole("button", { name: "모두 펼치기", exact: true }),
+  );
+  expect(await db.sessions.get(session.id)).toEqual(saved);
+  expect(await db.outbox.toArray()).toEqual(savedOutbox);
+});

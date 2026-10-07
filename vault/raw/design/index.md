@@ -79,3 +79,5 @@
 - [기록 condition-editor-320.png](2026-10-05-record-condition-editor-320.png) — synthetic WebKit screenshot; 실제 iPhone 아님.
 - [기록 condition-report-320.png](2026-10-05-record-condition-report-320.png) — synthetic WebKit screenshot; 실제 iPhone 아님.
 - [기록 condition-report-390.png](2026-10-05-record-condition-report-390.png) — synthetic WebKit screenshot; 실제 iPhone 아님.
+
+- [운동 접기/고정 휴식 최종10PNG](../../wiki/operations/workout-collapse-timer.md#캡처).

@@ -11,3 +11,5 @@
 - [CHG0035 서버 승인/검증](changes/CHG-0035.md).
 
 - [CHG0036 실제 CI/Git 배포](changes/CHG-0036.md).
+
+- [CHG0037](changes/CHG-0037.md).
