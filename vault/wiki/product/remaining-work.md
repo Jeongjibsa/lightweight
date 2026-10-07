@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-08T01:11:57+09:00"
+  at: "2026-10-08T01:19:13+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -215,12 +215,24 @@ sources:
   - id: "unit-chg-0045"
     resource: "../../raw/research/2026-10-08-fresh-content-harness-loop.json"
     title: "깨끗한 CI 콘텐츠 생성 누락 재현·하네스 보완"
-version: "0.8.1"
+  - id: "unit-chg-0046"
+    resource: "../../raw/research/2026-10-08-report-guide-git-release.json"
+    title: "업데이트·주간 리포트·검토 설명 소비 수정 CI/운영 확인"
+version: "0.8.2"
 approval_status: "proposal"
-change_id: "CHG-0045"
+change_id: "CHG-0046"
 ---
 
 # 남은 작업 한눈에 보기
+
+## 업데이트·REP/SCI 운영 반영 — 2026-10-08
+
+업데이트 안내·주간 비교·검토 설명 소비를 main에 push하고 하네스 보완 **647dca5**의 GitHub37650233275 check/Chromium/WebKit 세 job success를 확인했다. 실제 수신한 정상 artifact는 **Chromium21/WebKit19=40** 통과·unexpected/flaky/skipped0이며, 의도적 실패 probe의 trace/PNG/console/execution/report 보존도 확인했다.
+
+같은 source의 Pages `github:push` build/deploy가 success이고 운영 공개24파일 SHA256·보안 헤더가 검증 build와 일치한다. 첫37648213883 Chromium1실패는 이력에 보존하며 생성JSON 준비를 추가한 뒤의 결과와 구별한다. [불변 배포 확인](../../raw/research/2026-10-08-report-guide-git-release.json).122Vitest/Node10·build/types/format/artifact25 통과, 기존lint6경고는 유지한다.
+
+실제 승인 설명0개·직접/간접 매핑·시각/권리·조건 티어·권장량, 앱 내부 리포트 보관함은 미완료다. 업데이트 제보의 당시 원인 미상/실기기와 iPhone 파일 저장, 실제 Auth/다기기·과학 공개/운영 복구·4주 파일럿/P2 관문은 남는다. 새 서버/Auth/schema/의존성을 바꾸지 않았다. preview DB는 기존 빈 설정을 유지하고 새 preview branch 배포/asset 검사는 하지 않았다. 후속 문서는 앱 bundle을 바꾸지 않는다.
+
 
 ## HAR 깨끗한 CI 콘텐츠 생성 보완 — 2026-10-08
 
@@ -274,11 +286,11 @@ REP 새3unit/1UI/2browser와 함께 준비한 SCI UI 포함122Vitest/Node10/40br
 [Watch·Live Activity·AlarmKit 검토](rest-alert-feasibility.md)는 검토만 완료/P2다. Web Push 조건부 전달·native WidgetKit/ActivityKit·iOS26+ AlarmKit 후보를 확인했다. 사용자 구현 선택·실기기 관문은 남는다. 실제 iPhone/운동·다기기 Auth·SCI/운영/파일럿/식단·3D 관문을 유지한다. 이 단위의 main push·GitHub3job/34browser artifact·Pages Git 운영24파일 일치 확인을 완료했다.
 
 
-2026-10-08 / PRD0.13.1. **운동 MVP 전체는 진행 중**이며 식단·3D는 후순위다.
+2026-10-08 / PRD0.13.2. **운동 MVP 전체는 진행 중**이며 식단·3D는 후순위다.
 
 [운영 앱](https://lightweight-training.pages.dev) · [DB 연결 없는 preview](https://preview.lightweight-training.pages.dev) · [세부 백로그](implementation-backlog.md).
 
-운동 접기·고정 휴식 타이머까지 main48c0f44로 push/배포했다.108Vitest·Node10·browser34·GitHub3job success/실제 artifact 수신·운영 공개24파일 hash/헤더 일치를 확인했다. 이전 서버 선택 필드28rollback 검사는 유지하며 이번에는 서버를 바꾸지 않았다. 등록1/허용1·실제 desktop Chrome 빈 프로필의 클라우드 저장/조회/같은 기기 적용도 확인했다.
+업데이트 안내·주간 비교/읽기 리포트·검토 설명 소비까지 main647dca5로 push/배포했다.122Vitest·Node10·browser40·GitHub3job success/실제 artifact 수신·운영 공개24파일 hash/헤더 일치를 확인했다. 이전 서버 선택 필드28rollback 검사는 유지하며 이번에는 서버를 바꾸지 않았다. 등록1/허용1·실제 desktop Chrome 빈 프로필의 클라우드 저장/조회/같은 기기 적용도 확인했다.
 
 | 순서 | 남은 작업 | 현재 완료한 부분 | 완료에 필요한 것 | ID |
 |---|---|---|---|---|
@@ -287,7 +299,7 @@ REP 새3unit/1UI/2browser와 함께 준비한 SCI UI 포함122Vitest/Node10/40br
 | 3 | 기록 편의 완성 | 이전값·재시작·미완료 종목 교체·종료 수정·운동 순서/CAS·삭제 루틴 복구·종료 기록 삭제/복구 | 메모·머신/ROM 로컬·서버·배포 완료; 접기·고정 타이머 구현 완료; 다기기/실기기 입력 UX | LOG03~06 |
 | 4 | 설명 가능한 개인화 완성 | 볼륨/추이·주간 점검/직접 수정·지난주 비교·읽기 파일/입력·계산 버전 보존 | 검토된 직접/간접 매핑·근거 기반 다음 행동·앱 보관함/과학 정책·근거 버전 | REP01~06, SCI03B |
 | 5 | 근거 운동 정보·시각·티어·추천 | 37종목/바벨18·공개 gate→출처/한계 UI·offline JSON·가슴 직접 비교 검토 패킷(승인0개) | 추가 전문/인간·해부학/권리 검토→실제 승인 설명·시각/매핑→조건 추천/티어 | SCI01~04, PRE01, LOG02 |
-| 6 | 실제 iPhone/PWA·접근성/보존 | iPhone 홈 화면 설치/실행/로그인 사용자 보고 완료·반응형·browser36·백업 보존 | 키보드/VoiceOver/확대/가로/잠금·실제offline/update·physical quota/eviction·64MiB초과 분할복구 | RESP01, REL02, HAR04 |
+| 6 | 실제 iPhone/PWA·접근성/보존 | iPhone 홈 화면 설치/실행/로그인 사용자 보고 완료·반응형·browser40·백업 보존 | 키보드/VoiceOver/확대/가로/잠금·실제offline/update·physical quota/eviction·64MiB초과 분할복구 | RESP01, REL02, HAR04 |
 | 7 | 운영·배포/복구 마무리 | Pages HTTPS·운영/preview DB 분리·24file hash/헤더·main push | 실Auth/메일/비밀번호복구·백업 drill·Git 자동 배포 완료; 도메인/Access 선택 | REL01/03, Q08/16/17 |
 | 8 | 본인 파일럿→지인 제공 | 앱/검사 기반 준비 | 실제4주 관찰/입력누락·오해 개선→회귀, 계정 독립/복원·G3/G4 관문 | PIL01/02 |
 | 후순위 | 식단/영양·3D·선택 AI 설명·Watch/Live Activity | 요구/3D feasibility 문서 | 음식DB/license·기록/계산·검토 공식/결측, 3Dasset/rig/clip/권한/전문검토/실기기성능 | NUT01~04, VIS3D02/03, AI01, NTF02/03 |
@@ -296,7 +308,7 @@ REP 새3unit/1UI/2browser와 함께 준비한 SCI UI 포함122Vitest/Node10/40br
 
 과학 승인 설명은0개다. 콘텐츠 공개 gate는 실제 전문/전문가·자산 권리 검토를 대신하지 않는다.4주 파일럿도 자동검사로 대체하지 않는다. lint exit0/기존 effect경고6개가 남는다. 개인 기록·비밀번호/token/ID는 공개 vault에 넣지 않는다.
 
-[진행](implementation-progress.md) · [하네스](../operations/testing-harness.md) · [순서/가림 루프](../operations/workout-order.md) · [현재 배포 증거](../../raw/research/2026-10-04-ended-record-release.json) · [실제 Auth 범위](../../raw/research/2026-10-04-auth-profile-roundtrip.json).
+[진행](implementation-progress.md) · [하네스](../operations/testing-harness.md) · [순서/가림 루프](../operations/workout-order.md) · [현재 배포 증거](../../raw/research/2026-10-08-report-guide-git-release.json) · [실제 Auth 범위](../../raw/research/2026-10-04-auth-profile-roundtrip.json).
 
 [실제 기기 사용자 보고와 미검증 범위](../../raw/research/2026-10-04-iphone-install-user-report.json).
 

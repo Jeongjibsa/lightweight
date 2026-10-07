@@ -80,3 +80,5 @@
 - CHG0041에서 b44ebda/fba60bb main push·GitHub37629327092 세 job success/19+17browser와 최초 실패 probe artifact 수신·동일 source Pages Git build/deploy·운영24파일 SHA256/보안 헤더 일치를 확인했다. 현재 기준은 PRD0.11.2/remaining-work.md다. CHG0039~40 배포 대기는 해소됐으며 실제 운동/새 기기·Auth/실기기·SCI·운영 복구/파일럿/P2 관문은 유지한다. 후속 증거 문서는 bundle을 바꾸지 않는다.
 
 - CONV0027/CHG0042~45는 업데이트 제보 조건 미상/active 운동 진입·저장/실패 안내, 주간 같은 요일까지 비교·읽기 HTML/입력·계산 버전 보존, 승인 설명 소비/offline JSON·SRC054 가슴 검토 패킷을 추가했다. 실제 승인0/매핑·규칙/시각·티어·실기기 관문은 유지한다. E2E 서버는 깨끗한 CI에서 생성 JSON 누락이 재현돼 v1/v2 전에 운영 compiler를 실행한다. npm run test:e2e는 생성 파일에 의존하지 않아야 하며 첫CI37648213883 Chromium1실패와40fresh/probe 통과를 구별한다. 현재 PRD0.13.1/remaining-work.md 기준이고 새 fix CI/운영 확인은 후속이다.
+
+- CHG0046에서 업데이트·REP/SCI의647dca5 main push·GitHub37650233275 세 job success/Chromium21+WebKit19=40 실제 artifact·실패 probe·같은 source Pages Git build/deploy/운영24파일 hash·보안 헤더 일치를 확인했다. 앞선37648213883의 Chromium1실패는 당시 이력이며 수정 후 확인 대기는 해소됐다. 현재 PRD0.13.2/remaining-work.md를 기준으로 한다. 당시 사용자 update 원인 미상·실제 iPhone/파일 저장·Auth/다기기/매핑·규칙·시각·티어·승인 설명0/파일럿/P2는 남는다. 후속 문서는 앱 bundle을 바꾸지 않는다.

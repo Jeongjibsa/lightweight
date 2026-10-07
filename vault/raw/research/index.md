@@ -66,3 +66,5 @@
 - [SCI 설명 소비 검사](2026-10-08-reviewed-guide-loop.json)·[연구 읽은 범위](2026-10-08-chest-review-capture.json).
 
 - [새 CI 콘텐츠 준비 누락/40fresh·probe](2026-10-08-fresh-content-harness-loop.json).
+
+- [업데이트·REP/SCI 수정 CI40·probe/운영24파일](2026-10-08-report-guide-git-release.json).

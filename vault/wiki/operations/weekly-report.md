@@ -6,7 +6,7 @@ tags: ["training", "implementation", "testing"]
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-08T00:51:02+09:00"
+  at: "2026-10-08T01:19:13+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-08-027.md"
@@ -14,6 +14,9 @@ sources:
   - id: "run"
     resource: "../../raw/research/2026-10-08-weekly-report-loop.json"
     title: "실행"
+  - id: "unit-chg-0046"
+    resource: "../../raw/research/2026-10-08-report-guide-git-release.json"
+    title: "업데이트·주간 리포트·검토 설명 소비 수정 CI/운영 확인"
 ---
 
 # 지난주 비교와 저장 시점 리포트
@@ -39,3 +42,11 @@ owner·deleted·complete/partial+endedAt·기간을 필터한다. 준비/미완�
 ![저장한 읽기 파일](../../assets/saved-report-webkit-390.png)
 
 위 화면은 독립 origin/합성 입력/desktop WebKit이다. 실제 iPhone 다운로드/Files·공유·VoiceOver는 미검증이다. 근육 직접/간접 매핑·검토된 다음 행동/운동 처방은 남는다. [실행](../../raw/research/2026-10-08-weekly-report-loop.json).
+
+## 업데이트·REP/SCI 운영 반영 — 2026-10-08
+
+업데이트 안내·주간 비교·검토 설명 소비를 main에 push하고 하네스 보완 **647dca5**의 GitHub37650233275 check/Chromium/WebKit 세 job success를 확인했다. 실제 수신한 정상 artifact는 **Chromium21/WebKit19=40** 통과·unexpected/flaky/skipped0이며, 의도적 실패 probe의 trace/PNG/console/execution/report 보존도 확인했다.
+
+같은 source의 Pages `github:push` build/deploy가 success이고 운영 공개24파일 SHA256·보안 헤더가 검증 build와 일치한다. 첫37648213883 Chromium1실패는 이력에 보존하며 생성JSON 준비를 추가한 뒤의 결과와 구별한다. [불변 배포 확인](../../raw/research/2026-10-08-report-guide-git-release.json).122Vitest/Node10·build/types/format/artifact25 통과, 기존lint6경고는 유지한다.
+
+실제 승인 설명0개·직접/간접 매핑·시각/권리·조건 티어·권장량, 앱 내부 리포트 보관함은 미완료다. 업데이트 제보의 당시 원인 미상/실기기와 iPhone 파일 저장, 실제 Auth/다기기·과학 공개/운영 복구·4주 파일럿/P2 관문은 남는다. 새 서버/Auth/schema/의존성을 바꾸지 않았다. preview DB는 기존 빈 설정을 유지하고 새 preview branch 배포/asset 검사는 하지 않았다. 후속 문서는 앱 bundle을 바꾸지 않는다.

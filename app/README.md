@@ -184,3 +184,5 @@ iPhone 홈 화면 설치·실행·로그인은 사용자 보고로 확인했습�
 b44ebda/fba60bb main의 GitHub37629327092 세 job과19+17browser artifact·동일 source Pages Git build/deploy/운영24파일 해시·헤더를 확인했습니다. [배포 증거](../vault/raw/research/2026-10-07-catalog-sync-git-release.json). 후속 증거 문서는 앱 bundle을 바꾸지 않습니다.
 
 주간 리포트는 지난주 같은 요일까지 비교하고 개인 읽기 HTML 파일에 당시 입력/계산 버전을 보존합니다. [계약](../vault/wiki/operations/weekly-report.md). 운동 정보는 승인 JSON의 종류/한계/원문을 읽으며 승인 콘텐츠는0개입니다. [검토 패킷](../vault/wiki/product/chest-evidence-review.md). E2E 서버는 운영 공개 compiler를 먼저 실행해 새 저장소에서도 생성 JSON을 준비합니다.122 Vitest/Node10/40fresh browser·probe 통과이며 첫CI의 콘텐츠 누락 실패와 후속 원격 결과를 구별합니다.
+
+647dca5의 GitHub37650233275 세 job/40browser와 실패 probe artifact를 수신했고 같은 source Pages Git 배포·운영24파일 hash/보안 헤더 일치를 확인했습니다. 초기 CI 콘텐츠 누락 실패는 이력으로 보존하며 수정 후 결과와 구별합니다. [현재 운영 확인](../vault/raw/research/2026-10-08-report-guide-git-release.json). 후속 문서는 앱 bundle을 바꾸지 않습니다.

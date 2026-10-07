@@ -259,8 +259,11 @@
     "history/versions/prd-v0.13.0.md": "a755ab8ebb27f145c9a59df660ca2480a5856a9d27f49219110ee78d2d5070eb",
     "raw/research/2026-10-08-fresh-content-harness-loop.json": "c0fda1a23c3d2561daad5a717197c695486d0bb5de723890720e00cbf77f7cfc",
     "history/changes/CHG-0045.md": "ea02288502d6a8d2ecb979cc815b8b821fe93329dddd0b2b8169fa696a9596b6",
-    "history/versions/prd-v0.13.1.md": "6de8c018d1e713990907a7f524d24014c137724f20d4677f9d2262f3600b215e"
+    "history/versions/prd-v0.13.1.md": "6de8c018d1e713990907a7f524d24014c137724f20d4677f9d2262f3600b215e",
+    "raw/research/2026-10-08-report-guide-git-release.json": "9e0578a209874a8a88c6035960c2c0bc901baeda80b9c93b8a8495b6ebcd341f",
+    "history/changes/CHG-0046.md": "fb0dfc5748b717b481d54220eed5de21741bdc36ea231e668a382f4abe8acd90",
+    "history/versions/prd-v0.13.2.md": "0422daad1710d4d70f627f51e75d1330face7b7e94836bcb0739cac7637bd6eb"
   },
   "updated_at": "2026-10-05T10:24:45+09:00",
-  "last_extended_at": "2026-10-08T01:11:57+09:00"
+  "last_extended_at": "2026-10-08T01:19:13+09:00"
 }

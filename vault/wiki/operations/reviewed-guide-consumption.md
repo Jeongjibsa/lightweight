@@ -6,7 +6,7 @@ tags: ["training", "implementation", "testing"]
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-08T01:11:57+09:00"
+  at: "2026-10-08T01:19:13+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-08-027.md"
@@ -17,6 +17,9 @@ sources:
   - id: "unit-chg-0045"
     resource: "../../raw/research/2026-10-08-fresh-content-harness-loop.json"
     title: "깨끗한 CI 콘텐츠 생성 누락 재현·하네스 보완"
+  - id: "unit-chg-0046"
+    resource: "../../raw/research/2026-10-08-report-guide-git-release.json"
+    title: "업데이트·주간 리포트·검토 설명 소비 수정 CI/운영 확인"
 ---
 
 # 승인 설명 소비와 오프라인
@@ -43,3 +46,11 @@ SW precache에 정확히 content/exercise-guides.json을 추가했다. 임의 JS
 600c7b8의 GitHub37648213883에서 check/WebKit19는 success였지만 Chromium20통과/1실패를 확인했다. 실제 내려받은 trace/PNG/console은 offline 공개 JSON 누락을 가리켰다. 새 browser job은 Vite만 실행하여 gitignore된 생성 JSON이 없었다. 운영 build는 compiler를 실행했고 같은 source Pages Git 배포/공개24파일 hash·헤더는 일치했다. 이는 사용자의 idle 업데이트 비활성 원인으로 확정한 결과가 아니다.
 
 E2E 서버가 v1/v2 전에 운영과 같은 공개 compiler를 실행하도록 보완했다. 빈 승인 생성 파일만 없는 상태를 준비한 뒤 원본 registry/개인 기록을 바꾸지 않고 동일 JSON 재생성과40browser를 통과했다.122Vitest/Node10·build/types/format/artifact25·의도적 실패 probe도 통과(기존6경고). 첫 CI 실패/로컬 이전 통과를 모두 보존하고 새 원격 CI/배포는 후속 확인한다. [불변 루프](../../raw/research/2026-10-08-fresh-content-harness-loop.json).
+
+## 업데이트·REP/SCI 운영 반영 — 2026-10-08
+
+업데이트 안내·주간 비교·검토 설명 소비를 main에 push하고 하네스 보완 **647dca5**의 GitHub37650233275 check/Chromium/WebKit 세 job success를 확인했다. 실제 수신한 정상 artifact는 **Chromium21/WebKit19=40** 통과·unexpected/flaky/skipped0이며, 의도적 실패 probe의 trace/PNG/console/execution/report 보존도 확인했다.
+
+같은 source의 Pages `github:push` build/deploy가 success이고 운영 공개24파일 SHA256·보안 헤더가 검증 build와 일치한다. 첫37648213883 Chromium1실패는 이력에 보존하며 생성JSON 준비를 추가한 뒤의 결과와 구별한다. [불변 배포 확인](../../raw/research/2026-10-08-report-guide-git-release.json).122Vitest/Node10·build/types/format/artifact25 통과, 기존lint6경고는 유지한다.
+
+실제 승인 설명0개·직접/간접 매핑·시각/권리·조건 티어·권장량, 앱 내부 리포트 보관함은 미완료다. 업데이트 제보의 당시 원인 미상/실기기와 iPhone 파일 저장, 실제 Auth/다기기·과학 공개/운영 복구·4주 파일럿/P2 관문은 남는다. 새 서버/Auth/schema/의존성을 바꾸지 않았다. preview DB는 기존 빈 설정을 유지하고 새 preview branch 배포/asset 검사는 하지 않았다. 후속 문서는 앱 bundle을 바꾸지 않는다.

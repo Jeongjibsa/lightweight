@@ -4,7 +4,7 @@ okf_version: "0.2"
 
 # 웨이트 트레이닝 앱 — 기획과 지식 베이스
 
-옵시디언에서 이 `vault` 폴더를 열고 시작한다. 현재 기획은 **0.13.1 브레인스토밍 초안**이다.
+옵시디언에서 이 `vault` 폴더를 열고 시작한다. 현재 기획은 **0.13.2 브레인스토밍 초안**이다.
 
 ## 먼저 읽기
 
@@ -48,7 +48,9 @@ okf_version: "0.2"
 - [양식](templates/index.md) — 출처·변경 작성.
 - [시각 자료](assets/index.md) — 추후 콘텐츠.
 
-과학 자료는2026-10-03 초기 표적 탐색이며 일부 초록/전문 미검토 자료가 있다. 현재 PRD0.10.1·app0.2.0/schema2·Mantine/Geist/차콜·노란 강조·하단 UI. [운영 앱](https://lightweight-training.pages.dev)과 DB 연결 없는 preview를 배포했다.90개 Vitest·Node계약8개(배포3/공개5)·browser24를 통과했다. 종료 기록1db637d GitHub3job·운영/preview24file hash/헤더 배포 일치를 완료했다. 루틴 복구86cc158 GitHub3job·운영/preview24file hash/헤더 배포 일치를 완료했다. 순서 단위 e912f0c의 GitHub3job·운영/preview 공개24file 일치 배포를 확인했다. 새 공개 gate96bbb74 CI/운영·preview24file 일치 확인 완료. Auth 등록1개/허용1개·명시 승인 후 실제 Chrome 빈 프로필 전송/조회/같은 기기 적용을 확인했다. 실제 운동/새 기기·A/B/만료·로그아웃/메일은 남는다. iPhone 홈 화면/로그인은 사용자 보고 확인. 실제 운동 저장·재실행·수동 전송은 다음 운동 후 확인 예정이며 not_run이다. 실제 Auth/다기기·나머지 실기기·과학 공개/전문가·운영 복구·파일럿과 전체 운동 MVP는 남는다. [현재 남은 작업](wiki/product/remaining-work.md). 아래 링크는 누적 증분이며 당시 검사와 최신 상태를 구별한다.
+현재 PRD0.13.2·app0.2.0/schema2·Mantine/Geist/차콜·노란 강조·하단 UI다. [운영 앱](https://lightweight-training.pages.dev)의 업데이트 안내·주간 비교/읽기 리포트·검토 설명 소비를 반영했다.122Vitest/Node10·Chromium21/WebKit19=40·GitHub37650233275 세 job 및 실제 artifact·같은647dca5 source의 Pages Git 배포/운영24파일 hash·헤더 일치를 확인했다. 첫 CI 콘텐츠 누락 실패와 수정 후 결과는 각각 보존한다. [현재 배포](raw/research/2026-10-08-report-guide-git-release.json).
+
+과학 출처54개 중 전문 검토 범위가 다른 자료를 구분하며 실제 인간 승인 설명은0개다. 가슴 근거 패킷은 에이전트 검토 초안이고 근육 매핑/시각/권리·티어/권장량은 남는다. 사용자 업데이트 제보의 당시 원인은 미상, 실기기 update와 iPhone 리포트 파일은 미검증이다. iPhone 홈 화면/로그인은 이전 사용자 보고로 확인했다. 실제 운동 저장·재실행·수동 전송은 다음 운동 후 확인 예정이며 not_run이다. 실제 Auth/다기기·운영 복구/4주 파일럿과 전체 운동 MVP는 진행 중이다. [현재 남은 작업](wiki/product/remaining-work.md). 아래 링크는 당시 증분 이력이며 최신 상태와 구별한다.
 
 - [최신 컴포넌트 재감사](wiki/product/component-review.md) — 다섯 페이지 수정 전/후·펼친 선택창·55개 검사·20폭/화면 관찰.
 - [3D 해부학 애니메이션 검토](wiki/product/anatomy-3d-feasibility.md) — FR-17·P2후순위, 가능성/자산/검토·실기기 관문.
@@ -116,3 +118,5 @@ okf_version: "0.2"
 - 최신 PRD0.13.0: [설명 소비/오프라인](wiki/operations/reviewed-guide-consumption.md)·[가슴 검토 패킷](wiki/product/chest-evidence-review.md).
 
 - 최신 PRD0.13.1: [깨끗한 CI 콘텐츠 준비/첫 실패 루프](raw/research/2026-10-08-fresh-content-harness-loop.json).
+
+- 최신 PRD0.13.2: [업데이트·주간 리포트·검토 설명 소비 Git/CI·운영 확인](raw/research/2026-10-08-report-guide-git-release.json).
