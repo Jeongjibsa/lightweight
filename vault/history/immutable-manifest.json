@@ -242,8 +242,11 @@
     "raw/research/2026-10-07-supabase-sync-api-review.json": "7da16308a455c78d3caba4cb913336d4d88af27b1523fccb22bf12ac3cca6b3e",
     "raw/research/2026-10-07-sync-stale-response-loop.json": "c5abf63fd2ebb76c2758d95fc2b4075a00cfc825664114e44aa100d07677039c",
     "history/changes/CHG-0040.md": "ee8918a01769c7f49ce36298ab3b36162fdae861fb7bce54d1d60365320e3ee3",
-    "history/versions/prd-v0.11.1.md": "56dec66913622d6f6f76ac2991ae6fce75ea2ca2fe40cefb4d292c5067e93398"
+    "history/versions/prd-v0.11.1.md": "56dec66913622d6f6f76ac2991ae6fce75ea2ca2fe40cefb4d292c5067e93398",
+    "raw/research/2026-10-07-catalog-sync-git-release.json": "e2d006c41897defddd07a12fa49c510d08f57ae627114535aeda92cd5ebddaf2",
+    "history/changes/CHG-0041.md": "d2a51ef3d42765180a8478fc4a935b656eaebdbefa2b867315256efe524ef699",
+    "history/versions/prd-v0.11.2.md": "f843a2a5b292cf8d76dbf7ff2d9679af64dfc9f9a1f29c1c01855e851670fb2b"
   },
   "updated_at": "2026-10-05T10:24:45+09:00",
-  "last_extended_at": "2026-10-07T22:31:48+09:00"
+  "last_extended_at": "2026-10-07T22:38:49+09:00"
 }

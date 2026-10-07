@@ -6,7 +6,7 @@ tags: ["training", "implementation", "testing"]
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-07T22:31:48+09:00"
+  at: "2026-10-07T22:38:49+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-07-026.md"
@@ -17,6 +17,9 @@ sources:
   - id: "technical"
     resource: "../sources/SRC-053-sync-api-revision.md"
     title: "공식 API 범위"
+  - id: "unit-chg-0041"
+    resource: "../../raw/research/2026-10-07-catalog-sync-git-release.json"
+    title: "세 종목·동기화 보존 실제 Git/CI·운영 확인"
 version: "0.1.0"
 change_id: "CHG-0040"
 ---
@@ -44,3 +47,9 @@ baseRevision은 이 기기가 ACK/명시 내려받기로 확인한 서버 버전
 ## 남은 SYNC 관문
 
 실제 새 기기·Auth 만료/로그아웃·권한 회수·두 편집의 항목별 해결/삭제 재접속·10MiB snapshot 정책·여러 앱 버전과 운영 복구/서버 revision 초기화 정책은 남는다. 서버 snapshot을 과거 낮은 revision으로 복구하는 운영 정책은 선택하지 않았으며, 이번 클라이언트가 이를 최신 응답으로 받아들이지 않는다. 실제 운동 기록은 사용자의 다음 운동 후 확인 과업이다. [현재 남은 작업](../product/remaining-work.md).
+
+## 세 종목·동기화 보존 운영 반영 — 2026-10-07
+
+세 종목 추가b44ebda와 늦은 응답 차단fba60bb를 main에 push했다. GitHub37629327092 세 job success·실제 내려받은 Chromium19/WebKit17=36 결과와 최초 실패 probe 증거를 확인했다. 같은 fba60bb source의 Pages Git build/deploy가 성공했고 운영 공개24파일 SHA256·보안 헤더가 검증 빌드와 일치한다. [불변 배포 확인](../../raw/research/2026-10-07-catalog-sync-git-release.json).
+
+카탈로그37/기존 ID·중량 기준·112Vitest/Node10·36browser와 schema2/backup1을 유지한다. SYNC 합성 검사와 실제 Auth/기기 관문을 구별한다. 실제 운동/새 기기·만료/회수·iPhone/Watch·SCI·운영 복구/파일럿·식단/3D/P2는 남는다. 신규 preview branch 배포는 검증하지 않았고 기존 preview DB 환경은 비어 있다. 이 후속 문서는 앱 bundle을 바꾸지 않는다.

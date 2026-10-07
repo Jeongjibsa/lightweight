@@ -4,7 +4,7 @@ okf_version: "0.2"
 
 # 웨이트 트레이닝 앱 — 기획과 지식 베이스
 
-옵시디언에서 이 `vault` 폴더를 열고 시작한다. 현재 기획은 **0.11.1 브레인스토밍 초안**이다.
+옵시디언에서 이 `vault` 폴더를 열고 시작한다. 현재 기획은 **0.11.2 브레인스토밍 초안**이다.
 
 ## 먼저 읽기
 
@@ -106,3 +106,5 @@ okf_version: "0.2"
 - 최신 PRD0.11.0: [37종목/맨몸 추가 중량](wiki/operations/catalog-expansion.md). 실제 운동·다기기/SCI 관문은 남는다.
 
 - 최신 PRD0.11.1: [합성 두 기기/늦은 응답 차단](wiki/operations/local-sync-recovery.md),112Vitest/Node10/36browser. 실제 Auth/기기·SCI 관문 유지.
+
+- 최신 PRD0.11.2: [37종목/SYNC Git/CI·운영24파일 배포 완료](raw/research/2026-10-07-catalog-sync-git-release.json). 실제 운동/Auth/실기기·SCI 관문은 남는다.

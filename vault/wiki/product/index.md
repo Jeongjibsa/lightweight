@@ -40,3 +40,5 @@
 - PRD0.11.0: [세 종목/중량 계약](../operations/catalog-expansion.md).
 
 - PRD0.11.1: [오래된 응답/삭제 복구](../operations/local-sync-recovery.md).
+
+- PRD0.11.2: [세 종목/SYNC 운영 반영](remaining-work.md).

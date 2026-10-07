@@ -1,0 +1,314 @@
+{
+  "type": "Implementation Verification",
+  "generated": {
+    "by": "codex/gpt-6",
+    "at": "2026-10-07T22:38:49+09:00"
+  },
+  "immutable": true,
+  "implementation_commits": [
+    {
+      "hash": "b44ebda",
+      "purpose": "three exercises and recording conventions"
+    },
+    {
+      "hash": "fba60bba2ae71028210b66f09a94bdbdced2daca",
+      "purpose": "stale-response revision floor and synthetic two-device recovery"
+    }
+  ],
+  "github": {
+    "run_id": 37629327092,
+    "url": "https://github.com/Jeongjibsa/lightweight/actions/runs/37629327092",
+    "status": "completed",
+    "conclusion": "success",
+    "head_sha": "fba60bba2ae71028210b66f09a94bdbdced2daca",
+    "jobs": [
+      {
+        "name": "check",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/Jeongjibsa/lightweight/actions/runs/37629327092/job/112819163504"
+      },
+      {
+        "name": "browser (chromium-mobile, chromium)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/Jeongjibsa/lightweight/actions/runs/37629327092/job/112819163687"
+      },
+      {
+        "name": "browser (webkit-mobile, webkit)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/Jeongjibsa/lightweight/actions/runs/37629327092/job/112819163885"
+      }
+    ]
+  },
+  "downloaded_ci_artifacts": [
+    {
+      "directory": "browser-webkit-mobile-37629327092-1/20261007T133347548Z-28b63c3a",
+      "stats": {
+        "startTime": "2026-10-07T13:33:47.944Z",
+        "duration": 97703.115,
+        "expected": 17,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "run_id": "20261007T133347548Z-28b63c3a",
+      "code_fingerprint": "9e3c7fb3c4c92439b723a92c3a24f3a71c937ebfc102cb90daf7c72578908fea",
+      "source_commit": "fba60bba2ae71028210b66f09a94bdbdced2daca",
+      "credentials": "Supabase VITE environment overridden empty; env files excluded from fingerprint",
+      "intentional_failure_probe": false
+    },
+    {
+      "directory": "browser-chromium-mobile-37629327092-1/probe-66cb10e7-a95e-45de-a050-0ea111f38b36",
+      "stats": {
+        "startTime": "2026-10-07T13:35:19.493Z",
+        "duration": 6352.588,
+        "expected": 0,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      },
+      "run_id": "probe-66cb10e7-a95e-45de-a050-0ea111f38b36",
+      "code_fingerprint": "9e3c7fb3c4c92439b723a92c3a24f3a71c937ebfc102cb90daf7c72578908fea",
+      "source_commit": "fba60bba2ae71028210b66f09a94bdbdced2daca",
+      "credentials": "Supabase VITE environment overridden empty; env files excluded from fingerprint",
+      "intentional_failure_probe": true
+    },
+    {
+      "directory": "browser-chromium-mobile-37629327092-1/20261007T133325949Z-61b61a3f",
+      "stats": {
+        "startTime": "2026-10-07T13:33:26.595Z",
+        "duration": 112047.45,
+        "expected": 19,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      },
+      "run_id": "20261007T133325949Z-61b61a3f",
+      "code_fingerprint": "9e3c7fb3c4c92439b723a92c3a24f3a71c937ebfc102cb90daf7c72578908fea",
+      "source_commit": "fba60bba2ae71028210b66f09a94bdbdced2daca",
+      "credentials": "Supabase VITE environment overridden empty; env files excluded from fingerprint",
+      "intentional_failure_probe": false
+    }
+  ],
+  "pages": {
+    "origin": "https://lightweight-training.pages.dev",
+    "production_branch": "main",
+    "source_type": "github",
+    "production_enabled": true,
+    "id": "30189a15-f8ff-4c4f-8b6e-628fe65f8b61",
+    "url": "https://30189a15.lightweight-training.pages.dev",
+    "environment": "production",
+    "created_on": "2026-10-07T13:32:38.450128Z",
+    "latest_stage": {
+      "name": "deploy",
+      "started_on": "2026-10-07T13:33:18.96193Z",
+      "ended_on": "2026-10-07T13:33:27.69917Z",
+      "status": "success"
+    },
+    "trigger": "github:push",
+    "commit": "fba60bba2ae71028210b66f09a94bdbdced2daca",
+    "stages": [
+      {
+        "name": "queued",
+        "started_on": "2026-10-07T13:32:38.607595Z",
+        "ended_on": "2026-10-07T13:32:38.609946Z",
+        "status": "success"
+      },
+      {
+        "name": "initialize",
+        "started_on": "2026-10-07T13:32:38.609946Z",
+        "ended_on": "2026-10-07T13:32:42.562509Z",
+        "status": "success"
+      },
+      {
+        "name": "clone_repo",
+        "started_on": "2026-10-07T13:32:42.562509Z",
+        "ended_on": "2026-10-07T13:32:44.688257Z",
+        "status": "success"
+      },
+      {
+        "name": "build",
+        "started_on": "2026-10-07T13:32:44.688257Z",
+        "ended_on": "2026-10-07T13:33:18.96193Z",
+        "status": "success"
+      },
+      {
+        "name": "deploy",
+        "started_on": "2026-10-07T13:33:18.96193Z",
+        "ended_on": "2026-10-07T13:33:27.69917Z",
+        "status": "success"
+      }
+    ],
+    "configured_env": {
+      "preview": {
+        "VITE_SUPABASE_URL": false,
+        "VITE_SUPABASE_PUBLISHABLE_KEY": false
+      },
+      "production": {
+        "VITE_SUPABASE_URL": true,
+        "VITE_SUPABASE_PUBLISHABLE_KEY": true
+      }
+    },
+    "recent": [
+      {
+        "id": "30189a15-f8ff-4c4f-8b6e-628fe65f8b61",
+        "url": "https://30189a15.lightweight-training.pages.dev",
+        "environment": "production",
+        "latest_stage": {
+          "name": "deploy",
+          "started_on": "2026-10-07T13:33:18.96193Z",
+          "ended_on": "2026-10-07T13:33:27.69917Z",
+          "status": "success"
+        },
+        "trigger": "github:push",
+        "commit": "fba60bba2ae71028210b66f09a94bdbdced2daca"
+      },
+      {
+        "id": "8d6337e8-afe0-436e-91e7-1cf1be6d22d5",
+        "url": "https://8d6337e8.lightweight-training.pages.dev",
+        "environment": "production",
+        "latest_stage": {
+          "name": "deploy",
+          "started_on": "2026-10-07T12:56:56.343201Z",
+          "ended_on": "2026-10-07T12:57:01.679467Z",
+          "status": "success"
+        },
+        "trigger": "github:push",
+        "commit": "7b890baeb1cb5b642269e8497b2f232b18e42a65"
+      },
+      {
+        "id": "1921f43b-28bb-4dc1-a6b1-4ede064b6006",
+        "url": "https://1921f43b.lightweight-training.pages.dev",
+        "environment": "production",
+        "latest_stage": {
+          "name": "deploy",
+          "started_on": "2026-10-07T12:40:12.906827Z",
+          "ended_on": "2026-10-07T12:40:19.416885Z",
+          "status": "success"
+        },
+        "trigger": "github:push",
+        "commit": "48c0f444d64f279876b3e63551aa399ada67e218"
+      }
+    ]
+  },
+  "production_file_header_check": {
+    "checkedAt": "2026-10-07T13:36:22.411Z",
+    "origin": "https://lightweight-training.pages.dev",
+    "files": 24,
+    "indexSha256": "cf96bb6aa1d7e90790effec0e57110a7f38af7b91e32545ce28640fc179ad8f2",
+    "headers": {
+      "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://xmdbivohdjczpbjcujvu.supabase.co; worker-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
+      "x-content-type-options": "nosniff",
+      "x-frame-options": "DENY",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "permissions-policy": "camera=(), microphone=(), geolocation=()"
+    },
+    "assets": [
+      {
+        "path": "apple-touch-icon.png",
+        "sha256": "1594d1e02221edf244f40e7928ff9a981ea9d26b807ac1c0248857b847142f79"
+      },
+      {
+        "path": "assets/geist-cyrillic-ext-wght-normal-DjL33-gN.woff2",
+        "sha256": "2317fa4bb293c9c0b110e18315d529235c47a0ddd3338cea3d8c7955e927899e"
+      },
+      {
+        "path": "assets/geist-cyrillic-wght-normal-BEAKL7Jp.woff2",
+        "sha256": "6894439694946a589d157ece003086960a6a4013d74a813dab7602efdb3d8c09"
+      },
+      {
+        "path": "assets/geist-latin-ext-wght-normal-DC-KSUi6.woff2",
+        "sha256": "824f485b5d26e2f2da3c2b236132ece1bc8e4e43373452950bb0e40548b4313f"
+      },
+      {
+        "path": "assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "sha256": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1"
+      },
+      {
+        "path": "assets/geist-vietnamese-wght-normal-6IgcOCM7.woff2",
+        "sha256": "8fa40e5d248247735eb97a0bd593b8852440430600d6ba01364c31fe0abc1fe1"
+      },
+      {
+        "path": "assets/index-CcZxJsaa.css",
+        "sha256": "0b9cf924fa0211e5e6d112f2d5d03d362a8d85c7c84d4c830cd68bf14cde99a7"
+      },
+      {
+        "path": "assets/index-NWYVtFyC.js",
+        "sha256": "28e07018c2d3e271b5cdb877c4241adecd0b7b49f14ca83d76d663947a100c6e"
+      },
+      {
+        "path": "assets/mantine-B1k8zaqb.css",
+        "sha256": "23f64fb1d7b81e89f10821d66dbe05884bc952de99b13c5a7960c23b67336ca8"
+      },
+      {
+        "path": "assets/mantine-DaILK78s.js",
+        "sha256": "ccc94a7cbe78e06447b2274be77401af5023113f12bb1b1e80dc8905595f235c"
+      },
+      {
+        "path": "assets/react-DjX0U0Iu.js",
+        "sha256": "49f492b7a8b9e47e35b7a9aa36d96824c35439694a092fa912347d6fa34d5366"
+      },
+      {
+        "path": "assets/rolldown-runtime-CbXtAM7H.js",
+        "sha256": "bbf7c5086ae414dc3f33777e3eebf16ea8631325b8bb4690d25091c03567f31a"
+      },
+      {
+        "path": "assets/storage-validation-DOH7Xcnc.js",
+        "sha256": "993042dc8c21f481fe1b38f5bf0d3111f434c962425728dc4c1e0b937824acab"
+      },
+      {
+        "path": "assets/supabase-B0JtmJTB.js",
+        "sha256": "a8b364327a435672f26b6894541f694c529edcddc17dba6f3867b8cebd205af8"
+      },
+      {
+        "path": "assets/workbox-window.prod.es5-Bd17z0YL.js",
+        "sha256": "17bcc17d60dc78f927834b880c39649b03af46fd1f5cdbb8c42c5ae2b515dce9"
+      },
+      {
+        "path": "content/exercise-guides.json",
+        "sha256": "fb9b786e85ce30eb3990a70eeb4c21533057c590506849dfe0faaa851da5efae"
+      },
+      {
+        "path": "fonts/geist/LICENSE",
+        "sha256": "71609cbb5c78b5870d712eab73a31d76622635c6ed034ab5cee3b9ecbda8685f"
+      },
+      {
+        "path": "icon-192.png",
+        "sha256": "054139c0741db6e8d4c3add6cf71e2ce79557ddf7c5aad11019b8c73ea783c46"
+      },
+      {
+        "path": "icon-512.png",
+        "sha256": "f96dc0da0063445e34adae874750ff673a488f9077e12cb13e4a60d08d15609f"
+      },
+      {
+        "path": "icon.svg",
+        "sha256": "8541109036aef92c47eb992ae39a6ed6086877aa47b8ee6c1ae35ebdeb379329"
+      },
+      {
+        "path": "manifest.webmanifest",
+        "sha256": "ebeb087861a8cd32fdd8544ee4266ff45e7810d0254868db3ac1eff6b29d13ab"
+      },
+      {
+        "path": "sw.js",
+        "sha256": "2ba5136d11a38499538dd8b245203c9a952c37cb247e97424625c70a3aa1b654"
+      },
+      {
+        "path": "workbox-2fbc6a65.js",
+        "sha256": "39c2e6ae44c3f29666f6a328b6523bf13a053a1d95c74af8ddea82b1045b0b6e"
+      }
+    ],
+    "limits": "Read-only file/header verification; no real Auth or device test"
+  },
+  "local": "112Vitest(35unit/46integration/31UI)/Node10,36browser and prior catalog6 repetitions/final2viewport, build/types/format/artifact25/vault passed; six pre-existing lint effect warnings",
+  "official_reference": {
+    "url": "https://developers.cloudflare.com/pages/configuration/git-integration/",
+    "read": "Git push deployment/branch integration relevant sections only; actual project configuration/status separately read"
+  },
+  "authentication": "Existing authorized Wrangler session; read-only deployment list and exact Pages project API. No new login/scopes/account change. CLI help log EPERM under sandbox did not block help/version discovery; authenticated read used normal approved CLI environment.",
+  "preview": "Configured Supabase preview env values empty; no new preview branch deploy or asset verification in this unit",
+  "limits": "No Supabase SQL/Auth/RLS/account/schema/dependency change. Synthetic sync contract is not actual Auth/new-device/iPhone proof. Scientific content0 and physical/pilot/P2 gates remain.",
+  "following_docs": "Evidence-only followup changes no application bundle; a new docs Git build/CI is a separate event, not included in this receipt.",
+  "privacy": "No personal workouts, credential, token or real account identity payload stored."
+}

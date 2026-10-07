@@ -180,3 +180,5 @@ iPhone 홈 화면 설치·실행·로그인은 사용자 보고로 확인했습�
 48c0f44 main의 GitHub37622605794 세 job success/34browser artifact를 수신하고 같은 source Pages Git build/deploy·운영24파일 hash/헤더 일치를 확인했습니다. [운영 반영](../vault/raw/research/2026-10-07-workout-ux-git-release.json). 이 후속 문서 commit은 앱 bundle을 바꾸지 않습니다.
 
 37종목에 스미스머신 스쿼트·덤벨 인클라인 벤치 프레스·딥스를 추가했습니다. [중량 기준](../vault/wiki/operations/catalog-expansion.md)·[오래된 응답/복구](../vault/wiki/operations/local-sync-recovery.md).112Vitest/Node10·36browser를 확인했으며 실제 Auth/기기·과학 검토는 별도입니다.
+
+b44ebda/fba60bb main의 GitHub37629327092 세 job과19+17browser artifact·동일 source Pages Git build/deploy/운영24파일 해시·헤더를 확인했습니다. [배포 증거](../vault/raw/research/2026-10-07-catalog-sync-git-release.json). 후속 증거 문서는 앱 bundle을 바꾸지 않습니다.

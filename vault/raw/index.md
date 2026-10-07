@@ -21,3 +21,5 @@
 - [CONV0026](conversations/2026-10-07-026.md) · [종목 추가 검사](research/2026-10-07-catalog-expansion-loop.json).
 
 - [합성 동기화 복구](research/2026-10-07-sync-stale-response-loop.json).
+
+- [세 종목/SYNC 운영 배포 확인](research/2026-10-07-catalog-sync-git-release.json).

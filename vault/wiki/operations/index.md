@@ -34,3 +34,5 @@
 - [세 종목 추가/중량 기준](catalog-expansion.md).
 
 - [합성 다기기/오래된 응답 차단](local-sync-recovery.md).
+
+- [세 종목/SYNC Git 배포 확인](pages-git-integration.md).

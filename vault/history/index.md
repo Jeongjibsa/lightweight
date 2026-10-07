@@ -19,3 +19,5 @@
 - [CHG0039](changes/CHG-0039.md).
 
 - [CHG0040](changes/CHG-0040.md).
+
+- [CHG0041](changes/CHG-0041.md).
