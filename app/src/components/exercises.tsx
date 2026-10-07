@@ -42,6 +42,7 @@ import {
   type Routine,
 } from "../domain/models";
 import { useTraining } from "../context/training";
+import { ExerciseGuide } from "./exercise-guide";
 import { Empty, Modal, type Run } from "./shared";
 export function ExercisePicker({
   onPick,
@@ -277,9 +278,7 @@ export function LibraryView({
       {detail && (
         <Modal title={detail.name} onClose={() => setDetail(null)}>
           <Stack gap="md">
-            <Badge w="fit-content">
-              {detail.review === "user_added" ? "직접 입력" : "콘텐츠 검토 전"}
-            </Badge>
+            <ExerciseGuide key={detail.id} exerciseId={detail.id} />
             {[
               ["기록 분류", detail.group],
               ["장비", detail.equipment],
@@ -296,7 +295,8 @@ export function LibraryView({
             ))}
             <Text c="dimmed" size="sm">
               같은 중량 표기와 장비 조건을 유지하면 지난 기록을 비교하기
-              편합니다. 수행 방법과 근거 평가는 아직 준비 중입니다.
+              편합니다. 입력 분류는 근육별 자극량이나 효과 순위를 뜻하지
+              않습니다.
             </Text>
             <Button
               fullWidth

@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-08T00:51:02+09:00"
+  at: "2026-10-08T00:56:29+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -224,11 +224,21 @@ sources:
   - id: "unit-chg-0043"
     resource: "../../raw/conversations/2026-10-08-027.md"
     title: "REP 우선: 주간 비교/저장 시점 리포트"
-version: "0.7.0"
-change_id: "CHG-0043"
+  - id: "unit-chg-0044"
+    resource: "../../raw/conversations/2026-10-08-027.md"
+    title: "SCI 우선: 검토 설명 소비/가슴 연구 검토"
+version: "0.8.0"
+change_id: "CHG-0044"
 ---
 
 # 로컬 PWA 구현 결과와 다음 작업
+
+## SCI 검토 설명 소비와 가슴 연구 패킷 — 2026-10-08
+
+검토 설명 JSON을 운동 정보 창에서 읽고 주장 종류/한계/원문/버전을 함께 표시한다. 엄격한 형식/출처 연결·실패/재시도/종목 전환 보존과 공개 JSON의 실제 SW offline을 검증했다.122Vitest/Node10/40browser·build/types/format/artifact25 통과(기존6경고). [소비 계약/화면](../operations/reviewed-guide-consumption.md).
+
+[가슴 조건 검토 패킷](chest-evidence-review.md)과 [SRC054](../sources/SRC-054-bench-angle-training.md)를 추가했다. 주 연구의 Methods/Results/Discussion을 에이전트가 읽었으며 장비/대상/측정 조건·비교 공백을 구분한다. 기존ACSM2026 전문 접근은 미완료로 남겼다. **실제 인간 승인 설명0개·근육 매핑/수행 시각/추천 규칙/조건 티어는 미완료**다. 합성 fixture를 실제승인으로 등록하지 않는다. 실기기/Auth·식단/3D/파일럿 관문은 유지하며 추가 논문/해부학·권리 검토와 인간 검토 결과가 다음 SCI 선행 조건이다.
+
 
 ## REP-02 주간 비교/저장 시점 증분 — 2026-10-08
 

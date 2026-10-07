@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-08T00:51:02+09:00"
+  at: "2026-10-08T00:56:29+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -224,12 +224,22 @@ sources:
   - id: "unit-chg-0043"
     resource: "../../raw/conversations/2026-10-08-027.md"
     title: "REP 우선: 주간 비교/저장 시점 리포트"
-version: "0.10.0"
+  - id: "unit-chg-0044"
+    resource: "../../raw/conversations/2026-10-08-027.md"
+    title: "SCI 우선: 검토 설명 소비/가슴 연구 검토"
+version: "0.11.0"
 approval_status: "proposal"
-change_id: "CHG-0043"
+change_id: "CHG-0044"
 ---
 
 # 운동 PWA 구현 백로그와 완료 기준
+
+## SCI 검토 설명 소비와 가슴 연구 패킷 — 2026-10-08
+
+검토 설명 JSON을 운동 정보 창에서 읽고 주장 종류/한계/원문/버전을 함께 표시한다. 엄격한 형식/출처 연결·실패/재시도/종목 전환 보존과 공개 JSON의 실제 SW offline을 검증했다.122Vitest/Node10/40browser·build/types/format/artifact25 통과(기존6경고). [소비 계약/화면](../operations/reviewed-guide-consumption.md).
+
+[가슴 조건 검토 패킷](chest-evidence-review.md)과 [SRC054](../sources/SRC-054-bench-angle-training.md)를 추가했다. 주 연구의 Methods/Results/Discussion을 에이전트가 읽었으며 장비/대상/측정 조건·비교 공백을 구분한다. 기존ACSM2026 전문 접근은 미완료로 남겼다. **실제 인간 승인 설명0개·근육 매핑/수행 시각/추천 규칙/조건 티어는 미완료**다. 합성 fixture를 실제승인으로 등록하지 않는다. 실기기/Auth·식단/3D/파일럿 관문은 유지하며 추가 논문/해부학·권리 검토와 인간 검토 결과가 다음 SCI 선행 조건이다.
+
 
 ## REP-02 주간 비교/저장 시점 증분 — 2026-10-08
 
@@ -303,8 +313,8 @@ UI-01은 당시 부분 Mantine/Spoqa/스택 명시 증분으로 done이었다. C
 | REP-05 | M4 | 기간/운동/지표 그래프·표·재계산 | REP-04, HAR-02 | 날짜 간격·결측 보류·유효1점·narrow UI/기간/조건 선택·reload | done |
 | REP-06 | M4 | 오늘 사용자 루틴/과거 수행량 참고 후보 | REP-04, PREF-01, LOG-03 | 최근 종료/같은 설정·장비·자료 부족/오늘/진행 보류, 명시 선택·과거량 표시 | done |
 | SCI-03B | M5 | 과거 수행 기반 권장 운동량 조정 | REP-06, SCI-01~03; 경험/effort/불편감 | 검토된 정책·충분성/보류·이유·사용자 채택, 자동 증량/최적량 단정 없음 | planned |
-| SCI-01 | M0~M5 | 논문/해부학·정정/철회·대상/측정/비교·제안 수치 검토 등록 | PRE-03 | 공개 주장별 출처/읽은 범위/제약/검토자/일자·전문 공백 기록; 미검토 정책 제공 차단 | planned |
-| SCI-02 | M5 | 공개 콘텐츠/규칙 등록부와 앱 JSON 빌드 | SCI-01, LOG-02 | registry/선택 JSON·receipt/hash/ID/full_review/asset gate 구현·승인0개; 실검토/UI/추천 규칙 연결 후속 | in_progress |
+| SCI-01 | M0~M5 | 논문/해부학·정정/철회·대상/측정/비교·제안 수치 검토 등록 | PRE-03 | SRC054 본문 조건/한계 검토·가슴 패킷; 공개 주장별 인간 검토/일자·전문 공백/정정 확인은 후속 | in_progress |
+| SCI-02 | M5 | 공개 콘텐츠/규칙 등록부와 앱 JSON 빌드 | SCI-01, LOG-02 | registry/공유schema·선택 JSON·receipt/asset gate→종류/한계/출처 UI/offline·승인0개; 실제 승인/자산/추천 규칙 후속 | in_progress |
 | SCI-03 | M5 | 프로필별 목표·횟수·분할 조건 루틴/대체·시간/장비 검사·채택 저장 | SCI-02, LOG-03, REP-01; Q-01/06 | 검토된 규칙만 사용, 3↔4회/분할 변경·누락·장비/시간 처리·입력/출력/근거 버전 재현 | planned |
 | SCI-04 | M5 | 한 부위 조건 티어·이유·근거 배지·갱신일 | SCI-02, REP-03 | 직접 비교 없는 경우 보류/동등 허용, 목표/장비별 일관성·단일 연구 자동S 금지 | planned |
 | REL-01 | M6 | Pages preview/운영·HTTPS origin·환경/인증 URL 분리 | BASE-02, SYNC-05; Q-08/16/17 | Pages/HTTPS/정확한 Auth 반환 URL·현재 앱 24file hash 확인 완료; 실제 운동/새 기기 Auth·Access/자동 배포·메일/복구 후속 | in_progress |

@@ -10,48 +10,10 @@ import {
 import { resolve, sep, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import { z } from "zod";
+import { guideId, payloadSchema } from "../src/content/guide-schema.ts";
 import { catalog } from "../src/content/catalog.ts";
 
-const id = z.string().regex(/^[a-zA-Z0-9][a-zA-Z0-9._-]*$/);
-const httpsUrl = z.url().refine((value) => {
-  const url = new URL(value);
-  return url.protocol === "https:" && !url.username && !url.password;
-}, "Public source must be an HTTPS URL without credentials");
-const payloadSchema = z.strictObject({
-  exerciseId: id,
-  version: id,
-  claims: z
-    .array(
-      z.strictObject({
-        id,
-        kind: z.enum(["scientific", "biomechanical_inference", "user_fit"]),
-        text: z.string().trim().min(1),
-        limits: z.string().trim().min(1),
-        sourceIds: z.array(id).min(1),
-      }),
-    )
-    .min(1),
-  sources: z
-    .array(
-      z.strictObject({
-        id,
-        url: httpsUrl,
-        readScope: z.enum(["full_review", "partial", "abstract"]),
-      }),
-    )
-    .min(1),
-  assets: z.array(
-    z.strictObject({
-      path: z
-        .string()
-        .regex(/^\/content\/assets\/[a-zA-Z0-9_-]+\.(?:svg|png|webp|mp4|glb)$/),
-      license: z.enum(["own", "licensed", "public_domain", "unknown"]),
-      attribution: z.string().trim().min(1),
-      rightsRef: id,
-      sha256: z.string().regex(/^[a-f0-9]{64}$/),
-    }),
-  ),
-});
+const id = guideId;
 const reviewSchema = z.strictObject({
   status: z.literal("approved"),
   reviewerKind: z.literal("human"),

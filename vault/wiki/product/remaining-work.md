@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-08T00:51:02+09:00"
+  at: "2026-10-08T00:56:29+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -209,12 +209,22 @@ sources:
   - id: "unit-chg-0043"
     resource: "../../raw/conversations/2026-10-08-027.md"
     title: "REP 우선: 주간 비교/저장 시점 리포트"
-version: "0.7.0"
+  - id: "unit-chg-0044"
+    resource: "../../raw/conversations/2026-10-08-027.md"
+    title: "SCI 우선: 검토 설명 소비/가슴 연구 검토"
+version: "0.8.0"
 approval_status: "proposal"
-change_id: "CHG-0043"
+change_id: "CHG-0044"
 ---
 
 # 남은 작업 한눈에 보기
+
+## SCI 검토 설명 소비와 가슴 연구 패킷 — 2026-10-08
+
+검토 설명 JSON을 운동 정보 창에서 읽고 주장 종류/한계/원문/버전을 함께 표시한다. 엄격한 형식/출처 연결·실패/재시도/종목 전환 보존과 공개 JSON의 실제 SW offline을 검증했다.122Vitest/Node10/40browser·build/types/format/artifact25 통과(기존6경고). [소비 계약/화면](../operations/reviewed-guide-consumption.md).
+
+[가슴 조건 검토 패킷](chest-evidence-review.md)과 [SRC054](../sources/SRC-054-bench-angle-training.md)를 추가했다. 주 연구의 Methods/Results/Discussion을 에이전트가 읽었으며 장비/대상/측정 조건·비교 공백을 구분한다. 기존ACSM2026 전문 접근은 미완료로 남겼다. **실제 인간 승인 설명0개·근육 매핑/수행 시각/추천 규칙/조건 티어는 미완료**다. 합성 fixture를 실제승인으로 등록하지 않는다. 실기기/Auth·식단/3D/파일럿 관문은 유지하며 추가 논문/해부학·권리 검토와 인간 검토 결과가 다음 SCI 선행 조건이다.
+
 
 ## REP-02 주간 비교/저장 시점 증분 — 2026-10-08
 
@@ -254,7 +264,7 @@ REP 새3unit/1UI/2browser와 함께 준비한 SCI UI 포함122Vitest/Node10/40br
 [Watch·Live Activity·AlarmKit 검토](rest-alert-feasibility.md)는 검토만 완료/P2다. Web Push 조건부 전달·native WidgetKit/ActivityKit·iOS26+ AlarmKit 후보를 확인했다. 사용자 구현 선택·실기기 관문은 남는다. 실제 iPhone/운동·다기기 Auth·SCI/운영/파일럿/식단·3D 관문을 유지한다. 이 단위의 main push·GitHub3job/34browser artifact·Pages Git 운영24파일 일치 확인을 완료했다.
 
 
-2026-10-08 / PRD0.12.0. **운동 MVP 전체는 진행 중**이며 식단·3D는 후순위다.
+2026-10-08 / PRD0.13.0. **운동 MVP 전체는 진행 중**이며 식단·3D는 후순위다.
 
 [운영 앱](https://lightweight-training.pages.dev) · [DB 연결 없는 preview](https://preview.lightweight-training.pages.dev) · [세부 백로그](implementation-backlog.md).
 
@@ -266,7 +276,7 @@ REP 새3unit/1UI/2browser와 함께 준비한 SCI UI 포함122Vitest/Node10/40br
 | 2 | 다기기 편집·충돌/실패 복구 | manual CAS/retry/ACK·교체 전 백업·합성 두 기기 응답 유실/삭제·오래된 응답 차단 | 실제 A/B·만료/권한 회수/응답 유실·서로 다른 편집 명시 해결·삭제 재접속·크기 정책 | SYNC03~05 |
 | 3 | 기록 편의 완성 | 이전값·재시작·미완료 종목 교체·종료 수정·운동 순서/CAS·삭제 루틴 복구·종료 기록 삭제/복구 | 메모·머신/ROM 로컬·서버·배포 완료; 접기·고정 타이머 구현 완료; 다기기/실기기 입력 UX | LOG03~06 |
 | 4 | 설명 가능한 개인화 완성 | 볼륨/추이·주간 점검/직접 수정·지난주 비교·읽기 파일/입력·계산 버전 보존 | 검토된 직접/간접 매핑·근거 기반 다음 행동·앱 보관함/과학 정책·근거 버전 | REP01~06, SCI03B |
-| 5 | 근거 운동 정보·시각·티어·추천 | 기록용37종목/바벨18·초기 연구/3D 검토·공개 JSON gate(승인0개) | 등록부 실제 승인/규칙 연결·전문/전문가/권리 검토→설명/시각→조건 추천/티어, 승인 콘텐츠만 제공 | SCI01~04, PRE01, LOG02 |
+| 5 | 근거 운동 정보·시각·티어·추천 | 37종목/바벨18·공개 gate→출처/한계 UI·offline JSON·가슴 직접 비교 검토 패킷(승인0개) | 추가 전문/인간·해부학/권리 검토→실제 승인 설명·시각/매핑→조건 추천/티어 | SCI01~04, PRE01, LOG02 |
 | 6 | 실제 iPhone/PWA·접근성/보존 | iPhone 홈 화면 설치/실행/로그인 사용자 보고 완료·반응형·browser36·백업 보존 | 키보드/VoiceOver/확대/가로/잠금·실제offline/update·physical quota/eviction·64MiB초과 분할복구 | RESP01, REL02, HAR04 |
 | 7 | 운영·배포/복구 마무리 | Pages HTTPS·운영/preview DB 분리·24file hash/헤더·main push | 실Auth/메일/비밀번호복구·백업 drill·Git 자동 배포 완료; 도메인/Access 선택 | REL01/03, Q08/16/17 |
 | 8 | 본인 파일럿→지인 제공 | 앱/검사 기반 준비 | 실제4주 관찰/입력누락·오해 개선→회귀, 계정 독립/복원·G3/G4 관문 | PIL01/02 |

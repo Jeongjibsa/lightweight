@@ -62,3 +62,5 @@
 - [업데이트 안내 루프](2026-10-08-update-notice-loop.json).
 
 - [REP 주간 보존 검사](2026-10-08-weekly-report-loop.json).
+
+- [SCI 설명 소비 검사](2026-10-08-reviewed-guide-loop.json)·[연구 읽은 범위](2026-10-08-chest-review-capture.json).

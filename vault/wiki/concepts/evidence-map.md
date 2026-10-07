@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-03T23:24:52+09:00"
+  at: "2026-10-08T00:56:29+09:00"
 sources:
   - id: "SRC-003"
     resource: "../sources/SRC-003-acsm-2026.md"
@@ -101,6 +101,9 @@ sources:
   - id: "responsive-local"
     resource: "../sources/SRC-034-responsive-local.md"
     title: "구현 기술 근거"
+  - id: "unit-chg-0044"
+    resource: "../../raw/conversations/2026-10-08-027.md"
+    title: "SCI 우선: 검토 설명 소비/가슴 연구 검토"
 ---
 
 # 주장과 근거의 연결 지도
@@ -187,3 +190,7 @@ PWA 우선 추천은 위 사실과 현재 사용 규모를 연결한 **기획 �
 ## Related
 
 [검토 정책](../operations/evidence-policy.md) · [추천](../product/routine-engine.md) · [영양](../product/nutrition.md)
+
+## 가슴 조건 비교 후보 — 2026-10-08
+
+[SRC054](../sources/SRC-054-bench-angle-training.md)의 장비/각도/대상/측정 조건과 근비대 관찰·EMG를 구별했다. [검토 패킷](../product/chest-evidence-review.md)에서 실제 승인0/덤벨·딥스 비교 보류와 매핑·티어 정책의 인간 검토 공백을 유지한다. 직접 비교의 공백을 효과가 낮다는 결론으로 바꾸지 않는다.

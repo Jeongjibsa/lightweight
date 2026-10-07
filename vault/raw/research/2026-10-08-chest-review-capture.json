@@ -1,0 +1,24 @@
+{
+  "type": "Implementation Verification",
+  "generated": {
+    "by": "codex/gpt-6",
+    "at": "2026-10-08T00:56:29+09:00"
+  },
+  "immutable": true,
+  "retrieved_at": "2026-10-08T00:56:29+09:00",
+  "primary_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7449336/",
+  "paper_doi": "10.70252/FDNB1158",
+  "paper_pmid": "32922646",
+  "read_scope": "agent reviewed main text introduction/methods/statistical analysis/results tables2-4/discussion; did not audit underlying individual data or independently reproduce analysis; not expert approval",
+  "new_source": "SRC-054",
+  "updated_existing_source": "SRC-003",
+  "latest_guideline_attempt": {
+    "official_announcement": "https://acsm.org/science-spotlight-acsm-releases-new-position-stand-on-resistance-training/",
+    "publisher_url": "https://journals.lww.com/acsm-msse/fulltext/2026/04000/american_college_of_sports_medicine_position.21.aspx",
+    "pmc_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12965823/",
+    "result": "PMC browser check; publisher fetch402; PubMed response insufficient. Full review remains incomplete, no threshold prescription derived."
+  },
+  "retraction_correction_check": "no separate correction/retraction database audit completed; do not treat main page access as negative proof",
+  "copyright": "bibliography/own short synthesis only, no article figures or full text copied",
+  "approval": "none; draft expert packet only"
+}

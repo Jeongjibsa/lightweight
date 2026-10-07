@@ -114,6 +114,15 @@ test("HAR-04 실제 SW v1→waiting v2: 운동 중 보류→적용·DB 보존→
   await page.reload({ waitUntil: "domcontentloaded" });
   await expect(marker).toHaveAttribute("content", "v2");
   expect(await databaseSnapshot(page)).toEqual(before);
+  await navigate(page, "운동 탐색");
+  await page
+    .getByRole("button", { name: "바벨 스쿼트 정보", exact: true })
+    .click();
+  await expect(
+    page.getByText(/아직 검토가 완료된 설명이 없어요/),
+  ).toBeVisible();
+  await page.screenshot({ path: info.outputPath("offline-guide-390.png") });
+  await page.getByRole("button", { name: "닫기", exact: true }).click();
   await context.setOffline(false);
   const data = (await downloadBackup(page)).data;
   expect(data.sessions).toHaveLength(1);

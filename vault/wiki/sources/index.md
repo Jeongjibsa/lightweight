@@ -54,3 +54,5 @@
 - [SRC051 Watch/Live Activity/AlarmKit](SRC-051-rest-system-alerts.md) · [SRC052 Mantine 접기](SRC-052-workout-accordion.md).
 
 - [SRC053 Supabase API/revision 범위](SRC-053-sync-api-revision.md).
+
+- [SRC054 벤치 각도 직접 비교](SRC-054-bench-angle-training.md) — 에이전트 본문 검토/인간 승인 전.

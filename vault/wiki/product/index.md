@@ -44,3 +44,5 @@
 - PRD0.11.2: [세 종목/SYNC 운영 반영](remaining-work.md).
 
 - [주간 비교/저장](../operations/weekly-report.md).
+
+- [가슴 조건 검토 패킷](chest-evidence-review.md).

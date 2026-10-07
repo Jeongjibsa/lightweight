@@ -40,3 +40,5 @@
 - [업데이트 버튼 버그리포트](update-button-bug.md) — 사용자 조건 미상/active 경로 보완.
 
 - [주간 비교/저장 리포트](weekly-report.md).
+
+- [검토 설명 소비/오프라인](reviewed-guide-consumption.md).

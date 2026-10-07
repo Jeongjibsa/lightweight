@@ -52,7 +52,10 @@ export default defineConfig({
         ],
       },
       workbox: {
-        globPatterns: ["**/*.{js,css,html,svg,png,woff2,webmanifest}"],
+        globPatterns: [
+          "**/*.{js,css,html,svg,png,woff2,webmanifest}",
+          "content/exercise-guides.json",
+        ],
         cleanupOutdatedCaches: true,
       },
     }),

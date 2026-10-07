@@ -2,6 +2,8 @@
 
 ## 2026-10-08
 
+- **SCI / CONV0027**: 승인 JSON의 종류/한계/출처·오류/전환·offline 연결, SRC054 본문과 [가슴 검토 패킷](wiki/product/chest-evidence-review.md). 승인0·매핑/규칙/시각/티어 후속.122Vitest/Node10/40browser·[CHG0044](history/changes/CHG-0044.md)·PRD0.13.0 전체/이전251불변 유지. 실기기·인간 승인과 합성fixture를 구별한다.
+
 - **REP / CONV0027**: 지난주 같은 기간 비교/설명·개인 읽기 report/입력·계산 버전 보존. [계약](wiki/operations/weekly-report.md)·[CHG0043](history/changes/CHG-0043.md)·PRD0.12.0 전체. 준비한 SCI 포함122Vitest/Node10/40browser·320/390과 읽기 파일 확인. 실기기/매핑/과학 처방은 별도.
 
 - **CONV0027 / Update**: 사용자 비활성 제보/조건 미상 보존·active 운동 직접 진입/저장 보류/오류 재시도,114Vitest/Node10·실제 SW1 흐름 통과. [버그](wiki/operations/update-button-bug.md)·[CHG0042](history/changes/CHG-0042.md)·PRD0.11.3 전체. 실기기/idle 비활성 재현은 남으며 다음4 REP/5 SCI 우선.
