@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-08T00:56:29+09:00"
+  at: "2026-10-08T01:11:57+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -212,12 +212,22 @@ sources:
   - id: "unit-chg-0044"
     resource: "../../raw/conversations/2026-10-08-027.md"
     title: "SCI 우선: 검토 설명 소비/가슴 연구 검토"
-version: "0.8.0"
+  - id: "unit-chg-0045"
+    resource: "../../raw/research/2026-10-08-fresh-content-harness-loop.json"
+    title: "깨끗한 CI 콘텐츠 생성 누락 재현·하네스 보완"
+version: "0.8.1"
 approval_status: "proposal"
-change_id: "CHG-0044"
+change_id: "CHG-0045"
 ---
 
 # 남은 작업 한눈에 보기
+
+## HAR 깨끗한 CI 콘텐츠 생성 보완 — 2026-10-08
+
+600c7b8의 GitHub37648213883에서 check/WebKit19는 success였지만 Chromium20통과/1실패를 확인했다. 실제 내려받은 trace/PNG/console은 offline 공개 JSON 누락을 가리켰다. 새 browser job은 Vite만 실행하여 gitignore된 생성 JSON이 없었다. 운영 build는 compiler를 실행했고 같은 source Pages Git 배포/공개24파일 hash·헤더는 일치했다. 이는 사용자의 idle 업데이트 비활성 원인으로 확정한 결과가 아니다.
+
+E2E 서버가 v1/v2 전에 운영과 같은 공개 compiler를 실행하도록 보완했다. 빈 승인 생성 파일만 없는 상태를 준비한 뒤 원본 registry/개인 기록을 바꾸지 않고 동일 JSON 재생성과40browser를 통과했다.122Vitest/Node10·build/types/format/artifact25·의도적 실패 probe도 통과(기존6경고). 첫 CI 실패/로컬 이전 통과를 모두 보존하고 새 원격 CI/배포는 후속 확인한다. [불변 루프](../../raw/research/2026-10-08-fresh-content-harness-loop.json).
+
 
 ## SCI 검토 설명 소비와 가슴 연구 패킷 — 2026-10-08
 
@@ -264,7 +274,7 @@ REP 새3unit/1UI/2browser와 함께 준비한 SCI UI 포함122Vitest/Node10/40br
 [Watch·Live Activity·AlarmKit 검토](rest-alert-feasibility.md)는 검토만 완료/P2다. Web Push 조건부 전달·native WidgetKit/ActivityKit·iOS26+ AlarmKit 후보를 확인했다. 사용자 구현 선택·실기기 관문은 남는다. 실제 iPhone/운동·다기기 Auth·SCI/운영/파일럿/식단·3D 관문을 유지한다. 이 단위의 main push·GitHub3job/34browser artifact·Pages Git 운영24파일 일치 확인을 완료했다.
 
 
-2026-10-08 / PRD0.13.0. **운동 MVP 전체는 진행 중**이며 식단·3D는 후순위다.
+2026-10-08 / PRD0.13.1. **운동 MVP 전체는 진행 중**이며 식단·3D는 후순위다.
 
 [운영 앱](https://lightweight-training.pages.dev) · [DB 연결 없는 preview](https://preview.lightweight-training.pages.dev) · [세부 백로그](implementation-backlog.md).
 

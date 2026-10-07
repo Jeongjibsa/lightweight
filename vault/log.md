@@ -2,6 +2,8 @@
 
 ## 2026-10-08
 
+- **HAR / 첫 CI loop**:600c7b8 check/WebKit19 success·Chromium20+1실패 실제 artifact/콘텐츠 생성 누락 확인→E2E compiler 선행·생성파일 없는40통과/probe 증거 확인. [루프](raw/research/2026-10-08-fresh-content-harness-loop.json)·[CHG0045](history/changes/CHG-0045.md)·PRD0.13.1 전체. 운영600source24파일은 일치; 새 fix 원격 확인 후속.
+
 - **SCI / CONV0027**: 승인 JSON의 종류/한계/출처·오류/전환·offline 연결, SRC054 본문과 [가슴 검토 패킷](wiki/product/chest-evidence-review.md). 승인0·매핑/규칙/시각/티어 후속.122Vitest/Node10/40browser·[CHG0044](history/changes/CHG-0044.md)·PRD0.13.0 전체/이전251불변 유지. 실기기·인간 승인과 합성fixture를 구별한다.
 
 - **REP / CONV0027**: 지난주 같은 기간 비교/설명·개인 읽기 report/입력·계산 버전 보존. [계약](wiki/operations/weekly-report.md)·[CHG0043](history/changes/CHG-0043.md)·PRD0.12.0 전체. 준비한 SCI 포함122Vitest/Node10/40browser·320/390과 읽기 파일 확인. 실기기/매핑/과학 처방은 별도.

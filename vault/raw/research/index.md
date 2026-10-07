@@ -64,3 +64,5 @@
 - [REP 주간 보존 검사](2026-10-08-weekly-report-loop.json).
 
 - [SCI 설명 소비 검사](2026-10-08-reviewed-guide-loop.json)·[연구 읽은 범위](2026-10-08-chest-review-capture.json).
+
+- [새 CI 콘텐츠 준비 누락/40fresh·probe](2026-10-08-fresh-content-harness-loop.json).

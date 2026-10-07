@@ -78,3 +78,5 @@
 - CONV0026/CHG0039~40은37종목/기존 ID·순서/snapshot 보존과 machine/per_hand/bodyweight 계약을 추가했다. 딥스는 추가 중량0/빈칸 완료, 체중 추정 볼륨은N/A다. previewDownload와 applyDownload는 transaction 안에서 remote.revision<cloud.baseRevision을 거부한다. 같은 revision 명시 교체/recovery·localSignature/owner/active/outbox를 유지한다.112검사·36browser/합성 두 기기 CAS·receipt 검사는 실제 Auth/RLS/기기/운영 서버 복구의 증거가 아니다. 현재 PRD0.11.1/남은 표를 읽는다.
 
 - CHG0041에서 b44ebda/fba60bb main push·GitHub37629327092 세 job success/19+17browser와 최초 실패 probe artifact 수신·동일 source Pages Git build/deploy·운영24파일 SHA256/보안 헤더 일치를 확인했다. 현재 기준은 PRD0.11.2/remaining-work.md다. CHG0039~40 배포 대기는 해소됐으며 실제 운동/새 기기·Auth/실기기·SCI·운영 복구/파일럿/P2 관문은 유지한다. 후속 증거 문서는 bundle을 바꾸지 않는다.
+
+- CONV0027/CHG0042~45는 업데이트 제보 조건 미상/active 운동 진입·저장/실패 안내, 주간 같은 요일까지 비교·읽기 HTML/입력·계산 버전 보존, 승인 설명 소비/offline JSON·SRC054 가슴 검토 패킷을 추가했다. 실제 승인0/매핑·규칙/시각·티어·실기기 관문은 유지한다. E2E 서버는 깨끗한 CI에서 생성 JSON 누락이 재현돼 v1/v2 전에 운영 compiler를 실행한다. npm run test:e2e는 생성 파일에 의존하지 않아야 하며 첫CI37648213883 Chromium1실패와40fresh/probe 통과를 구별한다. 현재 PRD0.13.1/remaining-work.md 기준이고 새 fix CI/운영 확인은 후속이다.

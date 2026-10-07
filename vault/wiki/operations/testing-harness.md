@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-08T00:56:29+09:00"
+  at: "2026-10-08T01:11:57+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-04-007.md"
@@ -134,6 +134,9 @@ sources:
   - id: "unit-chg-0044"
     resource: "../../raw/conversations/2026-10-08-027.md"
     title: "SCI 우선: 검토 설명 소비/가슴 연구 검토"
+  - id: "unit-chg-0045"
+    resource: "../../raw/research/2026-10-08-fresh-content-harness-loop.json"
+    title: "깨끗한 CI 콘텐츠 생성 누락 재현·하네스 보완"
 version: "0.5.1"
 approval_status: "current-audit-and-proposal"
 change_id: "CHG-0014"
@@ -402,3 +405,15 @@ REP 새3unit/1UI/2browser와 함께 준비한 SCI UI 포함122Vitest/Node10/40br
 검토 설명 JSON을 운동 정보 창에서 읽고 주장 종류/한계/원문/버전을 함께 표시한다. 엄격한 형식/출처 연결·실패/재시도/종목 전환 보존과 공개 JSON의 실제 SW offline을 검증했다.122Vitest/Node10/40browser·build/types/format/artifact25 통과(기존6경고). [소비 계약/화면](../operations/reviewed-guide-consumption.md).
 
 [가슴 조건 검토 패킷](../product/chest-evidence-review.md)과 [SRC054](../sources/SRC-054-bench-angle-training.md)를 추가했다. 주 연구의 Methods/Results/Discussion을 에이전트가 읽었으며 장비/대상/측정 조건·비교 공백을 구분한다. 기존ACSM2026 전문 접근은 미완료로 남겼다. **실제 인간 승인 설명0개·근육 매핑/수행 시각/추천 규칙/조건 티어는 미완료**다. 합성 fixture를 실제승인으로 등록하지 않는다. 실기기/Auth·식단/3D/파일럿 관문은 유지하며 추가 논문/해부학·권리 검토와 인간 검토 결과가 다음 SCI 선행 조건이다.
+
+## HAR 깨끗한 CI 콘텐츠 생성 보완 — 2026-10-08
+
+600c7b8의 GitHub37648213883에서 check/WebKit19는 success였지만 Chromium20통과/1실패를 확인했다. 실제 내려받은 trace/PNG/console은 offline 공개 JSON 누락을 가리켰다. 새 browser job은 Vite만 실행하여 gitignore된 생성 JSON이 없었다. 운영 build는 compiler를 실행했고 같은 source Pages Git 배포/공개24파일 hash·헤더는 일치했다. 이는 사용자의 idle 업데이트 비활성 원인으로 확정한 결과가 아니다.
+
+E2E 서버가 v1/v2 전에 운영과 같은 공개 compiler를 실행하도록 보완했다. 빈 승인 생성 파일만 없는 상태를 준비한 뒤 원본 registry/개인 기록을 바꾸지 않고 동일 JSON 재생성과40browser를 통과했다.122Vitest/Node10·build/types/format/artifact25·의도적 실패 probe도 통과(기존6경고). 첫 CI 실패/로컬 이전 통과를 모두 보존하고 새 원격 CI/배포는 후속 확인한다. [불변 루프](../../raw/research/2026-10-08-fresh-content-harness-loop.json).
+
+## 실제 CI 첫 실패 화면
+
+![합성 CI offline 설명 실패](../../assets/guide-ci-first-failure-390.png)
+
+콘텐츠 준비 단계를 생략한 새 저장소 환경에서 받은 Chromium 첫 실패다. 결과를 retry로 덮지 않았고 위 raw 루프에 runID/20+1·19 결과/console/source와 trace 수신을 기록했다. 정상 콘텐츠/오프라인/승인0 상태는 별도 성공 화면이다.

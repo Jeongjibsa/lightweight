@@ -4,7 +4,7 @@ okf_version: "0.2"
 
 # 웨이트 트레이닝 앱 — 기획과 지식 베이스
 
-옵시디언에서 이 `vault` 폴더를 열고 시작한다. 현재 기획은 **0.13.0 브레인스토밍 초안**이다.
+옵시디언에서 이 `vault` 폴더를 열고 시작한다. 현재 기획은 **0.13.1 브레인스토밍 초안**이다.
 
 ## 먼저 읽기
 
@@ -114,3 +114,5 @@ okf_version: "0.2"
 - 최신 PRD0.12.0: [주간 비교/저장 리포트](wiki/operations/weekly-report.md).
 
 - 최신 PRD0.13.0: [설명 소비/오프라인](wiki/operations/reviewed-guide-consumption.md)·[가슴 검토 패킷](wiki/product/chest-evidence-review.md).
+
+- 최신 PRD0.13.1: [깨끗한 CI 콘텐츠 준비/첫 실패 루프](raw/research/2026-10-08-fresh-content-harness-loop.json).

@@ -182,3 +182,5 @@ iPhone 홈 화면 설치·실행·로그인은 사용자 보고로 확인했습�
 37종목에 스미스머신 스쿼트·덤벨 인클라인 벤치 프레스·딥스를 추가했습니다. [중량 기준](../vault/wiki/operations/catalog-expansion.md)·[오래된 응답/복구](../vault/wiki/operations/local-sync-recovery.md).112Vitest/Node10·36browser를 확인했으며 실제 Auth/기기·과학 검토는 별도입니다.
 
 b44ebda/fba60bb main의 GitHub37629327092 세 job과19+17browser artifact·동일 source Pages Git build/deploy/운영24파일 해시·헤더를 확인했습니다. [배포 증거](../vault/raw/research/2026-10-07-catalog-sync-git-release.json). 후속 증거 문서는 앱 bundle을 바꾸지 않습니다.
+
+주간 리포트는 지난주 같은 요일까지 비교하고 개인 읽기 HTML 파일에 당시 입력/계산 버전을 보존합니다. [계약](../vault/wiki/operations/weekly-report.md). 운동 정보는 승인 JSON의 종류/한계/원문을 읽으며 승인 콘텐츠는0개입니다. [검토 패킷](../vault/wiki/product/chest-evidence-review.md). E2E 서버는 운영 공개 compiler를 먼저 실행해 새 저장소에서도 생성 JSON을 준비합니다.122 Vitest/Node10/40fresh browser·probe 통과이며 첫CI의 콘텐츠 누락 실패와 후속 원격 결과를 구별합니다.

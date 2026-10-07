@@ -6,7 +6,7 @@ tags: ["training", "implementation", "testing"]
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-08T00:56:29+09:00"
+  at: "2026-10-08T01:11:57+09:00"
 sources:
   - id: "request"
     resource: "../../raw/conversations/2026-10-08-027.md"
@@ -14,6 +14,9 @@ sources:
   - id: "run"
     resource: "../../raw/research/2026-10-08-reviewed-guide-loop.json"
     title: "실행"
+  - id: "unit-chg-0045"
+    resource: "../../raw/research/2026-10-08-fresh-content-harness-loop.json"
+    title: "깨끗한 CI 콘텐츠 생성 누락 재현·하네스 보완"
 ---
 
 # 승인 설명 소비와 오프라인
@@ -34,3 +37,9 @@ SW precache에 정확히 content/exercise-guides.json을 추가했다. 임의 JS
 ![실제 빈 승인 JSON의 offline UI](../../assets/offline-guide-chromium-390.png)
 
 실제 iPhone·과학/해부학·권리 승인·직접/간접 매핑·추천 규칙/티어·2D자산은 남는다. [실행](../../raw/research/2026-10-08-reviewed-guide-loop.json)·[연구 검토 패킷](../product/chest-evidence-review.md).
+
+## HAR 깨끗한 CI 콘텐츠 생성 보완 — 2026-10-08
+
+600c7b8의 GitHub37648213883에서 check/WebKit19는 success였지만 Chromium20통과/1실패를 확인했다. 실제 내려받은 trace/PNG/console은 offline 공개 JSON 누락을 가리켰다. 새 browser job은 Vite만 실행하여 gitignore된 생성 JSON이 없었다. 운영 build는 compiler를 실행했고 같은 source Pages Git 배포/공개24파일 hash·헤더는 일치했다. 이는 사용자의 idle 업데이트 비활성 원인으로 확정한 결과가 아니다.
+
+E2E 서버가 v1/v2 전에 운영과 같은 공개 compiler를 실행하도록 보완했다. 빈 승인 생성 파일만 없는 상태를 준비한 뒤 원본 registry/개인 기록을 바꾸지 않고 동일 JSON 재생성과40browser를 통과했다.122Vitest/Node10·build/types/format/artifact25·의도적 실패 probe도 통과(기존6경고). 첫 CI 실패/로컬 이전 통과를 모두 보존하고 새 원격 CI/배포는 후속 확인한다. [불변 루프](../../raw/research/2026-10-08-fresh-content-harness-loop.json).

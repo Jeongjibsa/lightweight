@@ -1,0 +1,305 @@
+{
+  "type": "Implementation Verification",
+  "generated": {
+    "by": "codex/gpt-6",
+    "at": "2026-10-08T01:11:57+09:00"
+  },
+  "immutable": true,
+  "unit": "HAR fresh-build parity for SCI guide JSON",
+  "initial_ci": {
+    "run_id": 37648213883,
+    "url": "https://github.com/Jeongjibsa/lightweight/actions/runs/37648213883",
+    "source_commit": "600c7b822f9b65ec59094862903d62d239628fb3",
+    "status": "completed",
+    "conclusion": "failure",
+    "jobs": [
+      {
+        "name": "check",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "browser (webkit-mobile, webkit)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "browser (chromium-mobile, chromium)",
+        "status": "completed",
+        "conclusion": "failure"
+      }
+    ],
+    "actual_downloaded_results": [
+      {
+        "run_id": "20261007T155923109Z-12965951",
+        "source_commit": "600c7b822f9b65ec59094862903d62d239628fb3",
+        "stats": {
+          "startTime": "2026-10-07T15:59:23.773Z",
+          "duration": 144712.95700000002,
+          "expected": 19,
+          "skipped": 0,
+          "unexpected": 0,
+          "flaky": 0
+        },
+        "code_fingerprint": "99f240aa560d59b15fd8a7efb261f3ebeb4f60f9bb89ddc7a0f1dff81f4e9323",
+        "credentials": "Supabase VITE environment overridden empty; env files excluded from fingerprint"
+      },
+      {
+        "run_id": "20261007T155832789Z-1a7ba253",
+        "source_commit": "600c7b822f9b65ec59094862903d62d239628fb3",
+        "stats": {
+          "startTime": "2026-10-07T15:58:33.291Z",
+          "duration": 108846.397,
+          "expected": 20,
+          "skipped": 0,
+          "unexpected": 1,
+          "flaky": 0
+        },
+        "code_fingerprint": "99f240aa560d59b15fd8a7efb261f3ebeb4f60f9bb89ddc7a0f1dff81f4e9323",
+        "credentials": "Supabase VITE environment overridden empty; env files excluded from fingerprint"
+      }
+    ]
+  },
+  "first_failure_console": [
+    {
+      "kind": "requestfailed",
+      "text": "GET http://127.0.0.1:4188/content/exercise-guides.json net::ERR_INTERNET_DISCONNECTED"
+    },
+    {
+      "kind": "error",
+      "text": "Failed to load resource: net::ERR_INTERNET_DISCONNECTED"
+    }
+  ],
+  "failure_scope": "Fresh CI browser job called Vite directly without content compiler. Ignored public/content/exercise-guides.json absent and both Workbox build warnings named unmatched pattern; offline guide fetch failed. Production npm build compiled JSON; local prior build masked missing precondition. Not evidence of user idle update-button cause.",
+  "fix": "E2E server runs exact production publication compiler before v1/v2 builds; child signal handling/empty Supabase override remain. No fake approval/production asset/application behavior change.",
+  "fresh_local_condition": "Moved only generated empty approved JSON to private tmp; registry untouched. Server regenerated identical bytes; full40 passed with retries0. No user storage/database/token cleared.",
+  "final_checks": {
+    "vitest": 122,
+    "node_contracts": 10,
+    "browser": 40,
+    "fresh_run": "20261007T160818195Z-494534bb",
+    "stats": {
+      "startTime": "2026-10-07T16:08:18.422Z",
+      "duration": 116101.08,
+      "expected": 40,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "probe": "passed deliberate failure trace/PNG/console/metadata/report preserved",
+    "probe_run": "probe-c5419da0-b2fb-4e3b-81dd-5ce63649ea68",
+    "lint": "exit0 existing6 warnings",
+    "build_types_format_pages25": "passed"
+  },
+  "initial_source_pages": {
+    "origin": "https://lightweight-training.pages.dev",
+    "production_branch": "main",
+    "source_type": "github",
+    "production_enabled": true,
+    "id": "4f7235f3-7a05-4619-925b-db5aa59e0e2c",
+    "url": "https://4f7235f3.lightweight-training.pages.dev",
+    "environment": "production",
+    "created_on": "2026-10-07T15:57:39.002466Z",
+    "latest_stage": {
+      "name": "deploy",
+      "started_on": "2026-10-07T15:58:19.074938Z",
+      "ended_on": "2026-10-07T15:58:29.462574Z",
+      "status": "success"
+    },
+    "trigger": "github:push",
+    "commit": "600c7b822f9b65ec59094862903d62d239628fb3",
+    "stages": [
+      {
+        "name": "queued",
+        "started_on": "2026-10-07T15:57:39.134453Z",
+        "ended_on": "2026-10-07T15:57:39.137044Z",
+        "status": "success"
+      },
+      {
+        "name": "initialize",
+        "started_on": "2026-10-07T15:57:39.137044Z",
+        "ended_on": "2026-10-07T15:57:42.164484Z",
+        "status": "success"
+      },
+      {
+        "name": "clone_repo",
+        "started_on": "2026-10-07T15:57:42.164484Z",
+        "ended_on": "2026-10-07T15:57:45.156252Z",
+        "status": "success"
+      },
+      {
+        "name": "build",
+        "started_on": "2026-10-07T15:57:45.156252Z",
+        "ended_on": "2026-10-07T15:58:19.074938Z",
+        "status": "success"
+      },
+      {
+        "name": "deploy",
+        "started_on": "2026-10-07T15:58:19.074938Z",
+        "ended_on": "2026-10-07T15:58:29.462574Z",
+        "status": "success"
+      }
+    ],
+    "configured_env": {
+      "preview": {
+        "VITE_SUPABASE_URL": false,
+        "VITE_SUPABASE_PUBLISHABLE_KEY": false
+      },
+      "production": {
+        "VITE_SUPABASE_URL": true,
+        "VITE_SUPABASE_PUBLISHABLE_KEY": true
+      }
+    },
+    "recent": [
+      {
+        "id": "4f7235f3-7a05-4619-925b-db5aa59e0e2c",
+        "url": "https://4f7235f3.lightweight-training.pages.dev",
+        "environment": "production",
+        "latest_stage": {
+          "name": "deploy",
+          "started_on": "2026-10-07T15:58:19.074938Z",
+          "ended_on": "2026-10-07T15:58:29.462574Z",
+          "status": "success"
+        },
+        "trigger": "github:push",
+        "commit": "600c7b822f9b65ec59094862903d62d239628fb3"
+      },
+      {
+        "id": "596df6db-39df-4df9-86ad-f1e1eb955750",
+        "url": "https://596df6db.lightweight-training.pages.dev",
+        "environment": "production",
+        "latest_stage": {
+          "name": "deploy",
+          "started_on": "2026-10-07T13:40:56.434215Z",
+          "ended_on": "2026-10-07T13:41:01.954106Z",
+          "status": "success"
+        },
+        "trigger": "github:push",
+        "commit": "7a2523d360132c1dc5f12f61732cdb11aa883ad4"
+      },
+      {
+        "id": "30189a15-f8ff-4c4f-8b6e-628fe65f8b61",
+        "url": "https://30189a15.lightweight-training.pages.dev",
+        "environment": "production",
+        "latest_stage": {
+          "name": "deploy",
+          "started_on": "2026-10-07T13:33:18.96193Z",
+          "ended_on": "2026-10-07T13:33:27.69917Z",
+          "status": "success"
+        },
+        "trigger": "github:push",
+        "commit": "fba60bba2ae71028210b66f09a94bdbdced2daca"
+      }
+    ]
+  },
+  "initial_source_production_file_headers": {
+    "checkedAt": "2026-10-07T15:59:27.165Z",
+    "origin": "https://lightweight-training.pages.dev",
+    "files": 24,
+    "indexSha256": "f9d1279a456615f9b000f36afd9ee03be3e9634111134207595b44fec6a801d0",
+    "headers": {
+      "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://xmdbivohdjczpbjcujvu.supabase.co; worker-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
+      "x-content-type-options": "nosniff",
+      "x-frame-options": "DENY",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "permissions-policy": "camera=(), microphone=(), geolocation=()"
+    },
+    "assets": [
+      {
+        "path": "apple-touch-icon.png",
+        "sha256": "1594d1e02221edf244f40e7928ff9a981ea9d26b807ac1c0248857b847142f79"
+      },
+      {
+        "path": "assets/geist-cyrillic-ext-wght-normal-DjL33-gN.woff2",
+        "sha256": "2317fa4bb293c9c0b110e18315d529235c47a0ddd3338cea3d8c7955e927899e"
+      },
+      {
+        "path": "assets/geist-cyrillic-wght-normal-BEAKL7Jp.woff2",
+        "sha256": "6894439694946a589d157ece003086960a6a4013d74a813dab7602efdb3d8c09"
+      },
+      {
+        "path": "assets/geist-latin-ext-wght-normal-DC-KSUi6.woff2",
+        "sha256": "824f485b5d26e2f2da3c2b236132ece1bc8e4e43373452950bb0e40548b4313f"
+      },
+      {
+        "path": "assets/geist-latin-wght-normal-BgDaEnEv.woff2",
+        "sha256": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1"
+      },
+      {
+        "path": "assets/geist-vietnamese-wght-normal-6IgcOCM7.woff2",
+        "sha256": "8fa40e5d248247735eb97a0bd593b8852440430600d6ba01364c31fe0abc1fe1"
+      },
+      {
+        "path": "assets/index-CcZxJsaa.css",
+        "sha256": "0b9cf924fa0211e5e6d112f2d5d03d362a8d85c7c84d4c830cd68bf14cde99a7"
+      },
+      {
+        "path": "assets/index-Jv1YsdMK.js",
+        "sha256": "45b7b4da8e2a029c9e8930f22270624abb362235336712c72225278b90d6c8d1"
+      },
+      {
+        "path": "assets/mantine-B1k8zaqb.css",
+        "sha256": "23f64fb1d7b81e89f10821d66dbe05884bc952de99b13c5a7960c23b67336ca8"
+      },
+      {
+        "path": "assets/mantine-DaILK78s.js",
+        "sha256": "ccc94a7cbe78e06447b2274be77401af5023113f12bb1b1e80dc8905595f235c"
+      },
+      {
+        "path": "assets/react-DjX0U0Iu.js",
+        "sha256": "49f492b7a8b9e47e35b7a9aa36d96824c35439694a092fa912347d6fa34d5366"
+      },
+      {
+        "path": "assets/rolldown-runtime-CbXtAM7H.js",
+        "sha256": "bbf7c5086ae414dc3f33777e3eebf16ea8631325b8bb4690d25091c03567f31a"
+      },
+      {
+        "path": "assets/storage-validation-D_PJMDEW.js",
+        "sha256": "e25e468d463c7858bfcb1af76dba6758bcd5b5992184a1364dc644c60d0be1d8"
+      },
+      {
+        "path": "assets/supabase-B0JtmJTB.js",
+        "sha256": "a8b364327a435672f26b6894541f694c529edcddc17dba6f3867b8cebd205af8"
+      },
+      {
+        "path": "assets/workbox-window.prod.es5-Bd17z0YL.js",
+        "sha256": "17bcc17d60dc78f927834b880c39649b03af46fd1f5cdbb8c42c5ae2b515dce9"
+      },
+      {
+        "path": "content/exercise-guides.json",
+        "sha256": "fb9b786e85ce30eb3990a70eeb4c21533057c590506849dfe0faaa851da5efae"
+      },
+      {
+        "path": "fonts/geist/LICENSE",
+        "sha256": "71609cbb5c78b5870d712eab73a31d76622635c6ed034ab5cee3b9ecbda8685f"
+      },
+      {
+        "path": "icon-192.png",
+        "sha256": "054139c0741db6e8d4c3add6cf71e2ce79557ddf7c5aad11019b8c73ea783c46"
+      },
+      {
+        "path": "icon-512.png",
+        "sha256": "f96dc0da0063445e34adae874750ff673a488f9077e12cb13e4a60d08d15609f"
+      },
+      {
+        "path": "icon.svg",
+        "sha256": "8541109036aef92c47eb992ae39a6ed6086877aa47b8ee6c1ae35ebdeb379329"
+      },
+      {
+        "path": "manifest.webmanifest",
+        "sha256": "ebeb087861a8cd32fdd8544ee4266ff45e7810d0254868db3ac1eff6b29d13ab"
+      },
+      {
+        "path": "sw.js",
+        "sha256": "8ed111a0bc0257a273c6b4bb1aa026e633f5b543f28e527056c3dde3a0e142da"
+      },
+      {
+        "path": "workbox-2fbc6a65.js",
+        "sha256": "39c2e6ae44c3f29666f6a328b6523bf13a053a1d95c74af8ddea82b1045b0b6e"
+      }
+    ],
+    "limits": "Read-only file/header verification; no real Auth or device test"
+  },
+  "new_source_ci": "pending after this fix commit/push",
+  "limits": "Physical iPhone/user-specific bug cause, actual approved scientific content, anatomy/tiers/rules remain pending."
+}

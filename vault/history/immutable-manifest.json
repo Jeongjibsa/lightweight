@@ -256,8 +256,11 @@
     "raw/research/2026-10-08-reviewed-guide-loop.json": "f8a42f947bba4977accf88488c5136f7ec738a8f55b4c14f101550bc8050ca5f",
     "raw/research/2026-10-08-chest-review-capture.json": "d25b237317c8c4bcbf034f48492ab99bd6f6cd579dccb01ca84a6340b59e5986",
     "history/changes/CHG-0044.md": "6dfde153837669f4864cf1cf2792c2700229fcc0b70870193cbaa4b61eb5e2c4",
-    "history/versions/prd-v0.13.0.md": "a755ab8ebb27f145c9a59df660ca2480a5856a9d27f49219110ee78d2d5070eb"
+    "history/versions/prd-v0.13.0.md": "a755ab8ebb27f145c9a59df660ca2480a5856a9d27f49219110ee78d2d5070eb",
+    "raw/research/2026-10-08-fresh-content-harness-loop.json": "c0fda1a23c3d2561daad5a717197c695486d0bb5de723890720e00cbf77f7cfc",
+    "history/changes/CHG-0045.md": "ea02288502d6a8d2ecb979cc815b8b821fe93329dddd0b2b8169fa696a9596b6",
+    "history/versions/prd-v0.13.1.md": "6de8c018d1e713990907a7f524d24014c137724f20d4677f9d2262f3600b215e"
   },
   "updated_at": "2026-10-05T10:24:45+09:00",
-  "last_extended_at": "2026-10-08T00:56:29+09:00"
+  "last_extended_at": "2026-10-08T01:11:57+09:00"
 }

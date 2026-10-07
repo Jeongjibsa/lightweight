@@ -19,6 +19,29 @@ for (const signal of ["SIGINT", "SIGTERM"])
     server?.close();
     server?.closeAllConnections();
   });
+// Fresh CI checkouts do not contain the ignored generated public JSON.
+// Run the same publication gate as the production build before either SW build.
+await new Promise((done, reject) => {
+  child = spawn(
+    process.execPath,
+    [resolve(appRoot, "scripts/compile-reviewed-content.mjs")],
+    {
+      cwd: appRoot,
+      stdio: "inherit",
+      env: {
+        ...process.env,
+        VITE_SUPABASE_URL: "",
+        VITE_SUPABASE_PUBLISHABLE_KEY: "",
+      },
+    },
+  );
+  child.once("error", reject);
+  child.once("exit", (code, signal) =>
+    code === 0 || stopping
+      ? done()
+      : reject(new Error(`E2E content compilation exited: ${code ?? signal}`)),
+  );
+});
 for (const build of ["v1", "v2"]) {
   if (stopping) break;
   await new Promise((done, reject) => {
