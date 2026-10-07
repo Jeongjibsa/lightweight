@@ -1,0 +1,28 @@
+{
+  "type": "Implementation Verification",
+  "generated": {
+    "by": "codex/gpt-6",
+    "at": "2026-10-08T00:22:04+09:00"
+  },
+  "immutable": true,
+  "unit": "BUG-PWA-UPDATE-01",
+  "reported": "update available but button disabled; notice gone after app close/reopen",
+  "reported_active_condition": "unknown (human reply)",
+  "diagnosis": "confirmed intentional active-workout gate; report-specific idle failure not reproduced",
+  "checks": {
+    "vitest": 114,
+    "node_contracts": 10,
+    "lint": "exit0; existing6 warnings",
+    "build": "passed",
+    "e2e_types": "passed",
+    "actual_sw_flow": 1
+  },
+  "first_failure": {
+    "runId": "20261007T151703460Z-3f8af6f4",
+    "cause": "test used English reports instead of actual Korean menu label",
+    "retries": 0
+  },
+  "passed_run": "20261007T151941008Z-da2a6c65",
+  "physical_device": "not_run",
+  "production": "pending"
+}

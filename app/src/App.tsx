@@ -22,13 +22,11 @@ import {
 import { errorMessage } from "./domain/errors";
 import { useEffect, useRef, useState } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
-import { useRegisterSW } from "virtual:pwa-register/react";
 import {
   Dumbbell,
   Play,
   ChevronRight,
   Check,
-  RefreshCw,
   Plus,
   Settings2,
   ArrowUpRight,
@@ -51,6 +49,7 @@ import { LibraryView, RoutinesView } from "./components/exercises";
 import { SettingsView } from "./components/settings";
 import { WorkoutView } from "./components/workout";
 import { VolumeReport } from "./components/volume-report";
+import { UpdateNotice } from "./components/update-notice";
 import { RecordCoverage } from "./components/report-coverage";
 import { DeletedSessionRecords } from "./components/deleted-session-records";
 import { HistorySuggestion } from "./components/history-suggestion";
@@ -434,36 +433,6 @@ function ReportsView({
     </Stack>
   );
 }
-function UpdateNotice({ active }: { active: boolean }) {
-  const {
-    needRefresh: [needRefresh, setNeedRefresh],
-    updateServiceWorker,
-  } = useRegisterSW();
-  if (!needRefresh) return null;
-  return (
-    <Alert
-      icon={<RefreshCw size={18} />}
-      title="새 버전이 준비됐어요"
-      mb="lg"
-      withCloseButton
-      onClose={() => setNeedRefresh(false)}
-      closeButtonLabel="업데이트 안내 닫기"
-    >
-      <Text size="sm" c="dark.1" mb="sm">
-        {active
-          ? "진행 중인 운동을 마친 후 적용할 수 있습니다."
-          : "저장한 기록을 유지하며 앱을 업데이트합니다."}
-      </Text>
-      <Button
-        variant="light"
-        disabled={active}
-        onClick={() => void updateServiceWorker(true)}
-      >
-        업데이트
-      </Button>
-    </Alert>
-  );
-}
 export default function App() {
   const { db, store, accountId } = useTraining();
   const [ownerId, setOwnerId] = useState(() => {
@@ -684,7 +653,14 @@ export default function App() {
         tabIndex={-1}
         pt={{ base: "lg", sm: "xl" }}
       >
-        <UpdateNotice active={sessions.some((s) => s.status === "active")} />
+        <UpdateNotice
+          active={sessions.some((s) => s.status === "active")}
+          busy={pending > 0}
+          resume={() => {
+            const active = sessions.find((s) => s.status === "active");
+            if (active) inspect(active);
+          }}
+        />
         <Group justify="space-between" mb="lg">
           <Box>
             <Text c="dimmed" size="xs" mb={6}>

@@ -85,8 +85,17 @@ test("HAR-04 실제 SW v1→waiting v2: 운동 중 보류→적용·DB 보존→
     await registration.update();
   });
   const update = page.getByRole("button", { name: "업데이트", exact: true });
-  await expect(update).toBeVisible();
-  await expect(update).toBeDisabled();
+  const resume = page.getByRole("button", {
+    name: "운동 마치고 업데이트",
+    exact: true,
+  });
+  await expect(resume).toBeVisible();
+  await expect(resume).toBeEnabled();
+  await navigate(page, "리포트");
+  await resume.click();
+  await expect(
+    page.getByRole("heading", { name: "운동 기록", exact: true }),
+  ).toBeVisible();
   await expect(marker).toHaveAttribute("content", "v1");
   expect(
     await page.evaluate(

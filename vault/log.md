@@ -1,5 +1,9 @@
 # Vault Update Log
 
+## 2026-10-08
+
+- **CONV0027 / Update**: 사용자 비활성 제보/조건 미상 보존·active 운동 직접 진입/저장 보류/오류 재시도,114Vitest/Node10·실제 SW1 흐름 통과. [버그](wiki/operations/update-button-bug.md)·[CHG0042](history/changes/CHG-0042.md)·PRD0.11.3 전체. 실기기/idle 비활성 재현은 남으며 다음4 REP/5 SCI 우선.
+
 ## 2026-10-07
 
 - **Release / Catalog·SYNC**: b44ebda/fba60bb main push·GitHub37629327092 세 job success/19+17browser artifact·최초 실패 probe 수신, 같은 source Pages Git build/deploy·운영24파일 SHA256/보안 헤더 일치 확인. [확인](raw/research/2026-10-07-catalog-sync-git-release.json) · [CHG0041](history/changes/CHG-0041.md) · PRD0.11.2 전체/이전241불변 유지. 실제 운동·Auth/기기·SCI/운영/파일럿/P2 관문은 남는다.

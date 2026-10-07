@@ -58,3 +58,5 @@
 - [SYNC 늦은 응답·두 기기 검사](2026-10-07-sync-stale-response-loop.json) · [공식 API 범위](2026-10-07-supabase-sync-api-review.json).
 
 - [세 종목/SYNC 실제 Git/CI·운영 반영](2026-10-07-catalog-sync-git-release.json).
+
+- [업데이트 안내 루프](2026-10-08-update-notice-loop.json).

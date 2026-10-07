@@ -36,3 +36,5 @@
 - [합성 다기기/오래된 응답 차단](local-sync-recovery.md).
 
 - [세 종목/SYNC Git 배포 확인](pages-git-integration.md).
+
+- [업데이트 버튼 버그리포트](update-button-bug.md) — 사용자 조건 미상/active 경로 보완.

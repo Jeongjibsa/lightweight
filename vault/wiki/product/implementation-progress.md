@@ -9,7 +9,7 @@ tags:
 status: "draft"
 generated:
   by: "codex/gpt-6"
-  at: "2026-10-07T22:38:49+09:00"
+  at: "2026-10-08T00:22:04+09:00"
 sources:
   - id: "cf-recheck"
     resource: "../../raw/research/2026-10-04-cloudflare-setup-recheck.json"
@@ -218,11 +218,21 @@ sources:
   - id: "unit-chg-0041"
     resource: "../../raw/research/2026-10-07-catalog-sync-git-release.json"
     title: "세 종목·동기화 보존 실제 Git/CI·운영 확인"
-version: "0.6.2"
-change_id: "CHG-0041"
+  - id: "unit-chg-0042"
+    resource: "../../raw/conversations/2026-10-08-027.md"
+    title: "업데이트 버그와 REP/SCI 우선 요청"
+version: "0.6.3"
+change_id: "CHG-0042"
 ---
 
 # 로컬 PWA 구현 결과와 다음 작업
+
+## CONV0027 업데이트 안내와 작업 우선순위 — 2026-10-08
+
+사용자가 업데이트 안내의 비활성 버튼/재접속 뒤 소멸을 보고했고 당시 active 여부는 기억나지 않는다고 답했다. [버그리포트](../operations/update-button-bug.md)를 작성했다. 기존 active 보류를 무조건 reload로 없애지 않고 진행 중 운동 직접 진입·저장 보류 안내·적용 실패 복구를 추가했다.114Vitest/Node10·실제 SW1 흐름 통과; 실기기와 active 없는 비활성 증상은 미확인이다.
+
+**다음 작업은 남은 목록4 REP, 5 SCI를 우선한다.** 개인화 리포트의 계산/입력 보존·설명과 승인 운동 정보 소비 UI·논문 본문 검토를 진행하며 실제 전문가 승인·미검토 자극/티어 공개와 구별한다. [원문](../../raw/conversations/2026-10-08-027.md).
+
 
 ## 세 종목·동기화 보존 운영 반영 — 2026-10-07
 
